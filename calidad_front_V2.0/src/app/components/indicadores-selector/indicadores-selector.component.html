@@ -1,35 +1,86 @@
-
 <div class="container">
-  <mat-card class="card shadow-soft">
-    <div class="header">
-      <div class="title"><mat-icon>trending_up</mat-icon> Selección de indicadores</div>
-      <span class="spacer"></span>
-      <mat-slide-toggle color="primary" [(ngModel)]="allToggle" (change)="toggleAll($event.checked)">Seleccionar todos</mat-slide-toggle>
-    </div>
-    <mat-divider></mat-divider>
-
-    <div class="cat" *ngFor="let cat of (categorias | keyvalue)">
-      <div class="cat-header">
-        <div class="cat-name">{{ cat.key }}</div>
-        <mat-slide-toggle color="primary" [(ngModel)]="categoryToggles[cat.key]" (change)="toggleCategory(cat.key, $event.checked)">
-          Todo el grupo
-        </mat-slide-toggle>
+  <!-- Card principal de controles -->
+  <mat-card class="control-card shadow-soft">
+    <div class="control-header">
+      <div class="title">
+        Selección de indicadores
+        <span class="count-badge" *ngIf="getSelectedCount() > 0">{{ getSelectedCount() }} seleccionados</span>
       </div>
-      <div class="items">
-        <div class="item" *ngFor="let ind of cat.value">
-          <mat-slide-toggle
-            color="primary"
-            [checked]="selected.has(ind.id_code)"
-            (change)="toggleOne(ind.id_code, ind.categoria, $event.checked)">
-            <strong>{{ ind.id_code }}</strong> — {{ ind.indicador }}
-          </mat-slide-toggle>
+    </div>
+    
+    <div class="control-actions">
+      <button mat-raised-button color="primary" (click)="saveAndBack()">
+        <span class="button-text">Guardar y volver</span>
+      </button>
+      <button mat-stroked-button (click)="goBack()">
+        <span class="button-text">Volver</span>
+      </button>
+      <button mat-stroked-button color="warn" (click)="clearAll()">
+        <span class="button-text">Limpiar</span>
+      </button>
+      <mat-slide-toggle color="primary" [checked]="allToggle" (change)="toggleAll($event.checked)">
+        Elegir todos
+      </mat-slide-toggle>
+    </div>
+  </mat-card>
+
+  <!-- Cards por categoría -->
+  <div class="category-cards">
+    <mat-card class="category-card" *ngFor="let categoria of getCategorias()">
+      <mat-card-header>
+        <div class="category-header">
+          <mat-card-title class="category-title">
+            <mat-icon>category</mat-icon>
+            {{ categoria }}
+            <span class="category-count">
+              {{ getSelectedCountByCategory(categoria) }} / {{ getTotalCountByCategory(categoria) }}
+            </span>
+          </mat-card-title>
+          <div class="category-actions">
+            <button 
+              mat-raised-button 
+              color="primary" 
+              [disabled]="isCategoryFullySelected(categoria)"
+              (click)="selectAllByCategory(categoria)">
+              Todas
+            </button>
+            <button 
+              mat-raised-button 
+              color="warn" 
+              [disabled]="hasNoSelectedInCategory(categoria)"
+              (click)="clearByCategory(categoria)">
+              Limpiar
+            </button>
+          </div>
         </div>
-      </div>
-      <mat-divider></mat-divider>
-    </div>
+      </mat-card-header>
+      
+      <mat-card-content>
+        <div class="indicator-list">
+          <div class="indicator-item" *ngFor="let indicador of categorias[categoria]">
+            <mat-slide-toggle
+              color="primary"
+              [checked]="selected.has(indicador.id_code)"
+              (change)="toggleOne(indicador.id_code, indicador.categoria, $event.checked)">
+              <div class="indicator-info">
+                <span class="indicator-label">{{ indicador.indicador }}</span>
+              </div>
+            </mat-slide-toggle>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
 
-    <div class="actions">
-      <button mat-raised-button (click)="saveAndBack()">Guardar y volver</button>
-    </div>
+  <!-- Card de resumen global -->
+  <mat-card class="summary-card" *ngIf="getSelectedCount() > 0">
+    <mat-card-content>
+      <div class="summary-content">
+        <mat-icon color="primary">info</mat-icon>
+        <span>
+          Total seleccionados: <strong>{{ getSelectedCount() }}</strong> de {{ getTotalCount() }} indicadores disponibles
+        </span>
+      </div>
+    </mat-card-content>
   </mat-card>
 </div>

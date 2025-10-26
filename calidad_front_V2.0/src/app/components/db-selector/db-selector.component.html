@@ -1,26 +1,87 @@
-
 <div class="container">
-  <mat-card class="card shadow-soft">
-    <div class="header">
-      <div class="title"><mat-icon>storage</mat-icon> Selección de bases de datos</div>
-      <span class="spacer"></span>
-      <mat-slide-toggle color="primary" [(ngModel)]="allToggle" (change)="toggleAll($event.checked)">Seleccionar todas</mat-slide-toggle>
-    </div>
-    <mat-divider></mat-divider>
-
-    <div class="list">
-      <div class="row" *ngFor="let code of (data | keyvalue)">
-        <mat-slide-toggle
-          color="primary"
-          [checked]="selected.has(code.key)"
-          (change)="toggleOne(code.key, $event.checked)">
-          <strong>{{ code.key }}</strong> — {{ code.value }}
-        </mat-slide-toggle>
+  <!-- Card principal de controles -->
+  <mat-card class="control-card shadow-soft">
+    <div class="control-header">
+      <div class="title">
+        <mat-icon>storage</mat-icon> 
+        Selección de bases de datos
+        <span class="count-badge" *ngIf="getSelectedCount() > 0">{{ getSelectedCount() }} seleccionadas</span>
       </div>
     </div>
-
-    <div class="actions">
-      <button mat-raised-button (click)="saveAndBack()">Guardar y volver</button>
+    
+    <div class="control-actions">
+      <button mat-raised-button color="primary" (click)="saveAndBack()">
+        <span class="button-text">Guardar y volver</span>
+      </button>
+      <button mat-stroked-button (click)="goBack()">
+        <span class="button-text">Volver</span>
+      </button>
+      <button mat-stroked-button color="warn" (click)="clearAll()">
+        <span class="button-text">Limpiar</span>
+      </button>
+      <mat-slide-toggle color="primary" [checked]="allToggle" (change)="toggleAll()">
+        Elegir todas
+      </mat-slide-toggle>
     </div>
+  </mat-card>
+
+  <!-- Cards por región -->
+  <div class="region-cards">
+    <mat-card class="region-card" *ngFor="let region of regions">
+      <mat-card-header>
+        <div class="region-header">
+          <mat-card-title class="region-title">
+            <mat-icon>place</mat-icon>
+            {{ region }}
+            <span class="region-count">
+              {{ getSelectedCountByRegion(region) }} / {{ getTotalCountByRegion(region) }}
+            </span>
+          </mat-card-title>
+          <div class="region-actions">
+            <button 
+              mat-raised-button 
+              color="primary" 
+              [disabled]="isRegionFullySelected(region)"
+              (click)="selectAllByRegion(region)">
+              Todas
+            </button>
+            <button 
+              mat-raised-button 
+              color="warn" 
+              [disabled]="hasNoSelectedInRegion(region)"
+              (click)="clearByRegion(region)">
+              Limpiar
+            </button>
+          </div>
+        </div>
+      </mat-card-header>
+      
+      <mat-card-content>
+        <div class="database-list">
+          <div class="database-item" *ngFor="let db of getDatabasesByRegion(region)">
+            <mat-slide-toggle
+              color="primary"
+              [checked]="db.selected"
+              (change)="toggleOne(db.id)">
+              <div class="database-info">
+                <span class="database-label">{{ db.label }}</span>
+              </div>
+            </mat-slide-toggle>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- Card de resumen global (opcional) -->
+  <mat-card class="summary-card" *ngIf="getSelectedCount() > 0">
+    <mat-card-content>
+      <div class="summary-content">
+        <mat-icon color="primary">info</mat-icon>
+        <span>
+          Total seleccionadas: <strong>{{ getSelectedCount() }}</strong> de {{ databases.length }} bases de datos disponibles
+        </span>
+      </div>
+    </mat-card-content>
   </mat-card>
 </div>

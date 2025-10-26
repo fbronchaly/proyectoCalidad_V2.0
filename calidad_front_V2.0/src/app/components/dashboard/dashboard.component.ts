@@ -89,10 +89,27 @@ export class DashboardComponent implements OnInit {
   }
 
   resetDates() {
+    // Limpiar fechas locales
     this.startDate = null;
     this.endDate = null;
-    this.sel.setDates(null, null);
-    this.snack.open('Fechas reiniciadas', 'OK', { duration: 1500 });
+    
+    // Limpiar datos recibidos de la API
+    this.apiResponse = null;
+    
+    // Llamar al reset completo del servicio (limpia fechas, bases de datos e indicadores)
+    this.sel.resetAll();
+    
+    // Llamar al endpoint de reset del backend para limpiar archivos y procesos
+    this.api.reset().subscribe({
+      next: (response) => {
+        console.log('Reset backend exitoso:', response);
+        this.snack.open('Todos los datos han sido reiniciados', 'OK', { duration: 2000 });
+      },
+      error: (error) => {
+        console.error('Error en reset backend:', error);
+        this.snack.open('Datos locales reiniciados (error en backend)', 'OK', { duration: 2500 });
+      }
+    });
   }
 
   goToBases() { this.router.navigate(['/bases']); }

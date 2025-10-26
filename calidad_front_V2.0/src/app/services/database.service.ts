@@ -9,28 +9,29 @@ export interface DatabaseItem {
   label: string;     // "Santa Engracia"
   path: string;      // ruta al .gdb
   selected: boolean; // estado
+  region: string;    // "Madrid", "Castilla y León", "Galicia"
 }
 
 @Injectable({ providedIn: 'root' })
 export class DatabaseService {
-  // Lista base (igual que antes)
+  // Lista base actualizada con regiones
   private readonly initialList: DatabaseItem[] = [
-    { id: 'DB1',  label: 'Santa Engracia', path: '/NFS/restores/NF6_SantaEngracia.gdb', selected: false },
-    { id: 'DB2',  label: 'Los Olmos',      path: '/NFS/restores/NF6_LosOlmos.gdb',      selected: false },
-    { id: 'DB3',  label: 'Los Llanos',     path: '/NFS/restores/NF6_LosLlanos.gdb',     selected: false },
-    { id: 'DB4',  label: 'El Castañar',    path: '/NFS/restores/NF6_ElCastanar.gdb',    selected: false },
-    { id: 'DB5',  label: 'Getafe',         path: '/NFS/restores/NF6_Getafe.gdb',        selected: false },
-    { id: 'DB6',  label: 'Los Lauros',     path: '/NFS/restores/NF6_LosLauros.gdb',     selected: false },
-    { id: 'DB8',  label: 'FJD',            path: '/NFS/restores/NF6_FJD.gdb',           selected: false },
-    { id: 'DB9',  label: 'HRJC',           path: '/NFS/restores/NF6_HRJC.gdb',          selected: false },
-    { id: 'DB10', label: 'Infanta Elena',  path: '/NFS/restores/NF6_InfantaElena.gdb',  selected: false },
-    { id: 'DB11', label: 'Las Encinas',    path: '/NFS/restores/NF6_LasEncinas.gdb',    selected: false },
-    { id: 'DB13', label: 'Los Llanos 3',   path: '/NFS/restores/NF6_LosLlanos3.gdb',    selected: false },
-    { id: 'DB14', label: 'Os Carballos',   path: '/NFS/restores/NF6_OsCarballos.gdb',   selected: false },
-    { id: 'DB15', label: 'Os Carballos II',path: '/NFS/restores/NF6_OsCarballosII.gdb', selected: false },
-    { id: 'DB16', label: 'Teixedal',       path: '/NFS/restores/NF6_Teixedal.gdb',      selected: false },
-    { id: 'DB17', label: 'Villalba',       path: '/NFS/restores/NF6_VILLALBA.gdb',      selected: false },
-    { id: 'DB18', label: 'Los Pinos',      path: '/NFS/restores/NF6_LosPinos.gdb',      selected: false },
+    { id: 'DB1',  label: 'Santa Engracia',   path: '/NFS/restores/NF6_SantaEngracia.gdb', selected: false, region: 'Madrid' },
+    { id: 'DB2',  label: 'Los Olmos',        path: '/NFS/restores/NF6_LosOlmos.gdb',      selected: false, region: 'Castilla y León' },
+    { id: 'DB3',  label: 'Los Llanos',       path: '/NFS/restores/NF6_LosLlanos.gdb',     selected: false, region: 'Madrid' },
+    { id: 'DB4',  label: 'El Castañar',      path: '/NFS/restores/NF6_ElCastanar.gdb',    selected: false, region: 'Castilla y León' },
+    { id: 'DB5',  label: 'Getafe',           path: '/NFS/restores/NF6_Getafe.gdb',        selected: false, region: 'Madrid' },
+    { id: 'DB6',  label: 'Los Lauros',       path: '/NFS/restores/NF6_LosLauros.gdb',     selected: false, region: 'Madrid' },
+    { id: 'DB8',  label: 'FJD',              path: '/NFS/restores/NF6_FJD.gdb',           selected: false, region: 'Madrid' },
+    { id: 'DB9',  label: 'HRJC',             path: '/NFS/restores/NF6_HRJC.gdb',          selected: false, region: 'Madrid' },
+    { id: 'DB10', label: 'Infanta Elena',    path: '/NFS/restores/NF6_InfantaElena.gdb',  selected: false, region: 'Madrid' },
+    { id: 'DB11', label: 'Las Encinas',      path: '/NFS/restores/NF6_LasEncinas.gdb',    selected: false, region: 'Castilla y León' },
+    { id: 'DB13', label: 'Los Llanos 3',     path: '/NFS/restores/NF6_LosLlanos3.gdb',    selected: false, region: 'Madrid' },
+    { id: 'DB14', label: 'Os Carballos',     path: '/NFS/restores/NF6_OsCarballos.gdb',   selected: false, region: 'Galicia' },
+    { id: 'DB15', label: 'Os Carballos II',  path: '/NFS/restores/NF6_OsCarballosII.gdb', selected: false, region: 'Galicia' },
+    { id: 'DB16', label: 'Teixedal',         path: '/NFS/restores/NF6_Teixedal.gdb',      selected: false, region: 'Galicia' },
+    { id: 'DB17', label: 'Villalba',         path: '/NFS/restores/NF6_VILLALBA.gdb',      selected: false, region: 'Madrid' },
+    { id: 'DB18', label: 'Los Pinos',        path: '/NFS/restores/NF6_LosPinos.gdb',      selected: false, region: 'Castilla y León' },
   ];
 
   // Mover la inicialización aquí
@@ -118,5 +119,34 @@ export class DatabaseService {
   applySelection(ids: string[]): void {
     const set = new Set(ids);
     this.emit(this.snapshot().map(d => ({ ...d, selected: set.has(d.id) })));
+  }
+
+  // Nuevos métodos para manejo por regiones
+  getRegions(): string[] {
+    const regions = new Set(this.initialList.map(db => db.region));
+    return Array.from(regions).sort();
+  }
+
+  getDatabasesByRegion(region: string): DatabaseItem[] {
+    return this.snapshot().filter(db => db.region === region);
+  }
+
+  selectByRegion(region: string): void {
+    const list = this.snapshot().map(d => 
+      d.region === region ? { ...d, selected: true } : d
+    );
+    this.emit(list);
+  }
+
+  clearByRegion(region: string): void {
+    const list = this.snapshot().map(d => 
+      d.region === region ? { ...d, selected: false } : d
+    );
+    this.emit(list);
+  }
+
+  isRegionFullySelected(region: string): boolean {
+    const regionDbs = this.getDatabasesByRegion(region);
+    return regionDbs.length > 0 && regionDbs.every(db => db.selected);
   }
 }

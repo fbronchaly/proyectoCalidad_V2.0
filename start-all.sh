@@ -9,8 +9,8 @@ cd "$(dirname "$0")"
 export USE_PROD_ORIGIN=false
 
 concurrently \
-  "cd calidad_back_V1.1 && node index.js" \
-  "cd calidad_front_V1.1 && ng serve --open"
+  "cd calidad_back_V2.0 && node index.js" \
+  "cd calidad_front_V2.0 && ng serve --open"
 
 
 # Permisos --> chmod +x start-all.sh

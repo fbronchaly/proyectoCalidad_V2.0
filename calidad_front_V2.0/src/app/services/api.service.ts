@@ -6,7 +6,8 @@ import { UploadPayload } from './selection.service';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
-  private endpoint = 'http://localhost:3000/api/upload';
+  private baseUrl = 'http://localhost:3000/api';
+  private endpoint = `${this.baseUrl}/upload`;
 
   constructor(private http: HttpClient) {}
 
@@ -22,6 +23,22 @@ export class ApiService {
         console.error('Status:', err.status);
         console.error('URL:', err.url);
         return throwError(() => new Error(err?.message || 'Error de red'));
+      })
+    );
+  }
+
+  reset(): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    });
+
+    return this.http.post(`${this.baseUrl}/reset`, {}, { headers }).pipe(
+      catchError((err) => {
+        console.error('Error en reset:', err);
+        console.error('Status:', err.status);
+        console.error('URL:', err.url);
+        return throwError(() => new Error(err?.message || 'Error de red en reset'));
       })
     );
   }

@@ -1,9 +1,8 @@
-
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { SelectionService } from '../../services/selection.service';
+import { DatabaseService, DatabaseItem } from '../../services/database.service';
 
 @Component({
   selector: 'app-db-selector',
@@ -11,46 +10,98 @@ import { SelectionService } from '../../services/selection.service';
   styleUrls: ['./db-selector.component.scss']
 })
 export class DbSelectorComponent implements OnInit {
-  data: Record<string, string> = {};
-  selected = new Set<string>();
+  databases: DatabaseItem[] = [];
+  regions: string[] = [];
   allToggle = false;
 
   constructor(
-    private http: HttpClient,
     private snack: MatSnackBar,
     private router: Router,
-    private sel: SelectionService
+    private sel: SelectionService,
+    private dbService: DatabaseService
   ) {}
 
   ngOnInit(): void {
-    this.selected = new Set(this.sel.getDatabases());
-    this.http.get<Record<string,string>>('assets/basesDeDatosJSON.json').subscribe({
-      next: (d) => {
-        this.data = d;
-        // inicializa master toggle si todo está seleccionado
-        const allCodes = Object.keys(this.data);
-        this.allToggle = allCodes.every(c => this.selected.has(c));
-      },
-      error: () => this.snack.open('No se pudo cargar basesDeDatosJSON.json', 'OK', { duration: 3000 })
+    // Cargar regiones
+    this.regions = this.dbService.getRegions();
+    
+    // Suscribirse a cambios en las bases de datos
+    this.dbService.databases$.subscribe(databases => {
+      this.databases = databases;
+      this.updateAllToggle();
     });
+
+    // Aplicar selección inicial desde SelectionService
+    const selectedIds = this.sel.getDatabases();
+    if (selectedIds.length > 0) {
+      this.dbService.applySelection(selectedIds);
+    }
   }
 
-  toggleOne(code: string, checked: boolean) {
-    if (checked) this.selected.add(code);
-    else this.selected.delete(code);
-    const allCodes = Object.keys(this.data);
-    this.allToggle = allCodes.length > 0 && allCodes.every(c => this.selected.has(c));
+  private updateAllToggle(): void {
+    this.allToggle = this.databases.length > 0 && this.databases.every(db => db.selected);
   }
 
-  toggleAll(checked: boolean) {
-    this.allToggle = checked;
-    if (checked) Object.keys(this.data).forEach(c => this.selected.add(c));
-    else this.selected.clear();
+  toggleOne(id: string): void {
+    this.dbService.toggle(id);
   }
 
-  saveAndBack() {
-    this.sel.setDatabases(Array.from(this.selected));
-    this.snack.open('Bases seleccionadas: ' + this.selected.size, 'OK', { duration: 1500 });
+  toggleAll(): void {
+    if (this.allToggle) {
+      this.dbService.clear();
+    } else {
+      this.dbService.selectAll();
+    }
+  }
+
+  clearAll(): void {
+    this.dbService.clear();
+    this.snack.open('Todas las bases deseleccionadas', 'OK', { duration: 1500 });
+  }
+
+  selectAllByRegion(region: string): void {
+    this.dbService.selectByRegion(region);
+    this.snack.open(`Seleccionadas todas las bases de ${region}`, 'OK', { duration: 1500 });
+  }
+
+  clearByRegion(region: string): void {
+    this.dbService.clearByRegion(region);
+    this.snack.open(`Deseleccionadas todas las bases de ${region}`, 'OK', { duration: 1500 });
+  }
+
+  isRegionFullySelected(region: string): boolean {
+    return this.dbService.isRegionFullySelected(region);
+  }
+
+  getDatabasesByRegion(region: string): DatabaseItem[] {
+    return this.databases.filter(db => db.region === region);
+  }
+
+  getSelectedCount(): number {
+    return this.databases.filter(db => db.selected).length;
+  }
+
+  getSelectedCountByRegion(region: string): number {
+    return this.getDatabasesByRegion(region).filter(db => db.selected).length;
+  }
+
+  getTotalCountByRegion(region: string): number {
+    return this.getDatabasesByRegion(region).length;
+  }
+
+  hasNoSelectedInRegion(region: string): boolean {
+    return this.getSelectedCountByRegion(region) === 0;
+  }
+
+  saveAndBack(): void {
+    const selectedIds = this.databases.filter(db => db.selected).map(db => db.id);
+    this.sel.setDatabases(selectedIds);
+    this.dbService.saveSelection();
+    this.snack.open(`Bases seleccionadas: ${selectedIds.length}`, 'OK', { duration: 1500 });
+    this.router.navigate(['/dashboard']);
+  }
+
+  goBack(): void {
     this.router.navigate(['/dashboard']);
   }
 }
