@@ -58,52 +58,76 @@
   }
 }
 
-// Títulos de sección - corregir z-index
+// NUEVO LAYOUT DE TRES COLUMNAS
+.main-content {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr; // Columna izq (1), centro (2), derecha (1)
+  gap: 24px;
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+// COLUMNA IZQUIERDA: Configuración
+.left-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  
+  .section-title {
+    margin: 20px 0 16px 0;
+    padding: 0;
+  }
+}
+
+// COLUMNAS CENTRALES: Calendario (ocupa 2 espacios)
+.center-columns {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  
+  .section-title {
+    margin: 20px 0 16px 0;
+    padding: 0;
+  }
+}
+
+// COLUMNA DERECHA: Análisis
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  
+  .section-title {
+    margin: 20px 0 16px 0;
+    padding: 0;
+  }
+}
+
+// Títulos de sección - ajustados para el nuevo layout
 .section-title {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin: 40px 0 24px 0;
-  padding: 0 20px;
   position: relative;
   z-index: 1;
   
   mat-icon {
-    font-size: 28px;
+    font-size: 24px;
     color: #667eea;
   }
   
   .title-text {
     margin: 0;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 600;
     color: #2d3748;
     letter-spacing: -0.3px;
   }
 }
 
-// Sección de configuración con nuevo grid
-.config-section {
-  padding: 20px;
-  
-  .config-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 24px;
-    max-width: 1200px;
-    margin: 0 auto;
-    align-items: start;
-  }
-  
-  .side-cards {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    height: fit-content;
-  }
-}
-
-// Cards de configuración
+// Cards de configuración - ajustadas para columnas
 .config-card {
   border-radius: 16px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.1);
@@ -121,13 +145,11 @@
   }
   
   mat-card-header {
-    padding: 24px 24px 16px 24px;
-    position: relative;
-    z-index: 1;
+    padding: 20px 20px 12px 20px;
     
     .mdc-card__title,
     .mat-mdc-card-title {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 600;
       color: #2d3748;
       margin: 0;
@@ -137,7 +159,7 @@
     
     .mdc-card__subtitle,
     .mat-mdc-card-subtitle {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 500;
       color: #718096;
       margin: 4px 0 0 0;
@@ -146,23 +168,19 @@
   }
   
   mat-card-content {
-    padding: 0 24px 16px 24px;
-    font-size: 15px;
+    padding: 0 20px 12px 20px;
+    font-size: 14px;
     line-height: 1.6;
-    position: relative;
-    z-index: 1;
   }
   
   mat-card-actions {
-    padding: 16px 24px 24px 24px;
+    padding: 12px 20px 20px 20px;
     margin: 0;
-    position: relative;
-    z-index: 1;
   }
 }
 
-// Card de fechas específica (doble ancho)
-.large-card {
+// Card del calendario - ajustada para ocupar las dos columnas centrales
+.date-card {
   .date-inputs {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -189,16 +207,16 @@
   .info-item {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 12px 16px;
-    border-radius: 12px;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 10px;
     background: #f7fafc;
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 500;
     
     mat-icon {
       color: #48bb78;
-      font-size: 20px;
+      font-size: 18px;
     }
     
     &.warning {
@@ -211,23 +229,17 @@
   }
 }
 
-// Botones mejorados - corregir z-index y superposición
-.config-btn, .reset-btn, .analyze-btn {
-  min-width: 180px;
-  height: 48px;
+// Botones - ajustados para columnas más estrechas
+.config-btn, .reset-btn {
+  width: 100%;
+  height: 44px;
   border-radius: 12px;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.2px;
   text-transform: none;
   box-shadow: 0 4px 16px rgba(0,0,0,0.1);
   transition: all 0.3s ease;
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
   
   .button-text {
     line-height: 1;
@@ -237,80 +249,103 @@
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-    z-index: 2;
   }
 }
 
+// Botón de análisis mejorado con estados
 .analyze-btn {
-  min-width: 200px;
-  height: 56px;
-  font-size: 16px;
+  width: 100%;
+  height: 52px;
+  font-size: 15px;
   font-weight: 700;
   background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  }
+  
+  &.ready-for-new {
+    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+    
+    &:hover {
+      background: linear-gradient(135deg, #38a169 0%, #2f855a 100%);
+    }
+  }
   
   &:disabled {
     background: #e2e8f0;
     color: #a0aec0;
+    transform: none;
+    box-shadow: none;
+  }
+  
+  mat-icon {
+    font-size: 20px;
+  }
+  
+  .button-text {
+    line-height: 1;
+    white-space: nowrap;
   }
 }
 
-// Sección de análisis
-.analysis-section {
-  padding: 20px;
-  position: relative;
-  z-index: 1;
+// Card de análisis - ajustada para columna derecha
+.analysis-card {
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
   
-  .analysis-card {
-    max-width: 800px;
-    margin: 0 auto;
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(10px);
-    position: relative;
-    z-index: 2;
+  .analysis-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     
-    .analysis-content {
-      display: flex;
-      gap: 32px;
-      align-items: center;
+    .analysis-info {
+      h3 {
+        font-size: 18px;
+        font-weight: 600;
+        color: #2d3748;
+        margin: 0 0 8px 0;
+        line-height: 1.2;
+      }
       
-      .analysis-info {
-        flex: 1;
-        
-        h3 {
-          font-size: 22px;
-          font-weight: 600;
-          color: #2d3748;
-          margin: 0 0 12px 0;
-          line-height: 1.2;
-        }
-        
-        p {
-          font-size: 15px;
-          color: #718096;
-          margin: 0 0 24px 0;
-          line-height: 1.6;
-        }
+      p {
+        font-size: 13px;
+        color: #718096;
+        margin: 0 0 16px 0;
+        line-height: 1.5;
       }
     }
   }
 }
 
-// Checklist de readiness
+// Checklist de readiness - compacto para columna derecha
 .readiness-check {
   .check-item {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 8px 0;
-    font-size: 15px;
+    gap: 10px;
+    padding: 6px 0;
+    font-size: 13px;
     font-weight: 500;
     color: #718096;
     
     mat-icon {
       color: #e2e8f0;
-      font-size: 20px;
+      font-size: 18px;
+    }
+    
+    span {
+      font-size: 12px;
     }
     
     &.ready {
@@ -323,11 +358,23 @@
   }
 }
 
-// Sección de resultados
+// Sección de resultados - mantiene el ancho completo
 .results-section {
-  padding: 20px;
-  position: relative;
-  z-index: 1;
+  grid-column: 1 / -1; // Ocupa todas las columnas
+  padding: 40px 20px 20px 20px;
+  
+  .section-title {
+    margin: 0 0 24px 0;
+    justify-content: center;
+    
+    .title-text {
+      font-size: 24px;
+    }
+    
+    mat-icon {
+      font-size: 28px;
+    }
+  }
   
   .summary-card {
     max-width: 1200px;
@@ -336,8 +383,6 @@
     box-shadow: 0 8px 32px rgba(0,0,0,0.1);
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
-    position: relative;
-    z-index: 2;
     
     .mdc-card__title,
     .mat-mdc-card-title,
@@ -379,12 +424,10 @@
     box-shadow: 0 8px 32px rgba(0,0,0,0.1);
     background: rgba(255,255,255,0.95);
     backdrop-filter: blur(10px);
-    position: relative;
-    z-index: 2;
   }
 }
 
-// Tabla de resultados
+// Mantener estilos de tabla y otros componentes existentes
 .table-container {
   overflow-x: auto;
   border-radius: 12px;
@@ -451,17 +494,248 @@
   }
 }
 
-// Responsive design
+// Card de error
+.error-card {
+  max-width: 800px;
+  margin: 0 auto 20px auto;
+  border-radius: 16px;
+  background: #fef5e7;
+  border: 2px solid #ed8936;
+  
+  .error-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    
+    mat-icon {
+      font-size: 32px;
+      color: #e53e3e;
+    }
+    
+    h3 {
+      margin: 0 0 8px 0;
+      color: #c53030;
+      font-size: 20px;
+      font-weight: 600;
+    }
+    
+    p {
+      margin: 0;
+      color: #744210;
+      font-size: 15px;
+    }
+  }
+}
+
+// Cards sin resultados
+.no-results-card, .no-data-card {
+  max-width: 800px;
+  margin: 0 auto 20px auto;
+  border-radius: 16px;
+  background: #fef5e7;
+  border: 2px solid #ed8936;
+  
+  .no-results-content, .no-data-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    
+    mat-icon {
+      font-size: 32px;
+      color: #ed8936;
+    }
+    
+    h3 {
+      margin: 0 0 8px 0;
+      color: #c53030;
+      font-size: 20px;
+      font-weight: 600;
+    }
+    
+    p {
+      margin: 0;
+      color: #744210;
+      font-size: 15px;
+    }
+  }
+}
+
+// Información de resultados
+.results-info {
+  padding: 16px 0;
+  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 16px;
+  
+  p {
+    margin: 0;
+    font-size: 15px;
+    color: #4a5568;
+    
+    strong {
+      color: #2d3748;
+      font-weight: 600;
+    }
+  }
+}
+
+// Sección de indicadores
+.indicators-section {
+  margin-top: 32px;
+  
+  .indicators-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #2d3748;
+    margin: 0 0 24px 0;
+    text-align: center;
+  }
+}
+
+// Cards individuales de indicadores
+.indicator-card {
+  margin-bottom: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  border-left: 4px solid #4caf50;
+  
+  .indicator-details {
+    p {
+      margin: 8px 0;
+      font-size: 14px;
+      color: #4a5568;
+      
+      strong {
+        color: #2d3748;
+        font-weight: 600;
+      }
+    }
+    
+    .totals-summary {
+      display: flex;
+      gap: 24px;
+      margin: 16px 0;
+      padding: 16px;
+      background: #f7fafc;
+      border-radius: 8px;
+      
+      .total-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        .total-label {
+          font-size: 12px;
+          color: #718096;
+          font-weight: 500;
+          margin-bottom: 4px;
+        }
+        
+        .total-value {
+          font-size: 20px;
+          font-weight: 700;
+          color: #2d3748;
+        }
+      }
+    }
+    
+    .results-by-db {
+      margin-top: 20px;
+      
+      h4 {
+        font-size: 16px;
+        font-weight: 600;
+        color: #2d3748;
+        margin: 0 0 12px 0;
+      }
+      
+      .db-result {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 16px;
+        margin-bottom: 8px;
+        background: #f8fafc;
+        border-radius: 8px;
+        border: 1px solid #e2e8f0;
+        
+        &:hover {
+          background: #edf2f7;
+        }
+        
+        .db-name {
+          font-weight: 600;
+          color: #4a5568;
+        }
+        
+        .db-values {
+          display: flex;
+          gap: 16px;
+          align-items: center;
+          
+          .db-result-value {
+            font-weight: 700;
+            color: #2d3748;
+            background: #e6fffa;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 14px;
+          }
+          
+          .db-patients {
+            font-size: 13px;
+            color: #718096;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Indicador de estado del sistema
+.system-status {
+  margin: 16px 0;
+  
+  .status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    
+    &.ready {
+      background: #c6f6d5;
+      color: #22543d;
+      border: 1px solid #48bb78;
+      
+      mat-icon {
+        color: #22543d;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+// Responsive design para el nuevo layout
+@media (max-width: 1200px) {
+  .main-content {
+    grid-template-columns: 1fr 1.5fr 1fr;
+    gap: 20px;
+  }
+}
+
 @media (max-width: 992px) {
-  .config-grid {
+  .main-content {
     grid-template-columns: 1fr;
     gap: 20px;
   }
   
-  .side-cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+  .left-column, .center-columns, .right-column {
+    .section-title {
+      margin: 30px 0 16px 0;
+    }
   }
 }
 
@@ -481,28 +755,41 @@
     }
   }
   
-  .config-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .side-cards {
-    display: flex;
-    flex-direction: column;
+  .main-content {
+    padding: 16px;
     gap: 16px;
   }
   
-  .large-card .date-inputs {
+  .date-card .date-inputs {
     grid-template-columns: 1fr;
     gap: 16px;
   }
   
   .analysis-content {
-    flex-direction: column;
     text-align: center;
   }
   
   .summary-stats {
     flex-direction: column;
     gap: 16px;
+  }
+  
+  .totals-summary {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .db-result {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+    
+    .db-values {
+      justify-content: center;
+    }
+  }
+  
+  .table-container {
+    max-height: 400px;
   }
 }
