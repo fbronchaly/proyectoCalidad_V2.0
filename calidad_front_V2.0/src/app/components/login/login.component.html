@@ -1,0 +1,70 @@
+<div class="login-container">
+  <mat-card class="login-card">
+    <mat-card-header>
+      <mat-card-title>
+        <div class="login-header">
+          <mat-icon>account_circle</mat-icon>
+          <h2>Inicio de sesión</h2>
+        </div>
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form class="login-form">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email del operador</mat-label>
+          <input matInput
+                 [(ngModel)]="email"
+                 type="email"
+                 required
+                 placeholder="ejemplo@correo.com"
+                 name="email">
+          <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+
+        <button mat-raised-button 
+                color="primary" 
+                (click)="solicitarCodigo()"
+                class="full-width action-button">
+          <mat-icon>send</mat-icon>
+          Solicitar código
+        </button>
+
+        <div *ngIf="showCodeInput" class="code-section">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Código recibido por Telegram</mat-label>
+            <input matInput
+                   [(ngModel)]="code"
+                   type="text"
+                   maxlength="6"
+                   placeholder="123456"
+                   name="code">
+            <mat-icon matSuffix>vpn_key</mat-icon>
+          </mat-form-field>
+          
+          <button mat-raised-button 
+                  color="accent" 
+                  (click)="verificarCodigo()"
+                  class="full-width action-button">
+            <mat-icon>check_circle</mat-icon>
+            Verificar código
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+
+    <mat-card-actions *ngIf="message">
+      <div class="message-container">
+        <div class="message" 
+             [ngClass]="{ 
+               'success': message.includes('utenticado'), 
+               'error': message.includes('incorrecto') 
+             }">
+          <mat-icon>{{ message.includes('utenticado') ? 'check_circle' : 'error' }}</mat-icon>
+          <span>{{ message }}</span>
+        </div>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>
+

@@ -1,0 +1,8 @@
+
+.header {
+  display:flex; align-items:center; gap:10px; padding: 8px 4px;
+}
+.title { font-weight: 600; font-size: 18px; display:flex; align-items:center; gap:8px; }
+.list { display:grid; grid-template-columns: 1fr; gap: 10px; margin-top: 12px; }
+.row { background:white; padding:8px 12px; border-radius:12px; }
+.actions { display:flex; justify-content:flex-end; margin-top: 16px; }

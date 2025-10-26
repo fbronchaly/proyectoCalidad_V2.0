@@ -1,0 +1,13 @@
+diff --git a/node_modules/node-firebird/lib/index.js b/node_modules/node-firebird/lib/index.js
+index d6809cd..f25eae0 100644
+--- a/node_modules/node-firebird/lib/index.js
++++ b/node_modules/node-firebird/lib/index.js
+@@ -887,7 +887,7 @@ exports.escape = function(value, protocolVersion) {
+ };
+ 
+ const
+-    DEFAULT_ENCODING = 'utf8',
++    DEFAULT_ENCODING = 'latin1',
+     DEFAULT_FETCHSIZE = 200;
+ 
+ const

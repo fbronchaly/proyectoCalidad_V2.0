@@ -1,0 +1,49 @@
+<div class="registro-container">
+  <mat-card class="registro-card">
+    <mat-card-header>
+      <mat-card-title>
+        <div class="registro-header">
+          <mat-icon>person_add</mat-icon>
+          <h2>Registro del Operador</h2>
+        </div>
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form (ngSubmit)="registrar()" class="registro-form">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput [(ngModel)]="email" name="email" type="email" required>
+          <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Contraseña</mat-label>
+          <input matInput type="password" [(ngModel)]="password" name="password" required>
+          <mat-icon matSuffix>lock</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Teléfono (Telegram)</mat-label>
+          <input matInput [(ngModel)]="telefono" name="telefono" type="tel" required>
+          <mat-icon matSuffix>phone</mat-icon>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit" class="full-width action-button">
+          <mat-icon>person_add</mat-icon>
+          Registrar
+        </button>
+      </form>
+    </mat-card-content>
+
+    <mat-card-actions *ngIf="mensaje">
+      <div class="message-container">
+        <div class="message">
+          <mat-icon>info</mat-icon>
+          <span>{{ mensaje }}</span>
+        </div>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>
+

@@ -1,0 +1,9 @@
+
+.header { display:flex; align-items:center; gap:10px; padding: 8px 4px; }
+.title { font-weight: 600; font-size: 18px; display:flex; align-items:center; gap:8px; }
+.cat { margin-top: 14px; }
+.cat-header { display:flex; align-items:center; justify-content:space-between; }
+.cat-name { font-weight: 600; }
+.items { display:grid; gap: 8px; margin: 8px 0 12px; }
+.item { background:white; padding:8px 12px; border-radius:12px; }
+.actions { display:flex; justify-content:flex-end; margin-top: 16px; }

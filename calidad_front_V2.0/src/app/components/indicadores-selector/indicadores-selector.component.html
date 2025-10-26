@@ -1,0 +1,35 @@
+
+<div class="container">
+  <mat-card class="card shadow-soft">
+    <div class="header">
+      <div class="title"><mat-icon>trending_up</mat-icon> Selección de indicadores</div>
+      <span class="spacer"></span>
+      <mat-slide-toggle color="primary" [(ngModel)]="allToggle" (change)="toggleAll($event.checked)">Seleccionar todos</mat-slide-toggle>
+    </div>
+    <mat-divider></mat-divider>
+
+    <div class="cat" *ngFor="let cat of (categorias | keyvalue)">
+      <div class="cat-header">
+        <div class="cat-name">{{ cat.key }}</div>
+        <mat-slide-toggle color="primary" [(ngModel)]="categoryToggles[cat.key]" (change)="toggleCategory(cat.key, $event.checked)">
+          Todo el grupo
+        </mat-slide-toggle>
+      </div>
+      <div class="items">
+        <div class="item" *ngFor="let ind of cat.value">
+          <mat-slide-toggle
+            color="primary"
+            [checked]="selected.has(ind.id_code)"
+            (change)="toggleOne(ind.id_code, ind.categoria, $event.checked)">
+            <strong>{{ ind.id_code }}</strong> — {{ ind.indicador }}
+          </mat-slide-toggle>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+    </div>
+
+    <div class="actions">
+      <button mat-raised-button (click)="saveAndBack()">Guardar y volver</button>
+    </div>
+  </mat-card>
+</div>

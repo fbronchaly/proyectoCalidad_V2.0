@@ -1,0 +1,584 @@
+﻿[
+  {
+    "id_code": "TF6V649N",
+    "categoria": "Actividad Asistencial HD crónicos ",
+    "indicador": "Nº total de sesiones  de HD de crónicos realizadas ",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM SESION s JOIN PACIENTES p ON p.NREGGEN = s.NREGGEN WHERE {{ACTIVOS_H}} AND s.FECHA BETWEEN ':FECHAINI' AND ':FECHAFIN';"
+  },
+  {
+    "id_code": "UGYUXMS8",
+    "categoria": "Actividad Asistencial HD crónicos ",
+    "indicador": "Nº total de sesiones  de HDF on line de crónicos  realizadas (  suma de todas las sesiones de HD desde el inicio del periodo hasta el final del periodo) ",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM SESION s JOIN PACIENTES p ON p.NREGGEN = s.NREGGEN WHERE p.ESTADO = 'A' AND p.DESPLAZADO = 0 AND p.MODAL_TRAT = 'H' AND s.FECHA BETWEEN ':FECHAINI' AND ':FECHAFIN' AND s.TIPOHEMO IN (2339);"
+  },
+  {
+    "id_code": "BXZ15OPB",
+    "categoria": "Actividad Asistencial HD crónicos ",
+    "indicador": "Nº total de sesiones  de HDF convencional  de crónicos  realizadas (  suma de todas las sesiones de HD desde el inicio del periodo hasta el final del periodo) ",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM SESION s JOIN PACIENTES p ON p.NREGGEN = s.NREGGEN WHERE p.ESTADO = 'A' -- solo pacientes activos (crónicos) AND p.DESPLAZADO = 0 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND s.TIPOHEMO = 1; -- HD convencional;"
+  },
+  {
+    "id_code": "9AV891DU",
+    "categoria": "Actividad Asistencial HD crónicos ",
+    "indicador": "Nº total de sesiones  de HD expandida  de crónicos  realizadas (  suma de todas las sesiones de HD desde el inicio del periodo hasta el final del periodo) ",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM SESION s JOIN PACIENTES p ON p.NREGGEN = s.NREGGEN WHERE p.ESTADO = 'A' -- solo pacientes activos/prevalentes AND p.MODAL_TRAT = 'H' -- hemodiálisis crónica AND p.DESPLAZADO = 0 AND s.FECHA BETWEEN ':FECHAINI' AND ':FECHAFIN' AND s.TIPOHEMO IN ( <CODIGOS_HD_EXPANDIDA> -- aquí los códigos que correspondan a HD expandida );"
+  },
+  {
+    "id_code": "YLVJ7PUD",
+    "categoria": "Actividad Asistencial HD crónicos ",
+    "indicador": "Nº de pacientes de HD de crónicos  prevalentes de periodo =dializados a lo largo del periodo  ( suma de todos los pacientes desde el inicio del periodo hasta el final del periodo) ",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p JOIN SESION s ON p.NREGGEN = s.NREGGEN WHERE p.ESTADO = 'A' -- solo pacientes activos/prevalentes AND p.MODAL_TRAT = 'H' -- hemodiálisis AND COALESCE(p.DESPLAZADO, 0) = 0 -- eliminar desplazados AND s.FECHA BETWEEN ':FECHAINI' AND ':FECHAFIN';"
+  },
+  {
+    "id_code": "568BL7OH",
+    "categoria": "Actividad Asistencial HD crónicos ",
+    "indicador": "Nº de pacientes de HD de crónicos  prevalentes ultimo dia de periodo  ",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(*) AS numero_pacientes FROM PACIENTES p WHERE p.ESTADO = 'A' -- solo pacientes activos AND p.MODAL_TRAT = 'H' -- en hemodiálisis AND (p.DESPLAZADO IS NULL OR p.DESPLAZADO = 0) -- excluir desplazados AND p.FECH_INI_HEMO <= ':FECHAFIN' -- iniciaron antes o el mismo día AND (p.FECHAFIN IS NULL OR p.FECHAFIN >= ':FECHAFIN');"
+  },
+  {
+    "id_code": "DPRRPAB3",
+    "categoria": "Actividad Asistencial HD crónicos ",
+    "indicador": "Nº de pacientes de HD de crónicos  incidentes a lo largo  del periodo ( suma de todos los pacientes desde el inicio del periodo hasta el final del periodo) ",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(*) AS numero_pacientes FROM PACIENTES p WHERE p.ESTADO = 'A' -- solo pacientes activos AND p.MODAL_TRAT = 'H' -- hemodiálisis AND p.DESPLAZADO = 0 -- excluir desplazados AND p.FECH_INI_HEMO BETWEEN ':FECHAINI' AND ':FECHAFIN';"
+  },
+  {
+    "id_code": "L2KRFUEQ",
+    "categoria": "Actividad Asistencial HD crónicos ",
+    "indicador": "Nº de bajas  de HD de crónicos (trasplante, fallecimiento, otros) (  suma de todos los pacientes desde el inicio del periodo hasta el final del periodo) ",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM INCIDENCIAS i JOIN PACIENTES p ON p.NREGGEN = i.NREGGEN WHERE p.ESTADO = 'A' -- solo pacientes activos/prevalentes AND p.MODAL_TRAT = 'H' -- pacientes en hemodiálisis AND p.DESPLAZADO = 0 -- excluir desplazados AND i.FECHAINI BETWEEN ':FECHAINI' AND ':FECHAFIN' AND i.CAUSABAJA IN ('P','E','R','M','T','N'); -- trasplante, exitus, otros;"
+  },
+  {
+    "id_code": "NCENQQAN",
+    "categoria": "Actividad Asistencial HD crónicos ",
+    "indicador": "Nº de trasplantes de HD de crónicos (  suma de todos los pacientes desde el inicio del periodo hasta el final del periodo) ",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p WHERE p.ESTADO = 'A' -- solo activos/prevalentes AND p.MODAL_TRAT = 'H' -- hemodiálisis AND p.DESPLAZADO = 0 -- eliminar desplazados AND p.FECHATRAS BETWEEN ':FECHAINI' AND ':FECHAFIN';"
+  },
+  {
+    "id_code": "5OBGMVDT",
+    "categoria": "Actividad Asistencial HD crónicos ",
+    "indicador": "Nº de fallecimientos  de HD de crónicos ( suma de todos los pacientes desde el inicio del periodo hasta el final del periodo) ",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM FALLECIMIENTOS f JOIN PACIENTES p ON p.NREGGEN = f.NREGGEN WHERE p.ESTADO = 'A' -- solo pacientes activos/prevalentes AND p.MODAL_TRAT = 'H' -- Hemodiálisis AND p.DESPLAZADO = 0 -- excluir desplazados AND f.FECHA BETWEEN ':FECHAINI' AND ':FECHAFIN';"
+  },
+  {
+    "id_code": "GJ16QLH1",
+    "categoria": "Actividad Asistencial HD crónicos ",
+    "indicador": "Nº de traslados de HD de crónicos a otros centros u hospitales  ( suma de todos los pacientes desde el inicio del periodo hasta el final del periodo) ",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM INCIDENCIAS i JOIN PACIENTES p ON p.NREGGEN = i.NREGGEN WHERE p.MODAL_TRAT = 'H' AND p.DESPLAZADO = 0 AND i.CAUSABAJA = 'T' AND i.FECHAINI >= DATE '2023-01-01' AND i.FECHAINI < DATE '2024-01-01';"
+  },
+  {
+    "id_code": "21G4J64P",
+    "categoria": "Actividad Asistencial HD crónicos ",
+    "indicador": "Nº de pacientes de HD de crónicos  prevalentes de periodo con menos de 3 sesiones semanal ( incremental)",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM SESION s JOIN PACIENTES p ON p.NREGGEN = s.NREGGEN WHERE p.MODAL_TRAT = 'H' AND p.DESPLAZADO = 0 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN GROUP BY s.NREGGEN, EXTRACT(YEAR FROM s.FECHA), EXTRACT(WEEK FROM s.FECHA) HAVING COUNT(s.NSESION) < 3;"
+  },
+  {
+    "id_code": "EW3DJIQ2",
+    "categoria": "Actividad Asistencial HD crónicos ",
+    "indicador": "Nº de pacientes de HD de crónicos  prevalentes de periodo con mas de 3 sesiones semanal ( diaria o 4)",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p JOIN SESION s ON p.NREGGEN = s.NREGGEN WHERE p.MODAL_TRAT = 'H' AND p.DESPLAZADO = 0 AND s.FECHA >= :FECHAINI AND s.FECHA < :FECHAFIN GROUP BY p.NREGGEN HAVING (COUNT(DISTINCT EXTRACT(WEEK FROM s.FECHA) || '-' || s.NREGGEN) / COUNT(DISTINCT EXTRACT(WEEK FROM s.FECHA))) > 3;"
+  },
+  {
+    "id_code": "2UFVQS6V",
+    "categoria": "Actividad Asistencial HD crónicos ",
+    "indicador": "Nº de pacientes de HD de crónicos  prevalentes de periodo con 3 sesiones semanal ",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p JOIN SESION s ON s.NREGGEN = p.NREGGEN WHERE p.MODAL_TRAT = 'H' AND p.DESPLAZADO = 0 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN GROUP BY p.NREGGEN, EXTRACT(YEAR FROM s.FECHA), EXTRACT(WEEK FROM s.FECHA) HAVING COUNT(DISTINCT s.NSESION) >= 3;"
+  },
+  {
+    "id_code": "E5X6QMGB",
+    "categoria": "Actividad Asistencial HD desplazados",
+    "indicador": "Nº total de sesiones  de HD de desplazados realizadas (  suma de todas las sesiones de HD desde el inicio del periodo hasta el final del periodo) ",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM SESION s JOIN PACIENTES p ON p.NREGGEN = s.NREGGEN WHERE p.MODAL_TRAT = 'H' AND p.DESPLAZADO = 1 AND s.FECHA >= DATE :FECHAINIcio AND s.FECHA < DATE :FECHAFIN;"
+  },
+  {
+    "id_code": "IZ941KIY",
+    "categoria": "Actividad Asistencial HD desplazados",
+    "indicador": "Nº de pacientes de HD de desplazados prevalentes de periodo =dializados a lo largo del periodo  ( suma de todos los pacientes desde el inicio del periodo hasta el final del periodo) ",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM SESION s JOIN PACIENTES p ON p.NREGGEN = s.NREGGEN WHERE p.MODAL_TRAT = 'H' AND p.DESPLAZADO = 1 AND s.FECHA >= DATE '2023-01-01' AND s.FECHA < DATE '2024-01-01';"
+  },
+  {
+    "id_code": "TPQ73J37",
+    "categoria": "Actividad Asistencial HD domiciliaria",
+    "indicador": "Nº de pacientes de HDD incidentes  de periodo ",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM INCIDENCIAS i JOIN PACIENTES p ON p.NREGGEN = i.NREGGEN WHERE p.MODAL_TRAT = 'D' AND i.FECHAINI >= :FECHAINIcio AND i.FECHAINI < :FECHAFIN;"
+  },
+  {
+    "id_code": "YHM109JA",
+    "categoria": "Actividad Asistencial HD domiciliaria",
+    "indicador": "Nº de pacientes de DP  prevalentes de periodo =dializados a lo largo del periodo  ( suma de todos los pacientes desde el inicio del periodo hasta el final del periodo) ",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p JOIN INCIDENCIAS i ON i.NREGGEN = p.NREGGEN WHERE p.MODAL_TRAT = 'D' AND p.DESPLAZADO = 0 AND i.FECHAINI <= :FECHAFIN AND (i.FECHAFIN IS NULL OR i.FECHAFIN >= :FECHAINIcio);"
+  },
+  {
+    "id_code": "N9I9KUX8",
+    "categoria": "Actividad Asistencial HD domiciliaria",
+    "indicador": "Nº de pacientes de DP   prevalentes ultimo dia de periodo  ",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p LEFT JOIN INCIDENCIAS i ON p.NREGGEN = i.NREGGEN AND i.FECHAFIN <= :FECHAFIN WHERE p.MODAL_TRAT = 'D' AND (i.CAUSABAJA IS NULL OR i.FECHAFIN > :FECHAFIN);"
+  },
+  {
+    "id_code": "7OOUVY83",
+    "categoria": "Actividad Asistencial HD Agudos",
+    "indicador": "Nº total de sesiones  de HD de agudos  realizadas (  suma de todas las sesiones de HD desde el inicio del periodo hasta el final del periodo) ",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM SESION s JOIN PACIENTES p ON p.NREGGEN = s.NREGGEN WHERE p.MODAL_TRAT = 'A' AND s.FECHA >= :FECHAINI AND s.FECHA < :FECHAFIN;"
+  },
+  {
+    "id_code": "6J6MZ5BU",
+    "categoria": "Descripcion población ( genero)",
+    "indicador": "Porcentaje de hombres dializados en periodo",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM SESION s JOIN PACIENTES p ON p.NREGGEN = s.NREGGEN WHERE p.MODAL_TRAT = 'H' AND s.FECHA >= :FECHAINI AND s.FECHA < :FECHAFIN;"
+  },
+  {
+    "id_code": "Z0M8YMW6",
+    "categoria": "Descripcion población  ( genero)",
+    "indicador": "Porcentaje de mujeres dializados en periodo",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM SESION s JOIN PACIENTES p ON p.NREGGEN = s.NREGGEN WHERE p.MODAL_TRAT = 'H' AND s.FECHA >= :FECHAINI AND s.FECHA < :FECHAFIN;"
+  },
+  {
+    "id_code": "84CI952I",
+    "categoria": "Descripcion población ( edad) ",
+    "indicador": "Edad media de pacientes  prevalentes en periodo",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM p.FENAC TO :FECHAFIN)) AS EDAD_MEDIA FROM PACIENTES p JOIN SESION s ON p.NREGGEN = s.NREGGEN WHERE p.DESPLAZADO = 0 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND p.MODAL_TRAT IN ('H') AND NOT EXISTS ( SELECT 1 FROM INCIDENCIAS i WHERE i.NREGGEN = p.NREGGEN AND i.CAUSABAJA IS NOT NULL AND i.FECHAINI < :FECHAFIN );"
+  },
+  {
+    "id_code": "YWHB0C0I",
+    "categoria": "Descripcion población ( edad) ",
+    "indicador": "Edad media de pacientes  incidentes en periodo",
+    "template": "WITH inc_prim AS ( SELECT i.NREGGEN, MIN(i.FECHAINI) AS FECHAINI FROM INCIDENCIAS i WHERE i.FECHAINI >= DATE :FECHAINICIO AND i.FECHAINI < DATE :FECHAFIN GROUP BY i.NREGGEN ) SELECT AVG(CAST(DATEDIFF(YEAR, p.FENAC, ip.FECHAINI) AS DECIMAL(10,2))) AS EDAD_MEDIA FROM inc_prim ip JOIN PACIENTES p ON p.NREGGEN = ip.NREGGEN WHERE p.DESPLAZADO = 0 AND p.MODAL_TRAT = 'H' AND p.FENAC IS NOT NULL;"
+  },
+  {
+    "id_code": "JVCBM8DE",
+    "categoria": "Descripcion población ( edad) ",
+    "indicador": "Porcentaje de pacientes incidentes en periodo con mas de 80 años ( suma de todos los pacientes  nuevos con mas de 80 años desde el inicio del periodo hasta el final del periodo / nº total de pacienets nuevos en periodo) ",
+    "template": "-- Pacientes incidentes: primera sesión dentro del periodo WITH primerases AS ( SELECT s.NREGGEN, MIN(s.FECHA) AS primera FROM SESION s GROUP BY s.NREGGEN ) SELECT COUNT(*) AS pacientes FROM primerases p WHERE p.primera BETWEEN :desde AND :hasta;"
+  },
+  {
+    "id_code": "KE6IQXRV",
+    "categoria": "Descripcion población ( edad) ",
+    "indicador": "Porcentaje de pacientes prevalentes en periodo con mas de 80 años ( suma de todos los pacientes   con mas de 80 años desde el inicio del periodo hasta el final del periodo / nº total de pacientes en periodo) ",
+    "template": "-- Pacientes prevalentes: con >=1 sesión en el periodo SELECT COUNT(DISTINCT s.NREGGEN) AS pacientes FROM SESION s WHERE s.FECHA BETWEEN :desde AND :hasta;"
+  },
+  {
+    "id_code": "MUV2G6VE",
+    "categoria": "Descripcion población ( diabetes)",
+    "indicador": "Porcentaje de pacientes incidentes en periodo con nefropatia diabetica ( suma de todos los pacientes  nuevos con nefropatia diabetica desde el inicio del periodo hasta el final del periodo / nº total de pacienets nuevos en periodo) ",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM INCIDENCIAS i JOIN PACIENTES p ON p.NREGGEN = i.NREGGEN WHERE i.TIPO = 'I' AND i.FECHAINI >= :FEC_INI AND i.FECHAINI < :FEC_FIN;"
+  },
+  {
+    "id_code": "X86NJ54L",
+    "categoria": "Descripcion población ( diabetes)",
+    "indicador": "Porcentaje de pacientes prevalentes en periodo con nefropatia diabetica ( suma de todos los pacientes   con nefropatia diabetica desde el inicio del periodo hasta el final del periodo / nº total de pacientes en periodo) ",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p JOIN SESION s ON s.NREGGEN = p.NREGGEN WHERE p.MODAL_TRAT = 'H' -- pacientes en HD, o quitar si quieres todas las modalidades AND s.FECHA >= DATE :FECHAINI AND s.FECHA < DATE :FECHAFIN;"
+  },
+  {
+    "id_code": "MFUG6OXZ",
+    "categoria": "Descripcion población ( fragilidad)",
+    "indicador": "Porcentaje de pacientes prevalentes en periodo con Fragilidad ( suma de todos los pacientes   con Fragilidad  desde el inicio del periodo hasta el final del periodo / nº total de pacientes en periodo) ",
+    "template": "-- Pacientes prevalentes: con >=1 sesión en el periodo SELECT COUNT(DISTINCT s.NREGGEN) AS pacientes FROM SESION s WHERE s.FECHA BETWEEN :desde AND :hasta;"
+  },
+  {
+    "id_code": "N0CY12QJ",
+    "categoria": "Descripcion población ( sarcopenia)",
+    "indicador": "Porcentaje de pacientes incidentes en periodo con sarcopenia ( suma de todos los pacientes  nuevos con sarcopenia desde el inicio del periodo hasta el final del periodo / nº total de pacienets nuevos en periodo) ",
+    "template": "WITH INCIDENTES AS ( SELECT p.NREGGEN FROM PACIENTES p WHERE p.FECH_INICIO_CENTRO BETWEEN :FECHAINI AND :FECHAFIN ), ULT_SARCF AS ( -- Último SARCF por paciente dentro del periodo SELECT t.NREGGEN, t.PUNTOS_TOT FROM TEST_PAC t JOIN ( SELECT NREGGEN, MAX(FECHA) AS FECHA_MAX FROM TEST_PAC WHERE CODTEST = :CODTEST_SARCF AND FECHA BETWEEN :FECHAINI AND :FECHAFIN AND NREGGEN IN (SELECT NREGGEN FROM INCIDENTES) GROUP BY NREGGEN ) mx ON mx.NREGGEN = t.NREGGEN AND mx.FECHA_MAX = t.FECHA WHERE t.CODTEST = :CODTEST_SARCF ), TOTALS AS ( SELECT (SELECT COUNT(*) FROM INCIDENTES) AS TOTAL_INCIDENTES, (SELECT COUNT(*) FROM ULT_SARCF u WHERE u.PUNTOS_TOT > 3) AS CON_SARCOPENIA FROM RDB$DATABASE ) SELECT CON_SARCOPENIA, TOTAL_INCIDENTES, CASE WHEN TOTAL_INCIDENTES = 0 THEN 0 ELSE (CON_SARCOPENIA * 100.0) / TOTAL_INCIDENTES END AS PORC_SARCOPENIA FROM TOTALS;"
+  },
+  {
+    "id_code": "3YFYIFGC",
+    "categoria": "Descripcion población ( sarcopenia)",
+    "indicador": "Porcentaje de pacientes prevalentes en periodo con sarcopenia ( suma de todos los pacientes   con sarcopenia desde el inicio del periodo hasta el final del periodo / nº total de pacientes en periodo) ",
+    "template": "WITH ULTIMO_SARCF AS ( SELECT t.NREGGEN, MAX(t.FECHA) AS FECHA_MAX FROM TEST_PAC t WHERE t.CODTEST = 120 AND t.FECHA BETWEEN '2024-01-01' AND '2024-12-31' -- intervalo del periodo GROUP BY t.NREGGEN ) SELECT COUNT(DISTINCT CASE WHEN tp.PUNTOS_TOT > 3 THEN tp.NREGGEN END) AS pacientes_con_sarcopenia, COUNT(DISTINCT tp.NREGGEN) AS pacientes_prevalentes, (COUNT(DISTINCT CASE WHEN tp.PUNTOS_TOT > 3 THEN tp.NREGGEN END) * 100.0 / NULLIF(COUNT(DISTINCT tp.NREGGEN),0)) AS porcentaje_sarcopenia FROM TEST_PAC tp JOIN ULTIMO_SARCF u ON tp.NREGGEN = u.NREGGEN AND tp.FECHA = u.FECHA_MAX JOIN PACIENTES p ON p.NREGGEN = tp.NREGGEN WHERE tp.CODTEST = 120 AND p.ESTADO = 'A'; -- solo pacientes activos/prevalentes;"
+  },
+  {
+    "id_code": "IGI2PEOC",
+    "categoria": "Descripcion población ( nutricion)",
+    "indicador": "Porcentaje de pacientes incidentes en periodo con desnutrido o en riesgo de desnutricion( suma de todos los pacientes  nuevos con desnutrido o en riesgo de desnutricion desde el inicio del periodo hasta el final del periodo / nº total de pacienets nuevos en periodo) ",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM TEST_PAC t JOIN PACIENTES p ON p.NREGGEN = t.NREGGEN WHERE t.CODTEST = :CODTEST_MNA AND t.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND p.FECH_INICIO_CENTRO BETWEEN :FECHAINI AND :FECHAFIN;"
+  },
+  {
+    "id_code": "NLI8S7SE",
+    "categoria": "Descripcion población ( nutricion )",
+    "indicador": "Porcentaje de pacientes prevalentes en periodo con desnutrido o en riesgo de desnutricion ( suma de todos los pacientes   con desnutrido o en riesgo de desnutricion desde el inicio del periodo hasta el final del periodo / nº total de pacientes en periodo) ",
+    "template": "WITH UltimoMNA AS ( SELECT t.NREGGEN, MAX(t.FECHA) AS FECHA_MAX FROM TEST_PAC t JOIN PACIENTES p ON p.NREGGEN = t.NREGGEN WHERE p.ESTADO = 'A' AND t.CODTEST = <CODTEST_MNA> -- depende del centro AND t.FECHA BETWEEN :FECHAINI AND :FECHAFIN GROUP BY t.NREGGEN ) SELECT COUNT(DISTINCT CASE WHEN tp.PUNTOS_TOT <= 11 THEN tp.NREGGEN END) * 100.0 / COUNT(DISTINCT p.NREGGEN) AS PORC_DESNUTR_PREVALENTES FROM PACIENTES p LEFT JOIN UltimoMNA u ON p.NREGGEN = u.NREGGEN LEFT JOIN TEST_PAC tp ON tp.NREGGEN = u.NREGGEN AND tp.FECHA = u.FECHA_MAX WHERE p.ESTADO = 'A' AND p.FECHAINICIO_CENTRO <= :FECHAFIN AND (p.FECHAFIN IS NULL OR p.FECHAFIN >= :FECHAINI);"
+  },
+  {
+    "id_code": "37WCHEIO",
+    "categoria": "Descripcion población ( dependencia)",
+    "indicador": "Porcentaje de pacientes prevalentes en periodo con dependencia moderada-severa a ABVD( suma de todos los pacientes  nuevos con desnutrido o en riesgo de desnutricion desde el inicio del periodo hasta el final del periodo / nº total de pacienets nuevos en periodo) ",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p JOIN TEST_PAC tp ON p.NREGGEN = tp.NREGGEN JOIN TEST t ON tp.CODTEST = t.CODTEST WHERE p.ESTADO = 'A' AND tp.FECHA BETWEEN :FECHAINI AND :FECHAFIN;"
+  },
+  {
+    "id_code": "D0Z3TAKD",
+    "categoria": "Experiencia del Paciente",
+    "indicador": "Media de puntuacion de calidad de vida según laminas coop wonca",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM TEST_PAC t JOIN PACIENTES p ON p.NREGGEN = t.NREGGEN WHERE t.CODTEST = <CODIGO_COOP_WONCA> AND t.FECHA BETWEEN 'FECHAINI' AND 'FECHAFIN' AND p.ESTADO = 'A';"
+  },
+  {
+    "id_code": "M5T2UZS3",
+    "categoria": "Resultados en Salud",
+    "indicador": "Nº de ingresos de HD de crónicos ",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM INGRESOSHOSPITAL i JOIN PACIENTES p ON p.NREGGEN = i.NREGGEN WHERE p.ESTADO = 'A' AND p.MODAL_TRAT = 'H' -- Hemodiálisis AND p.TIPO_PRIM_TRAT_SUST = 'H' -- Hemodiálisis crónica como primer tratamiento sustitutivo AND i.FECHA BETWEEN :FECHAINI AND :FECHAFIN;"
+  },
+  {
+    "id_code": "ZZK6OOQG",
+    "categoria": "Resultados en Salud",
+    "indicador": "Dias de Ingreso por enfermo en HD en periodo",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM INGRESOSHOSPITAL i JOIN PACIENTES p ON p.NREGGEN = i.NREGGEN WHERE p.ESTADO = 'A' AND i.FECHAINI <= :FECHAFIN AND (i.FECHAFIN IS NULL OR i.FECHAFIN >= :FECHAINI) GROUP BY i.NREGGEN;"
+  },
+  {
+    "id_code": "F15FWUQ2",
+    "categoria": "Resultados en Salud",
+    "indicador": "Tasa de mortalidad de pacientes en HD de cronicos ",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p WHERE p.ESTADO = 'A' AND p.FECH_INI_HEMO <= :FECHAFIN AND (p.FECHAFIN IS NULL OR p.FECHAFIN >= :FECHAINI) ) AS TASA_MORTALIDAD_HD FROM FALLECIMIENTOS f JOIN PACIENTES p ON p.NREGGEN = f.NREGGEN WHERE p.ESTADO = 'A' AND p.FECH_INI_HEMO IS NOT NULL AND f.FECHA BETWEEN :FECHAINI AND :FECHAFIN;"
+  },
+  {
+    "id_code": "QBIJEYQX",
+    "categoria": "Resultados en Salud",
+    "indicador": "Tasa de trasplantes",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p2 WHERE p2.ESTADO = 'A') AS TASA_TRASPLANTES FROM PACIENTES p WHERE p.ESTADO = 'A' AND p.FECHATRAS BETWEEN :FECHAINI AND :FECHAFIN;"
+  },
+  {
+    "id_code": "SME3GL83",
+    "categoria": "Calidad Técnica ( Adecuación de HD)",
+    "indicador": "Porcentaje de sesiones de HD  con  KT > 45 ( se incluyen solo pacientes con 3 sesiones/semana)",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM SESION s JOIN PACIENTES p ON s.NREGGEN = p.NREGGEN JOIN HISTPAUTA h ON h.NREGGEN = p.NREGGEN WHERE p.ESTADO = 'A' AND h.SESIONSEMANA = 3 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN;"
+  },
+  {
+    "id_code": "22QO3IXQ",
+    "categoria": "Calidad Técnica ( Adecuación de HD)",
+    "indicador": "Porcentaje de sesiones de HD  con  KT > 45 en varones y > 40 en mujeres ( se incluyen solo pacientes con 3 sesiones/semana)",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM SESION s JOIN PACIENTES p ON p.NREGGEN = s.NREGGEN JOIN HISTPAUTA h ON h.NREGGEN = p.NREGGEN WHERE p.ESTADO = 'A' AND h.SESIONSEMANA = 3 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN ) AS PORCENTAJE_OK FROM SESION s JOIN PACIENTES p ON p.NREGGEN = s.NREGGEN JOIN HISTPAUTA h ON h.NREGGEN = p.NREGGEN JOIN ANALI_KTV k ON k.NREGGEN = p.NREGGEN AND k.FECHA = s.FECHA WHERE p.ESTADO = 'A' AND h.SESIONSEMANA = 3 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND ( (p.SEXO = 'H' AND k.KT_FINAL > 45) OR (p.SEXO = 'M' AND k.KT_FINAL > 40) );"
+  },
+  {
+    "id_code": "A5T4GJWU",
+    "categoria": "Calidad Técnica ( Adecuación de HD)",
+    "indicador": "Porcentaje de sesiones de HD  con  KT semanal > 135 ( se incluyen solo pacientes con 3 o mas sesiones/semana)",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM SESION s JOIN PACIENTES p ON p.NREGGEN = s.NREGGEN JOIN HISTPAUTA h ON h.NREGGEN = p.NREGGEN JOIN ANALI_KTV ak ON ak.NREGGEN = p.NREGGEN WHERE p.ESTADO = 'A' AND h.SESIONSEMANA >= 3 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN;"
+  },
+  {
+    "id_code": "2YZ1TLG8",
+    "categoria": "Calidad Técnica ( Adecuación de HD)",
+    "indicador": "Porcentaje de sesiones de HD  con  KT > 45 ( se incluyen solo pacientes con 3 sesiones/semana)",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM SESION s JOIN PACIENTES p ON s.NREGGEN = p.NREGGEN JOIN HISTPAUTA h ON h.NREGGEN = p.NREGGEN WHERE p.ESTADO = 'A' AND h.SESIONSEMANA = 3 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN;"
+  },
+  {
+    "id_code": "6Q2L9AVX",
+    "categoria": "Calidad Técnica ( Anemia)",
+    "indicador": "Porcentaje de pacientes prevalentes con mas de 3 meses en HD  con  hemoglobina < 10,5 g/dl ( suma de todos los pacientes  con  mas de 3 meses en HD  con  hemoglobina < 10,5 g/dl / nº total de pacientes con mas de 3 meses de HD en el periodo) ",
+    "template": "WITH pacientes_filtrados AS ( SELECT p.NREGGEN FROM PACIENTES p WHERE p.ESTADO = 'A' AND p.FECH_INI_HEMO <= DATEADD(-90 DAY TO :FECHAFIN) ), ultima_analitica AS ( SELECT a.NREGGEN, MAX(a.FECHA) AS FECHA_MAX FROM ANALISIS a JOIN pacientes_filtrados pf ON pf.NREGGEN = a.NREGGEN WHERE a.FECHA BETWEEN :FECHAINIcio AND :FECHAFIN GROUP BY a.NREGGEN ), hemoglobina AS ( SELECT a.NREGGEN, r.VALOR FROM ANALISIS a JOIN ultima_analitica ua ON ua.NREGGEN = a.NREGGEN AND ua.FECHA_MAX = a.FECHA JOIN RESULANAL r ON r.ANALISIS = a.NUMANALISIS WHERE r.CODANAL = 'HEMOG' ) SELECT COUNT(CASE WHEN CAST(h.VALOR AS DECIMAL(5,2)) < 10.5 THEN 1 END) * 100.0 / NULLIF(COUNT(*), 0) AS PORCENTAJE_HB_BAJA, COUNT(CASE WHEN CAST(h.VALOR AS DECIMAL(5,2)) < 10.5 THEN 1 END) AS NUMERADOR, COUNT(*) AS DENOMINADOR FROM hemoglobina h;"
+  },
+  {
+    "id_code": "ROE5HY95",
+    "categoria": "Calidad Técnica ( Anemia)",
+    "indicador": "Porcentaje de pacientes prevalentes con mas de 3 meses en HD  con  hemoglobina > 10,5 g/dl y < 12,5 g/dl ( suma de todos los pacientes  con  mas de 3 meses en HD  con  hemoglobina > 10,5 g/dl y < 12,5 g/dl / nº total de pacientes con mas de 3 meses de HD en el periodo) ",
+    "template": "-- Parámetros: -- :FECHAINIcio (DATE) -- :FECHAFIN (DATE) WITH pacientes_filtrados AS ( SELECT p.NREGGEN FROM PACIENTES p WHERE p.ESTADO = 'A' AND p.FECH_INI_HEMO <= DATEADD(-90 DAY TO :FECHAFIN) -- > 3 meses en HD ), ultima_analitica AS ( SELECT a.NREGGEN, MAX(a.FECHA) AS FECHA_MAX FROM ANALISIS a JOIN pacientes_filtrados pf ON pf.NREGGEN = a.NREGGEN WHERE a.FECHA BETWEEN :FECHAINIcio AND :FECHAFIN GROUP BY a.NREGGEN ), hemoglobina AS ( SELECT a.NREGGEN, r.VALOR FROM ANALISIS a JOIN ultima_analitica ua ON ua.NREGGEN = a.NREGGEN AND ua.FECHA_MAX = a.FECHA JOIN RESULANAL r ON r.ANALISIS = a.NUMANALISIS WHERE r.CODANAL = 'HEMOG' -- ajusta si tu código de Hb es otro ) SELECT COUNT(CASE WHEN CAST(h.VALOR AS DECIMAL(5,2)) > 10.5 AND CAST(h.VALOR AS DECIMAL(5,2)) < 12.5 THEN 1 END ) * 100.0 / NULLIF(COUNT(*), 0) AS PORCENTAJE_HB_10_5_A_12_5, COUNT(CASE WHEN CAST(h.VALOR AS DECIMAL(5,2)) > 10.5 AND CAST(h.VALOR AS DECIMAL(5,2)) < 12.5 THEN 1 END ) AS NUMERADOR, COUNT(*) AS DENOMINADOR FROM hemoglobina h;"
+  },
+  {
+    "id_code": "FPQ3BJQT",
+    "categoria": "Calidad Técnica ( Anemia)",
+    "indicador": "Porcentaje de pacientes prevalentes con mas de 3 meses en HD  con  hemoglobina > 10,5 g/dl y < 12,5 g/dl ( suma de todos los pacientes  con  mas de 3 meses en HD  con  hemoglobina > 10,5 g/dl y < 12,5 g/dl / nº total de pacientes con mas de 3 meses de HD en el periodo) ",
+    "template": "-- Parámetros: -- :FECHAINIcio (DATE) -- :FECHAFIN (DATE) WITH pacientes_filtrados AS ( SELECT p.NREGGEN FROM PACIENTES p WHERE p.ESTADO = 'A' AND p.FECH_INI_HEMO <= DATEADD(-90 DAY TO :FECHAFIN) -- > 3 meses en HD ), ultima_analitica AS ( SELECT a.NREGGEN, MAX(a.FECHA) AS FECHA_MAX FROM ANALISIS a JOIN pacientes_filtrados pf ON pf.NREGGEN = a.NREGGEN WHERE a.FECHA BETWEEN :FECHAINIcio AND :FECHAFIN GROUP BY a.NREGGEN ), hemoglobina AS ( SELECT a.NREGGEN, r.VALOR FROM ANALISIS a JOIN ultima_analitica ua ON ua.NREGGEN = a.NREGGEN AND ua.FECHA_MAX = a.FECHA JOIN RESULANAL r ON r.ANALISIS = a.NUMANALISIS WHERE r.CODANAL = 'HEMOG' -- ajusta si tu código de Hb es otro ) SELECT COUNT(CASE WHEN CAST(h.VALOR AS DECIMAL(5,2)) > 10.5 AND CAST(h.VALOR AS DECIMAL(5,2)) < 12.5 THEN 1 END ) * 100.0 / NULLIF(COUNT(*), 0) AS PORCENTAJE_HB_10_5_A_12_5, COUNT(CASE WHEN CAST(h.VALOR AS DECIMAL(5,2)) > 10.5 AND CAST(h.VALOR AS DECIMAL(5,2)) < 12.5 THEN 1 END ) AS NUMERADOR, COUNT(*) AS DENOMINADOR FROM hemoglobina h;"
+  },
+  {
+    "id_code": "YAWSWESG",
+    "categoria": "Calidad Técnica ( Anemia)",
+    "indicador": "Porcentaje de pacientes prevalentes con mas de 3 meses en HD en tratamiento con Eritropoyetina con  hemoglobina >  12,5 g/dl ( suma de todos los pacientes  con mas de 3 meses en HD en tratamiento con Eritropoyetina con  hemoglobina >  12,5 g/dl / nº total de pacientes con mas de 3 meses de HD en el periodo) ",
+    "template": "WITH PacientesHD AS ( SELECT p.NREGGEN FROM PACIENTES p WHERE p.ESTADO = 'A' AND p.FECH_INI_HEMO <= DATEADD(-90 DAY TO :FECHAFIN) ) , UltimaAnalitica AS ( SELECT a.NREGGEN, FIRST 1 r.VALOR AS HEMOGLOBINA FROM ANALISIS a JOIN RESULANAL r ON a.NUMANALISIS = r.ANALISIS WHERE r.CODANAL = 'HEMOG' AND a.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND a.NREGGEN IN (SELECT NREGGEN FROM PacientesHD) ORDER BY a.NREGGEN, a.FECHA DESC ) , PautaEPO AS ( SELECT DISTINCT p.NREGGEN FROM PAUTA pa JOIN PACIENTES p ON p.NREGGEN = pa.NREGGEN WHERE pa.EPOHD > 0 ) SELECT (CAST(COUNT(DISTINCT CASE WHEN u.HEMOGLOBINA > 12.5 AND pe.NREGGEN IS NOT NULL THEN u.NREGGEN END) AS FLOAT) / NULLIF(COUNT(DISTINCT ph.NREGGEN),0)) * 100 AS PORCENTAJE_EPO_HB_ALTA FROM PacientesHD ph LEFT JOIN UltimaAnalitica u ON ph.NREGGEN = u.NREGGEN LEFT JOIN PautaEPO pe ON ph.NREGGEN = pe.NREGGEN;"
+  },
+  {
+    "id_code": "NB5L25G8",
+    "categoria": "Calidad Técnica ( Anemia)",
+    "indicador": "Porcentaje de pacientes prevalentes con mas de 3 meses en HD  con  ferritina < 150  g/dl ( suma de todos los pacientes  con  mas de 3 meses en HD  con  ferritina < 150  g/dl / nº total de pacientes con mas de 3 meses de HD en el periodo) ",
+    "template": "-- Porcentaje de pacientes prevalentes con más de 3 meses en HD y ferritina < 150 WITH ult_analitica AS ( SELECT a.NREGGEN, FIRST 1 r.VALOR AS FERRITINA FROM ANALISIS a JOIN RESULANAL r ON a.NUMANALISIS = r.ANALISIS WHERE r.CODANAL = 'FERRIT' AND a.FECHA BETWEEN :FECHAINI AND :FECHAFIN ORDER BY a.FECHA DESC ) SELECT (CAST(SUM(CASE WHEN CAST(u.FERRITINA AS NUMERIC(10,2)) < 150 THEN 1 ELSE 0 END) AS FLOAT) / CAST(COUNT(*) AS FLOAT)) * 100 AS PORCENTAJE FROM PACIENTES p JOIN ult_analitica u ON p.NREGGEN = u.NREGGEN WHERE p.ESTADO = 'A' AND p.FECH_INI_HEMO <= (:FECHAFIN - 90);"
+  },
+  {
+    "id_code": "ZGUI0PT1",
+    "categoria": "Calidad Técnica ( Anemia)",
+    "indicador": "Porcentaje de pacientes prevalentes con mas de 3 meses en HD  con  ferritina entre 150 y 800 g/dl ( suma de todos los pacientes  con  mas de 3 meses en HD  con  ferritina entre 150 y 800 g/dl / nº total de pacientes con mas de 3 meses de HD en el periodo) ",
+    "template": "WITH ult_analitica AS ( SELECT a.NREGGEN, FIRST 1 r.VALOR AS ferritina FROM ANALISIS a JOIN RESULANAL r ON a.NUMANALISIS = r.ANALISIS WHERE r.CODANAL = 'FERRIT' AND a.FECHA BETWEEN :FECHAINI AND :FECHAFIN ORDER BY a.NREGGEN, a.FECHA DESC ) SELECT 100.0 * SUM( CASE WHEN CAST(u.ferritina AS NUMERIC(10,2)) BETWEEN 150 AND 800 THEN 1 ELSE 0 END ) / COUNT(*) AS porcentaje_ferritina FROM PACIENTES p JOIN ult_analitica u ON p.NREGGEN = u.NREGGEN WHERE p.ESTADO = 'A' AND p.FECH_INI_HEMO <= DATEADD(-90 DAY TO :FECHAFIN);"
+  },
+  {
+    "id_code": "1YSSX8Y1",
+    "categoria": "Calidad Técnica ( Anemia)",
+    "indicador": "Porcentaje de pacientes prevalentes con mas de 3 meses en HD   con  IST < 20 %( suma de todos los pacientes  con  mas de 3 meses en HD con  IST < 20 % / nº total de pacientes con mas de 3 meses de HD en el periodo) ",
+    "template": "WITH PACIENTES_HD AS ( SELECT p.NREGGEN, p.FECH_INI_HEMO FROM PACIENTES p WHERE p.ESTADO = 'A' AND p.FECH_INI_HEMO <= :FECHAFIN - 90 ), ULT_ANALITICAS AS ( SELECT a.NREGGEN, FIRST 1 ra.VALOR AS IST FROM ANALISIS a JOIN RESULANAL ra ON ra.ANALISIS = a.NUMANALISIS WHERE ra.CODANAL = 'IST' AND a.FECHA BETWEEN :FECHAINI AND :FECHAFIN ORDER BY a.FECHA DESC ) SELECT 100.0 * SUM(CASE WHEN CAST(u.IST AS NUMERIC(10,2)) < 20 THEN 1 ELSE 0 END) / COUNT(*) AS PORC_IST_MENOR_20 FROM PACIENTES_HD ph JOIN ULT_ANALITICAS u ON ph.NREGGEN = u.NREGGEN;"
+  },
+  {
+    "id_code": "UMEGZZHA",
+    "categoria": "Calidad Técnica ( metabolismo mineral )",
+    "indicador": "Porcentaje de pacientes prevalentes con mas de 3 meses en HD  con fósforo < 3,5 g/dl CON tratamiento con Captores del fosforo  ",
+    "template": "WITH PACIENTES_HD AS ( SELECT p.NREGGEN FROM PACIENTES p WHERE p.ESTADO = 'A' AND p.FECH_INI_HEMO <= DATEADD(-90 DAY TO :FECHAFIN) ), ULTIMA_ANALITICA AS ( SELECT a.NREGGEN, MAX(a.FECHA) AS FECHA_MAX FROM ANALISIS a JOIN PACIENTES_HD ph ON ph.NREGGEN = a.NREGGEN WHERE a.FECHA BETWEEN :FECHAINI AND :FECHAFIN GROUP BY a.NREGGEN ), FOSFORO_OK AS ( SELECT r.NREGGEN FROM ANALISIS a JOIN ULTIMA_ANALITICA ua ON ua.NREGGEN = a.NREGGEN AND ua.FECHA_MAX = a.FECHA JOIN RESULANAL r ON r.ANALISIS = a.NUMANALISIS WHERE (r.CODANAL = 'FOSFORO' OR r.CODANAL = 'P') AND CAST(r.VALOR AS NUMERIC(10,2)) < 3.5 ), PACIENTES_CON_CAPTOR AS ( SELECT DISTINCT t.NREGGEN FROM TRATAMIENT_ACTUAL t WHERE UPPER(t.TRATAMIENTO) LIKE ANY ( '%SEVELAMER%', '%RENVELA%', '%CARBONATO%', '%LANTANO%', '%FOSRENOL%' ) ) SELECT (SELECT COUNT(DISTINCT f.NREGGEN) FROM FOSFORO_OK f JOIN PACIENTES_CON_CAPTOR c ON f.NREGGEN = c.NREGGEN ) * 100.0 / (SELECT COUNT(*) FROM PACIENTES_HD) AS PORCENTAJE FROM RDB$DATABASE;"
+  },
+  {
+    "id_code": "A05OFDE8",
+    "categoria": "Calidad Técnica ( metabolismo mineral )",
+    "indicador": "Porcentaje de pacientes prevalentes con mas de 3 meses en HD  con fósforo < 3,5 g/dl SIN  tratamiento con Captores del fosforo ",
+    "template": "WITH Pacientes_HD AS ( SELECT p.NREGGEN FROM PACIENTES p WHERE p.ESTADO = 'A' AND p.FECH_INI_HEMO <= DATEADD(-90 DAY TO :FECHAFIN) ), Analitica_Fosforo AS ( SELECT a.NREGGEN, MAX(a.FECHA) AS FECHA_ULT FROM ANALISIS a JOIN RESULANAL r ON a.NUMANALISIS = r.ANALISIS WHERE r.CODANAL IN ('FOS','P') AND a.FECHA BETWEEN :FECHAINI AND :FECHAFIN GROUP BY a.NREGGEN ), Valores_Fosforo AS ( SELECT r.NREGGEN, r.VALOR FROM ANALISIS a JOIN RESULANAL r ON a.NUMANALISIS = r.ANALISIS JOIN Analitica_Fosforo af ON af.NREGGEN = a.NREGGEN AND af.FECHA_ULT = a.FECHA WHERE r.CODANAL IN ('FOS','P') ), Sin_Captores AS ( SELECT hd.NREGGEN FROM Pacientes_HD hd LEFT JOIN TRATAMIENT_ACTUAL t ON t.NREGGEN = hd.NREGGEN AND t.FECHAINI <= :FECHAFIN AND (t.FECHAFIN IS NULL OR t.FECHAFIN >= :FECHAINI) AND UPPER(t.TRATAMIENTO) SIMILAR TO '%(SEVELAMER|RENVELA|LANTANO|HIDROXIDO FERRICO)%' WHERE t.NREGGEN IS NULL -- no tiene captores ) SELECT COUNT(DISTINCT CASE WHEN v.VALOR < 3.5 THEN v.NREGGEN END) * 100.0 / COUNT(DISTINCT hd.NREGGEN) AS PORCENTAJE FROM Pacientes_HD hd JOIN Valores_Fosforo v ON v.NREGGEN = hd.NREGGEN JOIN Sin_Captores s ON s.NREGGEN = hd.NREGGEN;"
+  },
+  {
+    "id_code": "KPPHSAG8",
+    "categoria": "Calidad Técnica ( metabolismo mineral )",
+    "indicador": "Porcentaje de pacientes prevalentes con mas de 3 meses en HD  con fósforo entre 3,5  y 5 g/dl CON tratamiento con Captores del fosforo",
+    "template": "WITH PacientesHD AS ( SELECT p.NREGGEN FROM PACIENTES p WHERE p.ESTADO = 'A' AND p.FECH_INI_HEMO <= DATEADD(-90 DAY TO :FECHAFIN) ) , UltimaAnalitica AS ( SELECT a.NREGGEN, r.VALOR, ROW_NUMBER() OVER (PARTITION BY a.NREGGEN ORDER BY a.FECHA DESC) AS rn FROM ANALISIS a JOIN RESULANAL r ON a.NUMANALISIS = r.ANALISIS WHERE r.CODANAL IN ('FOSFORO','P') AND a.FECHA BETWEEN :FECHAINI AND :FECHAFIN ) , TratamientosFosforo AS ( SELECT DISTINCT t.NREGGEN FROM TRATAMIENT_ACTUAL t JOIN PRESENT pr ON pr.CODPRES = t.TRATAMIENTO WHERE UPPER(pr.DESCRIPCION) LIKE '%RENVELA%' OR UPPER(pr.DESCRIPCION) LIKE '%SEVELAMER%' OR UPPER(pr.DESCRIPCION) LIKE '%CARBONATO%' OR UPPER(pr.DESCRIPCION) LIKE '%CAPTOR%' ) SELECT COALESCE(( SELECT COUNT(*) FROM PacientesHD p JOIN UltimaAnalitica ua ON p.NREGGEN = ua.NREGGEN AND ua.rn = 1 JOIN TratamientosFosforo tf ON p.NREGGEN = tf.NREGGEN WHERE ua.VALOR BETWEEN 3.5 AND 5 ),0) * 100.0 / NULLIF((SELECT COUNT(*) FROM PacientesHD),0) AS PORCENTAJE FROM RDB$DATABASE;"
+  },
+  {
+    "id_code": "KW8PLPSC",
+    "categoria": "Calidad Técnica ( metabolismo mineral )",
+    "indicador": "Porcentaje de pacientes prevalentes con mas de 3 meses en HD  con fósforo entre 3,5  y  5 g/dl SIN  tratamiento con Captores del fosforo  ",
+    "template": "WITH pacientes_hd AS ( SELECT p.NREGGEN FROM PACIENTES p WHERE p.ESTADO = 'A' AND p.FECH_INI_HEMO <= DATEADD(-90 DAY TO :FECHAFIN) ), fosforo_ok AS ( SELECT a.NREGGEN FROM ANALISIS a JOIN RESULANAL r ON a.NUMANALISIS = r.ANALISIS WHERE a.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND r.CODANAL IN ('P', 'FOSFORO') AND CAST(r.VALOR AS NUMERIC(9,2)) BETWEEN 3.5 AND 5 ) SELECT COUNT(DISTINCT f.NREGGEN) * 100.0 / COUNT(DISTINCT p.NREGGEN) AS PORCENTAJE FROM pacientes_hd p LEFT JOIN fosforo_ok f ON p.NREGGEN = f.NREGGEN WHERE NOT EXISTS ( SELECT 1 FROM TRATAMIENT_ACTUAL t WHERE t.NREGGEN = p.NREGGEN AND ( UPPER(t.TRATAMIENTO) LIKE '%RENVELA%' OR UPPER(t.TRATAMIENTO) LIKE '%SEVELAMER%' OR UPPER(t.TRATAMIENTO) LIKE '%FOSRENOL%' OR UPPER(t.TRATAMIENTO) LIKE '%LANTANO%' ) );"
+  },
+  {
+    "id_code": "XMDJNY2T",
+    "categoria": "Calidad Técnica ( metabolismo mineral )",
+    "indicador": "Porcentaje de pacientes prevalentes con mas de 3 meses en HD  con fósforo > 5 g/dl CON  tratamiento con Captores del fosforo ",
+    "template": "WITH PacientesHD AS ( SELECT p.NREGGEN FROM PACIENTES p WHERE p.ESTADO = 'A' AND p.FECH_INI_HEMO <= DATEADD(-90 DAY TO CAST(:FECHAFIN AS DATE)) ), UltimaAnalitica AS ( SELECT a.NREGGEN, r.VALOR, ROW_NUMBER() OVER (PARTITION BY a.NREGGEN ORDER BY a.FECHA DESC) AS rn FROM ANALISIS a JOIN RESULANAL r ON a.NUMANALISIS = r.ANALISIS WHERE r.CODANAL IN ('P','FOSFORO') AND a.FECHA BETWEEN :FECHAINIcio AND :FECHAFIN AND a.NREGGEN IN (SELECT NREGGEN FROM PacientesHD) ), TratadosCaptores AS ( SELECT DISTINCT t.NREGGEN FROM TRATAMIENT_ACTUAL t WHERE UPPER(t.TRATAMIENTO) SIMILAR TO '%(SEVELAMER|RENVELA|CARBONATO|ACETATO|LANTANO)%' AND (t.FECHAFIN IS NULL OR t.FECHAFIN >= :FECHAINIcio) ) SELECT (CAST(SUM(CASE WHEN ua.VALOR > 5 THEN 1 ELSE 0 END) AS FLOAT) / CAST(COUNT(*) AS FLOAT)) * 100 AS PORCENTAJE FROM UltimaAnalitica ua JOIN TratadosCaptores tc ON ua.NREGGEN = tc.NREGGEN WHERE ua.rn = 1;"
+  },
+  {
+    "id_code": "P8NMB54F",
+    "categoria": "Calidad Técnica ( metabolismo mineral )",
+    "indicador": "Porcentaje de pacientes prevalentes con mas de 3 meses en HD  con fósforo > 5 g/dl SIN  tratamiento con Captores del fosforo ",
+    "template": "WITH pacientes_hd AS ( SELECT p.NREGGEN FROM PACIENTES p WHERE p.ESTADO = 'A' AND p.FECH_INI_HEMO <= DATEADD(-90 DAY TO :FECHAFIN) ) , ultima_fosforo AS ( SELECT a.NREGGEN, MAX(a.FECHA) AS FECHA_MAX FROM ANALISIS a JOIN RESULANAL r ON a.NUMANALISIS = r.ANALISIS WHERE r.CODANAL IN ('FOSFORO','P') AND a.FECHA BETWEEN :FECHAINI AND :FECHAFIN GROUP BY a.NREGGEN ) SELECT COUNT(DISTINCT f.NREGGEN) * 100.0 / NULLIF(COUNT(DISTINCT p.NREGGEN),0) AS PORCENTAJE FROM pacientes_hd p JOIN ultima_fosforo u ON p.NREGGEN = u.NREGGEN JOIN ANALISIS a ON a.NREGGEN = u.NREGGEN AND a.FECHA = u.FECHA_MAX JOIN RESULANAL r ON r.ANALISIS = a.NUMANALISIS WHERE r.CODANAL IN ('FOSFORO','P') AND CAST(r.VALOR AS FLOAT) > 5 AND NOT EXISTS ( SELECT 1 FROM TRATAMIENT_ACTUAL t WHERE t.NREGGEN = p.NREGGEN AND t.TRATAMIENTO IN ('RENVELA','SEVELAMER','CARBONATO DE LANTANO','OTROS_CAPTORES') AND (t.FECHAFIN IS NULL OR t.FECHAFIN >= :FECHAINI) );"
+  },
+  {
+    "id_code": "8Y3A3HUY",
+    "categoria": "Calidad Técnica ( metabolismo mineral )",
+    "indicador": "Porcentaje de pacientes prevalentes con mas de 3 meses en HD  con PTH < 150 pg/ml CON tratamiento con vitamina D y/o calcimimeticos ",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p2 WHERE p2.ESTADO = 'A' AND p2.FECH_INI_HEMO <= DATEADD(-90 DAY TO :FECHAFIN)), 0) ) * 100 AS PORCENTAJE FROM PACIENTES p JOIN ANALISIS a ON a.NREGGEN = p.NREGGEN JOIN RESULANAL r ON r.ANALISIS = a.NUMANALISIS JOIN TRATAMIENT_ACTUAL t ON t.NREGGEN = p.NREGGEN WHERE p.ESTADO = 'A' AND p.FECH_INI_HEMO <= DATEADD(-90 DAY TO :FECHAFIN) AND a.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND r.CODANAL = 'PTH' AND CAST(r.VALOR AS FLOAT) < 150 AND ( UPPER(t.TRATAMIENTO) LIKE '%CALCITRIOL%' OR UPPER(t.TRATAMIENTO) LIKE '%ROCALTROL%' OR UPPER(t.TRATAMIENTO) LIKE '%CINACALCET%' OR UPPER(t.TRATAMIENTO) LIKE '%ETELCALCETIDA%' );"
+  },
+  {
+    "id_code": "RI0HVJ1D",
+    "categoria": "Calidad Técnica ( metabolismo mineral )",
+    "indicador": "Porcentaje de pacientes prevalentes con mas de 3 meses en HD  con PTH < 150 pg/ml SIN  tratamiento con vitamina D y/o calcimimeticos ",
+    "template": "WITH PacientesHD AS ( SELECT p.NREGGEN FROM PACIENTES p WHERE p.ESTADO = 'A' AND p.FECH_INI_HEMO <= DATEADD(-90 DAY TO :FECHAFIN) ), UltimaAnalitica AS ( SELECT a.NREGGEN, MAX(a.FECHA) AS FECHA_MAX FROM ANALISIS a JOIN RESULANAL r ON a.NUMANALISIS = r.ANALISIS WHERE a.NREGGEN IN (SELECT NREGGEN FROM PacientesHD) AND r.CODANAL IN ('PTH-I') -- PTH intacta AND a.FECHA BETWEEN :FECHAINI AND :FECHAFIN GROUP BY a.NREGGEN ), ValoresPTH AS ( SELECT r.NREGGEN, r.VALOR FROM RESULANAL r JOIN ANALISIS a ON r.ANALISIS = a.NUMANALISIS JOIN UltimaAnalitica u ON a.NREGGEN = u.NREGGEN AND a.FECHA = u.FECHA_MAX WHERE r.CODANAL IN ('PTH-I') ), SinTratamiento AS ( SELECT t.NREGGEN FROM TRATAMIENT_ACTUAL t WHERE t.TRATAMIENTO CONTAINING 'CALCITRIOL' OR t.TRATAMIENTO CONTAINING 'PARICALCITOL' OR t.TRATAMIENTO CONTAINING 'CINACALCET' OR t.TRATAMIENTO CONTAINING 'ETELCALCETIDA' ) SELECT COUNT(DISTINCT v.NREGGEN) * 100.0 / COUNT(DISTINCT p.NREGGEN) AS PORCENTAJE FROM PacientesHD p LEFT JOIN ValoresPTH v ON p.NREGGEN = v.NREGGEN WHERE v.VALOR < 150 AND p.NREGGEN NOT IN (SELECT NREGGEN FROM SinTratamiento);"
+  },
+  {
+    "id_code": "FIC40IPV",
+    "categoria": "Calidad Técnica ( metabolismo mineral )",
+    "indicador": "Porcentaje de pacientes prevalentes con mas de 3 meses en HD  con PTH entre 150 y 500 pg/ml CON tratamiento con Captores del fosforo ",
+    "template": "/* % Pacientes prevalentes ≥3 meses en HD con PTH 150–500 pg/ml Y con tratamiento con captores del fósforo activo en la fecha de la analítica */ WITH PrevHD AS ( SELECT p.NREGGEN FROM PACIENTES p WHERE p.ESTADO = 'A' AND p.FECH_INI_HEMO <= DATEADD(-90 DAY TO :FECHAFIN) ), UltimaPTH AS ( /* última analítica con PTH-I en el intervalo */ SELECT a.NREGGEN, MAX(a.FECHA) AS FECHA_MAX FROM ANALISIS a JOIN RESULANAL r ON r.ANALISIS = a.NUMANALISIS WHERE a.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND r.CODANAL = 'PTH-I' GROUP BY a.NREGGEN ), PTH_Valor AS ( /* valor de PTH en esa última analítica */ SELECT a.NREGGEN, a.FECHA, CAST(r.VALOR AS DECIMAL(10,2)) AS PTH FROM ANALISIS a JOIN UltimaPTH u ON u.NREGGEN = a.NREGGEN AND u.FECHA_MAX = a.FECHA JOIN RESULANAL r ON r.ANALISIS = a.NUMANALISIS AND r.CODANAL = 'PTH-I' ), ConCaptor AS ( /* tratamiento con captores activo en la fecha de la analítica */ SELECT DISTINCT p.NREGGEN, p.FECHA FROM PTH_Valor p WHERE EXISTS ( SELECT 1 FROM TRATAMIENT_ACTUAL t /* activo el día de la analítica */ WHERE t.NREGGEN = p.NREGGEN AND t.FECHAINI <= p.FECHA AND (t.FECHAFIN IS NULL OR t.FECHAFIN >= p.FECHA) /* lista ampliable de captores (genérico/comercial) */ AND ( UPPER(t.TRATAMIENTO) CONTAINING 'SEVELAMER' OR UPPER(t.TRATAMIENTO) CONTAINING 'RENVELA' OR UPPER(t.TRATAMIENTO) CONTAINING 'CARBONATO' OR -- carbonato cálcico UPPER(t.TRATAMIENTO) CONTAINING 'ACETATO' OR -- acetato cálcico UPPER(t.TRATAMIENTO) CONTAINING 'LANTANO' OR -- fosfato de lantano / FOSRENOL UPPER(t.TRATAMIENTO) CONTAINING 'FOSRENOL' ) ) ), Numerador AS ( SELECT COUNT(DISTINCT v.NREGGEN) AS NUM FROM PTH_Valor v JOIN ConCaptor c ON c.NREGGEN = v.NREGGEN AND c.FECHA = v.FECHA JOIN PrevHD ph ON ph.NREGGEN = v.NREGGEN WHERE v.PTH BETWEEN 150 AND 500 ), Denominador AS ( SELECT COUNT(DISTINCT ph.NREGGEN) AS DEN FROM PrevHD ph ) SELECT n.NUM AS NUMERADOR, d.DEN AS DENOMINADOR, CASE WHEN d.DEN = 0 THEN 0 ELSE (n.NUM * 100.0) / d.DEN END AS PORCENTAJE FROM Numerador n, Denominador d;"
+  },
+  {
+    "id_code": "E403U8WB",
+    "categoria": "Calidad Técnica ( metabolismo mineral )",
+    "indicador": "Porcentaje de pacientes prevalentes con mas de 3 meses en HD  con PTH entre 150 y 500 pg/ml SIN  tratamiento con Captores del fosforo  ",
+    "template": "WITH ultima_pth AS ( SELECT a.NREGGEN, FIRST 1 r.VALOR AS PTH_VALOR FROM ANALISIS a JOIN RESULANAL r ON a.NUMANALISIS = r.ANALISIS WHERE r.CODANAL = 'PTH-I' AND a.FECHA BETWEEN :FECHAINI AND :FECHAFIN ORDER BY a.FECHA DESC ) SELECT COUNT(*) * 100.0 / NULLIF(( SELECT COUNT(*) FROM PACIENTES p WHERE p.ESTADO = 'A' AND p.FECH_INI_HEMO <= (:FECHAFIN - 90) ),0) AS PORCENTAJE FROM PACIENTES p JOIN ultima_pth u ON p.NREGGEN = u.NREGGEN WHERE p.ESTADO = 'A' AND p.FECH_INI_HEMO <= (:FECHAFIN - 90) AND u.PTH_VALOR BETWEEN 150 AND 500 AND NOT EXISTS ( SELECT 1 FROM TRATAMIENT_ACTUAL t WHERE t.NREGGEN = p.NREGGEN AND t.TRATAMIENTO IN ('SEVELAMER', 'RENVELA', 'CARBONATO CÁLCICO', 'LANTHANUM', 'FOSRENOL') AND (t.FECHAINI <= :FECHAFIN AND (t.FECHAFIN IS NULL OR t.FECHAFIN >= :FECHAINI)) );"
+  },
+  {
+    "id_code": "5HN6MNIH",
+    "categoria": "Calidad Técnica ( metabolismo mineral )",
+    "indicador": "Porcentaje de pacientes prevalentes con mas de 3 meses en HD  con PTH > 500 pg/ml CON  tratamiento con Captores del fosforo",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p2 WHERE p2.ESTADO = 'A' AND p2.FECH_INI_HEMO <= DATEADD(-90 DAY TO :FECHAFIN) ),0) AS PORCENTAJE FROM PACIENTES p JOIN ANALISIS a ON p.NREGGEN = a.NREGGEN JOIN RESULANAL r ON a.NUMANALISIS = r.ANALISIS JOIN TRATAMIENT_ACTUAL t ON p.NREGGEN = t.NREGGEN WHERE p.ESTADO = 'A' AND p.FECH_INI_HEMO <= DATEADD(-90 DAY TO :FECHAFIN) AND a.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND r.CODANAL = 'PTH-I' AND CAST(r.VALOR AS DOUBLE PRECISION) > 500 AND ( t.TRATAMIENTO CONTAINING 'SEVELAMER' OR t.TRATAMIENTO CONTAINING 'RENVELA' OR t.TRATAMIENTO CONTAINING 'LANTANO' OR t.TRATAMIENTO CONTAINING 'CAPTOR' ) AND (t.FECHAFIN IS NULL OR t.FECHAFIN >= :FECHAFIN);"
+  },
+  {
+    "id_code": "7NTG37MC",
+    "categoria": "Calidad Técnica ( metabolismo mineral )",
+    "indicador": "Porcentaje de pacientes prevalentes con mas de 3 meses en HD  con PTH > 500 pg/ml SIN  tratamiento con Captores del fosforo  ",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM TRATAMIENT_ACTUAL t WHERE t.NREGGEN = p.NREGGEN AND t.TRATAMIENTO IN ('RENVELA','SEVELAMER','CARBONATO CALCIO','LANTHANUM') AND (t.FECHAFIN IS NULL OR t.FECHAFIN >= :FECHAINIcio) ) THEN p.NREGGEN END ) AS Numerador FROM PACIENTES p LEFT JOIN ANALISIS a ON p.NREGGEN = a.NREGGEN LEFT JOIN RESULANAL r ON a.NUMANALISIS = r.ANALISIS WHERE p.ESTADO = 'A' AND p.FECH_INI_HEMO <= DATEADD(-90 DAY TO :FECHAFIN) AND a.FECHA BETWEEN :FECHAINIcio AND :FECHAFIN;"
+  },
+  {
+    "id_code": "VOQH6OQC",
+    "categoria": "Calidad Técnica ( nutricion)",
+    "indicador": "Porcentaje de pacientes prevalentes con mas de 3 meses en HD  con albumina > 3,5 g/dl    ",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p JOIN ANALISIS a ON a.NREGGEN = p.NREGGEN JOIN RESULANAL r ON r.ANALISIS = a.NUMANALISIS WHERE p.ESTADO = 'A' AND p.FECH_INI_HEMO <= DATEADD(-90 DAY TO :FECHAFIN) -- más de 3 meses en HD AND a.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND r.CODANAL IN ('ALB','ALBUMINA');"
+  },
+  {
+    "id_code": "IKX387MS",
+    "categoria": "Calidad Técnica ( acceso vascular)",
+    "indicador": "Porcentaje de pacientes incidentes en periodo con cateter( suma de todos los pacientes  nuevos con cateter desde el inicio del periodo hasta el final del periodo / nº total de pacientes nuevos en periodo) ",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p2 WHERE p2.ESTADO = 'A' AND p2.FECH_PRIM_TRAT_SUST BETWEEN :FECHAINI AND :FECHAFIN ) AS TOTAL_PAC_NUEVOS, (COUNT(DISTINCT p.NREGGEN) * 100.0 / NULLIF((SELECT COUNT(DISTINCT p2.NREGGEN) FROM PACIENTES p2 WHERE p2.ESTADO = 'A' AND p2.FECH_PRIM_TRAT_SUST BETWEEN :FECHAINI AND :FECHAFIN),0) ) AS PORCENTAJE FROM PACIENTES p JOIN REG_ACCESOVAS a ON p.NREGGEN = a.NREGGEN WHERE p.ESTADO = 'A' AND p.FECH_PRIM_TRAT_SUST BETWEEN :FECHAINI AND :FECHAFIN AND a.FECHAREG = ( SELECT MIN(a2.FECHAREG) FROM REG_ACCESOVAS a2 WHERE a2.NREGGEN = p.NREGGEN ) AND a.TIPOACCESO IN (/* códigos que correspondan a catéter */);"
+  },
+  {
+    "id_code": "FC8IYBZY",
+    "categoria": "Calidad Técnica ( acceso vascular)",
+    "indicador": "Porcentaje de pacientes prevalentes ultimo dia de periodo con cateter( suma de todos los pacientes   con cateter ultimo dia de periodo / nº total de pacientes ultimo dia de periodo) ",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(*) AS numero_pacientes FROM PACIENTES p WHERE p.ESTADO = 'A' AND p.FECH_INI_HEMO <= :FECHAFIN AND (p.FECHA_FIN IS NULL OR p.FECHA_FIN > :FECHAFIN);"
+  },
+  {
+    "id_code": "QOATG1F3",
+    "categoria": "Calidad Técnica ( acceso vascular)",
+    "indicador": "Porcentaje de pacientes incidentes en periodo con FAV o protesis ( suma de todos los pacientes  nuevos con  FAV o protesis  desde el inicio del periodo hasta el final del periodo / nº total de pacientes nuevos en periodo) ",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p LEFT JOIN REG_ACCESOVAS ra ON ra.NREGGEN = p.NREGGEN WHERE p.ESTADO = 'A' AND p.SITUACION_INICIO = 'I' AND p.FECH_PRIM_TRAT_SUST BETWEEN :FECHAINI AND :FECHAFIN AND ra.FECHAREG BETWEEN :FECHAINI AND :FECHAFIN;"
+  },
+  {
+    "id_code": "PC20TVDP",
+    "categoria": "Calidad Técnica ( acceso vascular)",
+    "indicador": "Porcentaje de pacientes prevalentes ultimo dia de periodo con  FAV o protesis ( suma de todos los pacientes   con  FAV o protesis ultimo dia de periodo / nº total de pacientes ultimo dia de periodo) ",
+    "template": "/* Parámetros de entrada: :FECHAINI (no se usa en este indicador, pero se mantiene por homogeneidad) :FECHAFIN (fecha fin de periodo / “último día”) */ WITH PREVALENTES_ULT_DIA AS ( SELECT p.NREGGEN FROM PACIENTES p WHERE p.ESTADO = 'A' -- Si quieres restringir a pacientes en HD, descomenta: -- AND p.MODAL_TRAT = 'H' -- Asegura que el paciente ya está en el centro antes o en :FECHAFIN AND (p.FECH_INICIO_CENTRO IS NULL OR p.FECH_INICIO_CENTRO <= :FECHAFIN) ), ACCESO_ACTIVO_ULT_DIA AS ( SELECT ra.NREGGEN FROM REG_ACCESOVAS ra JOIN TIPACCESO ta ON ta.CODIGO = ra.TIPOACCESO WHERE ra.FECHAREG <= :FECHAFIN AND (ra.FECHAFIN IS NULL OR ra.FECHAFIN > :FECHAFIN) -- ENUSO puede variar por centro; si está bien mantenido, puedes reforzar: -- AND ra.ENUSO = 1 -- Detecta FAV o Prótesis por descripción (independiente de acentos/mayúsculas): AND ( UPPER(ta.TIPOACCESO) LIKE '%FAV%' OR UPPER(ta.TIPOACCESO) LIKE '%PROTES%' ) ) SELECT COUNT(DISTINCT p.NREGGEN) AS TOTAL_PREVALENTES_ULT_DIA, COUNT(DISTINCT CASE WHEN a.NREGGEN IS NOT NULL THEN p.NREGGEN END) AS CON_FAV_O_PROTESIS_ULT_DIA, (CAST(COUNT(DISTINCT CASE WHEN a.NREGGEN IS NOT NULL THEN p.NREGGEN END) AS FLOAT) / NULLIF(COUNT(DISTINCT p.NREGGEN), 0)) * 100 AS PORC_Prev_UltDia_FAV_Protesis FROM PREVALENTES_ULT_DIA p LEFT JOIN ACCESO_ACTIVO_ULT_DIA a ON a.NREGGEN = p.NREGGEN;"
+  },
+  {
+    "id_code": "9GEH4F3B",
+    "categoria": "Calidad Técnica ( acceso vascular)",
+    "indicador": "Incidencias de infecciones de FAV Autólogas",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM INCID_INFEC i JOIN REG_ACCESOVAS r ON i.NREGGEN = r.NREGGEN AND i.FECHAINFECC BETWEEN r.FECHAREG AND COALESCE(r.FECHAFIN, CURRENT_DATE) JOIN TIPACCESO t ON r.TIPOACCESO = t.CODIGO JOIN PACIENTES p ON p.NREGGEN = i.NREGGEN WHERE t.TIPOACCESO = 'FAV Autóloga' AND i.FECHAINFECC BETWEEN :FECHAINI AND :FECHAFIN AND p.ESTADO = 'A';"
+  },
+  {
+    "id_code": "3FIH2AQG",
+    "categoria": "Calidad Técnica ( acceso vascular)",
+    "indicador": "Incidencias de infecciones de FAV Prótesis",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p JOIN REG_ACCESOVAS a ON p.NREGGEN = a.NREGGEN JOIN TIPACCESO ta ON a.TIPOACCESO = ta.CODIGO JOIN INCID_INFEC i ON p.NREGGEN = i.NREGGEN WHERE p.ESTADO = 'A' AND ta.TIPOACCESO = 'FAV PROTESIS' AND i.FECHAINFECC BETWEEN :FECHAINI AND :FECHAFIN;"
+  },
+  {
+    "id_code": "FZ28T4BD",
+    "categoria": "Calidad Técnica ( acceso vascular)",
+    "indicador": "Incidencias de infecciones en orificio o túnel del acceso del catéter tunelizado",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT v.NREGGEN) AS numero_pacientes FROM INCID_VASCU v JOIN TIPINCIDENCIASVASCULAR t ON v.TIPO = t.CODIGO LEFT JOIN INCID_INFEC i ON v.NREGGEN = i.NREGGEN AND v.FECHAREGVAS = i.FECHAINFECC LEFT JOIN TIPGERMEN g ON i.GERMEN = g.CODIGO WHERE t.DESCRIPCION IN ('Infección orificio', 'Infección túnel') AND v.FECHAREGVAS BETWEEN :FECHAINI AND :FECHAFIN;"
+  },
+  {
+    "id_code": "GKB4JSRD",
+    "categoria": "Calidad Técnica ( acceso vascular)",
+    "indicador": "Tasa de trombosis de FAV autólogas",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p JOIN REG_ACCESOVAS a ON p.NREGGEN = a.NREGGEN WHERE p.ESTADO = 'A' AND a.TIPOACCESO = <CODIGO_FAV_AUTOLOGA> AND a.FECHAREG <= :FECHAFIN AND (a.FECHAFIN IS NULL OR a.FECHAFIN >= :FECHAINI) ), 0) AS TASA_TROMBOSIS_FAV_AUTOLOGA FROM INCID_VASCU i JOIN REG_ACCESOVAS a ON i.NREGGEN = a.NREGGEN AND i.FECHAREGVAS = a.FECHAREG WHERE i.TIPO_INC_VASC = <CODIGO_TROMBOSIS> AND a.TIPOACCESO = <CODIGO_FAV_AUTOLOGA> AND i.FECHAREGVAS BETWEEN :FECHAINI AND :FECHAFIN;"
+  },
+  {
+    "id_code": "XWM8PJHJ",
+    "categoria": "Calidad Técnica ( acceso vascular)",
+    "indicador": "Tasa de trombosis de FAV prótesis",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM INCID_VASCU iv JOIN REG_ACCESOVAS ra ON iv.NREGGEN = ra.NREGGEN AND iv.FECHAREGVAS = ra.FECHAREG JOIN TIPACCESO ta ON ra.TIPOACCESO = ta.CODIGO JOIN PACIENTES p ON p.NREGGEN = ra.NREGGEN WHERE ta.TIPOACCESO = 'FAV PROTESIS' AND iv.TIPOINCIDENCIA = 'TROMBOSIS' AND p.ESTADO = 'A' AND iv.FECHAREGVAS BETWEEN :FECHAINI AND :FECHAFIN;"
+  },
+  {
+    "id_code": "MKTIE05T",
+    "categoria": "Calidad Técnica ( virus )",
+    "indicador": "Tasa de seroconversiones al VHC",
+    "template": "/* Parámetros: :FECHAINI -- fecha inicio (inclusive) (formato date) :FECHAFIN -- fecha fin (inclusive) */ with -- 1) Pacientes activos (prevalentes) PACIENTES_ACTIVOS as ( select p.NREGGEN from PACIENTES p where p.ESTADO = 'A' -- solo activos ), -- 2) Último estado basal ANTES del periodo (<= día previo a FECHAINI) -- Basal NEGATIVO si (ACVHC y PCRVHC) negativos en la última determinación previa. ULTIMA_PREVIA as ( select a.NREGGEN, r.CODANAL, r.VALOR, a.FECHA, row_number() over (partition by a.NREGGEN, r.CODANAL order by a.FECHA desc) as rn from ANALISIS a join RESULANAL r on r.ANALISIS = a.NUMANALISIS join PACIENTES_ACTIVOS pa on pa.NREGGEN = a.NREGGEN where a.FECHA < :FECHAINI and r.CODANAL in ('ACVHC','PCRVHC') ), BASAL as ( -- Tomamos solo la última medición previa por marcador select u.NREGGEN, max(case when u.CODANAL = 'ACVHC' then u.VALOR end) as ACVHC_prev, max(case when u.CODANAL = 'PCRVHC' then u.VALOR end) as PCRVHC_prev from ULTIMA_PREVIA u where u.rn = 1 group by u.NREGGEN ), -- 3) Controles dentro del periodo [FECHAINI, FECHAFIN] CONTROL_PERIODO as ( select a.NREGGEN, r.CODANAL, r.VALOR, a.FECHA from ANALISIS a join RESULANAL r on r.ANALISIS = a.NUMANALISIS join PACIENTES_ACTIVOS pa on pa.NREGGEN = a.NREGGEN where a.FECHA between :FECHAINI and :FECHAFIN and r.CODANAL in ('ACVHC','PCRVHC') ), -- 4) Pacientes \"en riesgo\": con basal NEGATIVO y al menos un control en el periodo EN_RIESGO as ( select b.NREGGEN from BASAL b join CONTROL_PERIODO c on c.NREGGEN = b.NREGGEN group by b.NREGGEN having -- Interpretamos negativo como 'N' o 'NEG' (ajusta si tu BBDD usa otros valores) (min(case when coalesce(b.ACVHC_prev, 'N') in ('N','NEG') then 0 else 1 end) = 0) and (min(case when coalesce(b.PCRVHC_prev, 'N') in ('N','NEG') then 0 else 1 end) = 0) ), -- 5) Pacientes que seroconvierten en el periodo: -- aparece algún positivo ('S'/'POS') en ACVHC o PCRVHC dentro del periodo. SEROCONVERSION as ( select distinct c.NREGGEN from CONTROL_PERIODO c join EN_RIESGO er on er.NREGGEN = c.NREGGEN where upper(coalesce(c.VALOR, '')) in ('S','POS','POSITIVO','DETECTABLE') ), -- 6) Conteos CONTEOS as ( select (select count(*) from EN_RIESGO) as denom_en_riesgo, (select count(*) from SEROCONVERSION) as num_seroconv from rdb$database ) -- 7) Resultado final select num_seroconv as numerador_seroconversiones, denom_en_riesgo as denominador_en_riesgo, case when denom_en_riesgo = 0 then 0 else cast(num_seroconv * 100.0 / denom_en_riesgo as numeric(10,2)) end as tasa_seroconversion_vhc_pct from CONTEOS;"
+  },
+  {
+    "id_code": "71WRCDJP",
+    "categoria": "Calidad Técnica ( virus )",
+    "indicador": "Tasa de seroconversiones al VHB",
+    "template": "/* --- PARAMS: :FECHAINI, :FECHAFIN -------------------------------------- */ /* Nota: Se asume ANALI_MARVIR con NREGGEN, FECHA, y marcadores AGHBS/ACHBS con valores 'P' (positivo) / 'N' (negativo). */ /* Pacientes activos: p.ESTADO = 'A' */ /* ------------------------------------------------------------------------ */ WITH /* Último control PREVIO al período (antes de FECHAINI) */ PREVIO AS ( SELECT am.NREGGEN, am.FECHA, am.AGHBS, am.ACHBS FROM ANALI_MARVIR am JOIN ( SELECT NREGGEN, MAX(FECHA) AS FECHA_MAX FROM ANALI_MARVIR WHERE FECHA < :FECHAINI GROUP BY NREGGEN ) ult ON ult.NREGGEN = am.NREGGEN AND ult.FECHA_MAX = am.FECHA ), /* Algún control POSITIVO en el período */ POSITIVO_PERIODO AS ( SELECT DISTINCT am2.NREGGEN FROM ANALI_MARVIR am2 WHERE am2.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND (am2.AGHBS = 'P' OR am2.ACHBS = 'P') ), /* Pacientes con seroconversión (negativo previo -> positivo en periodo) */ SEROCONV AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p JOIN PREVIO pr ON pr.NREGGEN = p.NREGGEN JOIN POSITIVO_PERIODO pp ON pp.NREGGEN = p.NREGGEN WHERE p.ESTADO = 'A' /* NEGATIVO previo (ajusta si tu centro usa otros códigos) */ AND (pr.AGHBS = 'N' OR pr.ACHBS = 'N') ) /* Resultado agregado: numerador, denominador y tasa (%) */ SELECT (SELECT COUNT(*) FROM SEROCONV) AS NUM_SEROCONV, (SELECT COUNT(*) FROM PACIENTES p WHERE p.ESTADO = 'A') AS DEN_ACTIVOS, CAST( (CASE WHEN (SELECT COUNT(*) FROM PACIENTES p WHERE p.ESTADO = 'A') = 0 THEN 0 ELSE (SELECT COUNT(*) FROM SEROCONV) * 100.0 / (SELECT COUNT(*) FROM PACIENTES p WHERE p.ESTADO = 'A') END) AS NUMERIC(10,2) ) AS TASA_SEROCONV_HBV_PCT FROM RDB$DATABASE;"
+  },
+  {
+    "id_code": "XR42E2NT",
+    "categoria": "Calidad Técnica ( virus )",
+    "indicador": "Tasa de seroconversiones al VIH",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT NREGGEN) AS numero_pacientes FROM PACIENTES p WHERE p.ESTADO = 'A')) AS TASA_SEROCONV_VIH FROM ( SELECT NREGGEN, MIN(CASE WHEN r.VALOR = 'NEGATIVO' THEN a.FECHA END) AS FECHA_NEG, MIN(CASE WHEN r.VALOR = 'POSITIVO' THEN a.FECHA END) AS FECHA_POS FROM ANALISIS a JOIN RESULANAL r ON a.NUMANALISIS = r.ANALISIS WHERE r.CODANAL = 'ACVIH' AND a.FECHA BETWEEN :FECHAINI AND :FECHAFIN GROUP BY NREGGEN HAVING FECHA_NEG IS NOT NULL AND FECHA_POS IS NOT NULL AND FECHA_POS > FECHA_NEG ) sub;"
+  },
+  {
+    "id_code": "VE2Y7XZ8",
+    "categoria": "Calidad Técnica",
+    "indicador": "Tasa de Mortalidad",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p LEFT JOIN FALLECIMIENTOS f ON p.NREGGEN = f.NREGGEN AND f.FECHA BETWEEN :FECHAINI AND :FECHAFIN WHERE p.ESTADO = 'A' AND ( (f.NREGGEN IS NOT NULL) OR (p.ULTCAUSABAJA = 'E') ) AND (p.FECH_INICIO_CENTRO <= :FECHAFIN);"
+  },
+  {
+    "id_code": "LCBFUNKD",
+    "categoria": "Medicacion ",
+    "indicador": "Porcentaje de pacientes prevalentes ultimo dia de periodo en tratamiento con EPO",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p2 WHERE p2.ESTADO = 'A') AS FLOAT) * 100) AS PORCENTAJE_EPO FROM PACIENTES p JOIN PAUTA pa ON p.NREGGEN = pa.NREGGEN WHERE p.ESTADO = 'A' AND pa.FECHA = ( SELECT MAX(pa2.FECHA) FROM PAUTA pa2 WHERE pa2.NREGGEN = p.NREGGEN AND pa2.FECHA <= :FECHAFIN ) AND pa.EPOHD > 0;"
+  },
+  {
+    "id_code": "FVTWQKHQ",
+    "categoria": "Medicacion ",
+    "indicador": "Porcentaje de pacientes prevalentes ultimo dia de periodo en tratamiento con vitamina D",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p LEFT JOIN TRATAMIENT_ACTUAL t ON p.NREGGEN = t.NREGGEN AND (t.FECHAFIN IS NULL OR t.FECHAFIN > :FECHAFIN) -- Tratamiento vigente AND t.FECHAINI <= :FECHAFIN WHERE p.ESTADO = 'A' AND p.FECH_INI_HEMO <= :FECHAFIN;"
+  },
+  {
+    "id_code": "NYDQPQNH",
+    "categoria": "Medicacion ",
+    "indicador": "Porcentaje de pacientes prevalentes ultimo dia de periodo en tratamiento con calcimimeticos",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p WHERE p.ESTADO = 'A'), 0) * 100) AS PORC_PAC_CALCIMIMETICOS FROM PACIENTES p JOIN TRATAMIENT_ACTUAL ta ON p.NREGGEN = ta.NREGGEN WHERE p.ESTADO = 'A' AND ta.FECHAINI <= :FECHAFIN AND (ta.FECHAFIN IS NULL OR ta.FECHAFIN >= :FECHAFIN) AND UPPER(ta.TRATAMIENTO) LIKE '%CALCIMIMET%';"
+  },
+  {
+    "id_code": "VCI4Q80H",
+    "categoria": "Medicacion ",
+    "indicador": "Porcentaje de pacientes prevalentes ultimo dia de periodo en tratamiento con captores de fosforo",
+    "template": "/* Porcentaje de pacientes activos a FECHAFIN con CAPTORES DE FÓSFORO (cualquier tipo). NOTA: Se usa TRATAMIENT_ACTUAL por representar la medicación vigente \"a día de hoy\". Reemplace <LISTA_CAPTORES_FOSFORO> por el listado de marcas/nombres en su centro. */ WITH denom AS ( /* Denominador común: pacientes activos prevalentes a FECHAFIN */ SELECT COUNT(*) AS total_activos FROM PACIENTES p WHERE p.ESTADO = 'A' /* Si procede acotar a hemodiálisis (descomentar si el campo lo permite) AND p.MODAL_TRAT = 'H' */ ), num AS ( SELECT COUNT(DISTINCT ta.NREGGEN) AS n FROM TRATAMIENT_ACTUAL ta JOIN PACIENTES p ON p.NREGGEN = ta.NREGGEN WHERE p.ESTADO = 'A' /* Acotar a HD si procede: AND p.MODAL_TRAT = 'H' */ AND UPPER(ta.TRATAMIENTO) IN ( /* Sustituya por lista real de captores */ /* Ejemplos no exhaustivos: 'RENVELA','SEVELAMER','FOSRENOL','LANTANO','VELPHORO','CARBONATO CÁLCICO','ACETATO CÁLCICO' */ <LISTA_CAPTORES_FOSFORO> ) ) SELECT num.n AS numerador, denom.total_activos AS denominador, CASE WHEN denom.total_activos = 0 THEN 0 ELSE (num.n * 100.0) / denom.total_activos END AS porcentaje FROM num, denom;"
+  },
+  {
+    "id_code": "37YWSM98",
+    "categoria": "Medicacion ",
+    "indicador": "Porcentaje de pacientes prevalentes ultimo dia de periodo en tratamiento con captores de fosforo calcicos",
+    "template": "/* Porcentaje de pacientes activos a FECHAFIN con CAPTORES DE FÓSFORO CÁLCICOS. */ WITH denom AS ( /* Denominador común: pacientes activos prevalentes a FECHAFIN */ SELECT COUNT(*) AS total_activos FROM PACIENTES p WHERE p.ESTADO = 'A' /* Si procede acotar a hemodiálisis (descomentar si el campo lo permite) AND p.MODAL_TRAT = 'H' */ ), num AS ( SELECT COUNT(DISTINCT ta.NREGGEN) AS n FROM TRATAMIENT_ACTUAL ta JOIN PACIENTES p ON p.NREGGEN = ta.NREGGEN WHERE p.ESTADO = 'A' /* AND p.MODAL_TRAT = 'H' */ AND UPPER(ta.TRATAMIENTO) IN ( /* Sustituya por lista real de captores cálcicos de su centro */ <LISTA_CAPTORES_CALCICOS> ) ) SELECT num.n AS numerador, denom.total_activos AS denominador, CASE WHEN denom.total_activos = 0 THEN 0 ELSE (num.n * 100.0) / denom.total_activos END AS porcentaje FROM num, denom;"
+  },
+  {
+    "id_code": "NX2SXHHS",
+    "categoria": "Medicacion ",
+    "indicador": "Porcentaje de pacientes prevalentes ultimo dia de periodo en tratamiento con captores de fosforo no calcicos",
+    "template": "/* Porcentaje de pacientes activos a FECHAFIN con CAPTORES DE FÓSFORO NO CÁLCICOS. */ WITH denom AS ( /* Denominador común: pacientes activos prevalentes a FECHAFIN */ SELECT COUNT(*) AS total_activos FROM PACIENTES p WHERE p.ESTADO = 'A' /* Si procede acotar a hemodiálisis (descomentar si el campo lo permite) AND p.MODAL_TRAT = 'H' */ ), num AS ( SELECT COUNT(DISTINCT ta.NREGGEN) AS n FROM TRATAMIENT_ACTUAL ta JOIN PACIENTES p ON p.NREGGEN = ta.NREGGEN WHERE p.ESTADO = 'A' /* AND p.MODAL_TRAT = 'H' */ AND UPPER(ta.TRATAMIENTO) IN ( /* Sustituya por lista real de captores NO cálcicos (p.ej. SEVELAMER, LANTANO, SUCROFÉRRICO, CITRATO FÉRRICO) */ <LISTA_CAPTORES_NO_CALCICOS> ) ) SELECT num.n AS numerador, denom.total_activos AS denominador, CASE WHEN denom.total_activos = 0 THEN 0 ELSE (num.n * 100.0) / denom.total_activos END AS porcentaje FROM num, denom;"
+  },
+  {
+    "id_code": "2V68XWI0",
+    "categoria": "Medicacion ",
+    "indicador": "Porcentaje de pacientes prevalentes ultimo dia de periodo en tratamiento con hierro",
+    "template": "/* Porcentaje de pacientes activos a FECHAFIN con tratamiento de HIERRO (habitual IV). Ajuste la lista a las denominaciones de su centro. */ WITH denom AS ( /* Denominador común: pacientes activos prevalentes a FECHAFIN */ SELECT COUNT(*) AS total_activos FROM PACIENTES p WHERE p.ESTADO = 'A' /* Si procede acotar a hemodiálisis (descomentar si el campo lo permite) AND p.MODAL_TRAT = 'H' */ ), num AS ( SELECT COUNT(DISTINCT ta.NREGGEN) AS n FROM TRATAMIENT_ACTUAL ta JOIN PACIENTES p ON p.NREGGEN = ta.NREGGEN WHERE p.ESTADO = 'A' /* AND p.MODAL_TRAT = 'H' */ AND ( UPPER(ta.TRATAMIENTO) IN (<LISTA_HIERRO_IV>) OR UPPER(ta.TRATAMIENTO) LIKE '%HIERRO%' ) ) SELECT num.n AS numerador, denom.total_activos AS denominador, CASE WHEN denom.total_activos = 0 THEN 0 ELSE (num.n * 100.0) / denom.total_activos END AS porcentaje FROM num, denom; /* Ejemplos de lista: 'VENOFER','FERIV','FERINJECT','MALTOFER','VITAFER','NORATIO HIERRO' */;"
+  },
+  {
+    "id_code": "6GPLJL8D",
+    "categoria": "Medicacion ",
+    "indicador": "Promedio unidades/ kg /semana de EPO",
+    "template": "/* Promedio de UNIDADES/KG/SEMANA de EPO a FECHAFIN. REQUIERE: origen claro de dosis y peso. - Tabla de medicación vigente: TRATAMIENT_ACTUAL (EPO): columnas sugeridas DOSIS_SEMANAL_U (o derivar de pauta), FECHA. - Peso seco más reciente: última PAUTA (o tabla equivalente) <= FECHAFIN: campo PESOSECO. Ajuste nombres de tabla/campos según su modelo. */ WITH peso AS ( SELECT p.NREGGEN, FIRST 1 pa.PESOSECO FROM PACIENTES p JOIN PAUTA pa ON pa.NREGGEN = p.NREGGEN WHERE p.ESTADO = 'A' AND pa.FECHA <= FECHAFIN ORDER BY pa.NREGGEN, pa.FECHA DESC ), epo AS ( SELECT ta.NREGGEN, ta.DOSIS_SEMANAL_U FROM TRATAMIENT_ACTUAL ta JOIN PACIENTES p ON p.NREGGEN = ta.NREGGEN WHERE p.ESTADO='A' AND UPPER(ta.TRATAMIENTO) IN (<LISTA_EPO>) /* p.ej.: 'EPOETINA','DARBEPOETINA','MIRCERA' */ ), per_p AS ( SELECT e.NREGGEN, CASE WHEN pe.PESOSECO IS NULL OR pe.PESOSECO=0 THEN NULL ELSE (e.DOSIS_SEMANAL_U / pe.PESOSECO) END AS u_kg_semana FROM epo e LEFT JOIN peso pe ON pe.NREGGEN = e.NREGGEN ) SELECT AVG(u_kg_semana) AS promedio_u_kg_semana FROM per_p;"
+  },
+  {
+    "id_code": "LEKXJYBF",
+    "categoria": "Ocupación y Recursos",
+    "indicador": "Tasa de ocupación de sillones",
+    "template": "/* Tasa de ocupación de sillones en el periodo [FECHAINI, FECHAFIN]. Definición sugerida: (nº sesiones realizadas / capacidad teórica) * 100 REQUIERE: - SESION (o equivalente) con 1 fila por sesión realizada y fecha/hora. - CAPACIDAD: nº sillones * turnos por día * nº días en el periodo. Ajuste nombres y campos según su modelo. */ WITH sesiones AS ( SELECT COUNT(*) AS n_ses FROM SESION s WHERE s.FECHA BETWEEN FECHAINI AND FECHAFIN ), capacidad AS ( SELECT (COUNT(*) * :TURNOS_DIA * (DATEDIFF(DAY, FECHAINI, FECHAFIN) + 1)) AS cap FROM SILLON /* tabla con el inventario de sillones */ ) SELECT s.n_ses, c.cap, CASE WHEN c.cap=0 THEN 0 ELSE (s.n_ses*100.0)/c.cap END AS tasa_ocupacion_pct FROM sesiones s, capacidad c;"
+  },
+  {
+    "id_code": "HUAAQGIP",
+    "categoria": "Ocupación y Recursos",
+    "indicador": "Turnos por sillón/día",
+    "template": "/* Turnos por sillón y día en el periodo. Definición sugerida: (nº sesiones realizadas) / (nº sillones * nº días). */ WITH sesiones AS ( SELECT COUNT(*) AS n_ses FROM SESION s WHERE s.FECHA BETWEEN FECHAINI AND FECHAFIN ), sillones AS ( SELECT COUNT(*) AS n_sillones FROM SILLON ), ndias AS ( SELECT (DATEDIFF(DAY, FECHAINI, FECHAFIN) + 1) AS dias FROM RDB$DATABASE ) SELECT CASE WHEN sillones.n_sillones=0 OR ndias.dias=0 THEN 0 ELSE sesiones.n_ses * 1.0 / (sillones.n_sillones * ndias.dias) END AS turnos_por_sillon_dia FROM sesiones, sillones, ndias;"
+  },
+  {
+    "id_code": "AJVL39WO",
+    "categoria": "Ocupación y Recursos",
+    "indicador": "Horas totales de funcionamiento",
+    "template": "/* Horas totales de funcionamiento (suma de horas de sesiones) en el periodo. */ SELECT SUM(EXTRACT(HOUR FROM (s.HFIN - s.HINI)) + EXTRACT(MINUTE FROM (s.HFIN - s.HINI))/60.0) AS horas_totales FROM SESION s WHERE s.FECHA BETWEEN FECHAINI AND FECHAFIN;"
+  },
+  {
+    "id_code": "4S9CL7CI",
+    "categoria": "Calidad Técnica",
+    "indicador": "% sesiones sin incidentes técnicos",
+    "template": "/* % de sesiones SIN incidentes técnicos en el periodo. REQUIERE: regla de vínculo SESION ↔ INCIDENCIAS (p.ej., por NREGGEN y fecha o ID de sesión si existe). Aquí se asume que la tabla de incidencias tiene TIPO='T' (técnica). Ajuste según catálogo real. */ WITH tot AS ( SELECT COUNT(*) AS n_tot FROM SESION s WHERE s.FECHA BETWEEN FECHAINI AND FECHAFIN ), con_inc AS ( SELECT COUNT(DISTINCT s.IDSESION) AS n_con_inc FROM SESION s JOIN INCIDENCIAS i ON i.NREGGEN = s.NREGGEN AND i.FECHAINI BETWEEN s.FECHA AND s.FECHA /* Ajuste la condición y TIPO según su modelo */ AND UPPER(i.TIPO) = 'TECNICA' WHERE s.FECHA BETWEEN FECHAINI AND FECHAFIN ) SELECT (tot.n_tot - con_inc.n_con_inc) AS sesiones_sin_inc, tot.n_tot AS sesiones_totales, CASE WHEN tot.n_tot=0 THEN 0 ELSE ((tot.n_tot - con_inc.n_con_inc)*100.0)/tot.n_tot END AS pct_sin_inc FROM tot, con_inc;"
+  },
+  {
+    "id_code": "SSKURCNF",
+    "categoria": "Calidad Técnica",
+    "indicador": "Tasa de infecciones por catéter",
+    "template": "/* Tasa de infecciones por catéter. Opción A (conteo simple en el periodo): */ SELECT COUNT(*) AS infecciones_cateter FROM INCIDENCIAS i WHERE i.FECHAINI BETWEEN FECHAINI AND FECHAFIN AND (UPPER(i.TIPO) = 'INFECCION CATETER' OR UPPER(i.COMENTARIOCEN) LIKE '%CATETER%'); /* Opción B (por 1000 días-catéter) requiere días-catéter como denominador. Ajuste si dispone de esos datos. */;"
+  },
+  {
+    "id_code": "FI1024A1",
+    "categoria": "Calidad Técnica",
+    "indicador": "% con Kt/V ≥ 1.2",
+    "template": "/* % de pacientes activos con Kt/V ≥ 1.2 (última analítica en el periodo). */ WITH ult AS ( SELECT a.NREGGEN, MAX(a.FECHA) AS FECHA_ULT FROM ANALISIS a JOIN PACIENTES p ON p.NREGGEN = a.NREGGEN WHERE p.ESTADO='A' AND a.FECHA BETWEEN FECHAINI AND FECHAFIN GROUP BY a.NREGGEN ), ktv AS ( SELECT a.NREGGEN, r.VALOR FROM ANALISIS a JOIN ult u ON u.NREGGEN=a.NREGGEN AND u.FECHA_ULT=a.FECHA JOIN RESULANAL r ON r.ANALISIS = a.NUMANALISIS WHERE UPPER(r.CODANAL) IN ('KTV','KT/V','KTVE') ), denom AS ( SELECT COUNT(*) AS total_activos FROM PACIENTES p WHERE p.ESTADO='A' ), num AS ( SELECT COUNT(*) AS n FROM ktv WHERE CAST(ktv.VALOR AS DECIMAL(9,3)) >= 1.2 ) SELECT num.n AS numerador, denom.total_activos AS denominador, CASE WHEN denom.total_activos=0 THEN 0 ELSE (num.n*100.0)/denom.total_activos END AS porcentaje FROM num, denom;"
+  },
+  {
+    "id_code": "1XSOY0QR",
+    "categoria": "Resultados en Salud",
+    "indicador": "% pacientes en lista de espera",
+    "template": "/* % de pacientes activos en LISTA DE ESPERA (p. ej., trasplante). Se usa PACIENTES.LISESPTRAS. */ WITH denom AS ( /* Denominador común: pacientes activos prevalentes a FECHAFIN */ SELECT COUNT(*) AS total_activos FROM PACIENTES p WHERE p.ESTADO = 'A' /* Si procede acotar a hemodiálisis (descomentar si el campo lo permite) AND p.MODAL_TRAT = 'H' */ ), num AS ( SELECT COUNT(*) AS n FROM PACIENTES p WHERE p.ESTADO='A' AND ( p.LISESPTRAS IS NOT NULL AND (p.LISESPTRAS = 1 OR UPPER(CAST(p.LISESPTRAS AS VARCHAR(10))) IN ('S','SI','SÍ','YES')) ) ) SELECT num.n AS numerador, denom.total_activos AS denominador, CASE WHEN denom.total_activos=0 THEN 0 ELSE (num.n*100.0)/denom.total_activos END AS porcentaje FROM num, denom;"
+  },
+  {
+    "id_code": "QK9HXS35",
+    "categoria": "Resultados en Salud",
+    "indicador": "% con parámetros bioquímicos en rango (P, K, Hb…)",
+    "template": "/* % de pacientes activos cuya ÚLTIMA analítica en el periodo está EN RANGO para P, K, Hb. Rangos parametrizables; ajuste según su protocolo. - Fósforo (CODANAL IN ('FOSFORO','P')) entre :P_MIN y :P_MAX - Potasio (CODANAL IN ('POTASIO','K')) entre :K_MIN y :K_MAX - Hemoglobina (CODANAL = 'HEMOG') entre :HB_MIN y :HB_MAX */ WITH ult AS ( SELECT a.NREGGEN, MAX(a.FECHA) AS FECHA_ULT FROM ANALISIS a JOIN PACIENTES p ON p.NREGGEN = a.NREGGEN WHERE p.ESTADO='A' AND a.FECHA BETWEEN FECHAINI AND FECHAFIN GROUP BY a.NREGGEN ), vals AS ( SELECT a.NREGGEN, MAX(CASE WHEN UPPER(r.CODANAL) IN ('FOSFORO','P') THEN r.VALOR END) AS P, MAX(CASE WHEN UPPER(r.CODANAL) IN ('POTASIO','K') THEN r.VALOR END) AS K, MAX(CASE WHEN UPPER(r.CODANAL) = 'HEMOG' THEN r.VALOR END) AS HB FROM ANALISIS a JOIN ult u ON u.NREGGEN=a.NREGGEN AND u.FECHA_ULT=a.FECHA JOIN RESULANAL r ON r.ANALISIS=a.NUMANALISIS GROUP BY a.NREGGEN ), ok AS ( SELECT COUNT(*) AS n_ok FROM vals WHERE CAST(P AS DECIMAL(9,3)) BETWEEN :P_MIN AND :P_MAX AND CAST(K AS DECIMAL(9,3)) BETWEEN :K_MIN AND :K_MAX AND CAST(HB AS DECIMAL(9,3)) BETWEEN :HB_MIN AND :HB_MAX ), denom AS ( /* Denominador común: pacientes activos prevalentes a FECHAFIN */ SELECT COUNT(*) AS total_activos FROM PACIENTES p WHERE p.ESTADO = 'A' /* Si procede acotar a hemodiálisis (descomentar si el campo lo permite) AND p.MODAL_TRAT = 'H' */ ) SELECT ok.n_ok AS numerador, denom.total_activos AS denominador, CASE WHEN denom.total_activos=0 THEN 0 ELSE (ok.n_ok*100.0)/denom.total_activos END AS porcentaje FROM ok, denom;"
+  },
+  {
+    "id_code": "QEV1TJDE",
+    "categoria": "Experiencia del Paciente",
+    "indicador": "Índice de satisfacción",
+    "template": "/* Índice de satisfacción (0-10). Promedio de la puntuación de ENCUESTA en el periodo. */ SELECT AVG(CAST(e.PUNTUACION AS DECIMAL(9,3))) AS indice_satisfaccion FROM ENCUESTA_SATISFACCION e WHERE e.FECHA BETWEEN FECHAINI AND FECHAFIN AND e.PUNTUACION IS NOT NULL;"
+  },
+  {
+    "id_code": "UHC1I99H",
+    "categoria": "Experiencia del Paciente",
+    "indicador": "Nº de quejas o sugerencias",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM INCIDENCIAS i JOIN PACIENTES p ON p.NREGGEN = i.NREGGEN WHERE p.ESTADO = 'A' AND i.FECHAINI BETWEEN :FECHAINI AND :FECHAFIN AND UPPER(i.TIPO) IN ('QUEJA', 'SUGERENCIA'); -- <- AJUSTA;"
+  },
+  {
+    "id_code": "I9E5QQIF",
+    "categoria": "Eficiencia y Gestión",
+    "indicador": "Coste medio por sesión",
+    "template": "-- Coste medio por sesión (todas). Hay que enviar parametro ---- > coste total WITH SES_FILTRADAS AS ( SELECT s.NSESION FROM SESION s JOIN PACIENTES p ON p.NREGGEN = s.NREGGEN WHERE p.ESTADO = 'A' AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN ) SELECT COUNT(*) AS TOTAL_SESIONES, :COSTE_TOTAL / NULLIF(COUNT(*), 0) AS COSTE_MEDIO_POR_SESION FROM SES_FILTRADAS;"
+  },
+  {
+    "id_code": "P90QTWMJ",
+    "categoria": "Eficiencia y Gestión",
+    "indicador": "Ratio paciente/enfermera",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p JOIN PERSONAL pers ON p.ENFERMERA = pers.CODIGO WHERE p.ESTADO = 'A' AND pers.COD_ROL = (SELECT COD_ROL FROM ROL WHERE NOMBRE LIKE '%ENFERMERA%');"
+  },
+  {
+    "id_code": "MLYUG37Y",
+    "categoria": "Eficiencia y Gestión",
+    "indicador": "Ratio paciente/auxiliares",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p CROSS JOIN PERSONAL per WHERE p.ESTADO = 'A' AND p.FECH_INICIO_CENTRO <= :FECHAFIN AND per.COD_ROL = <CODIGO_AUXILIAR>;"
+  }
+]

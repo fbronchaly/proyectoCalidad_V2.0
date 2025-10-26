@@ -1,0 +1,225 @@
+<div class="container">
+  <mat-toolbar color="transparent">
+    <span class="section-title"><mat-icon>event</mat-icon> Rango de fechas</span>
+    <span class="spacer"></span>
+  </mat-toolbar>
+
+  <div class="grid">
+    <mat-card class="shadow-soft card range-card">
+      <div class="date-inputs">
+        <mat-form-field appearance="outline">
+          <mat-label>Fecha desde</mat-label>
+          <input matInput [matDatepicker]="startPicker" 
+                 [(ngModel)]="startDate" 
+                 (dateChange)="onStartDateChange($event.value)">
+          <mat-datepicker-toggle matIconSuffix [for]="startPicker"></mat-datepicker-toggle>
+          <mat-datepicker #startPicker></mat-datepicker>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+          <mat-label>Fecha hasta</mat-label>
+          <input matInput [matDatepicker]="endPicker" 
+                 [(ngModel)]="endDate"
+                 (dateChange)="onEndDateChange($event.value)">
+          <mat-datepicker-toggle matIconSuffix [for]="endPicker"></mat-datepicker-toggle>
+          <mat-datepicker #endPicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="actions">
+        <button mat-raised-button color="warn" (click)="resetDates()">
+          <mat-icon>refresh</mat-icon>
+          Reset
+        </button>
+        <div class="date-status" *ngIf="startDate && endDate">
+          <mat-icon color="primary">check_circle</mat-icon>
+          <span>Rango aplicado automáticamente</span>
+        </div>
+      </div>
+    </mat-card>
+
+    <div class="side">
+      <mat-card class="shadow-soft card nav-card">
+        <div class="nav-header">
+          <div class="title"><mat-icon>storage</mat-icon> Fuentes de datos</div>
+        </div>
+        <div class="subtitle">Selecciona las bases de datos con las que deseas trabajar.</div>
+        <div class="actions-right">
+          <button mat-raised-button color="primary" (click)="goToBases()">Aplicar rango</button>
+        </div>
+      </mat-card>
+
+      <mat-card class="shadow-soft card nav-card">
+        <div class="nav-header">
+          <div class="title"><mat-icon>trending_up</mat-icon> Indicadores</div>
+        </div>
+        <div class="subtitle">Elige los indicadores a consultar para tu análisis.</div>
+        <div class="actions-right">
+          <button mat-raised-button color="primary" (click)="goToIndicadores()">Elegir indicadores</button>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+
+  <mat-card class="shadow-soft card summary" *ngIf="readyToSendFront">
+    <div class="summary-title">Selección actual</div>
+    <div class="chips">
+      <div><strong>Intervalo:</strong> {{ sel.toJSON().intervalo![0] }} → {{ sel.toJSON().intervalo![1] }}</div>
+      <div><strong>Bases:</strong> {{ sel.getDatabases().join(', ') }}</div>
+      <div><strong>Indicadores:</strong> {{ sel.getIndicators().join(', ') }}</div>
+    </div>
+    <button mat-raised-button color="primary" (click)="sendToBack()" [disabled]="loading">
+      Enviar al backend
+    </button>
+    <mat-progress-spinner *ngIf="loading" mode="indeterminate" diameter="28"></mat-progress-spinner>
+  </mat-card>
+
+  <!-- Resultados de la API -->
+  <div *ngIf="apiResponse" class="results-section">
+    <!-- Header con información general -->
+    <mat-card class="shadow-soft card api-response-header">
+      <div class="response-header">
+        <div class="status" [class.success]="apiResponse.success" [class.error]="!apiResponse.success">
+          <mat-icon>{{ apiResponse.success ? 'check_circle' : 'error' }}</mat-icon>
+          <span>{{ apiResponse.message }}</span>
+        </div>
+        <div class="timestamp">
+          <mat-icon>access_time</mat-icon>
+          <span>{{ apiResponse.timestamp | date:'dd/MM/yyyy HH:mm' }}</span>
+        </div>
+      </div>
+    </mat-card>
+
+    <!-- Resumen de indicadores -->
+    <mat-card class="shadow-soft card indicators-summary" *ngIf="apiResponse.success && resumenDesglosado.length > 0">
+      <div class="summary-title">
+        <mat-icon>analytics</mat-icon>
+        Resumen Detallado por Base de Datos ({{ resumenDesglosado.length }} registros)
+      </div>
+      
+      <table mat-table [dataSource]="resumenDesglosado" class="mat-elevation-z1 summary-table">
+        <ng-container matColumnDef="indicador">
+          <th mat-header-cell *matHeaderCellDef>Indicador</th>
+          <td mat-cell *matCellDef="let item">
+            <div class="indicator-cell">
+              <div class="indicator-name">{{ item.indicador }}</div>
+              <div class="indicator-code">{{ item.id_code }}</div>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="categoria">
+          <th mat-header-cell *matHeaderCellDef>Categoría</th>
+          <td mat-cell *matCellDef="let item">{{ item.categoria }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="baseData">
+          <th mat-header-cell *matHeaderCellDef>Base de Datos</th>
+          <td mat-cell *matCellDef="let item">
+            <div class="database-cell">
+              <mat-icon>storage</mat-icon>
+              <span>{{ item.baseData }}</span>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="resultado">
+          <th mat-header-cell *matHeaderCellDef>Resultado</th>
+          <td mat-cell *matCellDef="let item">
+            <span class="result-value">{{ item.resultado }}</span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="numeroDePacientes">
+          <th mat-header-cell *matHeaderCellDef>Nº Pacientes</th>
+          <td mat-cell *matCellDef="let item">
+            <span class="patients-value">{{ item.numeroDePacientes }}</span>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="summaryColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: summaryColumns;"></tr>
+      </table>
+    </mat-card>
+
+    <!-- Detalles por indicador -->
+    <div class="indicators-detail" *ngIf="apiResponse.success && apiResponse.resultados.length > 0">
+      <mat-card class="shadow-soft card indicator-detail" *ngFor="let indicador of apiResponse.resultados; let i = index">
+        <mat-card-header>
+          <mat-card-title>
+            <div class="indicator-header">
+              <div class="indicator-info">
+                <h3>{{ indicador.indicador }}</h3>
+                <p class="indicator-meta">{{ indicador.categoria }} • {{ indicador.id_code }}</p>
+              </div>
+              <div class="indicator-totals">
+                <div class="total-badge">
+                  <span class="label">Total:</span>
+                  <span class="value">{{ indicador.totales.resultado }}</span>
+                </div>
+                <div class="patients-badge">
+                  <span class="label">Pacientes:</span>
+                  <span class="value">{{ indicador.totales.numero_pacientes }}</span>
+                </div>
+              </div>
+            </div>
+          </mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+          <!-- Tabla de resultados por base de datos -->
+          <div class="results-by-database">
+            <h4>Resultados por Base de Datos</h4>
+            <table mat-table [dataSource]="indicador.resultados" class="mat-elevation-z1">
+              <ng-container matColumnDef="baseData">
+                <th mat-header-cell *matHeaderCellDef>Base de Datos</th>
+                <td mat-cell *matCellDef="let resultado">
+                  <div class="database-name">{{ resultado.baseData }}</div>
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="resultado">
+                <th mat-header-cell *matHeaderCellDef>Resultado</th>
+                <td mat-cell *matCellDef="let resultado">
+                  <span class="result-value">{{ resultado.resultado }}</span>
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="numeroDePacientes">
+                <th mat-header-cell *matHeaderCellDef>Nº Pacientes</th>
+                <td mat-cell *matCellDef="let resultado">
+                  <span class="patients-value">{{ resultado.numeroDePacientes }}</span>
+                </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+          </div>
+
+          <!-- Información adicional -->
+          <mat-divider></mat-divider>
+          <div class="additional-info">
+            <div class="info-item">
+              <strong>Período:</strong> 
+              {{ indicador.intervalo.fechaInicio | date:'dd/MM/yyyy' }} - 
+              {{ indicador.intervalo.fechaFin | date:'dd/MM/yyyy' }}
+            </div>
+            <div class="info-item">
+              <strong>Consulta SQL:</strong> 
+              <code class="sql-query">{{ indicador.consulta_sql }}</code>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <!-- Mensaje si no hay resultados -->
+    <mat-card class="shadow-soft card no-results" *ngIf="apiResponse.success && apiResponse.resultados.length === 0">
+      <div class="no-results-content">
+        <mat-icon>info</mat-icon>
+        <h3>No se encontraron resultados</h3>
+        <p>No hay datos que coincidan con los criterios seleccionados.</p>
+      </div>
+    </mat-card>
+  </div>
+</div>

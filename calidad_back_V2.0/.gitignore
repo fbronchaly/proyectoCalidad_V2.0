@@ -1,0 +1,10 @@
+# Ignora la carpeta node_modules
+node_modules
+
+# Ignora archivos específicos en controllers/archivos
+controllers/archivos/*.xlsx
+
+# Ignora los archivos relacionados a API keys
+.env
+Downloads
+table_names.txtdializadores.json

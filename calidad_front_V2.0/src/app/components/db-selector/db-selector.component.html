@@ -1,0 +1,26 @@
+
+<div class="container">
+  <mat-card class="card shadow-soft">
+    <div class="header">
+      <div class="title"><mat-icon>storage</mat-icon> Selección de bases de datos</div>
+      <span class="spacer"></span>
+      <mat-slide-toggle color="primary" [(ngModel)]="allToggle" (change)="toggleAll($event.checked)">Seleccionar todas</mat-slide-toggle>
+    </div>
+    <mat-divider></mat-divider>
+
+    <div class="list">
+      <div class="row" *ngFor="let code of (data | keyvalue)">
+        <mat-slide-toggle
+          color="primary"
+          [checked]="selected.has(code.key)"
+          (change)="toggleOne(code.key, $event.checked)">
+          <strong>{{ code.key }}</strong> — {{ code.value }}
+        </mat-slide-toggle>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button mat-raised-button (click)="saveAndBack()">Guardar y volver</button>
+    </div>
+  </mat-card>
+</div>

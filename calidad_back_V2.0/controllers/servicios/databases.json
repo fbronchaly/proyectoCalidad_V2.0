@@ -1,0 +1,66 @@
+{
+  "DB1": {
+    "name": "SantaEngracia",
+    "path": "/NFS/restores/NF6_SantaEngracia.gdb"
+  },
+  "DB2": {
+    "name": "LosOlmos",
+    "path": "/NFS/restores/NF6_LosOlmos.gdb"
+  },
+  "DB3": {
+    "name": "LosLlanos",
+    "path": "/NFS/restores/NF6_LosLlanos.gdb"
+  },
+  "DB4": {
+    "name": "ElCastanar",
+    "path": "/NFS/restores/NF6_ElCastanar.gdb"
+  },
+  "DB5": {
+    "name": "Getafe",
+    "path": "/NFS/restores/NF6_Getafe.gdb"
+  },
+  "DB6": {
+    "name": "LosLauros",
+    "path": "/NFS/restores/NF6_LosLauros.gdb"
+  },
+  "DB8": {
+    "name": "FJD",
+    "path": "/NFS/restores/NF6_FJD.gdb"
+  },
+  "DB9": {
+    "name": "HRJC",
+    "path": "/NFS/restores/NF6_HRJC.gdb"
+  },
+  "DB10": {
+    "name": "InfantaElena",
+    "path": "/NFS/restores/NF6_InfantaElena.gdb"
+  },
+  "DB11": {
+    "name": "LasEncinas",
+    "path": "/NFS/restores/NF6_LasEncinas.gdb"
+  },
+  "DB13": {
+    "name": "LosLlanos3",
+    "path": "/NFS/restores/NF6_LosLlanos3.gdb"
+  },
+  "DB14": {
+    "name": "OsCarballos",
+    "path": "/NFS/restores/NF6_OsCarballos.gdb"
+  },
+  "DB15": {
+    "name": "OsCarballosII",
+    "path": "/NFS/restores/NF6_OsCarballosII.gdb"
+  },
+  "DB16": {
+    "name": "Teixedal",
+    "path": "/NFS/restores/NF6_Teixedal.gdb"
+  },
+  "DB17": {
+    "name": "Villalba",
+    "path": "/NFS/restores/NF6_VILLALBA.gdb"
+  },
+  "DB18": {
+    "name": "LosPinos",
+    "path": "/NFS/restores/NF6_LosPinos.gdb"
+  }
+}
