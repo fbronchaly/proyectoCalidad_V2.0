@@ -173,18 +173,6 @@
       <span class="title-text">Resultados del Análisis</span>
     </div>
 
-    <!-- DEBUG INFO - eliminar en producción -->
-    <mat-card class="debug-card" style="margin-bottom: 16px; background: #f5f5f5;">
-      <mat-card-content>
-        <h4>DEBUG INFO:</h4>
-        <p><strong>apiResponse exists:</strong> {{ !!apiResponse }}</p>
-        <p><strong>apiResponse.success:</strong> {{ apiResponse?.success }}</p>
-        <p><strong>apiResponse.resultados length:</strong> {{ apiResponse?.resultados?.length || 0 }}</p>
-        <p><strong>resumenDesglosado length:</strong> {{ resumenDesglosado.length }}</p>
-        <p><strong>apiResponse.message:</strong> {{ apiResponse?.message }}</p>
-      </mat-card-content>
-    </mat-card>
-
     <!-- Mensaje de error si no fue exitoso -->
     <mat-card class="error-card" *ngIf="apiResponse && !apiResponse.success">
       <mat-card-content>
@@ -216,7 +204,7 @@
               <span class="stat-label">Indicadores procesados</span>
             </div>
             <div class="stat-item">
-              <span class="stat-number">{{ resumenDesglosado.length }}</span>
+              <span class="stat-number">{{ dataSource.data.length }}</span>
               <span class="stat-label">Resultados generados</span>
             </div>
             <div class="stat-item">
@@ -227,64 +215,58 @@
         </mat-card-content>
       </mat-card>
 
-      <!-- Tabla de resultados detallados -->
-      <mat-card class="results-table-card" *ngIf="resumenDesglosado.length > 0">
+      <!-- TABLA SIMPLE QUE FUNCIONA (anteriormente tabla roja) -->
+      <mat-card class="results-table-card" *ngIf="dataSource.data.length > 0">
         <mat-card-header>
           <mat-card-title>Todos los Resultados</mat-card-title>
-          <mat-card-subtitle>Vista completa de todos los indicadores y bases de datos</mat-card-subtitle>
+          <mat-card-subtitle>Vista completa de todos los indicadores y bases de datos ({{ dataSource.data.length }} resultados)</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-          <div class="results-info">
-            <p><strong>Total de filas:</strong> {{ resumenDesglosado.length }}</p>
-            <p><strong>DEBUG - Array válido:</strong> {{ Array.isArray(resumenDesglosado) ? 'SÍ' : 'NO' }}</p>
-            <p><strong>DEBUG - Primer elemento:</strong> {{ resumenDesglosado[0] | json }}</p>
-          </div>
-          
-          <div class="table-container">
-            <table mat-table [dataSource]="resumenDesglosado" class="results-table">
-              <!-- Columna Categoría -->
-              <ng-container matColumnDef="categoria">
-                <th mat-header-cell *matHeaderCellDef class="header-cell">Categoría</th>
-                <td mat-cell *matCellDef="let element" class="data-cell category-cell">{{element.categoria}}</td>
-              </ng-container>
+          <table mat-table [dataSource]="dataSource" style="width: 100%;">
+            <!-- Columnas básicas que SÍ funcionan -->
+            <ng-container matColumnDef="categoria">
+              <th mat-header-cell *matHeaderCellDef>Categoría</th>
+              <td mat-cell *matCellDef="let element">{{element.categoria}}</td>
+            </ng-container>
 
-              <!-- Columna Indicador -->
-              <ng-container matColumnDef="indicador">
-                <th mat-header-cell *matHeaderCellDef class="header-cell">Indicador</th>
-                <td mat-cell *matCellDef="let element" class="data-cell indicator-cell">{{element.indicador}}</td>
-              </ng-container>
+            <ng-container matColumnDef="indicador">
+              <th mat-header-cell *matHeaderCellDef>Indicador</th>
+              <td mat-cell *matCellDef="let element">{{element.indicador}}</td>
+            </ng-container>
 
-              <!-- Columna Base de Datos -->
-              <ng-container matColumnDef="baseData">
-                <th mat-header-cell *matHeaderCellDef class="header-cell">Base de Datos</th>
-                <td mat-cell *matCellDef="let element" class="data-cell database-cell">{{element.baseData}}</td>
-              </ng-container>
+            <ng-container matColumnDef="baseData">
+              <th mat-header-cell *matHeaderCellDef>Base de Datos</th>
+              <td mat-cell *matCellDef="let element">{{element.baseData}}</td>
+            </ng-container>
 
-              <!-- Columna Resultado -->
-              <ng-container matColumnDef="resultado">
-                <th mat-header-cell *matHeaderCellDef class="header-cell">Resultado</th>
-                <td mat-cell *matCellDef="let element" class="data-cell result-cell">
-                  <span class="result-value">{{(element.resultado ?? 0) | number:'1.2-2'}}</span>
-                </td>
-              </ng-container>
+            <ng-container matColumnDef="resultado">
+              <th mat-header-cell *matHeaderCellDef>Resultado</th>
+              <td mat-cell *matCellDef="let element">{{element.resultado}}</td>
+            </ng-container>
 
-              <!-- Columna Pacientes -->
-              <ng-container matColumnDef="numeroDePacientes">
-                <th mat-header-cell *matHeaderCellDef class="header-cell">Nº Pacientes</th>
-                <td mat-cell *matCellDef="let element" class="data-cell patients-cell">
-                  <span class="patients-count">{{(element.numeroDePacientes ?? 0) | number}}</span>
-                </td>
-              </ng-container>
+            <ng-container matColumnDef="numeroDePacientes">
+              <th mat-header-cell *matHeaderCellDef>Pacientes</th>
+              <td mat-cell *matCellDef="let element">{{element.numeroDePacientes}}</td>
+            </ng-container>
 
-              <tr mat-header-row *matHeaderRowDef="summaryColumns; sticky: true"></tr>
-              <tr mat-row *matRowDef="let row; columns: summaryColumns;" class="data-row"></tr>
-            </table>
-          </div>
+            <!-- Nueva columna: Media por Paciente -->
+            <ng-container matColumnDef="mediaPorPaciente">
+              <th mat-header-cell *matHeaderCellDef>Media por Paciente</th>
+              <td mat-cell *matCellDef="let element">
+                <strong>
+                  {{ element.numeroDePacientes && element.numeroDePacientes > 0 ? ((element.resultado / element.numeroDePacientes) | number:'1.2-2') : '0.00' }}
+                </strong>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="['categoria', 'indicador', 'baseData', 'resultado', 'numeroDePacientes', 'mediaPorPaciente']"></tr>
+            <tr mat-row *matRowDef="let row; columns: ['categoria', 'indicador', 'baseData', 'resultado', 'numeroDePacientes', 'mediaPorPaciente'];"></tr>
+          </table>
         </mat-card-content>
       </mat-card>
       
       <!-- Mensaje si no hay resultados desglosados -->
-      <mat-card class="no-results-card" *ngIf="resumenDesglosado.length === 0">
+      <mat-card class="no-results-card" *ngIf="dataSource.data.length === 0">
         <mat-card-content>
           <div class="no-results-content">
             <mat-icon color="warn">warning</mat-icon>
@@ -311,7 +293,15 @@
           <mat-card-content>
             <div class="indicator-details">
               <p><strong>ID:</strong> {{ indicador.id_code }}</p>
-              <p><strong>Período:</strong> {{ indicador.intervalo.fechaInicio | date:'dd/MM/yyyy' }} - {{ indicador.intervalo.fechaFin | date:'dd/MM/yyyy' }}</p>
+              <p><strong>Período:</strong> 
+                <span *ngIf="indicador.intervalo?.fechaInicio && indicador.intervalo?.fechaFin">
+                  {{ indicador.intervalo.fechaInicio | date:'dd/MM/yyyy' }} - 
+                  {{ indicador.intervalo.fechaFin | date:'dd/MM/yyyy' }}
+                </span>
+                <span *ngIf="!indicador.intervalo?.fechaInicio || !indicador.intervalo?.fechaFin">
+                  Sin período definido
+                </span>
+              </p>
               
               <div class="totals-summary" *ngIf="indicador.totales">
                 <div class="total-item">

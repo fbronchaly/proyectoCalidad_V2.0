@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { DatabaseService } from './database.service';
 
 export interface UploadPayload {
   intervalo: [string, string] | null;
@@ -12,6 +13,8 @@ export class SelectionService {
   private endDate: Date | null = null;
   private databases: string[] = [];
   private indicators: string[] = [];
+
+  constructor(private databaseService: DatabaseService) {}
 
   setDates(start: Date | null, end: Date | null) {
     this.startDate = start;
@@ -50,9 +53,22 @@ export class SelectionService {
   }
 
   resetAll() {
+    console.log('🔄 === RESET COMPLETO EN SELECTION SERVICE ===');
+    
+    // Resetear fechas
     this.startDate = null;
     this.endDate = null;
+    console.log('✅ Fechas reseteadas');
+    
+    // Resetear bases de datos (tanto en memoria como localStorage)
     this.databases = [];
+    this.databaseService.resetSelection();
+    console.log('✅ Bases de datos reseteadas');
+    
+    // Resetear indicadores
     this.indicators = [];
+    console.log('✅ Indicadores reseteados');
+    
+    console.log('✅ === RESET COMPLETO FINALIZADO ===');
   }
 }

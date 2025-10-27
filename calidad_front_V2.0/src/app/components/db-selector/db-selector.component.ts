@@ -22,20 +22,25 @@ export class DbSelectorComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log('🔧 Inicializando db-selector component');
+    
     // Cargar regiones
     this.regions = this.dbService.getRegions();
     
     // Suscribirse a cambios en las bases de datos
     this.dbService.databases$.subscribe(databases => {
+      console.log('📊 Bases de datos actualizadas:', databases.map(db => ({ id: db.id, selected: db.selected })));
       this.databases = databases;
       this.updateAllToggle();
+      
+      // Sincronizar con SelectionService basándose en el estado real del DatabaseService
+      const selectedIds = databases.filter(db => db.selected).map(db => db.id);
+      this.sel.setDatabases(selectedIds);
+      console.log('🔄 Sincronizado con SelectionService:', selectedIds);
     });
 
-    // Aplicar selección inicial desde SelectionService
-    const selectedIds = this.sel.getDatabases();
-    if (selectedIds.length > 0) {
-      this.dbService.applySelection(selectedIds);
-    }
+    // NO aplicar selección inicial desde SelectionService para evitar conflictos después de reset
+    // El DatabaseService ya tiene la fuente de verdad correcta (incluyendo resets)
   }
 
   private updateAllToggle(): void {

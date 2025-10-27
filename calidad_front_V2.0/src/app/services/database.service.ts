@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, distinctUntilChanged, shareReplay } from 'rxjs';
 
 const STORAGE_KEY = 'selected_databases';
+const RESET_FLAG_KEY = 'databases_reset_flag';
 
 export interface DatabaseItem {
   id: string;        // "DB1"
@@ -53,10 +54,20 @@ export class DatabaseService {
 
   private loadFromStorage(): DatabaseItem[] | null {
     try {
+      // Verificar si ha habido un reset reciente
+      const resetFlag = localStorage.getItem(RESET_FLAG_KEY);
+      if (resetFlag === 'true') {
+        console.log('🔄 Reset flag detectado - no cargando selecciones previas');
+        // Limpiar el flag después de detectarlo
+        localStorage.removeItem(RESET_FLAG_KEY);
+        return null; // Devolver null para usar initialList limpio
+      }
+
       const saved = localStorage.getItem(STORAGE_KEY);
       if (!saved) return null;
 
       const selectedIds = new Set(JSON.parse(saved));
+      console.log('📂 Cargando selecciones desde localStorage:', Array.from(selectedIds));
       return this.initialList.map(item => ({
         ...item,
         selected: selectedIds.has(item.id)
@@ -104,6 +115,24 @@ export class DatabaseService {
     const list = this.snapshot().map(d => ({ ...d, selected: false }));
     this._databases$.next(list);
     this.saveSelection(); // Guardar inmediatamente
+  }
+
+  // Nuevo método para reset completo (limpia localStorage también)
+  resetSelection(): void {
+    console.log('🔄 Reseteando selección de bases de datos');
+    
+    // Limpiar el estado actual
+    const list = this.snapshot().map(d => ({ ...d, selected: false }));
+    this._databases$.next(list);
+    
+    // Limpiar localStorage y establecer flag de reset
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+      localStorage.setItem(RESET_FLAG_KEY, 'true');
+      console.log('✅ localStorage de bases de datos limpiado y flag de reset establecido');
+    } catch (error) {
+      console.error('Error limpiando localStorage de bases de datos:', error);
+    }
   }
 
   saveSelection(): void {

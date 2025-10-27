@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from '../../services/api.service';
 import { SelectionService } from '../../services/selection.service';
 
@@ -45,10 +46,13 @@ export class DashboardComponent implements OnInit {
   loading = false;
   apiResponse: ApiResponse | null = null;
   
+  // MatTableDataSource para la tabla
+  dataSource = new MatTableDataSource<any>([]);
+  
   // Columns for detailed results table
-  displayedColumns = ['baseData', 'resultado', 'numeroDePacientes'];
-  // Columns for summary table with breakdown by database
-  summaryColumns = ['indicador', 'categoria', 'baseData', 'resultado', 'numeroDePacientes'];
+  displayedColumns = ['baseData', 'resultado', 'numeroDePacientes', 'mediaPorPaciente'];
+  // Columns for summary table with breakdown by database - CORREGIDO para coincidir con el template
+  summaryColumns = ['categoria', 'indicador', 'baseData', 'resultado', 'numeroDePacientes', 'mediaPorPaciente'];
 
   // Exponer Array.isArray para usar en el template
   Array = Array;
@@ -57,7 +61,8 @@ export class DashboardComponent implements OnInit {
     private router: Router,
     private snack: MatSnackBar,
     public sel: SelectionService,
-    private api: ApiService
+    private api: ApiService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -174,14 +179,38 @@ export class DashboardComponent implements OnInit {
     return !!j.intervalo && j.baseDatos.length > 0 && j.indices.length > 0;
   }
 
+  // Método para actualizar la tabla
+  private updateTableData(): void {
+    if (!this.apiResponse?.resultados) {
+      this.dataSource.data = [];
+      this.cdr.detectChanges();
+      return;
+    }
+
+    const tableData: any[] = [];
+    
+    this.apiResponse.resultados.forEach((indicador) => {
+      if (indicador.resultados) {
+        indicador.resultados.forEach((resultado) => {
+          tableData.push({
+            id_code: indicador.id_code,
+            categoria: indicador.categoria,
+            indicador: indicador.indicador,
+            baseData: resultado.baseData,
+            resultado: resultado.resultado,
+            numeroDePacientes: resultado.numeroDePacientes,
+            indicadorCompleto: indicador
+          });
+        });
+      }
+    });
+    
+    this.dataSource.data = tableData;
+    this.cdr.detectChanges();
+  }
+
   sendToBack() {
     const payload = this.sel.toJSON();
-    console.log('=== DATOS A ENVIAR ===');
-    console.log('Payload completo:', payload);
-    console.log('Intervalo:', payload.intervalo);
-    console.log('BaseDatos:', payload.baseDatos);
-    console.log('Indices:', payload.indices);
-    console.log('Ready to send?', this.readyToSendFront);
     
     if (!this.readyToSendFront || !payload.intervalo) {
       this.snack.open('Completa rango, bases e indicadores', 'OK', { duration: 2500 });
@@ -192,18 +221,14 @@ export class DashboardComponent implements OnInit {
     this.loading = true;
     this.apiResponse = null;
     
-    console.log('🚀 Iniciando análisis...');
-    
     this.api.upload(payload).subscribe({
       next: (resp: ApiResponse) => {
-        console.log('✅ Resultados recibidos del backend');
-        
         // Guardar los resultados
         this.apiResponse = resp;
         this.loading = false;
         
-        // El servidor ya se resetea automáticamente al estado inicial
-        console.log('✅ Trabajo completado - Servidor automáticamente en estado inicial');
+        // Actualizar la tabla inmediatamente después de recibir datos
+        this.updateTableData();
         
         if (resp.success) {
           this.snack.open(
@@ -216,13 +241,9 @@ export class DashboardComponent implements OnInit {
         }
       },
       error: (err) => {
-        console.error('❌ Error del backend:', err.message);
-        
         this.loading = false;
         this.apiResponse = null;
-        
-        // En caso de error, el servidor también se resetea automáticamente
-        console.log('⚠️ Error en análisis - Servidor automáticamente reseteado');
+        this.dataSource.data = [];
         
         this.snack.open('Error al enviar datos: ' + (err?.error?.message || err?.message || 'desconocido'), 'OK', { duration: 3500 });
       }
@@ -232,38 +253,5 @@ export class DashboardComponent implements OnInit {
   // Método para expandir/colapsar detalles de un indicador
   toggleDetails(indicador: IndicadorResultado) {
     // Implementaremos la lógica de expansión si es necesario
-  }
-
-  // Getter para obtener los datos desglosados por base de datos para el resumen
-  get resumenDesglosado(): any[] {
-    if (!this.apiResponse) {
-      return [];
-    }
-
-    // Validar que tenemos resultados válidos
-    if (!this.apiResponse.resultados || !Array.isArray(this.apiResponse.resultados)) {
-      return [];
-    }
-
-    const desglosado: any[] = [];
-    
-    this.apiResponse.resultados.forEach((indicador) => {
-      if (indicador.resultados && Array.isArray(indicador.resultados)) {
-        indicador.resultados.forEach((resultado) => {
-          desglosado.push({
-            id_code: indicador.id_code,
-            categoria: indicador.categoria,
-            indicador: indicador.indicador,
-            baseData: resultado.baseData,
-            resultado: resultado.resultado,
-            numeroDePacientes: resultado.numeroDePacientes,
-            // Datos adicionales para referencia
-            indicadorCompleto: indicador
-          });
-        });
-      }
-    });
-    
-    return desglosado;
   }
 }
