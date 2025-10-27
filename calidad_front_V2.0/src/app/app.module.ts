@@ -30,6 +30,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { LoginComponent } from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
+import { FirstDayRangePickerComponent } from './components/first-day-range-picker/first-day-range-picker.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { RegistroComponent } from './components/registro/registro.component';
     DbSelectorComponent,
     IndicadoresSelectorComponent,
     LoginComponent,
-    RegistroComponent
+    RegistroComponent,
+    FirstDayRangePickerComponent
 
   ],
   imports: [

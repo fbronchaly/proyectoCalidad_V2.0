@@ -95,6 +95,15 @@
               <mat-datepicker #endPicker></mat-datepicker>
             </mat-form-field>
           </div>
+
+          <!-- Divisor -->
+          <mat-divider class="my-3"></mat-divider>
+
+          <!-- Selector rápido de rangos -->
+          <div class="quick-range-selector">
+            <h4 class="selector-title">Selección Rápida de Períodos</h4>
+            <app-first-day-range-picker (rangeChange)="onQuickRangeChange($event)"></app-first-day-range-picker>
+          </div>
         </mat-card-content>
         <mat-card-actions>
           <button mat-raised-button color="warn" class="reset-btn" (click)="resetDates()">
@@ -194,7 +203,7 @@
           <mat-card-title>Resumen Ejecutivo</mat-card-title>
           <mat-card-subtitle>
             Análisis {{ apiResponse.success ? 'completado' : 'parcial' }} 
-            el {{ apiResponse.timestamp | date:'dd/MM/yyyy HH:mm' }}
+            el {{ formatDate(apiResponse.timestamp, 'dd/MM/yyyy HH:mm') }}
           </mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
@@ -204,7 +213,7 @@
               <span class="stat-label">Indicadores procesados</span>
             </div>
             <div class="stat-item">
-              <span class="stat-number">{{ dataSource.data.length }}</span>
+              <span class="stat-number">{{ tableData.length }}</span>
               <span class="stat-label">Resultados generados</span>
             </div>
             <div class="stat-item">
@@ -215,58 +224,44 @@
         </mat-card-content>
       </mat-card>
 
-      <!-- TABLA SIMPLE QUE FUNCIONA (anteriormente tabla roja) -->
-      <mat-card class="results-table-card" *ngIf="dataSource.data.length > 0">
+      <!-- TABLA BOOTSTRAP -->
+      <mat-card class="results-table-card" *ngIf="tableData.length > 0">
         <mat-card-header>
           <mat-card-title>Todos los Resultados</mat-card-title>
-          <mat-card-subtitle>Vista completa de todos los indicadores y bases de datos ({{ dataSource.data.length }} resultados)</mat-card-subtitle>
+          <mat-card-subtitle>Vista completa de todos los indicadores y bases de datos ({{ tableData.length }} resultados)</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-          <table mat-table [dataSource]="dataSource" style="width: 100%;">
-            <!-- Columnas básicas que SÍ funcionan -->
-            <ng-container matColumnDef="categoria">
-              <th mat-header-cell *matHeaderCellDef>Categoría</th>
-              <td mat-cell *matCellDef="let element">{{element.categoria}}</td>
-            </ng-container>
-
-            <ng-container matColumnDef="indicador">
-              <th mat-header-cell *matHeaderCellDef>Indicador</th>
-              <td mat-cell *matCellDef="let element">{{element.indicador}}</td>
-            </ng-container>
-
-            <ng-container matColumnDef="baseData">
-              <th mat-header-cell *matHeaderCellDef>Base de Datos</th>
-              <td mat-cell *matCellDef="let element">{{element.baseData}}</td>
-            </ng-container>
-
-            <ng-container matColumnDef="resultado">
-              <th mat-header-cell *matHeaderCellDef>Resultado</th>
-              <td mat-cell *matCellDef="let element">{{element.resultado}}</td>
-            </ng-container>
-
-            <ng-container matColumnDef="numeroDePacientes">
-              <th mat-header-cell *matHeaderCellDef>Pacientes</th>
-              <td mat-cell *matCellDef="let element">{{element.numeroDePacientes}}</td>
-            </ng-container>
-
-            <!-- Nueva columna: Media por Paciente -->
-            <ng-container matColumnDef="mediaPorPaciente">
-              <th mat-header-cell *matHeaderCellDef>Media por Paciente</th>
-              <td mat-cell *matCellDef="let element">
-                <strong>
-                  {{ element.numeroDePacientes && element.numeroDePacientes > 0 ? ((element.resultado / element.numeroDePacientes) | number:'1.2-2') : '0.00' }}
-                </strong>
-              </td>
-            </ng-container>
-
-            <tr mat-header-row *matHeaderRowDef="['categoria', 'indicador', 'baseData', 'resultado', 'numeroDePacientes', 'mediaPorPaciente']"></tr>
-            <tr mat-row *matRowDef="let row; columns: ['categoria', 'indicador', 'baseData', 'resultado', 'numeroDePacientes', 'mediaPorPaciente'];"></tr>
-          </table>
+          <div class="table-responsive">
+            <table class="table table-striped table-hover table-bordered">
+              <thead class="table-dark">
+                <tr>
+                  <th scope="col">Categoría</th>
+                  <th scope="col">Indicador</th>
+                  <th scope="col">Base de Datos</th>
+                  <th scope="col" class="text-end">Resultado</th>
+                  <th scope="col" class="text-end">Pacientes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let element of tableData">
+                  <td>{{ element.categoria || 'N/A' }}</td>
+                  <td>{{ element.indicador || 'N/A' }}</td>
+                  <td>{{ element.baseData || 'N/A' }}</td>
+                  <td class="text-end">
+                    <strong>{{ formatInteger(element.resultado) }}</strong>
+                  </td>
+                  <td class="text-end">
+                    {{ formatInteger(element.numeroDePacientes) }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </mat-card-content>
       </mat-card>
       
       <!-- Mensaje si no hay resultados desglosados -->
-      <mat-card class="no-results-card" *ngIf="dataSource.data.length === 0">
+      <mat-card class="no-results-card" *ngIf="tableData.length === 0">
         <mat-card-content>
           <div class="no-results-content">
             <mat-icon color="warn">warning</mat-icon>
@@ -295,8 +290,8 @@
               <p><strong>ID:</strong> {{ indicador.id_code }}</p>
               <p><strong>Período:</strong> 
                 <span *ngIf="indicador.intervalo?.fechaInicio && indicador.intervalo?.fechaFin">
-                  {{ indicador.intervalo.fechaInicio | date:'dd/MM/yyyy' }} - 
-                  {{ indicador.intervalo.fechaFin | date:'dd/MM/yyyy' }}
+                  {{ formatDate(indicador.intervalo.fechaInicio) }} - 
+                  {{ formatDate(indicador.intervalo.fechaFin) }}
                 </span>
                 <span *ngIf="!indicador.intervalo?.fechaInicio || !indicador.intervalo?.fechaFin">
                   Sin período definido
@@ -306,11 +301,11 @@
               <div class="totals-summary" *ngIf="indicador.totales">
                 <div class="total-item">
                   <span class="total-label">Total Resultado:</span>
-                  <span class="total-value">{{ (indicador.totales.resultado ?? 0) | number:'1.2-2' }}</span>
+                  <span class="total-value">{{ formatNumber(indicador.totales.resultado, 2) }}</span>
                 </div>
                 <div class="total-item">
                   <span class="total-label">Total Pacientes:</span>
-                  <span class="total-value">{{ (indicador.totales.numero_pacientes ?? 0) | number }}</span>
+                  <span class="total-value">{{ formatInteger(indicador.totales.numero_pacientes) }}</span>
                 </div>
               </div>
 
@@ -319,8 +314,8 @@
                 <div class="db-result" *ngFor="let resultado of indicador.resultados">
                   <div class="db-name">{{ resultado.baseData }}</div>
                   <div class="db-values">
-                    <span class="db-result-value">{{ (resultado.resultado ?? 0) | number:'1.2-2' }}</span>
-                    <span class="db-patients">{{ (resultado.numeroDePacientes ?? 0) | number }} pacientes</span>
+                    <span class="db-result-value">{{ formatNumber(resultado.resultado, 2) }}</span>
+                    <span class="db-patients">{{ formatInteger(resultado.numeroDePacientes) }} pacientes</span>
                   </div>
                 </div>
               </div>

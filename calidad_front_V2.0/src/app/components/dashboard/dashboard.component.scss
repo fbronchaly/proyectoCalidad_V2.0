@@ -200,6 +200,152 @@
       }
     }
   }
+
+  // Estilos para el divisor y selector rápido
+  .my-3 {
+    margin: 20px 0;
+  }
+
+  .quick-range-selector {
+    margin-top: 20px;
+    padding: 16px;
+    background: #f8fafc;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+
+    .selector-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #2d3748;
+      margin: 0 0 16px 0;
+      text-align: center;
+    }
+
+    // Integración de estilos del componente first-day-range-picker
+    ::ng-deep app-first-day-range-picker {
+      display: block;
+
+      .d-flex {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        gap: 12px;
+        justify-content: center;
+      }
+
+      .gap-2 {
+        gap: 8px;
+      }
+
+      .form-label {
+        font-size: 12px;
+        font-weight: 500;
+        color: #4a5568;
+        margin-bottom: 4px;
+        display: block;
+      }
+
+      .form-select {
+        padding: 8px 12px;
+        border: 1px solid #cbd5e0;
+        border-radius: 8px;
+        font-size: 13px;
+        background: white;
+        color: #2d3748;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        min-width: 100px;
+
+        &:hover {
+          border-color: #667eea;
+        }
+
+        &:focus {
+          outline: none;
+          border-color: #667eea;
+          box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+      }
+
+      .mx-1 {
+        margin: 0 8px;
+        color: #667eea;
+        font-weight: 600;
+        font-size: 18px;
+      }
+
+      .btn {
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-size: 13px;
+        font-weight: 500;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+
+        &.btn-outline-secondary {
+          background: white;
+          color: #4a5568;
+          border: 1px solid #cbd5e0;
+
+          &:hover {
+            background: #f7fafc;
+            border-color: #a0aec0;
+          }
+        }
+
+        &.btn-primary {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          border: none;
+
+          &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+          }
+        }
+
+        &.btn-link {
+          background: transparent;
+          color: #718096;
+          border: none;
+
+          &:hover {
+            color: #4a5568;
+            text-decoration: underline;
+          }
+        }
+      }
+
+      .small {
+        font-size: 12px;
+        color: #718096;
+        text-align: center;
+        margin-top: 12px;
+        padding: 8px;
+        background: white;
+        border-radius: 6px;
+
+        &.text-danger {
+          color: #e53e3e;
+          background: #fff5f5;
+        }
+      }
+
+      .ms-auto {
+        margin-left: auto;
+      }
+
+      .mt-1 {
+        margin-top: 8px;
+      }
+
+      .fw-semibold {
+        font-weight: 600;
+      }
+    }
+  }
 }
 
 // Información de selección
@@ -424,6 +570,71 @@
     box-shadow: 0 8px 32px rgba(0,0,0,0.1);
     background: rgba(255,255,255,0.95);
     backdrop-filter: blur(10px);
+
+    // Estilos para la tabla Bootstrap
+    .table-responsive {
+      margin-top: 16px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .table {
+      margin-bottom: 0;
+      font-size: 14px;
+
+      thead.table-dark {
+        th {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          font-weight: 600;
+          font-size: 13px;
+          padding: 16px 12px;
+          border: none;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+      }
+
+      tbody {
+        tr {
+          transition: all 0.2s ease;
+
+          &:hover {
+            background-color: #f8f9fa;
+            transform: scale(1.01);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+          }
+
+          td {
+            padding: 14px 12px;
+            vertical-align: middle;
+            font-size: 14px;
+            color: #2d3748;
+
+            .badge {
+              font-size: 12px;
+              padding: 6px 12px;
+              font-weight: 500;
+              border-radius: 8px;
+
+              &.bg-primary {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+              }
+
+              &.bg-success {
+                background: linear-gradient(135deg, #48bb78 0%, #38a169 100%) !important;
+              }
+            }
+
+            strong.text-primary {
+              color: #667eea !important;
+              font-size: 15px;
+            }
+          }
+        }
+      }
+    }
   }
 }
 
