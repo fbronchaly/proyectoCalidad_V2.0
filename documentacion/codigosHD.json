@@ -1,0 +1,679 @@
+[
+    {
+      "numero": 1,
+      "variable": "DB1",
+      "database": "/NFS/restores/NF6_SantaEngracia.gdb",
+      "resultado": [
+        {
+          "CODIGO": 1174,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 10710,
+          "DESCRIPCION": "HD OL"
+        }
+      ]
+    },
+    {
+      "numero": 2,
+      "variable": "DB2_DATABASE",
+      "database": "/NFS/restores/NF6_LosOlmos.gdb",
+      "resultado": [
+        {
+          "CODIGO": 1,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 2,
+          "DESCRIPCION": "HD OL"
+        },
+        {
+          "CODIGO": 3,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 4,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 5,
+          "DESCRIPCION": "HD"
+        }
+      ]
+    },
+    {
+      "numero": 3,
+      "variable": "DB3_DATABASE",
+      "database": "/NFS/restores/NF6_LosLlanos.gdb",
+      "resultado": [
+        {
+          "CODIGO": 1,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 5,
+          "DESCRIPCION": "HD OL"
+        },
+        {
+          "CODIGO": 6,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 9,
+          "DESCRIPCION": "HD OL"
+        },
+        {
+          "CODIGO": 10,
+          "DESCRIPCION": "HD OL"
+        },
+        {
+          "CODIGO": 11,
+          "DESCRIPCION": "HD"
+        }
+      ]
+    },
+    {
+      "numero": 4,
+      "variable": "DB4_DATABASE",
+      "database": "/NFS/restores/NF6_ElCastanar.gdb",
+      "resultado": [
+        {
+          "CODIGO": 1,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 2,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 3,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 4,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 5,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 7,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 11,
+          "DESCRIPCION": "HD OL"
+        },
+        {
+          "CODIGO": 13,
+          "DESCRIPCION": "HD"
+        }
+      ]
+    },
+    {
+      "numero": 5,
+      "variable": "DB5_DATABASE",
+      "database": "/NFS/restores/NF6_Getafe.gdb",
+      "resultado": [
+        {
+          "CODIGO": 1,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 2,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 3,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 4,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 5,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 6,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 7,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 11,
+          "DESCRIPCION": "HD OL"
+        },
+        {
+          "CODIGO": 13,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 14,
+          "DESCRIPCION": "HD OL"
+        }
+      ]
+    },
+    {
+      "numero": 6,
+      "variable": "DB6_DATABASE",
+      "database": "/NFS/restores/NF6_LosLauros.gdb",
+      "resultado": [
+        {
+          "CODIGO": 1,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 11,
+          "DESCRIPCION": "HD OL"
+        }
+      ]
+    },
+    {
+      "numero": 7,
+      "variable": "DB8_DATABASE",
+      "database": "/NFS/restores/NF6_FJD.gdb",
+      "resultado": [
+        {
+          "CODIGO": 1696,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 1697,
+          "DESCRIPCION": "HD DOM"
+        },
+        {
+          "CODIGO": 1698,
+          "DESCRIPCION": "PERIT"
+        },
+        {
+          "CODIGO": 1699,
+          "DESCRIPCION": "PERIT"
+        },
+        {
+          "CODIGO": 1700,
+          "DESCRIPCION": "PERIT"
+        },
+        {
+          "CODIGO": 2339,
+          "DESCRIPCION": "HD OL"
+        },
+        {
+          "CODIGO": 2340,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 2341,
+          "DESCRIPCION": "HD OL"
+        },
+        {
+          "CODIGO": 2342,
+          "DESCRIPCION": "PERIT"
+        },
+        {
+          "CODIGO": 2343,
+          "DESCRIPCION": "PERIT"
+        },
+        {
+          "CODIGO": 2356,
+          "DESCRIPCION": "PERIT"
+        },
+        {
+          "CODIGO": 2357,
+          "DESCRIPCION": "PERIT"
+        }
+      ]
+    },
+    {
+      "numero": 8,
+      "variable": "DB9_DATABASE",
+      "database": "/NFS/restores/NF6_HRJC.gdb",
+      "resultado": [
+        {
+          "CODIGO": 1696,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 1697,
+          "DESCRIPCION": "HD DOM"
+        },
+        {
+          "CODIGO": 1698,
+          "DESCRIPCION": "PERIT"
+        },
+        {
+          "CODIGO": 1699,
+          "DESCRIPCION": "PERIT"
+        },
+        {
+          "CODIGO": 1700,
+          "DESCRIPCION": "PERIT"
+        },
+        {
+          "CODIGO": 2339,
+          "DESCRIPCION": "HD OL"
+        },
+        {
+          "CODIGO": 2340,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 2341,
+          "DESCRIPCION": "HD OL"
+        },
+        {
+          "CODIGO": 2342,
+          "DESCRIPCION": "PERIT"
+        },
+        {
+          "CODIGO": 2343,
+          "DESCRIPCION": "PERIT"
+        },
+        {
+          "CODIGO": 2356,
+          "DESCRIPCION": "PERIT"
+        },
+        {
+          "CODIGO": 2357,
+          "DESCRIPCION": "HD UCI"
+        }
+      ]
+    },
+    {
+      "numero": 9,
+      "variable": "DB10_DATABASE",
+      "database": "/NFS/restores/NF6_InfantaElena.gdb",
+      "resultado": [
+        {
+          "CODIGO": 1174,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 1696,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 1697,
+          "DESCRIPCION": "HD DOM"
+        },
+        {
+          "CODIGO": 1698,
+          "DESCRIPCION": "PERIT"
+        },
+        {
+          "CODIGO": 1699,
+          "DESCRIPCION": "PERIT"
+        },
+        {
+          "CODIGO": 1700,
+          "DESCRIPCION": "PERIT"
+        },
+        {
+          "CODIGO": 2339,
+          "DESCRIPCION": "HD OL"
+        },
+        {
+          "CODIGO": 2340,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 2341,
+          "DESCRIPCION": "HD OL"
+        },
+        {
+          "CODIGO": 2342,
+          "DESCRIPCION": "PERIT"
+        },
+        {
+          "CODIGO": 2343,
+          "DESCRIPCION": "PERIT"
+        },
+        {
+          "CODIGO": 2356,
+          "DESCRIPCION": "PERIT"
+        },
+        {
+          "CODIGO": 2357,
+          "DESCRIPCION": "PERIT"
+        }
+      ]
+    },
+    {
+      "numero": 10,
+      "variable": "DB11_DATABASE",
+      "database": "/NFS/restores/NF6_LasEncinas.gdb",
+      "resultado": [
+        {
+          "CODIGO": 1,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 2,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 3,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 4,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 5,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 6,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 7,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 11,
+          "DESCRIPCION": "HD OL"
+        },
+        {
+          "CODIGO": 13,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 14,
+          "DESCRIPCION": "HD OL"
+        }
+      ]
+    },
+    {
+      "numero": 11,
+      "variable": "DB13_DATABASE",
+      "database": "/NFS/restores/NF6_LosLlanos3.gdb",
+      "resultado": [
+        {
+          "CODIGO": 1,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 5,
+          "DESCRIPCION": "HD OL"
+        },
+        {
+          "CODIGO": 9,
+          "DESCRIPCION": "HD OL"
+        },
+        {
+          "CODIGO": 6,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 10,
+          "DESCRIPCION": "HD OL"
+        },
+        {
+          "CODIGO": 11,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 50,
+          "DESCRIPCION": "HD EXTENDIDA"
+        }
+      ]
+    },
+    {
+      "numero": 12,
+      "variable": "DB14_DATABASE",
+      "database": "/NFS/restores/NF6_OsCarballos.gdb",
+      "resultado": [
+        {
+          "CODIGO": 1,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 2,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 3,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 4,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 5,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 6,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 7,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 11,
+          "DESCRIPCION": "HD OL"
+        },
+        {
+          "CODIGO": 13,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 14,
+          "DESCRIPCION": "HD OL"
+        }
+      ]
+    },
+    {
+      "numero": 13,
+      "variable": "DB15_DATABASE",
+      "database": "/NFS/restores/NF6_OsCarballosII.gdb",
+      "resultado": [
+        {
+          "CODIGO": 1,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 2,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 3,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 4,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 5,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 6,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 7,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 11,
+          "DESCRIPCION": "HD OL"
+        },
+        {
+          "CODIGO": 13,
+          "DESCRIPCION": "HD"
+        }
+      ]
+    },
+    {
+      "numero": 14,
+      "variable": "DB16_DATABASE",
+      "database": "/NFS/restores/NF6_Teixedal.gdb",
+      "resultado": [
+        {
+          "CODIGO": 1,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 2,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 3,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 4,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 5,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 6,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 7,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 11,
+          "DESCRIPCION": "HD OL"
+        },
+        {
+          "CODIGO": 13,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 14,
+          "DESCRIPCION": "HD OL"
+        },
+        {
+          "CODIGO": 15,
+          "DESCRIPCION": "HD"
+        }
+      ]
+    },
+    {
+      "numero": 15,
+      "variable": "DB17_DATABASE",
+      "database": "/NFS/restores/NF6_VILLALBA.gdb",
+      "resultado": [
+        {
+          "CODIGO": 1696,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 1697,
+          "DESCRIPCION": "HD DOM"
+        },
+        {
+          "CODIGO": 1698,
+          "DESCRIPCION": "PERIT"
+        },
+        {
+          "CODIGO": 1699,
+          "DESCRIPCION": "PERIT"
+        },
+        {
+          "CODIGO": 1700,
+          "DESCRIPCION": "PERIT"
+        },
+        {
+          "CODIGO": 2339,
+          "DESCRIPCION": "HD OL"
+        },
+        {
+          "CODIGO": 2340,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 2341,
+          "DESCRIPCION": "HD OL"
+        },
+        {
+          "CODIGO": 2342,
+          "DESCRIPCION": "PERIT"
+        },
+        {
+          "CODIGO": 2343,
+          "DESCRIPCION": "PERIT"
+        },
+        {
+          "CODIGO": 2356,
+          "DESCRIPCION": "PERIT"
+        }
+      ]
+    },
+    {
+      "numero": 16,
+      "variable": "DB18_DATABASE",
+      "database": "/NFS/restores/NF6_LosPinos.gdb",
+      "resultado": [
+        {
+          "CODIGO": 1,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 2,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 3,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 4,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 5,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 6,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 7,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 11,
+          "DESCRIPCION": "HD OL"
+        },
+        {
+          "CODIGO": 13,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 14,
+          "DESCRIPCION": "HD"
+        },
+        {
+          "CODIGO": 15,
+          "DESCRIPCION": "HD OL"
+        },
+        {
+          "CODIGO": 16,
+          "DESCRIPCION": "HD OL"
+        }
+      ]
+    }
+  ]
+
+
+
+
+

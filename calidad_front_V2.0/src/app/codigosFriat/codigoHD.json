@@ -1,0 +1,772 @@
+[
+    {
+      "numero": 1,
+      "variable": "DB1_DATABASE",
+      "database": "/NFS/restores/NF6_SantaEngracia.gdb",
+      "resultado": [
+        {
+          "CODIGO": 1174,
+          "DESCRIPCION": "HD centro concertado (sesion)"
+        },
+        {
+          "CODIGO": 10710,
+          "DESCRIPCION": "HD ONLINE Centro Concert."
+        }
+      ]
+    },
+    {
+      "numero": 2,
+      "variable": "DB2_DATABASE",
+      "database": "/NFS/restores/NF6_LosOlmos.gdb",
+      "resultado": [
+        {
+          "CODIGO": 1,
+          "DESCRIPCION": "HD Estandar"
+        },
+        {
+          "CODIGO": 2,
+          "DESCRIPCION": "HDF On-Line"
+        },
+        {
+          "CODIGO": 3,
+          "DESCRIPCION": "HD + UF seca"
+        },
+        {
+          "CODIGO": 4,
+          "DESCRIPCION": "HD de alto flujo"
+        },
+        {
+          "CODIGO": 5,
+          "DESCRIPCION": "HD de bajo flujo"
+        }
+      ]
+    },
+    {
+      "numero": 3,
+      "variable": "DB3_DATABASE",
+      "database": "/NFS/restores/NF6_LosLlanos.gdb",
+      "resultado": [
+        {
+          "CODIGO": 1,
+          "DESCRIPCION": "HD ESTANDAR"
+        },
+        {
+          "CODIGO": 5,
+          "DESCRIPCION": "HDF ON-LINE"
+        },
+        {
+          "CODIGO": 6,
+          "DESCRIPCION": "HD Alto Flujo "
+        },
+        {
+          "CODIGO": 9,
+          "DESCRIPCION": "HDF Post-Dilucion"
+        },
+        {
+          "CODIGO": 10,
+          "DESCRIPCION": "HDF Pre-Dilucion"
+        },
+        {
+          "CODIGO": 11,
+          "DESCRIPCION": "HD Bajo Flujo "
+        }
+      ]
+    },
+    {
+      "numero": 4,
+      "variable": "DB4_DATABASE",
+      "database": "/NFS/restores/NF6_ElCastanar.gdb",
+      "resultado": [
+        {
+          "CODIGO": 1,
+          "DESCRIPCION": "HD Estandar"
+        },
+        {
+          "CODIGO": 2,
+          "DESCRIPCION": "HD + UF"
+        },
+        {
+          "CODIGO": 3,
+          "DESCRIPCION": "UF + HD"
+        },
+        {
+          "CODIGO": 4,
+          "DESCRIPCION": "UF Aislada"
+        },
+        {
+          "CODIGO": 5,
+          "DESCRIPCION": "HD EXTRA"
+        },
+        {
+          "CODIGO": 7,
+          "DESCRIPCION": "HD SIN HEPARINA"
+        },
+        {
+          "CODIGO": 11,
+          "DESCRIPCION": "HDF HEMODIAFILTRACION postdilu"
+        },
+        {
+          "CODIGO": 13,
+          "DESCRIPCION": "OTROS TIPOS DE DIALISIS"
+        }
+      ]
+    },
+    {
+      "numero": 5,
+      "variable": "DB5_DATABASE",
+      "database": "/NFS/restores/NF6_Getafe.gdb",
+      "resultado": [
+        {
+          "CODIGO": 1,
+          "DESCRIPCION": "HD Estandar"
+        },
+        {
+          "CODIGO": 2,
+          "DESCRIPCION": "HD + UF"
+        },
+        {
+          "CODIGO": 3,
+          "DESCRIPCION": "UF + HD"
+        },
+        {
+          "CODIGO": 4,
+          "DESCRIPCION": "UF Aislada"
+        },
+        {
+          "CODIGO": 5,
+          "DESCRIPCION": "HD EXTRA"
+        },
+        {
+          "CODIGO": 6,
+          "DESCRIPCION": "HD SECUENCIAL"
+        },
+        {
+          "CODIGO": 7,
+          "DESCRIPCION": "HD SIN HEPARINA"
+        },
+        {
+          "CODIGO": 8,
+          "DESCRIPCION": "BIOFILTRACION BANO BICARBONATO"
+        },
+        {
+          "CODIGO": 9,
+          "DESCRIPCION": "BIOFILTRACION BANO ACETATO"
+        },
+        {
+          "CODIGO": 10,
+          "DESCRIPCION": "AFB HD SIN TAMPON"
+        },
+        {
+          "CODIGO": 11,
+          "DESCRIPCION": "HDF HEMODIAFILTRACION postdilu"
+        },
+        {
+          "CODIGO": 12,
+          "DESCRIPCION": "PFD PAIRED FILTRATION DIALYSIS"
+        },
+        {
+          "CODIGO": 13,
+          "DESCRIPCION": "OTROS TIPOS DE DIALISIS"
+        },
+        {
+          "CODIGO": 14,
+          "DESCRIPCION": "HDF HEMOFILTRACION predilucc"
+        }
+      ]
+    },
+    {
+      "numero": 6,
+      "variable": "DB6_DATABASE",
+      "database": "/NFS/restores/NF6_LosLauros.gdb",
+      "resultado": [
+        {
+          "CODIGO": 1,
+          "DESCRIPCION": "HD Estandar"
+        },
+        {
+          "CODIGO": 11,
+          "DESCRIPCION": "HDF HEMODIAFILTRACION postdilu"
+        }
+      ]
+    },
+    {
+      "numero": 7,
+      "variable": "DB8_DATABASE",
+      "database": "/NFS/restores/NF6_FJD.gdb",
+      "resultado": [
+        {
+          "CODIGO": 1696,
+          "DESCRIPCION": "HD Hospital sesion"
+        },
+        {
+          "CODIGO": 1697,
+          "DESCRIPCION": "HD Domiciliaria sesion"
+        },
+        {
+          "CODIGO": 1698,
+          "DESCRIPCION": "C.A.P.D. sesion  Domicilio"
+        },
+        {
+          "CODIGO": 1699,
+          "DESCRIPCION": "Peritoneal cicladora ses Dom"
+        },
+        {
+          "CODIGO": 1700,
+          "DESCRIPCION": "Perit c/cicl bajo vol ses Dom"
+        },
+        {
+          "CODIGO": 2339,
+          "DESCRIPCION": "HD OL Hospital sesion on line"
+        },
+        {
+          "CODIGO": 2340,
+          "DESCRIPCION": "HD ING Hospital sesion ing"
+        },
+        {
+          "CODIGO": 2341,
+          "DESCRIPCION": "HD OL ING Htal ses on line ing"
+        },
+        {
+          "CODIGO": 2342,
+          "DESCRIPCION": "C.A.P.D. ING sesion"
+        },
+        {
+          "CODIGO": 2343,
+          "DESCRIPCION": "Perit c/cicl bajo vol ING"
+        },
+        {
+          "CODIGO": 2356,
+          "DESCRIPCION": "Peritoneal c/cicladora ING"
+        },
+        {
+          "CODIGO": 2357,
+          "DESCRIPCION": "Peritoneal Poliglucosa Sup"
+        }
+      ]
+    },
+    {
+      "numero": 8,
+      "variable": "DB9_DATABASE",
+      "database": "/NFS/restores/NF6_HRJC.gdb",
+      "resultado": [
+        {
+          "CODIGO": 1696,
+          "DESCRIPCION": "HD Hospital sesion"
+        },
+        {
+          "CODIGO": 1697,
+          "DESCRIPCION": "HD.Domicilio con m�quina"
+        },
+        {
+          "CODIGO": 1698,
+          "DESCRIPCION": "C.A.P.D. sesion  Domicilio"
+        },
+        {
+          "CODIGO": 1699,
+          "DESCRIPCION": "Peritoneal cicladora ses Dom"
+        },
+        {
+          "CODIGO": 1700,
+          "DESCRIPCION": "Perit c/cicl bajo vol ses Dom"
+        },
+        {
+          "CODIGO": 2339,
+          "DESCRIPCION": "HD OL Hospital sesion on line"
+        },
+        {
+          "CODIGO": 2340,
+          "DESCRIPCION": "HD ING Hospital sesion ing"
+        },
+        {
+          "CODIGO": 2341,
+          "DESCRIPCION": "HD OL ING Htal ses on line ing"
+        },
+        {
+          "CODIGO": 2342,
+          "DESCRIPCION": "C.A.P.D. ING sesion"
+        },
+        {
+          "CODIGO": 2343,
+          "DESCRIPCION": "Perit c/cicl bajo vol ING"
+        },
+        {
+          "CODIGO": 2356,
+          "DESCRIPCION": "Peritoneal c/cicladora ING"
+        },
+        {
+          "CODIGO": 2357,
+          "DESCRIPCION": "HD UCI"
+        }
+      ]
+    },
+    {
+      "numero": 9,
+      "variable": "DB10_DATABASE",
+      "database": "/NFS/restores/NF6_InfantaElena.gdb",
+      "resultado": [
+        {
+          "CODIGO": 1174,
+          "DESCRIPCION": "HD Centro Concertado sesion"
+        },
+        {
+          "CODIGO": 1696,
+          "DESCRIPCION": "HD Hospital sesion"
+        },
+        {
+          "CODIGO": 1697,
+          "DESCRIPCION": "HD Domiciliaria sesion"
+        },
+        {
+          "CODIGO": 1698,
+          "DESCRIPCION": "C.A.P.D. sesion  Domicilio"
+        },
+        {
+          "CODIGO": 1699,
+          "DESCRIPCION": "Peritoneal cicladora ses Dom"
+        },
+        {
+          "CODIGO": 1700,
+          "DESCRIPCION": "Perit c/cicl bajo vol ses Dom"
+        },
+        {
+          "CODIGO": 2339,
+          "DESCRIPCION": "HD OL Hospital sesion on line"
+        },
+        {
+          "CODIGO": 2340,
+          "DESCRIPCION": "HD ING Hospital sesion ing"
+        },
+        {
+          "CODIGO": 2341,
+          "DESCRIPCION": "HD OL ING Htal ses on line ing"
+        },
+        {
+          "CODIGO": 2342,
+          "DESCRIPCION": "C.A.P.D. ING sesion"
+        },
+        {
+          "CODIGO": 2343,
+          "DESCRIPCION": "Perit c/cicl bajo vol ING"
+        },
+        {
+          "CODIGO": 2356,
+          "DESCRIPCION": "Peritoneal c/cicladora ING"
+        },
+        {
+          "CODIGO": 2357,
+          "DESCRIPCION": "Peritoneal Poliglucosa Sup"
+        }
+      ]
+    },
+    {
+      "numero": 10,
+      "variable": "DB11_DATABASE",
+      "database": "/NFS/restores/NF6_LasEncinas.gdb",
+      "resultado": [
+        {
+          "CODIGO": 1,
+          "DESCRIPCION": "HD Estandar"
+        },
+        {
+          "CODIGO": 2,
+          "DESCRIPCION": "HD + UF"
+        },
+        {
+          "CODIGO": 3,
+          "DESCRIPCION": "UF + HD"
+        },
+        {
+          "CODIGO": 4,
+          "DESCRIPCION": "UF Aislada"
+        },
+        {
+          "CODIGO": 5,
+          "DESCRIPCION": "HD EXTRA"
+        },
+        {
+          "CODIGO": 6,
+          "DESCRIPCION": "HD SECUENCIAL"
+        },
+        {
+          "CODIGO": 7,
+          "DESCRIPCION": "HD SIN HEPARINA"
+        },
+        {
+          "CODIGO": 8,
+          "DESCRIPCION": "BIOFILTRACION BANO BICARBONATO"
+        },
+        {
+          "CODIGO": 9,
+          "DESCRIPCION": "BIOFILTRACION BANO ACETATO"
+        },
+        {
+          "CODIGO": 10,
+          "DESCRIPCION": "AFB HD SIN TAMPON"
+        },
+        {
+          "CODIGO": 11,
+          "DESCRIPCION": "HDF HEMODIAFILTRACION Postdilu"
+        },
+        {
+          "CODIGO": 12,
+          "DESCRIPCION": "PFD PAIRED FILTRATION DIALYSIS"
+        },
+        {
+          "CODIGO": 13,
+          "DESCRIPCION": "OTROS TIPOS DE DIALISIS"
+        },
+        {
+          "CODIGO": 14,
+          "DESCRIPCION": "HDF Hemodiafiltraci�n pre-dil"
+        }
+      ]
+    },
+    {
+        "numero": 11,
+        "variable": "DB13_DATABASE",
+        "database": "/NFS/restores/NF6_LosLlanos3.gdb",
+        "resultado": [
+          {
+            "CODIGO": 1,
+            "DESCRIPCION": "HD ESTÁNDAR"
+          },
+          {
+            "CODIGO": 5,
+            "DESCRIPCION": "HDF ON-LINE"
+          },
+          {
+            "CODIGO": 9,
+            "DESCRIPCION": "HDF Post-Dilución"
+          },
+          {
+            "CODIGO": 6,
+            "DESCRIPCION": "HD Alto Flujo"
+          },
+          {
+            "CODIGO": 10,
+            "DESCRIPCION": "HDF Pre-Dilución"
+          },
+          {
+            "CODIGO": 11,
+            "DESCRIPCION": "HD Bajo Flujo"
+          },
+          {
+            "CODIGO": 50,
+            "DESCRIPCION": "HD Extendida"
+          }
+        ]
+      },
+      
+    {
+      "numero": 12,
+      "variable": "DB14_DATABASE",
+      "database": "/NFS/restores/NF6_OsCarballos.gdb",
+      "resultado": [
+        {
+          "CODIGO": 1,
+          "DESCRIPCION": "HD Estandar"
+        },
+        {
+          "CODIGO": 2,
+          "DESCRIPCION": "HD + UF"
+        },
+        {
+          "CODIGO": 3,
+          "DESCRIPCION": "UF + HD"
+        },
+        {
+          "CODIGO": 4,
+          "DESCRIPCION": "UF Aislada"
+        },
+        {
+          "CODIGO": 5,
+          "DESCRIPCION": "HD EXTRA"
+        },
+        {
+          "CODIGO": 6,
+          "DESCRIPCION": "HD SECUENCIAL"
+        },
+        {
+          "CODIGO": 7,
+          "DESCRIPCION": "HD SIN HEPARINA"
+        },
+        {
+          "CODIGO": 8,
+          "DESCRIPCION": "BIOFILTRACION BANO BICARBONATO"
+        },
+        {
+          "CODIGO": 9,
+          "DESCRIPCION": "BIOFILTRACION BANO ACETATO"
+        },
+        {
+          "CODIGO": 10,
+          "DESCRIPCION": "AFB HD SIN TAMPON"
+        },
+        {
+          "CODIGO": 11,
+          "DESCRIPCION": "HDF HEMODIAFILTRACION POSTDIL."
+        },
+        {
+          "CODIGO": 12,
+          "DESCRIPCION": "PFD PAIRED FILTRATION DIALYSIS"
+        },
+        {
+          "CODIGO": 13,
+          "DESCRIPCION": "OTROS TIPOS DE DIALISIS"
+        },
+        {
+          "CODIGO": 14,
+          "DESCRIPCION": "HDF HEMODIAFILTRACION PREDILUC"
+        }
+      ]
+    },
+    {
+      "numero": 13,
+      "variable": "DB15_DATABASE",
+      "database": "/NFS/restores/NF6_OsCarballosII.gdb",
+      "resultado": [
+        {
+          "CODIGO": 1,
+          "DESCRIPCION": "HD Estandar"
+        },
+        {
+          "CODIGO": 2,
+          "DESCRIPCION": "HD + UF"
+        },
+        {
+          "CODIGO": 3,
+          "DESCRIPCION": "UF + HD"
+        },
+        {
+          "CODIGO": 4,
+          "DESCRIPCION": "UF Aislada"
+        },
+        {
+          "CODIGO": 5,
+          "DESCRIPCION": "HD EXTRA"
+        },
+        {
+          "CODIGO": 6,
+          "DESCRIPCION": "HD SECUENCIAL"
+        },
+        {
+          "CODIGO": 7,
+          "DESCRIPCION": "HD SIN HEPARINA"
+        },
+        {
+          "CODIGO": 8,
+          "DESCRIPCION": "BIOFILTRACION BANO BICARBONATO"
+        },
+        {
+          "CODIGO": 9,
+          "DESCRIPCION": "BIOFILTRACION BANO ACETATO"
+        },
+        {
+          "CODIGO": 10,
+          "DESCRIPCION": "AFB HD SIN TAMPON"
+        },
+        {
+          "CODIGO": 11,
+          "DESCRIPCION": "HDF HEMODIAFILTRACION"
+        },
+        {
+          "CODIGO": 12,
+          "DESCRIPCION": "PFD PAIRED FILTRATION DIALYSIS"
+        },
+        {
+          "CODIGO": 13,
+          "DESCRIPCION": "OTROS TIPOS DE DIALISIS"
+        }
+      ]
+    },
+    {
+      "numero": 14,
+      "variable": "DB16_DATABASE",
+      "database": "/NFS/restores/NF6_Teixedal.gdb",
+      "resultado": [
+        {
+          "CODIGO": 1,
+          "DESCRIPCION": "HD Estandar ALTO FLUJO"
+        },
+        {
+          "CODIGO": 2,
+          "DESCRIPCION": "HD + UF"
+        },
+        {
+          "CODIGO": 3,
+          "DESCRIPCION": "UF + HD"
+        },
+        {
+          "CODIGO": 4,
+          "DESCRIPCION": "UF Aislada"
+        },
+        {
+          "CODIGO": 5,
+          "DESCRIPCION": "HD EXTRA"
+        },
+        {
+          "CODIGO": 6,
+          "DESCRIPCION": "HD SECUENCIAL"
+        },
+        {
+          "CODIGO": 7,
+          "DESCRIPCION": "HD SIN HEPARINA"
+        },
+        {
+          "CODIGO": 8,
+          "DESCRIPCION": "BIOFILTRACION BA�O BICARBONATO"
+        },
+        {
+          "CODIGO": 9,
+          "DESCRIPCION": "BIOFILTRACION BA�O ACETATO"
+        },
+        {
+          "CODIGO": 10,
+          "DESCRIPCION": "AFB HD SIN TAMPON"
+        },
+        {
+          "CODIGO": 11,
+          "DESCRIPCION": "HDF HEMODIAFILTRACION POST-DIL"
+        },
+        {
+          "CODIGO": 12,
+          "DESCRIPCION": "PFD PAIRED FILTRATION DIALYSIS"
+        },
+        {
+          "CODIGO": 13,
+          "DESCRIPCION": "OTROS TIPOS DE DIALISIS"
+        },
+        {
+          "CODIGO": 14,
+          "DESCRIPCION": "HDF HEMODIAFILTRACION PRE-DIL"
+        },
+        {
+          "CODIGO": 15,
+          "DESCRIPCION": "HD Estandar BAJO FLUJO"
+        }
+      ]
+    },
+    {
+      "numero": 15,
+      "variable": "DB17_DATABASE",
+      "database": "/NFS/restores/NF6_VILLALBA.gdb",
+      "resultado": [
+        {
+          "CODIGO": 1696,
+          "DESCRIPCION": "HD Hospital sesion"
+        },
+        {
+          "CODIGO": 1697,
+          "DESCRIPCION": "HD Domiciliaria sesion "
+        },
+        {
+          "CODIGO": 1698,
+          "DESCRIPCION": "C.A.P.D. sesion  Domicilio"
+        },
+        {
+          "CODIGO": 1699,
+          "DESCRIPCION": "Peritoneal cicladora ses Dom"
+        },
+        {
+          "CODIGO": 1700,
+          "DESCRIPCION": "Perit c/cicl bajo vol ses Dom"
+        },
+        {
+          "CODIGO": 2339,
+          "DESCRIPCION": "HD OL Hospital sesion on line"
+        },
+        {
+          "CODIGO": 2340,
+          "DESCRIPCION": "HD ING Hospital sesion ing"
+        },
+        {
+          "CODIGO": 2341,
+          "DESCRIPCION": "HD OL ING Htal ses on line ing"
+        },
+        {
+          "CODIGO": 2342,
+          "DESCRIPCION": "C.A.P.D. ING sesion"
+        },
+        {
+          "CODIGO": 2343,
+          "DESCRIPCION": "Perit c/cicl bajo vol ING"
+        },
+        {
+          "CODIGO": 2356,
+          "DESCRIPCION": "Peritoneal c/cicladora ING"
+        }
+      ]
+    },
+    {
+      "numero": 16,
+      "variable": "DB18_DATABASE",
+      "database": "/NFS/restores/NF6_LosPinos.gdb",
+      "resultado": [
+        {
+          "CODIGO": 1,
+          "DESCRIPCION": "HD Estandar"
+        },
+        {
+          "CODIGO": 2,
+          "DESCRIPCION": "HD + UF"
+        },
+        {
+          "CODIGO": 3,
+          "DESCRIPCION": "UF + HD"
+        },
+        {
+          "CODIGO": 4,
+          "DESCRIPCION": "UF Aislada"
+        },
+        {
+          "CODIGO": 5,
+          "DESCRIPCION": "HD EXTRA"
+        },
+        {
+          "CODIGO": 6,
+          "DESCRIPCION": "HD SECUENCIAL"
+        },
+        {
+          "CODIGO": 7,
+          "DESCRIPCION": "HD SIN HEPARINA"
+        },
+        {
+          "CODIGO": 8,
+          "DESCRIPCION": "BIOFILTRACION BA�O BICARBONATO"
+        },
+        {
+          "CODIGO": 9,
+          "DESCRIPCION": "BIOFILTRACION BA�O ACETATO"
+        },
+        {
+          "CODIGO": 10,
+          "DESCRIPCION": "AFB HD SIN TAMPON"
+        },
+        {
+          "CODIGO": 11,
+          "DESCRIPCION": "HDF HEMODIAFILTRACION"
+        },
+        {
+          "CODIGO": 12,
+          "DESCRIPCION": "PFD PAIRED FILTRATION DIALYSIS"
+        },
+        {
+          "CODIGO": 13,
+          "DESCRIPCION": "HD de ALTO  FLUJO"
+        },
+        {
+          "CODIGO": 14,
+          "DESCRIPCION": "HD estandar en UNIPUNCI�N"
+        },
+        {
+          "CODIGO": 15,
+          "DESCRIPCION": "HDF on line postdilucional"
+        },
+        {
+          "CODIGO": 16,
+          "DESCRIPCION": "HDF on line predilucional"
+        }
+      ]
+    }
+  ]
+  

@@ -11,20 +11,21 @@
     "id_code": "UGYUXMS8",
     "categoria": "Actividad Asistencial HD crónicos ",
     "indicador": "Nº total de sesiones  de HDF on line de crónicos  realizadas (  suma de todas las sesiones de HD desde el inicio del periodo hasta el final del periodo) ",
-    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM SESION s JOIN PACIENTES p ON p.NREGGEN = s.NREGGEN WHERE p.MODAL_TRAT = 'H' AND s.FECHA BETWEEN ':FECHAINI' AND ':FECHAFIN' AND s.TIPOHEMO IN (2339);"
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM SESION s JOIN PACIENTES p ON p.NREGGEN = s.NREGGEN WHERE p.MODAL_TRAT = 'H' AND s.FECHA BETWEEN ':FECHAINI' AND ':FECHAFIN' AND s.TIPOHEMO = 2;"
   },
 
   {
     "id_code": "BXZ15OPB",
     "categoria": "Actividad Asistencial HD crónicos ",
     "indicador": "Nº total de sesiones  de HDF convencional  de crónicos  realizadas (  suma de todas las sesiones de HD desde el inicio del periodo hasta el final del periodo) ",
-    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM SESION s JOIN PACIENTES p ON p.NREGGEN = s.NREGGEN WHERE p.ESTADO = 'A' -- solo pacientes activos (crónicos) AND p.DESPLAZADO = 0 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND s.TIPOHEMO = 1; -- HD convencional;"
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM SESION s JOIN PACIENTES p ON p.NREGGEN = s.NREGGEN WHERE p.MODAL_TRAT = 'H' AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND s.TIPOHEMO = 1; -- HD convencional"
+
   },
   {
     "id_code": "9AV891DU",
     "categoria": "Actividad Asistencial HD crónicos ",
     "indicador": "Nº total de sesiones  de HD expandida  de crónicos  realizadas (  suma de todas las sesiones de HD desde el inicio del periodo hasta el final del periodo) ",
-    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM SESION s JOIN PACIENTES p ON p.NREGGEN = s.NREGGEN WHERE p.ESTADO = 'A' -- solo pacientes activos/prevalentes AND p.MODAL_TRAT = 'H' -- hemodiálisis crónica AND p.DESPLAZADO = 0 AND s.FECHA BETWEEN ':FECHAINI' AND ':FECHAFIN' AND s.TIPOHEMO IN ( <CODIGOS_HD_EXPANDIDA> -- aquí los códigos que correspondan a HD expandida );"
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM SESION s JOIN PACIENTES p ON p.NREGGEN = s.NREGGEN WHERE p.MODAL_TRAT = 'H' AND s.FECHA BETWEEN ':FECHAINI' AND ':FECHAFIN' AND s.TIPOHEMO = 3;"
   },
   {
     "id_code": "YLVJ7PUD",
