@@ -1,6 +1,7 @@
 [
     {
       "numero": 1,
+      "notaGeneral":"'HD':'HEMODIALISIS','HD OL': 'ON LINE', 'HD DOM':'DOMICILIARIA', 'PERIT':'PERITONEAL' ",
       "variable": "DB1",
       "database": "/NFS/restores/NF6_SantaEngracia.gdb",
       "resultado": [
