@@ -1,7 +1,7 @@
 [
     {
       "numero": 1,
-      "notaGeneral":"'HD':'HEMODIALISIS','HD OL': 'ON LINE', 'HD DOM':'DOMICILIARIA', 'PERIT':'PERITONEAL' ",
+      "notaGeneral":"'HD':'HEMODIALISIS','HD OL': 'ON LINE', 'HD DOM':'DOMICILIARIA', 'PERIT':'PERITONEAL',  'HD EXTENDIDA':'EXPANDIDA' ",
       "variable": "DB1",
       "database": "/NFS/restores/NF6_SantaEngracia.gdb",
       "resultado": [
@@ -17,7 +17,7 @@
     },
     {
       "numero": 2,
-      "variable": "DB2_DATABASE",
+      "variable": "DB2",
       "database": "/NFS/restores/NF6_LosOlmos.gdb",
       "resultado": [
         {
@@ -44,7 +44,7 @@
     },
     {
       "numero": 3,
-      "variable": "DB3_DATABASE",
+      "variable": "DB3",
       "database": "/NFS/restores/NF6_LosLlanos.gdb",
       "resultado": [
         {
@@ -75,7 +75,7 @@
     },
     {
       "numero": 4,
-      "variable": "DB4_DATABASE",
+      "variable": "DB4",
       "database": "/NFS/restores/NF6_ElCastanar.gdb",
       "resultado": [
         {
@@ -114,7 +114,7 @@
     },
     {
       "numero": 5,
-      "variable": "DB5_DATABASE",
+      "variable": "DB5",
       "database": "/NFS/restores/NF6_Getafe.gdb",
       "resultado": [
         {
@@ -161,7 +161,7 @@
     },
     {
       "numero": 6,
-      "variable": "DB6_DATABASE",
+      "variable": "DB6",
       "database": "/NFS/restores/NF6_LosLauros.gdb",
       "resultado": [
         {
@@ -176,7 +176,7 @@
     },
     {
       "numero": 7,
-      "variable": "DB8_DATABASE",
+      "variable": "DB8",
       "database": "/NFS/restores/NF6_FJD.gdb",
       "resultado": [
         {
@@ -231,7 +231,7 @@
     },
     {
       "numero": 8,
-      "variable": "DB9_DATABASE",
+      "variable": "DB9",
       "database": "/NFS/restores/NF6_HRJC.gdb",
       "resultado": [
         {
@@ -281,12 +281,16 @@
         {
           "CODIGO": 2357,
           "DESCRIPCION": "HD UCI"
+        },
+        {
+          "CODIGO": 2357,
+          "DESCRIPCION": "HD"
         }
       ]
     },
     {
       "numero": 9,
-      "variable": "DB10_DATABASE",
+      "variable": "DB10",
       "database": "/NFS/restores/NF6_InfantaElena.gdb",
       "resultado": [
         {
@@ -345,7 +349,7 @@
     },
     {
       "numero": 10,
-      "variable": "DB11_DATABASE",
+      "variable": "DB11",
       "database": "/NFS/restores/NF6_LasEncinas.gdb",
       "resultado": [
         {
@@ -392,7 +396,7 @@
     },
     {
       "numero": 11,
-      "variable": "DB13_DATABASE",
+      "variable": "DB13",
       "database": "/NFS/restores/NF6_LosLlanos3.gdb",
       "resultado": [
         {
@@ -427,7 +431,7 @@
     },
     {
       "numero": 12,
-      "variable": "DB14_DATABASE",
+      "variable": "DB14",
       "database": "/NFS/restores/NF6_OsCarballos.gdb",
       "resultado": [
         {
@@ -474,7 +478,7 @@
     },
     {
       "numero": 13,
-      "variable": "DB15_DATABASE",
+      "variable": "DB15",
       "database": "/NFS/restores/NF6_OsCarballosII.gdb",
       "resultado": [
         {
@@ -517,7 +521,7 @@
     },
     {
       "numero": 14,
-      "variable": "DB16_DATABASE",
+      "variable": "DB16",
       "database": "/NFS/restores/NF6_Teixedal.gdb",
       "resultado": [
         {
@@ -568,7 +572,7 @@
     },
     {
       "numero": 15,
-      "variable": "DB17_DATABASE",
+      "variable": "DB17",
       "database": "/NFS/restores/NF6_VILLALBA.gdb",
       "resultado": [
         {
@@ -619,7 +623,7 @@
     },
     {
       "numero": 16,
-      "variable": "DB18_DATABASE",
+      "variable": "DB18",
       "database": "/NFS/restores/NF6_LosPinos.gdb",
       "resultado": [
         {
