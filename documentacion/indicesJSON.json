@@ -9,7 +9,7 @@
     "id_code": "UGYUXMS8",
     "categoria": "Actividad Asistencial HD crónicos ",
     "indicador": "Nº total de sesiones  de HDF on line de crónicos  realizadas (  suma de todas las sesiones de HD desde el inicio del periodo hasta el final del periodo) ",
-    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM SESION s JOIN PACIENTES p ON p.NREGGEN = s.NREGGEN WHERE p.MODAL_TRAT = 'H' AND s.FECHA BETWEEN ':FECHAINI' AND ':FECHAFIN' AND s.TIPOHEMO = 2;"
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM SESION s JOIN PACIENTES p ON p.NREGGEN = s.NREGGEN WHERE p.MODAL_TRAT = 'H' AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND s.TIPOHEMO = 2;"
   },
   {
     "id_code": "BXZ15OPB",
@@ -21,13 +21,13 @@
     "id_code": "9AV891DU",
     "categoria": "Actividad Asistencial HD crónicos ",
     "indicador": "Nº total de sesiones  de HD expandida  de crónicos  realizadas (  suma de todas las sesiones de HD desde el inicio del periodo hasta el final del periodo) ",
-    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM SESION s JOIN PACIENTES p ON p.NREGGEN = s.NREGGEN WHERE p.MODAL_TRAT = 'H' AND s.FECHA BETWEEN ':FECHAINI' AND ':FECHAFIN' AND s.TIPOHEMO = 3;"
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM SESION s JOIN PACIENTES p ON p.NREGGEN = s.NREGGEN WHERE p.MODAL_TRAT = 'H' AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND s.TIPOHEMO = 3;"
   },
   {
     "id_code": "YLVJ7PUD",
     "categoria": "Actividad Asistencial HD crónicos ",
     "indicador": "Nº de pacientes de HD de crónicos  prevalentes de periodo =dializados a lo largo del periodo  ( suma de todos los pacientes desde el inicio del periodo hasta el final del periodo) ",
-    "template": "SELECT COUNT(DISTINCT p.NREGGEN) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p JOIN SESION s ON p.NREGGEN = s.NREGGEN WHERE p.ESTADO = 'A' -- solo pacientes activos/prevalentes AND p.MODAL_TRAT = 'H' -- hemodiálisis AND COALESCE(p.DESPLAZADO, 0) = 0 -- eliminar desplazados AND s.FECHA BETWEEN ':FECHAINI' AND ':FECHAFIN';"
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p JOIN SESION s ON p.NREGGEN = s.NREGGEN WHERE p.ESTADO = 'A' -- solo pacientes activos/prevalentes AND p.MODAL_TRAT = 'H' -- hemodiálisis AND COALESCE(p.DESPLAZADO, 0) = 0 -- eliminar desplazados AND s.FECHA BETWEEN ':FECHAINI' AND ':FECHAFIN';"
   },
   {
     "id_code": "568BL7OH",
@@ -39,49 +39,49 @@
     "id_code": "DPRRPAB3",
     "categoria": "Actividad Asistencial HD crónicos ",
     "indicador": "Nº de pacientes de HD de crónicos  incidentes a lo largo  del periodo ( suma de todos los pacientes desde el inicio del periodo hasta el final del periodo) ",
-    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT NREGGEN) AS numero_pacientes FROM PACIENTES WHERE ESTADO = 'A' AND MODAL_TRAT = 'H' AND COALESCE(DESPLAZADO, 0) = 0 AND FECH_INICIO_CENTRO BETWEEN ':FECHAINI' AND ':FECHAFIN';"
+    "template": "SELECT COUNT(*) AS resultado, COUNT(*) AS numero_pacientes FROM PACIENTES p WHERE p.ESTADO = 'A' -- solo pacientes activos AND p.MODAL_TRAT = 'H' -- hemodiálisis AND p.DESPLAZADO = 0 -- excluir desplazados AND p.FECH_INI_HEMO BETWEEN ':FECHAINI' AND ':FECHAFIN';"
   },
   {
     "id_code": "L2KRFUEQ",
-    "categoria": "Actividad HD crónicos",
-    "indicador": "Nº de bajas de HD crónicos (trasplante, fallecimiento, otros)",
-    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM INCIDENCIAS i JOIN PACIENTES p ON p.NREGGEN = i.NREGGEN WHERE p.ESTADO = 'A' AND p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND i.FECHAINI BETWEEN :FECHAINI AND :FECHAFIN AND i.CAUSABAJA IN ('P','E','R','M','T','N');"
+    "categoria": "Actividad Asistencial HD crónicos ",
+    "indicador": "Nº de bajas  de HD de crónicos (trasplante, fallecimiento, otros) (  suma de todos los pacientes desde el inicio del periodo hasta el final del periodo) ",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM INCIDENCIAS i JOIN PACIENTES p ON p.NREGGEN = i.NREGGEN WHERE p.ESTADO = 'A' -- solo pacientes activos/prevalentes AND p.MODAL_TRAT = 'H' -- pacientes en hemodiálisis AND p.DESPLAZADO = 0 -- excluir desplazados AND i.FECHAINI BETWEEN ':FECHAINI' AND ':FECHAFIN' AND i.CAUSABAJA IN ('P','E','R','M','T','N'); -- trasplante, exitus, otros;"
   },
   {
     "id_code": "NCENQQAN",
-    "categoria": "Actividad HD crónicos",
-    "indicador": "Nº de trasplantes de HD crónicos",
-    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p WHERE p.ESTADO = 'A' AND p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND p.FECHATRAS BETWEEN :FECHAINI AND :FECHAFIN;"
+    "categoria": "Actividad Asistencial HD crónicos ",
+    "indicador": "Nº de trasplantes de HD de crónicos (  suma de todos los pacientes desde el inicio del periodo hasta el final del periodo) ",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p WHERE p.ESTADO = 'A' -- solo activos/prevalentes AND p.MODAL_TRAT = 'H' -- hemodiálisis AND p.DESPLAZADO = 0 -- eliminar desplazados AND p.FECHATRAS BETWEEN ':FECHAINI' AND ':FECHAFIN';"
   },
   {
     "id_code": "5OBGMVDT",
-    "categoria": "Actividad HD crónicos",
-    "indicador": "Nº de fallecimientos de HD crónicos",
-    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM FALLECIMIENTOS f JOIN PACIENTES p ON p.NREGGEN = f.NREGGEN WHERE p.ESTADO = 'A' AND p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND f.FECHA BETWEEN :FECHAINI AND :FECHAFIN;"
+    "categoria": "Actividad Asistencial HD crónicos ",
+    "indicador": "Nº de fallecimientos  de HD de crónicos ( suma de todos los pacientes desde el inicio del periodo hasta el final del periodo) ",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM FALLECIMIENTOS f JOIN PACIENTES p ON p.NREGGEN = f.NREGGEN WHERE p.ESTADO = 'A' -- solo pacientes activos/prevalentes AND p.MODAL_TRAT = 'H' -- Hemodiálisis AND p.DESPLAZADO = 0 -- excluir desplazados AND f.FECHA BETWEEN ':FECHAINI' AND ':FECHAFIN';"
   },
   {
     "id_code": "GJ16QLH1",
-    "categoria": "Actividad HD crónicos",
-    "indicador": "Nº de traslados de HD crónicos a otros centros / hospitales",
-    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM INCIDENCIAS i JOIN PACIENTES p ON p.NREGGEN = i.NREGGEN WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND i.CAUSABAJA = 'T' AND i.FECHAINI BETWEEN :FECHAINI AND :FECHAFIN;"
+    "categoria": "Actividad Asistencial HD crónicos ",
+    "indicador": "Nº de traslados de HD de crónicos a otros centros u hospitales  ( suma de todos los pacientes desde el inicio del periodo hasta el final del periodo) ",
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM INCIDENCIAS i JOIN PACIENTES p ON p.NREGGEN = i.NREGGEN WHERE p.MODAL_TRAT = 'H' AND p.DESPLAZADO = 0 AND i.CAUSABAJA = 'T' AND i.FECHAINI >= DATE '2023-01-01' AND i.FECHAINI < DATE '2024-01-01';"
   },
   {
     "id_code": "21G4J64P",
     "categoria": "Actividad Asistencial HD crónicos ",
     "indicador": "Nº de pacientes de HD de crónicos  prevalentes de periodo con menos de 3 sesiones semanal ( incremental)",
-    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM SESION s JOIN PACIENTES p ON p.NREGGEN = s.NREGGEN WHERE p.MODAL_TRAT = 'H' AND p.DESPLAZADO = 0 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN GROUP BY s.NREGGEN, EXTRACT(YEAR FROM s.FECHA), EXTRACT(WEEK FROM s.FECHA) HAVING COUNT(s.NSESION) < 3;"
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT NREGGEN) AS numero_pacientes FROM ( SELECT p.NREGGEN, EXTRACT(YEAR FROM s.FECHA) AS ANIO, EXTRACT(WEEK FROM s.FECHA) AS SEMANA, COUNT(s.NSESION) AS sesiones_semana FROM SESION s JOIN PACIENTES p ON p.NREGGEN = s.NREGGEN WHERE p.ESTADO = 'A' AND p.MODAL_TRAT = 'H' AND p.DESPLAZADO = 0 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN GROUP BY p.NREGGEN, EXTRACT(YEAR FROM s.FECHA), EXTRACT(WEEK FROM s.FECHA) HAVING COUNT(s.NSESION) < 3 ) x;"
   },
   {
     "id_code": "EW3DJIQ2",
     "categoria": "Actividad Asistencial HD crónicos ",
     "indicador": "Nº de pacientes de HD de crónicos  prevalentes de periodo con mas de 3 sesiones semanal ( diaria o 4)",
-    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p JOIN SESION s ON p.NREGGEN = s.NREGGEN WHERE p.MODAL_TRAT = 'H' AND p.DESPLAZADO = 0 AND s.FECHA >= :FECHAINI AND s.FECHA < :FECHAFIN GROUP BY p.NREGGEN HAVING (COUNT(DISTINCT EXTRACT(WEEK FROM s.FECHA) || '-' || s.NREGGEN) / COUNT(DISTINCT EXTRACT(WEEK FROM s.FECHA))) > 3;"
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT NREGGEN) AS numero_pacientes FROM ( SELECT p.NREGGEN, EXTRACT(YEAR FROM s.FECHA) AS ANIO, EXTRACT(WEEK FROM s.FECHA) AS SEMANA, COUNT(s.NSESION) AS sesiones_semana FROM SESION s JOIN PACIENTES p ON p.NREGGEN = s.NREGGEN WHERE p.ESTADO = 'A' AND p.MODAL_TRAT = 'H' AND p.DESPLAZADO = 0 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN GROUP BY p.NREGGEN, EXTRACT(YEAR FROM s.FECHA), EXTRACT(WEEK FROM s.FECHA) HAVING COUNT(s.NSESION) > 3 ) x;"
   },
   {
     "id_code": "2UFVQS6V",
     "categoria": "Actividad Asistencial HD crónicos ",
     "indicador": "Nº de pacientes de HD de crónicos  prevalentes de periodo con 3 sesiones semanal ",
-    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p JOIN SESION s ON s.NREGGEN = p.NREGGEN WHERE p.MODAL_TRAT = 'H' AND p.DESPLAZADO = 0 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN GROUP BY p.NREGGEN, EXTRACT(YEAR FROM s.FECHA), EXTRACT(WEEK FROM s.FECHA) HAVING COUNT(DISTINCT s.NSESION) >= 3;"
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT NREGGEN) AS numero_pacientes FROM ( SELECT p.NREGGEN, EXTRACT(YEAR FROM s.FECHA) AS ANIO, EXTRACT(WEEK FROM s.FECHA) AS SEMANA, COUNT(s.NSESION) AS sesiones_semana FROM SESION s JOIN PACIENTES p ON p.NREGGEN = s.NREGGEN WHERE p.ESTADO = 'A' AND p.MODAL_TRAT = 'H' AND p.DESPLAZADO = 0 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN GROUP BY p.NREGGEN, EXTRACT(YEAR FROM s.FECHA), EXTRACT(WEEK FROM s.FECHA) HAVING COUNT(s.NSESION) = 3 ) x;"
   },
   {
     "id_code": "E5X6QMGB",
