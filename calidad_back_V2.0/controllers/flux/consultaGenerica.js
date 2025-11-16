@@ -141,21 +141,38 @@ async function consultaGenerica(intervalo, dataBase, consulta) {
     const [iniRaw, finRaw] = Array.isArray(intervalo) ? intervalo : [intervalo?.[0], intervalo?.[1]];
     const FECHAINI = toISO(iniRaw);
     const FECHAFIN = toISO(finRaw);
+    
+    // Partimos de la plantilla que viene de indicesJSON.json
+    let queryFinalSinTipoHemo = consulta || '';
+    
+    // Solo si tenemos fechas, hacemos los reemplazos
+    if (FECHAINI) {
+      queryFinalSinTipoHemo = queryFinalSinTipoHemo
+        // Caso: ':FECHAINI'
+        .replace(/':FECHAINI'/gi, `'${FECHAINI}'`)
+        // Caso: :FECHAINI
+        .replace(/:FECHAINI\b/gi, `'${FECHAINI}'`)
+      
+    }
+    
+    if (FECHAFIN) {
+      queryFinalSinTipoHemo = queryFinalSinTipoHemo
+        // Caso: ':FECHAFIN'
+        .replace(/':FECHAFIN'/gi, `'${FECHAFIN}'`)
+        // Caso: :FECHAFIN
+        .replace(/:FECHAFIN\b/gi, `'${FECHAFIN}'`)
+        // Caso: FECHAFIN “a pelo”
+      
+    }
+    
+    console.log("🔍 Query ORIGINAL (plantilla):", consulta);
+    console.log("📅 Parámetros de fecha:", { FECHAINI, FECHAFIN });
+    console.log("🧾 Query con fechas aplicada:", queryFinalSinTipoHemo);
+    
 
-    // Procesar placeholders de la plantilla
-    let queryProcesada = consulta;
+ 
 
-    // Reemplazar parámetros de fecha - manejar todos los formatos posibles
-    const queryBase = queryProcesada
-      .replace(/':FECHAINI'/gi, `'${FECHAINI}'`)      // ':FECHAINI' -> '2025-07-31'
-      .replace(/':FECHAFIN'/gi, `'${FECHAFIN}'`)      // ':FECHAFIN' -> '2025-10-02'
-      .replace(/:FECHAINI/gi, `'${FECHAINI}'`)        // :FECHAINI -> '2025-07-31'
-      .replace(/:FECHAFIN/gi, `'${FECHAFIN}'`)        // :FECHAFIN -> '2025-10-02'
-      .replace(/\bFECHAINI\b/gi, `'${FECHAINI}'`)     // FECHAINI -> '2025-07-31'
-      .replace(/\bFECHAFIN\b/gi, `'${FECHAFIN}'`);    // FECHAFIN -> '2025-10-02'
 
-    console.log('🔍 Query original:', consulta);
-    console.log('🔧 Query con fechas:', queryBase);
 
     // Ejecutar consultas de forma secuencial y consolidar
     const resultadosTotales = [];
@@ -163,10 +180,13 @@ async function consultaGenerica(intervalo, dataBase, consulta) {
     for (const config of basesDatos) {
       try {
         // Para cada base, adaptar los TIPOHEMO según codigosHD.json
-        const queryFinal = aplicarTipoHemoPorBase(queryBase, config);
-
-        const result = await consultarBasesDeDatos(config, queryFinal);
+   // En el bucle for (const config of basesDatos)
+   const queryFinal = aplicarTipoHemoPorBase(queryFinalSinTipoHemo, config);
+   console.log("QUERYFINAL " + queryFinal);
+   const result = await consultarBasesDeDatos(config, queryFinal);  
         console.log(`🔍 Resultado de ${config.database}:`, JSON.stringify(result, null, 2));
+      
+        
 
         if (result && result.length > 0) {
           // Mapear dinámicamente las columnas - buscar diferentes variantes
