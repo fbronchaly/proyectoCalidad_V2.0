@@ -27,7 +27,7 @@
     "id_code": "YLVJ7PUD",
     "categoria": "Actividad Asistencial HD crónicos ",
     "indicador": "Nº de pacientes de HD de crónicos  prevalentes de periodo =dializados a lo largo del periodo  ( suma de todos los pacientes desde el inicio del periodo hasta el final del periodo) ",
-    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p JOIN SESION s ON p.NREGGEN = s.NREGGEN WHERE p.ESTADO = 'A' -- solo pacientes activos/prevalentes AND p.MODAL_TRAT = 'H' -- hemodiálisis AND COALESCE(p.DESPLAZADO, 0) = 0 -- eliminar desplazados AND s.FECHA BETWEEN ':FECHAINI' AND ':FECHAFIN';"
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p JOIN SESION s ON p.NREGGEN = s.NREGGEN WHERE p.ESTADO = 'A' -- solo pacientes activos/prevalentes AND p.MODAL_TRAT = 'H' -- hemodiálisis AND COALESCE(p.DESPLAZADO, 0) = 0 -- eliminar desplazados AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN;"
   },
   {
     "id_code": "568BL7OH",
@@ -39,31 +39,31 @@
     "id_code": "DPRRPAB3",
     "categoria": "Actividad Asistencial HD crónicos ",
     "indicador": "Nº de pacientes de HD de crónicos  incidentes a lo largo  del periodo ( suma de todos los pacientes desde el inicio del periodo hasta el final del periodo) ",
-    "template": "SELECT COUNT(*) AS resultado, COUNT(*) AS numero_pacientes FROM PACIENTES p WHERE p.ESTADO = 'A' -- solo pacientes activos AND p.MODAL_TRAT = 'H' -- hemodiálisis AND p.DESPLAZADO = 0 -- excluir desplazados AND p.FECH_INI_HEMO BETWEEN ':FECHAINI' AND ':FECHAFIN';"
+    "template": "SELECT COUNT(*) AS resultado, COUNT(*) AS numero_pacientes FROM PACIENTES p WHERE p.ESTADO = 'A' -- solo pacientes activos AND p.MODAL_TRAT = 'H' -- hemodiálisis AND p.DESPLAZADO = 0 -- excluir desplazados AND p.FECH_INI_HEMO BETWEEN :FECHAINI AND :FECHAFIN;"
   },
   {
     "id_code": "L2KRFUEQ",
     "categoria": "Actividad Asistencial HD crónicos ",
     "indicador": "Nº de bajas  de HD de crónicos (trasplante, fallecimiento, otros) (  suma de todos los pacientes desde el inicio del periodo hasta el final del periodo) ",
-    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM INCIDENCIAS i JOIN PACIENTES p ON p.NREGGEN = i.NREGGEN WHERE p.ESTADO = 'A' -- solo pacientes activos/prevalentes AND p.MODAL_TRAT = 'H' -- pacientes en hemodiálisis AND p.DESPLAZADO = 0 -- excluir desplazados AND i.FECHAINI BETWEEN ':FECHAINI' AND ':FECHAFIN' AND i.CAUSABAJA IN ('P','E','R','M','T','N'); -- trasplante, exitus, otros;"
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT i.NREGGEN) AS numero_pacientes FROM INCIDENCIAS i JOIN PACIENTES p ON p.NREGGEN = i.NREGGEN WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO,0) = 0 AND i.FECHAINI BETWEEN :FECHAINI AND :FECHAFIN AND i.CAUSABAJA IN ('P','E','R','M','T','N');"
   },
   {
     "id_code": "NCENQQAN",
     "categoria": "Actividad Asistencial HD crónicos ",
     "indicador": "Nº de trasplantes de HD de crónicos (  suma de todos los pacientes desde el inicio del periodo hasta el final del periodo) ",
-    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p WHERE p.ESTADO = 'A' -- solo activos/prevalentes AND p.MODAL_TRAT = 'H' -- hemodiálisis AND p.DESPLAZADO = 0 -- eliminar desplazados AND p.FECHATRAS BETWEEN ':FECHAINI' AND ':FECHAFIN';"
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT i.NREGGEN) AS numero_pacientes FROM INCIDENCIAS i JOIN PACIENTES p ON p.NREGGEN = i.NREGGEN WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO,0) = 0 AND i.FECHAINI BETWEEN :FECHAINI AND :FECHAFIN AND i.CAUSABAJA = 'P';"
   },
   {
     "id_code": "5OBGMVDT",
     "categoria": "Actividad Asistencial HD crónicos ",
     "indicador": "Nº de fallecimientos  de HD de crónicos ( suma de todos los pacientes desde el inicio del periodo hasta el final del periodo) ",
-    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM FALLECIMIENTOS f JOIN PACIENTES p ON p.NREGGEN = f.NREGGEN WHERE p.ESTADO = 'A' -- solo pacientes activos/prevalentes AND p.MODAL_TRAT = 'H' -- Hemodiálisis AND p.DESPLAZADO = 0 -- excluir desplazados AND f.FECHA BETWEEN ':FECHAINI' AND ':FECHAFIN';"
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT i.NREGGEN) AS numero_pacientes FROM INCIDENCIAS i JOIN PACIENTES p ON p.NREGGEN = i.NREGGEN WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO,0) = 0 AND i.FECHAINI BETWEEN :FECHAINI AND :FECHAFIN AND i.CAUSABAJA = 'E';"
   },
   {
     "id_code": "GJ16QLH1",
     "categoria": "Actividad Asistencial HD crónicos ",
     "indicador": "Nº de traslados de HD de crónicos a otros centros u hospitales  ( suma de todos los pacientes desde el inicio del periodo hasta el final del periodo) ",
-    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM INCIDENCIAS i JOIN PACIENTES p ON p.NREGGEN = i.NREGGEN WHERE p.MODAL_TRAT = 'H' AND p.DESPLAZADO = 0 AND i.CAUSABAJA = 'T' AND i.FECHAINI >= DATE '2023-01-01' AND i.FECHAINI < DATE '2024-01-01';"
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT i.NREGGEN) AS numero_pacientes FROM INCIDENCIAS i JOIN PACIENTES p ON p.NREGGEN = i.NREGGEN WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO,0) = 0 AND i.FECHAINI BETWEEN :FECHAINI AND :FECHAFIN AND i.CAUSABAJA = 'T';"
   },
   {
     "id_code": "21G4J64P",
