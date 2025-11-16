@@ -33,7 +33,7 @@ async function consultaGenerica(intervalo, dataBase, consulta) {
     // Reemplazar parámetros de fecha - manejar todos los formatos posibles
     const queryFinal = queryProcesada
       .replace(/':FECHAINI'/gi, `'${FECHAINI}'`)      // ':FECHAINI' -> '2025-07-31'
-      .replace(/':FECHAFIN'/gi, `'${FECHAFIN}'`)      // ':FECHAFIN' -> '2025-10-02'
+      .replace(/:FECHAINI/gi, `'${FECHAFIN}'`)      // :FECHAINI -> '2025-10-02'
       .replace(/:FECHAINI/gi, `'${FECHAINI}'`)        // :FECHAINI -> '2025-07-31'
       .replace(/:FECHAFIN/gi, `'${FECHAFIN}'`)        // :FECHAFIN -> '2025-10-02'
       .replace(/\bFECHAINI\b/gi, `'${FECHAINI}'`)     // FECHAINI -> '2025-07-31'

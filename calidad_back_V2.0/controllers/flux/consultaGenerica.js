@@ -157,8 +157,8 @@ async function consultaGenerica(intervalo, dataBase, consulta) {
     
     if (FECHAFIN) {
       queryFinalSinTipoHemo = queryFinalSinTipoHemo
-        // Caso: ':FECHAFIN'
-        .replace(/':FECHAFIN'/gi, `'${FECHAFIN}'`)
+        // Caso: :FECHAINI
+        .replace(/:FECHAINI/gi, `'${FECHAFIN}'`)
         // Caso: :FECHAFIN
         .replace(/:FECHAFIN\b/gi, `'${FECHAFIN}'`)
         // Caso: FECHAFIN “a pelo”
