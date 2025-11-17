@@ -3,8 +3,8 @@ const fs = require('fs/promises');
 const path = require('path');
 const consultaGenerica = require('./consultaGenerica'); // mantiene tu firma existente
 
-// Ruta corregida al JSON de índices (documentacion sin tilde)
-const RUTA_INDICES = path.resolve(__dirname, '../../../documentacion/indicesJSON.json');
+// Ruta actualizada al JSON de índices (ahora dentro del backend)
+const RUTA_INDICES = path.resolve(__dirname, '../../documentacion/indicesJSON.json');
 
 /**
  * Carga el catálogo de índices y crea un mapa por id_code.
@@ -147,7 +147,16 @@ const comienzoFlujo = async (fechaInicio, fechaFin, baseDatos, indices, onProgre
     }
 
     avanza('Proceso completado.');
-    console.log('🎯 Salida final completa:', JSON.stringify(salida, null, 2));
+    console.log(`🎯 Proceso completado exitosamente. ${salida.length} indicadores procesados.`);
+    // Logging detallado solo en desarrollo
+    if (process.env.NODE_ENV === 'development') {
+      console.log('📊 Resumen de resultados:', salida.map(s => ({
+        id: s.id_code,
+        categoria: s.categoria,
+        resultado: s.totales?.resultado || 0,
+        pacientes: s.totales?.numero_pacientes || 0
+      })));
+    }
     return salida;
   } catch (err) {
     console.error('⛔ Error en comienzoFlujo:', err);

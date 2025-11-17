@@ -298,8 +298,8 @@
               <p><strong>ID:</strong> {{ indicador.id_code }}</p>
               <p><strong>Período:</strong> 
                 <span *ngIf="indicador.intervalo?.fechaInicio && indicador.intervalo?.fechaFin">
-                  {{ indicador.intervalo.fechaInicio | date:'dd/MM/yyyy' }} - 
-                  {{ indicador.intervalo.fechaFin | date:'dd/MM/yyyy' }}
+                  {{ formatDate(indicador.intervalo.fechaInicio) }} - 
+                  {{ formatDate(indicador.intervalo.fechaFin) }}
                 </span>
                 <span *ngIf="!indicador.intervalo?.fechaInicio || !indicador.intervalo?.fechaFin">
                   Sin período definido
@@ -309,11 +309,11 @@
               <div class="totals-summary" *ngIf="indicador.totales">
                 <div class="total-item">
                   <span class="total-label">Total Resultado:</span>
-                  <span class="total-value">{{ (indicador.totales.resultado ?? 0) | number:'1.2-2' }}</span>
+                  <span class="total-value">{{ formatNumber(indicador.totales.resultado, 2) }}</span>
                 </div>
                 <div class="total-item">
                   <span class="total-label">Total Pacientes:</span>
-                  <span class="total-value">{{ (indicador.totales.numero_pacientes ?? 0) | number }}</span>
+                  <span class="total-value">{{ formatInteger(indicador.totales.numero_pacientes) }}</span>
                 </div>
               </div>
 
@@ -322,8 +322,8 @@
                 <div class="db-result" *ngFor="let resultado of indicador.resultados">
                   <div class="db-name">{{ resultado.baseData }}</div>
                   <div class="db-values">
-                    <span class="db-result-value">{{ (resultado.resultado ?? 0) | number:'1.2-2' }}</span>
-                    <span class="db-patients">{{ (resultado.numeroDePacientes ?? 0) | number }} pacientes</span>
+                    <span class="db-result-value">{{ formatNumber(resultado.resultado, 2) }}</span>
+                    <span class="db-patients">{{ formatInteger(resultado.numeroDePacientes) }} pacientes</span>
                   </div>
                 </div>
               </div>

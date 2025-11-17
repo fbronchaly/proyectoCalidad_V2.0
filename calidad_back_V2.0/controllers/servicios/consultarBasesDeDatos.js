@@ -3,30 +3,30 @@
 const Firebird = require('node-firebird');
 
 /**
+ * Envía mensaje de error al proceso padre (worker -> index.js)
+ */
+function emitirError(mensaje) {
+  if (typeof process !== 'undefined' && typeof process.send === 'function') {
+    try {
+      process.send({ progreso: 0, mensaje });
+    } catch (e) {
+      // Si el canal IPC está cerrado, ignoramos el error
+      console.error('IPC cerrado al intentar enviar error:', e.message);
+    }
+  }
+}
+
+/**
  * Ejecuta la query contra la GDB indicada en config.database.
- * Si falla (attach o query), emite un evento parcial de error por eventBus
- * y rechaza la promesa. No recibe eventBus como parámetro, usa el importado.
+ *
+ * - Controla timeout tanto en el attach como en la propia consulta.
+ * - Siempre hace detach de la conexión si se ha llegado a abrir.
  *
  * @param {{ host, port, database, user, password }} config 
  * @param {string} query 
  * @param {number} [timeoutMs=60000] 
- * @returns {Promise<any[]>} Resultado de la consulta
- * 
- * 
- * 
- * 
+ * @returns {Promise<any[]>}
  */
-
-function emitirError(mensaje) {
-  
-  if (typeof process !== 'undefined' && typeof process.send === 'function') {
-        // Enviamos como 'error' para que index.js lo detecte
-        process.send({ progreso: 0, mensaje });
-     
-}
-}
-
-
 function consultarBasesDeDatos(config, query, timeoutMs = 60000) {
   const marcaInicio = new Date();
 
@@ -34,62 +34,100 @@ function consultarBasesDeDatos(config, query, timeoutMs = 60000) {
   const regex = /FROM\s+([^\s]+)/i;
   const match = query.match(regex);
   const tabla = match ? match[1] : '';
-  console.log(tabla);
+  console.log(`📄 Tabla detectada en la query: ${tabla}`);
 
   console.log(`[${marcaInicio.toISOString()}] [ENTRADA FUNCION] Recibida solicitud de consulta para: ${config.database}`);
 
   return new Promise((resolve, reject) => {
+    let terminado = false;
+    let dbRef = null;
+    let timeoutAttach = null;
+    let timeoutQuery = null;
+
+    const finOK = (resultado) => {
+      if (terminado) return;
+      terminado = true;
+
+      if (timeoutAttach) clearTimeout(timeoutAttach);
+      if (timeoutQuery) clearTimeout(timeoutQuery);
+
+      if (dbRef) {
+        try {
+          dbRef.detach();
+        } catch (e) {
+          console.error(`[${new Date().toISOString()}] ⚠️ Error al hacer detach en ${config.database}: ${e.message}`);
+        }
+      }
+
+      console.log(`[${new Date().toISOString()}] ✅ Consulta completada con éxito en ${config.database}`);
+      resolve(resultado);
+    };
+
+    const fail = (textoError) => {
+      if (terminado) return;
+      terminado = true;
+
+      if (timeoutAttach) clearTimeout(timeoutAttach);
+      if (timeoutQuery) clearTimeout(timeoutQuery);
+
+      console.error(`[${new Date().toISOString()}] ❌ ${textoError}`);
+
+      if (dbRef) {
+        try {
+          dbRef.detach();
+        } catch (e) {
+          console.error(`[${new Date().toISOString()}] ⚠️ Error al hacer detach en ${config.database}: ${e.message}`);
+        }
+      }
+
+      emitirError(`❌ ERROR en ${config.database}: ${textoError}`);
+      reject(new Error(textoError));
+    };
+
     console.log(`[${new Date().toISOString()}] [INICIO] Intentando conectar con: ${config.database}`);
+
+    // ⏰ Timeout de conexión (attach)
+    timeoutAttach = setTimeout(() => {
+      const msg = `Timeout de conexión (attach) en ${config.database}`;
+      fail(msg);
+    }, timeoutMs);
 
     Firebird.attach(config, (err, db) => {
       console.log(`[${new Date().toISOString()}] [CALLBACK ATTACH] Entró en el callback de conexión: ${config.database}`);
 
-      if (err) {
-        const textoError = `BACKUP EN PROCESO: ${config.database}`;
-        console.error(` ❌ ${textoError}`);
-
-        emitirError(textoError);
-        // Emitir un error parcial al SSE
-       /*
-        eventBus.emit('progreso', {
-          porcentaje: 0,
-          mensaje: `❌ ERROR en ${config.database}: ${err.message}`
-        });*/
-        return reject(new Error(textoError));
+      if (terminado) {
+        // Ya hemos resuelto/rechazado (por timeout de attach), liberamos si hace falta
+        if (db) {
+          try { db.detach(); } catch (_) {}
+        }
+        return;
       }
 
-      let terminado = false;
-      const timeoutId = setTimeout(() => {
-        if (!terminado) {
-          terminado = true;
-          const textoError = `Timeout alcanzado en ${config.database}`;
-          console.error(`[${new Date().toISOString()}] ⏰ ${textoError}`);
-          db.detach();
-          /*
-          eventBus.emit('progreso', {
-            porcentaje: 0,
-            mensaje: `❌ ERROR en ${config.database}: Timeout alcanzado`
-          });*/
-          return reject(new Error(textoError));
-        }
+      clearTimeout(timeoutAttach);
+
+      if (err) {
+        // Puedes mantener tu mensaje "BACKUP EN PROCESO" si quieres, pero yo usaría err.message
+        const textoError = `Error al conectar con ${config.database}: ${err.message}`;
+        return fail(textoError);
+      }
+
+      dbRef = db;
+
+      // ⏰ Timeout de la consulta
+      timeoutQuery = setTimeout(() => {
+        const msg = `Timeout de consulta en ${config.database}`;
+        fail(msg);
       }, timeoutMs);
 
       db.query(query, (errQuery, result) => {
-        if (terminado) return;
-        terminado = true;
-        clearTimeout(timeoutId);
-        db.detach();
+        if (terminado) return; // Ya falló por timeout u otro motivo
 
         if (errQuery) {
           const textoError = `Error en la consulta a ${config.database}: ${errQuery.message}`;
-          console.error(`[${new Date().toISOString()}] ❌ ${textoError}`);
-          // Removido eventBus.emit ya que eventBus no está importado
-          emitirError(`❌ ERROR en ${config.database}: ${errQuery.message}`);
-          return reject(new Error(textoError));
+          return fail(textoError);
         }
 
-        console.log(`[${new Date().toISOString()}] ✅ Consulta completada con éxito en ${config.database}`);
-        return resolve(result);
+        finOK(result);
       });
     });
   });

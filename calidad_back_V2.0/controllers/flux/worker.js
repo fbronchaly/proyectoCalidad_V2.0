@@ -1,31 +1,59 @@
 // controllers/flux/worker.js
 const comienzoFlujo = require('./comienzoFlujo');
 
-// Leemos los argumentos que nos pasó index.js
-const args = process.argv;
-const fechaInicio = args[2];
-const fechaFin    = args[3];
-const baseDatos   = JSON.parse(args[4] || '[]');
-const indices     = JSON.parse(args[5] || '[]');
+// Solo ejecutar si este archivo es el script principal (fork o node worker.js),
+// NO cuando se hace require() desde otro módulo.
+if (require.main === module) {
+  // Leemos los argumentos que nos pasó index.js o la línea de comandos
+  const args = process.argv;
+  const fechaInicio = args[2];
+  const fechaFin    = args[3];
+  const baseDatos   = JSON.parse(args[4] || '[]');
+  const indices     = JSON.parse(args[5] || '[]');
 
-(async () => {
-  try {
-    // Llamamos a comienzoFlujo con todos los parámetros y un callback para enviar progreso
-    const resultados = await comienzoFlujo(fechaInicio, fechaFin, baseDatos, indices, (dato) => {
-      process.send({
-        progreso: dato.porcentaje,
-        mensaje: dato.mensaje
-      });
-    });
+  (async () => {
+    try {
+      const resultados = await comienzoFlujo(
+        fechaInicio,
+        fechaFin,
+        baseDatos,
+        indices,
+        (dato) => {
+          if (typeof process.send === 'function') {
+            process.send({
+              progreso: dato.porcentaje,
+              mensaje: dato.mensaje,
+              indice: dato.indice
+            });
+          }
+        }
+      );
 
-    // Enviar los resultados finales al proceso padre
-    process.send({ 
-      terminado: true,
-      resultados: resultados
-    });
-    process.exit(0);
-  } catch (err) {
-    process.send({ error: err.message || err.toString() });
-    process.exit(1);
-  }
-})();
+      if (typeof process.send === 'function') {
+        console.log('📤 Enviando resultados finales al proceso padre...');
+        process.send({
+          terminado: true,
+          resultados
+        });
+        console.log('✅ Mensaje de finalización enviado correctamente');
+        
+        // Esperar un poco antes de cerrar para asegurar que el mensaje llegue
+        setTimeout(() => {
+          console.log('🏁 Worker terminando después de enviar resultados');
+          process.exit(0);
+        }, 1000);
+      } else {
+        console.log('⚠️ process.send no disponible - no se puede comunicar con el padre');
+        process.exit(0);
+      }
+    } catch (err) {
+      if (typeof process.send === 'function') {
+        process.send({ error: err.message || err.toString() });
+      }
+      process.exit(1);
+    }
+  })();
+}
+
+// (Opcional) si algún día quieres usar comienzoFlujo directamente al hacer require:
+module.exports = comienzoFlujo;

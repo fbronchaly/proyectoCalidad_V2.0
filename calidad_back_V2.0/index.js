@@ -346,8 +346,7 @@ app.post('/api/upload', (req, res) => {
         }
       });
 
-      // 6. Inicio del procesamiento
-      currentChild.send({ fechaInicio, fechaFin, baseDatos, indices });
+    
 
     } catch (error) {
       // 7. Manejo de errores generales

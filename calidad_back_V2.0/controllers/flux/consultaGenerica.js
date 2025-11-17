@@ -144,26 +144,20 @@ async function consultaGenerica(intervalo, dataBase, consulta) {
     
     // Partimos de la plantilla que viene de indicesJSON.json
     let queryFinalSinTipoHemo = consulta || '';
-    
-    // Solo si tenemos fechas, hacemos los reemplazos
-    if (FECHAINI) {
-      queryFinalSinTipoHemo = queryFinalSinTipoHemo
-        // Caso: ':FECHAINI'
-        .replace(/':FECHAINI'/gi, `'${FECHAINI}'`)
-        // Caso: :FECHAINI
-        .replace(/:FECHAINI\b/gi, `'${FECHAINI}'`)
-      
-    }
-    
-    if (FECHAFIN) {
-      queryFinalSinTipoHemo = queryFinalSinTipoHemo
-        // Caso: :FECHAINI
-        .replace(/:FECHAINI/gi, `'${FECHAFIN}'`)
-        // Caso: :FECHAFIN
-        .replace(/:FECHAFIN\b/gi, `'${FECHAFIN}'`)
-        // Caso: FECHAFIN “a pelo”
-      
-    }
+
+
+// Solo si tenemos fechas, hacemos los reemplazos
+if (FECHAINI) {
+  queryFinalSinTipoHemo = queryFinalSinTipoHemo
+    .replace(/':FECHAINI'/gi, `'${FECHAINI}'`) // ':FECHAINI'
+    .replace(/:FECHAINI\b/gi, `'${FECHAINI}'`); // :FECHAINI
+}
+
+if (FECHAFIN) {
+  queryFinalSinTipoHemo = queryFinalSinTipoHemo
+    .replace(/':FECHAFIN'/gi, `'${FECHAFIN}'`) // ':FECHAFIN'
+    .replace(/:FECHAFIN\b/gi, `'${FECHAFIN}'`); // :FECHAFIN
+}
     
     console.log("🔍 Query ORIGINAL (plantilla):", consulta);
     console.log("📅 Parámetros de fecha:", { FECHAINI, FECHAFIN });

@@ -33,7 +33,7 @@
     "id_code": "568BL7OH",
     "categoria": "Actividad Asistencial HD crónicos ",
     "indicador": "Nº de pacientes de HD de crónicos  prevalentes ultimo dia de periodo  ",
-    "template": "SELECT COUNT(*) AS resultado, COUNT(*) AS numero_pacientes FROM PACIENTES p WHERE p.ESTADO = 'A' -- solo pacientes activos AND p.MODAL_TRAT = 'H' -- en hemodiálisis AND (p.DESPLAZADO IS NULL OR p.DESPLAZADO = 0) -- excluir desplazados AND p.FECH_INICIO_CENTRO <= :FECHAINI -- iniciaron antes o el mismo día AND (p.FECHAFIN IS NULL OR p.FECHAFIN >= :FECHAINI);"
+"template": "SELECT COUNT(DISTINCT p.NREGGEN) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p WHERE p.ESTADO = 'A' AND p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO,0) = 0 AND p.FECH_INICIO_CENTRO <= :FECHAFIN AND NOT EXISTS (SELECT 1 FROM INCIDENCIAS i WHERE i.NREGGEN = p.NREGGEN AND i.CAUSABAJA IS NOT NULL AND i.FECHAINI < :FECHAFIN);"
   },
   {
     "id_code": "DPRRPAB3",
