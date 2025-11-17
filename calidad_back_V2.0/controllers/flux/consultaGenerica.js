@@ -3,8 +3,8 @@ const path = require('path');
 const consultarBasesDeDatos = require('../servicios/consultarBasesDeDatos');
 const { obtenerMetadatos } = require('../servicios/obtenerMetadatos');
 
-// Ruta al JSON con los códigos de TIPOHEMO por centro
-const RUTA_CODIGOS_HD = path.resolve(__dirname, '../../../documentacion/codigosHD.json');
+// Ruta corregida al archivo codigosHD.json (ahora dentro del backend)
+const RUTA_CODIGOS_HD = path.resolve(__dirname, '../../documentacion/codigosHD.json');
 
 // Mapa en memoria: database (ruta) -> objeto de codigosHD.json
 let mapaCodigosHdPorDatabase = null;

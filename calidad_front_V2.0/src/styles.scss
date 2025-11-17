@@ -1,5 +1,8 @@
 @use '@angular/material' as mat;
 
+// Importar Material Icons desde CDN (alternativa local)
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
 @include mat.core();
 
 $primary: mat.define-palette(mat.$indigo-palette);
