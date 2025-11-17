@@ -240,7 +240,6 @@
                   <th scope="col">Base de Datos</th>
                   <th scope="col" class="text-end">Resultado</th>
                   <th scope="col" class="text-end">Pacientes</th>
-                  <th scope="col" class="text-end">Media por Paciente</th>
                 </tr>
               </thead>
               <tbody>
@@ -255,11 +254,6 @@
                   </td>
                   <td class="text-end">
                     {{ formatInteger(element.numeroDePacientes) }}
-                  </td>
-                  <td class="text-end">
-                    <strong class="text-primary">
-                      {{ calculateAverage(element.resultado, element.numeroDePacientes) }}
-                    </strong>
                   </td>
                 </tr>
               </tbody>
