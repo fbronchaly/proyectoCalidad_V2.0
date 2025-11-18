@@ -1,9 +1,10 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from '../../services/api.service';
 import { SelectionService } from '../../services/selection.service';
+import { Subscription } from 'rxjs';
 
 interface ResultadoBase {
   baseData: string;
@@ -40,12 +41,13 @@ interface ApiResponse {
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
   startDate: Date | null = null;
   endDate: Date | null = null;
   loading = false;
   apiResponse: ApiResponse | null = null;
-  
+  maxEndDate: Date = new Date(new Date().setDate(new Date().getDate() - 1));
+
   // MatTableDataSource para la tabla (mantener para compatibilidad)
   dataSource = new MatTableDataSource<any>([]);
   
@@ -60,6 +62,14 @@ export class DashboardComponent implements OnInit {
   // Exponer Array.isArray para usar en el template
   Array = Array;
 
+  // NUEVAS propiedades para indicador de progreso
+  progressPercentage: number = 0;
+  progressMessage: string = '';
+  timeRemaining: number = 0;
+  startTime: number = 0;
+  private progressSubscription: Subscription | null = null;
+  private resetSubscription: Subscription | null = null;
+
   constructor(
     private router: Router,
     private snack: MatSnackBar,
@@ -72,6 +82,20 @@ export class DashboardComponent implements OnInit {
     const { start, end } = this.sel.getDates();
     this.startDate = start;
     this.endDate = end;
+    
+    // NUEVO: Configurar WebSocket para progreso
+    this.setupProgressWebSocket();
+  }
+
+  ngOnDestroy(): void {
+    // NUEVO: Limpiar suscripciones
+    if (this.progressSubscription) {
+      this.progressSubscription.unsubscribe();
+    }
+    if (this.resetSubscription) {
+      this.resetSubscription.unsubscribe();
+    }
+    this.api.disconnect();
   }
 
   // Método que se ejecuta cuando cambia la fecha de inicio
@@ -157,6 +181,9 @@ export class DashboardComponent implements OnInit {
         });
       }
     });
+    
+    // NUEVO: Resetear también el indicador de progreso
+    this.resetProgressIndicator();
   }
   
   // Método para preparar el sistema para un nuevo análisis
@@ -242,8 +269,12 @@ export class DashboardComponent implements OnInit {
       return;
     }
     
-    // Marcar como iniciando el proceso
+    // NUEVO: Inicializar indicador de progreso
     this.loading = true;
+    this.startTime = Date.now();
+    this.progressPercentage = 0;
+    this.progressMessage = 'Iniciando análisis...';
+    this.timeRemaining = 0;
     this.apiResponse = null;
     
     this.api.upload(payload).subscribe({
@@ -287,11 +318,10 @@ export class DashboardComponent implements OnInit {
       error: (err) => {
         console.error('=== ERROR EN LA PETICIÓN ===');
         console.error('Error completo:', err);
-        console.error('Status:', err.status);
-        console.error('Message:', err.message);
-        console.error('Error del servidor:', err.error);
         
+        // NUEVO: Resetear progreso en caso de error
         this.loading = false;
+        this.resetProgressIndicator();
         this.apiResponse = null;
         this.dataSource.data = [];
         this.tableData = [];
@@ -299,6 +329,64 @@ export class DashboardComponent implements OnInit {
         this.snack.open('Error al enviar datos: ' + (err?.error?.message || err?.message || 'desconocido'), 'OK', { duration: 3500 });
       }
     });
+  }
+
+  // NUEVO: Configurar conexión WebSocket para progreso
+  private setupProgressWebSocket(): void {
+    this.progressSubscription = this.api.getProgressUpdates().subscribe((progress: any) => {
+      if (progress) {
+        console.log('📊 Evento de progreso recibido:', progress);
+        this.progressPercentage = progress.porcentaje || 0;
+        this.progressMessage = progress.mensaje || 'Procesando...';
+        this.updateTimeEstimate(progress.porcentaje || 0);
+        this.cdr.detectChanges();
+      }
+    });
+
+    this.resetSubscription = this.api.getServerResetUpdates().subscribe((data: any) => {
+      if (data) {
+        console.log('🔄 Evento de reset recibido:', data);
+        this.resetProgressIndicator();
+        this.cdr.detectChanges();
+      }
+    });
+  }
+
+  // NUEVO: Calcular tiempo restante estimado
+  private updateTimeEstimate(percentage: number): void {
+    if (percentage > 5 && this.startTime > 0) {
+      const elapsed = Date.now() - this.startTime;
+      const estimated = (elapsed / percentage) * 100;
+      this.timeRemaining = Math.max(0, estimated - elapsed);
+    } else {
+      this.timeRemaining = 0;
+    }
+  }
+
+  // NUEVO: Resetear indicador de progreso
+  private resetProgressIndicator(): void {
+    this.progressPercentage = 0;
+    this.progressMessage = '';
+    this.timeRemaining = 0;
+    this.startTime = 0;
+  }
+
+  // NUEVO: Formatear tiempo restante
+  formatTimeRemaining(milliseconds: number): string {
+    if (!milliseconds || milliseconds <= 0) return '';
+    
+    const seconds = Math.ceil(milliseconds / 1000);
+    if (seconds < 60) {
+      return `${seconds} segundos`;
+    } else if (seconds < 3600) {
+      const minutes = Math.floor(seconds / 60);
+      const remainingSeconds = seconds % 60;
+      return remainingSeconds > 0 ? `${minutes}m ${remainingSeconds}s` : `${minutes} minutos`;
+    } else {
+      const hours = Math.floor(seconds / 3600);
+      const minutes = Math.floor((seconds % 3600) / 60);
+      return `${hours}h ${minutes}m`;
+    }
   }
 
   // Método para expandir/colapsar detalles de un indicador

@@ -21,11 +21,28 @@ export class FirstDayRangePickerComponent {
 
   startMonth = 1;
   startYear = new Date().getFullYear();
-  endMonth = new Date().getMonth() + 1;
+  endMonth = 1;
   endYear = new Date().getFullYear();
 
+  // Propiedades para el límite máximo (un día antes de hoy)
+  private maxAllowedDate: Date;
+  maxAllowedYear: number;
+  maxAllowedMonth: number;
+
   constructor() {
-    for (let y = this.maxYear; y >= this.minYear; y--) this.years.push(y);
+    // Calcular la fecha máxima permitida (un día antes de hoy)
+    const today = new Date();
+    this.maxAllowedDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 1);
+    this.maxAllowedYear = this.maxAllowedDate.getFullYear();
+    this.maxAllowedMonth = this.maxAllowedDate.getMonth() + 1;
+
+    // Limitar los años disponibles hasta el año máximo permitido
+    for (let y = this.maxAllowedYear; y >= this.minYear; y--) this.years.push(y);
+    
+    // Inicializar con valores seguros
+    this.endYear = this.maxAllowedYear;
+    this.endMonth = this.maxAllowedMonth;
+    
     this.presetYTD();
   }
 
@@ -38,7 +55,49 @@ export class FirstDayRangePickerComponent {
   isValid(): boolean {
     const s = this.toDate(this.startYear, this.startMonth);
     const e = this.toDate(this.endYear, this.endMonth);
-    return e.getTime() > s.getTime();
+    
+    // Validar que el fin sea posterior al inicio
+    if (e.getTime() <= s.getTime()) return false;
+    
+    // Validar que el año/mes de fin no exceda el límite máximo
+    if (this.endYear > this.maxAllowedYear) return false;
+    if (this.endYear === this.maxAllowedYear && this.endMonth > this.maxAllowedMonth) return false;
+    
+    return true;
+  }
+
+  // Obtener años válidos para la fecha fin
+  getValidEndYears(): number[] {
+    return this.years; // Ya están filtrados en el constructor
+  }
+
+  // Obtener meses válidos para la fecha fin según el año seleccionado
+  getValidEndMonths(): typeof this.months {
+    if (this.endYear < this.maxAllowedYear) {
+      return this.months; // Todos los meses son válidos si el año es anterior al máximo
+    } else if (this.endYear === this.maxAllowedYear) {
+      return this.months.filter(month => month.value <= this.maxAllowedMonth);
+    } else {
+      return []; // No hay meses válidos si el año es posterior al máximo
+    }
+  }
+
+  // Validar y corregir la fecha fin si excede el límite
+  onEndYearChange() {
+    const validMonths = this.getValidEndMonths();
+    if (validMonths.length === 0) {
+      // Si no hay meses válidos, resetear al máximo permitido
+      this.endYear = this.maxAllowedYear;
+      this.endMonth = this.maxAllowedMonth;
+    } else if (!validMonths.some(m => m.value === this.endMonth)) {
+      // Si el mes actual no es válido, seleccionar el último mes válido
+      this.endMonth = validMonths[validMonths.length - 1].value;
+    }
+    this.emitIfValid();
+  }
+
+  onEndMonthChange() {
+    this.emitIfValid();
   }
 
   emitIfValid() {
@@ -52,34 +111,51 @@ export class FirstDayRangePickerComponent {
   reset() { this.presetYTD(); }
 
   // Atajos
-  presetCurrentMonth() {
-    const now = new Date();
-    const y = now.getFullYear(), m = now.getMonth() + 1;
-    this.startYear = y; this.startMonth = m;
-    const next = new Date(y, m, 1);
-    this.endYear = next.getFullYear(); this.endMonth = next.getMonth() + 1;
-    this.emitIfValid();
-  }
   presetLast3Months() {
     const now = new Date();
-    const end = new Date(now.getFullYear(), now.getMonth() + 1, 1);
-    const start = new Date(end.getFullYear(), end.getMonth() - 3, 1);
-    this.startYear = start.getFullYear(); this.startMonth = start.getMonth() + 1;
-    this.endYear = end.getFullYear();     this.endMonth = end.getMonth() + 1;
+    // Calcular 3 meses atrás desde el mes actual
+    const startDate = new Date(now.getFullYear(), now.getMonth() - 2, 1); // 2 meses atrás para incluir 3 meses
+    this.startYear = startDate.getFullYear(); 
+    this.startMonth = startDate.getMonth() + 1;
+    
+    // La fecha fin debe ser el mes actual limitado por maxAllowed
+    this.endYear = this.maxAllowedYear;
+    this.endMonth = this.maxAllowedMonth;
+    
     this.emitIfValid();
   }
+  
   presetYTD() {
     const now = new Date();
-    this.startYear = now.getFullYear(); this.startMonth = 1;
-    this.endYear = now.getFullYear();   this.endMonth = now.getMonth() + 2;
-    const e = new Date(this.endYear, this.endMonth - 1, 1);
-    this.endYear = e.getFullYear(); this.endMonth = e.getMonth() + 1;
+    this.startYear = now.getFullYear(); 
+    this.startMonth = 1; // Enero
+    
+    // La fecha fin debe ser el mes actual, no el siguiente
+    this.endYear = this.maxAllowedYear;
+    this.endMonth = this.maxAllowedMonth;
+    
     this.emitIfValid();
   }
+  
   presetLastYear() {
     const y = new Date().getFullYear() - 1;
-    this.startYear = y; this.startMonth = 1;
-    this.endYear = y + 1; this.endMonth = 1;
+    this.startYear = y; 
+    this.startMonth = 1;
+    
+    // La fecha fin para el año anterior debería ser enero del año actual
+    // Pero debe respetar el límite máximo
+    const proposedEndYear = y + 1;
+    const proposedEndMonth = 1;
+    
+    if (proposedEndYear < this.maxAllowedYear || 
+        (proposedEndYear === this.maxAllowedYear && proposedEndMonth <= this.maxAllowedMonth)) {
+      this.endYear = proposedEndYear;
+      this.endMonth = proposedEndMonth;
+    } else {
+      this.endYear = this.maxAllowedYear;
+      this.endMonth = this.maxAllowedMonth;
+    }
+    
     this.emitIfValid();
   }
 }

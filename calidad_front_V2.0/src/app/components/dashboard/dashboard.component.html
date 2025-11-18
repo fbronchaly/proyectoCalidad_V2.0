@@ -83,14 +83,14 @@
           <div class="date-inputs">
             <mat-form-field appearance="outline" class="date-field">
               <mat-label>Fecha inicio</mat-label>
-              <input matInput [matDatepicker]="startPicker" [value]="startDate" (dateChange)="onStartDateChange($event.value)">
+              <input matInput [matDatepicker]="startPicker" [value]="startDate"  (dateChange)="onStartDateChange($event.value)">
               <mat-datepicker-toggle matIconSuffix [for]="startPicker"></mat-datepicker-toggle>
               <mat-datepicker #startPicker></mat-datepicker>
             </mat-form-field>
             
             <mat-form-field appearance="outline" class="date-field">
               <mat-label>Fecha fin</mat-label>
-              <input matInput [matDatepicker]="endPicker" [value]="endDate" (dateChange)="onEndDateChange($event.value)">
+              <input matInput [matDatepicker]="endPicker" [value]="endDate" [max]="maxEndDate" (dateChange)="onEndDateChange($event.value)">
               <mat-datepicker-toggle matIconSuffix [for]="endPicker"></mat-datepicker-toggle>
               <mat-datepicker #endPicker></mat-datepicker>
             </mat-form-field>
@@ -129,11 +129,37 @@
               <h3>¿Listo para analizar?</h3>
               <p>Configura fechas, bases e indicadores.</p>
               
-              <!-- Indicador de estado del sistema -->
-              <div class="system-status" *ngIf="apiResponse">
+              <!-- Indicador de estado del sistema cuando está listo -->
+              <div class="system-status" *ngIf="apiResponse && !loading">
                 <div class="status-indicator ready">
                   <mat-icon>check_circle</mat-icon>
                   <span>Sistema listo para nuevo análisis</span>
+                </div>
+              </div>
+
+              <!-- NUEVO: Indicador de progreso durante las consultas -->
+              <div class="system-status" *ngIf="loading">
+                <div class="progress-indicator">
+                  <div class="progress-header">
+                    <mat-icon>analytics</mat-icon>
+                    <span class="progress-title">Procesando Análisis</span>
+                  </div>
+                  
+                  <mat-progress-bar 
+                    mode="determinate" 
+                    [value]="progressPercentage"
+                    color="primary">
+                  </mat-progress-bar>
+                  
+                  <div class="progress-info">
+                    <span class="progress-text">{{ progressMessage }}</span>
+                    <span class="progress-percentage">{{ progressPercentage }}%</span>
+                  </div>
+                  
+                  <div class="time-remaining" *ngIf="timeRemaining > 0">
+                    <mat-icon>schedule</mat-icon>
+                    <span>Tiempo estimado: {{ formatTimeRemaining(timeRemaining) }}</span>
+                  </div>
                 </div>
               </div>
               

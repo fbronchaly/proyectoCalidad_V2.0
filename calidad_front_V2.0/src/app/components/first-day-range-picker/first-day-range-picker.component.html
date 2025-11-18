@@ -21,21 +21,20 @@
     <div class="d-flex align-items-end gap-2">
       <div>
         <label class="form-label mb-1">Mes fin (excl.)</label>
-        <select class="form-select" [(ngModel)]="endMonth">
-          <option *ngFor="let m of months" [value]="m.value">{{ m.label }}</option>
+        <select class="form-select" [(ngModel)]="endMonth" (ngModelChange)="onEndMonthChange()">
+          <option *ngFor="let m of getValidEndMonths()" [value]="m.value">{{ m.label }}</option>
         </select>
       </div>
   
       <div>
         <label class="form-label mb-1">Año fin (excl.)</label>
-        <select class="form-select" [(ngModel)]="endYear">
-          <option *ngFor="let y of years" [value]="y">{{ y }}</option>
+        <select class="form-select" [(ngModel)]="endYear" (ngModelChange)="onEndYearChange()">
+          <option *ngFor="let y of getValidEndYears()" [value]="y">{{ y }}</option>
         </select>
       </div>
     </div>
   
     <div class="d-flex flex-wrap gap-2 ms-auto">
-      <button class="btn btn-outline-secondary" (click)="presetCurrentMonth()">Mes actual</button>
       <button class="btn btn-outline-secondary" (click)="presetLast3Months()">Últimos 3 meses</button>
       <button class="btn btn-outline-secondary" (click)="presetYTD()">Año en curso</button>
       <button class="btn btn-outline-secondary" (click)="presetLastYear()">Año anterior</button>
@@ -49,6 +48,11 @@
       Rango: {{ startYear }}-{{ (startMonth | number:'2.0-0') }}-01 →
              {{ endYear }}-{{ (endMonth | number:'2.0-0') }}-01 (fin excl.)
     </ng-container>
-    <ng-template #invalidMsg>El fin debe ser posterior al inicio.</ng-template>
+    <ng-template #invalidMsg>
+      <span *ngIf="!isValid()">
+        {{ endYear > maxAllowedYear || (endYear === maxAllowedYear && endMonth > maxAllowedMonth) ? 
+           'La fecha fin no puede ser posterior a ayer.' : 
+           'El fin debe ser posterior al inicio.' }}
+      </span>
+    </ng-template>
   </div>
-  

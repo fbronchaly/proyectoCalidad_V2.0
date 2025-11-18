@@ -27,13 +27,14 @@
     "id_code": "YLVJ7PUD",
     "categoria": "Actividad Asistencial HD crónicos ",
     "indicador": "Nº de pacientes de HD de crónicos  prevalentes de periodo =dializados a lo largo del periodo  ( suma de todos los pacientes desde el inicio del periodo hasta el final del periodo) ",
-    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p JOIN SESION s ON p.NREGGEN = s.NREGGEN WHERE p.ESTADO = 'A' -- solo pacientes activos/prevalentes AND p.MODAL_TRAT = 'H' -- hemodiálisis AND COALESCE(p.DESPLAZADO, 0) = 0 -- eliminar desplazados AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN;"
+    "template": "SELECT COUNT(DISTINCT s.NSESION) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p JOIN SESION s ON p.NREGGEN = s.NREGGEN WHERE p.ESTADO = 'A' AND p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN;"
   },
   {
     "id_code": "568BL7OH",
     "categoria": "Actividad Asistencial HD crónicos ",
     "indicador": "Nº de pacientes de HD de crónicos  prevalentes ultimo dia de periodo  ",
-    "template": "SELECT COUNT(DISTINCT p.NREGGEN) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p WHERE p.ESTADO = 'A' AND p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO,0) = 0 AND p.FECH_INICIO_CENTRO <= :FECHAFIN AND NOT EXISTS (SELECT 1 FROM INCIDENCIAS i WHERE i.NREGGEN = p.NREGGEN AND i.CAUSABAJA IS NOT NULL AND i.FECHAINI < :FECHAFIN);"
+    "template": "SELECT COUNT(DISTINCT p.NREGGEN) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND p.FECH_INI_HEMO <= :FECHAFIN AND NOT EXISTS (SELECT 1 FROM INCIDENCIAS i WHERE i.NREGGEN = p.NREGGEN AND i.CAUSABAJA IN ('P','E','R','M','T','N') AND i.FECHAINI <= :FECHAFIN AND (i.FECHAFIN IS NULL OR i.FECHAFIN >= :FECHAFIN));"
+  
   },
   {
     "id_code": "DPRRPAB3",

@@ -929,6 +929,85 @@
   }
 }
 
+// NUEVO: Estilos para el indicador de progreso
+.progress-indicator {
+  width: 100%;
+  padding: 16px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+
+  .progress-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    
+    .progress-title {
+      font-weight: 500;
+      color: #495057;
+    }
+  }
+
+  mat-progress-bar {
+    margin: 8px 0;
+    height: 8px;
+    border-radius: 4px;
+  }
+
+  .progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 8px 0;
+    
+    .progress-text {
+      font-weight: 500;
+      color: #495057;
+      font-size: 0.9em;
+    }
+    
+    .progress-percentage {
+      font-weight: bold;
+      color: #1976d2;
+      font-size: 1.1em;
+    }
+  }
+  
+  .time-remaining {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #6c757d;
+    font-size: 0.85em;
+    margin-top: 8px;
+    
+    mat-icon {
+      font-size: 16px;
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+.system-status {
+  margin: 12px 0;
+  
+  .status-indicator {
+    &.ready {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #28a745;
+      font-weight: 500;
+      
+      mat-icon {
+        color: #28a745;
+      }
+    }
+  }
+}
+
 // Responsive design para el nuevo layout
 @media (max-width: 1200px) {
   .main-content {

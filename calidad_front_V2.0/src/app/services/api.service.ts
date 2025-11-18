@@ -3,13 +3,49 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { UploadPayload } from './selection.service';
+import { io, Socket } from 'socket.io-client';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
   private baseUrl = 'http://localhost:3000/api';
   private endpoint = `${this.baseUrl}/upload`;
+  private socket: Socket;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    // Usar URL fija para localhost durante desarrollo
+    const socketUrl = 'http://localhost:3000';
+    console.log('🔌 Conectando WebSocket a:', socketUrl);
+    
+    // Inicializar conexión WebSocket con configuración específica
+    this.socket = io(socketUrl, {
+      transports: ['websocket', 'polling'],
+      timeout: 10000,
+      forceNew: true
+    });
+    
+    // Agregar listeners para diagnosticar conexión
+    this.socket.on('connect', () => {
+      console.log('✅ WebSocket conectado exitosamente');
+      console.log('🆔 Socket ID:', this.socket.id);
+    });
+    
+    this.socket.on('disconnect', (reason) => {
+      console.log('❌ WebSocket desconectado. Razón:', reason);
+    });
+    
+    this.socket.on('connect_error', (error) => {
+      console.error('🚫 Error de conexión WebSocket:', error);
+      console.log('🔄 Reintentando conexión...');
+    });
+
+    this.socket.on('reconnect', (attemptNumber) => {
+      console.log('🔄 WebSocket reconectado después de', attemptNumber, 'intentos');
+    });
+
+    this.socket.on('reconnect_error', (error) => {
+      console.error('❌ Error al reconectar WebSocket:', error);
+    });
+  }
 
   upload(payload: UploadPayload): Observable<any> {
     const headers = new HttpHeaders({
@@ -41,5 +77,39 @@ export class ApiService {
         return throwError(() => new Error(err?.message || 'Error de red en reset'));
       })
     );
+  }
+
+  // NUEVO: Método para recibir actualizaciones de progreso
+  getProgressUpdates(): Observable<any> {
+    return new Observable((observer) => {
+      this.socket.on('progreso', (data) => {
+        observer.next(data);
+      });
+      
+      // Cleanup al desuscribirse
+      return () => {
+        this.socket.off('progreso');
+      };
+    });
+  }
+
+  // NUEVO: Método para recibir notificaciones de servidor reseteado
+  getServerResetUpdates(): Observable<any> {
+    return new Observable((observer) => {
+      this.socket.on('servidor-reseteado', (data) => {
+        observer.next(data);
+      });
+      
+      return () => {
+        this.socket.off('servidor-reseteado');
+      };
+    });
+  }
+
+  // NUEVO: Método para desconectar WebSocket
+  disconnect(): void {
+    if (this.socket) {
+      this.socket.disconnect();
+    }
   }
 }

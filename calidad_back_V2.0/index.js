@@ -20,7 +20,7 @@ const clientOrigin = process.env.USE_PROD_ORIGIN === 'true'
 
 const io = new Server(http, {
   cors: {
-    origin: clientOrigin,
+    origin: true, // Permitir cualquier origen temporalmente para diagnosticar
     methods: ['GET', 'POST'],
     credentials: true
   }
@@ -28,6 +28,7 @@ const io = new Server(http, {
 
 // PARA TRABAJAR EN LOCALHOST coloca esto en console-->  USE_PROD_ORIGIN=false node index.js
 console.log(`✅ CORS habilitado para: ${clientOrigin}`);
+console.log(`✅ WebSocket CORS habilitado para múltiples orígenes incluyendo localhost:4200`);
 
 // Redirigir cualquier evento de progreso al cliente por WebSocket
 eventBus.on('progreso', (msg) => {
@@ -302,15 +303,24 @@ app.post('/api/upload', (req, res) => {
 
       // 5. Manejo de mensajes del worker
       currentChild.on('message', (msg) => {
-        // 5.1 Emisión de progreso
+        console.log('📨 Mensaje recibido del worker:', msg);
+        
+        // 5.1 Emisión de progreso - CORREGIDO
         if (msg.progreso !== undefined) {
-          io.emit('progreso', { porcentaje: msg.progreso, mensaje: msg.mensaje });
+          const progressData = { 
+            porcentaje: msg.progreso, 
+            mensaje: msg.mensaje || 'Procesando...' 
+          };
+          console.log('📡 Emitiendo progreso por WebSocket:', progressData);
+          io.emit('progreso', progressData);
         }
 
         // 5.2 Manejo de errores del worker
         if (msg.error) {
-          console.log('Error en el worker:', msg.error);
-          io.emit('progreso', { porcentaje: 0, mensaje: msg.error });
+          console.log('❌ Error en el worker:', msg.error);
+          const errorData = { porcentaje: 0, mensaje: `Error: ${msg.error}` };
+          console.log('📡 Emitiendo error por WebSocket:', errorData);
+          io.emit('progreso', errorData);
 
           if (currentChild) {
             currentChild.kill();
@@ -327,6 +337,11 @@ app.post('/api/upload', (req, res) => {
         // 5.3 Procesamiento de finalización y envío de resultados
         if (msg.terminado) {
           console.log('✅ Proceso completado. Enviando resultados al frontend.');
+          
+          // Enviar progreso final
+          const finalProgress = { porcentaje: 100, mensaje: 'Análisis completado' };
+          console.log('📡 Emitiendo progreso final por WebSocket:', finalProgress);
+          io.emit('progreso', finalProgress);
           
           // Enviar los resultados como JSON al frontend
           if (!res.headersSent) {
@@ -346,7 +361,14 @@ app.post('/api/upload', (req, res) => {
         }
       });
 
-    
+      // NUEVO: Logging de conexiones WebSocket
+      currentChild.on('error', (error) => {
+        console.error('❌ Error del proceso worker:', error);
+      });
+
+      currentChild.on('exit', (code, signal) => {
+        console.log(`🏁 Worker terminó con código: ${code}, señal: ${signal}`);
+      });
 
     } catch (error) {
       // 7. Manejo de errores generales
@@ -491,12 +513,23 @@ app.post('/api/verify-code', (req, res) => {
 // WebSocket: conexión y cierre
 // ------------------------
 io.on('connection', (socket) => {
-  console.log('🔌 Cliente conectado por WebSocket');
-  socket.on('disconnect', () => {
-    console.log('❌ Cliente desconectado');
+  console.log('🔌 Cliente conectado por WebSocket - ID:', socket.id);
+  console.log('📊 Total clientes conectados:', io.engine.clientsCount);
+  
+  // Enviar mensaje de prueba al conectarse
+  socket.emit('progreso', { porcentaje: 0, mensaje: 'Conexión WebSocket establecida' });
+  
+  socket.on('disconnect', (reason) => {
+    console.log('❌ Cliente desconectado - ID:', socket.id, 'Razón:', reason);
+    console.log('📊 Total clientes restantes:', io.engine.clientsCount);
+    
     if (!enProceso && !descargando) {
       limpiarUploads();
     }
+  });
+  
+  socket.on('error', (error) => {
+    console.error('🚫 Error en socket WebSocket:', error);
   });
 });
 
