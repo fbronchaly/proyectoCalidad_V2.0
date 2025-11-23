@@ -5,6 +5,8 @@ const { obtenerMetadatos } = require('../servicios/obtenerMetadatos');
 
 // Ruta corregida al archivo codigosHD.json (ahora dentro del backend)
 const RUTA_CODIGOS_HD = path.resolve(__dirname, '../../documentacion/codigosHD.json');
+const groupedTests = require('../../comorbilidad/transformed_grouped_tests.json'); 
+
 
 // Mapa en memoria: database (ruta) -> objeto de codigosHD.json
 let mapaCodigosHdPorDatabase = null;
@@ -164,8 +166,6 @@ if (FECHAFIN) {
     console.log("🧾 Query con fechas aplicada:", queryFinalSinTipoHemo);
     
 
- 
-
 
 
     // Ejecutar consultas de forma secuencial y consolidar
@@ -175,7 +175,9 @@ if (FECHAFIN) {
       try {
         // Para cada base, adaptar los TIPOHEMO según codigosHD.json
    // En el bucle for (const config of basesDatos)
-   const queryFinal = aplicarTipoHemoPorBase(queryFinalSinTipoHemo, config);
+   let queryFinal = aplicarTipoHemoPorBase(queryFinalSinTipoHemo, config);
+   queryFinal = aplicarCodTestPorBase(queryFinal, config);
+
    console.log("QUERYFINAL " + queryFinal);
    const result = await consultarBasesDeDatos(config, queryFinal);  
         console.log(`🔍 Resultado de ${config.database}:`, JSON.stringify(result, null, 2));
@@ -259,5 +261,52 @@ if (FECHAFIN) {
     return [];
   }
 }
+
+/**
+ * Sustituye en la query los placeholders de CODTEST según la base de datos,
+ * usando transformed_grouped_tests.json.
+ *
+ * Placeholders admitidos en la SQL:
+ *   <CODTEST_FRAIL>, <CODTEST_MNA>, <CODTEST_SARCF>, ...
+ *
+ * Donde FRAIL, MNA, SARCF... deben existir como claves en groupedTests.
+ */
+function aplicarCodTestPorBase(query, config) {
+  if (!query) return query;
+
+  const baseName = config.database;
+  if (!baseName) return query;
+
+  let queryModificada = query;
+
+  // Buscamos todos los <CODTEST_XXXXX> que aparezcan en la consulta
+  const regex = /<CODTEST_([A-Z0-9_]+)>/gi;
+  let match;
+
+  while ((match = regex.exec(query)) !== null) {
+    const testKey = match[1];         // p.ej. 'FRAIL'
+    const logicalName = testKey;      // en tu JSON la clave es 'FRAIL', 'MNA', 'SARCF', etc.
+
+    const mapaTest = groupedTests[logicalName];
+    if (!mapaTest) {
+      console.warn(`⚠️ No hay entrada en transformed_grouped_tests.json para "${logicalName}"`);
+      continue;
+    }
+
+    const codTest = mapaTest[baseName];
+    if (!codTest) {
+      console.warn(`⚠️ No hay CODTEST para "${logicalName}" en la base "${baseName}"`);
+      continue;
+    }
+
+    const placeholder = new RegExp(`<CODTEST_${testKey}>`, 'gi');
+    queryModificada = queryModificada.replace(placeholder, String(codTest));
+
+    console.log(`🔧 Para ${baseName}, test ${logicalName} => CODTEST = ${codTest}`);
+  }
+
+  return queryModificada;
+}
+
 
 module.exports = consultaGenerica;

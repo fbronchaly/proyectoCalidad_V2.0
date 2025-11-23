@@ -1,0 +1,109 @@
+{
+  "title": "IndicadorResultado",
+  "bsonType": "object",
+  "additionalProperties": false,
+  "required": [
+    "id_transaccion",
+    "periodo_aplicado",
+    "version",
+    "fuentes_datos",
+    "estado_calculo",
+    "resultados"
+  ],
+  "properties": {
+    "_id": {
+      "description": "ObjectId generado por MongoDB",
+      "bsonType": "objectId"
+    },
+    "id_transaccion": {
+      "bsonType": "string"
+    },
+    "periodo_aplicado": {
+      "bsonType": "object",
+      "required": ["desde", "hasta"],
+      "additionalProperties": false,
+      "properties": {
+        "desde": { "bsonType": "date" },
+        "hasta": { "bsonType": "date" }
+      }
+    },
+    "version": {
+      "bsonType": "string"
+    },
+    "fuentes_datos": {
+      "bsonType": "array",
+      "minItems": 1,
+      "items": { "bsonType": "string" }
+    },
+    "estado_calculo": {
+      "bsonType": "string",
+      "enum": ["ok", "error", "parcial"]
+    },
+    "error_detalle": {
+      "bsonType": "string"
+    },
+    "resultados": {
+      "bsonType": "array",
+      "minItems": 0,
+      "items": {
+        "bsonType": "object",
+        "required": [
+          "id_resultado",
+          "base",
+          "indice",
+          "payload",
+          "creado_en"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id_resultado": { "bsonType": "string" },
+
+          "base": {
+            "bsonType": "object",
+            "required": ["code", "nombre"],
+            "additionalProperties": false,
+            "properties": {
+              "code": { "bsonType": "string" },
+              "nombre": { "bsonType": "string" }
+            }
+          },
+
+          "indice": {
+            "bsonType": "object",
+            "required": ["id_code", "label"],
+            "additionalProperties": false,
+            "properties": {
+              "id_code": { "bsonType": "string" },
+              "label": { "bsonType": "string" }
+            }
+          },
+
+          "payload": {
+            "bsonType": "object",
+            "required": ["valor", "numero_pacientes"],
+            "additionalProperties": true,
+            "properties": {
+              "valor": {
+                "bsonType": ["double", "int", "long", "decimal"]
+              },
+              "numero_pacientes": {
+                "bsonType": ["int", "long"]
+              }
+            }
+          },
+
+          "metadata_calculo": {
+            "bsonType": "object",
+            "additionalProperties": true,
+            "properties": {
+              "categoria": { "bsonType": "string" },
+              "consulta_sql": { "bsonType": "string" }
+            }
+          },
+
+          "creado_en": { "bsonType": "date" }
+        }
+      }
+    }
+  }
+}

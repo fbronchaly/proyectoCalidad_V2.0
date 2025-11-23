@@ -28,6 +28,7 @@
     "categoria": "Actividad Asistencial HD crónicos ",
     "indicador": "Nº de pacientes de HD de crónicos  prevalentes de periodo =dializados a lo largo del periodo  ( suma de todos los pacientes desde el inicio del periodo hasta el final del periodo) ",
     "template": "SELECT COUNT(DISTINCT s.NSESION) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p JOIN SESION s ON p.NREGGEN = s.NREGGEN WHERE p.ESTADO = 'A' AND p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN;"
+    
   },
   {
     "id_code": "568BL7OH",
@@ -40,13 +41,13 @@
     "id_code": "DPRRPAB3",
     "categoria": "Actividad Asistencial HD crónicos ",
     "indicador": "Nº de pacientes de HD de crónicos  incidentes a lo largo  del periodo ( suma de todos los pacientes desde el inicio del periodo hasta el final del periodo) ",
-    "template": "SELECT COUNT(*) AS resultado, COUNT(*) AS numero_pacientes FROM PACIENTES p WHERE p.ESTADO = 'A' -- solo pacientes activos AND p.MODAL_TRAT = 'H' -- hemodiálisis AND p.DESPLAZADO = 0 -- excluir desplazados AND p.FECH_INICIO_CENTRO BETWEEN :FECHAINI AND :FECHAFIN;"
+    "template": "SELECT COUNT(*) AS resultado, COUNT(*) AS numero_pacientes FROM PACIENTES p WHERE p.ESTADO = 'A' -- solo pacientes activos AND p.MODAL_TRAT = 'H' -- hemodiálisis AND p.DESPLAZADO = 0 -- excluir desplazados AND p.FECH_INI_HEMO BETWEEN :FECHAINI AND :FECHAFIN;"
   },
   {
     "id_code": "L2KRFUEQ",
     "categoria": "Actividad Asistencial HD crónicos ",
     "indicador": "Nº de bajas  de HD de crónicos (trasplante, fallecimiento, otros) (  suma de todos los pacientes desde el inicio del periodo hasta el final del periodo) ",
-    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT i.NREGGEN) AS numero_pacientes FROM INCIDENCIAS i JOIN PACIENTES p ON p.NREGGEN = i.NREGGEN WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO,0) = 0 AND i.FECHAINI BETWEEN :FECHAINI AND :FECHAFIN AND i.CAUSABAJA IN ('P','E','R','M','T','N');"
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT i.NREGGEN) AS numero_pacientes FROM INCIDENCIAS i JOIN PACIENTES p ON p.NREGGEN = i.NREGGEN WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO,0) = 0 AND i.FECHAINI BETWEEN :FECHAINI AND :FECHAFIN AND i.CAUSABAJA IN ('P','E','R','M','T','N','B');"
   },
   {
     "id_code": "NCENQQAN",
@@ -88,91 +89,103 @@
     "id_code": "E5X6QMGB",
     "categoria": "Actividad HD desplazados",
     "indicador": "Nº total de sesiones de HD de desplazados realizadas",
-    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM SESION s JOIN PACIENTES p ON p.NREGGEN = s.NREGGEN WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 1 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN;"
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM SESION s JOIN PACIENTES p ON p.NREGGEN = s.NREGGEN WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = -1 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN;"
   },
   {
     "id_code": "IZ941KIY",
     "categoria": "Actividad HD desplazados",
     "indicador": "Nº de pacientes HD desplazados prevalentes en periodo",
-    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM SESION s JOIN PACIENTES p ON p.NREGGEN = s.NREGGEN WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 1 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN;"
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM SESION s JOIN PACIENTES p ON p.NREGGEN = s.NREGGEN WHERE COALESCE(p.DESPLAZADO, 0) = -1 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN;"
   },
   {
     "id_code": "TPQ73J37",
     "categoria": "Actividad HDD",
     "indicador": "Nº de pacientes HDD incidentes en periodo",
-    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM INCIDENCIAS i JOIN PACIENTES p ON p.NREGGEN = i.NREGGEN WHERE p.MODAL_TRAT = 'D' AND i.FECHAINI BETWEEN :FECHAINI AND :FECHAFIN;"
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p WHERE p.MODAL_TRAT = 'D' AND COALESCE(p.DESPLAZADO, 0) = 0 AND p.FECH_INICIO_CENTRO BETWEEN '${FECHAINI}' AND '${FECHAFIN}';"
   },
   {
     "id_code": "YHM109JA",
     "categoria": "Actividad DP",
     "indicador": "Nº de pacientes DP prevalentes en periodo",
-    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p LEFT JOIN INCIDENCIAS i ON i.NREGGEN = p.NREGGEN WHERE p.MODAL_TRAT = 'D' AND COALESCE(p.DESPLAZADO, 0) = 0 AND i.FECHAINI <= :FECHAFIN AND (i.FECHAFIN IS NULL OR i.FECHAFIN >= :FECHAINI);"
+    "template": "SELECT COUNT(DISTINCT s.NSESION) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p JOIN SESION s ON p.NREGGEN = s.NREGGEN WHERE p.ESTADO = 'A' AND p.MODAL_TRAT = 'D' AND COALESCE(p.DESPLAZADO, 0) = 0 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN;"
   },
   {
     "id_code": "N9I9KUX8",
     "categoria": "Actividad Asistencial HD domiciliaria",
-    "indicador": "Nº de pacientes de DP   prevalentes ultimo dia de periodo  ",
+    "indicador": "Nº de pacientes de DP prevalentes ultimo dia de periodo  ",
     "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p LEFT JOIN INCIDENCIAS i ON p.NREGGEN = i.NREGGEN AND i.FECHAFIN <= :FECHAFIN WHERE p.MODAL_TRAT = 'D' AND (i.CAUSABAJA IS NULL OR i.FECHAFIN > :FECHAFIN);"
   },
   {
     "id_code": "7OOUVY83",
     "categoria": "Actividad Asistencial HD Agudos",
     "indicador": "Nº total de sesiones  de HD de agudos  realizadas (  suma de todas las sesiones de HD desde el inicio del periodo hasta el final del periodo) ",
-    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM SESION s JOIN PACIENTES p ON p.NREGGEN = s.NREGGEN WHERE p.MODAL_TRAT = 'A' AND s.FECHA >= :FECHAINI AND s.FECHA < :FECHAFIN;"
+    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p LEFT JOIN INCIDENCIAS i ON p.NREGGEN = i.NREGGEN AND i.FECHAFIN <= :FECHAFIN WHERE p.MODAL_TRAT = 'A' AND (i.CAUSABAJA IS NULL OR i.FECHAFIN > :FECHAFIN);"
   },
   {
     "id_code": "6J6MZ5BU",
     "categoria": "Descripción población",
     "indicador": "Porcentaje de hombres dializados en periodo",
-    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM SESION s JOIN PACIENTES p ON p.NREGGEN = s.NREGGEN WHERE p.MODAL_TRAT = 'H' AND p.SEXO = 'H' AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN;"
+    "template": "SELECT (COUNT(DISTINCT CASE WHEN p.SEXO = 'H' THEN p.NREGGEN END) * 100.0 / NULLIF(COUNT(DISTINCT p.NREGGEN),0)) AS resultado, COUNT(DISTINCT CASE WHEN p.SEXO = 'H' THEN p.NREGGEN END) AS numero_pacientes FROM SESION s JOIN PACIENTES p ON p.NREGGEN = s.NREGGEN WHERE p.MODAL_TRAT = 'H' AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN;"
   },
   {
     "id_code": "Z0M8YMW6",
     "categoria": "Descripción población",
     "indicador": "Porcentaje de mujeres dializadas en periodo",
-    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM SESION s JOIN PACIENTES p ON p.NREGGEN = s.NREGGEN WHERE p.MODAL_TRAT = 'H' AND p.SEXO = 'M' AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN;"
+    "template": "SELECT (COUNT(DISTINCT CASE WHEN p.SEXO = 'M' THEN p.NREGGEN END) * 100.0 / NULLIF(COUNT(DISTINCT p.NREGGEN),0)) AS resultado, COUNT(DISTINCT CASE WHEN p.SEXO = 'M' THEN p.NREGGEN END) AS numero_pacientes FROM SESION s JOIN PACIENTES p ON p.NREGGEN = s.NREGGEN WHERE p.MODAL_TRAT = 'H' AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN;"
   },
   {
     "id_code": "84CI952I",
     "categoria": "Descripción población",
     "indicador": "Edad media de pacientes prevalentes en periodo",
-    "template": "SELECT AVG(CAST(DATEDIFF(YEAR, p.FENAC, :FECHAFIN) AS DECIMAL(10,2))) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p JOIN SESION s ON p.NREGGEN = s.NREGGEN WHERE p.ESTADO = 'A' AND COALESCE(p.DESPLAZADO, 0) = 0 AND p.MODAL_TRAT = 'H' AND p.FENAC IS NOT NULL AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND NOT EXISTS (SELECT 1 FROM INCIDENCIAS i WHERE i.NREGGEN = p.NREGGEN AND i.CAUSABAJA IS NOT NULL AND i.FECHAINI < :FECHAFIN);"
-  },
+     "template": "SELECT AVG(CAST(DATEDIFF(DAY, p.FENAC, CAST(:FECHAFIN AS DATE)) / 365.25 AS DECIMAL(10,2))) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p JOIN SESION s ON p.NREGGEN = s.NREGGEN WHERE p.ESTADO = 'A' AND COALESCE(p.DESPLAZADO, 0) = 0 AND p.MODAL_TRAT = 'H' AND p.FENAC IS NOT NULL AND s.FECHA BETWEEN CAST(:FECHAINI AS DATE) AND CAST(:FECHAFIN AS DATE);"
+   },
+   {
+    "id_code": "84CI952IH",
+    "categoria": "Descripción población",
+    "indicador": "Edad media de pacientes prevalentes en periodo HOMBRES",
+     "template": "SELECT AVG(CAST(DATEDIFF(DAY, p.FENAC, CAST(:FECHAFIN AS DATE)) / 365.25 AS DECIMAL(10,2))) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p JOIN SESION s ON p.NREGGEN = s.NREGGEN WHERE p.ESTADO = 'A' AND COALESCE(p.DESPLAZADO, 0) = 0 AND p.MODAL_TRAT = 'H' AND p.SEXO = 'H' AND p.FENAC IS NOT NULL AND s.FECHA BETWEEN CAST(:FECHAINI AS DATE) AND CAST(:FECHAFIN AS DATE);"
+      },
+   {
+    "id_code": "84CI952IM",
+    "categoria": "Descripción población",
+    "indicador": "Edad media de pacientes prevalentes en periodo MUJERES",
+    "template": "SELECT AVG(CAST(DATEDIFF(DAY, p.FENAC, CAST(:FECHAFIN AS DATE)) / 365.25 AS DECIMAL(10,2))) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p JOIN SESION s ON p.NREGGEN = s.NREGGEN WHERE p.ESTADO = 'A' AND COALESCE(p.DESPLAZADO, 0) = 0 AND p.MODAL_TRAT = 'H' AND p.SEXO = 'M' AND p.FENAC IS NOT NULL AND s.FECHA BETWEEN CAST(:FECHAINI AS DATE) AND CAST(:FECHAFIN AS DATE);"
+   },
   {
     "id_code": "YWHB0C0I",
     "categoria": "Descripción población",
     "indicador": "Edad media de pacientes incidentes en periodo",
-    "template": "WITH inc_prim AS (SELECT i.NREGGEN, MIN(i.FECHAINI) AS FECHAINI FROM INCIDENCIAS i WHERE i.FECHAINI BETWEEN :FECHAINI AND :FECHAFIN GROUP BY i.NREGGEN) SELECT AVG(CAST(DATEDIFF(YEAR, p.FENAC, ip.FECHAINI) AS DECIMAL(10,2))) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM inc_prim ip JOIN PACIENTES p ON p.NREGGEN = ip.NREGGEN WHERE COALESCE(p.DESPLAZADO, 0) = 0 AND p.MODAL_TRAT = 'H' AND p.FENAC IS NOT NULL;"
-  },
+    "template": "SELECT AVG(CAST(DATEDIFF(DAY, p.FENAC, p.FECH_INI_HEMO) / 365.25 AS DECIMAL(10,2))) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p WHERE p.ESTADO = 'A' AND COALESCE(p.DESPLAZADO, 0) = 0 AND p.MODAL_TRAT = 'H' AND p.FENAC IS NOT NULL AND p.FECH_INI_HEMO BETWEEN CAST(:FECHAINI AS DATE) AND CAST(:FECHAFIN AS DATE);"
+    },
   {
     "id_code": "JVCBM8DE",
     "categoria": "Descripción población",
     "indicador": "% pacientes incidentes en periodo mayores de 80 años",
-    "template": "WITH primerases AS (SELECT s.NREGGEN, MIN(s.FECHA) AS FECHA_PRIMERA FROM SESION s GROUP BY s.NREGGEN), incidentes AS (SELECT p.NREGGEN, p.FENAC, pr.FECHA_PRIMERA FROM primerases pr JOIN PACIENTES p ON p.NREGGEN = pr.NREGGEN WHERE pr.FECHA_PRIMERA BETWEEN :FECHAINI AND :FECHAFIN AND p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND p.FENAC IS NOT NULL) SELECT COUNT(CASE WHEN DATEDIFF(YEAR, i.FENAC, i.FECHA_PRIMERA) > 80 THEN 1 END) AS resultado, COUNT(*) AS numero_pacientes FROM incidentes i;"
+    "template": "SELECT (COUNT(CASE WHEN (DATEDIFF(DAY, p.FENAC, p.FECH_INI_HEMO) / 365.25) >= 80 THEN 1 END) * 100.0 / NULLIF(COUNT(*), 0)) AS resultado, COUNT(*) AS numero_pacientes FROM PACIENTES p WHERE p.ESTADO = 'A' AND COALESCE(p.DESPLAZADO, 0) = 0 AND p.MODAL_TRAT = 'H' AND p.FENAC IS NOT NULL AND p.FECH_INI_HEMO BETWEEN CAST(:FECHAINI AS DATE) AND CAST(:FECHAFIN AS DATE);"
   },
   {
     "id_code": "KE6IQXRV",
     "categoria": "Descripción población",
     "indicador": "% pacientes prevalentes en periodo mayores de 80 años",
-    "template": "WITH prevalentes AS (SELECT DISTINCT s.NREGGEN FROM SESION s WHERE s.FECHA BETWEEN :FECHAINI AND :FECHAFIN) SELECT COUNT(CASE WHEN DATEDIFF(YEAR, p.FENAC, :FECHAFIN) > 80 THEN 1 END) AS resultado, COUNT(*) AS numero_pacientes FROM prevalentes v JOIN PACIENTES p ON p.NREGGEN = v.NREGGEN WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND p.FENAC IS NOT NULL;"
-  },
+    "template": "WITH PREVALENTES AS ( SELECT DISTINCT p.NREGGEN, p.FENAC FROM PACIENTES p JOIN SESION s ON s.NREGGEN = p.NREGGEN WHERE p.ESTADO = 'A' AND COALESCE(p.DESPLAZADO, 0) = 0 AND p.MODAL_TRAT = 'H' AND p.FENAC IS NOT NULL AND s.FECHA BETWEEN CAST(:FECHAINI AS DATE) AND CAST(:FECHAFIN AS DATE) ) SELECT (SUM(CASE WHEN (DATEDIFF(DAY, p.FENAC, CAST(:FECHAFIN AS DATE)) / 365.25) >= 80 THEN 1 ELSE 0 END) * 100.0 / NULLIF(COUNT(*), 0)) AS resultado, COUNT(*) AS numero_pacientes FROM PREVALENTES p;"
+      },
   {
     "id_code": "MUV2G6VE",
     "categoria": "Descripcion población ( diabetes)",
     "indicador": "Porcentaje de pacientes incidentes en periodo con nefropatia diabetica ( suma de todos los pacientes  nuevos con nefropatia diabetica desde el inicio del periodo hasta el final del periodo / nº total de pacienets nuevos en periodo) ",
-    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM INCIDENCIAS i JOIN PACIENTES p ON p.NREGGEN = i.NREGGEN WHERE i.TIPO = 'I' AND i.FECHAINI >= :FEC_INI AND i.FECHAINI < :FEC_FIN;"
-  },
+    "template": "SELECT CASE WHEN COUNT(DISTINCT p.NREGGEN) = 0 THEN NULL ELSE (COUNT(DISTINCT CASE WHEN p.ETIOLOGIA IN (80, 81) THEN p.NREGGEN END) * 100.0 / COUNT(DISTINCT p.NREGGEN)) END AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p JOIN SESION s ON s.NREGGEN = p.NREGGEN WHERE p.ESTADO = 'A' AND p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND p.FECH_INI_HEMO BETWEEN :FECHAINI AND :FECHAFIN;"
+    },
   {
     "id_code": "X86NJ54L",
     "categoria": "Descripcion población ( diabetes)",
     "indicador": "Porcentaje de pacientes prevalentes en periodo con nefropatia diabetica ( suma de todos los pacientes   con nefropatia diabetica desde el inicio del periodo hasta el final del periodo / nº total de pacientes en periodo) ",
-    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p JOIN SESION s ON s.NREGGEN = p.NREGGEN WHERE p.MODAL_TRAT = 'H' -- pacientes en HD, o quitar si quieres todas las modalidades AND s.FECHA >= DATE :FECHAINI AND s.FECHA < DATE :FECHAFIN;"
+    "template": "SELECT CASE WHEN COUNT(DISTINCT p.NREGGEN) = 0 THEN NULL ELSE (COUNT(DISTINCT CASE WHEN p.ETIOLOGIA IN (80, 81) THEN p.NREGGEN END) * 100.0 / COUNT(DISTINCT p.NREGGEN)) END AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p JOIN SESION s ON s.NREGGEN = p.NREGGEN WHERE p.ESTADO = 'A' AND p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN;;"
   },
   {
     "id_code": "MFUG6OXZ",
     "categoria": "Descripcion población ( fragilidad)",
     "indicador": "Porcentaje de pacientes prevalentes en periodo con Fragilidad ( suma de todos los pacientes   con Fragilidad  desde el inicio del periodo hasta el final del periodo / nº total de pacientes en periodo) ",
-    "template": "-- Pacientes prevalentes: con >=1 sesión en el periodo SELECT COUNT(DISTINCT s.NREGGEN) AS pacientes FROM SESION s WHERE s.FECHA BETWEEN :desde AND :hasta;"
+    "template": "WITH PacientesPrevalentes AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p JOIN SESION s ON s.NREGGEN = p.NREGGEN WHERE p.ESTADO = 'A' AND p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN ), UltimoFRAIL AS ( SELECT t.NREGGEN, MAX(t.FECHA) AS FECHA_MAX FROM TEST_PAC t WHERE t.CODTEST = <CODTEST_FRAIL> AND t.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND t.NREGGEN IN (SELECT NREGGEN FROM PacientesPrevalentes) GROUP BY t.NREGGEN ), FRAIL_Punt AS ( SELECT tp.NREGGEN, tp.PUNTOS_TOT FROM TEST_PAC tp JOIN UltimoFRAIL u ON tp.NREGGEN = u.NREGGEN AND tp.FECHA = u.FECHA_MAX ) SELECT (COUNT(DISTINCT CASE WHEN fp.PUNTOS_TOT >= 3 THEN fp.NREGGEN END) * 100.0 / NULLIF(COUNT(DISTINCT pp.NREGGEN),0)) AS resultado, COUNT(DISTINCT pp.NREGGEN) AS numero_pacientes FROM PacientesPrevalentes pp LEFT JOIN FRAIL_Punt fp ON fp.NREGGEN = pp.NREGGEN;"
   },
   {
     "id_code": "N0CY12QJ",

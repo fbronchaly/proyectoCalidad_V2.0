@@ -24,7 +24,16 @@ export class LoginComponent implements OnInit {
   solicitarCodigo() {
     console.log('Email:', this.email);
     
-    this.http.post(`${this.apiUrl}/api/send-code`, { email: this.email }).subscribe({
+    // Configuración para solicitudes a redes privadas (compatibilidad con restricciones de Chrome)
+    const httpOptions = {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      // @ts-ignore - Para compatibilidad con nuevas restricciones de Chrome para redes privadas
+      targetAddressSpace: 'private'
+    };
+    
+    this.http.post(`${this.apiUrl}/api/send-code`, { email: this.email }, httpOptions).subscribe({
       next: () => {
         this.message = 'Código enviado a Telegram';
         this.showCodeInput = true;
@@ -39,7 +48,16 @@ export class LoginComponent implements OnInit {
     console.log('Código:', this.code);
     console.log('Email:', this.email);
     
-    this.http.post(`${this.apiUrl}/api/verify-code`, { email: this.email, code: this.code }).subscribe({
+    // Configuración para solicitudes a redes privadas (compatibilidad con restricciones de Chrome)
+    const httpOptions = {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      // @ts-ignore - Para compatibilidad con nuevas restricciones de Chrome para redes privadas
+      targetAddressSpace: 'private'
+    };
+    
+    this.http.post(`${this.apiUrl}/api/verify-code`, { email: this.email, code: this.code }, httpOptions).subscribe({
       next: (res: any) => {
         if (res.message === 'Autenticado') {
           this.authService.login();

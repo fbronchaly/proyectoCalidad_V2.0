@@ -1,5 +1,6 @@
 // controllers/flux/worker.js
 const comienzoFlujo = require('./comienzoFlujo');
+const { guardarResultadosLocal } = require('./guardarResultadosLocal'); // 👈 NUEVO
 
 // Solo ejecutar si este archivo es el script principal (fork o node worker.js),
 // NO cuando se hace require() desde otro módulo.
@@ -29,6 +30,21 @@ if (require.main === module) {
         }
       );
 
+      // 💾 NUEVO: guardar en Mongo con el modelo nuevo
+      try {
+        const resumenGuardado = await guardarResultadosLocal(
+          fechaInicio,
+          fechaFin,
+          baseDatos,
+          indices,
+          resultados
+        );
+        console.log('💾 Resultados guardados en DB local:', resumenGuardado);
+      } catch (err) {
+        console.error('⛔ Error al guardar en DB local (Mongo):', err.message);
+      }
+
+      // 🔁 Lo de siempre: devolver resultados al proceso padre
       if (typeof process.send === 'function') {
         console.log('📤 Enviando resultados finales al proceso padre...');
         process.send({
@@ -37,7 +53,6 @@ if (require.main === module) {
         });
         console.log('✅ Mensaje de finalización enviado correctamente');
         
-        // Esperar un poco antes de cerrar para asegurar que el mensaje llegue
         setTimeout(() => {
           console.log('🏁 Worker terminando después de enviar resultados');
           process.exit(0);

@@ -1,15 +1,26 @@
+version: '3.8'
 
 services:
-  app:
+  calidad-app:
     build:
-      context: ./fragildial_back_V3.3
+      context: ./calidad_back_V2.0
       dockerfile: Dockerfile
-    container_name: app-completa
+    container_name: calidad-app-v2
     ports:
-      - "8080:3000"  # Expone el contenedor en el puerto 80 del host
+      - "8083:3000"  # Puerto externo 8083 -> interno 3000
     env_file:
-      - ./fragildial_back_V3.3/.env
+      - ./calidad_back_V2.0/.env
     volumes:
-      - ./backend/uploads:/usr/src/app/uploads
-      - ./fragildial_back_V3.3/.env:/usr/src/app/.env
+      - ./calidad_back_V2.0/uploads:/usr/src/app/uploads
+      - ./calidad_back_V2.0/.env:/usr/src/app/.env
+      - ./calidad_back_V2.0/public:/usr/src/app/public
     restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - USE_PROD_ORIGIN=true
+    networks:
+      - calidad-network
+
+networks:
+  calidad-network:
+    driver: bridge

@@ -4,16 +4,17 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { UploadPayload } from './selection.service';
 import { io, Socket } from 'socket.io-client';
+import { environment } from '../../environments/environment'; // Agregar import de environment
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
-  private baseUrl = 'http://localhost:3000/api';
-  private endpoint = `${this.baseUrl}/upload`;
+  private baseUrl = `${environment.apiUrl}/api`; // Usar environment.apiUrl
+  private endpoint = `${this.baseUrl}/upload`; // Cambiar de /consulta a /upload
   private socket: Socket;
 
   constructor(private http: HttpClient) {
-    // Usar URL fija para localhost durante desarrollo
-    const socketUrl = 'http://localhost:3000';
+    // Usar environment.apiUrl para WebSocket también
+    const socketUrl = environment.apiUrl;
     console.log('🔌 Conectando WebSocket a:', socketUrl);
     
     // Inicializar conexión WebSocket con configuración específica

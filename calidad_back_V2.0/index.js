@@ -20,7 +20,7 @@ const clientOrigin = process.env.USE_PROD_ORIGIN === 'true'
 
 const io = new Server(http, {
   cors: {
-    origin: true, // Permitir cualquier origen temporalmente para diagnosticar
+    origin: clientOrigin, 
     methods: ['GET', 'POST'],
     credentials: true
   }
@@ -43,6 +43,21 @@ app.use(cors({
   methods: ['GET', 'POST'],
   credentials: true
 }));
+
+// Headers para Chrome Private Network Access (PNA) - Solución para bloqueo de send-code
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Private-Network', 'true');
+  if (req.method === 'OPTIONS') {
+    res.setHeader('Access-Control-Allow-Origin', clientOrigin);
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    res.setHeader('Access-Control-Allow-Private-Network', 'true');
+    return res.status(200).end();
+  }
+  next();
+});
+
 app.use(express.json());
 
 // ------------------------
