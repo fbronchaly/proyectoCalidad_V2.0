@@ -14,34 +14,58 @@ const { Server } = require('socket.io');
 
 console.log(process.env.USE_PROD_ORIGIN);
 
+// CORREGIDO: Configuración mejorada de CORS para WebSocket
+const allowedOrigins = [
+  'http://localhost:4200',
+  'http://127.0.0.1:4200',
+  'http://localhost:3000',
+  'http://127.0.0.1:3000'
+];
+
+// Agregar origen de producción si existe
+if (process.env.CLIENT_ORIGIN_PROD) {
+  allowedOrigins.push(process.env.CLIENT_ORIGIN_PROD);
+}
+
 const clientOrigin = process.env.USE_PROD_ORIGIN === 'true'
   ? process.env.CLIENT_ORIGIN_PROD
-  : process.env.CLIENT_ORIGIN_LOCAL;
+  : 'http://localhost:4200';
 
 const io = new Server(http, {
   cors: {
-    origin: clientOrigin, 
+    origin: allowedOrigins, // CORREGIDO: Usar array de orígenes permitidos
     methods: ['GET', 'POST'],
-    credentials: true
-  }
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization']
+  },
+  allowEIO3: true,
+  transports: ['websocket', 'polling']
 });
 
 // PARA TRABAJAR EN LOCALHOST coloca esto en console-->  USE_PROD_ORIGIN=false node index.js
-console.log(`✅ CORS habilitado para: ${clientOrigin}`);
-console.log(`✅ WebSocket CORS habilitado para múltiples orígenes incluyendo localhost:4200`);
+console.log(`✅ CORS habilitado para: ${allowedOrigins.join(', ')}`);
+console.log(`✅ WebSocket CORS habilitado para múltiples orígenes`);
 
-// Redirigir cualquier evento de progreso al cliente por WebSocket
+// CORREGIDO: Mejorar el manejo de eventos de progreso
 eventBus.on('progreso', (msg) => {
-  io.emit('progreso', msg);
+  console.log('📡 EventBus recibió evento de progreso:', msg);
+  const progressData = {
+    porcentaje: msg.porcentaje || 0,
+    mensaje: msg.mensaje || 'Procesando...',
+    timestamp: new Date().toISOString()
+  };
+  console.log('📤 Emitiendo por WebSocket:', progressData);
+  io.emit('progreso', progressData);
 });
 
 // ------------------------
 // Middleware
 // ------------------------
 app.use(cors({
-  origin: clientOrigin,
-  methods: ['GET', 'POST'],
-  credentials: true
+  origin: allowedOrigins, // CORREGIDO: Usar mismo array
+  methods: ['GET', 'POST', 'OPTIONS'],
+  credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 // Headers para Chrome Private Network Access (PNA) - Solución para bloqueo de send-code
@@ -260,6 +284,81 @@ function resetearServidorCompleto(motivo = 'reset manual') {
 }
 
 // ------------------------
+// NUEVA: Función para reset suave del servidor (sin interrumpir WebSocket)
+// ------------------------
+function resetearServidorSuave(motivo = 'reset suave') {
+  console.log(`🔄 === RESET SUAVE DEL SERVIDOR (${motivo}) ===`);
+  
+  // 1) Solo resetear variables de estado, NO matar worker si ya terminó
+  enProceso = false;
+  descargando = false;
+  
+  // 2) Si hay worker, solo limpiarlo sin forzar terminación
+  if (currentChild) {
+    console.log(`🧹 Limpiando referencia al worker completado`);
+    currentChild = null;
+  }
+  
+  console.log('✅ Variables de estado reseteadas suavemente');
+  
+  // 3) Limpiar archivos de forma asíncrona y suave
+  console.log('🧹 Iniciando limpieza suave de archivos...');
+  
+  setTimeout(() => {
+    // Limpiar uploads sin bloquear
+    const uploadDirPath = path.join(__dirname, 'uploads');
+    if (fs.existsSync(uploadDirPath)) {
+      fs.readdir(uploadDirPath, (err, files) => {
+        if (!err && files.length > 0) {
+          files.forEach(file => {
+            fs.unlink(path.join(uploadDirPath, file), (unlinkErr) => {
+              if (!unlinkErr) console.log(`🗑️ Archivo eliminado suavemente: ${file}`);
+            });
+          });
+        }
+        console.log('✅ Directorio uploads limpiado suavemente');
+      });
+    }
+    
+    // Limpiar informe si existe
+    if (fs.existsSync(informePath)) {
+      fs.unlink(informePath, (err) => {
+        if (!unlinkErr) console.log('🗑️ Informe eliminado suavemente');
+      });
+    }
+  }, 1000);
+  
+  // 4) Limpiar códigos de Telegram
+  const codigosAnteriores = Object.keys(codeStore).length;
+  Object.keys(codeStore).forEach(key => delete codeStore[key]);
+  console.log(`🧹 Store de códigos limpiado suavemente (${codigosAnteriores} códigos)`);
+  
+  // 5) NO emitir evento de reset para no confundir al frontend que está procesando datos
+  console.log('ℹ️ Reset suave completado - WebSocket mantiene conexiones activas');
+  
+  // 6) Mostrar estado final
+  console.log('📊 === ESTADO DESPUÉS DEL RESET SUAVE ===');
+  console.log(`   ✅ enProceso: ${enProceso}`);
+  console.log(`   ✅ currentChild: ${currentChild}`);
+  console.log(`   ✅ descargando: ${descargando}`);
+  console.log(`   ✅ WebSocket: Conexiones mantenidas`);
+  console.log('🎯 Reset suave completado - Sistema listo para nuevos trabajos');
+  console.log('✅ === RESET SUAVE FINALIZADO ===');
+  
+  return {
+    success: true,
+    message: `Reset suave completado (${motivo})`,
+    estado: {
+      enProceso: false,
+      workerActivo: false,
+      webSocketActivo: true,
+      estadoInicial: true
+    },
+    timestamp: new Date().toISOString()
+  };
+}
+
+// ------------------------
 // Endpoint: /api/upload - Maneja la carga y procesamiento de archivos
 // ------------------------
 app.post('/api/upload', (req, res) => {
@@ -318,16 +417,21 @@ app.post('/api/upload', (req, res) => {
 
       // 5. Manejo de mensajes del worker
       currentChild.on('message', (msg) => {
-        console.log('📨 Mensaje recibido del worker:', msg);
+        console.log('📨 Mensaje recibido del worker:', JSON.stringify(msg, null, 2));
         
-        // 5.1 Emisión de progreso - CORREGIDO
+        // 5.1 Emisión de progreso - CORREGIDO con mejor logging
         if (msg.progreso !== undefined) {
           const progressData = { 
             porcentaje: msg.progreso, 
-            mensaje: msg.mensaje || 'Procesando...' 
+            mensaje: msg.mensaje || 'Procesando...',
+            timestamp: new Date().toISOString()
           };
-          console.log('📡 Emitiendo progreso por WebSocket:', progressData);
+          console.log('📡 Emitiendo progreso por WebSocket:', JSON.stringify(progressData, null, 2));
+          console.log('📊 Clientes conectados:', io.engine.clientsCount);
+          
+          // Emitir tanto por WebSocket directo como por eventBus
           io.emit('progreso', progressData);
+          eventBus.emit('progreso', progressData);
         }
 
         // 5.2 Manejo de errores del worker
@@ -349,30 +453,42 @@ app.post('/api/upload', (req, res) => {
           return;
         }
 
-        // 5.3 Procesamiento de finalización y envío de resultados
+        // 5.3 Procesamiento de finalización y envío de resultados - SINCRONIZADO
         if (msg.terminado) {
-          console.log('✅ Proceso completado. Enviando resultados al frontend.');
+          console.log('✅ Proceso completado. Enviando datos INMEDIATAMENTE.');
           
-          // Enviar progreso final
-          const finalProgress = { porcentaje: 100, mensaje: 'Análisis completado' };
-          console.log('📡 Emitiendo progreso final por WebSocket:', finalProgress);
-          io.emit('progreso', finalProgress);
+          // SINCRONIZADO: Enviar progreso 100% CON datos en el mismo momento
+          const finalDataEvent = { 
+            porcentaje: 100, 
+            mensaje: 'Análisis completado - Datos listos',
+            resultados: msg.resultados || [],
+            timestamp: new Date().toISOString(),
+            completed: true,
+            success: true
+          };
           
-          // Enviar los resultados como JSON al frontend
+          console.log('📡 SINCRONIZADO: Enviando 100% + DATOS simultáneamente:', {
+            porcentaje: finalDataEvent.porcentaje,
+            mensaje: finalDataEvent.mensaje,
+            resultadosCount: finalDataEvent.resultados.length
+          });
+          
+          // Emitir datos por WebSocket SIN DELAY
+          io.emit('progreso', finalDataEvent);
+          
+          // Respuesta HTTP inmediata y simple
           if (!res.headersSent) {
             res.status(200).json({ 
               success: true,
-              message: 'Proceso completado exitosamente - Servidor reseteado al estado inicial',
-              resultados: msg.resultados || [],
+              message: 'Datos enviados por WebSocket',
               timestamp: new Date().toISOString()
             });
           }
           
-          // DESPUÉS DE FINALIZAR EL TRABAJO: Resetear servidor al estado inicial
+          // Reset suave después de confirmar envío
           setTimeout(() => {
-            console.log('🎯 Trabajo completado - Reseteando servidor al estado inicial');
-            resetearServidorCompleto('trabajo completado exitosamente');
-          }, 2000); // Dar tiempo para que la respuesta llegue al cliente
+            resetearServidorSuave('trabajo completado exitosamente');
+          }, 3000); // Reducido a 3 segundos
         }
       });
 

@@ -69,6 +69,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
   startTime: number = 0;
   private progressSubscription: Subscription | null = null;
   private resetSubscription: Subscription | null = null;
+  private connectionSubscription: Subscription | null = null;
+
+  // NUEVO: Variables para debugging
+  isWebSocketConnected: boolean = false;
+  lastProgressUpdate: string = '';
+  debugMode: boolean = false;
 
   constructor(
     private router: Router,
@@ -83,19 +89,41 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.startDate = start;
     this.endDate = end;
     
-    // NUEVO: Configurar WebSocket para progreso
+    // MEJORADO: Configurar WebSocket para progreso con mejor debugging
     this.setupProgressWebSocket();
+    this.setupConnectionMonitoring();
   }
 
   ngOnDestroy(): void {
-    // NUEVO: Limpiar suscripciones
+    // MEJORADO: Limpiar todas las suscripciones
     if (this.progressSubscription) {
       this.progressSubscription.unsubscribe();
     }
     if (this.resetSubscription) {
       this.resetSubscription.unsubscribe();
     }
+    if (this.connectionSubscription) {
+      this.connectionSubscription.unsubscribe();
+    }
     this.api.disconnect();
+  }
+
+  // CORREGIDO: Monitorear estado de conexión WebSocket SIN notificaciones confusas
+  private setupConnectionMonitoring(): void {
+    this.connectionSubscription = this.api.isConnected.subscribe(isConnected => {
+      this.isWebSocketConnected = isConnected;
+      console.log('🔌 Estado conexión WebSocket cambiado:', isConnected);
+      
+      // ELIMINADO: Las notificaciones que confunden al cliente
+      // Solo mantener logs para debugging
+      if (isConnected) {
+        console.log('✅ WebSocket conectado exitosamente');
+      } else {
+        console.log('⚠️ WebSocket desconectado - Se intentará reconectar automáticamente');
+      }
+      
+      this.cdr.detectChanges();
+    });
   }
 
   // Método que se ejecuta cuando cambia la fecha de inicio
@@ -160,9 +188,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
     // 4. Llamar al reset completo del servicio (limpia fechas, bases de datos e indicadores)
     this.sel.resetAll();
     
+    console.log('🔄 Enviando reset al backend...');
+    
     // 5. Llamar al endpoint de reset del backend para detener procesos y limpiar archivos
     this.api.reset().subscribe({
       next: (response) => {
+        console.log('✅ Reset del backend exitoso:', response);
         // 6. Confirmar que el sistema está listo para nuevos análisis
         this.prepararParaNuevoAnalisis();
         
@@ -172,6 +203,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
         });
       },
       error: (error) => {
+        console.error('❌ Error en reset del backend:', error);
         // Aunque haya error en el backend, el frontend ya está limpio
         this.prepararParaNuevoAnalisis();
         
@@ -214,48 +246,133 @@ export class DashboardComponent implements OnInit, OnDestroy {
     return !!j.intervalo && j.baseDatos.length > 0 && j.indices.length > 0;
   }
 
-  // Método para actualizar la tabla
+  // CORREGIDO: Método para actualizar la tabla con debugging mejorado
   private updateTableData(): void {
-    console.log('=== updateTableData llamado ===');
-    console.log('apiResponse:', this.apiResponse);
+    console.log('🔄 === INICIANDO updateTableData ===');
+    console.log('📊 Estado actual - apiResponse:', this.apiResponse);
+    console.log('📊 Estado actual - loading:', this.loading);
+    console.log('📊 Estado actual - tableData.length antes:', this.tableData.length);
     
-    if (!this.apiResponse?.resultados) {
-      console.log('No hay resultados, limpiando tabla');
+    // Verificación exhaustiva de datos
+    if (!this.apiResponse) {
+      console.log('❌ No hay apiResponse disponible');
       this.dataSource.data = [];
       this.tableData = [];
       this.cdr.detectChanges();
       return;
     }
 
-    const tableData: any[] = [];
+    if (!this.apiResponse.resultados) {
+      console.log('❌ apiResponse.resultados es null/undefined');
+      console.log('📋 apiResponse completo:', JSON.stringify(this.apiResponse, null, 2));
+      this.dataSource.data = [];
+      this.tableData = [];
+      this.cdr.detectChanges();
+      return;
+    }
+
+    if (!Array.isArray(this.apiResponse.resultados)) {
+      console.log('❌ apiResponse.resultados no es un array:', typeof this.apiResponse.resultados);
+      this.dataSource.data = [];
+      this.tableData = [];
+      this.cdr.detectChanges();
+      return;
+    }
+
+    if (this.apiResponse.resultados.length === 0) {
+      console.log('⚠️ apiResponse.resultados está vacío');
+      this.dataSource.data = [];
+      this.tableData = [];
+      this.cdr.detectChanges();
+      return;
+    }
+
+    console.log(`✅ Procesando ${this.apiResponse.resultados.length} indicadores`);
+
+    const newTableData: any[] = [];
     
-    this.apiResponse.resultados.forEach((indicador) => {
-      console.log('Procesando indicador:', indicador.indicador);
-      console.log('Resultados del indicador:', indicador.resultados);
+    this.apiResponse.resultados.forEach((indicador, indicadorIndex) => {
+      console.log(`\n--- Procesando indicador ${indicadorIndex + 1} ---`);
+      console.log('🏷️ ID:', indicador.id_code);
+      console.log('📂 Categoría:', indicador.categoria);
+      console.log('📋 Indicador:', indicador.indicador);
+      console.log('🔗 Resultados:', indicador.resultados);
+
+      // Verificar que el indicador tiene la estructura correcta
+      if (!indicador.id_code) {
+        console.warn(`⚠️ Indicador ${indicadorIndex} sin id_code`);
+      }
+      if (!indicador.categoria) {
+        console.warn(`⚠️ Indicador ${indicadorIndex} sin categoria`);
+      }
+      if (!indicador.indicador) {
+        console.warn(`⚠️ Indicador ${indicadorIndex} sin nombre de indicador`);
+      }
       
-      if (indicador.resultados) {
-        indicador.resultados.forEach((resultado) => {
-          tableData.push({
-            id_code: indicador.id_code,
-            categoria: indicador.categoria,
-            indicador: indicador.indicador,
+      if (indicador.resultados && Array.isArray(indicador.resultados)) {
+        console.log(`📊 Procesando ${indicador.resultados.length} resultados para ${indicador.indicador}`);
+        
+        indicador.resultados.forEach((resultado, resultadoIndex) => {
+          console.log(`  💾 Resultado ${resultadoIndex + 1}:`, {
             baseData: resultado.baseData,
             resultado: resultado.resultado,
-            numeroDePacientes: resultado.numeroDePacientes,
-            indicadorCompleto: indicador
+            numeroDePacientes: resultado.numeroDePacientes
           });
+
+          // Crear fila de tabla con validación de datos
+          const filaTabla = {
+            id_code: indicador.id_code || 'N/A',
+            categoria: indicador.categoria || 'Sin categoría',
+            indicador: indicador.indicador || 'Sin nombre',
+            baseData: resultado.baseData || 'Sin base',
+            resultado: resultado.resultado !== undefined ? resultado.resultado : 0,
+            numeroDePacientes: resultado.numeroDePacientes !== undefined ? resultado.numeroDePacientes : 0,
+            indicadorCompleto: indicador
+          };
+
+          newTableData.push(filaTabla);
+          console.log(`  ✅ Fila añadida:`, filaTabla);
         });
+      } else {
+        console.warn(`⚠️ Indicador ${indicadorIndex} no tiene resultados válidos:`, indicador.resultados);
       }
     });
     
-    console.log('tableData generado:', tableData);
-    console.log('Número de filas:', tableData.length);
+    console.log(`🎯 Total filas generadas: ${newTableData.length}`);
+    console.log('📋 Primeras 3 filas generadas:', newTableData.slice(0, 3));
     
-    this.dataSource.data = tableData;
-    this.tableData = tableData;
+    // Asignar datos y forzar detección de cambios múltiples veces
+    this.tableData = [...newTableData]; // Crear nueva referencia
+    this.dataSource.data = [...newTableData]; // Crear nueva referencia
+    
+    console.log('🔄 Datos asignados - Forzando detección de cambios...');
     this.cdr.detectChanges();
     
-    console.log('Tabla actualizada. tableData.length:', this.tableData.length);
+    // Forzar segunda detección por si acaso
+    setTimeout(() => {
+      console.log('🔄 Segunda detección de cambios...');
+      this.cdr.markForCheck();
+      this.cdr.detectChanges();
+    }, 50);
+    
+    // Verificación final
+    setTimeout(() => {
+      console.log('📊 === VERIFICACIÓN FINAL updateTableData ===');
+      console.log('📋 tableData.length final:', this.tableData.length);
+      console.log('📋 dataSource.data.length final:', this.dataSource.data.length);
+      console.log('📋 Primeras 2 filas finales:', this.tableData.slice(0, 2));
+      
+      if (this.tableData.length === 0) {
+        console.error('❌ PROBLEMA: tableData sigue vacío después de la actualización');
+        console.error('🔍 Datos originales para debug:', {
+          apiResponse: this.apiResponse,
+          resultados: this.apiResponse?.resultados,
+          resultadosLength: this.apiResponse?.resultados?.length
+        });
+      } else {
+        console.log('✅ Tabla actualizada exitosamente');
+      }
+    }, 100);
   }
 
   sendToBack() {
@@ -263,93 +380,131 @@ export class DashboardComponent implements OnInit, OnDestroy {
     
     console.log('=== ENVIANDO PETICIÓN AL BACKEND ===');
     console.log('Payload enviado:', payload);
+    console.log('Estado WebSocket:', this.isWebSocketConnected ? 'Conectado' : 'Desconectado');
     
     if (!this.readyToSendFront || !payload.intervalo) {
       this.snack.open('Completa rango, bases e indicadores', 'OK', { duration: 2500 });
       return;
     }
+
+    // CORREGIDO: No bloquear si WebSocket no está conectado, intentar reconectar en paralelo
+    if (!this.isWebSocketConnected) {
+      console.log('⚠️ WebSocket no conectado - Intentando reconectar en paralelo...');
+      this.api.reconnect();
+      // NO return aquí - continuar con el proceso
+    }
     
-    // NUEVO: Inicializar indicador de progreso
+    // OPTIMIZADO: Inicializar estado y limpiar datos anteriores
     this.loading = true;
     this.startTime = Date.now();
     this.progressPercentage = 0;
     this.progressMessage = 'Iniciando análisis...';
     this.timeRemaining = 0;
-    this.apiResponse = null;
+    this.apiResponse = null; // Limpiar datos anteriores
+    this.tableData = []; // Limpiar tabla anterior
+    this.lastProgressUpdate = new Date().toLocaleTimeString();
     
+    console.log('🚀 Iniciando proceso - WebSocket reconectará automáticamente si es necesario');
+    
+    // SIMPLIFICADO: Enviar la petición, WebSocket maneja todo
     this.api.upload(payload).subscribe({
-      next: (resp: ApiResponse) => {
-        console.log('=== RESPUESTA RECIBIDA DEL BACKEND ===');
-        console.log('Respuesta completa:', resp);
-        console.log('Success:', resp.success);
-        console.log('Message:', resp.message);
-        console.log('Timestamp:', resp.timestamp);
-        console.log('Número de indicadores:', resp.resultados?.length || 0);
-        
-        if (resp.resultados && resp.resultados.length > 0) {
-          console.log('=== DETALLE DE INDICADORES RECIBIDOS ===');
-          resp.resultados.forEach((indicador, index) => {
-            console.log(`\n--- Indicador ${index + 1} ---`);
-            console.log('ID:', indicador.id_code);
-            console.log('Categoría:', indicador.categoria);
-            console.log('Indicador:', indicador.indicador);
-            console.log('Resultados por BD:', indicador.resultados);
-            console.log('Totales:', indicador.totales);
-          });
-        }
-        
-        // Guardar los resultados
-        this.apiResponse = resp;
-        this.loading = false;
-        
-        // Actualizar la tabla inmediatamente después de recibir datos
-        this.updateTableData();
-        
-        if (resp.success) {
-          this.snack.open(
-            resp.message || 'Análisis completado - Sistema listo para nuevo trabajo', 
-            'OK', 
-            { duration: 3000 }
-          );
-        } else {
-          this.snack.open('Error: ' + resp.message, 'OK', { duration: 3500 });
-        }
+      next: (resp: any) => {
+        console.log('✅ Petición HTTP enviada exitosamente');
+        console.log('📡 WebSocket manejará las actualizaciones de progreso');
+        // Ya no procesamos aquí - WebSocket maneja todo
       },
       error: (err) => {
-        console.error('=== ERROR EN LA PETICIÓN ===');
-        console.error('Error completo:', err);
-        
-        // NUEVO: Resetear progreso en caso de error
+        console.error('❌ Error enviando petición HTTP:', err);
         this.loading = false;
         this.resetProgressIndicator();
         this.apiResponse = null;
-        this.dataSource.data = [];
         this.tableData = [];
-        
-        this.snack.open('Error al enviar datos: ' + (err?.error?.message || err?.message || 'desconocido'), 'OK', { duration: 3500 });
+        this.snack.open('Error al enviar petición: ' + (err?.error?.message || 'desconocido'), 'OK', { duration: 3500 });
       }
     });
   }
 
-  // NUEVO: Configurar conexión WebSocket para progreso
+  // OPTIMIZADO: WebSocket SIN notificaciones en snackbar para evitar confundir al cliente
   private setupProgressWebSocket(): void {
-    this.progressSubscription = this.api.getProgressUpdates().subscribe((progress: any) => {
-      if (progress) {
-        console.log('📊 Evento de progreso recibido:', progress);
+    console.log('🔧 Configurando listeners WebSocket optimizado...');
+    
+    this.progressSubscription = this.api.getProgressUpdates().subscribe({
+      next: (progress: any) => {
+        console.log('📊 Progreso recibido:', progress);
+        
+        if (!progress) return;
+        
+        // Actualizar siempre el progreso visual
         this.progressPercentage = progress.porcentaje || 0;
         this.progressMessage = progress.mensaje || 'Procesando...';
+        this.lastProgressUpdate = new Date().toLocaleTimeString();
         this.updateTimeEstimate(progress.porcentaje || 0);
+        
+        // 🎯 SINCRONIZADO: Al llegar al 100% con datos, mostrar tabla INMEDIATAMENTE
+        if (progress.porcentaje === 100 && progress.resultados) {
+          console.log('🚀 SINCRONIZADO: 100% + DATOS recibidos - Mostrando tabla inmediatamente');
+          
+          this.apiResponse = {
+            success: progress.success || true,
+            message: progress.mensaje || 'Análisis completado',
+            resultados: progress.resultados,
+            timestamp: progress.timestamp || new Date().toISOString()
+          };
+          
+          this.loading = false;
+          this.updateTableData();
+          
+          // Solo UNA notificación importante al completarse
+          this.snack.open('¡Análisis completado exitosamente!', 'OK', { 
+            duration: 4000,
+            panelClass: ['success-snackbar']
+          });
+        } 
+        // Backup: evento de finalización sin datos embebidos
+        else if (progress.completed && progress.resultados) {
+          console.log('✅ Evento de finalización con datos recibido');
+          if (!this.apiResponse) {
+            this.apiResponse = {
+              success: true,
+              message: 'Análisis completado',
+              resultados: progress.resultados,
+              timestamp: progress.timestamp || new Date().toISOString()
+            };
+            this.loading = false;
+            this.updateTableData();
+          }
+        }
+        
+        // SIN notificaciones intermedias - solo logs para debugging
+        // Eliminadas todas las notificaciones que desorientaban al cliente
+        
         this.cdr.detectChanges();
+      },
+      error: (error) => {
+        console.error('❌ Error en WebSocket:', error);
+        this.loading = false;
+        this.resetProgressIndicator();
+        // Solo notificar errores críticos
+        this.snack.open('Error de conexión - Revise la consola', 'OK', { 
+          duration: 5000,
+          panelClass: ['error-snackbar'] 
+        });
       }
     });
 
-    this.resetSubscription = this.api.getServerResetUpdates().subscribe((data: any) => {
-      if (data) {
-        console.log('🔄 Evento de reset recibido:', data);
-        this.resetProgressIndicator();
+    // Reset subscription SIN notificaciones
+    this.resetSubscription = this.api.getServerResetUpdates().subscribe({
+      next: (data: any) => {
+        console.log('🔄 Reset del servidor recibido');
+        if (!this.loading) {
+          this.resetProgressIndicator();
+        }
         this.cdr.detectChanges();
+        // Sin notificación de reset para no confundir
       }
     });
+    
+    console.log('✅ WebSocket optimizado configurado SIN notificaciones molestas');
   }
 
   // NUEVO: Calcular tiempo restante estimado
@@ -437,5 +592,38 @@ export class DashboardComponent implements OnInit, OnDestroy {
     } catch (error) {
       return 'N/A';
     }
+  }
+
+  // NUEVO: Método para activar/desactivar modo debug
+  toggleDebugMode(): void {
+    this.debugMode = !this.debugMode;
+    console.log('🐛 Modo debug:', this.debugMode ? 'ACTIVADO' : 'DESACTIVADO');
+    this.snack.open(`Modo debug ${this.debugMode ? 'activado' : 'desactivado'}`, 'OK', { duration: 2000 });
+  }
+
+  // NUEVO: Método para probar conexión WebSocket
+  testWebSocket(): void {
+    console.log('🧪 Probando conexión WebSocket...');
+    console.log('Estado actual:', this.api.checkConnection() ? 'Conectado' : 'Desconectado');
+    
+    if (this.api.checkConnection()) {
+      this.api.sendTestMessage();
+      this.snack.open('Mensaje de prueba enviado', 'OK', { duration: 2000 });
+    } else {
+      this.snack.open('WebSocket no conectado', 'Reconectar', { duration: 3000 });
+      this.api.reconnect();
+    }
+  }
+
+  // NUEVO: Método para forzar reconexión
+  forceReconnect(): void {
+    console.log('🔄 Forzando reconexión WebSocket...');
+    this.api.reconnect();
+    this.snack.open('Reconectando WebSocket...', 'OK', { duration: 2000 });
+  }
+
+  // NUEVO: Método trackBy para mejorar rendimiento de la tabla
+  trackByIndex(index: number, item: any): any {
+    return index;
   }
 }

@@ -1,51 +1,110 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, Subject, BehaviorSubject } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { UploadPayload } from './selection.service';
 import { io, Socket } from 'socket.io-client';
-import { environment } from '../../environments/environment'; // Agregar import de environment
+import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
-  private baseUrl = `${environment.apiUrl}/api`; // Usar environment.apiUrl
-  private endpoint = `${this.baseUrl}/upload`; // Cambiar de /consulta a /upload
-  private socket: Socket;
+  private baseUrl = `${environment.apiUrl}/api`;
+  private endpoint = `${this.baseUrl}/upload`;
+  private socket!: Socket; // CORREGIDO: Usar ! para indicar que se inicializará
+  private connectionStatus = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient) {
-    // Usar environment.apiUrl para WebSocket también
+    this.initializeWebSocket();
+  }
+
+  // CORREGIDO: Inicialización más robusta del WebSocket
+  private initializeWebSocket(): void {
     const socketUrl = environment.apiUrl;
     console.log('🔌 Conectando WebSocket a:', socketUrl);
     
-    // Inicializar conexión WebSocket con configuración específica
     this.socket = io(socketUrl, {
       transports: ['websocket', 'polling'],
-      timeout: 10000,
-      forceNew: true
+      timeout: 20000, // Aumentado timeout
+      forceNew: true, // CORREGIDO: Forzar nueva conexión
+      reconnection: true,
+      reconnectionDelay: 1000,
+      reconnectionAttempts: 10, // Más intentos de reconexión
+      autoConnect: true,
+      upgrade: true,
+      rememberUpgrade: false
     });
     
-    // Agregar listeners para diagnosticar conexión
+    // Eventos de conexión mejorados
     this.socket.on('connect', () => {
       console.log('✅ WebSocket conectado exitosamente');
       console.log('🆔 Socket ID:', this.socket.id);
+      console.log('🌐 URL:', socketUrl);
+      console.log('🚀 Transporte:', this.socket.io.engine.transport.name);
+      this.connectionStatus.next(true);
     });
     
     this.socket.on('disconnect', (reason) => {
       console.log('❌ WebSocket desconectado. Razón:', reason);
+      this.connectionStatus.next(false);
+      
+      // CORREGIDO: Reconectar automáticamente en más casos
+      if (reason === 'io server disconnect' || reason === 'transport close' || reason === 'transport error') {
+        console.log('🔄 Reconectando automáticamente...');
+        setTimeout(() => {
+          if (!this.socket.connected) {
+            this.socket.connect();
+          }
+        }, 1000);
+      }
     });
     
-    this.socket.on('connect_error', (error) => {
+    this.socket.on('connect_error', (error: any) => {
       console.error('🚫 Error de conexión WebSocket:', error);
-      console.log('🔄 Reintentando conexión...');
+      console.log('📋 Detalles del error:', {
+        message: error.message || 'Error desconocido',
+        description: error.description || 'Sin descripción',
+        context: error.context || 'Sin contexto',
+        type: error.type || 'Error genérico'
+      });
+      this.connectionStatus.next(false);
+      
+      // NUEVO: Intentar reconexión manual después de error
+      setTimeout(() => {
+        if (!this.socket.connected) {
+          console.log('🔄 Reintentando conexión después de error...');
+          this.socket.connect();
+        }
+      }, 2000);
     });
 
     this.socket.on('reconnect', (attemptNumber) => {
       console.log('🔄 WebSocket reconectado después de', attemptNumber, 'intentos');
+      this.connectionStatus.next(true);
     });
 
     this.socket.on('reconnect_error', (error) => {
       console.error('❌ Error al reconectar WebSocket:', error);
     });
+
+    this.socket.on('reconnect_failed', () => {
+      console.error('💥 Falló completamente la reconexión WebSocket');
+      this.connectionStatus.next(false);
+    });
+
+    // Evento específico para debugging
+    this.socket.onAny((event, ...args) => {
+      console.log('📨 Evento WebSocket recibido:', event, args);
+    });
+  }
+
+  // NUEVO: Getter para el estado de conexión
+  get isConnected(): Observable<boolean> {
+    return this.connectionStatus.asObservable();
+  }
+
+  // NUEVO: Método para verificar conexión
+  checkConnection(): boolean {
+    return this.socket && this.socket.connected;
   }
 
   upload(payload: UploadPayload): Observable<any> {
@@ -54,12 +113,17 @@ export class ApiService {
       'Accept': 'application/json'
     });
 
+    console.log('📤 Enviando payload:', payload);
+    console.log('🔗 URL endpoint:', this.endpoint);
+
     return this.http.post(this.endpoint, payload, { headers }).pipe(
       catchError((err) => {
-        console.error('Error en upload:', err);
-        console.error('Status:', err.status);
-        console.error('URL:', err.url);
-        return throwError(() => new Error(err?.message || 'Error de red'));
+        console.error('❌ Error en upload:', err);
+        console.error('📊 Status:', err.status);
+        console.error('🌐 URL:', err.url);
+        console.error('📝 Message:', err.message);
+        console.error('📋 Error completo:', JSON.stringify(err, null, 2));
+        return throwError(() => new Error(err?.error?.message || err?.message || 'Error de red'));
       })
     );
   }
@@ -70,47 +134,86 @@ export class ApiService {
       'Accept': 'application/json'
     });
 
+    console.log('🔄 Enviando reset al backend...');
+
     return this.http.post(`${this.baseUrl}/reset`, {}, { headers }).pipe(
       catchError((err) => {
-        console.error('Error en reset:', err);
-        console.error('Status:', err.status);
-        console.error('URL:', err.url);
-        return throwError(() => new Error(err?.message || 'Error de red en reset'));
+        console.error('❌ Error en reset:', err);
+        console.error('📊 Status:', err.status);
+        console.error('🌐 URL:', err.url);
+        return throwError(() => new Error(err?.error?.message || err?.message || 'Error de red en reset'));
       })
     );
   }
 
-  // NUEVO: Método para recibir actualizaciones de progreso
+  // MEJORADO: Método para recibir actualizaciones de progreso con mejor manejo
   getProgressUpdates(): Observable<any> {
     return new Observable((observer) => {
-      this.socket.on('progreso', (data) => {
+      const progressHandler = (data: any) => {
+        console.log('📊 Progreso recibido en ApiService:', data);
         observer.next(data);
-      });
+      };
+
+      this.socket.on('progreso', progressHandler);
       
-      // Cleanup al desuscribirse
+      // Verificar si ya estamos conectados
+      if (this.socket.connected) {
+        console.log('✅ Socket ya conectado, listo para recibir eventos');
+      } else {
+        console.log('⏳ Socket no conectado aún, esperando conexión...');
+        this.socket.on('connect', () => {
+          console.log('🔗 Socket conectado, ahora puede recibir eventos de progreso');
+        });
+      }
+      
       return () => {
-        this.socket.off('progreso');
+        console.log('🧹 Limpiando listener de progreso');
+        this.socket.off('progreso', progressHandler);
       };
     });
   }
 
-  // NUEVO: Método para recibir notificaciones de servidor reseteado
+  // MEJORADO: Método para recibir notificaciones de servidor reseteado
   getServerResetUpdates(): Observable<any> {
     return new Observable((observer) => {
-      this.socket.on('servidor-reseteado', (data) => {
+      const resetHandler = (data: any) => {
+        console.log('🔄 Reset del servidor recibido en ApiService:', data);
         observer.next(data);
-      });
+      };
+
+      this.socket.on('servidor-reseteado', resetHandler);
       
       return () => {
-        this.socket.off('servidor-reseteado');
+        console.log('🧹 Limpiando listener de reset');
+        this.socket.off('servidor-reseteado', resetHandler);
       };
     });
   }
 
-  // NUEVO: Método para desconectar WebSocket
+  // MEJORADO: Método para desconectar WebSocket
   disconnect(): void {
     if (this.socket) {
+      console.log('🔌 Desconectando WebSocket...');
       this.socket.disconnect();
+      this.connectionStatus.next(false);
+    }
+  }
+
+  // NUEVO: Método para reconectar WebSocket
+  reconnect(): void {
+    if (this.socket) {
+      console.log('🔄 Forzando reconexión WebSocket...');
+      this.socket.connect();
+    }
+  }
+
+  // NUEVO: Método de debugging para enviar evento de prueba
+  sendTestMessage(): void {
+    if (this.socket && this.socket.connected) {
+      console.log('🧪 Enviando mensaje de prueba...');
+      this.socket.emit('test-message', { message: 'Test desde frontend', timestamp: new Date().toISOString() });
+    } else {
+      console.warn('⚠️ No se puede enviar mensaje de prueba: Socket no conectado');
     }
   }
 }

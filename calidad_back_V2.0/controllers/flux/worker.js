@@ -30,7 +30,8 @@ if (require.main === module) {
         }
       );
 
-      // 💾 NUEVO: guardar en Mongo con el modelo nuevo
+      // 💾 COMENTADO TEMPORALMENTE: guardar en Mongo hasta que desarrollemos esta parte
+      /*
       try {
         const resumenGuardado = await guardarResultadosLocal(
           fechaInicio,
@@ -43,6 +44,8 @@ if (require.main === module) {
       } catch (err) {
         console.error('⛔ Error al guardar en DB local (Mongo):', err.message);
       }
+      */
+      console.log('💾 Guardado en MongoDB temporalmente desactivado durante desarrollo');
 
       // 🔁 Lo de siempre: devolver resultados al proceso padre
       if (typeof process.send === 'function') {

@@ -202,14 +202,88 @@
   </div>
 
   <!-- Sección de resultados - abajo ocupando todo el ancho -->
-  <div class="results-section" *ngIf="apiResponse">
+  <!-- CORREGIDO: Condición simplificada para mostrar resultados -->
+  <div class="results-section" *ngIf="apiResponse && tableData.length > 0">
     <div class="section-title">
       <mat-icon>assessment</mat-icon>
       <span class="title-text">Resultados del Análisis</span>
     </div>
 
+    <!-- Resumen general -->
+    <mat-card class="summary-card">
+      <mat-card-header>
+        <mat-card-title>Resumen Ejecutivo</mat-card-title>
+        <mat-card-subtitle>
+          Análisis {{ apiResponse.success ? 'completado' : 'parcial' }} 
+          el {{ formatDate(apiResponse.timestamp, 'dd/MM/yyyy HH:mm') }}
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="summary-stats">
+          <div class="stat-item">
+            <span class="stat-number">{{ apiResponse.resultados?.length || 0 }}</span>
+            <span class="stat-label">Indicadores procesados</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">{{ tableData.length }}</span>
+            <span class="stat-label">Resultados generados</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">{{ sel.getDatabases().length }}</span>
+            <span class="stat-label">Bases analizadas</span>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- TABLA BOOTSTRAP - CORREGIDO: Condición simplificada -->
+    <mat-card class="results-table-card">
+      <mat-card-header>
+        <mat-card-title>Todos los Resultados</mat-card-title>
+        <mat-card-subtitle>Vista completa de todos los indicadores y bases de datos ({{ tableData.length }} resultados)</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="table-responsive">
+          <table class="table table-striped table-hover table-bordered">
+            <thead class="table-dark">
+              <tr>
+                <th scope="col">Categoría</th>
+                <th scope="col">Indicador</th>
+                <th scope="col">Base de Datos</th>
+                <th scope="col" class="text-end">Resultado</th>
+                <th scope="col" class="text-end">Pacientes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let element of tableData; trackBy: trackByIndex">
+                <td>{{ element.categoria || 'N/A' }}</td>
+                <td>{{ element.indicador || 'N/A' }}</td>
+                <td><span class="badge bg-primary">{{ element.baseData || 'N/A' }}</span></td>
+                <td class="text-end">
+                  <span class="badge bg-success">
+                    {{ formatNumber(element.resultado, 2) }}
+                  </span>
+                </td>
+                <td class="text-end">
+                  {{ formatInteger(element.numeroDePacientes) }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- NUEVO: Sección para mostrar errores o falta de datos -->
+  <div class="results-section" *ngIf="apiResponse && tableData.length === 0">
+    <div class="section-title">
+      <mat-icon>warning</mat-icon>
+      <span class="title-text">Estado del Análisis</span>
+    </div>
+
     <!-- Mensaje de error si no fue exitoso -->
-    <mat-card class="error-card" *ngIf="apiResponse && !apiResponse.success">
+    <mat-card class="error-card" *ngIf="!apiResponse.success">
       <mat-card-content>
         <div class="error-content">
           <mat-icon color="warn">error</mat-icon>
@@ -221,150 +295,86 @@
       </mat-card-content>
     </mat-card>
 
-    <!-- Resultados exitosos O con errores parciales pero con datos -->
-    <div *ngIf="apiResponse && (apiResponse.success || (apiResponse.resultados && apiResponse.resultados.length > 0))">
-      <!-- Resumen general -->
-      <mat-card class="summary-card">
-        <mat-card-header>
-          <mat-card-title>Resumen Ejecutivo</mat-card-title>
-          <mat-card-subtitle>
-            Análisis {{ apiResponse.success ? 'completado' : 'parcial' }} 
-            el {{ formatDate(apiResponse.timestamp, 'dd/MM/yyyy HH:mm') }}
-          </mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-          <div class="summary-stats">
-            <div class="stat-item">
-              <span class="stat-number">{{ apiResponse.resultados?.length || 0 }}</span>
-              <span class="stat-label">Indicadores procesados</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number">{{ tableData.length }}</span>
-              <span class="stat-label">Resultados generados</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number">{{ sel.getDatabases().length }}</span>
-              <span class="stat-label">Bases analizadas</span>
-            </div>
-          </div>
-        </mat-card-content>
-      </mat-card>
-
-      <!-- TABLA BOOTSTRAP -->
-      <mat-card class="results-table-card" *ngIf="tableData.length > 0">
-        <mat-card-header>
-          <mat-card-title>Todos los Resultados</mat-card-title>
-          <mat-card-subtitle>Vista completa de todos los indicadores y bases de datos ({{ tableData.length }} resultados)</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-          <div class="table-responsive">
-            <table class="table table-striped table-hover table-bordered">
-              <thead class="table-dark">
-                <tr>
-                  <th scope="col">Categoría</th>
-                  <th scope="col">Indicador</th>
-                  <th scope="col">Base de Datos</th>
-                  <th scope="col" class="text-end">Resultado</th>
-                  <th scope="col" class="text-end">Pacientes</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let element of tableData">
-                  <td>{{ element.categoria || 'N/A' }}</td>
-                  <td>{{ element.indicador || 'N/A' }}</td>
-                  <td><span class="badge bg-primary">{{ element.baseData || 'N/A' }}</span></td>
-                  <td class="text-end">
-                    <span class="badge bg-success">
-                      {{ formatNumber(element.resultado, 2) }}
-                    </span>
-                  </td>
-                  <td class="text-end">
-                    {{ formatInteger(element.numeroDePacientes) }}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </mat-card-content>
-      </mat-card>
-      
-      <!-- Mensaje si no hay resultados desglosados -->
-      <mat-card class="no-results-card" *ngIf="tableData.length === 0">
-        <mat-card-content>
-          <div class="no-results-content">
-            <mat-icon color="warn">warning</mat-icon>
-            <div>
-              <h3>Sin Datos Desglosados</h3>
-              <p>Se procesaron {{ apiResponse.resultados?.length || 0 }} indicadores, pero no se generaron resultados detallados.</p>
-            </div>
-          </div>
-        </mat-card-content>
-      </mat-card>
-      
-      <!-- Sección de resultados por indicador (expandible) -->
-      <div class="indicators-section" *ngIf="apiResponse.resultados && apiResponse.resultados.length > 0">
-        <h3 class="indicators-title">Desglose por Indicador</h3>
-        
-        <mat-card class="indicator-card" *ngFor="let indicador of apiResponse.resultados; let i = index">
-          <mat-card-header>
-            <mat-card-title>{{ indicador.indicador }}</mat-card-title>
-            <mat-card-subtitle>
-              {{ indicador.categoria }} • {{ indicador.resultados.length }} resultado(s)
-            </mat-card-subtitle>
-          </mat-card-header>
-          
-          <mat-card-content>
-            <div class="indicator-details">
-              <p><strong>ID:</strong> {{ indicador.id_code }}</p>
-              <p><strong>Período:</strong> 
-                <span *ngIf="indicador.intervalo?.fechaInicio && indicador.intervalo?.fechaFin">
-                  {{ formatDate(indicador.intervalo.fechaInicio) }} - 
-                  {{ formatDate(indicador.intervalo.fechaFin) }}
-                </span>
-                <span *ngIf="!indicador.intervalo?.fechaInicio || !indicador.intervalo?.fechaFin">
-                  Sin período definido
-                </span>
-              </p>
-              
-              <div class="totals-summary" *ngIf="indicador.totales">
-                <div class="total-item">
-                  <span class="total-label">Total Resultado:</span>
-                  <span class="total-value">{{ formatNumber(indicador.totales.resultado, 2) }}</span>
-                </div>
-                <div class="total-item">
-                  <span class="total-label">Total Pacientes:</span>
-                  <span class="total-value">{{ formatInteger(indicador.totales.numero_pacientes) }}</span>
-                </div>
-              </div>
-
-              <div class="results-by-db">
-                <h4>Resultados por Base de Datos:</h4>
-                <div class="db-result" *ngFor="let resultado of indicador.resultados">
-                  <div class="db-name">{{ resultado.baseData }}</div>
-                  <div class="db-values">
-                    <span class="db-result-value">{{ formatNumber(resultado.resultado, 2) }}</span>
-                    <span class="db-patients">{{ formatInteger(resultado.numeroDePacientes) }} pacientes</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </mat-card-content>
-        </mat-card>
-      </div>
-    </div>
-
     <!-- Mensaje si no hay datos en absoluto -->
-    <mat-card class="no-data-card" *ngIf="apiResponse && !apiResponse.resultados">
+    <mat-card class="no-data-card" *ngIf="apiResponse.success && (!apiResponse.resultados || apiResponse.resultados.length === 0)">
       <mat-card-content>
         <div class="no-data-content">
           <mat-icon color="warn">info</mat-icon>
           <div>
             <h3>Sin Resultados</h3>
-            <p>No se recibieron datos del análisis.</p>
+            <p>No se recibieron datos del análisis para el período seleccionado.</p>
             <p><strong>Mensaje:</strong> {{ apiResponse.message }}</p>
           </div>
         </div>
       </mat-card-content>
     </mat-card>
+
+    <!-- Mensaje si hay resultados pero no se procesaron correctamente -->
+    <mat-card class="no-results-card" *ngIf="apiResponse.success && apiResponse.resultados && apiResponse.resultados.length > 0">
+      <mat-card-content>
+        <div class="no-results-content">
+          <mat-icon color="warn">warning</mat-icon>
+          <div>
+            <h3>Datos Recibidos pero No Procesados</h3>
+            <p>Se recibieron {{ apiResponse.resultados.length }} indicadores del backend, pero no se pudieron procesar para mostrar en la tabla.</p>
+            <p>Revisa la consola del navegador para más detalles.</p>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
   </div>
+
+  <!-- NUEVA SECCIÓN: Panel de debugging WebSocket -->
+  <div class="debug-section" *ngIf="debugMode">
+    <div class="section-title">
+      <mat-icon>bug_report</mat-icon>
+      <span class="title-text">Panel de Debugging WebSocket</span>
+    </div>
+    
+    <mat-card class="debug-card">
+      <mat-card-header>
+        <mat-card-title>Estado de Conexión WebSocket</mat-card-title>
+        <mat-card-subtitle>Herramientas de diagnóstico y prueba</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="debug-info">
+          <div class="status-row">
+            <span class="label">Estado:</span>
+            <span class="status-badge" [class.connected]="isWebSocketConnected" [class.disconnected]="!isWebSocketConnected">
+              <mat-icon>{{ isWebSocketConnected ? 'wifi' : 'wifi_off' }}</mat-icon>
+              {{ isWebSocketConnected ? 'Conectado' : 'Desconectado' }}
+            </span>
+          </div>
+          
+          <div class="status-row" *ngIf="lastProgressUpdate">
+            <span class="label">Último progreso:</span>
+            <span class="value">{{ lastProgressUpdate }}</span>
+          </div>
+          
+          <div class="status-row">
+            <span class="label">Progreso actual:</span>
+            <span class="value">{{ progressPercentage }}% - {{ progressMessage }}</span>
+          </div>
+        </div>
+        
+        <div class="debug-actions">
+          <button mat-raised-button color="primary" (click)="testWebSocket()">
+            <mat-icon>send</mat-icon>
+            Probar WebSocket
+          </button>
+          
+          <button mat-raised-button color="accent" (click)="forceReconnect()">
+            <mat-icon>refresh</mat-icon>
+            Reconectar
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- Botón flotante para activar debug -->
+  <button mat-fab class="debug-toggle" color="warn" (click)="toggleDebugMode()" 
+          [title]="debugMode ? 'Desactivar debug' : 'Activar debug'">
+    <mat-icon>{{ debugMode ? 'bug_report' : 'code' }}</mat-icon>
+  </button>
 </div>
