@@ -53,7 +53,7 @@ const clientOrigin = process.env.USE_PROD_ORIGIN === 'true'
 
 const io = new Server(http, {
   cors: {
-    origin: allowedOrigins, 
+    origin: true, 
     methods: ['GET', 'POST', 'OPTIONS'],
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization']
