@@ -2,7 +2,6 @@ const express = require('express');
 const { fork } = require('child_process');
 const path = require('path');
 const fs = require('fs');
-const cors = require('cors');
 const multer = require('multer');
 const axios = require('axios');
 const eventBus = require('./controllers/servicios/eventBus');
@@ -12,143 +11,72 @@ const app = express();
 const http = require('http').createServer(app);
 const { Server } = require('socket.io');
 
-console.log(process.env.USE_PROD_ORIGIN);
-
-// CORREGIDO: Configuración mejorada de CORS para WebSocket - Más permisiva en producción
-const allowedOrigins = [
-  'http://localhost:4200',
-  'http://127.0.0.1:4200',
-  'http://localhost:3000',
-  'http://127.0.0.1:3000',
-  'http://193.147.197.113:3000', // URL específica de producción
-  'http://193.147.197.113:4200'  // Por si acaso el frontend está en puerto diferente
-];
-
-// Agregar origen de producción si existe
-if (process.env.CLIENT_ORIGIN_PROD) {
-  allowedOrigins.push(process.env.CLIENT_ORIGIN_PROD);
-}
-
-// NUEVO: Detectar automáticamente si estamos en producción y ser más permisivo
-const isProduction = process.env.USE_PROD_ORIGIN === 'true';
+// ------------------------
+// Configuración de entorno optimizada
+// ------------------------
+const isProduction = process.env.USE_PROD_ORIGIN === 'true' || process.env.NODE_ENV === 'production';
 const productionHost = '193.147.197.113';
+const PORT = process.env.PORT || 3000;
 
-// En producción, agregar más variantes de URLs
-if (isProduction) {
-  allowedOrigins.push(
-    `http://${productionHost}:3000`,
-    `https://${productionHost}:3000`,
-    `http://${productionHost}:4200`,
-    `https://${productionHost}:4200`,
-    `http://${productionHost}`,
-    `https://${productionHost}`
-  );
+// Verificar si existe build de frontend en producción
+const frontendBuildPath = path.join(__dirname, 'public', 'dist');
+const hasFrontendBuild = fs.existsSync(frontendBuildPath);
+
+console.log('🏗️ === CONFIGURACIÓN DEL SERVIDOR ===');
+console.log(`📦 Modo: ${isProduction ? 'PRODUCCIÓN' : 'DESARROLLO'}`);
+console.log(`🌐 Host producción: ${productionHost}`);
+console.log(`🔌 Puerto: ${PORT}`);
+console.log(`📁 Build frontend encontrado: ${hasFrontendBuild ? '✅ SÍ' : '❌ NO'}`);
+console.log(`📍 Ruta build: ${frontendBuildPath}`);
+
+// ------------------------
+// Configuración WebSocket optimizada para producción
+// ------------------------
+let socketConfig;
+
+if (isProduction && hasFrontendBuild) {
+  console.log('🔌 WebSocket PRODUCCIÓN - Same origin (SIN CORS)');
+  socketConfig = {
+    cors: false, // CORREGIDO: No CORS necesario en same-origin
+    allowEIO3: true,
+    transports: ['websocket', 'polling'],
+    pingTimeout: 60000,
+    pingInterval: 25000,
+    upgradeTimeout: 30000,
+    maxHttpBufferSize: 1e6
+  };
+} else {
+  console.log('🔌 WebSocket DESARROLLO - CORS habilitado');
+  const allowedOrigins = [
+    'http://localhost:4200',
+    'http://127.0.0.1:4200',
+    'http://localhost:3000',
+    'http://127.0.0.1:3000'
+  ];
+  
+  console.log('🌍 URLs permitidas para CORS:', allowedOrigins);
+  
+  socketConfig = {
+    cors: {
+      origin: allowedOrigins,
+      methods: ['GET', 'POST', 'OPTIONS'],
+      credentials: true,
+      allowedHeaders: ['Content-Type', 'Authorization']
+    },
+    allowEIO3: true,
+    transports: ['websocket', 'polling'],
+    pingTimeout: 60000,
+    pingInterval: 25000,
+    upgradeTimeout: 30000,
+    maxHttpBufferSize: 1e6
+  };
 }
 
-console.log('🌍 URLs permitidas para CORS:', allowedOrigins);
-
-const clientOrigin = process.env.USE_PROD_ORIGIN === 'true'
-  ? process.env.CLIENT_ORIGIN_PROD || `http://${productionHost}:3000`
-  : 'http://localhost:4200';
-
-const io = new Server(http, {
-  cors: {
-    origin: true, 
-    methods: ['GET', 'POST', 'OPTIONS'],
-    credentials: true,
-    allowedHeaders: ['Content-Type', 'Authorization']
-  },
-  allowEIO3: true,
-  transports: ['websocket', 'polling'],
-  // NUEVO: Configuración más robusta para producción
-  pingTimeout: 60000,
-  pingInterval: 25000,
-  upgradeTimeout: 30000,
-  maxHttpBufferSize: 1e6
-});
-
-// PARA TRABAJAR EN LOCALHOST coloca esto en console-->  USE_PROD_ORIGIN=false node index.js
-console.log(`✅ CORS habilitado para: ${allowedOrigins.join(', ')}`);
-console.log(`✅ WebSocket CORS habilitado para múltiples orígenes`);
-
-// CORREGIDO: Mejorar el manejo de eventos de progreso con más debugging
-eventBus.on('progreso', (msg) => {
-  console.log('📡 EventBus recibió evento de progreso:', msg);
-  console.log('📊 Clientes WebSocket conectados:', io.engine.clientsCount);
-  
-  const progressData = {
-    porcentaje: msg.porcentaje || 0,
-    mensaje: msg.mensaje || 'Procesando...',
-    timestamp: new Date().toISOString()
-  };
-  console.log('📤 Emitiendo por WebSocket:', progressData);
-  
-  // NUEVO: Emitir con confirmación de entrega
-  const emitted = io.emit('progreso', progressData);
-  console.log('✅ Evento emitido, resultado:', emitted);
-  
-  // NUEVO: Log adicional para debugging en producción
-  if (io.engine.clientsCount === 0) {
-    console.warn('⚠️ ADVERTENCIA: No hay clientes WebSocket conectados para recibir el progreso');
-  }
-});
+const io = new Server(http, socketConfig);
 
 // ------------------------
 // Middleware
 // ------------------------
-app.use(cors({
-  origin: function(origin, callback) {
-    // NUEVO: Función más permisiva para CORS en producción
-    console.log('🔍 Verificando origen CORS:', origin);
-    
-    // Permitir requests sin origin (como Postman, aplicaciones móviles, etc.)
-    if (!origin) {
-      console.log('✅ Origen vacío permitido');
-      return callback(null, true);
-    }
-    
-    // Verificar si el origen está en la lista permitida
-    if (allowedOrigins.indexOf(origin) !== -1) {
-      console.log('✅ Origen permitido:', origin);
-      return callback(null, true);
-    }
-    
-    // En producción, ser más permisivo con IPs locales
-    if (isProduction && origin.includes(productionHost)) {
-      console.log('✅ Origen de producción permitido:', origin);
-      return callback(null, true);
-    }
-    
-    console.warn('❌ Origen no permitido:', origin);
-    console.warn('📋 Orígenes permitidos:', allowedOrigins);
-    
-    // En desarrollo, rechazar; en producción, ser más permisivo
-    if (isProduction) {
-      console.log('🚀 Modo producción: Permitiendo origen por compatibilidad');
-      return callback(null, true);
-    } else {
-      return callback(new Error('No permitido por CORS'), false);
-    }
-  },
-  methods: ['GET', 'POST', 'OPTIONS'],
-  credentials: true,
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
-
-// Headers para Chrome Private Network Access (PNA) - Solución para bloqueo de send-code
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Private-Network', 'true');
-  if (req.method === 'OPTIONS') {
-    res.setHeader('Access-Control-Allow-Origin', clientOrigin);
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    res.setHeader('Access-Control-Allow-Credentials', 'true');
-    res.setHeader('Access-Control-Allow-Private-Network', 'true');
-    return res.status(200).end();
-  }
-  next();
-});
-
 app.use(express.json());
 
 // ------------------------
@@ -216,11 +144,8 @@ function limpiarUploadsEInforme() {
 function resetearServidorCompleto(motivo = 'reset manual') {
   console.log(`🔄 === RESETEANDO SERVIDOR COMPLETO (${motivo}) ===`);
   
-  // 1) Si hay un worker en ejecución, matarlo completamente
   if (currentChild) {
     console.log(`💥 Matando worker (PID ${currentChild.pid})`);
-    
-    // Verificar si el worker aún está conectado antes de enviar comandos
     if (currentChild.connected) {
       try {
         currentChild.send({ comando: 'terminar' });
@@ -231,8 +156,6 @@ function resetearServidorCompleto(motivo = 'reset manual') {
     } else {
       console.log('⚠️ Worker ya desconectado, no se puede enviar comando elegante');
     }
-    
-    // Forzar la terminación
     try {
       if (!currentChild.killed) {
         currentChild.kill('SIGTERM');
@@ -251,8 +174,6 @@ function resetearServidorCompleto(motivo = 'reset manual') {
         console.error('❌ Error incluso con SIGKILL:', killErr.message);
       }
     }
-    
-    // Desconectar explícitamente el canal IPC si aún está conectado
     try {
       if (currentChild.connected) {
         currentChild.disconnect();
@@ -261,22 +182,17 @@ function resetearServidorCompleto(motivo = 'reset manual') {
     } catch (disconnectErr) {
       console.log('⚠️ Error desconectando IPC:', disconnectErr.message);
     }
-    
     currentChild = null;
     console.log('✅ Worker completamente eliminado');
   } else {
     console.log('ℹ️ No hay worker en ejecución');
   }
 
-  // 2) Restablecer TODAS las variables de estado al estado inicial
   enProceso = false;
   descargando = false;
   console.log('✅ Variables de estado reseteadas');
   
-  // 3) Limpiar todos los archivos
   console.log('🧹 Iniciando limpieza de archivos...');
-  
-  // Limpiar uploads de forma síncrona
   const uploadDirPath = path.join(__dirname, 'uploads');
   try {
     if (fs.existsSync(uploadDirPath)) {
@@ -297,7 +213,6 @@ function resetearServidorCompleto(motivo = 'reset manual') {
     console.log('⚠️ Error al limpiar uploads:', err.message);
   }
   
-  // Limpiar informe de forma síncrona
   try {
     if (fs.existsSync(informePath)) {
       fs.unlinkSync(informePath);
@@ -309,12 +224,10 @@ function resetearServidorCompleto(motivo = 'reset manual') {
     console.log('⚠️ Error al eliminar informe:', err.message);
   }
   
-  // 4) Limpiar el store de códigos de Telegram
   const codigosAnteriores = Object.keys(codeStore).length;
   Object.keys(codeStore).forEach(key => delete codeStore[key]);
   console.log(`🧹 Store de códigos limpiado (${codigosAnteriores} códigos eliminados)`);
   
-  // 5) Emitir evento de reset a todos los clientes WebSocket
   try {
     io.emit('servidor-reseteado', { 
       mensaje: `Servidor completamente reseteado (${motivo})`, 
@@ -326,7 +239,6 @@ function resetearServidorCompleto(motivo = 'reset manual') {
     console.log('⚠️ Error enviando evento WebSocket:', wsErr.message);
   }
   
-  // 6) Mostrar estado final
   console.log('📊 === ESTADO FINAL DEL SERVIDOR ===');
   console.log(`   ✅ enProceso: ${enProceso}`);
   console.log(`   ✅ currentChild: ${currentChild}`);
@@ -351,91 +263,14 @@ function resetearServidorCompleto(motivo = 'reset manual') {
 }
 
 // ------------------------
-// NUEVA: Función para reset suave del servidor (sin interrumpir WebSocket)
-// ------------------------
-function resetearServidorSuave(motivo = 'reset suave') {
-  console.log(`🔄 === RESET SUAVE DEL SERVIDOR (${motivo}) ===`);
-  
-  // 1) Solo resetear variables de estado, NO matar worker si ya terminó
-  enProceso = false;
-  descargando = false;
-  
-  // 2) Si hay worker, solo limpiarlo sin forzar terminación
-  if (currentChild) {
-    console.log(`🧹 Limpiando referencia al worker completado`);
-    currentChild = null;
-  }
-  
-  console.log('✅ Variables de estado reseteadas suavemente');
-  
-  // 3) Limpiar archivos de forma asíncrona y suave
-  console.log('🧹 Iniciando limpieza suave de archivos...');
-  
-  setTimeout(() => {
-    // Limpiar uploads sin bloquear
-    const uploadDirPath = path.join(__dirname, 'uploads');
-    if (fs.existsSync(uploadDirPath)) {
-      fs.readdir(uploadDirPath, (err, files) => {
-        if (!err && files.length > 0) {
-          files.forEach(file => {
-            fs.unlink(path.join(uploadDirPath, file), (unlinkErr) => {
-              if (!unlinkErr) console.log(`🗑️ Archivo eliminado suavemente: ${file}`);
-            });
-          });
-        }
-        console.log('✅ Directorio uploads limpiado suavemente');
-      });
-    }
-    
-    // Limpiar informe si existe
-    if (fs.existsSync(informePath)) {
-      fs.unlink(informePath, (err) => {
-        if (!unlinkErr) console.log('🗑️ Informe eliminado suavemente');
-      });
-    }
-  }, 1000);
-  
-  // 4) Limpiar códigos de Telegram
-  const codigosAnteriores = Object.keys(codeStore).length;
-  Object.keys(codeStore).forEach(key => delete codeStore[key]);
-  console.log(`🧹 Store de códigos limpiado suavemente (${codigosAnteriores} códigos)`);
-  
-  // 5) NO emitir evento de reset para no confundir al frontend que está procesando datos
-  console.log('ℹ️ Reset suave completado - WebSocket mantiene conexiones activas');
-  
-  // 6) Mostrar estado final
-  console.log('📊 === ESTADO DESPUÉS DEL RESET SUAVE ===');
-  console.log(`   ✅ enProceso: ${enProceso}`);
-  console.log(`   ✅ currentChild: ${currentChild}`);
-  console.log(`   ✅ descargando: ${descargando}`);
-  console.log(`   ✅ WebSocket: Conexiones mantenidas`);
-  console.log('🎯 Reset suave completado - Sistema listo para nuevos trabajos');
-  console.log('✅ === RESET SUAVE FINALIZADO ===');
-  
-  return {
-    success: true,
-    message: `Reset suave completado (${motivo})`,
-    estado: {
-      enProceso: false,
-      workerActivo: false,
-      webSocketActivo: true,
-      estadoInicial: true
-    },
-    timestamp: new Date().toISOString()
-  };
-}
-
-// ------------------------
 // Endpoint: /api/upload - Maneja la carga y procesamiento de archivos
 // ------------------------
 app.post('/api/upload', (req, res) => {
-  // 1. Control de concurrencia
   if (enProceso) {
     return res.status(429).json({ error: 'Ya hay un estudio en curso. Intenta más tarde.' });
   }
   enProceso = true;
 
-  // 2. Procesamiento de la carga de archivos con Multer
   upload.array('files')(req, res, (err) => {
     if (err) {
       enProceso = false;
@@ -443,23 +278,19 @@ app.post('/api/upload', (req, res) => {
     }
 
     try {
-      // 3. Extracción y validación de parámetros
       const { intervalo, baseDatos, indices } = req.body;
       console.log('✅ Datos de cuerpo (body) recibidos:', { intervalo, baseDatos, indices });
       
-      // 3.1 Validación del intervalo de fechas
       if (!intervalo || !Array.isArray(intervalo) || intervalo.length !== 2) {
         enProceso = false;
         return res.status(400).json({ message: 'Intervalo de fechas inválido' });
       }
 
-      // 3.2 Validación de bases de datos
       if (!baseDatos || !Array.isArray(baseDatos) || baseDatos.length === 0) {
         enProceso = false;
         return res.status(400).json({ message: 'Base de datos inválida o no seleccionada' });
       }
 
-      // 3.3 Validación de índices
       if (!indices || !Array.isArray(indices) || indices.length === 0) {
         enProceso = false;
         return res.status(400).json({ message: 'Índices inválidos o no seleccionados' });
@@ -467,13 +298,11 @@ app.post('/api/upload', (req, res) => {
 
       const [fechaInicio, fechaFin] = intervalo;
 
-      // 3.4 Validación adicional de fechas
       if (!fechaInicio || !fechaFin) {
         enProceso = false;
         return res.status(400).json({ message: 'Fechas requeridas' });
       }
 
-      // 4. Inicialización y configuración del worker
       const workerPath = path.join(__dirname, 'controllers/flux/worker.js');
       currentChild = fork(workerPath, [
         fechaInicio,
@@ -482,11 +311,9 @@ app.post('/api/upload', (req, res) => {
         JSON.stringify(indices)
       ]);
 
-      // 5. Manejo de mensajes del worker
       currentChild.on('message', (msg) => {
         console.log('📨 Mensaje recibido del worker:', JSON.stringify(msg, null, 2));
         
-        // 5.1 Emisión de progreso - CORREGIDO con mejor logging
         if (msg.progreso !== undefined) {
           const progressData = { 
             porcentaje: msg.progreso, 
@@ -496,12 +323,10 @@ app.post('/api/upload', (req, res) => {
           console.log('📡 Emitiendo progreso por WebSocket:', JSON.stringify(progressData, null, 2));
           console.log('📊 Clientes conectados:', io.engine.clientsCount);
           
-          // Emitir tanto por WebSocket directo como por eventBus
           io.emit('progreso', progressData);
           eventBus.emit('progreso', progressData);
         }
 
-        // 5.2 Manejo de errores del worker
         if (msg.error) {
           console.log('❌ Error en el worker:', msg.error);
           const errorData = { porcentaje: 0, mensaje: `Error: ${msg.error}` };
@@ -520,11 +345,9 @@ app.post('/api/upload', (req, res) => {
           return;
         }
 
-        // 5.3 Procesamiento de finalización y envío de resultados - SINCRONIZADO
         if (msg.terminado) {
           console.log('✅ Proceso completado. Enviando datos INMEDIATAMENTE.');
           
-          // SINCRONIZADO: Enviar progreso 100% CON datos en el mismo momento
           const finalDataEvent = { 
             porcentaje: 100, 
             mensaje: 'Análisis completado - Datos listos',
@@ -540,10 +363,8 @@ app.post('/api/upload', (req, res) => {
             resultadosCount: finalDataEvent.resultados.length
           });
           
-          // Emitir datos por WebSocket SIN DELAY
           io.emit('progreso', finalDataEvent);
           
-          // Respuesta HTTP inmediata y simple
           if (!res.headersSent) {
             res.status(200).json({ 
               success: true,
@@ -552,14 +373,12 @@ app.post('/api/upload', (req, res) => {
             });
           }
           
-          // Reset suave después de confirmar envío
           setTimeout(() => {
-            resetearServidorSuave('trabajo completado exitosamente');
-          }, 3000); // Reducido a 3 segundos
+            resetearServidorCompleto('trabajo completado exitosamente');
+          }, 3000);
         }
       });
 
-      // NUEVO: Logging de conexiones WebSocket
       currentChild.on('error', (error) => {
         console.error('❌ Error del proceso worker:', error);
       });
@@ -569,7 +388,6 @@ app.post('/api/upload', (req, res) => {
       });
 
     } catch (error) {
-      // 7. Manejo de errores generales
       console.error('Error en el procesamiento:', error);
       enProceso = false;
       currentChild = null;
@@ -590,7 +408,6 @@ app.post('/api/reset', (req, res) => {
     console.error('⛔ === ERROR EN RESET COMPLETO ===');
     console.error('Error:', err);
     
-    // Aún así, intentar limpiar lo que se pueda
     enProceso = false;
     currentChild = null;
     descargando = false;
@@ -714,7 +531,6 @@ io.on('connection', (socket) => {
   console.log('🔌 Cliente conectado por WebSocket - ID:', socket.id);
   console.log('📊 Total clientes conectados:', io.engine.clientsCount);
   
-  // Enviar mensaje de prueba al conectarse
   socket.emit('progreso', { porcentaje: 0, mensaje: 'Conexión WebSocket establecida' });
   
   socket.on('disconnect', (reason) => {
@@ -734,16 +550,17 @@ io.on('connection', (socket) => {
 // ------------------------
 // Servir Angular desde public/dist
 // ------------------------
-app.use(express.static(path.join(__dirname, 'public', 'dist')));
-app.get('*', (req, res, next) => {
-  if (req.path.startsWith('/api')) return next();
-  res.sendFile(path.join(__dirname, 'public', 'dist', 'index.html'));
-});
+if (hasFrontendBuild) {
+  app.use(express.static(frontendBuildPath));
+  app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/api')) return next();
+    res.sendFile(path.join(frontendBuildPath, 'index.html'));
+  });
+}
 
 // ------------------------
 // Arrancar servidor
 // ------------------------
-const PORT = process.env.PORT || 3000;
 http.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 Servidor con WebSocket en http://0.0.0.0:${PORT}`);
 });

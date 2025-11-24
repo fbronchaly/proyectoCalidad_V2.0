@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiUrl: '' // URL relativa para same-origin cuando se sirve desde el mismo backend
+    apiUrl: 'http://193.147.197.113:3000' // URL completa necesaria para WebSocket en producción
 };
