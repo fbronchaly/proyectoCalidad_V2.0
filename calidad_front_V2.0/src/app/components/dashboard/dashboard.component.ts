@@ -443,6 +443,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
         // 🎯 SINCRONIZADO: Al llegar al 100% con datos, mostrar tabla INMEDIATAMENTE
         if (progress.porcentaje === 100 && progress.resultados) {
           console.log('🚀 SINCRONIZADO: 100% + DATOS recibidos - Mostrando tabla inmediatamente');
+          console.log('📊 Cantidad de resultados recibidos:', progress.resultados.length);
           
           this.apiResponse = {
             success: progress.success || true,
@@ -452,7 +453,37 @@ export class DashboardComponent implements OnInit, OnDestroy {
           };
           
           this.loading = false;
+          
+          // CORREGIDO: Forzar múltiples actualizaciones para garantizar renderizado
+          console.log('🔄 Actualizando tabla - Intento 1');
           this.updateTableData();
+          
+          setTimeout(() => {
+            console.log('🔄 Actualizando tabla - Intento 2 (backup)');
+            this.updateTableData();
+            this.cdr.markForCheck();
+            this.cdr.detectChanges();
+          }, 100);
+          
+          setTimeout(() => {
+            console.log('🔄 Actualizando tabla - Intento 3 (final)');
+            this.cdr.markForCheck();
+            this.cdr.detectChanges();
+            
+            // Verificación final de los datos
+            console.log('✅ Estado final de la tabla:');
+            console.log('  - apiResponse existe:', !!this.apiResponse);
+            console.log('  - resultados existe:', !!this.apiResponse?.resultados);
+            console.log('  - cantidad resultados:', this.apiResponse?.resultados?.length || 0);
+            console.log('  - tableData.length:', this.tableData.length);
+            console.log('  - loading:', this.loading);
+            
+            if (this.tableData.length > 0) {
+              console.log('🎉 ÉXITO: Tabla actualizada con', this.tableData.length, 'filas');
+            } else {
+              console.error('❌ PROBLEMA: Tabla sigue vacía después de todas las actualizaciones');
+            }
+          }, 200);
           
           // Solo UNA notificación importante al completarse
           this.snack.open('¡Análisis completado exitosamente!', 'OK', { 
@@ -475,8 +506,28 @@ export class DashboardComponent implements OnInit, OnDestroy {
           }
         }
         
-        // SIN notificaciones intermedias - solo logs para debugging
-        // Eliminadas todas las notificaciones que desorientaban al cliente
+        // NUEVO: Caso especial para resultados sin porcentaje específico
+        else if (progress.resultados && Array.isArray(progress.resultados) && progress.resultados.length > 0) {
+          console.log('🎯 CASO ESPECIAL: Resultados recibidos sin porcentaje 100%');
+          console.log('📊 Cantidad de resultados:', progress.resultados.length);
+          
+          if (!this.apiResponse) {
+            this.apiResponse = {
+              success: true,
+              message: progress.mensaje || 'Análisis completado',
+              resultados: progress.resultados,
+              timestamp: progress.timestamp || new Date().toISOString()
+            };
+            
+            this.loading = false;
+            this.updateTableData();
+            
+            this.snack.open('Datos recibidos correctamente', 'OK', { 
+              duration: 3000,
+              panelClass: ['success-snackbar']
+            });
+          }
+        }
         
         this.cdr.detectChanges();
       },

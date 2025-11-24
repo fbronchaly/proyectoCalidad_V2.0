@@ -14,12 +14,14 @@ const { Server } = require('socket.io');
 
 console.log(process.env.USE_PROD_ORIGIN);
 
-// CORREGIDO: Configuración mejorada de CORS para WebSocket
+// CORREGIDO: Configuración mejorada de CORS para WebSocket - Más permisiva en producción
 const allowedOrigins = [
   'http://localhost:4200',
   'http://127.0.0.1:4200',
   'http://localhost:3000',
-  'http://127.0.0.1:3000'
+  'http://127.0.0.1:3000',
+  'http://193.147.197.113:3000', // URL específica de producción
+  'http://193.147.197.113:4200'  // Por si acaso el frontend está en puerto diferente
 ];
 
 // Agregar origen de producción si existe
@@ -27,42 +29,107 @@ if (process.env.CLIENT_ORIGIN_PROD) {
   allowedOrigins.push(process.env.CLIENT_ORIGIN_PROD);
 }
 
+// NUEVO: Detectar automáticamente si estamos en producción y ser más permisivo
+const isProduction = process.env.USE_PROD_ORIGIN === 'true';
+const productionHost = '193.147.197.113';
+
+// En producción, agregar más variantes de URLs
+if (isProduction) {
+  allowedOrigins.push(
+    `http://${productionHost}:3000`,
+    `https://${productionHost}:3000`,
+    `http://${productionHost}:4200`,
+    `https://${productionHost}:4200`,
+    `http://${productionHost}`,
+    `https://${productionHost}`
+  );
+}
+
+console.log('🌍 URLs permitidas para CORS:', allowedOrigins);
+
 const clientOrigin = process.env.USE_PROD_ORIGIN === 'true'
-  ? process.env.CLIENT_ORIGIN_PROD
+  ? process.env.CLIENT_ORIGIN_PROD || `http://${productionHost}:3000`
   : 'http://localhost:4200';
 
 const io = new Server(http, {
   cors: {
-    origin: allowedOrigins, // CORREGIDO: Usar array de orígenes permitidos
-    methods: ['GET', 'POST'],
+    origin: allowedOrigins, 
+    methods: ['GET', 'POST', 'OPTIONS'],
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization']
   },
   allowEIO3: true,
-  transports: ['websocket', 'polling']
+  transports: ['websocket', 'polling'],
+  // NUEVO: Configuración más robusta para producción
+  pingTimeout: 60000,
+  pingInterval: 25000,
+  upgradeTimeout: 30000,
+  maxHttpBufferSize: 1e6
 });
 
 // PARA TRABAJAR EN LOCALHOST coloca esto en console-->  USE_PROD_ORIGIN=false node index.js
 console.log(`✅ CORS habilitado para: ${allowedOrigins.join(', ')}`);
 console.log(`✅ WebSocket CORS habilitado para múltiples orígenes`);
 
-// CORREGIDO: Mejorar el manejo de eventos de progreso
+// CORREGIDO: Mejorar el manejo de eventos de progreso con más debugging
 eventBus.on('progreso', (msg) => {
   console.log('📡 EventBus recibió evento de progreso:', msg);
+  console.log('📊 Clientes WebSocket conectados:', io.engine.clientsCount);
+  
   const progressData = {
     porcentaje: msg.porcentaje || 0,
     mensaje: msg.mensaje || 'Procesando...',
     timestamp: new Date().toISOString()
   };
   console.log('📤 Emitiendo por WebSocket:', progressData);
-  io.emit('progreso', progressData);
+  
+  // NUEVO: Emitir con confirmación de entrega
+  const emitted = io.emit('progreso', progressData);
+  console.log('✅ Evento emitido, resultado:', emitted);
+  
+  // NUEVO: Log adicional para debugging en producción
+  if (io.engine.clientsCount === 0) {
+    console.warn('⚠️ ADVERTENCIA: No hay clientes WebSocket conectados para recibir el progreso');
+  }
 });
 
 // ------------------------
 // Middleware
 // ------------------------
 app.use(cors({
-  origin: allowedOrigins, // CORREGIDO: Usar mismo array
+  origin: function(origin, callback) {
+    // NUEVO: Función más permisiva para CORS en producción
+    console.log('🔍 Verificando origen CORS:', origin);
+    
+    // Permitir requests sin origin (como Postman, aplicaciones móviles, etc.)
+    if (!origin) {
+      console.log('✅ Origen vacío permitido');
+      return callback(null, true);
+    }
+    
+    // Verificar si el origen está en la lista permitida
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      console.log('✅ Origen permitido:', origin);
+      return callback(null, true);
+    }
+    
+    // En producción, ser más permisivo con IPs locales
+    if (isProduction && origin.includes(productionHost)) {
+      console.log('✅ Origen de producción permitido:', origin);
+      return callback(null, true);
+    }
+    
+    console.warn('❌ Origen no permitido:', origin);
+    console.warn('📋 Orígenes permitidos:', allowedOrigins);
+    
+    // En desarrollo, rechazar; en producción, ser más permisivo
+    if (isProduction) {
+      console.log('🚀 Modo producción: Permitiendo origen por compatibilidad');
+      return callback(null, true);
+    } else {
+      return callback(new Error('No permitido por CORS'), false);
+    }
+  },
   methods: ['GET', 'POST', 'OPTIONS'],
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization']

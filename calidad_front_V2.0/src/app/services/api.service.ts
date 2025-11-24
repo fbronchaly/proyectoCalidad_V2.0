@@ -24,14 +24,19 @@ export class ApiService {
     
     this.socket = io(socketUrl, {
       transports: ['websocket', 'polling'],
-      timeout: 20000, // Aumentado timeout
-      forceNew: true, // CORREGIDO: Forzar nueva conexión
+      timeout: 30000, // CORREGIDO: Aumentado timeout a 30 segundos para producción
+      forceNew: true,
       reconnection: true,
-      reconnectionDelay: 1000,
-      reconnectionAttempts: 10, // Más intentos de reconexión
+      reconnectionDelay: 2000, // CORREGIDO: Aumentado delay entre reconexiones
+      reconnectionAttempts: 15, // CORREGIDO: Más intentos para producción
       autoConnect: true,
       upgrade: true,
-      rememberUpgrade: false
+      rememberUpgrade: false,
+      // NUEVO: Configuración específica para producción
+      withCredentials: true,
+      extraHeaders: {
+        'Access-Control-Allow-Origin': '*'
+      }
     });
     
     // Eventos de conexión mejorados
@@ -54,7 +59,7 @@ export class ApiService {
           if (!this.socket.connected) {
             this.socket.connect();
           }
-        }, 1000);
+        }, 2000);
       }
     });
     
@@ -68,13 +73,13 @@ export class ApiService {
       });
       this.connectionStatus.next(false);
       
-      // NUEVO: Intentar reconexión manual después de error
+      // CORREGIDO: Intentar reconexión manual después de error con más tiempo
       setTimeout(() => {
         if (!this.socket.connected) {
           console.log('🔄 Reintentando conexión después de error...');
           this.socket.connect();
         }
-      }, 2000);
+      }, 5000); // CORREGIDO: Aumentado a 5 segundos
     });
 
     this.socket.on('reconnect', (attemptNumber) => {
@@ -89,6 +94,12 @@ export class ApiService {
     this.socket.on('reconnect_failed', () => {
       console.error('💥 Falló completamente la reconexión WebSocket');
       this.connectionStatus.next(false);
+      
+      // NUEVO: Último intento manual después de fallo total
+      console.log('🔄 Último intento manual de reconexión...');
+      setTimeout(() => {
+        this.reconnect();
+      }, 10000);
     });
 
     // Evento específico para debugging
