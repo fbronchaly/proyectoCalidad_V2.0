@@ -297,6 +297,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       console.log('📂 Categoría:', indicador.categoria);
       console.log('📋 Indicador:', indicador.indicador);
       console.log('🔗 Resultados:', indicador.resultados);
+      console.log('🧮 Totales:', indicador.totales);
 
       // Verificar que el indicador tiene la estructura correcta
       if (!indicador.id_code) {
@@ -309,6 +310,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
         console.warn(`⚠️ Indicador ${indicadorIndex} sin nombre de indicador`);
       }
       
+      // Procesar resultados parciales (por cada base de datos)
       if (indicador.resultados && Array.isArray(indicador.resultados)) {
         console.log(`📊 Procesando ${indicador.resultados.length} resultados para ${indicador.indicador}`);
         
@@ -327,7 +329,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
             baseData: resultado.baseData || 'Sin base',
             resultado: resultado.resultado !== undefined ? resultado.resultado : 0,
             numeroDePacientes: resultado.numeroDePacientes !== undefined ? resultado.numeroDePacientes : 0,
-            indicadorCompleto: indicador
+            indicadorCompleto: indicador,
+            esTotal: false // Marcar como resultado parcial
           };
 
           newTableData.push(filaTabla);
@@ -335,6 +338,35 @@ export class DashboardComponent implements OnInit, OnDestroy {
         });
       } else {
         console.warn(`⚠️ Indicador ${indicadorIndex} no tiene resultados válidos:`, indicador.resultados);
+      }
+
+      // NUEVO: Procesar totales agregados (suma de todas las bases)
+      if (indicador.totales && indicador.resultados?.length > 0) {
+        console.log(`🧮 Agregando fila de TOTALES para ${indicador.indicador}:`, {
+          resultado: indicador.totales.resultado,
+          numero_pacientes: indicador.totales.numero_pacientes
+        });
+
+        // Crear fila especial de totales
+        const filaTotales = {
+          id_code: indicador.id_code || 'N/A',
+          categoria: indicador.categoria || 'Sin categoría',
+          indicador: indicador.indicador || 'Sin nombre',
+          baseData: 'TOTAL', // Identificador especial para totales
+          resultado: indicador.totales.resultado !== undefined ? indicador.totales.resultado : 0,
+          numeroDePacientes: indicador.totales.numero_pacientes !== undefined ? indicador.totales.numero_pacientes : 0,
+          indicadorCompleto: indicador,
+          esTotal: true // Marcar como fila de totales
+        };
+
+        newTableData.push(filaTotales);
+        console.log(`  🧮 Fila de totales añadida:`, filaTotales);
+      } else if (indicador.totales) {
+        console.log(`⚠️ Totales existen pero no se agregaron para ${indicador.indicador}:`, {
+          totales: indicador.totales,
+          resultadosLength: indicador.resultados?.length,
+          condicion: 'indicador.totales && indicador.resultados?.length > 0'
+        });
       }
     });
     
@@ -371,6 +403,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
         });
       } else {
         console.log('✅ Tabla actualizada exitosamente');
+        console.log('🧮 Filas de totales incluidas:', this.tableData.filter(f => f.esTotal).length);
       }
     }, 100);
   }

@@ -148,6 +148,12 @@ async function consultaGenerica(intervalo, dataBase, consulta) {
     let queryFinalSinTipoHemo = consulta || '';
 
 
+        // NO BORRAR¡¡¡¡ Calculamos FECHAINI (7 días antes para indicador fotografía del dia)
+const fecha = new Date(FECHAFIN);
+fecha.setDate(fecha.getDate() - 7);
+const FECHAINI_CALCULADA = fecha.toISOString().split('T')[0];  // 'YYYY-MM-DD'
+
+
 // Solo si tenemos fechas, hacemos los reemplazos
 if (FECHAINI) {
   queryFinalSinTipoHemo = queryFinalSinTipoHemo
@@ -160,13 +166,22 @@ if (FECHAFIN) {
     .replace(/':FECHAFIN'/gi, `'${FECHAFIN}'`) // ':FECHAFIN'
     .replace(/:FECHAFIN\b/gi, `'${FECHAFIN}'`); // :FECHAFIN
 }
+
+if (FECHAINI_CALCULADA) {
+  queryFinalSinTipoHemo = queryFinalSinTipoHemo
+    .replace(/':FECHAINI_CALCULADA'/gi, `'${FECHAINI_CALCULADA}'`)   // ':FECHAINI_CALCULADA'
+    .replace(/:FECHAINI_CALCULADA\b/gi, `'${FECHAINI_CALCULADA}'`);  // :FECHAINI_CALCULADA
+}
+
+
     
     console.log("🔍 Query ORIGINAL (plantilla):", consulta);
     console.log("📅 Parámetros de fecha:", { FECHAINI, FECHAFIN });
     console.log("🧾 Query con fechas aplicada:", queryFinalSinTipoHemo);
+
+
+
     
-
-
 
     // Ejecutar consultas de forma secuencial y consolidar
     const resultadosTotales = [];

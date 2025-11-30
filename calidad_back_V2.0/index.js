@@ -2,6 +2,7 @@ const express = require('express');
 const { fork } = require('child_process');
 const path = require('path');
 const fs = require('fs');
+const cors = require('cors'); // AGREGADO: Import CORS
 const multer = require('multer');
 const axios = require('axios');
 const eventBus = require('./controllers/servicios/eventBus');
@@ -77,6 +78,34 @@ const io = new Server(http, socketConfig);
 // ------------------------
 // Middleware
 // ------------------------
+
+// AGREGADO: Middleware CORS para rutas HTTP
+if (isProduction && hasFrontendBuild) {
+  console.log('🔧 Middleware HTTP PRODUCCIÓN - CORS básico para same-origin');
+  // En producción con archivos estáticos, CORS mínimo
+  app.use(cors({
+    origin: true, // Permitir same-origin
+    credentials: false,
+    methods: ['GET', 'POST', 'OPTIONS']
+  }));
+} else {
+  console.log('🔧 Middleware HTTP DESARROLLO - CORS completo');
+  // En desarrollo, CORS completo para cross-origin
+  const allowedOrigins = [
+    'http://localhost:4200',
+    'http://127.0.0.1:4200',
+    'http://localhost:3000',
+    'http://127.0.0.1:3000'
+  ];
+  
+  app.use(cors({
+    origin: allowedOrigins,
+    credentials: true,
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+  }));
+}
+
 app.use(express.json());
 
 // ------------------------

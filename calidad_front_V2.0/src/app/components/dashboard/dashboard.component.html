@@ -219,6 +219,30 @@
         </mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
+        <!-- NUEVO: Mostrar período analizado -->
+        <div class="date-range-info" *ngIf="startDate && endDate">
+          <div class="date-range-header">
+            <mat-icon>date_range</mat-icon>
+            <h3>Período Analizado</h3>
+          </div>
+          <div class="date-range-display">
+            <div class="date-item">
+              <span class="date-label">Desde:</span>
+              <span class="date-value">{{ formatDate(startDate, 'dd/MM/yyyy') }}</span>
+            </div>
+            <div class="date-separator">
+              <mat-icon>arrow_forward</mat-icon>
+            </div>
+            <div class="date-item">
+              <span class="date-label">Hasta:</span>
+              <span class="date-value">{{ formatDate(endDate, 'dd/MM/yyyy') }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Divisor -->
+        <mat-divider class="my-3" *ngIf="startDate && endDate"></mat-divider>
+
         <div class="summary-stats">
           <div class="stat-item">
             <span class="stat-number">{{ apiResponse.resultados?.length || 0 }}</span>
@@ -255,12 +279,22 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let element of tableData; trackBy: trackByIndex">
+              <tr *ngFor="let element of tableData; trackBy: trackByIndex" 
+                  [class.total-row]="element.esTotal"
+                  [class.partial-row]="!element.esTotal">
                 <td>{{ element.categoria || 'N/A' }}</td>
                 <td>{{ element.indicador || 'N/A' }}</td>
-                <td><span class="badge bg-primary">{{ element.baseData || 'N/A' }}</span></td>
+                <td>
+                  <span class="badge" 
+                        [class.bg-primary]="!element.esTotal"
+                        [class.bg-warning]="element.esTotal">
+                    {{ element.baseData || 'N/A' }}
+                  </span>
+                </td>
                 <td class="text-end">
-                  <span class="badge bg-success">
+                  <span class="badge" 
+                        [class.bg-success]="!element.esTotal"
+                        [class.bg-info]="element.esTotal">
                     {{ formatNumber(element.resultado, 2) }}
                   </span>
                 </td>

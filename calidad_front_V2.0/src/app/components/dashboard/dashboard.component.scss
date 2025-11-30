@@ -536,6 +536,84 @@
     .mat-mdc-card-subtitle {
       color: white;
     }
+
+    // NUEVO: Estilos para la información del período analizado
+    .date-range-info {
+      margin-bottom: 20px;
+      
+      .date-range-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        justify-content: center;
+        margin-bottom: 16px;
+        
+        mat-icon {
+          font-size: 24px;
+          color: rgba(255, 255, 255, 0.9);
+        }
+        
+        h3 {
+          margin: 0;
+          font-size: 18px;
+          font-weight: 600;
+          color: white;
+          letter-spacing: -0.2px;
+        }
+      }
+      
+      .date-range-display {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        padding: 16px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        
+        .date-item {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 4px;
+          
+          .date-label {
+            font-size: 12px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+          }
+          
+          .date-value {
+            font-size: 16px;
+            font-weight: 700;
+            color: white;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            min-width: 120px;
+            text-align: center;
+            letter-spacing: 0.5px;
+          }
+        }
+        
+        .date-separator {
+          display: flex;
+          align-items: center;
+          margin: 0 8px;
+          
+          mat-icon {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            animation: pulse 2s infinite;
+          }
+        }
+      }
+    }
     
     .summary-stats {
       display: flex;
@@ -606,6 +684,50 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
           }
 
+          // NUEVO: Estilos para filas de totales
+          &.total-row {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            border: 2px solid #ff9800;
+            font-weight: 600;
+            
+            &:hover {
+              background: linear-gradient(135deg, #ffecb3 0%, #ffd54f 100%);
+              transform: scale(1.02);
+              box-shadow: 0 4px 12px rgba(255, 152, 0, 0.2);
+            }
+            
+            td {
+              font-weight: 600;
+              color: #e65100;
+              
+              .badge {
+                &.bg-warning {
+                  background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%) !important;
+                  color: white !important;
+                  font-weight: 700;
+                  text-transform: uppercase;
+                  letter-spacing: 0.5px;
+                }
+                
+                &.bg-info {
+                  background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%) !important;
+                  color: white !important;
+                  font-weight: 700;
+                  font-size: 13px;
+                }
+              }
+            }
+          }
+          
+          // NUEVO: Estilos para filas parciales (por base de datos)
+          &.partial-row {
+            background: rgba(255, 255, 255, 0.95);
+            
+            td {
+              color: #2d3748;
+            }
+          }
+
           td {
             padding: 14px 12px;
             vertical-align: middle;
@@ -620,10 +742,12 @@
 
               &.bg-primary {
                 background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+                color: white !important; // NUEVO: Forzar color blanco para el texto
               }
 
               &.bg-success {
                 background: linear-gradient(135deg, #48bb78 0%, #38a169 100%) !important;
+                color: white !important; // NUEVO: Mantener color blanco también aquí
               }
             }
 
