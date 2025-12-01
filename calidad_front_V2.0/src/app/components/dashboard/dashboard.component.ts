@@ -114,7 +114,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.isWebSocketConnected = isConnected;
       console.log('🔌 Estado conexión WebSocket cambiado:', isConnected);
       
-      // ELIMINADO: Las notificaciones que confunden al cliente
       // Solo mantener logs para debugging
       if (isConnected) {
         console.log('✅ WebSocket conectado exitosamente');
@@ -442,6 +441,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
     // SIMPLIFICADO: Enviar la petición, WebSocket maneja todo
     this.api.upload(payload).subscribe({
       next: (resp: any) => {
+
+          console.log(resp);
+          
+
         console.log('✅ Petición HTTP enviada exitosamente');
         console.log('📡 WebSocket manejará las actualizaciones de progreso');
         // Ya no procesamos aquí - WebSocket maneja todo

@@ -33,7 +33,9 @@ const defaultDevOrigins = [
   'http://localhost:3000',
   'http://127.0.0.1:3000',
   `http://${productionHost}`,
-  `http://${productionHost}:3000`
+  `http://${productionHost}:3000`,
+  `http://${productionHost}:8083`
+  
 ];
 const allowedOrigins = configuredOrigins.length ? configuredOrigins : defaultDevOrigins;
 const PORT = process.env.PORT || 3000;
