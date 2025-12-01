@@ -478,88 +478,19 @@ export class DashboardComponent implements OnInit, OnDestroy {
           console.log('🚀 SINCRONIZADO: 100% + DATOS recibidos - Mostrando tabla inmediatamente');
           console.log('📊 Cantidad de resultados recibidos:', progress.resultados.length);
           
-          this.apiResponse = {
-            success: progress.success || true,
-            message: progress.mensaje || 'Análisis completado',
-            resultados: progress.resultados,
-            timestamp: progress.timestamp || new Date().toISOString()
-          };
-          
-          this.loading = false;
-          
-          // CORREGIDO: Forzar múltiples actualizaciones para garantizar renderizado
-          console.log('🔄 Actualizando tabla - Intento 1');
-          this.updateTableData();
-          
-          setTimeout(() => {
-            console.log('🔄 Actualizando tabla - Intento 2 (backup)');
-            this.updateTableData();
-            this.cdr.markForCheck();
-            this.cdr.detectChanges();
-          }, 100);
-          
-          setTimeout(() => {
-            console.log('🔄 Actualizando tabla - Intento 3 (final)');
-            this.cdr.markForCheck();
-            this.cdr.detectChanges();
-            
-            // Verificación final de los datos
-            console.log('✅ Estado final de la tabla:');
-            console.log('  - apiResponse existe:', !!this.apiResponse);
-            console.log('  - resultados existe:', !!this.apiResponse?.resultados);
-            console.log('  - cantidad resultados:', this.apiResponse?.resultados?.length || 0);
-            console.log('  - tableData.length:', this.tableData.length);
-            console.log('  - loading:', this.loading);
-            
-            if (this.tableData.length > 0) {
-              console.log('🎉 ÉXITO: Tabla actualizada con', this.tableData.length, 'filas');
-            } else {
-              console.error('❌ PROBLEMA: Tabla sigue vacía después de todas las actualizaciones');
-            }
-          }, 200);
-          
-          // Solo UNA notificación importante al completarse
-          this.snack.open('¡Análisis completado exitosamente!', 'OK', { 
-            duration: 4000,
-            panelClass: ['success-snackbar']
-          });
+          this.procesarResultadosFinales(progress.resultados, progress.mensaje || 'Análisis completado');
         } 
         // Backup: evento de finalización sin datos embebidos
         else if (progress.completed && progress.resultados) {
           console.log('✅ Evento de finalización con datos recibido');
-          if (!this.apiResponse) {
-            this.apiResponse = {
-              success: true,
-              message: 'Análisis completado',
-              resultados: progress.resultados,
-              timestamp: progress.timestamp || new Date().toISOString()
-            };
-            this.loading = false;
-            this.updateTableData();
-          }
+          this.procesarResultadosFinales(progress.resultados, progress.mensaje || 'Análisis completado');
         }
-        
         // NUEVO: Caso especial para resultados sin porcentaje específico
         else if (progress.resultados && Array.isArray(progress.resultados) && progress.resultados.length > 0) {
           console.log('🎯 CASO ESPECIAL: Resultados recibidos sin porcentaje 100%');
           console.log('📊 Cantidad de resultados:', progress.resultados.length);
           
-          if (!this.apiResponse) {
-            this.apiResponse = {
-              success: true,
-              message: progress.mensaje || 'Análisis completado',
-              resultados: progress.resultados,
-              timestamp: progress.timestamp || new Date().toISOString()
-            };
-            
-            this.loading = false;
-            this.updateTableData();
-            
-            this.snack.open('Datos recibidos correctamente', 'OK', { 
-              duration: 3000,
-              panelClass: ['success-snackbar']
-            });
-          }
+          this.procesarResultadosFinales(progress.resultados, progress.mensaje || 'Datos recibidos');
         }
         
         this.cdr.detectChanges();
@@ -576,6 +507,20 @@ export class DashboardComponent implements OnInit, OnDestroy {
       }
     });
 
+    // NUEVO: Listener específico para evento de finalización directo
+    this.api.getAnalysisCompletedUpdates().subscribe({
+      next: (data: any) => {
+        console.log('🎯 EVENTO DIRECTO: análisis-completado recibido:', data);
+        if (data.resultados && Array.isArray(data.resultados)) {
+          console.log('📊 Procesando datos del evento directo');
+          this.procesarResultadosFinales(data.resultados, data.mensaje || 'Análisis completado');
+        }
+      },
+      error: (error) => {
+        console.error('❌ Error en evento análisis-completado:', error);
+      }
+    });
+
     // Reset subscription SIN notificaciones
     this.resetSubscription = this.api.getServerResetUpdates().subscribe({
       next: (data: any) => {
@@ -589,6 +534,66 @@ export class DashboardComponent implements OnInit, OnDestroy {
     });
     
     console.log('✅ WebSocket optimizado configurado SIN notificaciones molestas');
+  }
+
+  // NUEVO: Método centralizado para procesar resultados finales
+  private procesarResultadosFinales(resultados: any[], mensaje: string): void {
+    console.log('🎯 === PROCESANDO RESULTADOS FINALES ===');
+    console.log('📊 Cantidad de resultados:', resultados.length);
+    console.log('💬 Mensaje:', mensaje);
+
+    if (this.apiResponse) {
+      console.log('⚠️ Ya existe apiResponse - Evitando duplicados');
+      return;
+    }
+
+    this.apiResponse = {
+      success: true,
+      message: mensaje,
+      resultados: resultados,
+      timestamp: new Date().toISOString()
+    };
+    
+    this.loading = false;
+    
+    // CORREGIDO: Múltiples actualizaciones forzadas para garantizar renderizado
+    console.log('🔄 Actualizando tabla - Intento 1');
+    this.updateTableData();
+    
+    setTimeout(() => {
+      console.log('🔄 Actualizando tabla - Intento 2 (backup)');
+      this.updateTableData();
+      this.cdr.markForCheck();
+      this.cdr.detectChanges();
+    }, 100);
+    
+    setTimeout(() => {
+      console.log('🔄 Actualizando tabla - Intento 3 (final)');
+      this.cdr.markForCheck();
+      this.cdr.detectChanges();
+      
+      // Verificación final de los datos
+      console.log('✅ Estado final de la tabla:');
+      console.log('  - apiResponse existe:', !!this.apiResponse);
+      console.log('  - resultados existe:', !!this.apiResponse?.resultados);
+      console.log('  - cantidad resultados:', this.apiResponse?.resultados?.length || 0);
+      console.log('  - tableData.length:', this.tableData.length);
+      console.log('  - loading:', this.loading);
+      
+      if (this.tableData.length > 0) {
+        console.log('🎉 ÉXITO: Tabla actualizada con', this.tableData.length, 'filas');
+      } else {
+        console.error('❌ PROBLEMA: Tabla sigue vacía después de todas las actualizaciones');
+      }
+    }, 200);
+    
+    // Solo UNA notificación importante al completarse
+    this.snack.open('¡Análisis completado exitosamente!', 'OK', { 
+      duration: 4000,
+      panelClass: ['success-snackbar']
+    });
+    
+    console.log('✅ === PROCESAMIENTO DE RESULTADOS COMPLETADO ===');
   }
 
   // NUEVO: Calcular tiempo restante estimado

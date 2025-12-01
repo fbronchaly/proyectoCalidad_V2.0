@@ -201,6 +201,23 @@ export class ApiService {
     });
   }
 
+  // NUEVO: Método para recibir eventos de análisis completado
+  getAnalysisCompletedUpdates(): Observable<any> {
+    return new Observable((observer) => {
+      const completedHandler = (data: any) => {
+        console.log('🎯 Análisis completado recibido en ApiService:', data);
+        observer.next(data);
+      };
+
+      this.socket.on('analisis-completado', completedHandler);
+      
+      return () => {
+        console.log('🧹 Limpiando listener de análisis completado');
+        this.socket.off('analisis-completado', completedHandler);
+      };
+    });
+  }
+
   // MEJORADO: Método para desconectar WebSocket
   disconnect(): void {
     if (this.socket) {

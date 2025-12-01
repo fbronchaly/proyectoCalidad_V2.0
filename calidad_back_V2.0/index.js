@@ -375,7 +375,7 @@ app.post('/api/upload', (req, res) => {
         }
 
         if (msg.terminado) {
-          console.log('✅ Proceso completado. Enviando datos INMEDIATAMENTE.');
+          console.log('✅ Proceso completado. Enviando datos con múltiples intentos para garantizar recepción.');
           
           const finalDataEvent = { 
             porcentaje: 100, 
@@ -392,19 +392,49 @@ app.post('/api/upload', (req, res) => {
             resultadosCount: finalDataEvent.resultados.length
           });
           
-          io.emit('progreso', finalDataEvent);
+          // CORRIGIDO: Múltiples envíos para garantizar recepción en producción
+          function enviarDatosConReintentos(intentos = 0) {
+            const maxIntentos = 5;
+            const delay = intentos * 200; // 0ms, 200ms, 400ms, 600ms, 800ms
+            
+            setTimeout(() => {
+              console.log(`📡 Intento ${intentos + 1}/${maxIntentos} - Enviando datos`);
+              io.emit('progreso', finalDataEvent);
+              
+              if (intentos < maxIntentos - 1) {
+                enviarDatosConReintentos(intentos + 1);
+              } else {
+                console.log('✅ Todos los intentos de envío completados');
+              }
+            }, delay);
+          }
+          
+          // Iniciar secuencia de envíos
+          enviarDatosConReintentos();
+          
+          // También emitir evento de finalización directo
+          setTimeout(() => {
+            io.emit('analisis-completado', {
+              success: true,
+              resultados: msg.resultados || [],
+              mensaje: 'Datos finales disponibles',
+              timestamp: new Date().toISOString()
+            });
+            console.log('📡 Evento de finalización directo enviado');
+          }, 1000);
           
           if (!res.headersSent) {
             res.status(200).json({ 
               success: true,
-              message: 'Datos enviados por WebSocket',
+              message: 'Datos enviados por WebSocket con múltiples intentos',
+              resultados_count: (msg.resultados || []).length,
               timestamp: new Date().toISOString()
             });
           }
           
           setTimeout(() => {
             resetearServidorCompleto('trabajo completado exitosamente');
-          }, 3000);
+          }, 5000); // Aumentado a 5 segundos para dar tiempo a los múltiples envíos
         }
       });
 
