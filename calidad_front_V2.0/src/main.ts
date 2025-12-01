@@ -4,6 +4,12 @@ import { AppModule } from './app/app.module';
 import { enableProdMode } from '@angular/core';
 import { environment } from './environments/environment';
 
+
+// SOLUCIÓN DEFINITIVA NG02100: Registrar locale globalmente antes del bootstrap
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
+registerLocaleData(localeEs, 'es');
+
 if (environment.production) {
   enableProdMode();
 }
