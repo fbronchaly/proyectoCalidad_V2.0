@@ -19,24 +19,23 @@ export class ApiService {
 
   // CORREGIDO: Inicialización más robusta del WebSocket
   private initializeWebSocket(): void {
-    const socketUrl = environment.apiUrl;
-    console.log('🔌 Conectando WebSocket a:', socketUrl);
+    // PRODUCCIÓN: Same-origin optimizado
+    const socketUrl = environment.production ? '' : environment.apiUrl;
+    console.log('🔌 Conectando WebSocket a:', socketUrl || 'same-origin');
     
     this.socket = io(socketUrl, {
       transports: ['websocket', 'polling'],
-      timeout: 30000, // CORREGIDO: Aumentado timeout a 30 segundos para producción
+      timeout: 60000, // CORREGIDO: Aumentado a 60 segundos para producción
       forceNew: true,
       reconnection: true,
-      reconnectionDelay: 2000, // CORREGIDO: Aumentado delay entre reconexiones
-      reconnectionAttempts: 15, // CORREGIDO: Más intentos para producción
+      reconnectionDelay: 5000, // CORREGIDO: 5 segundos para producción
+      reconnectionAttempts: 20, // CORREGIDO: Más intentos para producción
       autoConnect: true,
       upgrade: true,
       rememberUpgrade: false,
-      // NUEVO: Configuración específica para producción
-      withCredentials: true,
-      extraHeaders: {
-        'Access-Control-Allow-Origin': '*'
-      }
+      // PRODUCCIÓN: Configuración optimizada para same-origin
+      withCredentials: false, // No necesario en same-origin
+      // Eliminado extraHeaders innecesarios para same-origin
     });
     
     // Eventos de conexión mejorados
