@@ -23,6 +23,19 @@ const isProduction =
   process.env.NODE_ENV === 'production' ||
   fs.existsSync(path.join(__dirname, 'public', 'dist'));
 const productionHost = '193.147.197.113';
+const configuredOrigins = (process.env.ALLOWED_ORIGINS || '')
+  .split(',')
+  .map(origin => origin.trim())
+  .filter(Boolean);
+const defaultDevOrigins = [
+  'http://localhost:4200',
+  'http://127.0.0.1:4200',
+  'http://localhost:3000',
+  'http://127.0.0.1:3000',
+  `http://${productionHost}`,
+  `http://${productionHost}:3000`
+];
+const allowedOrigins = configuredOrigins.length ? configuredOrigins : defaultDevOrigins;
 const PORT = process.env.PORT || 3000;
 
 // Verificar si existe build de frontend en producción
@@ -35,13 +48,15 @@ console.log(`🌐 Host producción: ${productionHost}`);
 console.log(`🔌 Puerto: ${PORT}`);
 console.log(`📁 Build frontend encontrado: ${hasFrontendBuild ? '✅ SÍ' : '❌ NO'}`);
 console.log(`📍 Ruta build: ${frontendBuildPath}`);
+console.log('🌍 Orígenes permitidos (HTTP/WS):', allowedOrigins);
 
 // ------------------------
 // Configuración WebSocket optimizada para producción
 // ------------------------
 let socketConfig;
+const useSameOriginSockets = isProduction && hasFrontendBuild && configuredOrigins.length === 0;
 
-if (isProduction && hasFrontendBuild) {
+if (useSameOriginSockets) {
   console.log('🔌 WebSocket PRODUCCIÓN - Same origin (SIN CORS)');
   socketConfig = {
     cors: false, // CORREGIDO: No CORS necesario en same-origin
@@ -54,13 +69,6 @@ if (isProduction && hasFrontendBuild) {
   };
 } else {
   console.log('🔌 WebSocket DESARROLLO - CORS habilitado');
-  const allowedOrigins = [
-    'http://localhost:4200',
-    'http://127.0.0.1:4200',
-    'http://localhost:3000',
-    'http://127.0.0.1:3000'
-  ];
-  
   console.log('🌍 URLs permitidas para CORS:', allowedOrigins);
   
   socketConfig = {
@@ -86,7 +94,7 @@ const io = new Server(http, socketConfig);
 // ------------------------
 
 // AGREGADO: Middleware CORS para rutas HTTP
-if (isProduction && hasFrontendBuild) {
+if (useSameOriginSockets) {
   console.log('🔧 Middleware HTTP PRODUCCIÓN - CORS básico para same-origin');
   // En producción con archivos estáticos, CORS mínimo
   app.use(cors({
@@ -95,15 +103,8 @@ if (isProduction && hasFrontendBuild) {
     methods: ['GET', 'POST', 'OPTIONS']
   }));
 } else {
-  console.log('🔧 Middleware HTTP DESARROLLO - CORS completo');
-  // En desarrollo, CORS completo para cross-origin
-  const allowedOrigins = [
-    'http://localhost:4200',
-    'http://127.0.0.1:4200',
-    'http://localhost:3000',
-    'http://127.0.0.1:3000'
-  ];
-  
+  console.log('🔧 Middleware HTTP - CORS habilitado (orígenes configurables)');
+  // Permitir orígenes configurables para despliegues cruzados o pruebas
   app.use(cors({
     origin: allowedOrigins,
     credentials: true,
