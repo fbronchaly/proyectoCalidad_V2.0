@@ -234,6 +234,19 @@ export class ApiService {
     }
   }
 
+  // NUEVO: Método para confirmar recepción de datos al backend
+  confirmDataReceived(): void {
+    if (this.socket && this.socket.connected) {
+      console.log('📤 Confirmando recepción de datos al backend...');
+      this.socket.emit('datos-recibidos', { 
+        timestamp: new Date().toISOString(),
+        message: 'Cliente procesó datos exitosamente'
+      });
+    } else {
+      console.warn('⚠️ No se pudo confirmar recepción: Socket no conectado');
+    }
+  }
+
   // NUEVO: Método de debugging para enviar evento de prueba
   sendTestMessage(): void {
     if (this.socket && this.socket.connected) {

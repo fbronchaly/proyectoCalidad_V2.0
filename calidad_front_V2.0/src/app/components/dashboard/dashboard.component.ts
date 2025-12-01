@@ -572,6 +572,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.cdr.markForCheck();
       this.cdr.detectChanges();
       
+      // 🎯 CRÍTICO: Confirmar recepción al backend DESPUÉS de procesar
+      this.api.confirmDataReceived();
+      console.log('✅ Confirmación enviada al backend - Puede resetear ahora');
+      
       // Verificación final de los datos
       console.log('✅ Estado final de la tabla:');
       console.log('  - apiResponse existe:', !!this.apiResponse);
