@@ -15,7 +15,13 @@ const { Server } = require('socket.io');
 // ------------------------
 // Configuración de entorno optimizada
 // ------------------------
-const isProduction = process.env.USE_PROD_ORIGIN === 'true' || process.env.NODE_ENV === 'production';
+// Nota: Si servimos el build de Angular desde este backend, tratamos el entorno como producción
+// aunque las variables de entorno no lo indiquen explícitamente. Esto evita que CORS bloquee
+// los WebSockets cuando el frontend y backend comparten origen en el servidor real.
+const isProduction =
+  process.env.USE_PROD_ORIGIN === 'true' ||
+  process.env.NODE_ENV === 'production' ||
+  fs.existsSync(path.join(__dirname, 'public', 'dist'));
 const productionHost = '193.147.197.113';
 const PORT = process.env.PORT || 3000;
 
