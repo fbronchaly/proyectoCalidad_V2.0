@@ -382,81 +382,80 @@ app.post('/api/upload', (req, res) => {
         }
 
         if (msg.terminado) {
-          console.log('✅ Proceso completado. Preparando envío SINCRONIZADO de datos.');
+          console.log('✅ Proceso completado. Preparando envío INMEDIATO de datos.');
+          console.log('📊 Cantidad de resultados a enviar:', msg.resultados?.length || 0);
           
-          // PASO 1: Emitir progreso 100% PRIMERO
-          const progress100Event = { 
+          // 🎯 OPTIMIZADO: Enviar TODOS los datos en UN SOLO evento
+          const finalDataEvent = { 
             porcentaje: 100, 
-            mensaje: 'Procesamiento completado - Preparando datos finales...',
-            timestamp: new Date().toISOString()
+            mensaje: 'Análisis completado - Datos disponibles',
+            resultados: msg.resultados || [],
+            timestamp: new Date().toISOString(),
+            completed: true,
+            success: true
           };
           
-          console.log('📡 PASO 1/3: Enviando progreso 100%');
-          io.emit('progreso', progress100Event);
+          console.log('📡 Enviando datos completos INMEDIATAMENTE:', {
+            porcentaje: finalDataEvent.porcentaje,
+            mensaje: finalDataEvent.mensaje,
+            resultadosCount: finalDataEvent.resultados.length,
+            clientesConectados: io.engine.clientsCount,
+            timestamp: finalDataEvent.timestamp
+          });
           
-          // PASO 2: Esperar 500ms y luego enviar DATOS COMPLETOS
+          // Emitir evento ÚNICO con todos los datos
+          io.emit('progreso', finalDataEvent);
+          
+          // Backup: Evento secundario 200ms después
           setTimeout(() => {
-            const finalDataEvent = { 
-              porcentaje: 100, 
-              mensaje: 'Análisis completado - Datos disponibles',
+            console.log('📡 BACKUP: Enviando evento de confirmación adicional');
+            io.emit('analisis-completado', {
+              success: true,
               resultados: msg.resultados || [],
-              timestamp: new Date().toISOString(),
-              completed: true,
-              success: true
-            };
-            
-            console.log('📡 PASO 2/3: Enviando DATOS COMPLETOS:', {
-              porcentaje: finalDataEvent.porcentaje,
-              mensaje: finalDataEvent.mensaje,
-              resultadosCount: finalDataEvent.resultados.length,
-              primerosResultados: finalDataEvent.resultados.slice(0, 2)
+              mensaje: 'Datos confirmados',
+              timestamp: new Date().toISOString()
             });
-            
-            // Emitir evento principal con datos
-            io.emit('progreso', finalDataEvent);
-            
-            // PASO 3: Emitir evento secundario de confirmación
-            setTimeout(() => {
-              io.emit('analisis-completado', {
-                success: true,
-                resultados: msg.resultados || [],
-                mensaje: 'Datos finales confirmados',
-                timestamp: new Date().toISOString()
-              });
-              console.log('📡 PASO 3/3: Evento de confirmación enviado');
-              
-              // Verificar recepción del cliente
-              let datosRecibidosPorCliente = false;
-              
-              io.once('datos-recibidos', () => {
-                console.log('✅ Cliente confirmó recepción de datos');
-                datosRecibidosPorCliente = true;
-                
-                // Reset después de confirmación
-                setTimeout(() => {
-                  console.log('🔄 Reseteando servidor después de confirmación del cliente');
-                  resetearServidorCompleto('trabajo completado y confirmado por cliente');
-                }, 2000);
-              });
-              
-              // Timeout de seguridad si el cliente no confirma
-              setTimeout(() => {
-                if (!datosRecibidosPorCliente) {
-                  console.log('⚠️ Cliente no confirmó recepción en 8s - Reseteando de todos modos');
-                  resetearServidorCompleto('trabajo completado - timeout de confirmación');
-                } else {
-                  console.log('✅ Cliente ya confirmó anteriormente');
-                }
-              }, 8000); // 8 segundos de timeout
-              
-            }, 500); // 500ms entre evento principal y confirmación
-            
-          }, 500); // 500ms entre 100% y datos completos
+          }, 200);
           
+          // Verificar recepción del cliente con timeout MÁS LARGO
+          let datosRecibidosPorCliente = false;
+          
+          io.once('datos-recibidos', (confirmacion) => {
+            console.log('✅ ========================================');
+            console.log('✅ CLIENTE CONFIRMÓ RECEPCIÓN DE DATOS');
+            console.log('✅ ========================================');
+            console.log('📋 Detalles confirmación:', confirmacion);
+            datosRecibidosPorCliente = true;
+            
+            // Reset después de confirmación con delay generoso
+            setTimeout(() => {
+              console.log('🔄 Reseteando servidor después de confirmación del cliente');
+              resetearServidorCompleto('trabajo completado y confirmado por cliente');
+            }, 3000); // 3 segundos adicionales después de confirmación
+          });
+          
+          // Timeout de seguridad AUMENTADO a 15 segundos
+          setTimeout(() => {
+            if (!datosRecibidosPorCliente) {
+              console.log('⚠️ ========================================');
+              console.log('⚠️ TIMEOUT: Cliente NO confirmó en 15 segundos');
+              console.log('⚠️ ========================================');
+              console.log('📊 Estado al timeout:', {
+                clientesConectados: io.engine.clientsCount,
+                enProceso: enProceso,
+                workerActivo: !!currentChild
+              });
+              resetearServidorCompleto('trabajo completado - timeout de confirmación (15s)');
+            } else {
+              console.log('✅ Cliente confirmó antes del timeout - No es necesario resetear');
+            }
+          }, 15000); // 🎯 AUMENTADO a 15 segundos
+          
+          // Respuesta HTTP inmediata
           if (!res.headersSent) {
             res.status(200).json({ 
               success: true,
-              message: 'Datos enviados por WebSocket en modo sincronizado',
+              message: 'Datos enviados por WebSocket',
               resultados_count: (msg.resultados || []).length,
               timestamp: new Date().toISOString()
             });

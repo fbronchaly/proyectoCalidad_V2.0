@@ -468,7 +468,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
         // 🔍 DIAGNÓSTICO: Log del progreso recibido
         console.log('🔍 [DIAGNÓSTICO DASHBOARD] === PROGRESO RECIBIDO ===');
         console.log('🔍 [DIAGNÓSTICO DASHBOARD] Timestamp:', new Date().toISOString());
-        console.log('🔍 [DIAGNÓSTICO DASHBOARD] progress es null/undefined:', progress === null || progress === undefined);
         
         if (!progress) {
           console.log('🔍 [DIAGNÓSTICO DASHBOARD] ⚠️ progress es null/undefined, saliendo');
@@ -476,11 +475,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
         }
         
         console.log('🔍 [DIAGNÓSTICO DASHBOARD] progress.porcentaje:', progress.porcentaje);
-        console.log('🔍 [DIAGNÓSTICO DASHBOARD] progress.mensaje:', progress.mensaje);
         console.log('🔍 [DIAGNÓSTICO DASHBOARD] progress.resultados existe:', !!progress.resultados);
         console.log('🔍 [DIAGNÓSTICO DASHBOARD] progress.resultados es Array:', Array.isArray(progress.resultados));
         console.log('🔍 [DIAGNÓSTICO DASHBOARD] progress.resultados.length:', progress.resultados?.length || 0);
-        console.log('🔍 [DIAGNÓSTICO DASHBOARD] progress.completed:', progress.completed);
         
         // Actualizar siempre el progreso visual
         this.progressPercentage = progress.porcentaje || 0;
@@ -488,51 +485,33 @@ export class DashboardComponent implements OnInit, OnDestroy {
         this.lastProgressUpdate = new Date().toLocaleTimeString();
         this.updateTimeEstimate(progress.porcentaje || 0);
         
-        console.log('🔍 [DIAGNÓSTICO DASHBOARD] Variables actualizadas:');
-        console.log('🔍 [DIAGNÓSTICO DASHBOARD]   - progressPercentage:', this.progressPercentage);
-        console.log('🔍 [DIAGNÓSTICO DASHBOARD]   - progressMessage:', this.progressMessage);
+        // 🎯 OPTIMIZADO: Detectar datos completos y procesar INMEDIATAMENTE
+        const tieneResultados = progress.resultados && 
+                               Array.isArray(progress.resultados) && 
+                               progress.resultados.length > 0;
         
-        // 🎯 SINCRONIZADO: Al llegar al 100% con datos, mostrar tabla INMEDIATAMENTE
-        if (progress.porcentaje === 100 && progress.resultados) {
-          console.log('🚀 SINCRONIZADO: 100% + DATOS recibidos - Mostrando tabla inmediatamente');
-          console.log('📊 Cantidad de resultados recibidos:', progress.resultados.length);
-          console.log('🔍 [DIAGNÓSTICO DASHBOARD] ✅ CONDICIÓN 1 CUMPLIDA: porcentaje === 100 && resultados');
-          console.log('🔍 [DIAGNÓSTICO DASHBOARD] Llamando a procesarResultadosFinales()...');
-          
-          this.procesarResultadosFinales(progress.resultados, progress.mensaje || 'Análisis completado');
-        } 
-        // Backup: evento de finalización sin datos embebidos
-        else if (progress.completed && progress.resultados) {
-          console.log('✅ Evento de finalización con datos recibido');
-          console.log('🔍 [DIAGNÓSTICO DASHBOARD] ✅ CONDICIÓN 2 CUMPLIDA: completed && resultados');
-          console.log('🔍 [DIAGNÓSTICO DASHBOARD] Llamando a procesarResultadosFinales()...');
-          
-          this.procesarResultadosFinales(progress.resultados, progress.mensaje || 'Análisis completado');
-        }
-        // NUEVO: Caso especial para resultados sin porcentaje específico
-        else if (progress.resultados && Array.isArray(progress.resultados) && progress.resultados.length > 0) {
-          console.log('🎯 CASO ESPECIAL: Resultados recibidos sin porcentaje 100%');
+        if (tieneResultados) {
+          console.log('🚀 ========================================');
+          console.log('🚀 DATOS COMPLETOS DETECTADOS');
+          console.log('🚀 ========================================');
           console.log('📊 Cantidad de resultados:', progress.resultados.length);
-          console.log('🔍 [DIAGNÓSTICO DASHBOARD] ✅ CONDICIÓN 3 CUMPLIDA: resultados es array con datos');
-          console.log('🔍 [DIAGNÓSTICO DASHBOARD] Llamando a procesarResultadosFinales()...');
+          console.log('💬 Mensaje:', progress.mensaje);
           
-          this.procesarResultadosFinales(progress.resultados, progress.mensaje || 'Datos recibidos');
-        } else {
-          console.log('🔍 [DIAGNÓSTICO DASHBOARD] ⚠️ NINGUNA CONDICIÓN CUMPLIDA para procesar resultados');
-          console.log('🔍 [DIAGNÓSTICO DASHBOARD] Condición 1 (100% + resultados):', progress.porcentaje === 100, '&&', !!progress.resultados);
-          console.log('🔍 [DIAGNÓSTICO DASHBOARD] Condición 2 (completed + resultados):', !!progress.completed, '&&', !!progress.resultados);
-          console.log('🔍 [DIAGNÓSTICO DASHBOARD] Condición 3 (array con datos):', !!progress.resultados, '&&', Array.isArray(progress.resultados), '&&', (progress.resultados?.length > 0));
+          // 🎯 CRÍTICO: Confirmar recepción INMEDIATAMENTE (antes de procesar)
+          console.log('📤 Confirmando recepción al backend INMEDIATAMENTE...');
+          this.api.confirmDataReceived();
+          
+          // Luego procesar los datos
+          this.procesarResultadosFinales(progress.resultados, progress.mensaje || 'Análisis completado');
         }
         
         this.cdr.detectChanges();
-        console.log('🔍 [DIAGNÓSTICO DASHBOARD] ✅ Change detection ejecutado');
       },
       error: (error) => {
         console.error('❌ Error en WebSocket:', error);
         console.log('🔍 [DIAGNÓSTICO DASHBOARD] ❌ ERROR en subscription de progreso:', error);
         this.loading = false;
         this.resetProgressIndicator();
-        // Solo notificar errores críticos
         this.snack.open('Error de conexión - Revise la consola', 'OK', { 
           duration: 5000,
           panelClass: ['error-snackbar'] 
@@ -540,25 +519,22 @@ export class DashboardComponent implements OnInit, OnDestroy {
       }
     });
 
-    // NUEVO: Listener específico para evento de finalización directo
+    // BACKUP: Listener específico para evento de finalización directo
     this.api.getAnalysisCompletedUpdates().subscribe({
       next: (data: any) => {
         console.log('🎯 EVENTO DIRECTO: análisis-completado recibido:', data);
-        console.log('🔍 [DIAGNÓSTICO DASHBOARD] === EVENTO "analisis-completado" ===');
-        console.log('🔍 [DIAGNÓSTICO DASHBOARD] data.resultados existe:', !!data.resultados);
-        console.log('🔍 [DIAGNÓSTICO DASHBOARD] data.resultados es Array:', Array.isArray(data.resultados));
         
-        if (data.resultados && Array.isArray(data.resultados)) {
-          console.log('📊 Procesando datos del evento directo');
-          console.log('🔍 [DIAGNÓSTICO DASHBOARD] ✅ Llamando a procesarResultadosFinales()...');
+        if (data.resultados && Array.isArray(data.resultados) && data.resultados.length > 0) {
+          console.log('📊 Procesando datos del evento directo (BACKUP)');
+          
+          // Confirmar recepción también en el backup
+          this.api.confirmDataReceived();
+          
           this.procesarResultadosFinales(data.resultados, data.mensaje || 'Análisis completado');
-        } else {
-          console.log('🔍 [DIAGNÓSTICO DASHBOARD] ⚠️ NO se procesarán datos - resultados no válidos');
         }
       },
       error: (error) => {
         console.error('❌ Error en evento análisis-completado:', error);
-        console.log('🔍 [DIAGNÓSTICO DASHBOARD] ❌ ERROR en evento análisis-completado:', error);
       }
     });
 
@@ -566,40 +542,28 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.resetSubscription = this.api.getServerResetUpdates().subscribe({
       next: (data: any) => {
         console.log('🔄 Reset del servidor recibido');
-        console.log('🔍 [DIAGNÓSTICO DASHBOARD] Evento "servidor-reseteado" recibido');
         if (!this.loading) {
           this.resetProgressIndicator();
         }
         this.cdr.detectChanges();
-        // Sin notificación de reset para no confundir
       }
     });
     
-    console.log('✅ WebSocket optimizado configurado SIN notificaciones molestas');
+    console.log('✅ WebSocket optimizado configurado');
   }
 
-  // NUEVO: Método centralizado para procesar resultados finales
+  // OPTIMIZADO: Método centralizado para procesar resultados finales
   private procesarResultadosFinales(resultados: any[], mensaje: string): void {
     console.log('🎯 === PROCESANDO RESULTADOS FINALES ===');
     console.log('📊 Cantidad de resultados:', resultados.length);
-    console.log('💬 Mensaje:', mensaje);
     
-    // 🔍 DIAGNÓSTICO CRÍTICO
-    console.log('🔍 [DIAGNÓSTICO DASHBOARD] === procesarResultadosFinales() INICIADO ===');
-    console.log('🔍 [DIAGNÓSTICO DASHBOARD] Timestamp:', new Date().toISOString());
-    console.log('🔍 [DIAGNÓSTICO DASHBOARD] resultados es Array:', Array.isArray(resultados));
-    console.log('🔍 [DIAGNÓSTICO DASHBOARD] resultados.length:', resultados.length);
-    console.log('🔍 [DIAGNÓSTICO DASHBOARD] this.apiResponse actual:', this.apiResponse);
-    console.log('🔍 [DIAGNÓSTICO DASHBOARD] this.loading actual:', this.loading);
-    console.log('🔍 [DIAGNÓSTICO DASHBOARD] this.tableData.length actual:', this.tableData.length);
-
+    // Evitar duplicados
     if (this.apiResponse) {
       console.log('⚠️ Ya existe apiResponse - Evitando duplicados');
-      console.log('🔍 [DIAGNÓSTICO DASHBOARD] ⚠️ SALIENDO - apiResponse ya existe (evitar duplicados)');
       return;
     }
 
-    console.log('🔍 [DIAGNÓSTICO DASHBOARD] ✅ Creando apiResponse...');
+    // Crear apiResponse INMEDIATAMENTE
     this.apiResponse = {
       success: true,
       message: mensaje,
@@ -607,73 +571,41 @@ export class DashboardComponent implements OnInit, OnDestroy {
       timestamp: new Date().toISOString()
     };
     
-    console.log('🔍 [DIAGNÓSTICO DASHBOARD] ✅ apiResponse creado:', {
-      success: this.apiResponse.success,
-      message: this.apiResponse.message,
-      resultados_length: this.apiResponse.resultados.length,
-      timestamp: this.apiResponse.timestamp
-    });
-    
     this.loading = false;
-    console.log('🔍 [DIAGNÓSTICO DASHBOARD] loading = false');
     
-    // CORREGIDO: Múltiples actualizaciones forzadas para garantizar renderizado
-    console.log('🔄 Actualizando tabla - Intento 1');
-    console.log('🔍 [DIAGNÓSTICO DASHBOARD] Llamando a updateTableData() - Intento 1');
+    // Actualizar tabla SIN delays
+    console.log('🔄 Actualizando tabla inmediatamente');
     this.updateTableData();
     
-    setTimeout(() => {
-      console.log('🔄 Actualizando tabla - Intento 2 (backup)');
-      console.log('🔍 [DIAGNÓSTICO DASHBOARD] Llamando a updateTableData() - Intento 2');
-      this.updateTableData();
-      this.cdr.markForCheck();
-      this.cdr.detectChanges();
-      console.log('🔍 [DIAGNÓSTICO DASHBOARD] Change detection forzado - Intento 2');
-    }, 100);
+    // Forzar detección de cambios inmediatamente
+    this.cdr.markForCheck();
+    this.cdr.detectChanges();
     
+    // Backup: una actualización más después de 50ms
     setTimeout(() => {
-      console.log('🔄 Actualizando tabla - Intento 3 (final)');
-      console.log('🔍 [DIAGNÓSTICO DASHBOARD] Llamando a updateTableData() - Intento 3');
       this.cdr.markForCheck();
       this.cdr.detectChanges();
       
-      // 🎯 CRÍTICO: Confirmar recepción al backend DESPUÉS de procesar
-      console.log('🔍 [DIAGNÓSTICO DASHBOARD] Confirmando recepción al backend...');
-      this.api.confirmDataReceived();
-      console.log('✅ Confirmación enviada al backend - Puede resetear ahora');
-      
-      // Verificación final de los datos
       console.log('✅ Estado final de la tabla:');
       console.log('  - apiResponse existe:', !!this.apiResponse);
-      console.log('  - resultados existe:', !!this.apiResponse?.resultados);
       console.log('  - cantidad resultados:', this.apiResponse?.resultados?.length || 0);
       console.log('  - tableData.length:', this.tableData.length);
       console.log('  - loading:', this.loading);
       
-      console.log('🔍 [DIAGNÓSTICO DASHBOARD] === ESTADO FINAL ===');
-      console.log('🔍 [DIAGNÓSTICO DASHBOARD] apiResponse:', !!this.apiResponse);
-      console.log('🔍 [DIAGNÓSTICO DASHBOARD] apiResponse.resultados.length:', this.apiResponse?.resultados?.length);
-      console.log('🔍 [DIAGNÓSTICO DASHBOARD] tableData.length:', this.tableData.length);
-      console.log('🔍 [DIAGNÓSTICO DASHBOARD] loading:', this.loading);
-      
       if (this.tableData.length > 0) {
         console.log('🎉 ÉXITO: Tabla actualizada con', this.tableData.length, 'filas');
-        console.log('🔍 [DIAGNÓSTICO DASHBOARD] ✅✅✅ ÉXITO - Tabla tiene', this.tableData.length, 'filas');
       } else {
-        console.error('❌ PROBLEMA: Tabla sigue vacía después de todas las actualizaciones');
-        console.log('🔍 [DIAGNÓSTICO DASHBOARD] ❌❌❌ ERROR - tableData está vacío después de procesar');
-        console.log('🔍 [DIAGNÓSTICO DASHBOARD] Verificar updateTableData() para más detalles');
+        console.error('❌ PROBLEMA: Tabla sigue vacía');
       }
-    }, 200);
+    }, 50);
     
-    // Solo UNA notificación importante al completarse
+    // Solo UNA notificación al completarse
     this.snack.open('¡Análisis completado exitosamente!', 'OK', { 
       duration: 4000,
       panelClass: ['success-snackbar']
     });
     
-    console.log('✅ === PROCESAMIENTO DE RESULTADOS COMPLETADO ===');
-    console.log('🔍 [DIAGNÓSTICO DASHBOARD] === procesarResultadosFinales() FINALIZADO ===');
+    console.log('✅ === PROCESAMIENTO COMPLETADO ===');
   }
 
   // NUEVO: Calcular tiempo restante estimado
