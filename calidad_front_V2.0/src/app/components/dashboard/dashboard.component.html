@@ -285,21 +285,19 @@
                 <td>{{ element.categoria || 'N/A' }}</td>
                 <td>{{ element.indicador || 'N/A' }}</td>
                 <td>
-                  <span class="badge" 
-                        [class.bg-primary]="!element.esTotal"
-                        [class.bg-warning]="element.esTotal">
+                  <span class="db-text">
                     {{ element.baseData || 'N/A' }}
                   </span>
                 </td>
                 <td class="text-end">
-                  <span class="badge" 
-                        [class.bg-success]="!element.esTotal"
-                        [class.bg-info]="element.esTotal">
+                  <span class="result-text">
                     {{ formatNumber(element.resultado, getDecimalPlaces(element)) }}
                   </span>
                 </td>
                 <td class="text-end">
-                  {{ formatInteger(element.numeroDePacientes) }}
+                  <span class="patients-text">
+                    {{ formatInteger(element.numeroDePacientes) }}
+                  </span>
                 </td>
               </tr>
             </tbody>

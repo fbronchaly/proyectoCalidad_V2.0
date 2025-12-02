@@ -699,6 +699,11 @@
             td {
               font-weight: 600;
               color: #e65100;
+
+              // Color azul más claro para TOTAL, RESULTADOS y PACIENTES en filas de totales
+              .db-text, .result-text, .patients-text, strong.text-primary {
+                color: #1a63ac !important; // Azul más claro y visible
+              }
               
               .badge {
                 &.bg-warning {
@@ -733,6 +738,23 @@
             vertical-align: middle;
             font-size: 14px;
             color: #2d3748;
+
+            // Estilos personalizados para las columnas
+            .db-text {
+              color: black !important;
+              font-weight: 700 !important; // Negrita
+              background: transparent !important;
+            }
+
+            .result-text {
+              color: red !important;
+              font-weight: 700; // Un poco de peso para que destaque
+            }
+
+            .patients-text {
+              color: black !important;
+              font-weight: 400 !important; // Sin negrita
+            }
 
             .badge {
               font-size: 12px;
