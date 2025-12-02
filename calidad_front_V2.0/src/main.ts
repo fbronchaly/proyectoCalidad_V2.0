@@ -10,6 +10,8 @@ import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 registerLocaleData(localeEs, 'es');
 
+console.log('🚀 %c APP INICIALIZADA - VERSIÓN CON FIX LOCALE (v2)', 'background: #222; color: #bada55; font-size: 20px');
+
 if (environment.production) {
   enableProdMode();
 }

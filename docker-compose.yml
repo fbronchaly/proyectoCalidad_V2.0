@@ -13,7 +13,8 @@ services:
     volumes:
       - ./calidad_back_V2.0/uploads:/usr/src/app/uploads
       - ./calidad_back_V2.0/.env:/usr/src/app/.env
-      - ./calidad_back_V2.0/public:/usr/src/app/public
+      # COMENTADO: Evitar montar 'public' en producción para asegurar que se usen los archivos compilados dentro de la imagen
+      # - ./calidad_back_V2.0/public:/usr/src/app/public
     restart: unless-stopped
     environment:
       - NODE_ENV=production
