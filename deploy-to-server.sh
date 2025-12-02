@@ -44,3 +44,5 @@ echo "🐳 3. Reconstruyendo Docker en el servidor..."
 ssh $SSH_OPTS $REMOTE_USER@$REMOTE_HOST "cd $REMOTE_PATH && docker-compose down && docker-compose up -d --build"
 
 echo "✅ === DESPLIEGUE REMOTO COMPLETADO ==="
+
+# Para activar ./deploy-to-server.sh

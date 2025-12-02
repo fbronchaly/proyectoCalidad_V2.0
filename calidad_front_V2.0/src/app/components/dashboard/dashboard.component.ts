@@ -698,6 +698,26 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
   }
 
+  // NUEVO: Determinar dinámicamente el número de decimales
+  getDecimalPlaces(element: any): number {
+    if (!element || !element.indicador) return 2;
+    
+    const nombre = element.indicador.toLowerCase();
+    
+    // 1. Si es explícitamente un porcentaje o tasa, SIEMPRE decimales
+    if (nombre.includes('porcentaje') || nombre.includes('%') || nombre.includes('tasa') || nombre.includes('media') || nombre.includes('promedio')) {
+      return 2;
+    }
+
+    // 2. Si es un conteo de pacientes o números absolutos (y no cayó en la regla anterior), CERO decimales
+    if (nombre.includes('pacientes') || nombre.includes('número') || nombre.includes('nº') || nombre.includes('total')) {
+      return 0;
+    }
+
+    // 3. Por defecto para otros valores clínicos (Kt/V, Hemoglobina, etc.) mantenemos decimales
+    return 2;
+  }
+
   // NUEVO: Método para activar/desactivar modo debug
   toggleDebugMode(): void {
     this.debugMode = !this.debugMode;

@@ -295,7 +295,7 @@
                   <span class="badge" 
                         [class.bg-success]="!element.esTotal"
                         [class.bg-info]="element.esTotal">
-                    {{ formatNumber(element.resultado, 2) }}
+                    {{ formatNumber(element.resultado, getDecimalPlaces(element)) }}
                   </span>
                 </td>
                 <td class="text-end">
