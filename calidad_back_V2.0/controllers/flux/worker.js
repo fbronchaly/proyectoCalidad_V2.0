@@ -34,7 +34,7 @@ if (require.main === module) {
       // 💾 Guardar en Excel de respaldo
       try {
         console.log('💾 Iniciando guardado de respaldo en Excel...');
-       // await guardarResultadosExcel(fechaInicio, fechaFin, resultados);
+       await guardarResultadosExcel(fechaInicio, fechaFin, resultados);
       } catch (excelErr) {
         console.error('⚠️ Error al guardar Excel de respaldo:', excelErr.message);
         // No detenemos el flujo si falla el excel, solo logueamos
