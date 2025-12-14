@@ -258,6 +258,14 @@
           </div>
         </div>
       </mat-card-content>
+
+      <!-- NUEVO: Botón de descarga -->
+      <mat-card-actions align="end" *ngIf="excelFilename" class="p-3">
+        <button mat-raised-button color="primary" (click)="downloadExcel()">
+          <mat-icon>file_download</mat-icon>
+          Descargar Excel con Resultados
+        </button>
+      </mat-card-actions>
     </mat-card>
 
     <!-- TABLA BOOTSTRAP - CORREGIDO: Condición simplificada -->

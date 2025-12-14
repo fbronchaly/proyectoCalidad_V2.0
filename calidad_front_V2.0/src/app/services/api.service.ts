@@ -217,6 +217,12 @@ export class ApiService {
     });
   }
 
+  // NUEVO: Método para descargar el Excel generado
+  downloadExcel(filename: string): void {
+    const url = `${this.baseUrl}/download-excel/${filename}`;
+    window.open(url, '_blank');
+  }
+
   // MEJORADO: Método para desconectar WebSocket
   disconnect(): void {
     if (this.socket) {

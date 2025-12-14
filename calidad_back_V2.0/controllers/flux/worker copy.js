@@ -1,8 +1,5 @@
 // controllers/flux/worker.js
 const comienzoFlujo = require('./comienzoFlujo');
-const { guardarResultadosLocal } = require('./guardarResultadosLocal'); // 👈 NUEVO
-const { guardarResultadosExcel } = require('./guardarResultadosExcel'); // 👈 NUEVO EXCEL
-const path = require('path'); // Asegurar que path está disponible si no lo estaba
 
 // Solo ejecutar si este archivo es el script principal (fork o node worker.js),
 // NO cuando se hace require() desde otro módulo.
@@ -32,47 +29,15 @@ if (require.main === module) {
         }
       );
 
-      // 💾 Guardar en Excel de respaldo
-      let excelFilename = null;
-      try {
-        console.log('💾 Iniciando guardado de respaldo en Excel...');
-        //const resultExcel = await guardarResultadosExcel(fechaInicio, fechaFin, resultados);
-        if (resultExcel.success) {
-            // Extraemos solo el nombre del archivo para enviarlo al frontend
-            excelFilename = path.basename(resultExcel.path);
-        }
-      } catch (excelErr) {
-        console.error('⚠️ Error al guardar Excel de respaldo:', excelErr.message);
-        // No detenemos el flujo si falla el excel, solo logueamos
-      }
-
-      // 💾 COMENTADO TEMPORALMENTE: guardar en Mongo hasta que desarrollemos esta parte
-      /*
-      try {
-        const resumenGuardado = await guardarResultadosLocal(
-          fechaInicio,
-          fechaFin,
-          baseDatos,
-          indices,
-          resultados
-        );
-        console.log('💾 Resultados guardados en DB local:', resumenGuardado);
-      } catch (err) {
-        console.error('⛔ Error al guardar en DB local (Mongo):', err.message);
-      }
-      */
-      console.log('💾 Guardado en MongoDB temporalmente desactivado durante desarrollo');
-
-      // 🔁 Lo de siempre: devolver resultados al proceso padre
       if (typeof process.send === 'function') {
         console.log('📤 Enviando resultados finales al proceso padre...');
         process.send({
           terminado: true,
-          resultados,
-          excelFilename // Enviamos el nombre del archivo
+          resultados
         });
         console.log('✅ Mensaje de finalización enviado correctamente');
         
+        // Esperar un poco antes de cerrar para asegurar que el mensaje llegue
         setTimeout(() => {
           console.log('🏁 Worker terminando después de enviar resultados');
           process.exit(0);

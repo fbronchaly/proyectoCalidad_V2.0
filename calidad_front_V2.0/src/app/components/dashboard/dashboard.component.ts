@@ -75,6 +75,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
   isWebSocketConnected: boolean = false;
   lastProgressUpdate: string = '';
   debugMode: boolean = false;
+  
+  // NUEVO: Nombre del archivo Excel para descargar
+  excelFilename: string | null = null;
 
   constructor(
     private router: Router,
@@ -499,13 +502,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
           console.log('🚀 ========================================');
           console.log('📊 Cantidad de resultados:', progress.resultados.length);
           console.log('💬 Mensaje:', progress.mensaje);
+          console.log('📂 Excel:', progress.excelFilename);
           
           // 🎯 CRÍTICO: Confirmar recepción INMEDIATAMENTE (antes de procesar)
           console.log('📤 Confirmando recepción al backend INMEDIATAMENTE...');
           this.api.confirmDataReceived();
           
           // Luego procesar los datos
-          this.procesarResultadosFinales(progress.resultados, progress.mensaje || 'Análisis completado');
+          this.procesarResultadosFinales(progress.resultados, progress.mensaje || 'Análisis completado', progress.excelFilename);
         }
         
         this.cdr.detectChanges();
@@ -533,7 +537,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
           // Confirmar recepción también en el backup
           this.api.confirmDataReceived();
           
-          this.procesarResultadosFinales(data.resultados, data.mensaje || 'Análisis completado');
+          this.procesarResultadosFinales(data.resultados, data.mensaje || 'Análisis completado', data.excelFilename);
         }
       },
       error: (error) => {
@@ -556,14 +560,20 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   // OPTIMIZADO: Método centralizado para procesar resultados finales
-  private procesarResultadosFinales(resultados: any[], mensaje: string): void {
+  private procesarResultadosFinales(resultados: any[], mensaje: string, excelFilename?: string): void {
     console.log('🎯 === PROCESANDO RESULTADOS FINALES ===');
     console.log('📊 Cantidad de resultados:', resultados.length);
+    console.log('📂 Archivo Excel:', excelFilename);
     
     // Evitar duplicados
     if (this.apiResponse) {
       console.log('⚠️ Ya existe apiResponse - Evitando duplicados');
       return;
+    }
+
+    // Guardar nombre del archivo Excel
+    if (excelFilename) {
+      this.excelFilename = excelFilename;
     }
 
     // Crear apiResponse INMEDIATAMENTE
@@ -594,6 +604,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       console.log('  - cantidad resultados:', this.apiResponse?.resultados?.length || 0);
       console.log('  - tableData.length:', this.tableData.length);
       console.log('  - loading:', this.loading);
+      console.log('  - excelFilename:', this.excelFilename);
       
       if (this.tableData.length > 0) {
         console.log('🎉 ÉXITO: Tabla actualizada con', this.tableData.length, 'filas');
@@ -609,6 +620,15 @@ export class DashboardComponent implements OnInit, OnDestroy {
     });
     
     console.log('✅ === PROCESAMIENTO COMPLETADO ===');
+  }
+
+  // NUEVO: Método para descargar el Excel desde el dashboard
+  downloadExcel(): void {
+    if (this.excelFilename) {
+      this.api.downloadExcel(this.excelFilename);
+    } else {
+      this.snack.open('No hay archivo Excel disponible para descargar', 'OK', { duration: 3000 });
+    }
   }
 
   // NUEVO: Calcular tiempo restante estimado

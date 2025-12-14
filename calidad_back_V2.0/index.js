@@ -118,6 +118,34 @@ if (useSameOriginSockets) {
 app.use(express.json());
 
 // ------------------------
+// Endpoint: /api/download-excel/:filename - Descargar Excel generado
+// ------------------------
+app.get('/api/download-excel/:filename', (req, res) => {
+  const filename = req.params.filename;
+  
+  // Validación de seguridad básica
+  if (!filename || filename.includes('..') || !filename.endsWith('.xlsx')) {
+    return res.status(400).json({ message: 'Nombre de archivo inválido' });
+  }
+
+  const backupDir = path.join(__dirname, 'backups');
+  const filePath = path.join(backupDir, filename);
+
+  if (fs.existsSync(filePath)) {
+    res.download(filePath, filename, (err) => {
+      if (err) {
+        console.error('Error al descargar archivo:', err);
+        if (!res.headersSent) {
+          res.status(500).send('Error al descargar el archivo');
+        }
+      }
+    });
+  } else {
+    res.status(404).json({ message: 'Archivo no encontrado' });
+  }
+});
+
+// ------------------------
 // Configuración de Multer
 // ------------------------
 const uploadDir = path.join(__dirname, 'uploads');
@@ -392,6 +420,7 @@ app.post('/api/upload', (req, res) => {
             porcentaje: 100, 
             mensaje: 'Análisis completado - Datos disponibles',
             resultados: msg.resultados || [],
+            excelFilename: msg.excelFilename, // 👈 NUEVO: Nombre del archivo Excel
             timestamp: new Date().toISOString(),
             completed: true,
             success: true
@@ -401,6 +430,7 @@ app.post('/api/upload', (req, res) => {
             porcentaje: finalDataEvent.porcentaje,
             mensaje: finalDataEvent.mensaje,
             resultadosCount: finalDataEvent.resultados.length,
+            excelFilename: finalDataEvent.excelFilename, // Log del archivo
             clientesConectados: io.engine.clientsCount,
             timestamp: finalDataEvent.timestamp
           });
@@ -414,6 +444,7 @@ app.post('/api/upload', (req, res) => {
             io.emit('analisis-completado', {
               success: true,
               resultados: msg.resultados || [],
+              excelFilename: msg.excelFilename, // 👈 También en el evento de backup
               mensaje: 'Datos confirmados',
               timestamp: new Date().toISOString()
             });
