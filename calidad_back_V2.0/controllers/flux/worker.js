@@ -36,7 +36,7 @@ if (require.main === module) {
       let excelFilename = null;
       try {
         console.log('💾 Iniciando guardado de respaldo en Excel...');
-        //const resultExcel = await guardarResultadosExcel(fechaInicio, fechaFin, resultados);
+        const resultExcel = await guardarResultadosExcel(fechaInicio, fechaFin, resultados);
         if (resultExcel.success) {
             // Extraemos solo el nombre del archivo para enviarlo al frontend
             excelFilename = path.basename(resultExcel.path);

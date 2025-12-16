@@ -126,9 +126,22 @@
   {
     "id_code": "TPQ73J37",
     "categoria": "Actividad HDD",
-    "indicador": "Nº de pacientes HDD incidentes en periodo",
-    "template": "SELECT COUNT(*) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p WHERE p.MODAL_TRAT = 'D' AND COALESCE(p.DESPLAZADO, 0) = 0 AND p.FECH_INICIO_CENTRO BETWEEN :FECHAINI  AND :FECHAFIN;"
+    "indicador": "Nº de pacientes HDD prevalentes en periodo",
+    "template": "SELECT COUNT(DISTINCT p.NREGGEN) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM SESION s JOIN PACIENTES p ON p.NREGGEN = s.NREGGEN WHERE COALESCE(p.DESPLAZADO, 0) = 0 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND (s.TIPOHEMO = 4 OR s.TIPOHEMO = 5);"
   },
+  {
+    "id_code": "TPQ93K37",
+    "categoria": "Actividad HDD",
+    "indicador": "Nº de pacientes HDD incidentes en periodo",
+    "template": "SELECT COUNT(DISTINCT p.NREGGEN) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p WHERE  p.DESPLAZADO = 0  AND p.FECH_INICIO_CENTRO BETWEEN :FECHAINI AND :FECHAFIN AND (s.TIPOHEMO = 4 OR s.TIPOHEMO = 5);"
+  },
+  {
+    "id_code": "TPQ23K1S",
+    "categoria": "Actividad HDD",
+    "indicador": "Nº de pacientes HDD incidentes en ultimo dia de periodo",
+    "template": "SELECT COUNT(DISTINCT p.NREGGEN) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p JOIN SESION s ON s.NREGGEN = p.NREGGEN WHERE COALESCE(p.DESPLAZADO, 0) = 0 AND s.FECHA BETWEEN :FECHAINI_CALCULADA AND :FECHAFIN AND NOT EXISTS (SELECT 1 FROM INCIDENCIAS i JOIN CAUSAS_BAJA cb ON cb.CODCAUSA = i.CAUSABAJA AND cb.TIPO = 'B' WHERE i.NREGGEN = p.NREGGEN AND i.FECHAINI <= :FECHAFIN AND (i.FECHAFIN IS NULL OR i.FECHAFIN >= :FECHAFIN)) AND (s.TIPOHEMO = 4 OR s.TIPOHEMO = 5);;"
+  },
+  
   {
     "id_code": "YHM109JA",
     "categoria": "Actividad DP",
