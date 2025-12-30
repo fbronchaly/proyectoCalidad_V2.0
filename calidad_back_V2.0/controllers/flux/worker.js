@@ -4,6 +4,9 @@ const { guardarResultadosLocal } = require('./guardarResultadosLocal'); // 👈 
 const { guardarResultadosExcel } = require('./guardarResultadosExcel'); // 👈 NUEVO EXCEL
 const path = require('path'); // Asegurar que path está disponible si no lo estaba
 
+// Asegurar carga de variables de entorno en el worker
+require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
+
 // Solo ejecutar si este archivo es el script principal (fork o node worker.js),
 // NO cuando se hace require() desde otro módulo.
 if (require.main === module) {
@@ -46,9 +49,13 @@ if (require.main === module) {
         // No detenemos el flujo si falla el excel, solo logueamos
       }
 
-      // 💾 COMENTADO TEMPORALMENTE: guardar en Mongo hasta que desarrollemos esta parte
-      /*
+      // 💾 Guardar en Mongo
       try {
+        console.log('💾 Intentando guardar en MongoDB...');
+        console.log(`   - URI: ${process.env.MONGODB_URI ? 'Definida' : 'NO DEFINIDA'}`);
+        console.log(`   - DB Name: ${process.env.MONGODB_DBNAME || 'calidad'}`);
+        console.log(`   - Cantidad de indicadores a guardar: ${resultados ? resultados.length : 0}`);
+
         const resumenGuardado = await guardarResultadosLocal(
           fechaInicio,
           fechaFin,
@@ -56,12 +63,10 @@ if (require.main === module) {
           indices,
           resultados
         );
-        console.log('💾 Resultados guardados en DB local:', resumenGuardado);
+        console.log('✅ Resultados guardados en DB local:', JSON.stringify(resumenGuardado, null, 2));
       } catch (err) {
-        console.error('⛔ Error al guardar en DB local (Mongo):', err.message);
+        console.error('⛔ CRÍTICO: Error al guardar en DB local (Mongo):', err);
       }
-      */
-      console.log('💾 Guardado en MongoDB temporalmente desactivado durante desarrollo');
 
       // 🔁 Lo de siempre: devolver resultados al proceso padre
       if (typeof process.send === 'function') {

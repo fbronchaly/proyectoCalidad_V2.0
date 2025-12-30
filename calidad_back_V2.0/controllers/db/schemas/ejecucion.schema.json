@@ -1,0 +1,46 @@
+{
+  "title": "Ejecucion",
+  "bsonType": "object",
+  "additionalProperties": false,
+  "required": [
+    "id_transaccion",
+    "periodo_aplicado",
+    "version",
+    "estado_global",
+    "creado_en"
+  ],
+  "properties": {
+    "_id": {
+      "bsonType": "objectId"
+    },
+    "id_transaccion": {
+      "bsonType": "string",
+      "description": "UUID único que agrupa todos los resultados de esta ejecución"
+    },
+    "periodo_aplicado": {
+      "bsonType": "object",
+      "required": ["desde", "hasta"],
+      "additionalProperties": false,
+      "properties": {
+        "desde": { "bsonType": "date" },
+        "hasta": { "bsonType": "date" }
+      }
+    },
+    "version": {
+      "bsonType": "string"
+    },
+    "estado_global": {
+      "bsonType": "string",
+      "enum": ["ok", "error", "parcial"]
+    },
+    "resumen": {
+      "bsonType": "object",
+      "description": "Datos agregados opcionales para consulta rápida",
+      "properties": {
+        "total_indicadores": { "bsonType": ["int", "double"] },
+        "total_centros": { "bsonType": ["int", "double"] }
+      }
+    },
+    "creado_en": { "bsonType": "date" }
+  }
+}

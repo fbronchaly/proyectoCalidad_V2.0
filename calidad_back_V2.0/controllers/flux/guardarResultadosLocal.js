@@ -5,23 +5,19 @@ const crypto = require('crypto');
 // 👉 Ajusta estos valores si usas otras variables de entorno
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017';
 const DB_NAME = process.env.MONGODB_DBNAME || 'calidad';
-const COLLECTION_NAME = 'indicadores_resultados';
 
 let clienteMongo;
 
 /**
- * Devuelve la colección Mongo conectada (reutiliza la conexión).
+ * Devuelve la base de datos conectada (reutiliza la conexión).
  */
-async function getCollection() {
+async function getDb() {
   if (!clienteMongo) {
-    // ❌ SIN useNewUrlParser / useUnifiedTopology (driver moderno)
     clienteMongo = new MongoClient(MONGODB_URI);
     await clienteMongo.connect();
     console.log(`✅ Conectado a MongoDB en ${MONGODB_URI}, db=${DB_NAME}`);
   }
-
-  const db = clienteMongo.db(DB_NAME);
-  return db.collection(COLLECTION_NAME);
+  return clienteMongo.db(DB_NAME);
 }
 
 /**
@@ -41,7 +37,7 @@ function toISODateStr(dateStr) {
 
 /**
  * Guarda en Mongo los resultados devueltos por comienzoFlujo
- * usando el modelo nuevo, SIN cambiar lo que ve el frontend.
+ * usando el modelo RELACIONAL (Opción A).
  *
  * @param {string} fechaInicio
  * @param {string} fechaFin
@@ -50,7 +46,9 @@ function toISODateStr(dateStr) {
  * @param {Array<object>} salida  // lo que devuelve comienzoFlujo
  */
 async function guardarResultadosLocal(fechaInicio, fechaFin, baseDatos, indices, salida) {
-  const col = await getCollection();
+  const db = await getDb();
+  const colEjecuciones = db.collection('ejecuciones');
+  const colResultados = db.collection('resultados');
 
   const desdeStr = toISODateStr(fechaInicio);
   const hastaStr = toISODateStr(fechaFin);
@@ -67,80 +65,104 @@ async function guardarResultadosLocal(fechaInicio, fechaFin, baseDatos, indices,
     return { id_transaccion: idTransaccion, insertedCount: 0 };
   }
 
-  // Transformamos cada elemento de "salida" (cada indicador) al modelo nuevo
-  const documentos = salida.map((ind) => {
+  // 1. Preparar array de Resultados (Detalle)
+  const documentosResultados = [];
+  let hayErrores = false;
+
+  console.log(`🔍 guardarResultadosLocal: Procesando ${salida.length} indicadores de entrada.`);
+
+  salida.forEach((ind, idx) => {
     const resultadosPorBase = ind.resultados || [];
+    console.log(`   - Indicador [${idx}] ${ind.id_code || 'SIN_ID'}: ${resultadosPorBase.length} resultados encontrados.`);
+    
+    // Si no hay resultados para este indicador, podríamos guardar un registro de error o simplemente omitirlo.
+    // Aquí asumimos que si hay error en el cálculo, vendrá en 'resultadosPorBase' con alguna flag.
 
-    // Fuentes de datos únicas a partir de baseData
-    const fuentes_datos = Array.from(
-      new Set(resultadosPorBase.map((r) => r.baseData || 'SIN_BASE'))
-    );
+    resultadosPorBase.forEach((r) => {
+      if (r.error) hayErrores = true;
 
-    // Estado de cálculo: ok si ninguna base trae error, parcial si alguna lo trae
-    let estado_calculo = 'ok';
-    if (resultadosPorBase.some((r) => r.error)) {
-      estado_calculo = 'parcial';
-    }
-    if (resultadosPorBase.length === 0) {
-      // Si no hay resultados para ese indicador, puedes marcarlo como parcial o error
-      estado_calculo = 'parcial';
-    }
+      // Construcción defensiva del documento para cumplir con el esquema estricto
+      const docResultado = {
+        id_transaccion: idTransaccion,
+        id_resultado: `${ind.id_code || 'SIN_CODIGO'}-${r.baseData || 'SIN_BASE'}-${hastaStr || ''}-${crypto.randomUUID().slice(0,8)}`, // ID único lógico
+        base: {
+          code: String(r.baseData || 'SIN_BASE'),
+          nombre: String(r.baseData || 'SIN_BASE') // Podrías buscar el nombre real si lo tienes disponible
+        },
+        indice: {
+          id_code: String(ind.id_code || 'SIN_CODIGO'),
+          label: String(ind.indicador || 'SIN_NOMBRE')
+        },
+        payload: {
+          valor: (typeof r.resultado === 'number' && !isNaN(r.resultado)) ? r.resultado : Number(r.resultado || 0),
+          numero_pacientes: Number(r.numeroDePacientes ?? r.numero_pacientes ?? 0)
+        },
+        metadata_calculo: {
+          // Convertimos explícitamente a String o undefined para evitar errores de tipo BSON
+          categoria: ind.categoria ? String(ind.categoria) : undefined,
+          consulta_sql: ind.consulta_sql ? String(ind.consulta_sql) : undefined,
+          intervalo: ind.intervalo ? String(ind.intervalo) : undefined,
+          error: r.error ? String(r.error) : undefined
+        },
+        creado_en: ahora
+      };
 
-    const resultados = resultadosPorBase.map((r) => ({
-      id_resultado: `${ind.id_code}-${r.baseData || 'SIN_BASE'}-${hastaStr || ''}`,
-      base: {
-        code: r.baseData || 'SIN_BASE',
-        nombre: r.baseData || 'SIN_BASE'
-      },
-      indice: {
-        id_code: ind.id_code,
-        label: ind.indicador
-      },
-      payload: {
-        // valor principal del indicador (puedes adaptar si cambias el nombre)
-        valor: Number(r.resultado || 0),
-        // número de pacientes (busca en numeroDePacientes o numero_pacientes)
-        numero_pacientes: Number(
-          r.numeroDePacientes ??
-          r.numero_pacientes ??
-          0
-        )
-      },
-      metadata_calculo: {
-        categoria: ind.categoria,
-        consulta_sql: ind.consulta_sql,
-        intervalo: ind.intervalo
-      },
-      creado_en: ahora
-    }));
-
-    return {
-      id_transaccion: idTransaccion,
-      periodo_aplicado: {
-        desde: periodoDesde,
-        hasta: periodoHasta
-      },
-      version: '1.0.0',
-      fuentes_datos,
-      estado_calculo,
-      resultados
-    };
+      documentosResultados.push(docResultado);
+    });
   });
 
-  if (!documentos.length) {
-    console.log('⚠️ guardarResultadosLocal: no hay documentos que insertar.');
+  // 2. Preparar documento de Ejecución (Cabecera)
+  const documentoEjecucion = {
+    id_transaccion: idTransaccion,
+    periodo_aplicado: {
+      desde: periodoDesde,
+      hasta: periodoHasta
+    },
+    version: '1.0.0',
+    estado_global: hayErrores ? 'parcial' : 'ok',
+    resumen: {
+      total_indicadores: salida.length,
+      total_centros: baseDatos ? baseDatos.length : 0
+    },
+    creado_en: ahora
+  };
+
+  if (documentosResultados.length === 0) {
+    console.log('⚠️ guardarResultadosLocal: no se generaron resultados detallados (array vacío).');
+    // Aún así guardamos la ejecución para que conste que se corrió
+    await colEjecuciones.insertOne(documentoEjecucion);
     return { id_transaccion: idTransaccion, insertedCount: 0 };
   }
   
-  console.log("🧪 Documento que intenta insertar:", JSON.stringify(documentos, null, 2));
+  console.log(`📦 Preparados ${documentosResultados.length} documentos para insertar en 'resultados'.`);
 
-  const result = await col.insertMany(documentos);
-  console.log(`💾 Guardados ${result.insertedCount} documentos en Mongo (indicadores_resultados).`);
+  // 3. Insertar en MongoDB (Transaccionalidad simulada por orden)
+  // Primero insertamos la cabecera
+  await colEjecuciones.insertOne(documentoEjecucion);
+  console.log(`💾 Guardada ejecución ${idTransaccion} en colección 'ejecuciones'.`);
 
-  return {
-    id_transaccion: idTransaccion,
-    insertedCount: result.insertedCount
-  };
+  // Luego insertamos los detalles
+  try {
+    const result = await colResultados.insertMany(documentosResultados, { ordered: false });
+    console.log(`💾 Guardados ${result.insertedCount} resultados en colección 'resultados'.`);
+    
+    return {
+      id_transaccion: idTransaccion,
+      insertedCount: result.insertedCount
+    };
+  } catch (err) {
+    console.error('❌ Error al insertar resultados en MongoDB:', err.message);
+    if (err.writeErrors && err.writeErrors.length > 0) {
+      console.error('🔍 Detalle del primer error de validación:', JSON.stringify(err.writeErrors[0].err, null, 2));
+      console.error('📄 Documento que falló:', JSON.stringify(documentosResultados[err.writeErrors[0].index], null, 2));
+    }
+    // Retornamos lo que se haya podido guardar (si ordered: false permitió parciales)
+    return {
+      id_transaccion: idTransaccion,
+      insertedCount: err.result ? err.result.nInserted : 0,
+      error: err.message
+    };
+  }
 }
 
 module.exports = {

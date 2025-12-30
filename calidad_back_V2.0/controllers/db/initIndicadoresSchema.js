@@ -1,42 +1,67 @@
 // initIndicadoresSchema.js
 const { MongoClient } = require('mongodb');
-const schema = require('../db/indicadorResultado.schema.json');
+const path = require('path');
+// Cargar .env explícitamente desde la raíz del backend
+require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
+
+const ejecucionSchema = require('./schemas/ejecucion.schema.json');
+const resultadoSchema = require('./schemas/resultado.schema.json');
 
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017';
 const DB_NAME = process.env.MONGODB_DBNAME || 'calidad';
-const COLLECTION_NAME = 'indicadores_resultados';
+
+async function initCollection(db, collectionName, schema) {
+  const collections = await db.listCollections({ name: collectionName }).toArray();
+  const exists = collections.length > 0;
+
+  if (!exists) {
+    console.log(`📂 La colección "${collectionName}" no existe. Creándola con validador...`);
+    await db.createCollection(collectionName, {
+      validator: { $jsonSchema: schema },
+      validationLevel: 'strict',
+      validationAction: 'error'
+    });
+    console.log(`✅ Colección "${collectionName}" creada.`);
+  } else {
+    console.log(`📂 La colección "${collectionName}" ya existe. Aplicando collMod...`);
+    await db.command({
+      collMod: collectionName,
+      validator: { $jsonSchema: schema },
+      validationLevel: 'strict',
+      validationAction: 'error'
+    });
+    console.log(`✅ Validador actualizado para "${collectionName}".`);
+  }
+}
 
 async function main() {
-
-    const client = new MongoClient(MONGODB_URI);
-
+  const client = new MongoClient(MONGODB_URI);
 
   try {
     await client.connect();
     console.log(`✅ Conectado a MongoDB: ${MONGODB_URI}`);
     const db = client.db(DB_NAME);
 
-    const collections = await db.listCollections({ name: COLLECTION_NAME }).toArray();
-    const exists = collections.length > 0;
+    // Inicializar colección de Ejecuciones
+    await initCollection(db, 'ejecuciones', ejecucionSchema);
+    
+    // Inicializar colección de Resultados
+    await initCollection(db, 'resultados', resultadoSchema);
 
-    if (!exists) {
-      console.log(`📂 La colección "${COLLECTION_NAME}" no existe. Creándola con validador...`);
-      await db.createCollection(COLLECTION_NAME, {
-        validator: { $jsonSchema: schema },
-        validationLevel: 'strict',
-        validationAction: 'error'
-      });
-      console.log('✅ Colección creada con validador JSON Schema.');
-    } else {
-      console.log(`📂 La colección "${COLLECTION_NAME}" ya existe. Aplicando collMod...`);
-      await db.command({
-        collMod: COLLECTION_NAME,
-        validator: { $jsonSchema: schema },
-        validationLevel: 'strict',
-        validationAction: 'error'
-      });
-      console.log('✅ Validador JSON Schema aplicado con collMod.');
-    }
+    // Crear índices recomendados
+    console.log('⚙️ Creando índices...');
+    
+    // Índices para ejecuciones
+    await db.collection('ejecuciones').createIndex({ id_transaccion: 1 }, { unique: true });
+    await db.collection('ejecuciones').createIndex({ "periodo_aplicado.desde": 1, "periodo_aplicado.hasta": 1 });
+
+    // Índices para resultados
+    await db.collection('resultados').createIndex({ id_transaccion: 1 }); // Para buscar todos los resultados de una ejecución
+    await db.collection('resultados').createIndex({ "indice.id_code": 1 }); // Para buscar histórico de un indicador
+    await db.collection('resultados').createIndex({ "base.code": 1 }); // Para buscar por centro
+
+    console.log('✅ Índices creados correctamente.');
+
   } catch (err) {
     console.error('⛔ Error al aplicar el schema:', err);
   } finally {

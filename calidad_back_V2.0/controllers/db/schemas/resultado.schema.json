@@ -1,0 +1,68 @@
+{
+  "title": "Resultado",
+  "bsonType": "object",
+  "additionalProperties": false,
+  "required": [
+    "id_transaccion",
+    "id_resultado",
+    "base",
+    "indice",
+    "payload",
+    "creado_en"
+  ],
+  "properties": {
+    "_id": {
+      "bsonType": "objectId"
+    },
+    "id_transaccion": {
+      "bsonType": "string",
+      "description": "Clave foránea hacia la colección ejecuciones"
+    },
+    "id_resultado": {
+      "bsonType": "string",
+      "description": "Identificador único lógico del resultado"
+    },
+    "base": {
+      "bsonType": "object",
+      "required": ["code", "nombre"],
+      "additionalProperties": false,
+      "properties": {
+        "code": { "bsonType": "string" },
+        "nombre": { "bsonType": "string" }
+      }
+    },
+    "indice": {
+      "bsonType": "object",
+      "required": ["id_code", "label"],
+      "additionalProperties": false,
+      "properties": {
+        "id_code": { "bsonType": "string" },
+        "label": { "bsonType": "string" }
+      }
+    },
+    "payload": {
+      "bsonType": "object",
+      "required": ["valor", "numero_pacientes"],
+      "additionalProperties": true,
+      "properties": {
+        "valor": {
+          "bsonType": ["double", "int", "long", "decimal"]
+        },
+        "numero_pacientes": {
+          "bsonType": ["int", "long", "double"]
+        }
+      }
+    },
+    "metadata_calculo": {
+      "bsonType": "object",
+      "additionalProperties": true,
+      "properties": {
+        "categoria": { "bsonType": "string" },
+        "consulta_sql": { "bsonType": "string" },
+        "error": { "bsonType": ["string", "null"] },
+        "intervalo": { "bsonType": "string" }
+      }
+    },
+    "creado_en": { "bsonType": "date" }
+  }
+}
