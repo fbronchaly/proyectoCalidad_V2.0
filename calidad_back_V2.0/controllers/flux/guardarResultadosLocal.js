@@ -2,20 +2,21 @@
 const { MongoClient } = require('mongodb');
 const crypto = require('crypto');
 
-// 👉 Ajusta estos valores si usas otras variables de entorno
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017';
-const DB_NAME = process.env.MONGODB_DBNAME || 'calidad';
-
 let clienteMongo;
 
 /**
  * Devuelve la base de datos conectada (reutiliza la conexión).
  */
 async function getDb() {
+  // Leemos las variables de entorno AQUÍ, justo antes de usarla, para asegurar que ya estén cargadas
+  const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017';
+  const DB_NAME = process.env.MONGODB_DBNAME || 'calidad';
+
   if (!clienteMongo) {
+    console.log(`🔌 Conectando a MongoDB... (URI definida: ${!!process.env.MONGODB_URI})`);
     clienteMongo = new MongoClient(MONGODB_URI);
     await clienteMongo.connect();
-    console.log(`✅ Conectado a MongoDB en ${MONGODB_URI}, db=${DB_NAME}`);
+    console.log(`✅ Conectado a MongoDB en ${MONGODB_URI.replace(/:([^:@]+)@/, ':****@')}, db=${DB_NAME}`);
   }
   return clienteMongo.db(DB_NAME);
 }
@@ -101,7 +102,24 @@ async function guardarResultadosLocal(fechaInicio, fechaFin, baseDatos, indices,
           // Convertimos explícitamente a String o undefined para evitar errores de tipo BSON
           categoria: ind.categoria ? String(ind.categoria) : undefined,
           consulta_sql: ind.consulta_sql ? String(ind.consulta_sql) : undefined,
-          intervalo: ind.intervalo ? String(ind.intervalo) : undefined,
+          // CORRECCIÓN: Manejar correctamente el objeto intervalo para que no sea "[object Object]"
+          intervalo: (() => {
+            if (!ind.intervalo) return undefined;
+            if (typeof ind.intervalo === 'object') {
+              const { fechaInicio, fechaFin } = ind.intervalo;
+              // Si tiene propiedades de fecha, formateamos
+              if (fechaInicio || fechaFin) {
+                return `${fechaInicio || '?'} - ${fechaFin || '?'}`;
+              }
+              // Si es otro tipo de objeto, lo serializamos para no perder info
+              try {
+                return JSON.stringify(ind.intervalo);
+              } catch (e) {
+                return String(ind.intervalo);
+              }
+            }
+            return String(ind.intervalo);
+          })(),
           error: r.error ? String(r.error) : undefined
         },
         creado_en: ahora
@@ -130,7 +148,11 @@ async function guardarResultadosLocal(fechaInicio, fechaFin, baseDatos, indices,
   if (documentosResultados.length === 0) {
     console.log('⚠️ guardarResultadosLocal: no se generaron resultados detallados (array vacío).');
     // Aún así guardamos la ejecución para que conste que se corrió
-    await colEjecuciones.insertOne(documentoEjecucion);
+    try {
+      await colEjecuciones.insertOne(documentoEjecucion);
+    } catch (err) {
+      console.error('❌ Error al insertar ejecución vacía:', err.message);
+    }
     return { id_transaccion: idTransaccion, insertedCount: 0 };
   }
   
@@ -138,8 +160,18 @@ async function guardarResultadosLocal(fechaInicio, fechaFin, baseDatos, indices,
 
   // 3. Insertar en MongoDB (Transaccionalidad simulada por orden)
   // Primero insertamos la cabecera
-  await colEjecuciones.insertOne(documentoEjecucion);
-  console.log(`💾 Guardada ejecución ${idTransaccion} en colección 'ejecuciones'.`);
+  try {
+    await colEjecuciones.insertOne(documentoEjecucion);
+    console.log(`💾 Guardada ejecución ${idTransaccion} en colección 'ejecuciones'.`);
+  } catch (err) {
+    console.error('❌ Error CRÍTICO al insertar ejecución (cabecera):', err.message);
+    // Si falla la cabecera, ¿deberíamos detenernos? 
+    // Probablemente sí, para mantener consistencia, pero el usuario dice que se guardan resultados y no ejecuciones.
+    // Vamos a dejar que continúe pero logueando fuerte.
+    if (err.writeErrors && err.writeErrors.length > 0) {
+       console.error('🔍 Detalle error validación ejecución:', JSON.stringify(err.writeErrors[0].err, null, 2));
+    }
+  }
 
   // Luego insertamos los detalles
   try {
