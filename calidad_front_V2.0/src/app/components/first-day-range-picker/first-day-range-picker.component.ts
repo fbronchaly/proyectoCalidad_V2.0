@@ -30,11 +30,15 @@ export class FirstDayRangePickerComponent {
   maxAllowedMonth: number;
 
   constructor() {
-    // Calcular la fecha máxima permitida (un día antes de hoy)
+    // Calcular la fecha máxima permitida.
+    // Para el límite SUPERIOR de un rango (que es excluyente), necesitamos poder seleccionar
+    // el primer día del mes siguiente al actual para incluir el mes actual completo.
+    // Ejemplo: Si estamos en Enero, queremos poder seleccionar Fin = Febrero (para que el rango sea Enero completo).
     const today = new Date();
-    this.maxAllowedDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 1);
+    // Permitimos hasta el mes siguiente del actual
+    this.maxAllowedDate = new Date(today.getFullYear(), today.getMonth() + 1, 1);
     this.maxAllowedYear = this.maxAllowedDate.getFullYear();
-    this.maxAllowedMonth = this.maxAllowedDate.getMonth() + 1;
+    this.maxAllowedMonth = this.maxAllowedDate.getMonth() + 1; // getMonth() es 0-indexado, sumamos 1 para visualización (1-12)
 
     // Limitar los años disponibles hasta el año máximo permitido
     for (let y = this.maxAllowedYear; y >= this.minYear; y--) this.years.push(y);
