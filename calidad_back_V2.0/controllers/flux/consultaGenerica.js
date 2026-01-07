@@ -5,11 +5,12 @@ const { obtenerMetadatos } = require('../servicios/obtenerMetadatos');
 
 // Ruta corregida al archivo codigosHD.json (ahora dentro del backend)
 const RUTA_CODIGOS_HD = path.resolve(__dirname, '../../documentacion/codigosHD.json');
+const RUTA_ACCESOS_VASCULARES = path.resolve(__dirname, '../../documentacion/accesos_vasculares.json');
 const groupedTests = require('../../comorbilidad/transformed_grouped_tests.json'); 
-
 
 // Mapa en memoria: database (ruta) -> objeto de codigosHD.json
 let mapaCodigosHdPorDatabase = null;
+let mapaAccesosVascularesPorDatabase = null;
 
 // Mapa global entre el valor "lógico" de TIPOHEMO usado en indicesJSON
 // y la descripción que aparece en codigosHD.json
@@ -53,72 +54,145 @@ function getMapaCodigosHd() {
 }
 
 /**
+ * Carga accesos_vasculares.json una sola vez y construye un mapa por ruta de base de datos.
+ */
+function getMapaAccesosVasculares() {
+  if (mapaAccesosVascularesPorDatabase !== null) return mapaAccesosVascularesPorDatabase;
+
+  try {
+    console.log('📌 Leyendo accesos_vasculares.json desde:', RUTA_ACCESOS_VASCULARES);
+    console.log('📌 Existe?:', fs.existsSync(RUTA_ACCESOS_VASCULARES));
+
+    if (fs.existsSync(RUTA_ACCESOS_VASCULARES)) {
+      let raw = fs.readFileSync(RUTA_ACCESOS_VASCULARES, 'utf8');
+      raw = raw.replace(/^\uFEFF/, '').trim();
+      const json = JSON.parse(raw);
+
+      mapaAccesosVascularesPorDatabase = {};
+
+      if (Array.isArray(json.data)) {
+        for (const entry of json.data) {
+          if (!entry || !entry.baseData) continue;
+
+          const accesos = Array.isArray(entry.items)
+          ? entry.items
+          : Array.isArray(entry.accesos)
+            ? entry.accesos
+            : [];
+            
+          const full = String(entry.baseData).trim().toLowerCase();              // /nfs/restores/nf6_losolmos.gdb
+          const file = path.basename(full).trim().toLowerCase();                // nf6_losolmos.gdb
+          const fileNoExt = file.replace(/\.gdb$/i, '').trim().toLowerCase();   // nf6_losolmos
+
+          // Guardar las 3 claves para lookup robusto
+          mapaAccesosVascularesPorDatabase[full] = accesos;
+          mapaAccesosVascularesPorDatabase[file] = accesos;
+          mapaAccesosVascularesPorDatabase[fileNoExt] = accesos;
+        }
+      }
+
+      console.log(
+        '📚 accesos_vasculares.json cargado. Nº claves:',
+        Object.keys(mapaAccesosVascularesPorDatabase).length
+      );
+    } else {
+      console.warn('⚠️ No existe accesos_vasculares.json en la ruta:', RUTA_ACCESOS_VASCULARES);
+      mapaAccesosVascularesPorDatabase = {};
+    }
+  } catch (err) {
+    console.error('⛔ No se ha podido cargar accesos_vasculares.json:', err.message);
+    mapaAccesosVascularesPorDatabase = {};
+  }
+
+  return mapaAccesosVascularesPorDatabase;
+}
+
+
+
+/**
  * Aplica, para una base concreta, la traducción de TIPOHEMO lógico (1,2,3…)
  * a los códigos reales definidos en codigosHD.json.
  *
  * Si la consulta no contiene s.TIPOHEMO = N, devuelve la query sin tocar.
  */
-function aplicarTipoHemoPorBase(query, config) {
-  if (!query) return query;
+function aplicarCodigosCateterPorBase(query, config) {
+  if (!query || !query.includes('<CODIGOS_CATETER>')) return query;
 
-  const regex = /s\.TIPOHEMO\s*=\s*(\d+)/gi;
-  const coincidencias = [];
-  let match;
+  const mapa = getMapaAccesosVasculares();
 
-  while ((match = regex.exec(query)) !== null) {
-    const num = parseInt(match[1], 10);
-    if (!Number.isNaN(num)) coincidencias.push(num);
+  const fullKey = String(config.database || '').trim().toLowerCase();          // /nfs/restores/nf6_losolmos.gdb
+  const fileKey = path.basename(fullKey).trim().toLowerCase();                // nf6_losolmos.gdb
+  const fileNoExtKey = fileKey.replace(/\.gdb$/i, '').trim().toLowerCase();   // nf6_losolmos
+
+  // ✅ lookup robusto
+  const accesos = mapa[fullKey] || mapa[fileKey] || mapa[fileNoExtKey] || [];
+
+  console.log('🧪 Lookup keys:', { fullKey, fileKey, fileNoExtKey });
+  console.log('🧪 Accesos cargados para', config.database, accesos);
+
+  // ✅ declarar SIEMPRE antes de usar (evita "before initialization")
+  let codigosCateter = [];
+
+  if (Array.isArray(accesos) && accesos.length) {
+    codigosCateter = accesos
+      .filter(a => a && a.ES_CATETER === -1)
+      .map(a => a.CODIGO)
+      .filter(c => c !== null && c !== undefined);
   }
 
-  if (!coincidencias.length) {
-    // Esta consulta no filtra por TIPOHEMO
-    return query;
+  console.log('🧪 CODIGOS_CATETER calculados:', codigosCateter);
+
+  let reemplazo;
+  if (codigosCateter.length > 0) {
+    reemplazo = codigosCateter.join(',');
+  } else {
+    console.warn(`⚠️ No se encontraron códigos de catéter para ${config.database}, se usará -99999`);
+    reemplazo = '-99999';
   }
 
-  const mapa = getMapaCodigosHd();
-  const claveDb = (config.database || '').toLowerCase();
-  const infoDb = mapa[claveDb];
-
-  if (!infoDb || !Array.isArray(infoDb.resultado)) {
-    console.warn(`⚠️ No hay configuración de TIPOHEMO en codigosHD.json para ${config.database}`);
-    return query;
-  }
-
-  let queryModificada = query;
-
-  // Para cada valor lógico de TIPOHEMO que aparece en la plantilla
-  for (const num of [...new Set(coincidencias)]) {
-    const descripcionLogica = MAPA_TIPOHEMO_GLOBAL[num];
-    if (!descripcionLogica) {
-      console.warn(`⚠️ Valor lógico de TIPOHEMO ${num} sin mapeo en MAPA_TIPOHEMO_GLOBAL`);
-      continue;
-    }
-
-    // Buscar en codigosHD todos los CODIGO cuya DESCRIPCION coincide
-    const codigosFisicos = infoDb.resultado
-      .filter((r) => (r.DESCRIPCION || '').toUpperCase() === descripcionLogica.toUpperCase())
-      .map((r) => r.CODIGO)
-      .filter((c) => c !== null && c !== undefined);
-
-    if (!codigosFisicos.length) {
-      console.warn(`⚠️ En ${config.database} no hay códigos para descripción "${descripcionLogica}" (TIPOHEMO=${num})`);
-      continue;
-    }
-
-    let reemplazo;
-    if (codigosFisicos.length === 1) {
-      reemplazo = `s.TIPOHEMO = ${codigosFisicos[0]}`;
-    } else {
-      reemplazo = `s.TIPOHEMO IN (${codigosFisicos.join(',')})`;
-    }
-
-    const patron = new RegExp(`s\\.TIPOHEMO\\s*=\\s*${num}\\b`, 'gi');
-    queryModificada = queryModificada.replace(patron, reemplazo);
-  }
-
-  console.log(`🔧 Query final para ${config.database}:`, queryModificada);
-  return queryModificada;
+  console.log(`🔧 Reemplazando <CODIGOS_CATETER> para ${config.database} con: [${reemplazo}]`);
+  return query.replace(/<CODIGOS_CATETER>/gi, reemplazo);
 }
+
+
+/**
+ * Reemplaza <CODIGOS_CATETER> por la lista de códigos de acceso vascular 
+ * definidos como ES_CATETER: -1 en accesos_vasculares.json.
+ */
+function aplicarCodigosCateterPorBase(query, config) {
+  if (!query || !query.includes('<CODIGOS_CATETER>')) return query;
+
+  const mapa = getMapaAccesosVasculares();
+  const fullKey = String(config.database || '').trim().toLowerCase();
+  const fileKey = path.basename(fullKey).trim().toLowerCase();
+
+  const accesos = mapa[fullKey] || mapa[fileKey] || [];
+
+  console.log('🧪 Accesos cargados para', config.database, accesos);
+
+  let codigosCateter = []; // ✅ DECLARAR ANTES DE USAR
+
+  if (Array.isArray(accesos) && accesos.length) {
+    codigosCateter = accesos
+      .filter(a => a.ES_CATETER === -1)
+      .map(a => a.CODIGO)
+      .filter(c => c !== null && c !== undefined);
+  }
+
+  console.log('🧪 CODIGOS_CATETER calculados:', codigosCateter);
+
+  let reemplazo;
+  if (codigosCateter.length > 0) {
+    reemplazo = codigosCateter.join(',');
+  } else {
+    console.warn(`⚠️ No se encontraron códigos de catéter para ${config.database}, se usará -99999`);
+    reemplazo = '-99999';
+  }
+
+  console.log(`🔧 Reemplazando <CODIGOS_CATETER> para ${config.database} con: [${reemplazo}]`);
+  return query.replace(/<CODIGOS_CATETER>/gi, reemplazo);
+}
+
 
 async function consultaGenerica(intervalo, dataBase, consulta) {
   try {
@@ -186,66 +260,74 @@ if (FECHAINI_CALCULADA) {
     // Ejecutar consultas de forma secuencial y consolidar
     const resultadosTotales = [];
 
+
     for (const config of basesDatos) {
+      // baseData limpio SIEMPRE (incluso si hay error)
+      let baseData = config.nombre || config.database || '';
+      baseData = path.basename(String(baseData));          // NF6_LosOlmos.gdb
+      baseData = baseData.replace(/^NF6_/i, '').replace(/\.gdb$/i, ''); // LosOlmos
+    
       try {
-        // Para cada base, adaptar los TIPOHEMO según codigosHD.json
-   // En el bucle for (const config of basesDatos)
-   let queryFinal = aplicarTipoHemoPorBase(queryFinalSinTipoHemo, config);
-   queryFinal = aplicarCodTestPorBase(queryFinal, config);
+        // 1) Construir query por base
+        let queryFinal = queryFinalSinTipoHemo;
 
-   console.log("QUERYFINAL " + queryFinal);
-   const result = await consultarBasesDeDatos(config, queryFinal);  
-        console.log(`🔍 Resultado de ${config.database}:`, JSON.stringify(result, null, 2));
-      
-        
-
-        if (result && result.length > 0) {
-          // Mapear dinámicamente las columnas - buscar diferentes variantes
-          const procesados = result.map((row) => {
-            // Limpiar el nombre de la base de datos
-            let baseData = config.nombre || (config.database ? (config.database.split('/')?.pop() || config.database) : '');
-
-            // Eliminar prefijo "NF6_" y extensión ".gdb"
-            baseData = baseData.replace(/^NF6_/, '').replace(/\.gdb$/, '');
-
-            // Buscar el valor principal (resultado/conteo)
-            const resultado = Number(
-              row.RESULTADO ?? row.resultado ??
-              row.TOTAL_SESIONES ?? row.total_sesiones ??
-              row.COUNT ?? row.count ??
-              Object.values(row)[0] ?? 0
-            );
-
-            // Buscar el número de pacientes
-            const numeroDePacientes = Number(
-              row.NUMERO_PACIENTES ?? row.numero_pacientes ??
-              row.PACIENTES ?? row.pacientes ??
-              row.NREGGEN ?? row.nreggen ??
-              resultado ?? 0  // Si no hay campo específico, usar el mismo valor
-            );
-
+        if (typeof aplicarTipoHemoPorBase === 'function') {
+          queryFinal = aplicarTipoHemoPorBase(queryFinal, config);
+        } else {
+          console.warn('⚠️ aplicarTipoHemoPorBase no está definida. Se omite para esta ejecución.');
+        }        queryFinal = aplicarCodTestPorBase(queryFinal, config);
+        queryFinal = aplicarCodigosCateterPorBase(queryFinal, config);
+    
+        console.log(`🧾 QUERYFINAL [${baseData}] -> ${queryFinal}`);
+    
+        // 2) Ejecutar
+        const result = await consultarBasesDeDatos(config, queryFinal);
+        console.log(`🔍 Resultado RAW de ${config.database}:`, JSON.stringify(result, null, 2));
+    
+        // 3) Normalizar resultado
+        // Esperado: 1 fila con columnas: resultado / numero_pacientes
+        // Pero por seguridad si vienen varias filas, sumamos.
+        let resultadoTotal = 0;
+        let numeroPacientesTotal = 0;
+    
+        if (Array.isArray(result) && result.length > 0) {
+          for (const row of result) {
+            // Solo aceptamos aliases "resultado" y "numero_pacientes"
+            // (si tus plantillas devuelven otros nombres, corrige la plantilla, no el mapper)
+            const resultadoFila = Number(row.RESULTADO ?? row.resultado ?? 0);
+            const numeroPacientesFila = Number(row.NUMERO_PACIENTES ?? row.numero_pacientes ?? 0);
+    
+            // Si tu query devuelve porcentaje en "resultado", NO se debe sumar.
+            // En tus plantillas estándar devuelve 1 fila; esto es solo fallback.
+            resultadoTotal += resultadoFila;
+            numeroPacientesTotal += numeroPacientesFila;
+    
             console.log('📊 Mapeando fila:', {
-              originalRow: row,
-              resultado,
-              numeroDePacientes,
-              baseData
-            });
-
-            return {
               baseData,
-              resultado,
-              numeroDePacientes,
-            };
-          });
-
-          resultadosTotales.push(...procesados);
+              resultadoFila,
+              numeroPacientesFila,
+              row
+            });
+          }
+    
+          // Si normalmente es 1 fila, nos quedamos con esa (y evitamos “suma de porcentajes”)
+          if (result.length === 1) {
+            resultadosTotales.push({
+              baseData,
+              resultado: Number(result[0].RESULTADO ?? result[0].resultado ?? 0),
+              numeroDePacientes: Number(result[0].NUMERO_PACIENTES ?? result[0].numero_pacientes ?? 0),
+            });
+          } else {
+            // Fallback (solo para conteos, no porcentajes)
+            resultadosTotales.push({
+              baseData,
+              resultado: resultadoTotal,
+              numeroDePacientes: numeroPacientesTotal,
+            });
+          }
         } else {
           console.log(`⚠️ No hay resultados para ${config.database}`);
-
-          // Limpiar el nombre para el caso sin resultados también
-          let baseData = config.nombre || (config.database ? (config.database.split('/')?.pop() || config.database) : '');
-          baseData = baseData.replace(/^NF6_/, '').replace(/\.gdb$/, '');
-
+    
           resultadosTotales.push({
             baseData,
             resultado: 0,
@@ -253,13 +335,8 @@ if (FECHAINI_CALCULADA) {
           });
         }
       } catch (err) {
-        console.error(`Error en la base de datos: ${config.nombre || config.database}`, err.message);
-
-        // Limpiar el nombre para el caso de error también
-        let baseData = config.nombre || (config.database ? (config.database.split('/')?.pop() || config.database) : '');
-        baseData = baseData.replace(/^NF6_/, '').replace(/\.gdb$/, '');
-
-        // Registrar una fila de error con conteos en 0 para mantener consistencia
+        console.error(`⛔ Error en la base de datos: ${config.nombre || config.database}`, err.message);
+    
         resultadosTotales.push({
           baseData,
           resultado: 0,
@@ -268,6 +345,7 @@ if (FECHAINI_CALCULADA) {
         });
       }
     }
+    
 
     console.log('✅ Resultados finales consolidados:', JSON.stringify(resultadosTotales, null, 2));
     return resultadosTotales;

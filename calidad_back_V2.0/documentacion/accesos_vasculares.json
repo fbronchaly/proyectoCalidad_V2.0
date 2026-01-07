@@ -1,0 +1,256 @@
+
+{
+  "version": "1.0",
+  "descripcion": "Codigos de acceso vascular normalizados por base de datos (rectificado desde listado plano)",
+  "criterios": {
+    "acentos_eliminados": true,
+    "mayusculas": true,
+    "es_cateter": {
+      "-1": "CATETER",
+      "0": "OTROS/NO_CLASIFICADO",
+      "2": "FISTULA",
+      "3": "PROTESIS"
+    },
+    "reglas_clasificacion": [
+      "Si TIPOACCESO contiene 'CATETER' => ES_CATETER = -1",
+      "Si TIPOACCESO contiene 'FISTULA' o 'FAV' (y no contiene 'CATETER') => ES_CATETER = 2",
+      "Si TIPOACCESO contiene 'PTFE' o 'GORE' o 'LOOP' o 'BYPASS' => ES_CATETER = 3",
+      "Si TIPOACCESO es 'OTROS' => ES_CATETER = 0",
+      "Si aparece 'FAVI' junto con 'CATETER' se mantiene como CATETER (-1)"
+    ]
+  },
+  "data": [
+    {
+      "id": "DB1",
+      "baseData": "/NFS/restores/NF6_SantaEngracia.gdb",
+      "items": [
+        { "CODIGO": 1, "TIPOACCESO": "FISTULA ARTERIO-VENOSA", "ES_CATETER": 2 },
+        { "CODIGO": 2, "TIPOACCESO": "PTFE (GORE-TEX)", "ES_CATETER": 3 },
+        { "CODIGO": 3, "TIPOACCESO": "CATETER PERMANENTE", "ES_CATETER": -1 },
+        { "CODIGO": 4, "TIPOACCESO": "CATETER TRANSITORIO", "ES_CATETER": -1 }
+      ]
+    },
+    {
+      "id": "DB2",
+      "baseData": "/NFS/restores/NF6_LosOlmos.gdb",
+      "items": [
+        { "CODIGO": 1, "TIPOACCESO": "FISTULA AV", "ES_CATETER": 2 },
+        { "CODIGO": 2, "TIPOACCESO": "PTFE (GORETEX)", "ES_CATETER": 3 },
+        { "CODIGO": 3, "TIPOACCESO": "CATETER PERMANENTE", "ES_CATETER": -1 },
+        { "CODIGO": 4, "TIPOACCESO": "CATETER TRANSITORIO", "ES_CATETER": -1 },
+        { "CODIGO": 5, "TIPOACCESO": "FAV CON PUENTE DE PTFE", "ES_CATETER": 3 },
+        { "CODIGO": 6, "TIPOACCESO": "CATETER TUNELIZADO", "ES_CATETER": -1 }
+      ]
+    },
+    {
+      "id": "DB3",
+      "baseData": "/NFS/restores/NF6_LosLlanos.gdb",
+      "items": [
+        { "CODIGO": 1, "TIPOACCESO": "FISTULA ARTERIO VENOSA", "ES_CATETER": 2 },
+        { "CODIGO": 2, "TIPOACCESO": "PTFE (GORETEX)", "ES_CATETER": 3 },
+        { "CODIGO": 3, "TIPOACCESO": "CATETER PERMANENTE", "ES_CATETER": -1 },
+        { "CODIGO": 4, "TIPOACCESO": "CATETER TRANSITORIO", "ES_CATETER": -1 }
+      ]
+    },
+    {
+      "id": "DB4",
+      "baseData": "/NFS/restores/NF6_ElCastanar.gdb",
+      "items": [
+        { "CODIGO": 1, "TIPOACCESO": "FISTULA AV", "ES_CATETER": 2 },
+        { "CODIGO": 2, "TIPOACCESO": "PTFE (GORETEX)", "ES_CATETER": 3 },
+        { "CODIGO": 3, "TIPOACCESO": "CATETER PERMANENTE", "ES_CATETER": -1 },
+        { "CODIGO": 4, "TIPOACCESO": "CATETER TRANSITORIO YUGULAR DERECHO", "ES_CATETER": -1 },
+        { "CODIGO": 5, "TIPOACCESO": "CATETER TRANSITORIO YUGULAR IZQUIERDO", "ES_CATETER": -1 },
+        { "CODIGO": 6, "TIPOACCESO": "CATETER TRANSITORIO FEMORAL DERECHO", "ES_CATETER": -1 },
+        { "CODIGO": 7, "TIPOACCESO": "CATETER TRANSITORIO FEMORAL IZQUIERDO", "ES_CATETER": -1 },
+        { "CODIGO": 8, "TIPOACCESO": "CATETER SUBCLAVICO DERECHO", "ES_CATETER": -1 },
+        { "CODIGO": 9, "TIPOACCESO": "CATETER SUBCLAVICO IZQUIERDO", "ES_CATETER": -1 },
+        { "CODIGO": 10, "TIPOACCESO": "CATETER TRANSITORIO // FAVI", "ES_CATETER": -1 },
+        { "CODIGO": 11, "TIPOACCESO": "CATETER PERMANENTE // FAVI EN DESARROLLO", "ES_CATETER": -1 }
+      ]
+    },
+    {
+      "id": "DB5",
+      "baseData": "/NFS/restores/NF6_Getafe.gdb",
+      "items": [
+        { "CODIGO": 2, "TIPOACCESO": "PTFE (GORETEX) HUMERO-AXILAR", "ES_CATETER": 3 },
+        { "CODIGO": 3, "TIPOACCESO": "CATETER PERMANENTE SUBCLAVIO", "ES_CATETER": -1 },
+        { "CODIGO": 4, "TIPOACCESO": "CATETER PERMANENTE YUGULAR", "ES_CATETER": -1 },
+        { "CODIGO": 5, "TIPOACCESO": "FAV A-V RADIO-CEFALICA", "ES_CATETER": 2 },
+        { "CODIGO": 6, "TIPOACCESO": "FAV A-V BRAQUIOCEFALICA", "ES_CATETER": 2 },
+        { "CODIGO": 7, "TIPOACCESO": "RC REANASTOMOSADA UNOS CMS", "ES_CATETER": 2 },
+        { "CODIGO": 8, "TIPOACCESO": "FAV A-V HUMERO-CEFALICA", "ES_CATETER": 2 },
+        { "CODIGO": 10, "TIPOACCESO": "GORE-TEX DE ARTERIA RADIAL A V. CEFALICA", "ES_CATETER": 3 },
+        { "CODIGO": 11, "TIPOACCESO": "FAV HUMERO-BASILICA", "ES_CATETER": 2 },
+        { "CODIGO": 12, "TIPOACCESO": "PTFE (GORETEX) AXILO-AXILAR", "ES_CATETER": 3 },
+        { "CODIGO": 13, "TIPOACCESO": "PTFE BRAQUIO-BASILICO", "ES_CATETER": 3 },
+        { "CODIGO": 14, "TIPOACCESO": "LOOP ANTEBRAQUIAL CON PTFE INTERPUESTO", "ES_CATETER": 3 },
+        { "CODIGO": 15, "TIPOACCESO": "PTFE BRAQUIO-AXILAR", "ES_CATETER": 3 },
+        { "CODIGO": 16, "TIPOACCESO": "CATETER FEMORAL TEMPORAL", "ES_CATETER": -1 },
+        { "CODIGO": 17, "TIPOACCESO": "CATETER FEMORAL PERMANENTE", "ES_CATETER": -1 },
+        { "CODIGO": 18, "TIPOACCESO": "FAV BRAQUIOAXILAR", "ES_CATETER": 2 },
+        { "CODIGO": 19, "TIPOACCESO": "CATETER RAMA ARTERIAL Y VENOSA FAVI", "ES_CATETER": -1 },
+        { "CODIGO": 20, "TIPOACCESO": "CATETER RAMA VENOSA Y ARTERIAL FAVI", "ES_CATETER": -1 },
+        { "CODIGO": 21, "TIPOACCESO": "LOOP FEMORO-FEMORAL CON PTFE", "ES_CATETER": 3 },
+        { "CODIGO": 22, "TIPOACCESO": "CATETER TEMPORAL YUGULAR", "ES_CATETER": -1 },
+        { "CODIGO": 23, "TIPOACCESO": "PTFE HUMERO-CEFALICO", "ES_CATETER": 3 },
+        { "CODIGO": 24, "TIPOACCESO": "BYPASS HUMERO-HUMERAL CON PTFE", "ES_CATETER": 3 }
+      ]
+    },
+    {
+      "id": "DB6",
+      "baseData": "/NFS/restores/NF6_LosLauros.gdb",
+      "items": [
+        { "CODIGO": 2, "TIPOACCESO": "PTFE (GORETEX) HUMERO-AXILAR", "ES_CATETER": 3 },
+        { "CODIGO": 3, "TIPOACCESO": "CATETER PERMANENTE SUBCLAVIO", "ES_CATETER": -1 },
+        { "CODIGO": 4, "TIPOACCESO": "CATETER PERMANENTE YUGULAR", "ES_CATETER": -1 },
+        { "CODIGO": 5, "TIPOACCESO": "FAV A-V RADIO-CEFALICA", "ES_CATETER": 2 },
+        { "CODIGO": 6, "TIPOACCESO": "FAV A-V BRAQUIOCEFALICA", "ES_CATETER": 2 },
+        { "CODIGO": 7, "TIPOACCESO": "RC REANASTOMOSADA UNOS CMS", "ES_CATETER": 2 },
+        { "CODIGO": 8, "TIPOACCESO": "FAV A-V HUMERO-CEFALICA", "ES_CATETER": 2 },
+        { "CODIGO": 10, "TIPOACCESO": "GORE-TEX DE ARTERIA RADIAL A V. CEFALICA", "ES_CATETER": 3 },
+        { "CODIGO": 11, "TIPOACCESO": "FAV HUMERO-BASILICA", "ES_CATETER": 2 },
+        { "CODIGO": 12, "TIPOACCESO": "PTFE (GORETEX) AXILO-AXILAR", "ES_CATETER": 3 },
+        { "CODIGO": 13, "TIPOACCESO": "PTFE BRAQUIO-BASILICO", "ES_CATETER": 3 },
+        { "CODIGO": 14, "TIPOACCESO": "LOOP ANTEBRAQUIAL CON PTFE INTERPUESTO", "ES_CATETER": 3 },
+        { "CODIGO": 15, "TIPOACCESO": "PTFE BRAQUIO-AXILAR", "ES_CATETER": 3 },
+        { "CODIGO": 16, "TIPOACCESO": "CATETER FEMORAL TEMPORAL", "ES_CATETER": -1 },
+        { "CODIGO": 17, "TIPOACCESO": "CATETER FEMORAL PERMANENTE", "ES_CATETER": -1 },
+        { "CODIGO": 18, "TIPOACCESO": "FAV BRAQUIOAXILAR", "ES_CATETER": 2 },
+        { "CODIGO": 19, "TIPOACCESO": "CATETER RAMA ARTERIAL Y VENOSA FAVI", "ES_CATETER": -1 },
+        { "CODIGO": 20, "TIPOACCESO": "CATETER RAMA VENOSA Y ARTERIAL FAVI", "ES_CATETER": -1 },
+        { "CODIGO": 21, "TIPOACCESO": "LOOP FEMORO-FEMORAL CON PTFE", "ES_CATETER": 3 },
+        { "CODIGO": 22, "TIPOACCESO": "CATETER TEMPORAL YUGULAR", "ES_CATETER": -1 },
+        { "CODIGO": 23, "TIPOACCESO": "PTFE HUMERO-CEFALICO", "ES_CATETER": 3 },
+        { "CODIGO": 24, "TIPOACCESO": "BYPASS HUMERO-HUMERAL CON PTFE", "ES_CATETER": 3 },
+        { "CODIGO": 25, "TIPOACCESO": "FAV HUMERO-CEFALICA CON PTFE INTERPUESTO", "ES_CATETER": 3 }
+      ]
+    },
+    {
+      "id": "DB7",
+      "baseData": "/NFS/restores/NF6_FJD.gdb",
+      "items": [
+        { "CODIGO": 1, "TIPOACCESO": "FISTULA ARTERIO VENOSA", "ES_CATETER": 2 },
+        { "CODIGO": 2, "TIPOACCESO": "PTFE (GORE-TEX)", "ES_CATETER": 3 },
+        { "CODIGO": 3, "TIPOACCESO": "CATETER PERMANENTE", "ES_CATETER": -1 },
+        { "CODIGO": 4, "TIPOACCESO": "CATETER TRANSITORIO", "ES_CATETER": -1 },
+        { "CODIGO": 5, "TIPOACCESO": "LOOP", "ES_CATETER": 3 },
+        { "CODIGO": 6, "TIPOACCESO": "FAV+ RAMA CATETER", "ES_CATETER": -1 }
+      ]
+    },
+    {
+      "id": "DB8",
+      "baseData": "/NFS/restores/NF6_HRJC.gdb",
+      "items": [
+        { "CODIGO": 1, "TIPOACCESO": "FISTULA ARTERIO VENOSA", "ES_CATETER": 2 },
+        { "CODIGO": 2, "TIPOACCESO": "PTFE (GORETEX)", "ES_CATETER": 3 },
+        { "CODIGO": 3, "TIPOACCESO": "CATETER PERMANENTE", "ES_CATETER": -1 },
+        { "CODIGO": 4, "TIPOACCESO": "CATETER TRANSITORIO", "ES_CATETER": -1 }
+      ]
+    },
+    {
+      "id": "DB9",
+      "baseData": "/NFS/restores/NF6_InfantaElena.gdb",
+      "items": [
+        { "CODIGO": 1, "TIPOACCESO": "FISTULA AV", "ES_CATETER": 2 },
+        { "CODIGO": 2, "TIPOACCESO": "PTFE (GORETEX)", "ES_CATETER": 3 },
+        { "CODIGO": 3, "TIPOACCESO": "CATETER PERMANENTE", "ES_CATETER": -1 },
+        { "CODIGO": 4, "TIPOACCESO": "CATETER TRANSITORIO", "ES_CATETER": -1 },
+        { "CODIGO": 6, "TIPOACCESO": "OTROS", "ES_CATETER": 0 }
+      ]
+    },
+    {
+      "id": "DB10",
+      "baseData": "/NFS/restores/NF6_LasEncinas.gdb",
+      "items": [
+        { "CODIGO": 1, "TIPOACCESO": "FISTULA AV", "ES_CATETER": 2 },
+        { "CODIGO": 2, "TIPOACCESO": "PTFE (GORETEX)", "ES_CATETER": 3 },
+        { "CODIGO": 3, "TIPOACCESO": "CATETER PERMANENTE", "ES_CATETER": -1 },
+        { "CODIGO": 4, "TIPOACCESO": "CATETER TRANSITORIO", "ES_CATETER": -1 },
+        { "CODIGO": 5, "TIPOACCESO": "CATETER TRANSITORIO/FAVI", "ES_CATETER": -1 }
+      ]
+    },
+    {
+      "id": "DB11",
+      "baseData": "/NFS/restores/NF6_LosLlanos3.gdb",
+      "items": [
+        { "CODIGO": 1, "TIPOACCESO": "FISTULA ARTERIO VENOSA", "ES_CATETER": 2 },
+        { "CODIGO": 2, "TIPOACCESO": "PTFE (GORETEX)", "ES_CATETER": 3 },
+        { "CODIGO": 3, "TIPOACCESO": "CATETER PERMANENTE", "ES_CATETER": -1 },
+        { "CODIGO": 4, "TIPOACCESO": "CATETER TRANSITORIO", "ES_CATETER": -1 }
+      ]
+    },
+    {
+      "id": "DB12",
+      "baseData": "/NFS/restores/NF6_OsCarballos.gdb",
+      "items": [
+        { "CODIGO": 1, "TIPOACCESO": "FISTULA AV", "ES_CATETER": 2 },
+        { "CODIGO": 2, "TIPOACCESO": "PTFE (GORETEX)", "ES_CATETER": 3 },
+        { "CODIGO": 3, "TIPOACCESO": "CATETER PERMANENTE", "ES_CATETER": -1 },
+        { "CODIGO": 4, "TIPOACCESO": "CATETER TRANSITORIO", "ES_CATETER": -1 },
+        { "CODIGO": 5, "TIPOACCESO": "CATETER TRANSITORIO TUNELIZADO", "ES_CATETER": -1 },
+        { "CODIGO": 6, "TIPOACCESO": "OTROS", "ES_CATETER": 0 }
+      ]
+    },
+    {
+      "id": "DB13",
+      "baseData": "/NFS/restores/NF6_OsCarballosII.gdb",
+      "items": [
+        { "CODIGO": 1, "TIPOACCESO": "FISTULA AV", "ES_CATETER": 2 },
+        { "CODIGO": 2, "TIPOACCESO": "PTFE (GORETEX)", "ES_CATETER": 3 },
+        { "CODIGO": 3, "TIPOACCESO": "CATETER PERMANENTE", "ES_CATETER": -1 },
+        { "CODIGO": 4, "TIPOACCESO": "CATETER TRANSITORIO", "ES_CATETER": -1 },
+        { "CODIGO": 5, "TIPOACCESO": "CATETER TRANSITORIO TUNELIZADO", "ES_CATETER": -1 },
+        { "CODIGO": 6, "TIPOACCESO": "OTROS", "ES_CATETER": 0 }
+      ]
+    },
+    {
+      "id": "DB14",
+      "baseData": "/NFS/restores/NF6_Teixedal.gdb",
+      "items": [
+        { "CODIGO": 1, "TIPOACCESO": "FISTULA AV", "ES_CATETER": 2 },
+        { "CODIGO": 2, "TIPOACCESO": "PTFE (GORETEX)", "ES_CATETER": 3 },
+        { "CODIGO": 3, "TIPOACCESO": "CATETER PERMANENTE", "ES_CATETER": -1 },
+        { "CODIGO": 4, "TIPOACCESO": "CATETER TRANSITORIO", "ES_CATETER": -1 },
+        { "CODIGO": 6, "TIPOACCESO": "OTROS", "ES_CATETER": 0 }
+      ]
+    },
+    {
+      "id": "DB15",
+      "baseData": "/NFS/restores/NF6_VILLALBA.gdb",
+      "items": [
+        { "CODIGO": 2, "TIPOACCESO": "PTFE (GORETEX) HUMERO-AXILAR", "ES_CATETER": 3 },
+        { "CODIGO": 3, "TIPOACCESO": "CATETER PERMANENTE SUBCLAVIO", "ES_CATETER": -1 },
+        { "CODIGO": 4, "TIPOACCESO": "CATETER PERMANENTE YUGULAR", "ES_CATETER": -1 },
+        { "CODIGO": 5, "TIPOACCESO": "FAV A-V RADIO-CEFALICA", "ES_CATETER": 2 },
+        { "CODIGO": 6, "TIPOACCESO": "FAV A-V BRAQUIOCEFALICA", "ES_CATETER": 2 },
+        { "CODIGO": 7, "TIPOACCESO": "RC REANASTOMOSADA UNOS CMS", "ES_CATETER": 2 },
+        { "CODIGO": 8, "TIPOACCESO": "FAV A-V HUMERO-CEFALICA", "ES_CATETER": 2 },
+        { "CODIGO": 10, "TIPOACCESO": "GORE-TEX DE ARTERIA RADIAL A V. CEFALICA", "ES_CATETER": 3 },
+        { "CODIGO": 11, "TIPOACCESO": "FAV HUMERO-BASILICA", "ES_CATETER": 2 },
+        { "CODIGO": 12, "TIPOACCESO": "PTFE (GORETEX) AXILO-AXILAR", "ES_CATETER": 3 },
+        { "CODIGO": 13, "TIPOACCESO": "PTFE BRAQUIO-BASILICO", "ES_CATETER": 3 },
+        { "CODIGO": 14, "TIPOACCESO": "LOOP ANTEBRAQUIAL CON PTFE INTERPUESTO", "ES_CATETER": 3 },
+        { "CODIGO": 15, "TIPOACCESO": "PTFE BRAQUIO-AXILAR", "ES_CATETER": 3 },
+        { "CODIGO": 16, "TIPOACCESO": "CATETER FEMORAL TEMPORAL", "ES_CATETER": -1 },
+        { "CODIGO": 17, "TIPOACCESO": "CATETER FEMORAL PERMANENTE", "ES_CATETER": -1 },
+        { "CODIGO": 18, "TIPOACCESO": "FAV BRAQUIOAXILAR", "ES_CATETER": 2 },
+        { "CODIGO": 19, "TIPOACCESO": "CATETER RAMA ARTERIAL Y VENOSA FAVI", "ES_CATETER": -1 },
+        { "CODIGO": 20, "TIPOACCESO": "CATETER RAMA VENOSA Y ARTERIAL FAVI", "ES_CATETER": -1 },
+        { "CODIGO": 21, "TIPOACCESO": "LOOP FEMORO-FEMORAL CON PTFE", "ES_CATETER": 3 },
+        { "CODIGO": 22, "TIPOACCESO": "CATETER TEMPORAL YUGULAR", "ES_CATETER": -1 },
+        { "CODIGO": 23, "TIPOACCESO": "FAV BRAQUIOBASILICA", "ES_CATETER": 2 }
+      ]
+    },
+    {
+      "id": "DB16",
+      "baseData": "/NFS/restores/NF6_LosPinos.gdb",
+      "items": [
+        { "CODIGO": 1, "TIPOACCESO": "FISTULA AV", "ES_CATETER": 2 },
+        { "CODIGO": 2, "TIPOACCESO": "PTFE (GORETEX)", "ES_CATETER": 3 },
+        { "CODIGO": 3, "TIPOACCESO": "CATETER TRANSITORIO", "ES_CATETER": -1 },
+        { "CODIGO": 4, "TIPOACCESO": "CATETER PERMANENTE", "ES_CATETER": -1 }
+      ]
+    }
+  ]
+}
