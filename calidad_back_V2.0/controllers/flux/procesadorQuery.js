@@ -146,6 +146,32 @@ function aplicarCodTestPorBase(query, config) {
   return queryModificada;
 }
 
+function aplicarCodigosCateterTunelizadoPorBase(query, config) {
+    if (!query || !query.includes('<CODIGOS_CATETER_TUNELIZADO>')) return query;
+  
+    const mapa = getMapaAccesosVasculares();
+    const db = String(config?.database || '').trim().toLowerCase();
+    const fileKey = path.basename(db);
+    const fileNoExtKey = fileKey.replace(/\.gdb$/i, '');
+    const accesos = mapa[db] || mapa[fileKey] || mapa[fileNoExtKey] || [];
+  
+    // Captura:
+    // - "CATETER TUNELIZADO"
+    // - "CATETER TRANSITORIO TUNELIZADO"
+    const codigos = accesos
+      .filter(a =>
+        a &&
+        a.CODIGO != null &&
+        typeof a.TIPOACCESO === 'string' &&
+        a.TIPOACCESO.includes('CATETER') &&
+        a.TIPOACCESO.includes('TUNELIZADO')
+      )
+      .map(a => a.CODIGO);
+  
+    return query.replace(/<CODIGOS_CATETER_TUNELIZADO>/gi, codigos.length ? codigos.join(',') : '-99999');
+  }
+  
+
 /**
  * Función principal que orquesta todos los reemplazos
  */
@@ -153,6 +179,7 @@ function procesarQuery(queryOriginal, config) {
   let query = queryOriginal;
   
   query = aplicarCodTestPorBase(query, config);
+  query = aplicarCodigosCateterTunelizadoPorBase(query, config); 
   query = aplicarCodigosCateterPorBase(query, config);
   query = aplicarCodigosFavProtesisPorBase(query, config);
   query = aplicarCodigosFavAutologaPorBase(query, config);
