@@ -79,7 +79,7 @@ function getMapaAccesosVasculares() {
           : Array.isArray(entry.accesos)
             ? entry.accesos
             : [];
-            
+
           const full = String(entry.baseData).trim().toLowerCase();              // /nfs/restores/nf6_losolmos.gdb
           const file = path.basename(full).trim().toLowerCase();                // nf6_losolmos.gdb
           const fileNoExt = file.replace(/\.gdb$/i, '').trim().toLowerCase();   // nf6_losolmos
@@ -153,6 +153,100 @@ function aplicarCodigosCateterPorBase(query, config) {
   console.log(`🔧 Reemplazando <CODIGOS_CATETER> para ${config.database} con: [${reemplazo}]`);
   return query.replace(/<CODIGOS_CATETER>/gi, reemplazo);
 }
+
+/**
+ * Reemplaza <CODIGOS_FAV_PROTESIS> por la lista de códigos de acceso vascular
+ * definidos como:
+ *   ES_CATETER = 2 (FÍSTULA)  o  ES_CATETER = 3 (PRÓTESIS)
+ * en accesos_vasculares.json.
+ */
+function aplicarCodigosFavProtesisPorBase(query, config) {
+  if (!query || !query.includes('<CODIGOS_FAV_PROTESIS>')) return query;
+
+  const mapa = getMapaAccesosVasculares();
+
+  const db = String(config?.database || '').trim();
+  const fullKey = db.toLowerCase();
+  const fileKey = path.basename(fullKey);
+  const fileNoExtKey = fileKey.replace(/\.gdb$/i, '');
+
+  const accesos = mapa[fullKey] || mapa[fileKey] || mapa[fileNoExtKey] || [];
+
+  let codigos = [];
+  if (Array.isArray(accesos)) {
+    codigos = accesos
+      .filter(a => a && (a.ES_CATETER === 2 || a.ES_CATETER === 3) && a.CODIGO !== undefined && a.CODIGO !== null)
+      .map(a => a.CODIGO);
+  }
+
+  const reemplazo = codigos.length ? codigos.join(',') : '-99999';
+
+  console.log(`🔧 <CODIGOS_FAV_PROTESIS> [${db}] => ${reemplazo}`);
+
+  return query.replace(/<CODIGOS_FAV_PROTESIS>/gi, reemplazo);
+}
+
+/**
+ * Reemplaza <CODIGOS_FAV_AUTOLOGA> por los códigos de acceso vascular
+ * definidos como ES_CATETER = 2 (FÍSTULA AUTÓLOGA)
+ */
+function aplicarCodigosFavAutologaPorBase(query, config) {
+  if (!query || !query.includes('<CODIGOS_FAV_AUTOLOGA>')) return query;
+
+  const mapa = getMapaAccesosVasculares();
+
+  const db = String(config?.database || '').trim().toLowerCase();
+  const fileKey = path.basename(db);
+  const fileNoExtKey = fileKey.replace(/\.gdb$/i, '');
+
+  const accesos =
+    mapa[db] || mapa[fileKey] || mapa[fileNoExtKey] || [];
+
+  const codigos = Array.isArray(accesos)
+    ? accesos
+        .filter(a => a && a.ES_CATETER === 2)
+        .map(a => a.CODIGO)
+    : [];
+
+  const reemplazo = codigos.length ? codigos.join(',') : '-99999';
+
+  console.log(`🔧 <CODIGOS_FAV_AUTOLOGA> [${db}] => ${reemplazo}`);
+
+  return query.replace(/<CODIGOS_FAV_AUTOLOGA>/gi, reemplazo);
+}
+
+/**
+ * Reemplaza <CODIGOS_PROTESIS> por la lista de códigos de acceso vascular
+ * definidos como:
+ *   ES_CATETER = 3 (PRÓTESIS)
+ * en accesos_vasculares.json.
+ */
+function aplicarCodigosProtesisPorBase(query, config) {
+  if (!query || !query.includes('<CODIGOS_PROTESIS>')) return query;
+
+  const mapa = getMapaAccesosVasculares();
+
+  const db = String(config?.database || '').trim();
+  const fullKey = db.toLowerCase();
+  const fileKey = path.basename(fullKey);
+  const fileNoExtKey = fileKey.replace(/\.gdb$/i, '');
+
+  const accesos = mapa[fullKey] || mapa[fileKey] || mapa[fileNoExtKey] || [];
+
+  let codigos = [];
+  if (Array.isArray(accesos)) {
+    codigos = accesos
+      .filter(a => a && a.ES_CATETER === 3 && a.CODIGO !== undefined && a.CODIGO !== null)
+      .map(a => a.CODIGO);
+  }
+
+  const reemplazo = codigos.length ? codigos.join(',') : '-99999';
+
+  console.log(`🔧 <CODIGOS_PROTESIS> [${db}] => ${reemplazo}`);
+
+  return query.replace(/<CODIGOS_PROTESIS>/gi, reemplazo);
+}
+
 
 
 /**
@@ -277,7 +371,12 @@ if (FECHAINI_CALCULADA) {
           console.warn('⚠️ aplicarTipoHemoPorBase no está definida. Se omite para esta ejecución.');
         }        queryFinal = aplicarCodTestPorBase(queryFinal, config);
         queryFinal = aplicarCodigosCateterPorBase(queryFinal, config);
-    
+        queryFinal = aplicarCodigosFavProtesisPorBase(queryFinal, config);
+        queryFinal = aplicarCodigosFavAutologaPorBase(queryFinal, config);
+        queryFinal = aplicarCodigosProtesisPorBase(queryFinal, config);
+
+
+
         console.log(`🧾 QUERYFINAL [${baseData}] -> ${queryFinal}`);
     
         // 2) Ejecutar
