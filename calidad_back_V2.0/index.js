@@ -118,6 +118,34 @@ if (useSameOriginSockets) {
 app.use(express.json());
 
 // ------------------------
+// Limpieza: borrar excels antiguos en /backups
+// ------------------------
+function limpiarBackupsExcel() {
+  try {
+    const backupDir = path.join(__dirname, 'backups');
+    if (!fs.existsSync(backupDir)) return;
+
+    const files = fs.readdirSync(backupDir);
+    const excels = files.filter(f => f.toLowerCase().endsWith('.xlsx'));
+
+    for (const f of excels) {
+      try {
+        fs.unlinkSync(path.join(backupDir, f));
+        console.log(`🗑️ Excel antiguo eliminado: ${f}`);
+      } catch (e) {
+        console.warn(`⚠️ No se pudo eliminar ${f}:`, e?.message || e);
+      }
+    }
+
+    if (excels.length) {
+      console.log(`🧹 Limpieza backups: eliminados ${excels.length} Excel(s)`);
+    }
+  } catch (err) {
+    console.warn('⚠️ Error durante limpieza de backups:', err?.message || err);
+  }
+}
+
+// ------------------------
 // Endpoint: /api/download-excel/:filename - Descargar Excel generado
 // ------------------------
 app.get('/api/download-excel/:filename', (req, res) => {
@@ -335,6 +363,10 @@ app.post('/api/upload', (req, res) => {
   if (enProceso) {
     return res.status(429).json({ error: 'Ya hay un estudio en curso. Intenta más tarde.' });
   }
+
+  // 🧹 Antes de arrancar un nuevo análisis, limpiamos excels antiguos
+  limpiarBackupsExcel();
+
   enProceso = true;
 
   upload.array('files')(req, res, (err) => {
