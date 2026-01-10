@@ -86,6 +86,10 @@
               "valor": {
                 "bsonType": ["double", "int", "long", "decimal"]
               },
+              "unidad": {
+                "bsonType": ["string", "null"],
+                "description": "Unidad asociada a payload.valor (p. ej. %, mg/dL, mmol/L, sesiones)."
+              },
               "numero_pacientes": {
                 "bsonType": ["int", "long"]
               }

@@ -64,7 +64,7 @@ const comienzoFlujo = async (fechaInicio, fechaFin, baseDatos, indices, onProgre
       }
 
       // 2.1) Obtener plantilla SQL del índice
-      const { categoria, indicador, template } = def;
+      const { categoria, indicador, template, unidad } = def;
 
       // 2.2) Llamar SECuencialmente a consultaGenerica
       //     - consultaGenerica ya normaliza fechas y ejecuta por cada base
@@ -86,6 +86,7 @@ const comienzoFlujo = async (fechaInicio, fechaFin, baseDatos, indices, onProgre
         id_code: id,
         categoria,
         indicador,
+        unidad: (unidad === null || unidad === undefined) ? null : String(unidad),
         intervalo: { fechaInicio, fechaFin }, // tal cual lo recibimos (ISO lo gestiona la capa de consulta)
         consulta_sql: template,               // conserva la plantilla usada
         bases_datos: porBase.map(r => r.baseData), // Lista de nombres de bases procesadas

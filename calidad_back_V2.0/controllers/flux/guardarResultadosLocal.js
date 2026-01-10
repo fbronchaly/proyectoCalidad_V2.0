@@ -14,9 +14,45 @@ async function getDb() {
 
   if (!clienteMongo) {
     console.log(`🔌 Conectando a MongoDB... (URI definida: ${!!process.env.MONGODB_URI})`);
-    clienteMongo = new MongoClient(MONGODB_URI);
-    await clienteMongo.connect();
-    console.log(`✅ Conectado a MongoDB en ${MONGODB_URI.replace(/:([^:@]+)@/, ':****@')}, db=${DB_NAME}`);
+
+    // ⏱️ Evitar “cuelgues” por selección de servidor/DNS (Atlas SRV) en redes inestables
+    const clientOptions = {
+      serverSelectionTimeoutMS: Number(process.env.MONGODB_SERVER_SELECTION_TIMEOUT_MS || 8000),
+      connectTimeoutMS: Number(process.env.MONGODB_CONNECT_TIMEOUT_MS || 8000),
+      socketTimeoutMS: Number(process.env.MONGODB_SOCKET_TIMEOUT_MS || 20000)
+    };
+
+    const maxRetries = Number(process.env.MONGODB_CONNECT_RETRIES || 2);
+    let lastErr;
+
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+      try {
+        if (attempt > 1) {
+          console.log(`🔁 Reintentando conexión a MongoDB (intento ${attempt}/${maxRetries})...`);
+          await new Promise(r => setTimeout(r, 500 * attempt));
+        }
+
+        clienteMongo = new MongoClient(MONGODB_URI, clientOptions);
+        await clienteMongo.connect();
+
+        console.log(`✅ Conectado a MongoDB en ${MONGODB_URI.replace(/:([^:@]+)@/, ':****@')}, db=${DB_NAME}`);
+        lastErr = undefined;
+        break;
+      } catch (err) {
+        lastErr = err;
+        try {
+          await clienteMongo?.close();
+        } catch {
+          // ignore
+        }
+        clienteMongo = null;
+      }
+    }
+
+    if (lastErr) {
+      console.error('⛔ No se pudo conectar a MongoDB tras reintentos:', lastErr?.message || lastErr);
+      throw lastErr;
+    }
   }
   return clienteMongo.db(DB_NAME);
 }
@@ -96,6 +132,8 @@ async function guardarResultadosLocal(fechaInicio, fechaFin, baseDatos, indices,
         },
         payload: {
           valor: (typeof r.resultado === 'number' && !isNaN(r.resultado)) ? r.resultado : Number(r.resultado || 0),
+          // Persistir unidad si viene informada (schema permite string o null)
+          unidad: (ind.unidad ?? r.unidad ?? null) == null ? null : String(ind.unidad ?? r.unidad),
           numero_pacientes: Number(r.numeroDePacientes ?? r.numero_pacientes ?? 0)
         },
         metadata_calculo: {
