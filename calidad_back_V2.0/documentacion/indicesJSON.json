@@ -399,7 +399,7 @@
     "categoria": "Calidad Técnica (Anemia)",
     "indicador": "Porcentaje de pacientes prevalentes con más de 3 meses en HD con hemoglobina media del periodo > 10,5 g/dl",
     "unidad":"%",
-    "template": "WITH PrevHD AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p JOIN SESION s ON s.NREGGEN = p.NREGGEN WHERE s.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND p.FECH_INICIO_CENTRO <= DATEADD(DAY, -90, CAST(:FECHAINI AS DATE)) AND COALESCE(p.DESPLAZADO, 0) = 0 ), HbMediaPeriodo AS ( SELECT a.NREGGEN, AVG(CAST(r.VALOR AS DECIMAL(9,2))) AS HB_MEDIA FROM ANALISIS a JOIN RESULANAL r ON r.ANALISIS = a.NUMANALISIS JOIN PrevHD ph ON ph.NREGGEN = a.NREGGEN WHERE a.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND r.CODANAL IN ('HEMOG','HGB') AND r.VALOR IS NOT NULL AND CAST(r.VALOR AS DECIMAL(9,2)) > 0 GROUP BY a.NREGGEN ) SELECT (SUM(CASE WHEN HB_MEDIA > 10.5 THEN 1 ELSE 0 END) * 100.0 / NULLIF(COUNT(*), 0)) AS resultado, COUNT(*) AS numero_pacientes FROM HbMediaPeriodo;"
+    "template": "WITH PrevHD AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p JOIN SESION s ON s.NREGGEN = p.NREGGEN WHERE s.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND p.FECH_INICIO_CENTRO <= DATEADD(DAY, -90, CAST(:FECHAINI AS DATE)) AND COALESCE(p.DESPLAZADO, 0) = 0 ), HbMediaPeriodo AS ( SELECT a.NREGGEN, AVG(CAST(r.VALOR AS DECIMAL(9,2))) AS HB_MEDIA FROM ANALISIS a JOIN RESULANAL r ON r.ANALISIS = a.NUMANALISIS JOIN PrevHD ph ON ph.NREGGEN = a.NREGGEN WHERE a.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND r.CODANAL IN ('HEMOG','HGB', 'Hb') AND r.VALOR IS NOT NULL AND CAST(r.VALOR AS DECIMAL(9,2)) > 0 GROUP BY a.NREGGEN ) SELECT (SUM(CASE WHEN HB_MEDIA > 10.5 THEN 1 ELSE 0 END) * 100.0 / NULLIF(COUNT(*), 0)) AS resultado, COUNT(*) AS numero_pacientes FROM HbMediaPeriodo;"
   }
   ,
   {
@@ -407,7 +407,7 @@
     "categoria": "Calidad Técnica ( Anemia)",
     "indicador": "Porcentaje de pacientes prevalentes con más de 3 meses en HD (no desplazados) con hemoglobina media del periodo seleccionado > 10,5 g/dl y < 12,5 g/dl",
     "unidad":"%",
-    "template": "WITH PrevHD AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p JOIN SESION s ON s.NREGGEN = p.NREGGEN WHERE s.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND p.FECH_INICIO_CENTRO <= DATEADD(DAY, -90, CAST(:FECHAINI AS DATE)) AND COALESCE(p.DESPLAZADO, 0) = 0 ), HbMediaPeriodo AS ( SELECT a.NREGGEN, AVG(CAST(r.VALOR AS DECIMAL(9,2))) AS HB_MEDIA FROM ANALISIS a JOIN RESULANAL r ON r.ANALISIS = a.NUMANALISIS JOIN PrevHD ph ON ph.NREGGEN = a.NREGGEN WHERE a.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND r.CODANAL IN ('HEMOG','HGB') AND r.VALOR IS NOT NULL AND CAST(r.VALOR AS DECIMAL(9,2)) > 0 GROUP BY a.NREGGEN ) SELECT (SUM(CASE WHEN HB_MEDIA > 10.5 AND HB_MEDIA < 12.5 THEN 1 ELSE 0 END) * 100.0 / NULLIF(COUNT(*), 0)) AS resultado, COUNT(*) AS numero_pacientes FROM HbMediaPeriodo;"
+    "template": "WITH PrevHD AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p JOIN SESION s ON s.NREGGEN = p.NREGGEN WHERE s.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND p.FECH_INICIO_CENTRO <= DATEADD(DAY, -90, CAST(:FECHAINI AS DATE)) AND COALESCE(p.DESPLAZADO, 0) = 0 ), HbMediaPeriodo AS ( SELECT a.NREGGEN, AVG(CAST(r.VALOR AS DECIMAL(9,2))) AS HB_MEDIA FROM ANALISIS a JOIN RESULANAL r ON r.ANALISIS = a.NUMANALISIS JOIN PrevHD ph ON ph.NREGGEN = a.NREGGEN WHERE a.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND r.CODANAL IN ('HEMOG','HGB', 'Hb') AND r.VALOR IS NOT NULL AND CAST(r.VALOR AS DECIMAL(9,2)) > 0 GROUP BY a.NREGGEN ) SELECT (SUM(CASE WHEN HB_MEDIA > 10.5 AND HB_MEDIA < 12.5 THEN 1 ELSE 0 END) * 100.0 / NULLIF(COUNT(*), 0)) AS resultado, COUNT(*) AS numero_pacientes FROM HbMediaPeriodo;"
   },
   
 
@@ -421,25 +421,25 @@
   {
     "id_code": "NB5L25G8",
     "categoria": "Calidad Técnica ( Anemia)",
-    "indicador": "Porcentaje de pacientes prevalentes con mas de 3 meses en HD (no desplazados) con  ferritina < 150  g/dl ( suma de todos los pacientes  con  mas de 3 meses en HD  con  ferritina < 150  g/dl / nº total de pacientes con mas de 3 meses de HD en el periodo) ",
-    "unidad":"%",
-    "template": "WITH PrevHD AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p JOIN SESION s ON s.NREGGEN = p.NREGGEN WHERE s.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND p.FECH_INICIO_CENTRO <= DATEADD(DAY, -90, CAST(:FECHAINI AS DATE)) AND COALESCE(p.DESPLAZADO, 0) = 0 ), FerrMediaPeriodo AS ( SELECT a.NREGGEN, AVG(CAST(r.VALOR AS DECIMAL(9,2))) AS FERR_MEDIA FROM ANALISIS a JOIN RESULANAL r ON r.ANALISIS = a.NUMANALISIS JOIN PrevHD ph ON ph.NREGGEN = a.NREGGEN WHERE a.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND r.CODANAL IN ('FERRIT') AND r.VALOR IS NOT NULL GROUP BY a.NREGGEN ) SELECT (SUM(CASE WHEN FERR_MEDIA < 150 THEN 1 ELSE 0 END) * 100.0 / NULLIF(COUNT(*), 0)) AS resultado, COUNT(*) AS numero_pacientes FROM FerrMediaPeriodo;"
+    "indicador": "Porcentaje de pacientes prevalentes con mas de 3 meses en HD (no desplazados) con ferritina < 150 g/dl (suma de todos los pacientes con mas de 3 meses en HD con ferritina < 150 g/dl / nº total de pacientes con mas de 3 meses de HD en el periodo)",
+    "unidad": "%",
+    "template": "WITH PrevHD AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p JOIN SESION s ON s.NREGGEN = p.NREGGEN WHERE s.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND p.FECH_INICIO_CENTRO <= DATEADD(DAY, -90, CAST(:FECHAINI AS DATE)) AND COALESCE(p.DESPLAZADO, 0) = 0 ), FerrMediaPeriodo AS ( SELECT a.NREGGEN, AVG(CAST(REPLACE(r.VALOR, ',', '.') AS DECIMAL(18,4))) AS FERR_MEDIA FROM ANALISIS a JOIN RESULANAL r ON r.ANALISIS = a.NUMANALISIS JOIN PrevHD ph ON ph.NREGGEN = a.NREGGEN WHERE a.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND r.CODANAL IN ('FERRIT','FERRITINA') AND r.VALOR IS NOT NULL AND NULLIF(TRIM(r.VALOR), '') IS NOT NULL AND CAST(REPLACE(r.VALOR, ',', '.') AS DECIMAL(18,4)) > 0 GROUP BY a.NREGGEN ) SELECT (SUM(CASE WHEN FERR_MEDIA < 150 THEN 1 ELSE 0 END) * 100.0 / NULLIF(COUNT(*), 0)) AS resultado, COUNT(*) AS numero_pacientes FROM FerrMediaPeriodo;"
   },
-  
   {
     "id_code": "ZGUI0PT1",
     "categoria": "Calidad Técnica ( Anemia)",
-    "indicador": "Porcentaje de pacientes prevalentes con mas de 3 meses en HD  con  ferritina entre 150 y 800 g/dl ( suma de todos los pacientes  con  mas de 3 meses en HD  con  ferritina entre 150 y 800 g/dl / nº total de pacientes con mas de 3 meses de HD en el periodo) ",
-    "unidad":"%",
-    "template": "WITH PrevHD AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p JOIN SESION s ON s.NREGGEN = p.NREGGEN WHERE s.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND p.FECH_INICIO_CENTRO <= DATEADD(DAY, -90, CAST(:FECHAINI AS DATE)) AND COALESCE(p.DESPLAZADO, 0) = 0 ), FerrMediaPeriodo AS ( SELECT a.NREGGEN, AVG(CAST(r.VALOR AS DECIMAL(9,2))) AS FERR_MEDIA FROM ANALISIS a JOIN RESULANAL r ON r.ANALISIS = a.NUMANALISIS JOIN PrevHD ph ON ph.NREGGEN = a.NREGGEN WHERE a.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND r.CODANAL IN ('FERRIT') AND r.VALOR IS NOT NULL GROUP BY a.NREGGEN ) SELECT (SUM(CASE WHEN FERR_MEDIA >= 150 AND FERR_MEDIA <= 800 THEN 1 ELSE 0 END) * 100.0 / NULLIF(COUNT(*), 0)) AS resultado, COUNT(*) AS numero_pacientes FROM FerrMediaPeriodo;"
+    "indicador": "Porcentaje de pacientes prevalentes con mas de 3 meses en HD con ferritina entre 150 y 800 g/dl (suma de todos los pacientes con mas de 3 meses en HD con ferritina entre 150 y 800 g/dl / nº total de pacientes con mas de 3 meses de HD en el periodo)",
+    "unidad": "%",
+    "template": "WITH PrevHD AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p JOIN SESION s ON s.NREGGEN = p.NREGGEN WHERE s.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND p.FECH_INICIO_CENTRO <= DATEADD(DAY, -90, CAST(:FECHAINI AS DATE)) AND COALESCE(p.DESPLAZADO, 0) = 0 ), FerrMediaPeriodo AS ( SELECT a.NREGGEN, AVG(CAST(REPLACE(r.VALOR, ',', '.') AS DECIMAL(18,4))) AS FERR_MEDIA FROM ANALISIS a JOIN RESULANAL r ON r.ANALISIS = a.NUMANALISIS JOIN PrevHD ph ON ph.NREGGEN = a.NREGGEN WHERE a.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND r.CODANAL IN ('FERRIT','FERRITINA') AND r.VALOR IS NOT NULL AND NULLIF(TRIM(r.VALOR), '') IS NOT NULL AND CAST(REPLACE(r.VALOR, ',', '.') AS DECIMAL(18,4)) > 0 GROUP BY a.NREGGEN ) SELECT (SUM(CASE WHEN FERR_MEDIA >= 150 AND FERR_MEDIA <= 800 THEN 1 ELSE 0 END) * 100.0 / NULLIF(COUNT(*), 0)) AS resultado, COUNT(*) AS numero_pacientes FROM FerrMediaPeriodo;"
   },
   {
     "id_code": "1YSSX8Y1",
     "categoria": "Calidad Técnica ( Anemia)",
-    "indicador": "Porcentaje de pacientes prevalentes con mas de 3 meses en HD   con  IST < 20 %( suma de todos los pacientes  con  mas de 3 meses en HD con  IST < 20 % / nº total de pacientes con mas de 3 meses de HD en el periodo) ",
-    "unidad":"%",
-    "template": "WITH PrevHD AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p JOIN SESION s ON s.NREGGEN = p.NREGGEN WHERE s.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND p.FECH_INICIO_CENTRO <= DATEADD(DAY, -90, CAST(:FECHAINI AS DATE)) AND COALESCE(p.DESPLAZADO, 0) = 0 ), ISTMediaPeriodo AS ( SELECT a.NREGGEN, AVG(CAST(r.VALOR AS DECIMAL(9,2))) AS IST_MEDIA FROM ANALISIS a JOIN RESULANAL r ON r.ANALISIS = a.NUMANALISIS JOIN PrevHD ph ON ph.NREGGEN = a.NREGGEN WHERE a.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND r.CODANAL IN ('IST') AND r.VALOR IS NOT NULL GROUP BY a.NREGGEN ) SELECT (SUM(CASE WHEN IST_MEDIA < 20 THEN 1 ELSE 0 END) * 100.0 / NULLIF(COUNT(*), 0)) AS resultado, COUNT(*) AS numero_pacientes FROM ISTMediaPeriodo;"
+    "indicador": "Porcentaje de pacientes prevalentes con mas de 3 meses en HD con IST < 20 % (suma de todos los pacientes con mas de 3 meses en HD con IST < 20 % / nº total de pacientes con mas de 3 meses de HD en el periodo)",
+    "unidad": "%",
+    "template": "WITH PrevHD AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p JOIN SESION s ON s.NREGGEN = p.NREGGEN WHERE s.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND p.FECH_INICIO_CENTRO <= DATEADD(DAY, -90, CAST(:FECHAINI AS DATE)) AND COALESCE(p.DESPLAZADO, 0) = 0 ), ISTMediaPeriodo AS ( SELECT a.NREGGEN, AVG(CAST(REPLACE(r.VALOR, ',', '.') AS DECIMAL(18,4))) AS IST_MEDIA FROM ANALISIS a JOIN RESULANAL r ON r.ANALISIS = a.NUMANALISIS JOIN PrevHD ph ON ph.NREGGEN = a.NREGGEN WHERE a.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND r.CODANAL IN ('IST','TSAT','SAT_TRANSF','SATTRANSF') AND r.VALOR IS NOT NULL AND NULLIF(TRIM(r.VALOR), '') IS NOT NULL AND CAST(REPLACE(r.VALOR, ',', '.') AS DECIMAL(18,4)) > 0 GROUP BY a.NREGGEN ) SELECT (SUM(CASE WHEN IST_MEDIA < 20 THEN 1 ELSE 0 END) * 100.0 / NULLIF(COUNT(*), 0)) AS resultado, COUNT(*) AS numero_pacientes FROM ISTMediaPeriodo;"
   },
+  
   
   {
     "id_code": "UMEGZZHA",

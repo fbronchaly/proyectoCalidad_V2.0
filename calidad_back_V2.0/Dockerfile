@@ -1,20 +1,21 @@
 FROM node:18-alpine
+
 WORKDIR /usr/src/app
 
-# 1) Copia package.json, lockfile y patches
+# Paquetes del sistema (si solo necesitas cliente SSH: openssh-client)
+RUN apk add --no-cache bash openssh-client
+
+# 1) package.json/lock + patches (para que patch-package pueda aplicarse)
 COPY package*.json ./
 COPY patches ./patches
 
-# 2) Instala **todas** las deps y aplica patch-package
+# 2) Instalar deps (incluye dev para poder ejecutar patch-package en postinstall)
 RUN npm ci
 
-# 3) Quita las devDependencies y deja solo prod
-RUN npm prune --production
+# 3) Quitar dev deps dejando solo prod
+RUN npm prune --omit=dev
 
-# 3 Instalar bash y openssh
-RUN apk add --no-cache bash openssh
-
-# 4) Copia el resto del código
+# 4) Copiar el resto del código
 COPY . .
 
 ENV NODE_ENV=production

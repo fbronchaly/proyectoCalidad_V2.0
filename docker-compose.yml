@@ -1,24 +1,62 @@
-version: '3.8'
-
 services:
+  mongodb:
+    image: mongo:7.0
+    container_name: mongodb-calidad
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:27017:27017"
+    volumes:
+      - /srv/mongodb/calidad:/data/db
+    healthcheck:
+      test: ["CMD-SHELL", "mongosh --quiet --eval 'db.adminCommand({ ping: 1 })' || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    networks:
+      - calidad-network
+
   calidad-app:
     build:
       context: ./calidad_back_V2.0
       dockerfile: Dockerfile
+    image: proyectocalidad_v20-calidad-app
     container_name: calidad-app-v2
-    ports:
-      - "8083:3000"  # Puerto externo 8083 -> interno 3000
-    env_file:
-      - ./calidad_back_V2.0/.env
-    volumes:
-      - ./calidad_back_V2.0/uploads:/usr/src/app/uploads
-      - ./calidad_back_V2.0/.env:/usr/src/app/.env
-      # COMENTADO: Evitar montar 'public' en producción para asegurar que se usen los archivos compilados dentro de la imagen
-      # - ./calidad_back_V2.0/public:/usr/src/app/public
     restart: unless-stopped
+    ports:
+      - "8083:3000"
+    env_file:
+      - ./calidad_back_V2.0/.env.prod
     environment:
       - NODE_ENV=production
       - USE_PROD_ORIGIN=true
+      # Tu app ya usa estas vars normalmente; si están en .env.prod no hace falta repetirlas aquí.
+      # - MONGODB_URI=mongodb://mongodb:27017
+      # - MONGODB_DBNAME=DatosCalidad
+    volumes:
+      # Solo si realmente necesitas persistir uploads en el host:
+      - ./calidad_back_V2.0/uploads:/usr/src/app/uploads
+      # Si NO quieres que el .env local pise el .env.prod dentro del contenedor, quita esta línea:
+      - ./calidad_back_V2.0/.env:/usr/src/app/.env
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    networks:
+      - calidad-network
+
+  mongo-init:
+    image: proyectocalidad_v20-calidad-app
+    container_name: mongodb-calidad-init
+    working_dir: /usr/src/app
+    restart: "no"
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    environment:
+      - NODE_ENV=production
+      - MONGODB_URI=mongodb://mongodb:27017
+      - MONGODB_DBNAME=DatosCalidad
+    command: >
+      sh -c "node controllers/db/initIndicadoresSchema.js"
     networks:
       - calidad-network
 

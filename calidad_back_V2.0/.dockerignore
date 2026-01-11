@@ -1,2 +1,7 @@
 node_modules
+.git
+.angular
+dist
 npm-debug.log
+Dockerfile
+docker-compose.yml
