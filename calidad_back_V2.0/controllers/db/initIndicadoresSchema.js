@@ -7,7 +7,9 @@ require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
 const ejecucionSchema = require('./schemas/ejecucion.schema.json');
 const resultadoSchema = require('./schemas/resultado.schema.json');
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017';
+const MONGODB_URI = process.env.MONGODB_URI;
+if (!MONGODB_URI) throw new Error('MONGODB_URI no definida');
+
 const DB_NAME = process.env.MONGODB_DBNAME || 'calidad';
 
 async function initCollection(db, collectionName, schema) {

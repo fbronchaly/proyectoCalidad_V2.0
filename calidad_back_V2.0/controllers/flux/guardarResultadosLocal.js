@@ -9,7 +9,9 @@ let clienteMongo;
  */
 async function getDb() {
   // Leemos las variables de entorno AQUÍ, justo antes de usarla, para asegurar que ya estén cargadas
-  const MONGODB_URI = 'mongodb://127.0.0.1:27017';
+  const MONGODB_URI = process.env.MONGODB_URI;
+  if (!MONGODB_URI) throw new Error('MONGODB_URI no definida');
+ 
   const DB_NAME = process.env.MONGODB_DBNAME || 'DatosCalidad';
 
   if (!clienteMongo) {
