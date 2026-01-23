@@ -1,0 +1,9 @@
+fastapi
+pymongo
+python-dotenv
+matplotlib
+numpy
+pandas
+requests
+seaborn
+reportlab
