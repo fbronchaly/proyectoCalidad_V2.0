@@ -223,6 +223,12 @@ export class ApiService {
     window.open(url, '_blank');
   }
 
+  // NUEVO: Método para descargar el PDF generado
+  downloadPdf(filename: string): void {
+    const url = `${this.baseUrl}/download-pdf/${filename}`;
+    window.open(url, '_blank');
+  }
+
   // MEJORADO: Método para desconectar WebSocket
   disconnect(): void {
     if (this.socket) {

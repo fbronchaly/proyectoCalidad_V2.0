@@ -1,9 +1,10 @@
 fastapi
+uvicorn[standard]
 pymongo
 python-dotenv
 matplotlib
-numpy
 pandas
-requests
-seaborn
+numpy
 reportlab
+requests
+

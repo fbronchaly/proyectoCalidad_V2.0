@@ -29,14 +29,33 @@ services:
     environment:
       - NODE_ENV=production
       - USE_PROD_ORIGIN=true
-      # Tu app ya usa estas vars normalmente; si están en .env.prod no hace falta repetirlas aquí.
-      # - MONGODB_URI=mongodb://mongodb:27017
-      # - MONGODB_DBNAME=DatosCalidad
+      - PYTHON_SERVICE_URL=http://servicio-python:8000
     volumes:
-      # Solo si realmente necesitas persistir uploads en el host:
       - ./calidad_back_V2.0/uploads:/usr/src/app/uploads
-      # Si NO quieres que el .env local pise el .env.prod dentro del contenedor, quita esta línea:
       - ./calidad_back_V2.0/.env:/usr/src/app/.env
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      calidad-python:
+        condition: service_started
+    links:
+      - calidad-python:servicio-python
+    networks:
+      - calidad-network
+
+  calidad-python:
+    build:
+      context: ./calidad_back_V2.0/pyhton module version 1.0
+      dockerfile: Dockerfile
+    image: proyectocalidad_v20-calidad-python
+    container_name: calidad-python-v2
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017/
+      - MONGODB_DBNAME=DatosCalidad
+      - DB_NAME=DatosCalidad
     depends_on:
       mongodb:
         condition: service_healthy
@@ -63,3 +82,6 @@ services:
 networks:
   calidad-network:
     driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16

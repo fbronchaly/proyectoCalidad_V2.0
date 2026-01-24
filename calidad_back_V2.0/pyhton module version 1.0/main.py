@@ -1,20 +1,38 @@
+from fastapi import FastAPI, Query, HTTPException
+from fastapi.responses import Response, JSONResponse
 import utils as u
-from fastapi import FastAPI
-from fastapi.responses import Response
 
-app=FastAPI()
+app = FastAPI(title="Calidad Python PDF Service", version="2.0")
+
+
+@app.get("/health")
+def health():
+    """
+    Healthcheck con ping a Mongo.
+    """
+    try:
+        ok = u.mongo_ping()
+        return JSONResponse({"ok": True, "mongo": ok})
+    except Exception as e:
+        return JSONResponse({"ok": False, "error": str(e)}, status_code=500)
+
+
 @app.post("/informe")
+def descargar_informe(id_transaccion: str = Query(..., alias="id_transaccion")):
+    try:
+        pdf_bytes = u.obtener_o_generar_pdf(id_transaccion=id_transaccion)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error generando PDF: {str(e)}")
 
-def descargar_informe_and_csv(id_transaccion:str):
-    db= u.conectar_calidad()
-    coleccion=db.resultados
-    informe_bytes = u.verificar_consulta_existente(id_transaccion)
-    if informe_bytes is False:
-        datos_informe= u.recopilar_datos_informe(coleccion, id_transaccion)
-        informe_bytes= u.generar_informe_pdf(datos_informe)
-        u.registrar_resultados_mongodb(id_transaccion, datos_informe)
+    if not pdf_bytes or not isinstance(pdf_bytes, (bytes, bytearray)):
+        raise HTTPException(status_code=500, detail="PDF vacío o inválido")
+
+    # Firma PDF
+    if not pdf_bytes.startswith(b"%PDF"):
+        raise HTTPException(status_code=500, detail="Salida no parece un PDF válido")
+
     return Response(
-        content= informe_bytes, 
+        content=pdf_bytes,
         media_type="application/pdf",
-        headers={"Content-Disposition": "attachment; filename=informe.pdf"}
+        headers={"Content-Disposition": f'inline; filename="Informe_{id_transaccion}.pdf"'},
     )

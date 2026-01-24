@@ -127,7 +127,9 @@ function limpiarBackupsExcel() {
 
     const files = fs.readdirSync(backupDir);
     const excels = files.filter(f => f.toLowerCase().endsWith('.xlsx'));
+    const pdfs = files.filter(f => f.toLowerCase().endsWith('.pdf')); // Incluimos PDFs en la limpieza
 
+    // Limpiar Excel
     for (const f of excels) {
       try {
         fs.unlinkSync(path.join(backupDir, f));
@@ -136,9 +138,19 @@ function limpiarBackupsExcel() {
         console.warn(`⚠️ No se pudo eliminar ${f}:`, e?.message || e);
       }
     }
+    
+    // Limpiar PDF
+    for (const f of pdfs) {
+      try {
+        fs.unlinkSync(path.join(backupDir, f));
+        console.log(`🗑️ PDF antiguo eliminado: ${f}`);
+      } catch (e) {
+        console.warn(`⚠️ No se pudo eliminar ${f}:`, e?.message || e);
+      }
+    }
 
-    if (excels.length) {
-      console.log(`🧹 Limpieza backups: eliminados ${excels.length} Excel(s)`);
+    if (excels.length || pdfs.length) {
+      console.log(`🧹 Limpieza backups: eliminados ${excels.length} Excel(s) y ${pdfs.length} PDF(s)`);
     }
   } catch (err) {
     console.warn('⚠️ Error durante limpieza de backups:', err?.message || err);
@@ -170,6 +182,34 @@ app.get('/api/download-excel/:filename', (req, res) => {
     });
   } else {
     res.status(404).json({ message: 'Archivo no encontrado' });
+  }
+});
+
+// ------------------------
+// Endpoint: /api/download-pdf/:filename - Descargar PDF generado (Informe)
+// ------------------------
+app.get('/api/download-pdf/:filename', (req, res) => {
+  const filename = req.params.filename;
+  
+  // Validación de seguridad básica
+  if (!filename || filename.includes('..') || !filename.endsWith('.pdf')) {
+    return res.status(400).json({ message: 'Nombre de archivo inválido' });
+  }
+
+  const backupDir = path.join(__dirname, 'backups');
+  const filePath = path.join(backupDir, filename);
+
+  if (fs.existsSync(filePath)) {
+    res.download(filePath, filename, (err) => {
+      if (err) {
+        console.error('Error al descargar PDF:', err);
+        if (!res.headersSent) {
+          res.status(500).send('Error al descargar el PDF');
+        }
+      }
+    });
+  } else {
+    res.status(404).json({ message: 'Archivo PDF no encontrado' });
   }
 });
 
@@ -410,7 +450,13 @@ app.post('/api/upload', (req, res) => {
       ]);
 
       currentChild.on('message', (msg) => {
-        console.log('📨 Mensaje recibido del worker:', JSON.stringify(msg, null, 2));
+        // MEJORA LOGS: No imprimir todo el JSON gigante, solo un resumen
+        if (msg.resultados && Array.isArray(msg.resultados)) {
+          const resumenMsg = { ...msg, resultados: `[ARRAY ${msg.resultados.length} ITEMS]` };
+          console.log('📨 Mensaje recibido del worker (Resumen):', JSON.stringify(resumenMsg, null, 2));
+        } else {
+          console.log('📨 Mensaje recibido del worker:', JSON.stringify(msg, null, 2));
+        }
         
         if (msg.progreso !== undefined) {
           const progressData = { 
@@ -453,19 +499,16 @@ app.post('/api/upload', (req, res) => {
             mensaje: 'Análisis completado - Datos disponibles',
             resultados: msg.resultados || [],
             excelFilename: msg.excelFilename, // 👈 NUEVO: Nombre del archivo Excel
+            pdfFilename: msg.pdfFilename,     // 👈 NUEVO: Nombre del archivo PDF
             timestamp: new Date().toISOString(),
             completed: true,
             success: true
           };
           
-          console.log('📡 Enviando datos completos INMEDIATAMENTE:', {
-            porcentaje: finalDataEvent.porcentaje,
-            mensaje: finalDataEvent.mensaje,
-            resultadosCount: finalDataEvent.resultados.length,
-            excelFilename: finalDataEvent.excelFilename, // Log del archivo
-            clientesConectados: io.engine.clientsCount,
-            timestamp: finalDataEvent.timestamp
-          });
+          console.log('📡 Enviando datos completos INMEDIATAMENTE al WebSocket');
+          console.log('   - Resultados:', finalDataEvent.resultados.length);
+          console.log('   - Excel:', finalDataEvent.excelFilename);
+          console.log('   - PDF:', finalDataEvent.pdfFilename);
           
           // Emitir evento ÚNICO con todos los datos
           io.emit('progreso', finalDataEvent);
@@ -477,6 +520,7 @@ app.post('/api/upload', (req, res) => {
               success: true,
               resultados: msg.resultados || [],
               excelFilename: msg.excelFilename, // 👈 También en el evento de backup
+              pdfFilename: msg.pdfFilename,     // 👈 También en el evento de backup
               mensaje: 'Datos confirmados',
               timestamp: new Date().toISOString()
             });

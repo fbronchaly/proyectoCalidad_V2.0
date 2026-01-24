@@ -260,10 +260,15 @@
       </mat-card-content>
 
       <!-- NUEVO: Botón de descarga -->
-      <mat-card-actions align="end" *ngIf="excelFilename" class="p-3">
-        <button mat-raised-button color="primary" (click)="downloadExcel()">
-          <mat-icon>file_download</mat-icon>
-          Descargar Excel con Resultados
+      <mat-card-actions align="end" class="p-3" style="gap: 10px; display: flex; justify-content: flex-end;">
+        <button mat-raised-button color="primary" *ngIf="excelFilename" (click)="downloadExcel()">
+          <mat-icon>table_view</mat-icon>
+          Descargar Excel
+        </button>
+        
+        <button mat-raised-button color="accent" *ngIf="pdfFilename" (click)="downloadPdf()">
+          <mat-icon>picture_as_pdf</mat-icon>
+          Descargar Informe PDF
         </button>
       </mat-card-actions>
     </mat-card>

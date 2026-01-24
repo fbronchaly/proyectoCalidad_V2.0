@@ -55,13 +55,18 @@ echo "🐳 3. Reconstruyendo Docker en el servidor..."
 # Si SUDO_PASS está definida, no preguntamos
 if [ "${SUDO_PASS:-}" != "" ]; then
   echo "   🔐 Usando SUDO_PASS desde entorno (modo automático)"
-  ssh $SSH_OPTS $REMOTE_USER@$REMOTE_HOST "cd $REMOTE_PATH && echo '$SUDO_PASS' | sudo -S docker compose up -d --build"
+  # CAMBIO: Agregamos 'docker compose down' para borrar la red vieja antes de crear la nueva con subred
+  ssh $SSH_OPTS $REMOTE_USER@$REMOTE_HOST "cd $REMOTE_PATH && echo '$SUDO_PASS' | sudo -S docker compose down && echo '$SUDO_PASS' | sudo -S docker compose up -d --build"
 else
   echo "   🔐 Se requiere contraseña de sudo en el servidor."
   echo -n "   Introduce la contraseña de sudo para $REMOTE_USER@$REMOTE_HOST: "
   read -s PASS
   echo
-  ssh $SSH_OPTS $REMOTE_USER@$REMOTE_HOST "cd $REMOTE_PATH && echo '$PASS' | sudo -S docker compose up -d --build"
+  # CAMBIO: Agregamos 'docker compose down' aquí también
+  ssh $SSH_OPTS $REMOTE_USER@$REMOTE_HOST "cd $REMOTE_PATH && echo '$PASS' | sudo -S docker compose down && echo '$PASS' | sudo -S docker compose up -d --build"
 fi
 
 echo "✅ === DESPLIEGUE REMOTO COMPLETADO ==="
+
+# Permisos --> chmod +x deploy-to-server.sh
+# Arrancar script -->   ./deploy-to-server.sh
