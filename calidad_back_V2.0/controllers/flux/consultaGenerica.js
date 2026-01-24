@@ -1,58 +1,9 @@
-const fs = require('fs');
 const path = require('path');
 const consultarBasesDeDatos = require('../servicios/consultarBasesDeDatos');
 const { obtenerMetadatos } = require('../servicios/obtenerMetadatos');
 const { procesarQuery } = require('./procesadorQuery');
 
-// Ruta corregida al archivo codigosHD.json (ahora dentro del backend)
-const RUTA_CODIGOS_HD = path.resolve(__dirname, '../../documentacion/codigosHD.json');
-const RUTA_ACCESOS_VASCULARES = path.resolve(__dirname, '../../documentacion/accesos_vasculares.json');
-const groupedTests = require('../../comorbilidad/transformed_grouped_tests.json'); 
-
-// Mapa en memoria: database (ruta) -> objeto de codigosHD.json
-let mapaCodigosHdPorDatabase = null;
-let mapaAccesosVascularesPorDatabase = null;
-
-// Mapa global entre el valor "lógico" de TIPOHEMO usado en indicesJSON
-// y la descripción que aparece en codigosHD.json
-// 1 -> HD convencional, 2 -> HDF on line, 3 -> HD expandida
-const MAPA_TIPOHEMO_GLOBAL = {
-  1: 'HD',             // Hemodiálisis convencional
-  2: 'HD OL',          // HDF on-line
-  3: 'HD EXTENDIDA',   // HD expandida
-
-  // Reservados para futuros indicadores:
-  4: 'HD DOM',         // Hemodiálisis domiciliaria
-  5: 'PERIT',          // Diálisis peritoneal
-  6: 'HD UCI',         // Hemodiálisis en UCI
-};
-
-/**
- * Carga codigosHD.json una sola vez y construye un mapa por ruta de base de datos.
- */
-function getMapaCodigosHd() {
-  if (mapaCodigosHdPorDatabase !== null) return mapaCodigosHdPorDatabase;
-
-  try {
-    let raw = fs.readFileSync(RUTA_CODIGOS_HD, 'utf8');
-    raw = raw.replace(/^\uFEFF/, '').trim(); // limpiar BOM y espacios
-    const json = JSON.parse(raw);
-
-    mapaCodigosHdPorDatabase = {};
-    for (const entry of json) {
-      if (entry && entry.database) {
-        mapaCodigosHdPorDatabase[entry.database.toLowerCase()] = entry;
-      }
-    }
-
-    console.log('📚 codigosHD.json cargado. Bases configuradas:', Object.keys(mapaCodigosHdPorDatabase));
-  } catch (err) {
-    console.error('⛔ No se ha podido cargar codigosHD.json:', err.message);
-    mapaCodigosHdPorDatabase = {};
-  }
-
-  return mapaCodigosHdPorDatabase;
-}
+// FUNCIÓN ELIMINADA: obtenerCodigosCaptoresPorCentro se ha movido a procesadorQuery.js
 
 async function consultaGenerica(intervalo, dataBase, consulta) {
   try {
@@ -79,47 +30,43 @@ async function consultaGenerica(intervalo, dataBase, consulta) {
     const FECHAFIN = toISO(finRaw);
     
     // Partimos de la plantilla que viene de indicesJSON.json
-    let queryFinalSinTipoHemo = consulta || '';
+    let plantillaQueryConFechas = consulta || '';
 
+    // NO BORRAR¡¡¡¡ Calculamos FECHAINI (7 días antes para indicador fotografía del dia)
+    let FECHAINI_CALCULADA = null;
+    if (FECHAFIN) {
+      const fecha = new Date(FECHAFIN);
+      if (!isNaN(fecha.getTime())) {
+        fecha.setDate(fecha.getDate() - 7);
+        FECHAINI_CALCULADA = fecha.toISOString().split('T')[0];  // 'YYYY-MM-DD'
+      }
+    }
 
-        // NO BORRAR¡¡¡¡ Calculamos FECHAINI (7 días antes para indicador fotografía del dia)
-const fecha = new Date(FECHAFIN);
-fecha.setDate(fecha.getDate() - 7);
-const FECHAINI_CALCULADA = fecha.toISOString().split('T')[0];  // 'YYYY-MM-DD'
+    // Solo si tenemos fechas, hacemos los reemplazos
+    if (FECHAINI) {
+      plantillaQueryConFechas = plantillaQueryConFechas
+        .replace(/':FECHAINI'/gi, `'${FECHAINI}'`) // ':FECHAINI'
+        .replace(/:FECHAINI\b/gi, `CAST('${FECHAINI}' AS DATE)`); // :FECHAINI
+    }
 
+    if (FECHAFIN) {
+      plantillaQueryConFechas = plantillaQueryConFechas
+        .replace(/':FECHAFIN'/gi, `'${FECHAFIN}'`) // ':FECHAFIN'
+        .replace(/:FECHAFIN\b/gi, `CAST('${FECHAFIN}' AS DATE)`); // :FECHAFIN
+    }
 
-// Solo si tenemos fechas, hacemos los reemplazos
-if (FECHAINI) {
-  queryFinalSinTipoHemo = queryFinalSinTipoHemo
-    .replace(/':FECHAINI'/gi, `'${FECHAINI}'`) // ':FECHAINI'
-    .replace(/:FECHAINI\b/gi, `'${FECHAINI}'`); // :FECHAINI
-}
+    if (FECHAINI_CALCULADA) {
+      plantillaQueryConFechas = plantillaQueryConFechas
+        .replace(/':FECHAINI_CALCULADA'/gi, `'${FECHAINI_CALCULADA}'`)   // ':FECHAINI_CALCULADA'
+        .replace(/:FECHAINI_CALCULADA\b/gi, `CAST('${FECHAINI_CALCULADA}' AS DATE)`);  // :FECHAINI_CALCULADA
+    }
 
-if (FECHAFIN) {
-  queryFinalSinTipoHemo = queryFinalSinTipoHemo
-    .replace(/':FECHAFIN'/gi, `'${FECHAFIN}'`) // ':FECHAFIN'
-    .replace(/:FECHAFIN\b/gi, `'${FECHAFIN}'`); // :FECHAFIN
-}
-
-if (FECHAINI_CALCULADA) {
-  queryFinalSinTipoHemo = queryFinalSinTipoHemo
-    .replace(/':FECHAINI_CALCULADA'/gi, `'${FECHAINI_CALCULADA}'`)   // ':FECHAINI_CALCULADA'
-    .replace(/:FECHAINI_CALCULADA\b/gi, `'${FECHAINI_CALCULADA}'`);  // :FECHAINI_CALCULADA
-}
-
-
-    
     console.log("🔍 Query ORIGINAL (plantilla):", consulta);
     console.log("📅 Parámetros de fecha:", { FECHAINI, FECHAFIN });
-    console.log("🧾 Query con fechas aplicada:", queryFinalSinTipoHemo);
-
-
-
-    
+    console.log("🧾 Query con fechas aplicada:", plantillaQueryConFechas);
 
     // Ejecutar consultas de forma secuencial y consolidar
     const resultadosTotales = [];
-
 
     for (const config of basesDatos) {
       // baseData limpio SIEMPRE (incluso si hay error)
@@ -128,9 +75,15 @@ if (FECHAINI_CALCULADA) {
       baseData = baseData.replace(/^NF6_/i, '').replace(/\.gdb$/i, ''); // LosOlmos
     
       try {
+        // Copia local de la query para esta iteración para no contaminar la plantilla original
+        let queryIteracion = plantillaQueryConFechas;
+
+        // --- ELIMINADO: INYECCIÓN MANUAL DE CODIGOS_CAPTORES ---
+        // La lógica se ha movido internamente a procesarQuery()
+
         // 1) Construir query por base USANDO procesadorQuery
         // Eliminamos la lógica repetitiva local y usamos el nuevo módulo
-        const queryFinal = procesarQuery(queryFinalSinTipoHemo, config);
+        const queryFinal = procesarQuery(queryIteracion, config);
 
         console.log(`🧾 QUERYFINAL [${baseData}] -> ${queryFinal}`);
     
@@ -199,7 +152,6 @@ if (FECHAINI_CALCULADA) {
         });
       }
     }
-    
 
     console.log('✅ Resultados finales consolidados:', JSON.stringify(resultadosTotales, null, 2));
     return resultadosTotales;

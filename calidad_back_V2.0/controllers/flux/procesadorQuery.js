@@ -1,13 +1,14 @@
 const fs = require('fs');
 const path = require('path');
 
+const catalogosMedicamentos = require('../../documentacion/CatalogosMedicamentos.index.json');
+const catalogosTratamientos = require('../../documentacion/CatalogosTratamientos.index.json');
+
 // Rutas a archivos de configuración
-const RUTA_CODIGOS_HD = path.resolve(__dirname, '../../documentacion/codigosHD.json');
 const RUTA_ACCESOS_VASCULARES = path.resolve(__dirname, '../../documentacion/accesos_vasculares.json');
 const groupedTests = require('../../comorbilidad/transformed_grouped_tests.json'); 
 
 // Cache en memoria
-let mapaCodigosHdPorDatabase = null;
 let mapaAccesosVascularesPorDatabase = null;
 
 // Mapa global TIPOHEMO (referencia)
@@ -61,6 +62,89 @@ function getMapaAccesosVasculares() {
     mapaAccesosVascularesPorDatabase = {};
   }
   return mapaAccesosVascularesPorDatabase;
+}
+
+/**
+ * Lógica corregida para leer la estructura real de los JSONs (Objetos, no Arrays)
+ */
+function obtenerCodigosCaptoresPorCentro(nombreCentro) {
+  const centroBuscado = nombreCentro.toLowerCase(); // ej: 'losolmos'
+
+  // Helper para buscar el nodo del centro en un objeto mapa {ruta: data}
+  // Normaliza las rutas "/NFS/.../NF6_LosOlmos.gdb" a "losolmos" para comparar"
+  const encontrarNodoCentro = (mapaCentros) => {
+    if (!mapaCentros) return null;
+    const key = Object.keys(mapaCentros).find(k => {
+      // Ignoramos claves que no sean rutas (ej: "version", "source_file")
+      if (!k.includes('/')) return false; 
+      
+      const nombreKey = path.basename(k)
+        .replace(/^NF6_/i, '')
+        .replace(/\.gdb$/i, '')
+        .toLowerCase();
+      
+      return nombreKey === centroBuscado;
+    });
+    return key ? mapaCentros[key] : null;
+  };
+
+  const codigos = [];
+
+  // Función interna para extraer códigos de un nodo 'byTipo' buscando palabras clave
+  const extraerDeByTipo = (byTipoObj) => {
+    if (!byTipoObj) return;
+    const claves = Object.keys(byTipoObj);
+    
+    // Palabras clave para identificar captores de fósforo en los nombres de categoría (ej: "QUELANTES DEL FSFORO")
+    const keywords = ['FOSFORO', 'FSFORO', 'PHOS', 'CAPTOR', 'QUELANTE'];
+    
+    const clavesInteres = claves.filter(k => {
+        const upper = k.toUpperCase();
+        return keywords.some(w => upper.includes(w));
+    });
+
+    clavesInteres.forEach(k => {
+        const entry = byTipoObj[k];
+        if (entry && Array.isArray(entry.codes)) {
+            codigos.push(...entry.codes);
+        }
+    });
+  };
+
+  // 1. Medicamentos: Estructura { centros: { "/ruta": ... } }
+  const mapMed = catalogosMedicamentos.centros || {};
+  const nodoMed = encontrarNodoCentro(mapMed);
+  if (nodoMed && nodoMed.byTipo) {
+      extraerDeByTipo(nodoMed.byTipo);
+  }
+
+  // 2. Tratamientos: Estructura { "/ruta": ... } (Directo en raíz)
+  const nodoTrat = encontrarNodoCentro(catalogosTratamientos);
+  if (nodoTrat && nodoTrat.byTipo) {
+      extraerDeByTipo(nodoTrat.byTipo);
+  }
+
+  return [...new Set(codigos)];
+}
+
+function aplicarCodigosCaptoresPorBase(query, config) {
+  if (!query || !query.includes(':CODIGOS_CAPTORES')) return query;
+
+  // Extraer nombre limpio del centro a partir de config
+  let baseData = config.nombre || config.database || '';
+  baseData = path.basename(String(baseData));          
+  baseData = baseData.replace(/^NF6_/i, '').replace(/\.gdb$/i, ''); 
+
+  const codigos = obtenerCodigosCaptoresPorCentro(baseData);
+
+  if (!codigos.length) {
+    // Es normal warnings en tests locales si no coinciden los nombres, pero lo mantenemos
+    // console.warn(`⚠️ Sin códigos CAPTOR_FOSFORO para ${baseData}`);
+  }
+
+  const listaSQL = codigos.map(c => `'${c}'`).join(',');
+  
+  return query.replace(/:CODIGOS_CAPTORES/g, listaSQL || "''");
 }
 
 /**
@@ -178,6 +262,7 @@ function aplicarCodigosCateterTunelizadoPorBase(query, config) {
 function procesarQuery(queryOriginal, config) {
   let query = queryOriginal;
   
+  query = aplicarCodigosCaptoresPorBase(query, config); // Nueva integración
   query = aplicarCodTestPorBase(query, config);
   query = aplicarCodigosCateterTunelizadoPorBase(query, config); 
   query = aplicarCodigosCateterPorBase(query, config);

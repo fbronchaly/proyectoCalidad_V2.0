@@ -1,0 +1,3476 @@
+{
+  "/NFS/restores/NF6_OsCarballos.gdb": {
+    "byTipo": {
+      "ERITROPOYETINA": {
+        "codes": [
+          "alfa e",
+          "ARA",
+          "bn",
+          "BINO",
+          "epo",
+          "eprex",
+          "EPO",
+          "CERA",
+          "reta",
+          "RETR"
+        ],
+        "items": {
+          "alfa e": "ALFA EPOETINA",
+          "ARA": "ARANESP",
+          "bn": "BINOCRIT",
+          "BINO": "BINOCRIT 1000",
+          "epo": "EPOETINA BETA",
+          "eprex": "EPREX",
+          "EPO": "ERITROPOYETINA",
+          "CERA": "MIRCERA",
+          "reta": "RETACRIT",
+          "RETR": "RETRACRIT 1000"
+        }
+      },
+      "VITAMINA D": {
+        "codes": [
+          "ALF",
+          "HIDR",
+          "ROC-25",
+          "ROC-2",
+          "ZEM-0",
+          "ZEM 2.5",
+          "ZEM 5",
+          "ZEM-2"
+        ],
+        "items": {
+          "ALF": "ALFACALCIDOL",
+          "HIDR": "HIDROFEROL (amp. bebibles de 266 mcg)",
+          "ROC-25": "ROCALTROL (0.25 �grs.)",
+          "ROC-2": "ROCALTROL (0.50 �grs.)",
+          "ZEM-0": "ZEMPLAR",
+          "ZEM 2.5": "ZEMPLAR (2.5 �grs.)",
+          "ZEM 5": "ZEMPLAR (5 �grs.)",
+          "ZEM-2": "ZEMPLAR (c�ps. 2 �grs.)"
+        }
+      },
+      "CALCIMIMETICO": {
+        "codes": [
+          "CINA30",
+          "CINA 60",
+          "MIM",
+          "MIM-1",
+          "MIM-2",
+          "MIM-3",
+          "pars10",
+          "pars2.5",
+          "pars 5"
+        ],
+        "items": {
+          "CINA30": "CINACALCET (comps de 30 mg)",
+          "CINA 60": "CINACALCET (comps de 60 mg)",
+          "MIM": "MIMPARA",
+          "MIM-1": "MIMPARA (30 mgrs.)",
+          "MIM-2": "MIMPARA (60 mgrs.)",
+          "MIM-3": "MIMPARA (90 mgrs.)",
+          "pars10": "PARSABIV 10",
+          "pars2.5": "PARSABIV 2.5",
+          "pars 5": "PARSABIV 5"
+        }
+      },
+      "HIERRO": {
+        "codes": [
+          "feri",
+          "feriv",
+          "ferr",
+          "hierro",
+          "HIE"
+        ],
+        "items": {
+          "feri": "FERINJECT 50 mg/ml. Viales 2 ml.",
+          "feriv": "FERIV",
+          "ferr": "ferrlecit 62.5mg/5cc",
+          "hierro": "hierro (III) hidroxido sacarosa",
+          "HIE": "VENOFER"
+        }
+      }
+    },
+    "byCode": {
+      "alfa e": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ALFA EPOETINA"
+      },
+      "ALF": {
+        "tipo": "VITAMINA D",
+        "nombre": "ALFACALCIDOL"
+      },
+      "ARA": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP"
+      },
+      "bn": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT"
+      },
+      "BINO": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT 1000"
+      },
+      "CINA30": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "CINACALCET (comps de 30 mg)"
+      },
+      "CINA 60": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "CINACALCET (comps de 60 mg)"
+      },
+      "epo": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPOETINA BETA"
+      },
+      "eprex": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX"
+      },
+      "EPO": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ERITROPOYETINA"
+      },
+      "feri": {
+        "tipo": "HIERRO",
+        "nombre": "FERINJECT 50 mg/ml. Viales 2 ml."
+      },
+      "feriv": {
+        "tipo": "HIERRO",
+        "nombre": "FERIV"
+      },
+      "ferr": {
+        "tipo": "HIERRO",
+        "nombre": "ferrlecit 62.5mg/5cc"
+      },
+      "HIDR": {
+        "tipo": "VITAMINA D",
+        "nombre": "HIDROFEROL (amp. bebibles de 266 mcg)"
+      },
+      "hierro": {
+        "tipo": "HIERRO",
+        "nombre": "hierro (III) hidroxido sacarosa"
+      },
+      "MIM": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "MIMPARA"
+      },
+      "MIM-1": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "MIMPARA (30 mgrs.)"
+      },
+      "MIM-2": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "MIMPARA (60 mgrs.)"
+      },
+      "MIM-3": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "MIMPARA (90 mgrs.)"
+      },
+      "CERA": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "MIRCERA"
+      },
+      "pars10": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "PARSABIV 10"
+      },
+      "pars2.5": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "PARSABIV 2.5"
+      },
+      "pars 5": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "PARSABIV 5"
+      },
+      "reta": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "RETACRIT"
+      },
+      "RETR": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "RETRACRIT 1000"
+      },
+      "ROC-25": {
+        "tipo": "VITAMINA D",
+        "nombre": "ROCALTROL (0.25 �grs.)"
+      },
+      "ROC-2": {
+        "tipo": "VITAMINA D",
+        "nombre": "ROCALTROL (0.50 �grs.)"
+      },
+      "HIE": {
+        "tipo": "HIERRO",
+        "nombre": "VENOFER"
+      },
+      "ZEM-0": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR"
+      },
+      "ZEM 2.5": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR (2.5 �grs.)"
+      },
+      "ZEM 5": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR (5 �grs.)"
+      },
+      "ZEM-2": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR (c�ps. 2 �grs.)"
+      }
+    }
+  },
+  "/NFS/restores/NF6_OsCarballosII.gdb": {
+    "byTipo": {
+      "ERITROPOYETINA": {
+        "codes": [
+          "alfa e",
+          "ARA",
+          "epo",
+          "ep",
+          "eprex",
+          "EPO",
+          "CERA",
+          "reta"
+        ],
+        "items": {
+          "alfa e": "ALFA EPOETINA",
+          "ARA": "ARANESP",
+          "epo": "EPOETINA BETA",
+          "ep": "EPOETINA ZETA",
+          "eprex": "EPREX",
+          "EPO": "ERITROPOYETINA",
+          "CERA": "MIRCERA",
+          "reta": "RETACRIT"
+        }
+      },
+      "VITAMINA D": {
+        "codes": [
+          "ALF",
+          "HIDR",
+          "hidr",
+          "par",
+          "PARI",
+          "ROC-25",
+          "ROC-2",
+          "ZEM-0",
+          "ZEM 2.5",
+          "ZEM 5",
+          "ZEM-4",
+          "ZEM-2"
+        ],
+        "items": {
+          "ALF": "ALFACALCIDOL",
+          "HIDR": "HIDROFEROL (amp bebible de 266 mcg)",
+          "hidr": "HIDROFEROL (cap 0,266 mg)",
+          "par": "PARICALCITOL",
+          "PARI": "PARICALCITOL",
+          "ROC-25": "ROCALTROL (cap 0.25 mcg)",
+          "ROC-2": "ROCALTROL (cap 0.5 mcg)",
+          "ZEM-0": "ZEMPLAR",
+          "ZEM 2.5": "ZEMPLAR (2.5 �grs.)",
+          "ZEM 5": "ZEMPLAR (5 �grs.)",
+          "ZEM-4": "ZEMPLAR (c�aps. 4 �grs.)",
+          "ZEM-2": "ZEMPLAR (c�ps. 2 �grs.)"
+        }
+      },
+      "HIERRO": {
+        "codes": [
+          "ferin",
+          "feriv",
+          "hierro",
+          "HIE"
+        ],
+        "items": {
+          "ferin": "FERINJECT",
+          "feriv": "FERIV",
+          "hierro": "hierro (III) hidroxido sacarosa",
+          "HIE": "VENOFER"
+        }
+      },
+      "CALCIMIMETICO": {
+        "codes": [
+          "MIM",
+          "MIM-1",
+          "MIM-2",
+          "pars"
+        ],
+        "items": {
+          "MIM": "MIMPARA",
+          "MIM-1": "MIMPARA (CINACALCET comp 30 mg)",
+          "MIM-2": "MIMPARA (CINACALCET comp 60 mg)",
+          "pars": "PARSABIV"
+        }
+      }
+    },
+    "byCode": {
+      "alfa e": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ALFA EPOETINA"
+      },
+      "ALF": {
+        "tipo": "VITAMINA D",
+        "nombre": "ALFACALCIDOL"
+      },
+      "ARA": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP"
+      },
+      "epo": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPOETINA BETA"
+      },
+      "ep": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPOETINA ZETA"
+      },
+      "eprex": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX"
+      },
+      "EPO": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ERITROPOYETINA"
+      },
+      "ferin": {
+        "tipo": "HIERRO",
+        "nombre": "FERINJECT"
+      },
+      "feriv": {
+        "tipo": "HIERRO",
+        "nombre": "FERIV"
+      },
+      "HIDR": {
+        "tipo": "VITAMINA D",
+        "nombre": "HIDROFEROL (amp bebible de 266 mcg)"
+      },
+      "hidr": {
+        "tipo": "VITAMINA D",
+        "nombre": "HIDROFEROL (cap 0,266 mg)"
+      },
+      "hierro": {
+        "tipo": "HIERRO",
+        "nombre": "hierro (III) hidroxido sacarosa"
+      },
+      "MIM": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "MIMPARA"
+      },
+      "MIM-1": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "MIMPARA (CINACALCET comp 30 mg)"
+      },
+      "MIM-2": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "MIMPARA (CINACALCET comp 60 mg)"
+      },
+      "CERA": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "MIRCERA"
+      },
+      "par": {
+        "tipo": "VITAMINA D",
+        "nombre": "PARICALCITOL"
+      },
+      "PARI": {
+        "tipo": "VITAMINA D",
+        "nombre": "PARICALCITOL"
+      },
+      "pars": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "PARSABIV"
+      },
+      "reta": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "RETACRIT"
+      },
+      "ROC-25": {
+        "tipo": "VITAMINA D",
+        "nombre": "ROCALTROL (cap 0.25 mcg)"
+      },
+      "ROC-2": {
+        "tipo": "VITAMINA D",
+        "nombre": "ROCALTROL (cap 0.5 mcg)"
+      },
+      "HIE": {
+        "tipo": "HIERRO",
+        "nombre": "VENOFER"
+      },
+      "ZEM-0": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR"
+      },
+      "ZEM 2.5": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR (2.5 �grs.)"
+      },
+      "ZEM 5": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR (5 �grs.)"
+      },
+      "ZEM-4": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR (c�aps. 4 �grs.)"
+      },
+      "ZEM-2": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR (c�ps. 2 �grs.)"
+      }
+    }
+  },
+  "/NFS/restores/NF6_Teixedal.gdb": {
+    "byTipo": {
+      "ERITROPOYETINA": {
+        "codes": [
+          "alfa e",
+          "ARA",
+          "epo",
+          "eprex",
+          "CERA"
+        ],
+        "items": {
+          "alfa e": "ALFA EPOETINA",
+          "ARA": "ARANESP",
+          "epo": "EPOETINA BETA",
+          "eprex": "EPREX",
+          "CERA": "MIRCERA"
+        }
+      },
+      "HIERRO": {
+        "codes": [
+          "feriv",
+          "hierro",
+          "HIE"
+        ],
+        "items": {
+          "feriv": "FERIV",
+          "hierro": "hierro (III) hidroxido sacarosa",
+          "HIE": "VENOFER"
+        }
+      },
+      "VITAMINA D": {
+        "codes": [
+          "HIDR",
+          "HID-G",
+          "par",
+          "PARI",
+          "ROC-25",
+          "ZEM-0"
+        ],
+        "items": {
+          "HIDR": "HIDROFEROL (amp bebible de 266 mcg)",
+          "HID-G": "HIDROFEROL gotas",
+          "par": "PARICALCITOL",
+          "PARI": "PARICALCITOL",
+          "ROC-25": "ROCALTROL (cap 0.25 mcg)",
+          "ZEM-0": "ZEMPLAR"
+        }
+      },
+      "CALCIMIMETICO": {
+        "codes": [
+          "MIM",
+          "MIM-1",
+          "MIM-2",
+          "MIM-3",
+          "pars"
+        ],
+        "items": {
+          "MIM": "MIMPARA",
+          "MIM-1": "MIMPARA (comp 30 mg)",
+          "MIM-2": "MIMPARA (comp 60 mg)",
+          "MIM-3": "MIMPARA (comp 90 mg)",
+          "pars": "PARSABIV"
+        }
+      }
+    },
+    "byCode": {
+      "alfa e": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ALFA EPOETINA"
+      },
+      "ARA": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP"
+      },
+      "epo": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPOETINA BETA"
+      },
+      "eprex": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX"
+      },
+      "feriv": {
+        "tipo": "HIERRO",
+        "nombre": "FERIV"
+      },
+      "HIDR": {
+        "tipo": "VITAMINA D",
+        "nombre": "HIDROFEROL (amp bebible de 266 mcg)"
+      },
+      "HID-G": {
+        "tipo": "VITAMINA D",
+        "nombre": "HIDROFEROL gotas"
+      },
+      "hierro": {
+        "tipo": "HIERRO",
+        "nombre": "hierro (III) hidroxido sacarosa"
+      },
+      "MIM": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "MIMPARA"
+      },
+      "MIM-1": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "MIMPARA (comp 30 mg)"
+      },
+      "MIM-2": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "MIMPARA (comp 60 mg)"
+      },
+      "MIM-3": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "MIMPARA (comp 90 mg)"
+      },
+      "CERA": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "MIRCERA"
+      },
+      "par": {
+        "tipo": "VITAMINA D",
+        "nombre": "PARICALCITOL"
+      },
+      "PARI": {
+        "tipo": "VITAMINA D",
+        "nombre": "PARICALCITOL"
+      },
+      "pars": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "PARSABIV"
+      },
+      "ROC-25": {
+        "tipo": "VITAMINA D",
+        "nombre": "ROCALTROL (cap 0.25 mcg)"
+      },
+      "HIE": {
+        "tipo": "HIERRO",
+        "nombre": "VENOFER"
+      },
+      "ZEM-0": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR"
+      }
+    }
+  },
+  "/NFS/restores/NF6_SantaEngracia.gdb": {
+    "byTipo": {
+      "ERITROPOYETINA": {
+        "codes": [
+          "NESP",
+          "BNCRT",
+          "EPO",
+          "EPO10",
+          "EPO1",
+          "EPO2",
+          "EPO3",
+          "EPO4",
+          "EPO5",
+          "EPO6",
+          "EPO7",
+          "EPO8",
+          "EPO9",
+          "Z_EPO",
+          "434334",
+          "434333",
+          "434336",
+          "434335"
+        ],
+        "items": {
+          "NESP": "ARANESP",
+          "BNCRT": "BINOCRIT",
+          "EPO": "EPREX",
+          "EPO10": "Z-EPO 10.000",
+          "EPO1": "Z-EPO 1000",
+          "EPO2": "Z-EPO 2000",
+          "EPO3": "Z-EPO 3000",
+          "EPO4": "Z-EPO 4000",
+          "EPO5": "Z-EPO 5000",
+          "EPO6": "Z-EPO 6000",
+          "EPO7": "Z-EPO 7000",
+          "EPO8": "Z-EPO 8000",
+          "EPO9": "Z-EPO 9000",
+          "Z_EPO": "Z-EPOPEN 2000",
+          "434334": "Z-EPREX 1000 UI",
+          "434333": "Z-EPREX 2000 UI",
+          "434336": "Z-EPREX 3000 UI",
+          "434335": "Z-EPREX 4000 UI"
+        }
+      },
+      "VITAMINA D": {
+        "codes": [
+          "CALCI",
+          "calci",
+          "colecal",
+          "434337",
+          "ETPH 0.",
+          "Etpf gt",
+          "HDF",
+          "Hidrofe",
+          "paric",
+          "Z_ROC",
+          "Zemplar"
+        ],
+        "items": {
+          "CALCI": "CALCIJEX",
+          "calci": "CALCITRIOL",
+          "colecal": "DELTIUS 25000",
+          "434337": "ETALPHA 0,25",
+          "ETPH 0.": "ETALPHA 0,5",
+          "Etpf gt": "ETALPHA gotas",
+          "HDF": "HIDROFEROL",
+          "Hidrofe": "HIDROFEROL",
+          "paric": "PARICALCITOL",
+          "Z_ROC": "ROCALTROL 0,25",
+          "Zemplar": "ZEMPLAR"
+        }
+      },
+      "HIERRO": {
+        "codes": [
+          "Z-HIERR",
+          "Z_HIE",
+          "Z_HIERR"
+        ],
+        "items": {
+          "Z-HIERR": "FERIV",
+          "Z_HIE": "FERRLECIT",
+          "Z_HIERR": "VENOFER"
+        }
+      },
+      "CALCIMIMETICO": {
+        "codes": [
+          "CALCM",
+          "CALCIM",
+          "CALCIM9",
+          "prsb2.5",
+          "parsa"
+        ],
+        "items": {
+          "CALCM": "MIMPARA 30",
+          "CALCIM": "MIMPARA 60",
+          "CALCIM9": "MIMPARA 90",
+          "prsb2.5": "PARSABIV 2.5",
+          "parsa": "PARSABIV 5 mg"
+        }
+      }
+    },
+    "byCode": {
+      "NESP": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP"
+      },
+      "BNCRT": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT"
+      },
+      "CALCI": {
+        "tipo": "VITAMINA D",
+        "nombre": "CALCIJEX"
+      },
+      "calci": {
+        "tipo": "VITAMINA D",
+        "nombre": "CALCITRIOL"
+      },
+      "colecal": {
+        "tipo": "VITAMINA D",
+        "nombre": "DELTIUS 25000"
+      },
+      "EPO": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX"
+      },
+      "434337": {
+        "tipo": "VITAMINA D",
+        "nombre": "ETALPHA 0,25"
+      },
+      "ETPH 0.": {
+        "tipo": "VITAMINA D",
+        "nombre": "ETALPHA 0,5"
+      },
+      "Etpf gt": {
+        "tipo": "VITAMINA D",
+        "nombre": "ETALPHA gotas"
+      },
+      "Z-HIERR": {
+        "tipo": "HIERRO",
+        "nombre": "FERIV"
+      },
+      "Z_HIE": {
+        "tipo": "HIERRO",
+        "nombre": "FERRLECIT"
+      },
+      "HDF": {
+        "tipo": "VITAMINA D",
+        "nombre": "HIDROFEROL"
+      },
+      "Hidrofe": {
+        "tipo": "VITAMINA D",
+        "nombre": "HIDROFEROL"
+      },
+      "CALCM": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "MIMPARA 30"
+      },
+      "CALCIM": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "MIMPARA 60"
+      },
+      "CALCIM9": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "MIMPARA 90"
+      },
+      "paric": {
+        "tipo": "VITAMINA D",
+        "nombre": "PARICALCITOL"
+      },
+      "prsb2.5": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "PARSABIV 2.5"
+      },
+      "parsa": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "PARSABIV 5 mg"
+      },
+      "Z_ROC": {
+        "tipo": "VITAMINA D",
+        "nombre": "ROCALTROL 0,25"
+      },
+      "Z_HIERR": {
+        "tipo": "HIERRO",
+        "nombre": "VENOFER"
+      },
+      "Zemplar": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR"
+      },
+      "EPO10": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPO 10.000"
+      },
+      "EPO1": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPO 1000"
+      },
+      "EPO2": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPO 2000"
+      },
+      "EPO3": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPO 3000"
+      },
+      "EPO4": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPO 4000"
+      },
+      "EPO5": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPO 5000"
+      },
+      "EPO6": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPO 6000"
+      },
+      "EPO7": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPO 7000"
+      },
+      "EPO8": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPO 8000"
+      },
+      "EPO9": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPO 9000"
+      },
+      "Z_EPO": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPOPEN 2000"
+      },
+      "434334": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPREX 1000 UI"
+      },
+      "434333": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPREX 2000 UI"
+      },
+      "434336": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPREX 3000 UI"
+      },
+      "434335": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPREX 4000 UI"
+      }
+    }
+  },
+  "/NFS/restores/NF6_LosOlmos.gdb": {
+    "byTipo": {
+      "ERITROPOYETINA": {
+        "codes": [
+          "NESP",
+          "NESP1",
+          "NESP10",
+          "NESP 12",
+          "NESP2",
+          "NESP3",
+          "NESP4",
+          "NESP50",
+          "NESP6",
+          "NESP5",
+          "B_inoc",
+          "EPO",
+          "EPO10",
+          "EPO1",
+          "EPO2",
+          "EPO3",
+          "EPO4",
+          "EPO5",
+          "EPO6",
+          "EPO7",
+          "EPO8",
+          "Z_EPO",
+          "434333"
+        ],
+        "items": {
+          "NESP": "ARANESP",
+          "NESP1": "ARANESP 10",
+          "NESP10": "ARANESP 100",
+          "NESP 12": "ARANESP 120",
+          "NESP2": "ARANESP 20",
+          "NESP3": "ARANESP 30",
+          "NESP4": "ARANESP 40",
+          "NESP50": "ARANESP 50",
+          "NESP6": "ARANESP 60",
+          "NESP5": "ARANESP 80",
+          "B_inoc": "BINOCRIT",
+          "EPO": "EPO",
+          "EPO10": "EPO 10.000",
+          "EPO1": "EPO 1000",
+          "EPO2": "EPO 2000",
+          "EPO3": "EPO 3000",
+          "EPO4": "EPO 4000",
+          "EPO5": "EPO 5000",
+          "EPO6": "EPO 6000",
+          "EPO7": "EPO 7000",
+          "EPO8": "EPO 8000",
+          "Z_EPO": "EPOPEN 2000",
+          "434333": "EPREX 2000 UI"
+        }
+      },
+      "VITAMINA D": {
+        "codes": [
+          "Z_CAL",
+          "hidr",
+          "HIDR",
+          "Z_ROC",
+          "Zemp1",
+          "Z-ZEM",
+          "Z_ZEM"
+        ],
+        "items": {
+          "Z_CAL": "CALCIJEX",
+          "hidr": "HIDROFEROL 266 mcg capsula blanda",
+          "HIDR": "HIDROFEROL amp. 0,266 g",
+          "Z_ROC": "ROCALTROL 0,25 mcg",
+          "Zemp1": "ZEMPLAR 1 mcg",
+          "Z-ZEM": "ZEMPLAR 2",
+          "Z_ZEM": "ZEMPLAR 5"
+        }
+      },
+      "HIERRO": {
+        "codes": [
+          "FERIV",
+          "Z_HIE",
+          "HIERROS",
+          "VENOF"
+        ],
+        "items": {
+          "FERIV": "FERIV",
+          "Z_HIE": "FERRLECIT",
+          "HIERROS": "HIERRO SACAROSA",
+          "VENOF": "VENOFER"
+        }
+      },
+      "CALCIMIMETICO": {
+        "codes": [
+          "MINP30",
+          "parsa"
+        ],
+        "items": {
+          "MINP30": "MIMPARA 30 mg",
+          "parsa": "PARSABIV 2.5 mg"
+        }
+      }
+    },
+    "byCode": {
+      "NESP": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP"
+      },
+      "NESP1": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 10"
+      },
+      "NESP10": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 100"
+      },
+      "NESP 12": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 120"
+      },
+      "NESP2": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 20"
+      },
+      "NESP3": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 30"
+      },
+      "NESP4": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 40"
+      },
+      "NESP50": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 50"
+      },
+      "NESP6": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 60"
+      },
+      "NESP5": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 80"
+      },
+      "B_inoc": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT"
+      },
+      "Z_CAL": {
+        "tipo": "VITAMINA D",
+        "nombre": "CALCIJEX"
+      },
+      "EPO": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO"
+      },
+      "EPO10": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 10.000"
+      },
+      "EPO1": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 1000"
+      },
+      "EPO2": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 2000"
+      },
+      "EPO3": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 3000"
+      },
+      "EPO4": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 4000"
+      },
+      "EPO5": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 5000"
+      },
+      "EPO6": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 6000"
+      },
+      "EPO7": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 7000"
+      },
+      "EPO8": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 8000"
+      },
+      "Z_EPO": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPOPEN 2000"
+      },
+      "434333": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX 2000 UI"
+      },
+      "FERIV": {
+        "tipo": "HIERRO",
+        "nombre": "FERIV"
+      },
+      "Z_HIE": {
+        "tipo": "HIERRO",
+        "nombre": "FERRLECIT"
+      },
+      "hidr": {
+        "tipo": "VITAMINA D",
+        "nombre": "HIDROFEROL 266 mcg capsula blanda"
+      },
+      "HIDR": {
+        "tipo": "VITAMINA D",
+        "nombre": "HIDROFEROL amp. 0,266 g"
+      },
+      "HIERROS": {
+        "tipo": "HIERRO",
+        "nombre": "HIERRO SACAROSA"
+      },
+      "MINP30": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "MIMPARA 30 mg"
+      },
+      "parsa": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "PARSABIV 2.5 mg"
+      },
+      "Z_ROC": {
+        "tipo": "VITAMINA D",
+        "nombre": "ROCALTROL 0,25 mcg"
+      },
+      "VENOF": {
+        "tipo": "HIERRO",
+        "nombre": "VENOFER"
+      },
+      "Zemp1": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR 1 mcg"
+      },
+      "Z-ZEM": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR 2"
+      },
+      "Z_ZEM": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR 5"
+      }
+    }
+  },
+  "/NFS/restores/NF6_LosLlanos.gdb": {
+    "byTipo": {
+      "ERITROPOYETINA": {
+        "codes": [
+          "ARAN",
+          "bino",
+          "DARBOPO",
+          "EPO",
+          "EPO10",
+          "EPO1",
+          "EPO2",
+          "EPO3",
+          "EPO4",
+          "EPO5",
+          "EPO6",
+          "EPO7",
+          "EPO8",
+          "EPO9"
+        ],
+        "items": {
+          "ARAN": "ARANESP",
+          "bino": "BINOCRIT",
+          "DARBOPO": "DARBOPOETINA",
+          "EPO": "EPO",
+          "EPO10": "EPO 10.000",
+          "EPO1": "EPO 1000",
+          "EPO2": "EPO 2000",
+          "EPO3": "EPO 3000",
+          "EPO4": "EPO 4000",
+          "EPO5": "EPO 5000",
+          "EPO6": "EPO 6000",
+          "EPO7": "EPO 7000",
+          "EPO8": "EPO 8000",
+          "EPO9": "EPO 9000"
+        }
+      },
+      "VITAMINA D": {
+        "codes": [
+          "Z_CAL",
+          "HIDROF",
+          "Hidrof",
+          "zemplar",
+          "ZEM2",
+          "ZEM5",
+          "Z-ZEM"
+        ],
+        "items": {
+          "Z_CAL": "CALCIJEX",
+          "HIDROF": "HIDROFEROL",
+          "Hidrof": "Hidroferol 0,266 ampolla",
+          "zemplar": "ZEMPLAR",
+          "ZEM2": "ZEMPLAR 2 mcgr",
+          "ZEM5": "ZEMPLAR 5 mcgr",
+          "Z-ZEM": "ZEMPLAR1"
+        }
+      },
+      "CALCIMIMETICO": {
+        "codes": [
+          "ETELCAL",
+          "MIMP",
+          "mimp",
+          "MIMP30",
+          "MIMP60"
+        ],
+        "items": {
+          "ETELCAL": "ETELCALCETIDA",
+          "MIMP": "MIMPARA",
+          "mimp": "Mimpara",
+          "MIMP30": "MIMPARA 30",
+          "MIMP60": "MIMPARA 60"
+        }
+      },
+      "HIERRO": {
+        "codes": [
+          "ferinje",
+          "feriv",
+          "Z_HIE"
+        ],
+        "items": {
+          "ferinje": "FERINJECT",
+          "feriv": "FERIV",
+          "Z_HIE": "VENOFER"
+        }
+      }
+    },
+    "byCode": {
+      "ARAN": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP"
+      },
+      "bino": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT"
+      },
+      "Z_CAL": {
+        "tipo": "VITAMINA D",
+        "nombre": "CALCIJEX"
+      },
+      "DARBOPO": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "DARBOPOETINA"
+      },
+      "EPO": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO"
+      },
+      "EPO10": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 10.000"
+      },
+      "EPO1": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 1000"
+      },
+      "EPO2": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 2000"
+      },
+      "EPO3": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 3000"
+      },
+      "EPO4": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 4000"
+      },
+      "EPO5": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 5000"
+      },
+      "EPO6": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 6000"
+      },
+      "EPO7": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 7000"
+      },
+      "EPO8": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 8000"
+      },
+      "EPO9": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 9000"
+      },
+      "ETELCAL": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "ETELCALCETIDA"
+      },
+      "ferinje": {
+        "tipo": "HIERRO",
+        "nombre": "FERINJECT"
+      },
+      "feriv": {
+        "tipo": "HIERRO",
+        "nombre": "FERIV"
+      },
+      "HIDROF": {
+        "tipo": "VITAMINA D",
+        "nombre": "HIDROFEROL"
+      },
+      "Hidrof": {
+        "tipo": "VITAMINA D",
+        "nombre": "Hidroferol 0,266 ampolla"
+      },
+      "MIMP": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "MIMPARA"
+      },
+      "mimp": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "Mimpara"
+      },
+      "MIMP30": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "MIMPARA 30"
+      },
+      "MIMP60": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "MIMPARA 60"
+      },
+      "Z_HIE": {
+        "tipo": "HIERRO",
+        "nombre": "VENOFER"
+      },
+      "zemplar": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR"
+      },
+      "ZEM2": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR 2 mcgr"
+      },
+      "ZEM5": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR 5 mcgr"
+      },
+      "Z-ZEM": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR1"
+      }
+    }
+  },
+  "/NFS/restores/NF6_ElCastanar.gdb": {
+    "byTipo": {
+      "ERITROPOYETINA": {
+        "codes": [
+          "aran0",
+          "aran1",
+          "ARAN15",
+          "ARAN2",
+          "aran4",
+          "aran5",
+          "ARAN6",
+          "ARAN8",
+          "B_in",
+          "EPO10",
+          "EPO1",
+          "EPO2",
+          "EPO3",
+          "EPO4",
+          "EPO5",
+          "EPO6",
+          "EPO7",
+          "EPO8",
+          "434333",
+          "000000",
+          "ret2000"
+        ],
+        "items": {
+          "aran0": "ARANESP",
+          "aran1": "ARANESP 10",
+          "ARAN15": "ARANESP 150",
+          "ARAN2": "ARANESP 20",
+          "aran4": "ARANESP 40",
+          "aran5": "ARANESP 50",
+          "ARAN6": "ARANESP 60",
+          "ARAN8": "ARANESP 80",
+          "B_in": "Binocrit",
+          "EPO10": "EPO 10.000",
+          "EPO1": "EPO 1000",
+          "EPO2": "EPO 2000",
+          "EPO3": "EPO 3000",
+          "EPO4": "EPO 4000",
+          "EPO5": "EPO 5000",
+          "EPO6": "EPO 6000",
+          "EPO7": "EPO 7000",
+          "EPO8": "EPO 8000",
+          "434333": "EPREX",
+          "000000": "Neorecormon",
+          "ret2000": "retacrit 2000"
+        }
+      },
+      "VITAMINA D": {
+        "codes": [
+          "Z_CAL",
+          "Eta",
+          "H_idrof",
+          "P_ar",
+          "Z_ROC",
+          "Z_Ze",
+          "Z_ZEM"
+        ],
+        "items": {
+          "Z_CAL": "Calcijex",
+          "Eta": "Etalpha",
+          "H_idrof": "Hidroferol ampolla beb 266 mcg",
+          "P_ar": "Paricalcitol",
+          "Z_ROC": "Rocaltrol 0.25",
+          "Z_Ze": "Zemplar",
+          "Z_ZEM": "Zemplar 1 �g"
+        }
+      },
+      "HIERRO": {
+        "codes": [
+          "H_ie",
+          "H_ier",
+          "Z_HIE"
+        ],
+        "items": {
+          "H_ie": "Hierro Sacarosa",
+          "H_ier": "Hierro Sacarosa 100",
+          "Z_HIE": "Venofer"
+        }
+      },
+      "CALCIMIMETICO": {
+        "codes": [
+          "M_impa",
+          "C_CIN",
+          "M_im3",
+          "P_arsa"
+        ],
+        "items": {
+          "M_impa": "Mimpara",
+          "C_CIN": "Mimpara 30",
+          "M_im3": "Mimpara 30",
+          "P_arsa": "Parsabiv (etelcalcetida)"
+        }
+      }
+    },
+    "byCode": {
+      "aran0": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP"
+      },
+      "aran1": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 10"
+      },
+      "ARAN15": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 150"
+      },
+      "ARAN2": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 20"
+      },
+      "aran4": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 40"
+      },
+      "aran5": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 50"
+      },
+      "ARAN6": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 60"
+      },
+      "ARAN8": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 80"
+      },
+      "B_in": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Binocrit"
+      },
+      "Z_CAL": {
+        "tipo": "VITAMINA D",
+        "nombre": "Calcijex"
+      },
+      "EPO10": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 10.000"
+      },
+      "EPO1": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 1000"
+      },
+      "EPO2": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 2000"
+      },
+      "EPO3": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 3000"
+      },
+      "EPO4": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 4000"
+      },
+      "EPO5": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 5000"
+      },
+      "EPO6": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 6000"
+      },
+      "EPO7": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 7000"
+      },
+      "EPO8": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 8000"
+      },
+      "434333": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX"
+      },
+      "Eta": {
+        "tipo": "VITAMINA D",
+        "nombre": "Etalpha"
+      },
+      "H_idrof": {
+        "tipo": "VITAMINA D",
+        "nombre": "Hidroferol ampolla beb 266 mcg"
+      },
+      "H_ie": {
+        "tipo": "HIERRO",
+        "nombre": "Hierro Sacarosa"
+      },
+      "H_ier": {
+        "tipo": "HIERRO",
+        "nombre": "Hierro Sacarosa 100"
+      },
+      "M_impa": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "Mimpara"
+      },
+      "C_CIN": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "Mimpara 30"
+      },
+      "M_im3": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "Mimpara 30"
+      },
+      "000000": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Neorecormon"
+      },
+      "P_ar": {
+        "tipo": "VITAMINA D",
+        "nombre": "Paricalcitol"
+      },
+      "P_arsa": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "Parsabiv (etelcalcetida)"
+      },
+      "ret2000": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "retacrit 2000"
+      },
+      "Z_ROC": {
+        "tipo": "VITAMINA D",
+        "nombre": "Rocaltrol 0.25"
+      },
+      "Z_HIE": {
+        "tipo": "HIERRO",
+        "nombre": "Venofer"
+      },
+      "Z_Ze": {
+        "tipo": "VITAMINA D",
+        "nombre": "Zemplar"
+      },
+      "Z_ZEM": {
+        "tipo": "VITAMINA D",
+        "nombre": "Zemplar 1 �g"
+      }
+    }
+  },
+  "/NFS/restores/NF6_Getafe.gdb": {
+    "byTipo": {
+      "ERITROPOYETINA": {
+        "codes": [
+          "ARAN10",
+          "ARA10",
+          "ARA20",
+          "BINOC1",
+          "BINOC4",
+          "Darbe",
+          "EPO",
+          "EPREX",
+          "RET"
+        ],
+        "items": {
+          "ARAN10": "ARANESP",
+          "ARA10": "ARANESP 10",
+          "ARA20": "ARANESP 20",
+          "BINOC1": "BINOCRIT",
+          "BINOC4": "BINOCRIT 4000",
+          "Darbe": "Darbepoetina",
+          "EPO": "EPO",
+          "EPREX": "EPREX",
+          "RET": "RETACRIT"
+        }
+      },
+      "VITAMINA D": {
+        "codes": [
+          "ctc",
+          "paric",
+          "pari",
+          "ZEM",
+          "ZEMP2",
+          "ZEMP5"
+        ],
+        "items": {
+          "ctc": "calcitriol 0.25 mg",
+          "paric": "paricalcitol",
+          "pari": "paricalcitol 2mcg",
+          "ZEM": "ZEMPLAR",
+          "ZEMP2": "ZEMPLAR 2mcg",
+          "ZEMP5": "ZEMPLAR 5mcg"
+        }
+      },
+      "CALCIMIMETICO": {
+        "codes": [
+          "ETEL",
+          "MIM",
+          "parsa"
+        ],
+        "items": {
+          "ETEL": "ETELCALCETIDA",
+          "MIM": "MIMPARA",
+          "parsa": "parsabiv"
+        }
+      },
+      "HIERRO": {
+        "codes": [
+          "FER",
+          "VENOF",
+          "VENOF50",
+          "VENOFER"
+        ],
+        "items": {
+          "FER": "FERIV",
+          "VENOF": "VENOFER",
+          "VENOF50": "VENOFER",
+          "VENOFER": "VENOFER"
+        }
+      }
+    },
+    "byCode": {
+      "ARAN10": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP"
+      },
+      "ARA10": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 10"
+      },
+      "ARA20": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 20"
+      },
+      "BINOC1": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT"
+      },
+      "BINOC4": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT 4000"
+      },
+      "ctc": {
+        "tipo": "VITAMINA D",
+        "nombre": "calcitriol 0.25 mg"
+      },
+      "Darbe": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Darbepoetina"
+      },
+      "EPO": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO"
+      },
+      "EPREX": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX"
+      },
+      "ETEL": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "ETELCALCETIDA"
+      },
+      "FER": {
+        "tipo": "HIERRO",
+        "nombre": "FERIV"
+      },
+      "MIM": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "MIMPARA"
+      },
+      "paric": {
+        "tipo": "VITAMINA D",
+        "nombre": "paricalcitol"
+      },
+      "pari": {
+        "tipo": "VITAMINA D",
+        "nombre": "paricalcitol 2mcg"
+      },
+      "parsa": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "parsabiv"
+      },
+      "RET": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "RETACRIT"
+      },
+      "VENOF": {
+        "tipo": "HIERRO",
+        "nombre": "VENOFER"
+      },
+      "VENOF50": {
+        "tipo": "HIERRO",
+        "nombre": "VENOFER"
+      },
+      "VENOFER": {
+        "tipo": "HIERRO",
+        "nombre": "VENOFER"
+      },
+      "ZEM": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR"
+      },
+      "ZEMP2": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR 2mcg"
+      },
+      "ZEMP5": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR 5mcg"
+      }
+    }
+  },
+  "/NFS/restores/NF6_FJD.gdb": {
+    "byTipo": {
+      "ERITROPOYETINA": {
+        "codes": [
+          "ar",
+          "NESP20",
+          "NESP30",
+          "NESP60",
+          "bin",
+          "EPO",
+          "EPO10",
+          "EPO1",
+          "EPO2",
+          "EPO3",
+          "EPO4",
+          "EPO5",
+          "EPO6",
+          "EPO8",
+          "434335"
+        ],
+        "items": {
+          "ar": "ARANESP",
+          "NESP20": "ARANESP",
+          "NESP30": "ARANESP 30",
+          "NESP60": "ARANESP 60",
+          "bin": "BINOCRIT",
+          "EPO": "EPREX",
+          "EPO10": "Z-EPO 10.000",
+          "EPO1": "Z-EPO 1000",
+          "EPO2": "Z-EPO 2000",
+          "EPO3": "Z-EPO 3000",
+          "EPO4": "Z-EPO 4000",
+          "EPO5": "Z-EPO 5000",
+          "EPO6": "Z-EPO 6000",
+          "EPO8": "Z-EPO 8000",
+          "434335": "Z-EPREX 4000 UI"
+        }
+      },
+      "VITAMINA D": {
+        "codes": [
+          "del",
+          "434337",
+          "HDF",
+          "Hidrofe",
+          "prctl",
+          "ze",
+          "ZEMP2",
+          "ZEMP5"
+        ],
+        "items": {
+          "del": "deltius",
+          "434337": "ETALPHA 0.5",
+          "HDF": "HIDROFEROL",
+          "Hidrofe": "HIDROFEROL",
+          "prctl": "PARICALCITOL",
+          "ze": "ZEMPLAR",
+          "ZEMP2": "ZEMPLAR",
+          "ZEMP5": "ZEMPLAR"
+        }
+      },
+      "HIERRO": {
+        "codes": [
+          "Z-HIERR",
+          "Z_HIERR"
+        ],
+        "items": {
+          "Z-HIERR": "FERIV",
+          "Z_HIERR": "Z (sin uso) VENOFER"
+        }
+      },
+      "CALCIMIMETICO": {
+        "codes": [
+          "mim",
+          "MIMP",
+          "CALCM30",
+          "CALCM60",
+          "par"
+        ],
+        "items": {
+          "mim": "MIMPARA",
+          "MIMP": "MIMPARA",
+          "CALCM30": "MIMPARA",
+          "CALCM60": "MIMPARA",
+          "par": "PARSABIV"
+        }
+      }
+    },
+    "byCode": {
+      "ar": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP"
+      },
+      "NESP20": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP"
+      },
+      "NESP30": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 30"
+      },
+      "NESP60": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 60"
+      },
+      "bin": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT"
+      },
+      "del": {
+        "tipo": "VITAMINA D",
+        "nombre": "deltius"
+      },
+      "EPO": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX"
+      },
+      "434337": {
+        "tipo": "VITAMINA D",
+        "nombre": "ETALPHA 0.5"
+      },
+      "Z-HIERR": {
+        "tipo": "HIERRO",
+        "nombre": "FERIV"
+      },
+      "HDF": {
+        "tipo": "VITAMINA D",
+        "nombre": "HIDROFEROL"
+      },
+      "Hidrofe": {
+        "tipo": "VITAMINA D",
+        "nombre": "HIDROFEROL"
+      },
+      "mim": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "MIMPARA"
+      },
+      "MIMP": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "MIMPARA"
+      },
+      "CALCM30": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "MIMPARA"
+      },
+      "CALCM60": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "MIMPARA"
+      },
+      "prctl": {
+        "tipo": "VITAMINA D",
+        "nombre": "PARICALCITOL"
+      },
+      "par": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "PARSABIV"
+      },
+      "Z_HIERR": {
+        "tipo": "HIERRO",
+        "nombre": "Z (sin uso) VENOFER"
+      },
+      "ze": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR"
+      },
+      "ZEMP2": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR"
+      },
+      "ZEMP5": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR"
+      },
+      "EPO10": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPO 10.000"
+      },
+      "EPO1": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPO 1000"
+      },
+      "EPO2": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPO 2000"
+      },
+      "EPO3": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPO 3000"
+      },
+      "EPO4": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPO 4000"
+      },
+      "EPO5": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPO 5000"
+      },
+      "EPO6": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPO 6000"
+      },
+      "EPO8": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPO 8000"
+      },
+      "434335": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPREX 4000 UI"
+      }
+    }
+  },
+  "/NFS/restores/NF6_HRJC.gdb": {
+    "byTipo": {
+      "ERITROPOYETINA": {
+        "codes": [
+          "ARAN",
+          "EPO",
+          "EPO10",
+          "EPO1",
+          "33455",
+          "434337",
+          "EPO2",
+          "EPO3",
+          "EPO4",
+          "EPO5",
+          "EPO6",
+          "EPO7",
+          "EPO8",
+          "EPO9"
+        ],
+        "items": {
+          "ARAN": "ARANESP",
+          "EPO": "EPO",
+          "EPO10": "EPO 10.000",
+          "EPO1": "EPO 1000",
+          "33455": "EPO 10000",
+          "434337": "EPO 10000",
+          "EPO2": "EPO 2000",
+          "EPO3": "EPO 3000",
+          "EPO4": "EPO 4000",
+          "EPO5": "EPO 5000",
+          "EPO6": "EPO 6000",
+          "EPO7": "EPO 7000",
+          "EPO8": "EPO 8000",
+          "EPO9": "EPO 9000"
+        }
+      },
+      "CALCIMIMETICO": {
+        "codes": [
+          "Etel",
+          "mim",
+          "0000",
+          "MIMP60"
+        ],
+        "items": {
+          "Etel": "Etelcalcetide",
+          "mim": "Mimpara",
+          "0000": "MIMPARA 30",
+          "MIMP60": "MIMPARA 60"
+        }
+      },
+      "HIERRO": {
+        "codes": [
+          "fr",
+          "Z_HIE"
+        ],
+        "items": {
+          "fr": "Ferinject",
+          "Z_HIE": "VENOFER"
+        }
+      },
+      "VITAMINA D": {
+        "codes": [
+          "H",
+          "PARI",
+          "Z-ZEM",
+          "ZEM2",
+          "ZEM5"
+        ],
+        "items": {
+          "H": "Hidroferol",
+          "PARI": "PARICALCITOL",
+          "Z-ZEM": "ZEMPLAR",
+          "ZEM2": "ZEMPLAR 2 mcgr",
+          "ZEM5": "ZEMPLAR 5 mcgr"
+        }
+      }
+    },
+    "byCode": {
+      "ARAN": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP"
+      },
+      "EPO": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO"
+      },
+      "EPO10": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 10.000"
+      },
+      "EPO1": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 1000"
+      },
+      "33455": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 10000"
+      },
+      "434337": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 10000"
+      },
+      "EPO2": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 2000"
+      },
+      "EPO3": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 3000"
+      },
+      "EPO4": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 4000"
+      },
+      "EPO5": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 5000"
+      },
+      "EPO6": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 6000"
+      },
+      "EPO7": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 7000"
+      },
+      "EPO8": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 8000"
+      },
+      "EPO9": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 9000"
+      },
+      "Etel": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "Etelcalcetide"
+      },
+      "fr": {
+        "tipo": "HIERRO",
+        "nombre": "Ferinject"
+      },
+      "H": {
+        "tipo": "VITAMINA D",
+        "nombre": "Hidroferol"
+      },
+      "mim": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "Mimpara"
+      },
+      "0000": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "MIMPARA 30"
+      },
+      "MIMP60": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "MIMPARA 60"
+      },
+      "PARI": {
+        "tipo": "VITAMINA D",
+        "nombre": "PARICALCITOL"
+      },
+      "Z_HIE": {
+        "tipo": "HIERRO",
+        "nombre": "VENOFER"
+      },
+      "Z-ZEM": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR"
+      },
+      "ZEM2": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR 2 mcgr"
+      },
+      "ZEM5": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR 5 mcgr"
+      }
+    }
+  },
+  "/NFS/restores/NF6_InfantaElena.gdb": {
+    "byTipo": {
+      "ERITROPOYETINA": {
+        "codes": [
+          "ara",
+          "BIN",
+          "BIN3",
+          "binocr",
+          "NESP150",
+          "Z-NESP",
+          "NESP 30",
+          "NESP 40",
+          "NESP 50",
+          "NESP 60",
+          "EPO",
+          "EPO10",
+          "EPO1",
+          "EPO3",
+          "EPO4",
+          "EPO5",
+          "EPO6",
+          "EPO8"
+        ],
+        "items": {
+          "ara": "ARANESP",
+          "BIN": "BINOCRIT",
+          "BIN3": "BINOCRIT 3000",
+          "binocr": "BINOCRIT 5000",
+          "NESP150": "DARBEPOETINA 150",
+          "Z-NESP": "DARBEPOETINA 20",
+          "NESP 30": "DARBEPOETINA 30",
+          "NESP 40": "DARBEPOETINA 40",
+          "NESP 50": "DARBEPOETINA 50",
+          "NESP 60": "DARBEPOETINA 60",
+          "EPO": "EPO",
+          "EPO10": "EPO 10.000",
+          "EPO1": "EPO 1000",
+          "EPO3": "EPO 3000",
+          "EPO4": "EPO 4000",
+          "EPO5": "EPO 5000",
+          "EPO6": "EPO 6000",
+          "EPO8": "EPO 8000"
+        }
+      },
+      "VITAMINA D": {
+        "codes": [
+          "hidro",
+          "ZEMPLAR"
+        ],
+        "items": {
+          "hidro": "HIDROFEROL",
+          "ZEMPLAR": "ZEMPLAR"
+        }
+      },
+      "HIERRO": {
+        "codes": [
+          "fer",
+          "Z_HIE"
+        ],
+        "items": {
+          "fer": "HIERRO CARBOXIMALTOSA",
+          "Z_HIE": "VENOFER"
+        }
+      },
+      "CALCIMIMETICO": {
+        "codes": [
+          "CINEC",
+          "PSB"
+        ],
+        "items": {
+          "CINEC": "MIMPARA",
+          "PSB": "PARSABIV"
+        }
+      }
+    },
+    "byCode": {
+      "ara": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP"
+      },
+      "BIN": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT"
+      },
+      "BIN3": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT 3000"
+      },
+      "binocr": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT 5000"
+      },
+      "NESP150": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "DARBEPOETINA 150"
+      },
+      "Z-NESP": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "DARBEPOETINA 20"
+      },
+      "NESP 30": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "DARBEPOETINA 30"
+      },
+      "NESP 40": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "DARBEPOETINA 40"
+      },
+      "NESP 50": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "DARBEPOETINA 50"
+      },
+      "NESP 60": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "DARBEPOETINA 60"
+      },
+      "EPO": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO"
+      },
+      "EPO10": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 10.000"
+      },
+      "EPO1": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 1000"
+      },
+      "EPO3": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 3000"
+      },
+      "EPO4": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 4000"
+      },
+      "EPO5": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 5000"
+      },
+      "EPO6": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 6000"
+      },
+      "EPO8": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 8000"
+      },
+      "hidro": {
+        "tipo": "VITAMINA D",
+        "nombre": "HIDROFEROL"
+      },
+      "fer": {
+        "tipo": "HIERRO",
+        "nombre": "HIERRO CARBOXIMALTOSA"
+      },
+      "CINEC": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "MIMPARA"
+      },
+      "PSB": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "PARSABIV"
+      },
+      "Z_HIE": {
+        "tipo": "HIERRO",
+        "nombre": "VENOFER"
+      },
+      "ZEMPLAR": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR"
+      }
+    }
+  },
+  "/NFS/restores/NF6_LasEncinas.gdb": {
+    "byTipo": {
+      "ERITROPOYETINA": {
+        "codes": [
+          "ARAN 0",
+          "ARAN10",
+          "ARAN100",
+          "ARAN120",
+          "aran2",
+          "aran4",
+          "ARAN5",
+          "ARAN6",
+          "ARAN8",
+          "B_in",
+          "EPO10",
+          "EPO1",
+          "EPO15",
+          "EPO2",
+          "EPO3",
+          "EPO4",
+          "EPO5",
+          "EPO6",
+          "EPO7",
+          "EPO8",
+          "Z_EPO",
+          "EPREX",
+          "760552",
+          "Z- Epo"
+        ],
+        "items": {
+          "ARAN 0": "Aranesp",
+          "ARAN10": "Aranesp 10",
+          "ARAN100": "Aranesp 100",
+          "ARAN120": "Aranesp 120",
+          "aran2": "Aranesp 20",
+          "aran4": "Aranesp 40",
+          "ARAN5": "Aranesp 50",
+          "ARAN6": "Aranesp 60",
+          "ARAN8": "Aranesp 80",
+          "B_in": "Binocrit (Epoetina Alfa)",
+          "EPO10": "EPO 10.000",
+          "EPO1": "EPO 1000",
+          "EPO15": "EPO 15000",
+          "EPO2": "EPO 2000",
+          "EPO3": "EPO 3000",
+          "EPO4": "EPO 4000",
+          "EPO5": "EPO 5000",
+          "EPO6": "EPO 6000",
+          "EPO7": "EPO 7000",
+          "EPO8": "EPO 8000",
+          "Z_EPO": "Epopen 2000",
+          "EPREX": "EPREX",
+          "760552": "Neorecormon",
+          "Z- Epo": "Retacrit"
+        }
+      },
+      "VITAMINA D": {
+        "codes": [
+          "Cal,.",
+          "Z_CAL",
+          "E_t",
+          "H_IDRO",
+          "H_idrof",
+          "P_ari",
+          "Z_ROC",
+          "Z_emp",
+          "z_para"
+        ],
+        "items": {
+          "Cal,.": "Calcitriol",
+          "Z_CAL": "Calcitriol",
+          "E_t": "Etalpha (alfacalcidol)",
+          "H_IDRO": "Hidroferol 100 mcg/ml",
+          "H_idrof": "Hidroferol 266 mcg/1.5 ml",
+          "P_ari": "Paricalcitol",
+          "Z_ROC": "Rocaltrol 0,25",
+          "Z_emp": "Zemplar",
+          "z_para": "Zemplar 1 �g"
+        }
+      },
+      "HIERRO": {
+        "codes": [
+          "F_eri",
+          "H-ierro",
+          "Z_HIE"
+        ],
+        "items": {
+          "F_eri": "Ferinject (Hierro (III), carboximaltosa)",
+          "H-ierro": "Hierro sacarosa",
+          "Z_HIE": "Venofer"
+        }
+      },
+      "CALCIMIMETICO": {
+        "codes": [
+          "M-30",
+          "M-60",
+          "P_arsa"
+        ],
+        "items": {
+          "M-30": "Mimpara 30",
+          "M-60": "Mimpara 60",
+          "P_arsa": "Parsabiv (etelcalcetida)"
+        }
+      }
+    },
+    "byCode": {
+      "ARAN 0": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Aranesp"
+      },
+      "ARAN10": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Aranesp 10"
+      },
+      "ARAN100": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Aranesp 100"
+      },
+      "ARAN120": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Aranesp 120"
+      },
+      "aran2": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Aranesp 20"
+      },
+      "aran4": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Aranesp 40"
+      },
+      "ARAN5": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Aranesp 50"
+      },
+      "ARAN6": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Aranesp 60"
+      },
+      "ARAN8": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Aranesp 80"
+      },
+      "B_in": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Binocrit (Epoetina Alfa)"
+      },
+      "Cal,.": {
+        "tipo": "VITAMINA D",
+        "nombre": "Calcitriol"
+      },
+      "Z_CAL": {
+        "tipo": "VITAMINA D",
+        "nombre": "Calcitriol"
+      },
+      "EPO10": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 10.000"
+      },
+      "EPO1": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 1000"
+      },
+      "EPO15": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 15000"
+      },
+      "EPO2": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 2000"
+      },
+      "EPO3": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 3000"
+      },
+      "EPO4": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 4000"
+      },
+      "EPO5": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 5000"
+      },
+      "EPO6": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 6000"
+      },
+      "EPO7": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 7000"
+      },
+      "EPO8": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 8000"
+      },
+      "Z_EPO": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Epopen 2000"
+      },
+      "EPREX": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX"
+      },
+      "E_t": {
+        "tipo": "VITAMINA D",
+        "nombre": "Etalpha (alfacalcidol)"
+      },
+      "F_eri": {
+        "tipo": "HIERRO",
+        "nombre": "Ferinject (Hierro (III), carboximaltosa)"
+      },
+      "H_IDRO": {
+        "tipo": "VITAMINA D",
+        "nombre": "Hidroferol 100 mcg/ml"
+      },
+      "H_idrof": {
+        "tipo": "VITAMINA D",
+        "nombre": "Hidroferol 266 mcg/1.5 ml"
+      },
+      "H-ierro": {
+        "tipo": "HIERRO",
+        "nombre": "Hierro sacarosa"
+      },
+      "M-30": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "Mimpara 30"
+      },
+      "M-60": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "Mimpara 60"
+      },
+      "760552": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Neorecormon"
+      },
+      "P_ari": {
+        "tipo": "VITAMINA D",
+        "nombre": "Paricalcitol"
+      },
+      "P_arsa": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "Parsabiv (etelcalcetida)"
+      },
+      "Z- Epo": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Retacrit"
+      },
+      "Z_ROC": {
+        "tipo": "VITAMINA D",
+        "nombre": "Rocaltrol 0,25"
+      },
+      "Z_HIE": {
+        "tipo": "HIERRO",
+        "nombre": "Venofer"
+      },
+      "Z_emp": {
+        "tipo": "VITAMINA D",
+        "nombre": "Zemplar"
+      },
+      "z_para": {
+        "tipo": "VITAMINA D",
+        "nombre": "Zemplar 1 �g"
+      }
+    }
+  },
+  "/NFS/restores/NF6_LosLlanos3.gdb": {
+    "byTipo": {
+      "ERITROPOYETINA": {
+        "codes": [
+          "ARAN",
+          "bino",
+          "DARBOPO",
+          "EPO",
+          "EPO10",
+          "EPO1",
+          "EPO2",
+          "EPO3",
+          "EPO4",
+          "EPO5",
+          "EPO6",
+          "EPO7",
+          "EPO8",
+          "EPO9"
+        ],
+        "items": {
+          "ARAN": "ARANESP",
+          "bino": "BINOCRIT",
+          "DARBOPO": "DARBOPOETINA",
+          "EPO": "EPO",
+          "EPO10": "EPO 10.000",
+          "EPO1": "EPO 1000",
+          "EPO2": "EPO 2000",
+          "EPO3": "EPO 3000",
+          "EPO4": "EPO 4000",
+          "EPO5": "EPO 5000",
+          "EPO6": "EPO 6000",
+          "EPO7": "EPO 7000",
+          "EPO8": "EPO 8000",
+          "EPO9": "EPO 9000"
+        }
+      },
+      "VITAMINA D": {
+        "codes": [
+          "Z_CAL",
+          "HIDROF",
+          "Hidrof",
+          "zemplar",
+          "ZEM2",
+          "ZEM5",
+          "Z-ZEM"
+        ],
+        "items": {
+          "Z_CAL": "CALCIJEX",
+          "HIDROF": "HIDROFEROL",
+          "Hidrof": "Hidroferol 0,266 ampolla",
+          "zemplar": "ZEMPLAR",
+          "ZEM2": "ZEMPLAR 2 mcgr",
+          "ZEM5": "ZEMPLAR 5 mcgr",
+          "Z-ZEM": "ZEMPLAR1"
+        }
+      },
+      "CALCIMIMETICO": {
+        "codes": [
+          "ETELCAL",
+          "MIMP",
+          "mimp",
+          "MIMP30",
+          "MIMP60"
+        ],
+        "items": {
+          "ETELCAL": "ETELCALCETIDA",
+          "MIMP": "MIMPARA",
+          "mimp": "Mimpara",
+          "MIMP30": "MIMPARA 30",
+          "MIMP60": "MIMPARA 60"
+        }
+      },
+      "HIERRO": {
+        "codes": [
+          "feriv",
+          "Z_HIE"
+        ],
+        "items": {
+          "feriv": "FERIV",
+          "Z_HIE": "VENOFER"
+        }
+      }
+    },
+    "byCode": {
+      "ARAN": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP"
+      },
+      "bino": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT"
+      },
+      "Z_CAL": {
+        "tipo": "VITAMINA D",
+        "nombre": "CALCIJEX"
+      },
+      "DARBOPO": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "DARBOPOETINA"
+      },
+      "EPO": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO"
+      },
+      "EPO10": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 10.000"
+      },
+      "EPO1": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 1000"
+      },
+      "EPO2": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 2000"
+      },
+      "EPO3": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 3000"
+      },
+      "EPO4": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 4000"
+      },
+      "EPO5": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 5000"
+      },
+      "EPO6": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 6000"
+      },
+      "EPO7": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 7000"
+      },
+      "EPO8": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 8000"
+      },
+      "EPO9": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 9000"
+      },
+      "ETELCAL": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "ETELCALCETIDA"
+      },
+      "feriv": {
+        "tipo": "HIERRO",
+        "nombre": "FERIV"
+      },
+      "HIDROF": {
+        "tipo": "VITAMINA D",
+        "nombre": "HIDROFEROL"
+      },
+      "Hidrof": {
+        "tipo": "VITAMINA D",
+        "nombre": "Hidroferol 0,266 ampolla"
+      },
+      "MIMP": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "MIMPARA"
+      },
+      "mimp": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "Mimpara"
+      },
+      "MIMP30": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "MIMPARA 30"
+      },
+      "MIMP60": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "MIMPARA 60"
+      },
+      "Z_HIE": {
+        "tipo": "HIERRO",
+        "nombre": "VENOFER"
+      },
+      "zemplar": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR"
+      },
+      "ZEM2": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR 2 mcgr"
+      },
+      "ZEM5": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR 5 mcgr"
+      },
+      "Z-ZEM": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR1"
+      }
+    }
+  },
+  "/NFS/restores/NF6_VILLALBA.gdb": {
+    "byTipo": {
+      "ERITROPOYETINA": {
+        "codes": [
+          "Ar",
+          "ARA20",
+          "ARA30",
+          "ARA",
+          "BINOC1",
+          "BINOC3",
+          "BINOC4",
+          "BINOC5",
+          "BINOC6",
+          "EPO",
+          "EPREX",
+          "ERI2000",
+          "EP8",
+          "NEOR5",
+          "rt"
+        ],
+        "items": {
+          "Ar": "ARANESP",
+          "ARA20": "ARANESP 20",
+          "ARA30": "ARANESP 30",
+          "ARA": "ARANESP 80",
+          "BINOC1": "BINOCRIT",
+          "BINOC3": "BINOCRIT 3000",
+          "BINOC4": "BINOCRIT 4000",
+          "BINOC5": "BINOCRIT 5000",
+          "BINOC6": "BINOCRIT 6000",
+          "EPO": "EPO",
+          "EPREX": "EPREX",
+          "ERI2000": "EPREX 2000",
+          "EP8": "EPREX 8000",
+          "NEOR5": "NEORECORMON 5000",
+          "rt": "RETACRIT"
+        }
+      },
+      "VITAMINA D": {
+        "codes": [
+          "etalpha",
+          "hi",
+          "ZEM",
+          "ZEMP2",
+          "ZEMP5"
+        ],
+        "items": {
+          "etalpha": "ETALPHA",
+          "hi": "hidroferol",
+          "ZEM": "ZEMPLAR",
+          "ZEMP2": "ZEMPLAR 2mcg",
+          "ZEMP5": "ZEMPLAR 5mcg"
+        }
+      },
+      "CALCIMIMETICO": {
+        "codes": [
+          "ete",
+          "etec",
+          "MIM"
+        ],
+        "items": {
+          "ete": "Etecalcetida",
+          "etec": "Etecalcetida",
+          "MIM": "MIMPARA"
+        }
+      },
+      "HIERRO": {
+        "codes": [
+          "fj",
+          "FER",
+          "VENOF"
+        ],
+        "items": {
+          "fj": "Ferinject",
+          "FER": "FERIV",
+          "VENOF": "VENOFER"
+        }
+      }
+    },
+    "byCode": {
+      "Ar": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP"
+      },
+      "ARA20": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 20"
+      },
+      "ARA30": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 30"
+      },
+      "ARA": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 80"
+      },
+      "BINOC1": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT"
+      },
+      "BINOC3": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT 3000"
+      },
+      "BINOC4": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT 4000"
+      },
+      "BINOC5": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT 5000"
+      },
+      "BINOC6": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT 6000"
+      },
+      "EPO": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO"
+      },
+      "EPREX": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX"
+      },
+      "ERI2000": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX 2000"
+      },
+      "EP8": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX 8000"
+      },
+      "etalpha": {
+        "tipo": "VITAMINA D",
+        "nombre": "ETALPHA"
+      },
+      "ete": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "Etecalcetida"
+      },
+      "etec": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "Etecalcetida"
+      },
+      "fj": {
+        "tipo": "HIERRO",
+        "nombre": "Ferinject"
+      },
+      "FER": {
+        "tipo": "HIERRO",
+        "nombre": "FERIV"
+      },
+      "hi": {
+        "tipo": "VITAMINA D",
+        "nombre": "hidroferol"
+      },
+      "MIM": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "MIMPARA"
+      },
+      "NEOR5": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "NEORECORMON 5000"
+      },
+      "rt": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "RETACRIT"
+      },
+      "VENOF": {
+        "tipo": "HIERRO",
+        "nombre": "VENOFER"
+      },
+      "ZEM": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR"
+      },
+      "ZEMP2": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR 2mcg"
+      },
+      "ZEMP5": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR 5mcg"
+      }
+    }
+  },
+  "/NFS/restores/NF6_LosPinos.gdb": {
+    "byTipo": {
+      "ERITROPOYETINA": {
+        "codes": [
+          "DAR",
+          "DAR 10",
+          "DAR 100",
+          "DAR 150",
+          "DAR 20",
+          "DAR 30",
+          "DAR 40",
+          "DAR 50",
+          "DAR 60",
+          "DAR 80",
+          "Biosim",
+          "EPO0",
+          "EPOP",
+          "EPO",
+          "EPO10",
+          "EPO1",
+          "EPO2",
+          "EPO3",
+          "EPO4",
+          "EPO5",
+          "EPO6",
+          "EPO8",
+          "MCR",
+          "RETA"
+        ],
+        "items": {
+          "DAR": "ARANESP",
+          "DAR 10": "ARANESP 10",
+          "DAR 100": "ARANESP 100",
+          "DAR 150": "ARANESP 150",
+          "DAR 20": "ARANESP 20",
+          "DAR 30": "ARANESP 30",
+          "DAR 40": "ARANESP 40",
+          "DAR 50": "ARANESP 50",
+          "DAR 60": "ARANESP 60",
+          "DAR 80": "ARANESP 80",
+          "Biosim": "BINOCRIT",
+          "EPO0": "EPO",
+          "EPOP": "EPOPEN",
+          "EPO": "EPREX",
+          "EPO10": "EPREX 10.000",
+          "EPO1": "EPREX 1000",
+          "EPO2": "EPREX 2000",
+          "EPO3": "EPREX 3000",
+          "EPO4": "EPREX 4000",
+          "EPO5": "EPREX 5000",
+          "EPO6": "EPREX 6000",
+          "EPO8": "EPREX 8000",
+          "MCR": "MIRCERA",
+          "RETA": "RETACRIT"
+        }
+      },
+      "VITAMINA D": {
+        "codes": [
+          "CAL",
+          "DEL",
+          "ETAL",
+          "ETHALPH",
+          "HIDR",
+          "PARI",
+          "VIT",
+          "ZEM",
+          "ZEM2",
+          "ZEM5"
+        ],
+        "items": {
+          "CAL": "CALCIJEX",
+          "DEL": "DELTIUS",
+          "ETAL": "ETALPHA",
+          "ETHALPH": "ETALPHA Sol. iny. 1 mcg/0,5 ml (Alfacalcidol",
+          "HIDR": "HIDROFEROL 266 �g",
+          "PARI": "PARICALCITOL 1 mg",
+          "VIT": "VITAMINA D3 NM 25.000 UI",
+          "ZEM": "ZEMPLAR",
+          "ZEM2": "ZEMPLAR 2",
+          "ZEM5": "ZEMPLAR 5"
+        }
+      },
+      "HIERRO": {
+        "codes": [
+          "FER",
+          "H_ierr",
+          "VEN"
+        ],
+        "items": {
+          "FER": "FERIV",
+          "H_ierr": "Hierro sacarosa",
+          "VEN": "VENOFER"
+        }
+      },
+      "CALCIMIMETICO": {
+        "codes": [
+          "MIM",
+          "P_ars"
+        ],
+        "items": {
+          "MIM": "MIMPARA",
+          "P_ars": "Parsabiv (Etelcalcetida)"
+        }
+      }
+    },
+    "byCode": {
+      "DAR": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP"
+      },
+      "DAR 10": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 10"
+      },
+      "DAR 100": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 100"
+      },
+      "DAR 150": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 150"
+      },
+      "DAR 20": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 20"
+      },
+      "DAR 30": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 30"
+      },
+      "DAR 40": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 40"
+      },
+      "DAR 50": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 50"
+      },
+      "DAR 60": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 60"
+      },
+      "DAR 80": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 80"
+      },
+      "Biosim": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT"
+      },
+      "CAL": {
+        "tipo": "VITAMINA D",
+        "nombre": "CALCIJEX"
+      },
+      "DEL": {
+        "tipo": "VITAMINA D",
+        "nombre": "DELTIUS"
+      },
+      "EPO0": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO"
+      },
+      "EPOP": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPOPEN"
+      },
+      "EPO": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX"
+      },
+      "EPO10": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX 10.000"
+      },
+      "EPO1": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX 1000"
+      },
+      "EPO2": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX 2000"
+      },
+      "EPO3": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX 3000"
+      },
+      "EPO4": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX 4000"
+      },
+      "EPO5": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX 5000"
+      },
+      "EPO6": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX 6000"
+      },
+      "EPO8": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX 8000"
+      },
+      "ETAL": {
+        "tipo": "VITAMINA D",
+        "nombre": "ETALPHA"
+      },
+      "ETHALPH": {
+        "tipo": "VITAMINA D",
+        "nombre": "ETALPHA Sol. iny. 1 mcg/0,5 ml (Alfacalcidol"
+      },
+      "FER": {
+        "tipo": "HIERRO",
+        "nombre": "FERIV"
+      },
+      "HIDR": {
+        "tipo": "VITAMINA D",
+        "nombre": "HIDROFEROL 266 �g"
+      },
+      "H_ierr": {
+        "tipo": "HIERRO",
+        "nombre": "Hierro sacarosa"
+      },
+      "MIM": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "MIMPARA"
+      },
+      "MCR": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "MIRCERA"
+      },
+      "PARI": {
+        "tipo": "VITAMINA D",
+        "nombre": "PARICALCITOL 1 mg"
+      },
+      "P_ars": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "Parsabiv (Etelcalcetida)"
+      },
+      "RETA": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "RETACRIT"
+      },
+      "VEN": {
+        "tipo": "HIERRO",
+        "nombre": "VENOFER"
+      },
+      "VIT": {
+        "tipo": "VITAMINA D",
+        "nombre": "VITAMINA D3 NM 25.000 UI"
+      },
+      "ZEM": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR"
+      },
+      "ZEM2": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR 2"
+      },
+      "ZEM5": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR 5"
+      }
+    }
+  },
+  "/NFS/restores/NF6_LosLauros.gdb": {
+    "byTipo": {
+      "ERITROPOYETINA": {
+        "codes": [
+          "ARA10",
+          "ARA100",
+          "ARA15",
+          "ARA150",
+          "ARA20",
+          "ARA30",
+          "ARA40",
+          "ARA50",
+          "ARA 60",
+          "ARA",
+          "BINOC1",
+          "BINOC10",
+          "BINOC2",
+          "BINOC3",
+          "BINOC4",
+          "BINOC5",
+          "BINOC6",
+          "BINOC8",
+          "CERA",
+          "EPO",
+          "EPREX",
+          "ERI1000",
+          "ERI2000",
+          "ERI3000",
+          "ERI4000",
+          "ERI5000",
+          "EP6",
+          "EP8",
+          "NEOR5",
+          "NEOR2",
+          "NEOR3",
+          "NEOR4",
+          "RET"
+        ],
+        "items": {
+          "ARA10": "ARANESP 10",
+          "ARA100": "ARANESP 100",
+          "ARA15": "ARANESP 15",
+          "ARA150": "ARANESP 150",
+          "ARA20": "ARANESP 20",
+          "ARA30": "ARANESP 30",
+          "ARA40": "ARANESP 40",
+          "ARA50": "ARANESP 50",
+          "ARA 60": "ARANESP 60",
+          "ARA": "ARANESP 80",
+          "BINOC1": "BINOCRIT",
+          "BINOC10": "BINOCRIT 10000",
+          "BINOC2": "BINOCRIT 2000",
+          "BINOC3": "BINOCRIT 3000",
+          "BINOC4": "BINOCRIT 4000",
+          "BINOC5": "BINOCRIT 5000",
+          "BINOC6": "BINOCRIT 6000",
+          "BINOC8": "BINOCRIT 8000",
+          "CERA": "CERA RO0503821",
+          "EPO": "EPO",
+          "EPREX": "EPREX",
+          "ERI1000": "EPREX 1000",
+          "ERI2000": "EPREX 2000",
+          "ERI3000": "EPREX 3000",
+          "ERI4000": "EPREX 4000",
+          "ERI5000": "EPREX 5000",
+          "EP6": "EPREX 6000",
+          "EP8": "EPREX 8000",
+          "NEOR5": "NEORECORMON 5000",
+          "NEOR2": "NEORECORMON 2000",
+          "NEOR3": "NEORECORMON 3000",
+          "NEOR4": "NEORECORMON 4000",
+          "RET": "RETACRIT"
+        }
+      },
+      "VITAMINA D": {
+        "codes": [
+          "CALCI",
+          "etalpha",
+          "hi",
+          "paric",
+          "pari",
+          "ROCA",
+          "ZEM",
+          "ZEMP2",
+          "ZEMP5"
+        ],
+        "items": {
+          "CALCI": "CALCIJEX",
+          "etalpha": "ETALPHA",
+          "hi": "hidroferol",
+          "paric": "paricalcitol",
+          "pari": "paricalcitol 2mcg",
+          "ROCA": "ROCALTROL",
+          "ZEM": "ZEMPLAR",
+          "ZEMP2": "ZEMPLAR 2mcg",
+          "ZEMP5": "ZEMPLAR 5mcg"
+        }
+      },
+      "CALCIMIMETICO": {
+        "codes": [
+          "cin",
+          "MIM",
+          "parsa"
+        ],
+        "items": {
+          "cin": "cinacalcet",
+          "MIM": "MIMPARA",
+          "parsa": "parsabiv"
+        }
+      },
+      "HIERRO": {
+        "codes": [
+          "fer",
+          "FER",
+          "VENOF",
+          "VENOF50",
+          "VENOFER"
+        ],
+        "items": {
+          "fer": "ferinject",
+          "FER": "FERIV",
+          "VENOF": "VENOFER",
+          "VENOF50": "VENOFER",
+          "VENOFER": "VENOFER"
+        }
+      }
+    },
+    "byCode": {
+      "ARA10": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 10"
+      },
+      "ARA100": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 100"
+      },
+      "ARA15": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 15"
+      },
+      "ARA150": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 150"
+      },
+      "ARA20": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 20"
+      },
+      "ARA30": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 30"
+      },
+      "ARA40": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 40"
+      },
+      "ARA50": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 50"
+      },
+      "ARA 60": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 60"
+      },
+      "ARA": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 80"
+      },
+      "BINOC1": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT"
+      },
+      "BINOC10": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT 10000"
+      },
+      "BINOC2": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT 2000"
+      },
+      "BINOC3": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT 3000"
+      },
+      "BINOC4": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT 4000"
+      },
+      "BINOC5": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT 5000"
+      },
+      "BINOC6": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT 6000"
+      },
+      "BINOC8": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT 8000"
+      },
+      "CALCI": {
+        "tipo": "VITAMINA D",
+        "nombre": "CALCIJEX"
+      },
+      "CERA": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "CERA RO0503821"
+      },
+      "cin": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "cinacalcet"
+      },
+      "EPO": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO"
+      },
+      "EPREX": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX"
+      },
+      "ERI1000": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX 1000"
+      },
+      "ERI2000": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX 2000"
+      },
+      "ERI3000": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX 3000"
+      },
+      "ERI4000": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX 4000"
+      },
+      "ERI5000": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX 5000"
+      },
+      "EP6": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX 6000"
+      },
+      "EP8": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX 8000"
+      },
+      "etalpha": {
+        "tipo": "VITAMINA D",
+        "nombre": "ETALPHA"
+      },
+      "fer": {
+        "tipo": "HIERRO",
+        "nombre": "ferinject"
+      },
+      "FER": {
+        "tipo": "HIERRO",
+        "nombre": "FERIV"
+      },
+      "hi": {
+        "tipo": "VITAMINA D",
+        "nombre": "hidroferol"
+      },
+      "MIM": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "MIMPARA"
+      },
+      "NEOR5": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "NEORECORMON 5000"
+      },
+      "NEOR2": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "NEORECORMON 2000"
+      },
+      "NEOR3": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "NEORECORMON 3000"
+      },
+      "NEOR4": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "NEORECORMON 4000"
+      },
+      "paric": {
+        "tipo": "VITAMINA D",
+        "nombre": "paricalcitol"
+      },
+      "pari": {
+        "tipo": "VITAMINA D",
+        "nombre": "paricalcitol 2mcg"
+      },
+      "parsa": {
+        "tipo": "CALCIMIMETICO",
+        "nombre": "parsabiv"
+      },
+      "RET": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "RETACRIT"
+      },
+      "ROCA": {
+        "tipo": "VITAMINA D",
+        "nombre": "ROCALTROL"
+      },
+      "VENOF": {
+        "tipo": "HIERRO",
+        "nombre": "VENOFER"
+      },
+      "VENOF50": {
+        "tipo": "HIERRO",
+        "nombre": "VENOFER"
+      },
+      "VENOFER": {
+        "tipo": "HIERRO",
+        "nombre": "VENOFER"
+      },
+      "ZEM": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR"
+      },
+      "ZEMP2": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR 2mcg"
+      },
+      "ZEMP5": {
+        "tipo": "VITAMINA D",
+        "nombre": "ZEMPLAR 5mcg"
+      }
+    }
+  }
+}
