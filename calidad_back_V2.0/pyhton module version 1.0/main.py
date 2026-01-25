@@ -60,6 +60,13 @@ from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 BASE_DIR = Path(__file__).resolve().parent
 PAGE_WIDTH, PAGE_HEIGHT = A4
 
+# Ajustamos márgenes para que el contenido no choque con la cabecera
+# La cabecera ocupa aprox los primeros 3.5 cm de la página.
+MARGIN_TOP = 4.0 * cm 
+MARGIN_BOTTOM = 2.0 * cm
+MARGIN_LEFT = 2.0 * cm
+MARGIN_RIGHT = 2.0 * cm
+
 DEFAULT_TITLE = "Informe Analítico de Indicadores de Calidad"
 DEFAULT_SUBTITLE = "Fundación Renal Española"
 
@@ -426,10 +433,10 @@ def _plot_barras_coloreadas(items: List[Dict[str, Any]], titulo: str, unidad: st
     return buf
 
 
-def _plot_polar_porcentaje(items: List[Dict[str, Any]], titulo: str, palette: dict) -> Optional[BytesIO]:
+def _plot_modern_percentage(items: List[Dict[str, Any]], titulo: str, palette: dict) -> Optional[BytesIO]:
     """
-    Gráfico polar (diente de sierra / donut variable) para porcentajes.
-    Muestra todos los centros en un solo gráfico con radio variable.
+    Gráfico moderno de barras de progreso horizontal para porcentajes.
+    Muestra una barra de fondo (100%), sombra y barra con degradado.
     """
     data = []
     for it in items:
@@ -441,64 +448,138 @@ def _plot_polar_porcentaje(items: List[Dict[str, Any]], titulo: str, palette: di
     if not data:
         return None
     
-    # Si todos son 0, no pintar gráfico para mostrar texto
     if all(d[1] == 0 for d in data):
         return None
 
-    # Ordenar por nombre para estabilidad y localización
-    data.sort(key=lambda x: x[0])
+    # Ordenar por valor descendente (mayor arriba)
+    data.sort(key=lambda x: x[1]) 
 
     centros = [x[0] for x in data]
     valores = [x[1] for x in data]
+    # Colores base
     colors_list = [palette.get(c, "#4c78a8") for c in centros]
 
-    N = len(centros)
-    theta = np.linspace(0.0, 2 * np.pi, N, endpoint=False)
+    n = len(data)
+    fig_h = max(3.0, 0.7 * n + 1.2)
+    fig, ax = plt.subplots(figsize=(10, fig_h))
+
+    # 1. Barra de fondo (Track)
+    ax.barh(centros, [100]*n, color='#F0F2F5', height=0.55, align='center', edgecolor='none', zorder=1)
     
-    # "Diente plano": Ancho cubre todo el sector
-    width = (2 * np.pi) / N 
+    # 2. Sombra simulada (Barra offset gris oscuro semitransparente)
+    # Dibujamos una pequeña barra desplazada hacia abajo-derecha
+    offset = 0.8
+    ax.barh([i - 0.05 for i in range(n)], valores, color='black', alpha=0.15, height=0.55, align='center', edgecolor='none', zorder=2)
 
-    fig_size = 8.0
-    fig = plt.figure(figsize=(fig_size, fig_size))
-    ax = fig.add_subplot(111, projection='polar')
+    # 3. Barra principal (Con efecto de degradado simple superponiendo barras con alpha)
+    # Matplotlib no tiene degradados nativos fáciles en barh, usamos un truco de superposición 
+    # o simplemente colores sólidos brillantes. Para "sombreado", usamos la sombra drop-shadow de arriba.
+    # Aquí usamos el color sólido vibrante.
+    bars = ax.barh(centros, valores, color=colors_list, height=0.55, align='center', edgecolor='none', zorder=3)
 
-    # bottom=20 hace el efecto de donut (agujero en el centro)
-    # bars sobresalen desde el radio 20 hasta 20+valor
-    RADIO_INTERIOR = 20
+    # Límites
+    ax.set_xlim(0, 105)
+    ax.set_ylim(-0.6, n - 0.4)
+
+    # Estilos limpios
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    ax.spines['bottom'].set_visible(False)
+    ax.spines['left'].set_visible(False)
     
-    # Dibujamos las barras
-    # Usamos bottom=RADIO_INTERIOR para que haya agujero
-    bars = ax.bar(theta, valores, width=width, bottom=RADIO_INTERIOR, 
-                  color=colors_list, alpha=1.0, edgecolor='white', linewidth=1.5) # Alpha 1.0 para nitidez
-
-    ax.set_yticklabels([])
-    ax.set_theta_zero_location('N') # Norte arriba
-    ax.set_theta_direction(-1) # Sentido reloj
+    ax.set_xticks([])
     
-    # Eliminamos circulos concéntricos y bordes para máxima limpieza visual
-    ax.grid(False)
-    ax.spines['polar'].set_visible(False)
-    
-    # Límite fijo: 100% + radio interior
-    ax.set_ylim(0, 100 + RADIO_INTERIOR) 
+    ax.tick_params(axis='y', length=0, labelsize=11, labelcolor='#333333', pad=12)
+    plt.yticks(fontweight='bold')
 
-    # Etiquetas de los centros (fuera)
-    ax.set_xticks(theta)
-    ax.set_xticklabels(centros, fontweight='bold', fontsize=9)
+    # Grid vertical sutil
+    ax.vlines([25, 50, 75, 100], ymin=-1, ymax=n, colors='#e0e0e0', linestyles=':', linewidth=1, zorder=0)
 
-    # Etiquetas de valor (dentro de la barra, en el extremo)
-    for bar, angle, val in zip(bars, theta, valores):
-        # Posición del texto un poco más adentro del borde exterior de la barra para que se lea sobre el color
-        # O fuera si es pequeño.
-        # Estrategia: Ponemos el valor FUERA de la barra para contraste máximo y nitidez
-        pos_r = RADIO_INTERIOR + val + 5  # Un poco separado del borde
-        
-        ax.text(angle, pos_r, f"{val:.1f}%", 
-                ha='center', va='center', fontsize=10, fontweight='bold', color='#333333')
+    # Etiquetas
+    for bar, val in zip(bars, valores):
+        width = bar.get_width()
+        # Texto dentro de la barra si cabe, o fuera si es muy pequeña
+        if width > 15:
+             # Texto blanco dentro de la barra con sombra
+             ax.text(width - 2, bar.get_y() + bar.get_height()/2, f"{val:.1f}%", 
+                    va='center', ha='right', fontsize=10, fontweight='bold', color='white', zorder=4)
+        else:
+             # Texto fuera color oscuro
+             ax.text(width + 1.5, bar.get_y() + bar.get_height()/2, f"{val:.1f}%", 
+                    va='center', ha='left', fontsize=10, fontweight='bold', color='#333333', zorder=4)
 
     plt.tight_layout()
     buf = BytesIO()
-    fig.savefig(buf, format="png", dpi=220, bbox_inches='tight', transparent=True)
+    fig.savefig(buf, format="png", dpi=200, bbox_inches='tight')
+    plt.close(fig)
+    buf.seek(0)
+    return buf
+
+
+def _plot_donut_styled(items: List[Dict[str, Any]], titulo: str, palette: dict) -> Optional[BytesIO]:
+    """
+    Gráfico de Donut con el formato solicitado para indicadores porcentuales.
+    """
+    data = []
+    for it in items:
+        c = (it.get("centro") or "").strip()
+        v = it.get("valor_num")
+        if not c or v is None: continue
+        data.append((c, max(0.0, float(v))))
+
+    if not data:
+        return None
+    
+    if all(d[1] == 0 for d in data):
+        return None
+
+    # Ordenar por valor descendente para consistencia visual
+    data.sort(key=lambda x: x[1], reverse=True)
+
+    labels = [x[0] for x in data]
+    valores = [x[1] for x in data]
+    colors_list = [palette.get(c, "#4c78a8") for c in labels]
+
+    # Usamos figsize cuadrado como en el ejemplo, pero ajustado a A4
+    fig, ax = plt.subplots(figsize=(7, 7))
+
+    def autopct_gen(pct):
+        # Muestra el porcentaje de la porción
+        return f"{pct:.1f}%"
+
+    wedges, texts, autotexts = ax.pie(
+        valores,
+        labels=labels,
+        startangle=90,
+        counterclock=False,
+        autopct=autopct_gen,
+        pctdistance=0.78,
+        wedgeprops=dict(width=0.35, edgecolor="white"),
+        colors=colors_list
+    )
+
+    # Texto central
+    # Mostramos la suma total de valores
+    ax.text(
+        0, 0,
+        f"Total:\n{sum(valores):.1f}", 
+        ha="center",
+        va="center",
+        fontsize=13,
+        fontweight="bold"
+    )
+
+    # Estilo de porcentajes
+    for t in autotexts:
+        t.set_color("white")
+        t.set_fontsize(9)
+        t.set_weight("bold")
+
+    ax.set(aspect="equal")
+    
+    plt.tight_layout()
+    buf = BytesIO()
+    fig.savefig(buf, format="png", dpi=200, bbox_inches='tight')
     plt.close(fig)
     buf.seek(0)
     return buf
@@ -521,7 +602,7 @@ def _select_chart(items: List[Dict[str, Any]], titulo: str, unidad: str, palette
     # Comprobación de "todo ceros" se hace dentro de las funciones de plot para devolver None
     
     if _is_percent_indicator(unidad):
-        return _plot_polar_porcentaje(validos, titulo, palette)
+        return _plot_donut_styled(validos, titulo, palette)
 
     return _plot_barras_coloreadas(validos, titulo, unidad, palette)
 
@@ -669,26 +750,22 @@ def generar_informe_pdf(dataset: Dict[str, Any]) -> bytes:
     styles = _build_styles()
     logo_path = _find_logo_path()
 
-    left = 2 * cm
-    right = 2 * cm
-    top = 2.2 * cm
-    bottom = 1.8 * cm
-
+    # Usamos las constantes definidas arriba
     frame = Frame(
-        left,
-        bottom,
-        PAGE_WIDTH - left - right,
-        PAGE_HEIGHT - top - bottom,
+        MARGIN_LEFT,
+        MARGIN_BOTTOM,
+        PAGE_WIDTH - MARGIN_LEFT - MARGIN_RIGHT,
+        PAGE_HEIGHT - MARGIN_TOP - MARGIN_BOTTOM,
         id="normal",
     )
 
     doc = InformeDoc(
         buffer,
         pagesize=A4,
-        leftMargin=left,
-        rightMargin=right,
-        topMargin=top,
-        bottomMargin=bottom,
+        leftMargin=MARGIN_LEFT,
+        rightMargin=MARGIN_RIGHT,
+        topMargin=MARGIN_TOP,
+        bottomMargin=MARGIN_BOTTOM,
         title=DEFAULT_TITLE,
         author=DEFAULT_SUBTITLE,
     )
@@ -834,8 +911,21 @@ def generar_informe_pdf(dataset: Dict[str, Any]) -> bytes:
         
         if buf_global is not None:
             try:
-                # Ajustamos tamaño segun tipo
-                elements.append(RLImage(buf_global, width=16.5 * cm, height=7.5 * cm))
+                # Ajustamos tamaño segun tipo manteniendo aspect ratio
+                # Leemos dimensiones de la imagen generada
+                buf_global.seek(0)
+                img_reader = ImageReader(buf_global)
+                iw, ih = img_reader.getSize()
+                aspect = ih / float(iw) if iw else 0.5
+                
+                # Ancho deseado en PDF (ancho de página menos márgenes aprox)
+                target_w = 16.5 * cm
+                target_h = target_w * aspect
+                
+                # Reset buffer cursor
+                buf_global.seek(0)
+                
+                elements.append(RLImage(buf_global, width=target_w, height=target_h))
                 elements.append(Spacer(1, 6))
             except Exception:
                 pass
@@ -873,12 +963,14 @@ def generar_informe_pdf(dataset: Dict[str, Any]) -> bytes:
         
         # Separador entre indicadores
         if i < len(indicadores) - 1:
-            story.append(Spacer(1, 2.5 * cm))
-            # Opcional: Linea separadora
-            story.append(Paragraph("<seq id='indicators'/> _______________________________________________________________________", styles["Meta"]))
+            story.append(Spacer(1, 1.5 * cm))
+            # Opcional: Linea separadora sutil
+            story.append(Paragraph("_" * 95, styles["Meta"])) 
             story.append(Spacer(1, 1.5 * cm))
 
-    doc.build(story)
+    # IMPORTANTE: Usamos multiBuild en lugar de build para que el Índice (TOC) pueda calcular
+    # los números de página correctamente (requiere dos pasadas).
+    doc.multiBuild(story)
 
     pdf_bytes = buffer.getvalue()
     buffer.close()
