@@ -543,22 +543,23 @@ app.post('/api/upload', (req, res) => {
             }, 3000); // 3 segundos adicionales después de confirmación
           });
           
-          // Timeout de seguridad AUMENTADO a 15 segundos
+          // Timeout de seguridad AUMENTADO a 60 segundos
           setTimeout(() => {
             if (!datosRecibidosPorCliente) {
               console.log('⚠️ ========================================');
-              console.log('⚠️ TIMEOUT: Cliente NO confirmó en 15 segundos');
+              console.log('ℹ️ AVISO: Cliente no confirmó recepción en 60 segundos (Posible cierre de pestaña o desconexión).');
+              console.log('ℹ️ Procediendo con el reset automático habitual para liberar recursos.');
               console.log('⚠️ ========================================');
               console.log('📊 Estado al timeout:', {
                 clientesConectados: io.engine.clientsCount,
                 enProceso: enProceso,
                 workerActivo: !!currentChild
               });
-              resetearServidorCompleto('trabajo completado - timeout de confirmación (15s)');
+              resetearServidorCompleto('trabajo completado - limpieza automática (60s)');
             } else {
               console.log('✅ Cliente confirmó antes del timeout - No es necesario resetear');
             }
-          }, 15000); // 🎯 AUMENTADO a 15 segundos
+          }, 60000); // 🎯 AUMENTADO a 60 segundos
           
           // Respuesta HTTP inmediata
           if (!res.headersSent) {

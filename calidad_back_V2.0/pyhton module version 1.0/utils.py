@@ -1,5 +1,6 @@
 import os
 import re
+import hashlib
 from pathlib import Path
 from io import BytesIO
 from datetime import datetime
@@ -13,6 +14,7 @@ import pandas as pd
 import matplotlib
 matplotlib.use("Agg")  # imprescindible en Docker (sin display)
 import matplotlib.pyplot as plt
+import numpy as np
 
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import cm
@@ -52,6 +54,7 @@ LOGO_CANDIDATES = [
 ]
 
 INDICADORES_JSON = BASE_DIR / "indicadores_enriquecidos.json"
+CENTROS_CATALOGO_JSON = BASE_DIR / "centrosCatalogo.json"
 
 
 # =========================
@@ -85,7 +88,7 @@ def mongo_ping() -> bool:
 
 
 # =========================
-# UTILIDADES DE DATOS
+# UTILIDADES
 # =========================
 def _safe_float(x: Any) -> Optional[float]:
     if x is None:
@@ -98,17 +101,13 @@ def _safe_float(x: Any) -> Optional[float]:
         return None
 
 
-def _clean_text(s: str) -> str:
+def _clean_text(s: Any) -> str:
     if s is None:
         return ""
-    # evita caracteres raros en PDF
     return re.sub(r"\s+", " ", str(s)).strip()
 
 
 def _load_indicadores_enriquecidos() -> Dict[str, Dict[str, Any]]:
-    """
-    Devuelve dict id_code -> metadata (categoria, titulo, objetivo, unidad, grafico...)
-    """
     if not INDICADORES_JSON.exists():
         return {}
     try:
@@ -124,6 +123,45 @@ def _load_indicadores_enriquecidos() -> Dict[str, Dict[str, Any]]:
         return {}
 
 
+def _load_centros_catalogo() -> Dict[str, Any]:
+    """Carga el catálogo de centros (id/label/path/region/color).
+
+    Estructura esperada (como el generado desde Angular):
+    {
+      "centros": [{"id":"DB1","label":"...","path":"...","region":"...","color":"#..."}, ...],
+      "byId": {"DB1": {"label":..., "path":..., "region":..., "color":...}, ...}
+    }
+    """
+    if not CENTROS_CATALOGO_JSON.exists():
+        return {"centros": [], "byId": {}, "byLabel": {}, "byPath": {}}
+    try:
+        import json
+
+        raw = json.loads(CENTROS_CATALOGO_JSON.read_text(encoding="utf-8"))
+        centros = raw.get("centros") or []
+        by_id = raw.get("byId") or {}
+
+        # Normaliza indexadores adicionales (por label / por path)
+        by_label = {}
+        by_path = {}
+        for c in centros:
+            cid = (c.get("id") or "").strip()
+            label = _clean_text(c.get("label") or "")
+            path = _clean_text(c.get("path") or "")
+            region = _clean_text(c.get("region") or "")
+            color = _clean_text(c.get("color") or "")
+            if cid and cid not in by_id:
+                by_id[cid] = {"label": label, "path": path, "region": region, "color": color}
+            if label:
+                by_label[label.lower()] = {"id": cid, "label": label, "path": path, "region": region, "color": color}
+            if path:
+                by_path[path.lower()] = {"id": cid, "label": label, "path": path, "region": region, "color": color}
+
+        return {"centros": centros, "byId": by_id, "byLabel": by_label, "byPath": by_path}
+    except Exception:
+        return {"centros": [], "byId": {}, "byLabel": {}, "byPath": {}}
+
+
 def _find_logo_path() -> Optional[Path]:
     for p in LOGO_CANDIDATES:
         if p.exists():
@@ -132,9 +170,6 @@ def _find_logo_path() -> Optional[Path]:
 
 
 def _infer_periodo(docs: List[Dict[str, Any]]) -> Tuple[Optional[str], Optional[str]]:
-    """
-    Intenta inferir fecha_inicio y fecha_fin si vienen en los docs.
-    """
     for d in docs:
         cfg = d.get("config") or {}
         fi = cfg.get("fecha_inicio") or cfg.get("FECHAINI") or cfg.get("fechaini")
@@ -145,23 +180,65 @@ def _infer_periodo(docs: List[Dict[str, Any]]) -> Tuple[Optional[str], Optional[
 
 
 # =========================
-# TRANSFORMACIÓN A SECCIONES
+# COLORES CONSISTENTES POR CENTRO
+# =========================
+def _center_color_hex(centro: str) -> str:
+    """
+    Color estable por centro (hash) -> hex.
+    Evita tonos demasiado claros u oscuros.
+    """
+    s = (centro or "Centro").encode("utf-8")
+    h = hashlib.md5(s).hexdigest()
+
+    r = int(h[0:2], 16)
+    g = int(h[2:4], 16)
+    b = int(h[4:6], 16)
+
+    def clamp(x):
+        return max(40, min(200, x))
+
+    r, g, b = clamp(r), clamp(g), clamp(b)
+    return f"#{r:02x}{g:02x}{b:02x}"
+
+
+def _build_center_palette(indicadores: list) -> dict:
+    """Construye paleta global (estable) para TODO el PDF.
+
+    Prioridad:
+    1) color definido en centrosCatalogo.json
+    2) fallback por hash (estable)
+    """
+    catalogo = _load_centros_catalogo()
+    by_label = catalogo.get("byLabel") or {}
+
+    centros = set()
+    for ind in indicadores:
+        for it in (ind.get("items") or []):
+            c = _clean_text(it.get("centro") or "")
+            if c:
+                centros.add(c)
+
+    centros = sorted(centros)
+    palette = {}
+    for c in centros:
+        meta = by_label.get(c.lower())
+        if meta and meta.get("color"):
+            palette[c] = meta["color"]
+        else:
+            palette[c] = _center_color_hex(c)
+    return palette
+
+
+# =========================
+# TRANSFORMACIÓN A DATASET DE INFORME
 # =========================
 def recopilar_datos_informe(coleccion_resultados, id_transaccion: str) -> Dict[str, Any]:
-    """
-    Carga docs desde Mongo y prepara estructura rica para informe.
-    Estructura salida:
-    {
-      meta: {...},
-      indicadores: [
-        { id_code, titulo, categoria, objetivo, unidad, items:[{centro, valor, pacientes}], ... }
-      ]
-    }
-    """
     docs = list(coleccion_resultados.find({"id_transaccion": id_transaccion}, {"_id": 0}))
-
     indicadores_meta = _load_indicadores_enriquecidos()
-
+    centros_catalogo = _load_centros_catalogo()
+    by_id = centros_catalogo.get("byId") or {}
+    by_label = centros_catalogo.get("byLabel") or {}
+    by_path = centros_catalogo.get("byPath") or {}
     fecha_ini, fecha_fin = _infer_periodo(docs)
 
     meta = {
@@ -174,33 +251,54 @@ def recopilar_datos_informe(coleccion_resultados, id_transaccion: str) -> Dict[s
 
     agrupado: Dict[str, Dict[str, Any]] = {}
 
+    def _resolver_centro(base: Dict[str, Any]) -> Tuple[str, Optional[str], Optional[str]]:
+        """Devuelve (label_centro, region, id).
+
+        Resolver por:
+        - id (DBx)
+        - path (.gdb)
+        - label ya proporcionado
+        """
+        base_id = _clean_text(base.get("id") or base.get("baseId") or base.get("codigo") or "")
+        base_path = _clean_text(base.get("path") or base.get("baseData") or base.get("database") or "")
+        base_label = _clean_text(base.get("nombre") or base.get("centro") or base.get("label") or "")
+
+        if base_id and base_id in by_id:
+            m = by_id[base_id]
+            return (_clean_text(m.get("label") or base_label or base_id), _clean_text(m.get("region")), base_id)
+
+        if base_path and base_path.lower() in by_path:
+            m = by_path[base_path.lower()]
+            return (_clean_text(m.get("label") or base_label or base_path), _clean_text(m.get("region")), _clean_text(m.get("id")))
+
+        if base_label and base_label.lower() in by_label:
+            m = by_label[base_label.lower()]
+            return (_clean_text(m.get("label") or base_label), _clean_text(m.get("region")), _clean_text(m.get("id")))
+
+        # Fallback: lo que venga
+        return (base_label or base_path or base_id or "Centro", None, base_id or None)
+
     for d in docs:
         indice = d.get("indice") or {}
         payload = d.get("payload") or {}
         base = d.get("base") or {}
 
         id_code = str(indice.get("id_code") or indice.get("id") or d.get("id_code") or "").strip()
-
-        # nombre “humano”
         label = indice.get("label") or d.get("indicador") or payload.get("indicador") or "Indicador"
         label = _clean_text(label)
 
-        # centro
-        centro = base.get("nombre") or base.get("centro") or base.get("baseData") or "Centro"
-        centro = _clean_text(centro)
+        centro, region, centro_id = _resolver_centro(base)
 
-        # valor / pacientes / unidad
         valor_raw = payload.get("resultado", payload.get("valor"))
         pacientes = payload.get("numero_pacientes", payload.get("pacientes"))
         unidad = payload.get("unidad") or d.get("unidad") or ""
 
-        # enriquecimiento por id_code
         enr = indicadores_meta.get(id_code, {})
         titulo = _clean_text(enr.get("titulo") or label)
         categoria = _clean_text(enr.get("categoria") or indice.get("categoria") or d.get("categoria") or "")
         objetivo = _clean_text(enr.get("objetivo") or "")
 
-        key = id_code or titulo  # clave estable
+        key = id_code or titulo
         if key not in agrupado:
             agrupado[key] = {
                 "id_code": id_code,
@@ -214,49 +312,59 @@ def recopilar_datos_informe(coleccion_resultados, id_transaccion: str) -> Dict[s
         agrupado[key]["items"].append(
             {
                 "centro": centro,
+                "region": region,
+                "centro_id": centro_id,
                 "valor": valor_raw,
                 "valor_num": _safe_float(valor_raw),
                 "pacientes": pacientes,
             }
         )
 
-        # si unidad viene vacía pero en algún doc sí
         if not agrupado[key]["unidad"] and unidad:
             agrupado[key]["unidad"] = unidad
 
     indicadores = list(agrupado.values())
-
-    # orden: por categoría y título
     indicadores.sort(key=lambda x: (x.get("categoria", ""), x.get("titulo", "")))
 
     return {"meta": meta, "indicadores": indicadores}
 
 
 # =========================
-# GRÁFICOS
+# GRÁFICAS (BARRAS + DONUT GAUGE)
 # =========================
-def _plot_barras(items: List[Dict[str, Any]], titulo: str, unidad: str) -> Optional[BytesIO]:
+def _plot_barras_coloreadas(items: List[Dict[str, Any]], titulo: str, unidad: str, palette: dict) -> Optional[BytesIO]:
     data = []
     for it in items:
         v = it.get("valor_num")
-        if v is None:
+        c = (it.get("centro") or "").strip()
+        if v is None or not c:
             continue
-        data.append((it.get("centro", ""), v))
+        data.append((c, v))
 
     if not data:
         return None
 
     df = pd.DataFrame(data, columns=["centro", "valor"])
-    # si hay muchos centros, limita altura
-    fig_h = 4.0
-    if len(df) > 10:
-        fig_h = 5.5
+    # Orden descendente por valor para lectura más clara
+    df = df.sort_values(by="valor", ascending=False).reset_index(drop=True)
+    colors_list = [palette.get(c, "#4c78a8") for c in df["centro"]]
 
-    fig, ax = plt.subplots(figsize=(10, fig_h))
-    ax.bar(df["centro"], df["valor"])
+    n = len(df)
+    horizontal = n > 12
+    if horizontal:
+        fig_h = max(4.0, 0.35 * n)
+        fig, ax = plt.subplots(figsize=(10, fig_h))
+        ax.barh(df["centro"], df["valor"], color=colors_list)
+        ax.invert_yaxis()
+        ax.set_xlabel(unidad or "valor")
+    else:
+        fig_h = 4.0 if n <= 10 else 5.5
+        fig, ax = plt.subplots(figsize=(10, fig_h))
+        ax.bar(df["centro"], df["valor"], color=colors_list)
+        ax.set_ylabel(unidad or "valor")
+        ax.tick_params(axis="x", rotation=35)
+
     ax.set_title(titulo)
-    ax.set_ylabel(unidad or "valor")
-    ax.tick_params(axis="x", rotation=35)
 
     buf = BytesIO()
     plt.tight_layout()
@@ -264,6 +372,90 @@ def _plot_barras(items: List[Dict[str, Any]], titulo: str, unidad: str) -> Optio
     plt.close(fig)
     buf.seek(0)
     return buf
+
+
+def _plot_gauge_donuts_por_centro(items: List[Dict[str, Any]], titulo: str, palette: dict) -> Optional[BytesIO]:
+    """
+    Donut tipo gauge por centro:
+    - Parte rellena = valor (0-100)
+    - Resto = gris
+    Genera una figura con N donuts (subplots).
+    """
+    rows_data = []
+    for it in items:
+        c = (it.get("centro") or "").strip()
+        v = it.get("valor_num")
+        if not c or v is None:
+            continue
+
+        # Clamp a [0,100] para gauge
+        v = max(0.0, min(100.0, float(v)))
+        rows_data.append((c, v))
+
+    if not rows_data:
+        return None
+
+    # Orden por centro (estable)
+    rows_data.sort(key=lambda x: x[0])
+
+    n = len(rows_data)
+    cols = 3 if n >= 3 else n
+    rows = int(np.ceil(n / cols))
+
+    fig_w = 10
+    fig_h = 3.6 * rows
+    fig, axes = plt.subplots(rows, cols, figsize=(fig_w, fig_h))
+    if n == 1:
+        axes = np.array([axes])
+    axes = axes.flatten()
+
+    for ax in axes[n:]:
+        ax.axis("off")
+
+    for i, (centro, v) in enumerate(rows_data):
+        ax = axes[i]
+        color = palette.get(centro, "#4c78a8")
+
+        ax.pie(
+            [v, 100.0 - v],
+            startangle=90,
+            colors=[color, "#e6e6e6"],
+            wedgeprops=dict(width=0.35, edgecolor="white"),
+        )
+        ax.set(aspect="equal")
+        ax.set_title(_clean_text(centro), fontsize=10, pad=6)
+        ax.text(0, 0, f"{v:.1f}%", ha="center", va="center", fontsize=12, fontweight="bold")
+
+    fig.suptitle(titulo, fontsize=14)
+    buf = BytesIO()
+    plt.tight_layout(rect=[0, 0, 1, 0.94])
+    fig.savefig(buf, format="png", dpi=170)
+    plt.close(fig)
+    buf.seek(0)
+    return buf
+
+
+def _is_percent_indicator(unidad: str) -> bool:
+    u = (unidad or "").lower()
+    return ("%" in u) or ("porcentaje" in u)
+
+
+def _select_chart(items: List[Dict[str, Any]], titulo: str, unidad: str, palette: dict) -> Optional[BytesIO]:
+    """Elige la mejor gráfica según unidad y número de centros."""
+    n = len([it for it in items if it.get("valor_num") is not None])
+    if n == 0:
+        return None
+
+    if _is_percent_indicator(unidad):
+        # Donuts solo cuando hay pocos centros; con muchos, barras es más legible.
+        if n <= 9:
+            buf = _plot_gauge_donuts_por_centro(items, f"{titulo} — % por centro", palette)
+            if buf is not None:
+                return buf
+        return _plot_barras_coloreadas(items, titulo, unidad, palette)
+
+    # Por defecto: barras
+    return _plot_barras_coloreadas(items, titulo, unidad, palette)
 
 
 # =========================
@@ -285,9 +477,9 @@ def _build_styles():
         name="H2",
         parent=styles["Heading2"],
         fontSize=12.5,
-        leading=14.5,
+        leading=15,
         spaceBefore=10,
-        spaceAfter=8,
+        spaceAfter=6,
         textColor=colors.HexColor("#1f3b57"),
     ))
     styles.add(ParagraphStyle(
@@ -336,7 +528,7 @@ def _draw_header_footer(canvas, doc, title: str, logo_path: Optional[Path]):
         try:
             img = ImageReader(str(logo_path))
             iw, ih = img.getSize()
-            target_h = 0.55 * cm
+            target_h = 1.88 * cm
             target_w = target_h * (iw / ih)
             canvas.drawImage(img, 2 * cm, y - target_h + 0.05 * cm, width=target_w, height=target_h, mask="auto")
         except Exception:
@@ -346,7 +538,6 @@ def _draw_header_footer(canvas, doc, title: str, logo_path: Optional[Path]):
     canvas.setFillColor(colors.HexColor("#666666"))
     canvas.drawRightString(PAGE_WIDTH - 2 * cm, y - 0.1 * cm, _clean_text(title))
 
-    # Divider line
     canvas.setStrokeColor(colors.HexColor("#DDDDDD"))
     canvas.setLineWidth(0.6)
     canvas.line(2 * cm, y - 0.25 * cm, PAGE_WIDTH - 2 * cm, y - 0.25 * cm)
@@ -367,42 +558,30 @@ def _draw_header_footer(canvas, doc, title: str, logo_path: Optional[Path]):
 # PDF: DOCUMENTO CON TOC REAL
 # =========================
 class InformeDoc(BaseDocTemplate):
-    def __init__(self, filename_or_buffer, **kwargs):
-        super().__init__(filename_or_buffer, **kwargs)
-        self._toc = None
-
     def afterFlowable(self, flowable):
-        """
-        Notifica entradas del índice cuando pasamos por un H1/H2.
-        """
         if isinstance(flowable, Paragraph):
-            style = flowable.style.name
-            text = flowable.getPlainText()
-            if style == "H1":
+            if flowable.style.name == "H1":
+                text = flowable.getPlainText()
                 key = re.sub(r"[^a-zA-Z0-9_]+", "_", text)[:60]
                 self.notify("TOCEntry", (0, text, self.page))
                 self.canv.bookmarkPage(key)
                 self.canv.addOutlineEntry(text, key, level=0, closed=False)
-            elif style == "H2":
-                self.notify("TOCEntry", (1, text, self.page))
 
 
 # =========================
-# PDF: GENERADOR PRINCIPAL
+# PDF: GENERADOR
 # =========================
 def generar_informe_pdf(dataset: Dict[str, Any]) -> bytes:
-    """
-    Genera PDF válido y devuelve bytes.
-    """
     meta = dataset.get("meta") or {}
     indicadores = dataset.get("indicadores") or []
 
-    buffer = BytesIO()
+    # Paleta global (colores consistentes en TODO el informe)
+    palette = _build_center_palette(indicadores)
 
+    buffer = BytesIO()
     styles = _build_styles()
     logo_path = _find_logo_path()
 
-    # Márgenes y frame (dejamos espacio a cabecera/pie)
     left = 2 * cm
     right = 2 * cm
     top = 2.2 * cm
@@ -445,8 +624,6 @@ def generar_informe_pdf(dataset: Dict[str, Any]) -> bytes:
             max_h = 6 * cm
             scale = min(max_w / iw, max_h / ih)
             w, h = iw * scale, ih * scale
-
-            # centrado
             story.append(RLImage(str(logo_path), width=w, height=h))
             story.append(Spacer(1, 1.2 * cm))
         except Exception:
@@ -476,43 +653,36 @@ def generar_informe_pdf(dataset: Dict[str, Any]) -> bytes:
     toc = TableOfContents()
     toc.levelStyles = [
         ParagraphStyle(name="TOC0", fontSize=11, leftIndent=0, firstLineIndent=0, spaceAfter=6),
-        ParagraphStyle(name="TOC1", fontSize=10, leftIndent=16, firstLineIndent=0, spaceAfter=4, textColor=colors.HexColor("#444444")),
     ]
     story.append(toc)
     story.append(PageBreak())
 
-    # ---------- RESUMEN EJECUTIVO ----------
-    story.append(Paragraph("Resumen ejecutivo", styles["H1"]))
-    story.append(Spacer(1, 6))
+    # ---------- LEYENDA DE COLORES POR CENTRO (global) ----------
+    story.append(Paragraph("Leyenda de centros (colores)", styles["H1"]))
+    story.append(Spacer(1, 8))
 
-    # resumen por categoría: nº indicadores
-    cat_counts: Dict[str, int] = {}
-    for ind in indicadores:
-        cat = ind.get("categoria") or "Sin categoría"
-        cat_counts[cat] = cat_counts.get(cat, 0) + 1
+    catalogo = _load_centros_catalogo()
+    by_label = catalogo.get("byLabel") or {}
 
-    story.append(Paragraph(
-        "Este informe consolida los resultados analíticos por centro y por indicador. "
-        "Incluye tablas y gráficos para facilitar la interpretación comparativa.",
-        styles["Small"]
-    ))
-    story.append(Spacer(1, 10))
+    if palette:
+        data = [["Centro", "Región", "Color (HEX)"]]
+        for c in sorted(palette.keys()):
+            m = by_label.get(c.lower()) or {}
+            data.append([c, m.get("region") or "", palette[c]])
 
-    if cat_counts:
-        data = [["Categoría", "Indicadores"]] + [[c, str(n)] for c, n in sorted(cat_counts.items(), key=lambda x: (-x[1], x[0]))]
-        tbl = Table(data, colWidths=[12.5 * cm, 3.0 * cm])
+        tbl = Table(data, colWidths=[8.2 * cm, 5.0 * cm, 2.3 * cm])
         tbl.setStyle(TableStyle([
             ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#1f3b57")),
             ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
             ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
             ("FONTSIZE", (0, 0), (-1, 0), 10),
-            ("ALIGN", (1, 1), (1, -1), "RIGHT"),
             ("GRID", (0, 0), (-1, -1), 0.25, colors.HexColor("#DDDDDD")),
             ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.whitesmoke, colors.white]),
             ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
         ]))
         story.append(tbl)
-        story.append(Spacer(1, 12))
+    else:
+        story.append(Paragraph("No se han detectado centros para generar paleta.", styles["Small"]))
 
     story.append(PageBreak())
 
@@ -533,7 +703,8 @@ def generar_informe_pdf(dataset: Dict[str, Any]) -> bytes:
         story.append(Spacer(1, 10))
 
         items = ind.get("items") or []
-        # tabla
+
+        # Tabla
         table_data = [["Centro", "Valor", "Nº pacientes"]]
         for it in items:
             table_data.append([
@@ -555,19 +726,46 @@ def generar_informe_pdf(dataset: Dict[str, Any]) -> bytes:
             ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
         ]))
         story.append(tbl)
-        story.append(Spacer(1, 10))
+        story.append(Spacer(1, 12))
 
-        # gráfico
-        buf = _plot_barras(items, titulo, unidad)
-        if buf is not None:
+        # --- GRÁFICAS ---
+        if len(items) >= 2:
+            story.append(Paragraph("Comparativa global", styles["H2"]))
+        buf_global = _select_chart(items, titulo, unidad, palette)
+        if buf_global is not None:
             try:
-                story.append(RLImage(buf, width=16.5 * cm, height=7.0 * cm))
-                story.append(Spacer(1, 8))
-                story.append(Paragraph("Figura: Comparativa por centro.", styles["Small"]))
+                story.append(RLImage(buf_global, width=16.5 * cm, height=7.0 * cm))
+                story.append(Spacer(1, 6))
             except Exception:
-                story.append(Paragraph("[No se pudo insertar el gráfico]", styles["Small"]))
+                story.append(Paragraph("[No se pudo insertar la gráfica global]", styles["Small"]))
         else:
-            story.append(Paragraph("No se dispone de valores numéricos suficientes para generar gráfico.", styles["Small"]))
+            story.append(Paragraph("No hay valores numéricos suficientes para generar gráfica.", styles["Small"]))
+
+        # Por región (zona)
+        region_map: Dict[str, List[Dict[str, Any]]] = {}
+        for it in items:
+            r = _clean_text(it.get("region") or "") or "(Sin región)"
+            region_map.setdefault(r, []).append(it)
+
+        regiones_ordenadas = sorted(region_map.keys(), key=lambda x: (x == "(Sin región)", x))
+        for region in regiones_ordenadas:
+            sub_items = region_map[region]
+            centros_distintos = sorted({(_clean_text(i.get("centro") or "")) for i in sub_items if i.get("centro")})
+            if len(centros_distintos) < 2:
+                continue
+
+            story.append(Spacer(1, 8))
+            story.append(Paragraph(f"Comparativa por región: {region}", styles["H2"]))
+
+            buf_reg = _select_chart(sub_items, f"{titulo} — {region}", unidad, palette)
+            if buf_reg is not None:
+                try:
+                    story.append(RLImage(buf_reg, width=16.5 * cm, height=7.0 * cm))
+                except Exception:
+                    story.append(Paragraph("[No se pudo insertar la gráfica por región]", styles["Small"]))
+
+        story.append(Spacer(1, 6))
+        story.append(Paragraph("Colores consistentes por centro en todo el informe.", styles["Small"]))
 
         story.append(PageBreak())
 
@@ -607,20 +805,16 @@ def guardar_pdf(db, id_transaccion: str, pdf_bytes: bytes) -> None:
 def obtener_o_generar_pdf(id_transaccion: str) -> bytes:
     db = conectar_calidad()
 
-    # 1) Cache
     cached = obtener_pdf_guardado(db, id_transaccion)
     if cached and cached.startswith(b"%PDF"):
         return cached
 
-    # 2) Dataset desde resultados
-    # OJO: aquí usas "resultados" (según tu módulo actual).
-    # Si en tu backend Node guardas en otra colección, cámbialo aquí.
+    # Ajusta esta colección si tu backend guarda en otra:
     col_resultados = db["resultados"]
     dataset = recopilar_datos_informe(col_resultados, id_transaccion=id_transaccion)
 
     pdf_bytes = generar_informe_pdf(dataset)
 
-    # 3) Guardar cache
     if pdf_bytes and pdf_bytes.startswith(b"%PDF"):
         guardar_pdf(db, id_transaccion, pdf_bytes)
 

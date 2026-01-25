@@ -29,7 +29,7 @@ services:
     environment:
       - NODE_ENV=production
       - USE_PROD_ORIGIN=true
-      - PYTHON_SERVICE_URL=http://servicio-python:8000
+      - PYTHON_SERVICE_URL=http://calidad-python:8000
     volumes:
       - ./calidad_back_V2.0/uploads:/usr/src/app/uploads
       - ./calidad_back_V2.0/.env:/usr/src/app/.env
@@ -38,8 +38,6 @@ services:
         condition: service_healthy
       calidad-python:
         condition: service_started
-    links:
-      - calidad-python:servicio-python
     networks:
       - calidad-network
 
