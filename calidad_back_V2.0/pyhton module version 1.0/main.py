@@ -91,7 +91,7 @@ def conectar_calidad():
     Compatible con Docker y local (si existe .env junto al archivo).
     """
     env_path = BASE_DIR / ".env"
-    if env_path.exists():
+    if (env_path.exists()):
         load_dotenv(env_path)
 
     mongo_uri = os.getenv("MONGODB_URI") or os.getenv("MONGO_URI") or "mongodb://mongodb:27017/"
@@ -230,12 +230,12 @@ def _center_color_hex(centro: str) -> str:
     """
     s = (centro or "Centro").encode("utf-8")
     h = hashlib.md5(s).hexdigest()
-    # Usamos una semilla determinista para elegir de una paleta predefinida profesional
-    # en lugar de generar colores RGB aleatorios que pueden salir feos.
+    # Paleta Tab20 manual para máxima distinción
     paleta_profesional = [
-        "#2E86C1", "#1ABC9C", "#F39C12", "#E74C3C", "#8E44AD", 
-        "#34495E", "#16A085", "#D35400", "#C0392B", "#27AE60",
-        "#2980B9", "#7F8C8D", "#9B59B6", "#E67E22", "#008080"
+        "#1f77b4", "#aec7e8", "#ff7f0e", "#ffbb78", "#2ca02c", "#98df8a",
+        "#d62728", "#ff9896", "#9467bd", "#c5b0d5", "#8c564b", "#c49c94",
+        "#e377c2", "#f7b6d2", "#7f7f7f", "#c7c7c7", "#bcbd22", "#dbdb8d",
+        "#17becf", "#9edae5"
     ]
     idx = int(h, 16) % len(paleta_profesional)
     return paleta_profesional[idx]
@@ -518,7 +518,7 @@ def _plot_modern_percentage(items: List[Dict[str, Any]], titulo: str, palette: d
 
 def _plot_donut_styled(items: List[Dict[str, Any]], titulo: str, palette: dict) -> Optional[BytesIO]:
     """
-    Gráfico de Donut con el formato solicitado para indicadores porcentuales.
+    Gráfico de Donut con radio variable (tipo 'Nightingale Rose' o 'Radial Bar').
     """
     data = []
     for it in items:
@@ -533,49 +533,97 @@ def _plot_donut_styled(items: List[Dict[str, Any]], titulo: str, palette: dict) 
     if all(d[1] == 0 for d in data):
         return None
 
-    # Ordenar por valor descendente para consistencia visual
+    # Ordenar por valor descendente para efecto escalera visual
     data.sort(key=lambda x: x[1], reverse=True)
 
     labels = [x[0] for x in data]
-    valores = [x[1] for x in data]
-    colors_list = [palette.get(c, "#4c78a8") for c in labels]
+    valores = np.array([x[1] for x in data])
+    total = valores.sum()
+    if total == 0: total = 1 # Evitar div by zero
 
-    # Usamos figsize cuadrado como en el ejemplo, pero ajustado a A4
-    fig, ax = plt.subplots(figsize=(7, 7))
+    # --- DATOS GEOMÉTRICOS ---
+    # Ángulos (ancho de cada slice)
+    angles = 2 * np.pi * valores / total
+    
+    # Posiciones de inicio (acumulativo)
+    starts = np.zeros_like(angles)
+    starts[1:] = np.cumsum(angles)[:-1]
 
-    def autopct_gen(pct):
-        # Muestra el porcentaje de la porción
-        return f"{pct:.1f}%"
+    # Radios (altura de cada slice)
+    max_val = valores.max() or 1
+    
+    hole_radius = 1.0       # Reducimos radio interior un poco para dar espacio fuera
+    base_height = 0.5   
+    var_height = 1.8        # Reducimos un poco el crecimiento máximo
+    
+    # height[i] = base + (v / max)*var
+    heights = base_height + (valores / max_val) * var_height
 
-    wedges, texts, autotexts = ax.pie(
-        valores,
-        labels=labels,
-        startangle=90,
-        counterclock=False,
-        autopct=autopct_gen,
-        pctdistance=0.78,
-        wedgeprops=dict(width=0.35, edgecolor="white"),
-        colors=colors_list
+    # --- COLORES ---
+    # Usamos la paleta consistente por centro
+    colors_list = [palette.get(label, "#cccccc") for label in labels]
+
+    # --- FIGURA POLAR ---
+    # Tamaño ajustado
+    fig, ax = plt.subplots(figsize=(6, 6), subplot_kw=dict(projection="polar"))
+    
+    # Configuración sentido horario empezando a las 12
+    ax.set_theta_offset(np.pi / 2)
+    ax.set_theta_direction(-1)
+
+    # Dibujar barras (Slices)
+    bars = ax.bar(
+        starts, 
+        heights, 
+        width=angles, 
+        bottom=hole_radius, 
+        color=colors_list, 
+        edgecolor='white', 
+        linewidth=2,
+        align='edge' 
     )
 
-    # Texto central
-    # Mostramos la suma total de valores
+    # --- ETIQUETAS ---
+    for i, (angle, height, label, val) in enumerate(zip(angles, heights, labels, valores)):
+        # if angle < 0.02: continue # Omitir etiquetas en slices muy finos
+
+        # Ángulo central del slice
+        mid_angle = starts[i] + angle / 2
+        
+        # Posición radial: MÁS AFUERA para separar del gráfico.
+        # Max height posible es base(0.5) + var(1.8) = 2.3. Hole(1.0). Total radio grafico ~ 3.3.
+        # Ponemos etiquetas en radio 3.6 o más, dinámico.
+        label_r = hole_radius + height + 0.6  # Separación generosa
+        
+        pct = (val / total) * 100
+        # Texto unificado más grande
+        txt = f"{label}\n{pct:.1f}%"
+        
+        # Color más oscuro y letra más grande
+        ax.text(
+            mid_angle, 
+            label_r, 
+            txt, 
+            ha='center', 
+            va='center', 
+            fontsize=11,     # AUMENTADO
+            fontweight='bold',
+            color='#222222'
+        )
+
+    # Texto central (Total)
     ax.text(
-        0, 0,
-        f"Total:\n{sum(valores):.1f}", 
-        ha="center",
-        va="center",
-        fontsize=13,
-        fontweight="bold"
+        0, 0, 
+        f"TOTAL\n{total:.1f}", 
+        ha='center', 
+        va='center', 
+        fontsize=10, 
+        fontweight='bold',
+        color='#444444'
     )
 
-    # Estilo de porcentajes
-    for t in autotexts:
-        t.set_color("white")
-        t.set_fontsize(9)
-        t.set_weight("bold")
-
-    ax.set(aspect="equal")
+    # Limpiar ejes
+    ax.set_axis_off()
     
     plt.tight_layout()
     buf = BytesIO()
@@ -621,10 +669,10 @@ def _build_styles():
     styles.add(ParagraphStyle(
         name="H1",
         parent=styles["Heading1"],
-        fontSize=18,
-        leading=22,
-        spaceBefore=18,
-        spaceAfter=12,
+        fontSize=12, # REDUCIDO DE 15 A 12
+        leading=15,  # Ajustado leading
+        spaceBefore=14,
+        spaceAfter=10,
         textColor=corp_dark,
         borderPadding=0,
         fontName="Helvetica-Bold"
@@ -714,9 +762,10 @@ def _draw_header_footer(canvas, doc, title: str, logo_path: Optional[Path]):
     canvas.setStrokeColor(colors.HexColor("#DDDDDD"))
     canvas.line(2 * cm, 1.4 * cm, PAGE_WIDTH - 2 * cm, 1.4 * cm)
 
+    # Quitamos fecha y autor, solo página
     canvas.setFillColor(colors.HexColor("#666666"))
     canvas.setFont("Helvetica", 9)
-    canvas.drawString(2 * cm, 1.0 * cm, datetime.now().strftime("%d/%m/%Y %H:%M"))
+    # canvas.drawString(2 * cm, 1.0 * cm, datetime.now().strftime("%d/%m/%Y %H:%M"))
     canvas.drawRightString(PAGE_WIDTH - 2 * cm, 1.0 * cm, f"Página {doc.page}")
 
     canvas.restoreState()
@@ -779,7 +828,6 @@ def generar_informe_pdf(dataset: Dict[str, Any]) -> bytes:
 
     # ---------- PORTADA "ESPECTACULAR" ----------
     story.append(Spacer(1, 3.0 * cm))
-
     # Logo centrado y más grande
     if logo_path and logo_path.exists():
         try:
@@ -789,7 +837,6 @@ def generar_informe_pdf(dataset: Dict[str, Any]) -> bytes:
             max_h = 5 * cm
             scale = min(max_w / iw, max_h / ih)
             w, h = iw * scale, ih * scale
-            # Truco para centrar imagen: Meterla en una tabla de una celda centrada o usar flowable alignment
             story.append(RLImage(str(logo_path), width=w, height=h)) 
             story.append(Spacer(1, 1.5 * cm))
         except Exception:
@@ -821,7 +868,7 @@ def generar_informe_pdf(dataset: Dict[str, Any]) -> bytes:
         ('FONTSIZE', (0,0), (-1,-1), 10),
         ('BOTTOMPADDING', (0,0), (-1,-1), 8),
         ('TOPPADDING', (0,0), (-1,-1), 8),
-        ('GRID', (0,0), (-1,-1), 0.5, colors.white), # Grid blanco para separar
+        ('GRID', (0,0), (-1,-1), 0.5, colors.white), 
         ('ALIGN', (0,0), (0,-1), 'RIGHT'),
         ('ALIGN', (1,0), (1,-1), 'LEFT'),
         ('FONTNAME', (0,0), (0,-1), 'Helvetica-Bold'),
@@ -847,14 +894,14 @@ def generar_informe_pdf(dataset: Dict[str, Any]) -> bytes:
         categoria = ind.get("categoria") or ""
         objetivo = ind.get("objetivo") or ""
         unidad = ind.get("unidad") or ""
+        items = ind.get("items") or []
 
-        # Agrupamos todo el bloque del indicador para intentar que no se rompa feo,
-        # aunque si es muy grande ReportLab lo romperá igual.
-        # Usamos KeepTogether para título + tabla si es posible.
-        
-        elements = []
-        
-        elements.append(Paragraph(titulo, styles["H1"]))
+        # Usamos una lista temporal para agrupar los elementos de este indicador
+        # e intentar mantenerlos juntos en la página.
+        indicator_elements = []
+
+        # 1. TÍTULO Y METADATOS
+        indicator_elements.append(Paragraph(titulo, styles["H1"]))
         
         meta_info = []
         if categoria: meta_info.append(f"<b>Categoría:</b> {categoria}")
@@ -862,79 +909,43 @@ def generar_informe_pdf(dataset: Dict[str, Any]) -> bytes:
         if unidad: meta_info.append(f"<b>Unidad:</b> {unidad}")
         
         if meta_info:
-            elements.append(Paragraph(" | ".join(meta_info), styles["Small"]))
+            indicator_elements.append(Paragraph(" | ".join(meta_info), styles["Small"]))
         
-        elements.append(Spacer(1, 10))
+        indicator_elements.append(Spacer(1, 10))
 
-        items = ind.get("items") or []
-
-        # Tabla
-        table_data = [["Centro", "Valor", "Nº pacientes"]]
-        valores_numeros = []
-        for it in items:
-            val = it.get("valor_num")
-            if val is not None: valores_numeros.append(val)
-            
-            table_data.append([
-                it.get("centro", ""),
-                "" if it.get("valor") is None else str(it.get("valor")),
-                "" if it.get("pacientes") is None else str(it.get("pacientes")),
-            ])
-
-        tbl = Table(table_data, colWidths=[9.5 * cm, 3.0 * cm, 3.0 * cm])
-        tbl.setStyle(TableStyle([
-            ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#2471A3")), 
-            ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
-            ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
-            ("FONTSIZE", (0, 0), (-1, 0), 10),
-            ("FONTSIZE", (0, 1), (-1, -1), 10),
-            ("ALIGN", (1, 1), (2, -1), "CENTER"), 
-            ("GRID", (0, 0), (-1, -1), 0.5, colors.HexColor("#D5D8DC")),
-            ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, colors.HexColor("#F4F6F7")]),
-            ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
-            ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
-            ("TOPPADDING", (0, 0), (-1, -1), 6),
-        ]))
-        elements.append(tbl)
-        elements.append(Spacer(1, 15))
-
-        # --- GRÁFICAS ---
-        # Verificamos si hay algún valor > 0 para mostrar título de gráfica
-        # O si el usuario pide mostrar "Datos son 0"
-        
+        # 2. GENERACIÓN DE GRÁFICA (AHORA VA ANTES QUE LA TABLA)
+        valores_numeros = [it.get("valor_num") for it in items if it.get("valor_num") is not None]
         all_zeros = (len(valores_numeros) > 0) and (sum(valores_numeros) == 0)
-        
-        if len(items) >= 2:
-             elements.append(Paragraph("Visualización Gráfica", styles["H2"]))
         
         buf_global = _select_chart(items, titulo, unidad, palette)
         
         if buf_global is not None:
             try:
-                # Ajustamos tamaño segun tipo manteniendo aspect ratio
-                # Leemos dimensiones de la imagen generada
                 buf_global.seek(0)
                 img_reader = ImageReader(buf_global)
                 iw, ih = img_reader.getSize()
                 aspect = ih / float(iw) if iw else 0.5
                 
-                # Ancho deseado en PDF (ancho de página menos márgenes aprox)
+                # Ajustamos ancho de visualización en PDF
                 target_w = 16.5 * cm
+                # Si es circular (donut), lo hacemos un poco más pequeño visualmente en la página
+                if _is_percent_indicator(unidad):
+                     target_w = 12.0 * cm # Reducción visual en página
+                     
                 target_h = target_w * aspect
                 
-                # Reset buffer cursor
                 buf_global.seek(0)
-                
-                elements.append(RLImage(buf_global, width=target_w, height=target_h))
-                elements.append(Spacer(1, 6))
+                # Centramos la imagen
+                indicator_elements.append(Paragraph("Visualización Gráfica", styles["H2"]))
+                # Tabla contenedora para centrar
+                img = RLImage(buf_global, width=target_w, height=target_h)
+                indicator_elements.append(Table([[img]], colWidths=[PAGE_WIDTH - MARGIN_LEFT - MARGIN_RIGHT], style=[('ALIGN', (0,0), (-1,-1), 'CENTER')]))
+                indicator_elements.append(Spacer(1, 10))
             except Exception:
                 pass
         else:
-            # Si select_chart devuelve None puede ser porque no hay datos o porque son todos 0
             if all_zeros:
-                # Caso solicitado: Mostrar texto indicando ceros y NO mostrar gráfica
-                elements.append(Spacer(1, 10))
-                # Caja gris con texto
+                indicator_elements.append(Spacer(1, 10))
                 t_msg = Table([["Los datos resultantes para este indicador son 0 (Cero)."]], colWidths=[16*cm])
                 t_msg.setStyle(TableStyle([
                     ('BACKGROUND', (0,0), (-1,-1), colors.HexColor("#F0F0F0")),
@@ -945,31 +956,89 @@ def generar_informe_pdf(dataset: Dict[str, Any]) -> bytes:
                     ('TOPPADDING', (0,0), (-1,-1), 12),
                     ('BOTTOMPADDING', (0,0), (-1,-1), 12),
                 ]))
-                elements.append(t_msg)
+                indicator_elements.append(t_msg)
+                indicator_elements.append(Spacer(1, 10))
             else:
-                elements.append(Paragraph("Datos insuficientes para generar gráfica.", styles["Small"]))
+                indicator_elements.append(Paragraph("Datos insuficientes para generar gráfica.", styles["Small"]))
 
-        # (Omitimos gráfica por regiones para simplificar el flujo continuo, a menos que sea crítica)
-        # El user pidió "distribuya coherentemente". Menos es más. 
-        # Si la global ya muestra todo (como el polar), la regional sobra.
-        # Solo añadimos footer de nota
-        elements.append(Spacer(1, 15))
+        # 3. TABLA DE DATOS (AHORA VA DEBAJO DEL GRÁFICO)
+        table_data = [["Centro", "Resultado", "Nº pacientes"]] # Valor -> Resultado
         
-        # Añadimos al story principal
-        # Usamos KeepTogether para intentar mantener el bloque unido, pero si es muy grande fallará
-        # Mejor añadimos directo, separando indicadores con Spacer grande en vez de PageBreak
-        
-        story.extend(elements)
-        
-        # Separador entre indicadores
-        if i < len(indicadores) - 1:
-            story.append(Spacer(1, 1.5 * cm))
-            # Opcional: Linea separadora sutil
-            story.append(Paragraph("_" * 95, styles["Meta"])) 
-            story.append(Spacer(1, 1.5 * cm))
+        total_pacientes = 0
+        total_valor = 0.0
+        count_centros = 0
 
-    # IMPORTANTE: Usamos multiBuild en lugar de build para que el Índice (TOC) pueda calcular
-    # los números de página correctamente (requiere dos pasadas).
+        for it in items:
+            val = it.get("valor_num")
+            val_raw = it.get("valor")
+            pacs = it.get("pacientes")
+            
+            # Acumuladores
+            if pacs is not None:
+                try: 
+                    total_pacientes += int(pacs)
+                except: pass
+            
+            if val is not None:
+                total_valor += val
+                count_centros += 1
+
+            table_data.append([
+                it.get("centro", ""),
+                "" if val_raw is None else str(val_raw),
+                "" if pacs is None else str(pacs),
+            ])
+
+        # FILA DE TOTALES
+        is_percent = _is_percent_indicator(unidad)
+        label_total = "PROMEDIO" if is_percent else "TOTAL"
+        
+        val_total_str = ""
+        if count_centros > 0:
+            final_val = total_valor / count_centros if is_percent else total_valor
+            # Formato simple: 2 decimales
+            val_total_str = f"{final_val:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+            if is_percent: val_total_str += "%"
+
+        table_data.append([
+            label_total,
+            val_total_str,
+            str(total_pacientes)
+        ])
+        
+        # Estilo de tabla
+        tbl_style = TableStyle([
+            ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#2471A3")), 
+            ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
+            ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
+            ("FONTSIZE", (0, 0), (-1, 0), 10),
+            ("FONTSIZE", (0, 1), (-1, -1), 10),
+            ("ALIGN", (1, 1), (2, -1), "CENTER"), 
+            ("GRID", (0, 0), (-1, -1), 0.5, colors.HexColor("#D5D8DC")),
+            ("ROWBACKGROUNDS", (0, 1), (-2, -1), [colors.white, colors.HexColor("#F4F6F7")]), # Alternar hasta penultima
+            ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
+            ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
+            ("TOPPADDING", (0, 0), (-1, -1), 6),
+            # Estilo fila TOTAL
+            ("BACKGROUND", (0, -1), (-1, -1), colors.HexColor("#D6EAF8")),
+            ("FONTNAME", (0, -1), (-1, -1), "Helvetica-Bold"),
+            ("TEXTCOLOR", (0, -1), (-1, -1), colors.HexColor("#154360")),
+            ("TOPPADDING", (0, -1), (-1, -1), 8),
+        ])
+
+        tbl = Table(table_data, colWidths=[9.5 * cm, 3.0 * cm, 3.0 * cm])
+        tbl.setStyle(tbl_style)
+        
+        indicator_elements.append(Spacer(1, 5))
+        indicator_elements.append(tbl)
+        indicator_elements.append(Spacer(1, 15))
+
+        # 4. AGRUPACIÓN (KeepTogether)
+        # Intentamos mantener título, gráfico y tabla juntos.
+        # KeepTogether intentará meter todo en la página actual. Si no cabe, saltará a la siguiente.
+        story.append(KeepTogether(indicator_elements))
+
+    # IMPORTANTE: Usamos multiBuild
     doc.multiBuild(story)
 
     pdf_bytes = buffer.getvalue()
