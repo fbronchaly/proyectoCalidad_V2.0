@@ -19,6 +19,20 @@ matplotlib.use("Agg")  # imprescindible en Docker (sin display)
 import matplotlib.pyplot as plt
 import numpy as np
 
+# --- CONFIGURACIÓN ESTILO GRÁFICOS ---
+# Configuramos un estilo global más moderno para matplotlib
+plt.rcParams['font.family'] = 'sans-serif'
+plt.rcParams['font.sans-serif'] = ['DejaVu Sans', 'Arial', 'Helvetica', 'sans-serif']
+plt.rcParams['axes.spines.top'] = False
+plt.rcParams['axes.spines.right'] = False
+plt.rcParams['axes.spines.left'] = False  # Opcional: quitar eje Y para barras horizontales
+plt.rcParams['axes.grid'] = True
+plt.rcParams['grid.alpha'] = 0.3
+plt.rcParams['grid.linestyle'] = '--'
+plt.rcParams['axes.titlesize'] = 14
+plt.rcParams['axes.titleweight'] = 'bold'
+plt.rcParams['axes.labelsize'] = 11
+
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import cm
 from reportlab.lib import colors
@@ -34,6 +48,7 @@ from reportlab.platypus import (
     Table,
     TableStyle,
     Image as RLImage,
+    KeepTogether
 )
 from reportlab.platypus.tableofcontents import TableOfContents
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
@@ -173,11 +188,27 @@ def _find_logo_path() -> Optional[Path]:
 
 
 def _infer_periodo(docs: List[Dict[str, Any]]) -> Tuple[Optional[str], Optional[str]]:
+    """Intenta extraer las fechas de consulta de los documentos."""
     for d in docs:
+        # Buscamos en varios posibles lugares donde el backend guarda la config
         cfg = d.get("config") or {}
-        fi = cfg.get("fecha_inicio") or cfg.get("FECHAINI") or cfg.get("fechaini")
-        ff = cfg.get("fecha_fin") or cfg.get("FECHAFIN") or cfg.get("fechafin")
+        payload = d.get("payload") or {}
+        
+        fi = (
+            cfg.get("fecha_inicio") or cfg.get("fechaInicio") or 
+            cfg.get("FECHAINI") or cfg.get("fechaini") or
+            payload.get("fecha_inicio") or payload.get("fechaInicio")
+        )
+        ff = (
+            cfg.get("fecha_fin") or cfg.get("fechaFin") or 
+            cfg.get("FECHAFIN") or cfg.get("fechafin") or
+            payload.get("fecha_fin") or payload.get("fechaFin")
+        )
+        
         if fi or ff:
+            # Limpiamos formato si viene con hora
+            if isinstance(fi, str) and "T" in fi: fi = fi.split("T")[0]
+            if isinstance(ff, str) and "T" in ff: ff = ff.split("T")[0]
             return (str(fi) if fi else None, str(ff) if ff else None)
     return (None, None)
 
@@ -188,21 +219,19 @@ def _infer_periodo(docs: List[Dict[str, Any]]) -> Tuple[Optional[str], Optional[
 def _center_color_hex(centro: str) -> str:
     """
     Color estable por centro (hash) -> hex.
-    Evita tonos demasiado claros u oscuros.
+    Genera una paleta profesional basada en el nombre.
     """
     s = (centro or "Centro").encode("utf-8")
     h = hashlib.md5(s).hexdigest()
-
-    r = int(h[0:2], 16)
-    g = int(h[2:4], 16)
-    b = int(h[4:6], 16)
-
-    def clamp(x):
-        return max(40, min(200, x))
-
-    r, g, b = clamp(r), clamp(g), clamp(b)
-    return f"#{r:02x}{g:02x}{b:02x}"
-
+    # Usamos una semilla determinista para elegir de una paleta predefinida profesional
+    # en lugar de generar colores RGB aleatorios que pueden salir feos.
+    paleta_profesional = [
+        "#2E86C1", "#1ABC9C", "#F39C12", "#E74C3C", "#8E44AD", 
+        "#34495E", "#16A085", "#D35400", "#C0392B", "#27AE60",
+        "#2980B9", "#7F8C8D", "#9B59B6", "#E67E22", "#008080"
+    ]
+    idx = int(h, 16) % len(paleta_profesional)
+    return paleta_profesional[idx]
 
 def _build_center_palette(indicadores: list) -> dict:
     """Construye paleta global (estable) para TODO el PDF.
@@ -333,106 +362,143 @@ def recopilar_datos_informe(coleccion_resultados, id_transaccion: str) -> Dict[s
 
 
 # =========================
-# GRÁFICAS (BARRAS + DONUT GAUGE)
+# GRÁFICAS ESPECTACULARES
 # =========================
 def _plot_barras_coloreadas(items: List[Dict[str, Any]], titulo: str, unidad: str, palette: dict) -> Optional[BytesIO]:
     data = []
     for it in items:
         v = it.get("valor_num")
         c = (it.get("centro") or "").strip()
+        # Filtramos None, pero permitimos 0 para dibujarlos si existen
         if v is None or not c:
             continue
         data.append((c, v))
 
     if not data:
         return None
+    
+    # Si todos son 0, devolvemos None para que el PDF maneje el mensaje de texto
+    if all(d[1] == 0 for d in data):
+        return None
 
     df = pd.DataFrame(data, columns=["centro", "valor"])
     # Orden descendente por valor para lectura más clara
-    df = df.sort_values(by="valor", ascending=False).reset_index(drop=True)
+    df = df.sort_values(by="valor", ascending=True).reset_index(drop=True)
     colors_list = [palette.get(c, "#4c78a8") for c in df["centro"]]
 
     n = len(df)
-    horizontal = n > 12
-    if horizontal:
-        fig_h = max(4.0, 0.35 * n)
-        fig, ax = plt.subplots(figsize=(10, fig_h))
-        ax.barh(df["centro"], df["valor"], color=colors_list)
-        ax.invert_yaxis()
-        ax.set_xlabel(unidad or "valor")
-    else:
-        fig_h = 4.0 if n <= 10 else 5.5
-        fig, ax = plt.subplots(figsize=(10, fig_h))
-        ax.bar(df["centro"], df["valor"], color=colors_list)
-        ax.set_ylabel(unidad or "valor")
-        ax.tick_params(axis="x", rotation=35)
+    
+    # Ajuste dinámico de altura
+    fig_h = max(4.5, 0.5 * n + 1.5)
+    fig, ax = plt.subplots(figsize=(10, fig_h))
+    
+    bars = ax.barh(df["centro"], df["valor"], color=colors_list, height=0.7, edgecolor='white', linewidth=1)
+    
+    ax.set_xlabel(unidad or "Valor", fontweight='bold', color='#555555')
+    
+    max_val = df["valor"].max() if not df.empty else 1
+    if max_val == 0: max_val = 1
+    
+    offset = max_val * 0.01
 
-    ax.set_title(titulo)
+    for bar in bars:
+        width = bar.get_width()
+        label_x_pos = width + offset
+        # Etiqueta de valor
+        ax.text(label_x_pos, bar.get_y() + bar.get_height()/2, f'{width:.2f}', 
+                va='center', ha='left', fontsize=9, fontweight='bold', color='#333333')
+
+    # Ajustar límite X
+    ax.set_xlim(0, max_val * 1.15)
+    
+    # --- LÍNEA FINA VISIBLE PARA VALORES ALTOS (GRID) ---
+    # Grid vertical más visible
+    ax.grid(axis='y', alpha=0)
+    ax.grid(axis='x', color='#aaaaaa', linestyle='--', linewidth=0.8, alpha=0.5)
+    # Línea sutil en el borde derecho o valor máximo referencial
+    ax.axvline(x=max_val, color='#dedede', linestyle='-', linewidth=1, alpha=0.8, zorder=0)
 
     buf = BytesIO()
     plt.tight_layout()
-    fig.savefig(buf, format="png", dpi=170)
+    fig.savefig(buf, format="png", dpi=200, bbox_inches='tight')
     plt.close(fig)
     buf.seek(0)
     return buf
 
 
-def _plot_gauge_donuts_por_centro(items: List[Dict[str, Any]], titulo: str, palette: dict) -> Optional[BytesIO]:
+def _plot_polar_porcentaje(items: List[Dict[str, Any]], titulo: str, palette: dict) -> Optional[BytesIO]:
     """
-    Donut tipo gauge por centro:
-    - Parte rellena = valor (0-100)
-    - Resto = gris
-    Genera una figura con N donuts (subplots).
+    Gráfico polar (diente de sierra / donut variable) para porcentajes.
+    Muestra todos los centros en un solo gráfico con radio variable.
     """
-    rows_data = []
+    data = []
     for it in items:
         c = (it.get("centro") or "").strip()
         v = it.get("valor_num")
-        if not c or v is None:
-            continue
+        if not c or v is None: continue
+        data.append((c, max(0.0, min(100.0, float(v)))))
 
-        # Clamp a [0,100] para gauge
-        v = max(0.0, min(100.0, float(v)))
-        rows_data.append((c, v))
-
-    if not rows_data:
+    if not data:
+        return None
+    
+    # Si todos son 0, no pintar gráfico para mostrar texto
+    if all(d[1] == 0 for d in data):
         return None
 
-    # Orden por centro (estable)
-    rows_data.sort(key=lambda x: x[0])
+    # Ordenar por nombre para estabilidad y localización
+    data.sort(key=lambda x: x[0])
 
-    n = len(rows_data)
-    cols = 3 if n >= 3 else n
-    rows = int(np.ceil(n / cols))
+    centros = [x[0] for x in data]
+    valores = [x[1] for x in data]
+    colors_list = [palette.get(c, "#4c78a8") for c in centros]
 
-    fig_w = 10
-    fig_h = 3.6 * rows
-    fig, axes = plt.subplots(rows, cols, figsize=(fig_w, fig_h))
-    if n == 1:
-        axes = np.array([axes])
-    axes = axes.flatten()
+    N = len(centros)
+    theta = np.linspace(0.0, 2 * np.pi, N, endpoint=False)
+    
+    # "Diente plano": Ancho cubre todo el sector
+    width = (2 * np.pi) / N 
 
-    for ax in axes[n:]:
-        ax.axis("off")
+    fig_size = 8.0
+    fig = plt.figure(figsize=(fig_size, fig_size))
+    ax = fig.add_subplot(111, projection='polar')
 
-    for i, (centro, v) in enumerate(rows_data):
-        ax = axes[i]
-        color = palette.get(centro, "#4c78a8")
+    # bottom=20 hace el efecto de donut (agujero en el centro)
+    # bars sobresalen desde el radio 20 hasta 20+valor
+    RADIO_INTERIOR = 20
+    
+    # Dibujamos las barras
+    # Usamos bottom=RADIO_INTERIOR para que haya agujero
+    bars = ax.bar(theta, valores, width=width, bottom=RADIO_INTERIOR, 
+                  color=colors_list, alpha=1.0, edgecolor='white', linewidth=1.5) # Alpha 1.0 para nitidez
 
-        ax.pie(
-            [v, 100.0 - v],
-            startangle=90,
-            colors=[color, "#e6e6e6"],
-            wedgeprops=dict(width=0.35, edgecolor="white"),
-        )
-        ax.set(aspect="equal")
-        ax.set_title(_clean_text(centro), fontsize=10, pad=6)
-        ax.text(0, 0, f"{v:.1f}%", ha="center", va="center", fontsize=12, fontweight="bold")
+    ax.set_yticklabels([])
+    ax.set_theta_zero_location('N') # Norte arriba
+    ax.set_theta_direction(-1) # Sentido reloj
+    
+    # Eliminamos circulos concéntricos y bordes para máxima limpieza visual
+    ax.grid(False)
+    ax.spines['polar'].set_visible(False)
+    
+    # Límite fijo: 100% + radio interior
+    ax.set_ylim(0, 100 + RADIO_INTERIOR) 
 
-    fig.suptitle(titulo, fontsize=14)
+    # Etiquetas de los centros (fuera)
+    ax.set_xticks(theta)
+    ax.set_xticklabels(centros, fontweight='bold', fontsize=9)
+
+    # Etiquetas de valor (dentro de la barra, en el extremo)
+    for bar, angle, val in zip(bars, theta, valores):
+        # Posición del texto un poco más adentro del borde exterior de la barra para que se lea sobre el color
+        # O fuera si es pequeño.
+        # Estrategia: Ponemos el valor FUERA de la barra para contraste máximo y nitidez
+        pos_r = RADIO_INTERIOR + val + 5  # Un poco separado del borde
+        
+        ax.text(angle, pos_r, f"{val:.1f}%", 
+                ha='center', va='center', fontsize=10, fontweight='bold', color='#333333')
+
+    plt.tight_layout()
     buf = BytesIO()
-    plt.tight_layout(rect=[0, 0, 1, 0.94])
-    fig.savefig(buf, format="png", dpi=170)
+    fig.savefig(buf, format="png", dpi=220, bbox_inches='tight', transparent=True)
     plt.close(fig)
     buf.seek(0)
     return buf
@@ -445,20 +511,19 @@ def _is_percent_indicator(unidad: str) -> bool:
 
 def _select_chart(items: List[Dict[str, Any]], titulo: str, unidad: str, palette: dict) -> Optional[BytesIO]:
     """Elige la mejor gráfica según unidad y número de centros."""
-    n = len([it for it in items if it.get("valor_num") is not None])
-    if n == 0:
+    # Filtramos nulos, pero mantenemos ceros para evaluar si "todo es cero" después
+    validos = [it for it in items if it.get("valor_num") is not None]
+    
+    # Si no hay datos (lista vacía), chart es None
+    if not validos:
         return None
-
+    
+    # Comprobación de "todo ceros" se hace dentro de las funciones de plot para devolver None
+    
     if _is_percent_indicator(unidad):
-        # Donuts solo cuando hay pocos centros; con muchos, barras es más legible.
-        if n <= 9:
-            buf = _plot_gauge_donuts_por_centro(items, f"{titulo} — % por centro", palette)
-            if buf is not None:
-                return buf
-        return _plot_barras_coloreadas(items, titulo, unidad, palette)
+        return _plot_polar_porcentaje(validos, titulo, palette)
 
-    # Por defecto: barras
-    return _plot_barras_coloreadas(items, titulo, unidad, palette)
+    return _plot_barras_coloreadas(validos, titulo, unidad, palette)
 
 
 # =========================
@@ -467,53 +532,64 @@ def _select_chart(items: List[Dict[str, Any]], titulo: str, unidad: str, palette
 def _build_styles():
     styles = getSampleStyleSheet()
 
+    # --- PALETA DE COLORES PDF ---
+    corp_dark = colors.HexColor("#1A3A58") # Azul oscuro corporativo
+    corp_blue = colors.HexColor("#2E86C1") # Azul medio
+    corp_gray = colors.HexColor("#5D6D7E") # Gris azulado
+
     styles.add(ParagraphStyle(
         name="H1",
         parent=styles["Heading1"],
-        fontSize=16,
-        leading=18,
-        spaceBefore=14,
-        spaceAfter=10,
-        textColor=colors.HexColor("#1f3b57"),
+        fontSize=18,
+        leading=22,
+        spaceBefore=18,
+        spaceAfter=12,
+        textColor=corp_dark,
+        borderPadding=0,
+        fontName="Helvetica-Bold"
     ))
     styles.add(ParagraphStyle(
         name="H2",
         parent=styles["Heading2"],
-        fontSize=12.5,
-        leading=15,
-        spaceBefore=10,
-        spaceAfter=6,
-        textColor=colors.HexColor("#1f3b57"),
+        fontSize=14,
+        leading=16,
+        spaceBefore=14,
+        spaceAfter=8,
+        textColor=corp_blue,
+        fontName="Helvetica-Bold"
     ))
     styles.add(ParagraphStyle(
         name="Small",
-        parent=styles["Normal"],
-        fontSize=9.5,
-        leading=11.5,
-        textColor=colors.HexColor("#333333"),
-    ))
-    styles.add(ParagraphStyle(
-        name="Meta",
         parent=styles["Normal"],
         fontSize=10,
         leading=12,
         textColor=colors.HexColor("#444444"),
     ))
     styles.add(ParagraphStyle(
+        name="Meta",
+        parent=styles["Normal"],
+        fontSize=11,
+        leading=14,
+        textColor=corp_gray,
+    ))
+    styles.add(ParagraphStyle(
         name="CoverTitle",
         parent=styles["Title"],
-        fontSize=24,
-        leading=28,
-        textColor=colors.HexColor("#1f3b57"),
-        spaceAfter=12,
+        fontSize=28,
+        leading=34,
+        textColor=corp_dark,
+        spaceAfter=16,
+        fontName="Helvetica-Bold",
+        alignment=1 # Center
     ))
     styles.add(ParagraphStyle(
         name="CoverSub",
         parent=styles["Normal"],
-        fontSize=13,
-        leading=16,
-        textColor=colors.HexColor("#555555"),
-        spaceAfter=10,
+        fontSize=16,
+        leading=20,
+        textColor=corp_gray,
+        spaceAfter=20,
+        alignment=1 # Center
     ))
     return styles
 
@@ -525,25 +601,33 @@ def _draw_header_footer(canvas, doc, title: str, logo_path: Optional[Path]):
     canvas.saveState()
 
     # Header
-    y = PAGE_HEIGHT - 1.2 * cm
+    # Ajustamos anagrama más hacia la esquina (margen izq 1.5cm, más arriba)
+    y_header = PAGE_HEIGHT - 1.0 * cm 
+    margin_x = 1.5 * cm
 
     if logo_path and logo_path.exists():
         try:
             img = ImageReader(str(logo_path))
             iw, ih = img.getSize()
-            target_h = 1.88 * cm
+            target_h = 1.8 * cm
             target_w = target_h * (iw / ih)
-            canvas.drawImage(img, 2 * cm, y - target_h + 0.05 * cm, width=target_w, height=target_h, mask="auto")
+            # Dibujamos logo
+            canvas.drawImage(img, margin_x, y_header - target_h, width=target_w, height=target_h, mask="auto")
         except Exception:
             pass
 
+    # Título a la derecha
     canvas.setFont("Helvetica", 9)
     canvas.setFillColor(colors.HexColor("#666666"))
-    canvas.drawRightString(PAGE_WIDTH - 2 * cm, y - 0.1 * cm, _clean_text(title))
+    canvas.drawRightString(PAGE_WIDTH - 2 * cm, y_header - 0.9 * cm, _clean_text(title))
 
+    # Línea horizontal MÁS BAJA que el anagrama
+    # El logo termina en (y_header - target_h). Bajamos un poco más (0.3cm gap)
+    y_line = y_header - 1.8 * cm - 0.3 * cm
+    
     canvas.setStrokeColor(colors.HexColor("#DDDDDD"))
     canvas.setLineWidth(0.6)
-    canvas.line(2 * cm, y - 0.25 * cm, PAGE_WIDTH - 2 * cm, y - 0.25 * cm)
+    canvas.line(margin_x, y_line, PAGE_WIDTH - 2 * cm, y_line)
 
     # Footer
     canvas.setStrokeColor(colors.HexColor("#DDDDDD"))
@@ -616,36 +700,56 @@ def generar_informe_pdf(dataset: Dict[str, Any]) -> bytes:
 
     story: List[Any] = []
 
-    # ---------- PORTADA ----------
-    story.append(Spacer(1, 2.0 * cm))
+    # ---------- PORTADA "ESPECTACULAR" ----------
+    story.append(Spacer(1, 3.0 * cm))
 
+    # Logo centrado y más grande
     if logo_path and logo_path.exists():
         try:
             img = ImageReader(str(logo_path))
             iw, ih = img.getSize()
-            max_w = 14 * cm
-            max_h = 6 * cm
+            max_w = 12 * cm
+            max_h = 5 * cm
             scale = min(max_w / iw, max_h / ih)
             w, h = iw * scale, ih * scale
-            story.append(RLImage(str(logo_path), width=w, height=h))
-            story.append(Spacer(1, 1.2 * cm))
+            # Truco para centrar imagen: Meterla en una tabla de una celda centrada o usar flowable alignment
+            story.append(RLImage(str(logo_path), width=w, height=h)) 
+            story.append(Spacer(1, 1.5 * cm))
         except Exception:
-            story.append(Paragraph("[No se pudo cargar el logo]", styles["Meta"]))
-            story.append(Spacer(1, 1.0 * cm))
+            pass
 
     story.append(Paragraph(DEFAULT_TITLE, styles["CoverTitle"]))
     story.append(Paragraph(DEFAULT_SUBTITLE, styles["CoverSub"]))
-    story.append(Spacer(1, 0.6 * cm))
-
-    periodo_txt = ""
+    
+    story.append(Spacer(1, 1.5 * cm))
+    
+    # Caja de metadatos estilizada
+    periodo_txt = "-"
     if meta.get("fecha_inicio") or meta.get("fecha_fin"):
-        periodo_txt = f"Periodo: {meta.get('fecha_inicio') or '-'} → {meta.get('fecha_fin') or '-'}"
+        periodo_txt = f"{meta.get('fecha_inicio') or '?'} al {meta.get('fecha_fin') or '?'}"
 
-    story.append(Paragraph(f"<b>Transacción:</b> {meta.get('id_transaccion','')}", styles["Meta"]))
-    story.append(Paragraph(f"<b>Generado:</b> {meta.get('generado_en','')}", styles["Meta"]))
-    if periodo_txt:
-        story.append(Paragraph(f"<b>{periodo_txt}</b>", styles["Meta"]))
-    story.append(Paragraph(f"<b>Registros base:</b> {meta.get('num_docs',0)}", styles["Meta"]))
+    # Tabla decorativa para la portada
+    cover_data = [
+        ["FECHA DE GENERACIÓN", meta.get('generado_en','')],
+        ["PERIODO ANALIZADO", periodo_txt],
+        ["ID TRANSACCIÓN", meta.get('id_transaccion','')],
+        ["REGISTROS PROCESADOS", str(meta.get('num_docs',0))]
+    ]
+    
+    t_cover = Table(cover_data, colWidths=[6*cm, 8*cm])
+    t_cover.setStyle(TableStyle([
+        ('BACKGROUND', (0,0), (0,-1), colors.HexColor("#F2F4F4")),
+        ('TEXTCOLOR', (0,0), (0,-1), colors.HexColor("#1A3A58")),
+        ('FONTNAME', (0,0), (-1,-1), 'Helvetica'),
+        ('FONTSIZE', (0,0), (-1,-1), 10),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 8),
+        ('TOPPADDING', (0,0), (-1,-1), 8),
+        ('GRID', (0,0), (-1,-1), 0.5, colors.white), # Grid blanco para separar
+        ('ALIGN', (0,0), (0,-1), 'RIGHT'),
+        ('ALIGN', (1,0), (1,-1), 'LEFT'),
+        ('FONTNAME', (0,0), (0,-1), 'Helvetica-Bold'),
+    ]))
+    story.append(t_cover)
 
     story.append(PageBreak())
 
@@ -660,56 +764,40 @@ def generar_informe_pdf(dataset: Dict[str, Any]) -> bytes:
     story.append(toc)
     story.append(PageBreak())
 
-    # ---------- LEYENDA DE COLORES POR CENTRO (global) ----------
-    story.append(Paragraph("Leyenda de centros (colores)", styles["H1"]))
-    story.append(Spacer(1, 8))
-
-    catalogo = _load_centros_catalogo()
-    by_label = catalogo.get("byLabel") or {}
-
-    if palette:
-        data = [["Centro", "Región", "Color (HEX)"]]
-        for c in sorted(palette.keys()):
-            m = by_label.get(c.lower()) or {}
-            data.append([c, m.get("region") or "", palette[c]])
-
-        tbl = Table(data, colWidths=[8.2 * cm, 5.0 * cm, 2.3 * cm])
-        tbl.setStyle(TableStyle([
-            ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#1f3b57")),
-            ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
-            ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
-            ("FONTSIZE", (0, 0), (-1, 0), 10),
-            ("GRID", (0, 0), (-1, -1), 0.25, colors.HexColor("#DDDDDD")),
-            ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.whitesmoke, colors.white]),
-            ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
-        ]))
-        story.append(tbl)
-    else:
-        story.append(Paragraph("No se han detectado centros para generar paleta.", styles["Small"]))
-
-    story.append(PageBreak())
-
     # ---------- SECCIONES POR INDICADOR ----------
-    for ind in indicadores:
+    for i, ind in enumerate(indicadores):
         titulo = ind.get("titulo") or "Indicador"
         categoria = ind.get("categoria") or ""
         objetivo = ind.get("objetivo") or ""
         unidad = ind.get("unidad") or ""
 
-        story.append(Paragraph(titulo, styles["H1"]))
-        if categoria:
-            story.append(Paragraph(f"<b>Categoría:</b> {categoria}", styles["Small"]))
-        if objetivo:
-            story.append(Paragraph(f"<b>Objetivo:</b> {objetivo}", styles["Small"]))
-        if unidad:
-            story.append(Paragraph(f"<b>Unidad:</b> {unidad}", styles["Small"]))
-        story.append(Spacer(1, 10))
+        # Agrupamos todo el bloque del indicador para intentar que no se rompa feo,
+        # aunque si es muy grande ReportLab lo romperá igual.
+        # Usamos KeepTogether para título + tabla si es posible.
+        
+        elements = []
+        
+        elements.append(Paragraph(titulo, styles["H1"]))
+        
+        meta_info = []
+        if categoria: meta_info.append(f"<b>Categoría:</b> {categoria}")
+        if objetivo: meta_info.append(f"<b>Objetivo:</b> {objetivo}")
+        if unidad: meta_info.append(f"<b>Unidad:</b> {unidad}")
+        
+        if meta_info:
+            elements.append(Paragraph(" | ".join(meta_info), styles["Small"]))
+        
+        elements.append(Spacer(1, 10))
 
         items = ind.get("items") or []
 
         # Tabla
         table_data = [["Centro", "Valor", "Nº pacientes"]]
+        valores_numeros = []
         for it in items:
+            val = it.get("valor_num")
+            if val is not None: valores_numeros.append(val)
+            
             table_data.append([
                 it.get("centro", ""),
                 "" if it.get("valor") is None else str(it.get("valor")),
@@ -718,59 +806,77 @@ def generar_informe_pdf(dataset: Dict[str, Any]) -> bytes:
 
         tbl = Table(table_data, colWidths=[9.5 * cm, 3.0 * cm, 3.0 * cm])
         tbl.setStyle(TableStyle([
-            ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#F0F4F8")),
-            ("TEXTCOLOR", (0, 0), (-1, 0), colors.HexColor("#1f3b57")),
+            ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#2471A3")), 
+            ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
             ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
             ("FONTSIZE", (0, 0), (-1, 0), 10),
-            ("FONTSIZE", (0, 1), (-1, -1), 9.5),
-            ("ALIGN", (1, 1), (2, -1), "RIGHT"),
-            ("GRID", (0, 0), (-1, -1), 0.25, colors.HexColor("#DDDDDD")),
-            ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, colors.whitesmoke]),
+            ("FONTSIZE", (0, 1), (-1, -1), 10),
+            ("ALIGN", (1, 1), (2, -1), "CENTER"), 
+            ("GRID", (0, 0), (-1, -1), 0.5, colors.HexColor("#D5D8DC")),
+            ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, colors.HexColor("#F4F6F7")]),
             ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
+            ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
+            ("TOPPADDING", (0, 0), (-1, -1), 6),
         ]))
-        story.append(tbl)
-        story.append(Spacer(1, 12))
+        elements.append(tbl)
+        elements.append(Spacer(1, 15))
 
         # --- GRÁFICAS ---
+        # Verificamos si hay algún valor > 0 para mostrar título de gráfica
+        # O si el usuario pide mostrar "Datos son 0"
+        
+        all_zeros = (len(valores_numeros) > 0) and (sum(valores_numeros) == 0)
+        
         if len(items) >= 2:
-            story.append(Paragraph("Comparativa global", styles["H2"]))
+             elements.append(Paragraph("Visualización Gráfica", styles["H2"]))
+        
         buf_global = _select_chart(items, titulo, unidad, palette)
+        
         if buf_global is not None:
             try:
-                story.append(RLImage(buf_global, width=16.5 * cm, height=7.0 * cm))
-                story.append(Spacer(1, 6))
+                # Ajustamos tamaño segun tipo
+                elements.append(RLImage(buf_global, width=16.5 * cm, height=7.5 * cm))
+                elements.append(Spacer(1, 6))
             except Exception:
-                story.append(Paragraph("[No se pudo insertar la gráfica global]", styles["Small"]))
+                pass
         else:
-            story.append(Paragraph("No hay valores numéricos suficientes para generar gráfica.", styles["Small"]))
+            # Si select_chart devuelve None puede ser porque no hay datos o porque son todos 0
+            if all_zeros:
+                # Caso solicitado: Mostrar texto indicando ceros y NO mostrar gráfica
+                elements.append(Spacer(1, 10))
+                # Caja gris con texto
+                t_msg = Table([["Los datos resultantes para este indicador son 0 (Cero)."]], colWidths=[16*cm])
+                t_msg.setStyle(TableStyle([
+                    ('BACKGROUND', (0,0), (-1,-1), colors.HexColor("#F0F0F0")),
+                    ('ALIGN', (0,0), (-1,-1), 'CENTER'),
+                    ('TEXTCOLOR', (0,0), (-1,-1), colors.HexColor("#888888")),
+                    ('FONTNAME', (0,0), (-1,-1), 'Helvetica-Oblique'),
+                    ('BOX', (0,0), (-1,-1), 1, colors.HexColor("#CCCCCC")),
+                    ('TOPPADDING', (0,0), (-1,-1), 12),
+                    ('BOTTOMPADDING', (0,0), (-1,-1), 12),
+                ]))
+                elements.append(t_msg)
+            else:
+                elements.append(Paragraph("Datos insuficientes para generar gráfica.", styles["Small"]))
 
-        # Por región (zona)
-        region_map: Dict[str, List[Dict[str, Any]]] = {}
-        for it in items:
-            r = _clean_text(it.get("region") or "") or "(Sin región)"
-            region_map.setdefault(r, []).append(it)
-
-        regiones_ordenadas = sorted(region_map.keys(), key=lambda x: (x == "(Sin región)", x))
-        for region in regiones_ordenadas:
-            sub_items = region_map[region]
-            centros_distintos = sorted({(_clean_text(i.get("centro") or "")) for i in sub_items if i.get("centro")})
-            if len(centros_distintos) < 2:
-                continue
-
-            story.append(Spacer(1, 8))
-            story.append(Paragraph(f"Comparativa por región: {region}", styles["H2"]))
-
-            buf_reg = _select_chart(sub_items, f"{titulo} — {region}", unidad, palette)
-            if buf_reg is not None:
-                try:
-                    story.append(RLImage(buf_reg, width=16.5 * cm, height=7.0 * cm))
-                except Exception:
-                    story.append(Paragraph("[No se pudo insertar la gráfica por región]", styles["Small"]))
-
-        story.append(Spacer(1, 6))
-        story.append(Paragraph("Colores consistentes por centro en todo el informe.", styles["Small"]))
-
-        story.append(PageBreak())
+        # (Omitimos gráfica por regiones para simplificar el flujo continuo, a menos que sea crítica)
+        # El user pidió "distribuya coherentemente". Menos es más. 
+        # Si la global ya muestra todo (como el polar), la regional sobra.
+        # Solo añadimos footer de nota
+        elements.append(Spacer(1, 15))
+        
+        # Añadimos al story principal
+        # Usamos KeepTogether para intentar mantener el bloque unido, pero si es muy grande fallará
+        # Mejor añadimos directo, separando indicadores con Spacer grande en vez de PageBreak
+        
+        story.extend(elements)
+        
+        # Separador entre indicadores
+        if i < len(indicadores) - 1:
+            story.append(Spacer(1, 2.5 * cm))
+            # Opcional: Linea separadora
+            story.append(Paragraph("<seq id='indicators'/> _______________________________________________________________________", styles["Meta"]))
+            story.append(Spacer(1, 1.5 * cm))
 
     doc.build(story)
 
