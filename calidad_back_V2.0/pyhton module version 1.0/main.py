@@ -595,9 +595,9 @@ def _plot_donut_styled(items: List[Dict[str, Any]], titulo: str, palette: dict) 
         # Ponemos etiquetas en radio 3.6 o más, dinámico.
         label_r = hole_radius + height + 0.6  # Separación generosa
         
-        pct = (val / total) * 100
-        # Texto unificado más grande
-        txt = f"{label}\n{pct:.1f}%"
+        # MODIFICADO: Usar el valor real del dato (val), no el porcentaje relativo (val/total)
+        # El usuario quiere ver el valor porcentual del indicador, aunque la suma de slices no sea 100%.
+        txt = f"{label}\n{val:.1f}%"
         
         # Color más oscuro y letra más grande
         ax.text(

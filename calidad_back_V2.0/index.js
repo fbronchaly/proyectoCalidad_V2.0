@@ -64,10 +64,10 @@ if (useSameOriginSockets) {
     cors: false, // CORREGIDO: No CORS necesario en same-origin
     allowEIO3: true,
     transports: ['websocket', 'polling'],
-    pingTimeout: 60000,
+    pingTimeout: 300000, // AUMENTADO DRÁSTICAMENTE: 5 minutos para evitar desconexiones por carga CPU
     pingInterval: 25000,
-    upgradeTimeout: 30000,
-    maxHttpBufferSize: 1e6
+    upgradeTimeout: 45000, // AUMENTADO
+    maxHttpBufferSize: 1e8 // AUMENTADO: 100MB para soportar grandes cargas de datos
   };
 } else {
   console.log('🔌 WebSocket DESARROLLO - CORS habilitado');
@@ -82,14 +82,17 @@ if (useSameOriginSockets) {
     },
     allowEIO3: true,
     transports: ['websocket', 'polling'],
-    pingTimeout: 60000,
+    pingTimeout: 300000, // AUMENTADO DRÁSTICAMENTE: 5 minutos para evitar desconexiones por carga CPU
     pingInterval: 25000,
-    upgradeTimeout: 30000,
-    maxHttpBufferSize: 1e6
+    upgradeTimeout: 45000, // AUMENTADO
+    maxHttpBufferSize: 1e8 // AUMENTADO: 100MB para soportar grandes cargas de datos
   };
 }
 
 const io = new Server(http, socketConfig);
+
+// Guardar io en app para usarlo en controladores
+app.set('io', io);
 
 // ------------------------
 // Middleware
@@ -232,6 +235,7 @@ const upload = multer({ storage });
 let enProceso = false;
 let currentChild = null;
 let descargando = false; // evita borrar informe durante la descarga
+let lastProgressState = null; // NUEVO: Almacena el último estado de progreso conocido
 const informePath = path.join(__dirname, 'controllers/archivos/FRAGILDIALResultados.xlsx');
 
 // ------------------------
@@ -324,6 +328,7 @@ function resetearServidorCompleto(motivo = 'reset manual') {
 
   enProceso = false;
   descargando = false;
+  lastProgressState = null; // NUEVO: Limpiamos el último progreso guardado
   console.log('✅ Variables de estado reseteadas');
   
   console.log('🧹 Iniciando limpieza de archivos...');
@@ -448,6 +453,15 @@ app.post('/api/upload', (req, res) => {
         JSON.stringify(baseDatos),
         JSON.stringify(indices)
       ]);
+      
+      // CONFIRMACIÓN INMEDIATA para evitar timeout HTTP
+      // Respondemos al cliente que el trabajo ha comenzado correctamente.
+      // El resto de la comunicación será vía WebSocket.
+      res.status(202).json({ 
+        success: true, 
+        message: 'Procesamiento iniciado correctamente. Siga el progreso por WebSocket.',
+        jobId: currentChild.pid
+      });
 
       currentChild.on('message', (msg) => {
         // MEJORA LOGS: No imprimir todo el JSON gigante, solo un resumen
@@ -464,6 +478,7 @@ app.post('/api/upload', (req, res) => {
             mensaje: msg.mensaje || 'Procesando...',
             timestamp: new Date().toISOString()
           };
+          lastProgressState = progressData; // NUEVO: Guardamos el estado actual
           console.log('📡 Emitiendo progreso por WebSocket:', JSON.stringify(progressData, null, 2));
           console.log('📊 Clientes conectados:', io.engine.clientsCount);
           
@@ -490,9 +505,24 @@ app.post('/api/upload', (req, res) => {
         }
 
         if (msg.terminado) {
+          const numResultados = msg.resultados?.length || 0;
           console.log('✅ Proceso completado. Preparando envío INMEDIATO de datos.');
-          console.log('📊 Cantidad de resultados a enviar:', msg.resultados?.length || 0);
+          console.log('📊 Cantidad de resultados a enviar:', numResultados);
           
+          // Debug tamaño aproximado del payload
+          try {
+             // Calculamos tamaño aproximado en MB para loguear advertencias
+             const sizeBytes = JSON.stringify(msg.resultados).length;
+             const sizeMB = (sizeBytes / (1024 * 1024)).toFixed(2);
+             console.log(`📦 Tamaño APROXIMADO del payload de resultados: ${sizeMB} MB`);
+             
+             if (sizeBytes > 90 * 1024 * 1024) {
+                 console.warn('⚠️ ADVERTENCIA: El payload está cerca del límite de 100MB del WebSocket');
+             }
+          } catch(e) {
+             console.log('Error calculando tamaño de payload json');
+          }
+
           // 🎯 OPTIMIZADO: Enviar TODOS los datos en UN SOLO evento
           const finalDataEvent = { 
             porcentaje: 100, 
@@ -561,15 +591,8 @@ app.post('/api/upload', (req, res) => {
             }
           }, 60000); // 🎯 AUMENTADO a 60 segundos
           
-          // Respuesta HTTP inmediata
-          if (!res.headersSent) {
-            res.status(200).json({ 
-              success: true,
-              message: 'Datos enviados por WebSocket',
-              resultados_count: (msg.resultados || []).length,
-              timestamp: new Date().toISOString()
-            });
-          }
+          // ELIMINADO: La respuesta HTTP ya se envió al inicio. 
+          // No intentamos responder de nuevo aquí para evitar error "Headers already sent".
         }
       });
 
@@ -725,7 +748,14 @@ io.on('connection', (socket) => {
   console.log('🔌 Cliente conectado por WebSocket - ID:', socket.id);
   console.log('📊 Total clientes conectados:', io.engine.clientsCount);
   
-  socket.emit('progreso', { porcentaje: 0, mensaje: 'Conexión WebSocket establecida' });
+  // NUEVO: Lógica inteligente de bienvenida
+  if (enProceso && lastProgressState) {
+    console.log(`🔄 Cliente reconectado durante proceso activo (${lastProgressState.porcentaje}%) - Restaurando estado.`);
+    socket.emit('progreso', lastProgressState);
+  } else {
+    // Solo enviamos 0 si realmente no hay nada ocurriendo
+    socket.emit('progreso', { porcentaje: 0, mensaje: 'Sistema conectado y listo' });
+  }
   
   socket.on('disconnect', (reason) => {
     console.log('❌ Cliente desconectado - ID:', socket.id, 'Razón:', reason);

@@ -21,18 +21,31 @@ if (require.main === module) {
 
   (async () => {
     try {
+      // CONTROL DE FLUJO DE MENSAJES (THROTTLING)
+      // Evita saturar el canal IPC y el WebSocket con demasiados mensajes por segundo
+      let lastUpdate = 0;
+      const UPDATE_INTERVAL = 500; // ms
+
       const resultados = await comienzoFlujo(
         fechaInicio,
         fechaFin,
         baseDatos,
         indices,
         (dato) => {
+          // Lógica de throttling
+          const now = Date.now();
+          const esMensajeImportante = dato.porcentaje === 0 || dato.porcentaje >= 100 || dato.error;
+          
           if (typeof process.send === 'function') {
-            process.send({
-              progreso: dato.porcentaje,
-              mensaje: dato.mensaje,
-              indice: dato.indice
-            });
+            // Solo enviar si ha pasado el tiempo o es un mensaje crítico
+            if (esMensajeImportante || (now - lastUpdate > UPDATE_INTERVAL)) {
+              process.send({
+                progreso: dato.porcentaje,
+                mensaje: dato.mensaje,
+                indice: dato.indice
+              });
+              lastUpdate = now;
+            }
           }
         }
       );

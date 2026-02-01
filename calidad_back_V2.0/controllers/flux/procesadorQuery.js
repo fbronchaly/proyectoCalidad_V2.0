@@ -127,6 +127,64 @@ function obtenerCodigosCaptoresPorCentro(nombreCentro) {
   return [...new Set(codigos)];
 }
 
+/**
+ * Lógica para obtener códigos de Vitamina D y Calcimiméticos
+ */
+function obtenerCodigosVitDCalcimimPorCentro(nombreCentro) {
+  const centroBuscado = nombreCentro.toLowerCase(); 
+
+  const encontrarNodoCentro = (mapaCentros) => {
+    if (!mapaCentros) return null;
+    const key = Object.keys(mapaCentros).find(k => {
+      if (!k.includes('/')) return false; 
+      const nombreKey = path.basename(k)
+        .replace(/^NF6_/i, '')
+        .replace(/\.gdb$/i, '')
+        .toLowerCase();
+      return nombreKey === centroBuscado;
+    });
+    return key ? mapaCentros[key] : null;
+  };
+
+  const codigos = [];
+
+  const extraerDeByTipo = (byTipoObj) => {
+    if (!byTipoObj) return;
+    const claves = Object.keys(byTipoObj);
+    
+    // Palabras clave para Vitamina D (oral/IV) y Calcimiméticos
+    // Incluyo marcas comunes por si acaso aparecen como categoría
+    const keywords = ['VITAMINA D', 'CALCIMIM', 'CALCITRIOL', 'CINACALCET', 'PARICALCITOL', 'ETELCALCETIDA', 'ZEMPLAR', 'MIMPARA', 'PARSABIV', 'ROCALTROL'];
+    
+    const clavesInteres = claves.filter(k => {
+        const upper = k.toUpperCase();
+        return keywords.some(w => upper.includes(w));
+    });
+
+    clavesInteres.forEach(k => {
+        const entry = byTipoObj[k];
+        if (entry && Array.isArray(entry.codes)) {
+            codigos.push(...entry.codes);
+        }
+    });
+  };
+
+  // 1. Medicamentos
+  const mapMed = catalogosMedicamentos.centros || {};
+  const nodoMed = encontrarNodoCentro(mapMed);
+  if (nodoMed && nodoMed.byTipo) {
+      extraerDeByTipo(nodoMed.byTipo);
+  }
+
+  // 2. Tratamientos
+  const nodoTrat = encontrarNodoCentro(catalogosTratamientos);
+  if (nodoTrat && nodoTrat.byTipo) {
+      extraerDeByTipo(nodoTrat.byTipo);
+  }
+
+  return [...new Set(codigos)];
+}
+
 function aplicarCodigosCaptoresPorBase(query, config) {
   if (!query || !query.includes(':CODIGOS_CAPTORES')) return query;
 
@@ -135,16 +193,53 @@ function aplicarCodigosCaptoresPorBase(query, config) {
   baseData = path.basename(String(baseData));          
   baseData = baseData.replace(/^NF6_/i, '').replace(/\.gdb$/i, ''); 
 
-  const codigos = obtenerCodigosCaptoresPorCentro(baseData);
+  const codigosRaw = obtenerCodigosCaptoresPorCentro(baseData);
 
-  if (!codigos.length) {
-    // Es normal warnings en tests locales si no coinciden los nombres, pero lo mantenemos
-    // console.warn(`⚠️ Sin códigos CAPTOR_FOSFORO para ${baseData}`);
+  // 🔧 NORMALIZACIÓN DEFINITIVA DE CÓDIGOS
+  const codigosNorm = [...new Set(
+    codigosRaw
+      .map(c => String(c).trim().toUpperCase())
+      .filter(Boolean)
+  )];
+  
+  // (opcional pero muy útil para confirmar)
+  console.log('🧩 CAPTORES NORMALIZADOS:', codigosNorm);
+  
+  const listaSQL = codigosNorm.map(c => `'${c}'`).join(',');
+
+
+   // OJO: si está vacío, ahora lo dejamos visible (para que lo detectes rápido)
+   if (!listaSQL) {
+    console.warn(`⚠️ CAPTORES VACÍO para ${baseData}. Revisa la clave del centro en los JSON de catálogos.`);
   }
-
-  const listaSQL = codigos.map(c => `'${c}'`).join(',');
   
   return query.replace(/:CODIGOS_CAPTORES/g, listaSQL || "''");
+}
+
+function aplicarCodigosVitDCalcimimPorBase(query, config) {
+  if (!query || !query.includes(':CODIGOS_VITD_CALCIMIM')) return query;
+
+  // Extraer nombre limpio del centro a partir de config
+  let baseData = config.nombre || config.database || '';
+  baseData = path.basename(String(baseData));          
+  baseData = baseData.replace(/^NF6_/i, '').replace(/\.gdb$/i, ''); 
+
+  const codigosRaw = obtenerCodigosVitDCalcimimPorCentro(baseData);
+
+  // NORMALIZACIÓN
+  const codigosNorm = [...new Set(
+    codigosRaw
+      .map(c => String(c).trim().toUpperCase())
+      .filter(Boolean)
+  )];
+  
+  const listaSQL = codigosNorm.map(c => `'${c}'`).join(',');
+  
+   if (!listaSQL) {
+    console.warn(`⚠️ VITD/CALCIMIM VACÍO para ${baseData}.`);
+  }
+  
+  return query.replace(/:CODIGOS_VITD_CALCIMIM/g, listaSQL || "''");
 }
 
 /**
@@ -263,6 +358,7 @@ function procesarQuery(queryOriginal, config) {
   let query = queryOriginal;
   
   query = aplicarCodigosCaptoresPorBase(query, config); // Nueva integración
+  query = aplicarCodigosVitDCalcimimPorBase(query, config); // Vitamina D y Calcimiméticos
   query = aplicarCodTestPorBase(query, config);
   query = aplicarCodigosCateterTunelizadoPorBase(query, config); 
   query = aplicarCodigosCateterPorBase(query, config);

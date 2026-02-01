@@ -25,17 +25,15 @@ export class ApiService {
     
     this.socket = io(socketUrl, {
       transports: ['websocket', 'polling'],
-      timeout: 60000, // CORREGIDO: Aumentado a 60 segundos para producción
+      timeout: 180000, // AUMENTADO: 3 minutos para soportar cargas muy lentas
       forceNew: true,
       reconnection: true,
-      reconnectionDelay: 5000, // CORREGIDO: 5 segundos para producción
-      reconnectionAttempts: 20, // CORREGIDO: Más intentos para producción
+      reconnectionDelay: 1000,
+      reconnectionAttempts: 50, // AUMENTADO: Intentar reconectar muchas veces
       autoConnect: true,
       upgrade: true,
       rememberUpgrade: false,
-      // PRODUCCIÓN: Configuración optimizada para same-origin
-      withCredentials: false, // No necesario en same-origin
-      // Eliminado extraHeaders innecesarios para same-origin
+      withCredentials: false
     });
     
     // Eventos de conexión mejorados
@@ -51,14 +49,11 @@ export class ApiService {
       console.log('❌ WebSocket desconectado. Razón:', reason);
       this.connectionStatus.next(false);
       
-      // CORREGIDO: Reconectar automáticamente en más casos
-      if (reason === 'io server disconnect' || reason === 'transport close' || reason === 'transport error') {
-        console.log('🔄 Reconectando automáticamente...');
+      // Auto-reconexión agresiva si el servidor corta por inactividad aparente
+      if (reason === 'io server disconnect' || reason === 'transport close') {
         setTimeout(() => {
-          if (!this.socket.connected) {
-            this.socket.connect();
-          }
-        }, 2000);
+          if (!this.socket.connected) this.socket.connect();
+        }, 1000);
       }
     });
     
