@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const catalogosMedicamentos = require('../../documentacion/CatalogosMedicamentos.index.json');
-const catalogosTratamientos = require('../../documentacion/CatalogosTratamientos.index.json');
+const catalogosTratamientos = require('../../documentacion/CatalogosTratamientos_CAPTORES_FOSFORO_por_centro.json');
 
 // Rutas a archivos de configuración
 const RUTA_ACCESOS_VASCULARES = path.resolve(__dirname, '../../documentacion/accesos_vasculares.json');

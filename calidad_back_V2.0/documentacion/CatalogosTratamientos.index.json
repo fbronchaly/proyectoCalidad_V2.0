@@ -5,24 +5,24 @@
         "codes": [
           "alfa e",
           "ARA",
-          "bn",
           "BINO",
+          "bn",
+          "CERA",
+          "EPO",
           "epo",
           "eprex",
-          "EPO",
-          "CERA",
           "reta",
           "RETR"
         ],
         "items": {
           "alfa e": "ALFA EPOETINA",
           "ARA": "ARANESP",
-          "bn": "BINOCRIT",
           "BINO": "BINOCRIT 1000",
+          "bn": "BINOCRIT",
+          "CERA": "MIRCERA",
+          "EPO": "ERITROPOYETINA",
           "epo": "EPOETINA BETA",
           "eprex": "EPREX",
-          "EPO": "ERITROPOYETINA",
-          "CERA": "MIRCERA",
           "reta": "RETACRIT",
           "RETR": "RETRACRIT 1000"
         }
@@ -31,46 +31,46 @@
         "codes": [
           "ALF",
           "HIDR",
-          "ROC-25",
           "ROC-2",
-          "ZEM-0",
+          "ROC-25",
           "ZEM 2.5",
           "ZEM 5",
+          "ZEM-0",
           "ZEM-2"
         ],
         "items": {
           "ALF": "ALFACALCIDOL",
           "HIDR": "HIDROFEROL (amp. bebibles de 266 mcg)",
-          "ROC-25": "ROCALTROL (0.25 �grs.)",
-          "ROC-2": "ROCALTROL (0.50 �grs.)",
+          "ROC-2": "ROCALTROL (0.50 mcg)",
+          "ROC-25": "ROCALTROL (0.25 mcg)",
+          "ZEM 2.5": "ZEMPLAR (2.5 mcg)",
+          "ZEM 5": "ZEMPLAR (5 mcg)",
           "ZEM-0": "ZEMPLAR",
-          "ZEM 2.5": "ZEMPLAR (2.5 �grs.)",
-          "ZEM 5": "ZEMPLAR (5 �grs.)",
-          "ZEM-2": "ZEMPLAR (c�ps. 2 �grs.)"
+          "ZEM-2": "ZEMPLAR (caps. 2 mcg)"
         }
       },
       "CALCIMIMETICO": {
         "codes": [
-          "CINA30",
           "CINA 60",
+          "CINA30",
           "MIM",
           "MIM-1",
           "MIM-2",
           "MIM-3",
+          "pars 5",
           "pars10",
-          "pars2.5",
-          "pars 5"
+          "pars2.5"
         ],
         "items": {
-          "CINA30": "CINACALCET (comps de 30 mg)",
           "CINA 60": "CINACALCET (comps de 60 mg)",
+          "CINA30": "CINACALCET (comps de 30 mg)",
           "MIM": "MIMPARA",
           "MIM-1": "MIMPARA (30 mgrs.)",
           "MIM-2": "MIMPARA (60 mgrs.)",
           "MIM-3": "MIMPARA (90 mgrs.)",
+          "pars 5": "PARSABIV 5",
           "pars10": "PARSABIV 10",
-          "pars2.5": "PARSABIV 2.5",
-          "pars 5": "PARSABIV 5"
+          "pars2.5": "PARSABIV 2.5"
         }
       },
       "HIERRO": {
@@ -78,15 +78,165 @@
           "feri",
           "feriv",
           "ferr",
-          "hierro",
-          "HIE"
+          "HIE",
+          "hierro"
         ],
         "items": {
           "feri": "FERINJECT 50 mg/ml. Viales 2 ml.",
           "feriv": "FERIV",
           "ferr": "ferrlecit 62.5mg/5cc",
-          "hierro": "hierro (III) hidroxido sacarosa",
-          "HIE": "VENOFER"
+          "HIE": "VENOFER",
+          "hierro": "hierro (III) hidroxido sacarosa"
+        }
+      },
+      "QUELANTE_FOSFORO": {
+        "codes": [
+          "ACETATO CALCICO RENACARE",
+          "CALCIO CARBONATO",
+          "CARBONATO CALCICO ( 500MGRS.)",
+          "CARBONATO DE LANTANO",
+          "FOSRENOL ( 1000 MGRS)",
+          "FOSRENOL ( 750 MGRS)",
+          "FOSRENOL ( 750 MGRS)POLVO ORAL",
+          "FOSRENOL ( 750 MGRS:)",
+          "FOSRENOL ( 800 MGRS)",
+          "FOSRENOL (1000 MGRS)",
+          "FOSRENOL (1000 MGRS.)",
+          "FOSRENOL (1000 MGRS.) COMPS.",
+          "FOSRENOL (1000 MGRS.))",
+          "FOSRENOL (1000 MGRS.)POLVO ORAL",
+          "FOSRENOL (500 MGRS.)",
+          "FOSRENOL (500)",
+          "FOSRENOL (750 MGRS)",
+          "FOSRENOL (750 MGRS.)",
+          "FOSRENOL (750 MGRS.)POLVO ORAL",
+          "FOSRENOL (SOBRES DE 1000 MGRS)",
+          "FOSRENOL (SOBRES)",
+          "FOSRENOL 1000",
+          "FOSRENOL 1000 MG",
+          "FOSRENOL 1000 MG POLVO ORAL",
+          "FOSRENOL 1000 MG(POLVO ORAL)",
+          "FOSRENOL 1000 SOBRE",
+          "FOSRENOL 500 MG",
+          "FOSRENOL 750",
+          "FOSRENOL 750 MG",
+          "FOSRENOL 750MG",
+          "HIDROXIDO DE ALUMINIO",
+          "INS.LANTUS",
+          "INSULINA HUMALOG Y LANTUS",
+          "INSULINA LANTUS",
+          "INSULINA LANTUS Y APIDRA",
+          "LANTANO",
+          "LANTUS",
+          "LANTUS 100",
+          "LANTUS 100 UI",
+          "LANTUS INSULINA",
+          "PLANTABEN (SOBRES)",
+          "PLANTABEN SOBRES",
+          "PLANTAGO OVATA",
+          "RENAGEL",
+          "RENAGEL ( 800 MGR.)",
+          "RENAGEL ( 800M G)",
+          "RENAGEL ( 800MG)",
+          "RENAGEL (800 MGRS.)",
+          "RENAGEL 400",
+          "RENAGEL 800",
+          "RENAGEL DE 400",
+          "RENAGEL DE 800",
+          "RENVELA",
+          "RENVELA SOBRES 2,4",
+          "RENVELA ( COMPS. 800 MGRS.)",
+          "RENVELA (SEBRES DE 2,5 G)",
+          "RENVELA (SOBRES DE 2,4 G.)",
+          "RENVELA 2,4",
+          "RENVELA 2,4 GR",
+          "RENVELA 2,4 GRAMOS",
+          "RENVELA 2,4 GRS",
+          "RENVELA 2,4 MGRS",
+          "RENVELA 2,4G SOBRES",
+          "RENVELA 2,4GR",
+          "RENVELA 2400 MGRS( COMP.)",
+          "RENVELA 800 MGRS( COMP.)",
+          "RENVELA SOBRES",
+          "RENVELA SOBRES 2,4G",
+          "RENVELA SOBRES.",
+          "SEVELAMER (SOBRES)",
+          "SEVELAMERO (COMPS. DE 800 MG)",
+          "VELPHORO"
+        ],
+        "items": {
+          "ACETATO CALCICO RENACARE": "ACETATO CALCICO RENACARE",
+          "CALCIO CARBONATO": "calcio carbonato",
+          "CARBONATO CALCICO ( 500MGRS.)": "CARBONATO CALCICO ( 500mgrs.)",
+          "CARBONATO DE LANTANO": "CARBONATO DE LANTANO",
+          "FOSRENOL ( 1000 MGRS)": "FOSRENOL ( 1000 mgrs)",
+          "FOSRENOL ( 750 MGRS)": "FOSRENOL ( 750 mgrs)",
+          "FOSRENOL ( 750 MGRS)POLVO ORAL": "FOSRENOL ( 750 mgrs)POLVO ORAL",
+          "FOSRENOL ( 750 MGRS:)": "FOSRENOL ( 750 mgrs:)",
+          "FOSRENOL ( 800 MGRS)": "FOSRENOL ( 800 mgrs)",
+          "FOSRENOL (1000 MGRS)": "FOSRENOL (1000 mgrs)",
+          "FOSRENOL (1000 MGRS.)": "FOSRENOL (1000 mgrs.)",
+          "FOSRENOL (1000 MGRS.) COMPS.": "FOSRENOL (1000 mgrs.) comps.",
+          "FOSRENOL (1000 MGRS.))": "FOSRENOL (1000 mgrs.))",
+          "FOSRENOL (1000 MGRS.)POLVO ORAL": "FOSRENOL (1000 mgrs.)POLVO ORAL",
+          "FOSRENOL (500 MGRS.)": "FOSRENOL (500 mgrs.)",
+          "FOSRENOL (500)": "FOSRENOL (500)",
+          "FOSRENOL (750 MGRS)": "FOSRENOL (750 mgrs)",
+          "FOSRENOL (750 MGRS.)": "FOSRENOL (750 mgrs.)",
+          "FOSRENOL (750 MGRS.)POLVO ORAL": "FOSRENOL (750 mgrs.)POLVO ORAL",
+          "FOSRENOL (SOBRES DE 1000 MGRS)": "FOSRENOL (sobres de 1000 mgrs)",
+          "FOSRENOL (SOBRES)": "FOSRENOL (SOBRES)",
+          "FOSRENOL 1000": "FOSRENOL 1000",
+          "FOSRENOL 1000 MG": "FOSRENOL 1000 mg",
+          "FOSRENOL 1000 MG POLVO ORAL": "FOSRENOL 1000 MG POLVO ORAL",
+          "FOSRENOL 1000 MG(POLVO ORAL)": "FOSRENOL 1000 mg(POLVO ORAL)",
+          "FOSRENOL 1000 SOBRE": "Fosrenol 1000 sobre",
+          "FOSRENOL 500 MG": "FOSRENOL 500 mg",
+          "FOSRENOL 750": "FOSRENOL 750",
+          "FOSRENOL 750 MG": "FOSRENOL 750 mg",
+          "FOSRENOL 750MG": "FOSRENOL 750mg",
+          "HIDROXIDO DE ALUMINIO": "HIDROXIDO DE ALUMINIO",
+          "INS.LANTUS": "INS.LANTUS",
+          "INSULINA HUMALOG Y LANTUS": "INSULINA HUMALOG y LANTUS",
+          "INSULINA LANTUS": "INSULINA LANTUS",
+          "INSULINA LANTUS Y APIDRA": "INSULINA LANTUS Y APIDRA",
+          "LANTANO": "LANTANO",
+          "LANTUS": "LANTUS",
+          "LANTUS 100": "LANTUS 100",
+          "LANTUS 100 UI": "LANTUS 100 UI",
+          "LANTUS INSULINA": "Lantus insulina",
+          "PLANTABEN (SOBRES)": "PLANTABEN (sobres)",
+          "PLANTABEN SOBRES": "PLANTABEN sobres",
+          "PLANTAGO OVATA": "PLANTAGO OVATA",
+          "RENAGEL": "RENAGEL",
+          "RENAGEL ( 800 MGR.)": "RENAGEL ( 800 mgr.)",
+          "RENAGEL ( 800M G)": "RENAGEL ( 800m g)",
+          "RENAGEL ( 800MG)": "RENAGEL ( 800mg)",
+          "RENAGEL (800 MGRS.)": "RENAGEL (800 mgrs.)",
+          "RENAGEL 400": "RENAGEL 400",
+          "RENAGEL 800": "RENAGEL 800",
+          "RENAGEL DE 400": "RENAGEL DE 400",
+          "RENAGEL DE 800": "RENAGEL DE 800",
+          "RENVELA": "RENVELA",
+          "RENVELA SOBRES 2,4": "RENVELA SOBRES 2,4",
+          "RENVELA ( COMPS. 800 MGRS.)": "RENVELA ( comps. 800 mgrs.)",
+          "RENVELA (SEBRES DE 2,5 G)": "RENVELA (sebres de 2,5 g)",
+          "RENVELA (SOBRES DE 2,4 G.)": "RENVELA (sobres de 2,4 g.)",
+          "RENVELA 2,4": "RENVELA 2,4",
+          "RENVELA 2,4 GR": "RENVELA 2,4 GR",
+          "RENVELA 2,4 GRAMOS": "RENVELA 2,4 GRAMOS",
+          "RENVELA 2,4 GRS": "RENVELA 2,4 grs",
+          "RENVELA 2,4 MGRS": "RENVELA 2,4 mgrs",
+          "RENVELA 2,4G SOBRES": "RENVELA 2,4g sobres",
+          "RENVELA 2,4GR": "RENVELA 2,4GR",
+          "RENVELA 2400 MGRS( COMP.)": "RENVELA 2400 mgrs( COMP.)",
+          "RENVELA 800 MGRS( COMP.)": "RENVELA 800 mgrs( COMP.)",
+          "RENVELA SOBRES": "RENVELA sobres",
+          "RENVELA SOBRES 2,4G": "RENVELA SOBRES 2,4G",
+          "RENVELA SOBRES.": "RENVELA sobres.",
+          "SEVELAMER (SOBRES)": "SEVELAMER (SOBRES)",
+          "SEVELAMERO (COMPS. DE 800 MG)": "SEVELAMERO (comps. de 800 mg)",
+          "VELPHORO": "VELPHORO"
         }
       }
     },
@@ -193,11 +343,11 @@
       },
       "ROC-25": {
         "tipo": "VITAMINA D",
-        "nombre": "ROCALTROL (0.25 �grs.)"
+        "nombre": "ROCALTROL (0.25 mcg)"
       },
       "ROC-2": {
         "tipo": "VITAMINA D",
-        "nombre": "ROCALTROL (0.50 �grs.)"
+        "nombre": "ROCALTROL (0.50 mcg)"
       },
       "HIE": {
         "tipo": "HIERRO",
@@ -209,15 +359,303 @@
       },
       "ZEM 2.5": {
         "tipo": "VITAMINA D",
-        "nombre": "ZEMPLAR (2.5 �grs.)"
+        "nombre": "ZEMPLAR (2.5 mcg)"
       },
       "ZEM 5": {
         "tipo": "VITAMINA D",
-        "nombre": "ZEMPLAR (5 �grs.)"
+        "nombre": "ZEMPLAR (5 mcg)"
       },
       "ZEM-2": {
         "tipo": "VITAMINA D",
-        "nombre": "ZEMPLAR (c�ps. 2 �grs.)"
+        "nombre": "ZEMPLAR (caps. 2 mcg)"
+      },
+      "ACETATO CALCICO RENACARE": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "ACETATO CALCICO RENACARE"
+      },
+      "CALCIO CARBONATO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "calcio carbonato"
+      },
+      "CARBONATO CALCICO ( 500MGRS.)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "CARBONATO CALCICO ( 500mgrs.)"
+      },
+      "CARBONATO DE LANTANO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "CARBONATO DE LANTANO"
+      },
+      "FOSRENOL ( 1000 MGRS)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL ( 1000 mgrs)"
+      },
+      "FOSRENOL ( 750 MGRS)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL ( 750 mgrs)"
+      },
+      "FOSRENOL ( 750 MGRS)POLVO ORAL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL ( 750 mgrs)POLVO ORAL"
+      },
+      "FOSRENOL ( 750 MGRS:)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL ( 750 mgrs:)"
+      },
+      "FOSRENOL ( 800 MGRS)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL ( 800 mgrs)"
+      },
+      "FOSRENOL (1000 MGRS)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL (1000 mgrs)"
+      },
+      "FOSRENOL (1000 MGRS.)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL (1000 mgrs.)"
+      },
+      "FOSRENOL (1000 MGRS.) COMPS.": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL (1000 mgrs.) comps."
+      },
+      "FOSRENOL (1000 MGRS.))": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL (1000 mgrs.))"
+      },
+      "FOSRENOL (1000 MGRS.)POLVO ORAL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL (1000 mgrs.)POLVO ORAL"
+      },
+      "FOSRENOL (500 MGRS.)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL (500 mgrs.)"
+      },
+      "FOSRENOL (500)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL (500)"
+      },
+      "FOSRENOL (750 MGRS)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL (750 mgrs)"
+      },
+      "FOSRENOL (750 MGRS.)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL (750 mgrs.)"
+      },
+      "FOSRENOL (750 MGRS.)POLVO ORAL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL (750 mgrs.)POLVO ORAL"
+      },
+      "FOSRENOL (SOBRES DE 1000 MGRS)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL (sobres de 1000 mgrs)"
+      },
+      "FOSRENOL (SOBRES)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL (SOBRES)"
+      },
+      "FOSRENOL 1000": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1000"
+      },
+      "FOSRENOL 1000 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1000 mg"
+      },
+      "FOSRENOL 1000 MG POLVO ORAL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1000 MG POLVO ORAL"
+      },
+      "FOSRENOL 1000 MG(POLVO ORAL)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1000 mg(POLVO ORAL)"
+      },
+      "FOSRENOL 1000 SOBRE": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Fosrenol 1000 sobre"
+      },
+      "FOSRENOL 500 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 500 mg"
+      },
+      "FOSRENOL 750": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 750"
+      },
+      "FOSRENOL 750 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 750 mg"
+      },
+      "FOSRENOL 750MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 750mg"
+      },
+      "HIDROXIDO DE ALUMINIO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "HIDROXIDO DE ALUMINIO"
+      },
+      "INS.LANTUS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "INS.LANTUS"
+      },
+      "INSULINA HUMALOG Y LANTUS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "INSULINA HUMALOG y LANTUS"
+      },
+      "INSULINA LANTUS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "INSULINA LANTUS"
+      },
+      "INSULINA LANTUS Y APIDRA": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "INSULINA LANTUS Y APIDRA"
+      },
+      "LANTANO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "LANTANO"
+      },
+      "LANTUS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "LANTUS"
+      },
+      "LANTUS 100": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "LANTUS 100"
+      },
+      "LANTUS 100 UI": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "LANTUS 100 UI"
+      },
+      "LANTUS INSULINA": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Lantus insulina"
+      },
+      "PLANTABEN (SOBRES)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "PLANTABEN (sobres)"
+      },
+      "PLANTABEN SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "PLANTABEN sobres"
+      },
+      "PLANTAGO OVATA": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "PLANTAGO OVATA"
+      },
+      "RENAGEL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL"
+      },
+      "RENAGEL ( 800 MGR.)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL ( 800 mgr.)"
+      },
+      "RENAGEL ( 800M G)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL ( 800m g)"
+      },
+      "RENAGEL ( 800MG)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL ( 800mg)"
+      },
+      "RENAGEL (800 MGRS.)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL (800 mgrs.)"
+      },
+      "RENAGEL 400": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL 400"
+      },
+      "RENAGEL 800": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL 800"
+      },
+      "RENAGEL DE 400": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL DE 400"
+      },
+      "RENAGEL DE 800": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL DE 800"
+      },
+      "RENVELA": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA"
+      },
+      "RENVELA SOBRES 2,4": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA SOBRES 2,4"
+      },
+      "RENVELA ( COMPS. 800 MGRS.)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA ( comps. 800 mgrs.)"
+      },
+      "RENVELA (SEBRES DE 2,5 G)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA (sebres de 2,5 g)"
+      },
+      "RENVELA (SOBRES DE 2,4 G.)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA (sobres de 2,4 g.)"
+      },
+      "RENVELA 2,4": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4"
+      },
+      "RENVELA 2,4 GR": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4 GR"
+      },
+      "RENVELA 2,4 GRAMOS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4 GRAMOS"
+      },
+      "RENVELA 2,4 GRS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4 grs"
+      },
+      "RENVELA 2,4 MGRS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4 mgrs"
+      },
+      "RENVELA 2,4G SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4g sobres"
+      },
+      "RENVELA 2,4GR": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4GR"
+      },
+      "RENVELA 2400 MGRS( COMP.)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2400 mgrs( COMP.)"
+      },
+      "RENVELA 800 MGRS( COMP.)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 800 mgrs( COMP.)"
+      },
+      "RENVELA SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA sobres"
+      },
+      "RENVELA SOBRES 2,4G": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA SOBRES 2,4G"
+      },
+      "RENVELA SOBRES.": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA sobres."
+      },
+      "SEVELAMER (SOBRES)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "SEVELAMER (SOBRES)"
+      },
+      "SEVELAMERO (COMPS. DE 800 MG)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "SEVELAMERO (comps. de 800 mg)"
+      },
+      "VELPHORO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "VELPHORO"
       }
     }
   },
@@ -227,21 +665,21 @@
         "codes": [
           "alfa e",
           "ARA",
-          "epo",
-          "ep",
-          "eprex",
-          "EPO",
           "CERA",
+          "ep",
+          "EPO",
+          "epo",
+          "eprex",
           "reta"
         ],
         "items": {
           "alfa e": "ALFA EPOETINA",
           "ARA": "ARANESP",
-          "epo": "EPOETINA BETA",
-          "ep": "EPOETINA ZETA",
-          "eprex": "EPREX",
-          "EPO": "ERITROPOYETINA",
           "CERA": "MIRCERA",
+          "ep": "EPOETINA ZETA",
+          "EPO": "ERITROPOYETINA",
+          "epo": "EPOETINA BETA",
+          "eprex": "EPREX",
           "reta": "RETACRIT"
         }
       },
@@ -252,13 +690,13 @@
           "hidr",
           "par",
           "PARI",
-          "ROC-25",
           "ROC-2",
-          "ZEM-0",
+          "ROC-25",
           "ZEM 2.5",
           "ZEM 5",
-          "ZEM-4",
-          "ZEM-2"
+          "ZEM-0",
+          "ZEM-2",
+          "ZEM-4"
         ],
         "items": {
           "ALF": "ALFACALCIDOL",
@@ -266,27 +704,27 @@
           "hidr": "HIDROFEROL (cap 0,266 mg)",
           "par": "PARICALCITOL",
           "PARI": "PARICALCITOL",
-          "ROC-25": "ROCALTROL (cap 0.25 mcg)",
           "ROC-2": "ROCALTROL (cap 0.5 mcg)",
+          "ROC-25": "ROCALTROL (cap 0.25 mcg)",
+          "ZEM 2.5": "ZEMPLAR (2.5 mcg)",
+          "ZEM 5": "ZEMPLAR (5 mcg)",
           "ZEM-0": "ZEMPLAR",
-          "ZEM 2.5": "ZEMPLAR (2.5 �grs.)",
-          "ZEM 5": "ZEMPLAR (5 �grs.)",
-          "ZEM-4": "ZEMPLAR (c�aps. 4 �grs.)",
-          "ZEM-2": "ZEMPLAR (c�ps. 2 �grs.)"
+          "ZEM-2": "ZEMPLAR (caps. 2 mcg)",
+          "ZEM-4": "ZEMPLAR (caps. 4 mcg)"
         }
       },
       "HIERRO": {
         "codes": [
           "ferin",
           "feriv",
-          "hierro",
-          "HIE"
+          "HIE",
+          "hierro"
         ],
         "items": {
           "ferin": "FERINJECT",
           "feriv": "FERIV",
-          "hierro": "hierro (III) hidroxido sacarosa",
-          "HIE": "VENOFER"
+          "HIE": "VENOFER",
+          "hierro": "hierro (III) hidroxido sacarosa"
         }
       },
       "CALCIMIMETICO": {
@@ -301,6 +739,172 @@
           "MIM-1": "MIMPARA (CINACALCET comp 30 mg)",
           "MIM-2": "MIMPARA (CINACALCET comp 60 mg)",
           "pars": "PARSABIV"
+        }
+      },
+      "QUELANTE_FOSFORO": {
+        "codes": [
+          "ACETATO CALCICO RENACARE",
+          "CARBONATO CALCICO",
+          "CARBONATO CALCICO ( 500MGRS.)",
+          "CARBONATO DE LANTANO 1000 MG",
+          "FOSRENOL ( 1000 MG) SOBRE",
+          "FOSRENOL ( 1000 MGRS)",
+          "FOSRENOL ( 750 MGRS)",
+          "FOSRENOL ( 750 MGRS)POLVO ORAL",
+          "FOSRENOL ( 750 MGRS.)",
+          "FOSRENOL ( 750 MGRS:)",
+          "FOSRENOL ( 800 MGRS)",
+          "FOSRENOL (1 GRAMO)",
+          "FOSRENOL (1000 MGRS)",
+          "FOSRENOL (1000 MGRS.)",
+          "FOSRENOL (1000 MGRS.) COMPS.",
+          "FOSRENOL (1000 MGRS.))",
+          "FOSRENOL (1000 MGRS.)POLVO ORAL",
+          "FOSRENOL (500 MGRS.)",
+          "FOSRENOL (500)",
+          "FOSRENOL (750 MGRS)",
+          "FOSRENOL (750 MGRS.)",
+          "FOSRENOL (750 MGRS.)POLVO ORAL",
+          "FOSRENOL (COMP MASTIC 1000 MG)",
+          "FOSRENOL (COMP MASTIC 500 MG)",
+          "FOSRENOL (COMP MASTIC 750 MG)",
+          "FOSRENOL (SOB 1000 MG)",
+          "FOSRENOL (SOB 750 MG)",
+          "FOSRENOL (SOBRES DE 1000 MGRS)",
+          "FOSRENOL 1000",
+          "FOSRENOL 1000 MG",
+          "FOSRENOL 1000 MG SOBRES",
+          "FOSRENOL 1000 MG(POLVO ORAL)",
+          "FOSRENOL 1000 SOBRE",
+          "FOSRENOL 500 MG",
+          "FOSRENOL 750MG",
+          "INS.LANTUS",
+          "INSULINA HUMALOG Y LANTUS",
+          "INSULINA LANTUS",
+          "INSULINA LANTUS Y APIDRA",
+          "LANTANO CARBONATO 750 MG SOBRES",
+          "LANTUS",
+          "LANTUS 100",
+          "LANTUS 100 UI",
+          "LANTUS INSULINA",
+          "PLANTABEN (SOBRES)",
+          "PLANTABEN SOBRES",
+          "PLANTAGO OVATA (SOBRE)",
+          "RENAGEL",
+          "RENAGEL ( 800 MGR.)",
+          "RENAGEL ( 800M G)",
+          "RENAGEL ( 800MG)",
+          "RENAGEL (800 MGRS.)",
+          "RENAGEL 400",
+          "RENAGEL 800",
+          "RENAGEL DE 400",
+          "RENAGEL DE 800",
+          "RENVELA",
+          "RENVELA SOBRES 2,4",
+          "RENVELA ( COMPS. 800 MGRS.)",
+          "RENVELA (2.4 GR)",
+          "RENVELA (COMP. 800 MG)",
+          "RENVELA (SEBRES DE 2,5 G)",
+          "RENVELA (SOBRES 2,4 G)",
+          "RENVELA (SOBRES DE 2,4 G.)",
+          "RENVELA 2,4",
+          "RENVELA 2,4 GR",
+          "RENVELA 2,4 GRAMOS",
+          "RENVELA 2,4 GRS",
+          "RENVELA 2,4 MGRS( COMP.)",
+          "RENVELA 2,4G SOBRES",
+          "RENVELA 2,4GR",
+          "RENVELA 2400 MGRS( COMP.)",
+          "RENVELA 800 MGRS( COMP.)",
+          "RENVELA SOBRES",
+          "RENVELA SOBRES 2,4G",
+          "RENVELA SOBRES.",
+          "SEVELAMER (SOBRES)",
+          "SEVELAMER 800 MG COMP.",
+          "VELPHORO",
+          "VELPHORO (COMP MASTIC 500 MG)"
+        ],
+        "items": {
+          "ACETATO CALCICO RENACARE": "ACETATO CALCICO RENACARE",
+          "CARBONATO CALCICO": "CARBONATO CALCICO",
+          "CARBONATO CALCICO ( 500MGRS.)": "CARBONATO CALCICO ( 500mgrs.)",
+          "CARBONATO DE LANTANO 1000 MG": "Carbonato de Lantano 1000 mg",
+          "FOSRENOL ( 1000 MG) SOBRE": "FOSRENOL ( 1000 mg) sobre",
+          "FOSRENOL ( 1000 MGRS)": "FOSRENOL ( 1000 mgrs)",
+          "FOSRENOL ( 750 MGRS)": "FOSRENOL ( 750 mgrs)",
+          "FOSRENOL ( 750 MGRS)POLVO ORAL": "FOSRENOL ( 750 mgrs)POLVO ORAL",
+          "FOSRENOL ( 750 MGRS.)": "FOSRENOL ( 750 mgrs.)",
+          "FOSRENOL ( 750 MGRS:)": "FOSRENOL ( 750 mgrs:)",
+          "FOSRENOL ( 800 MGRS)": "FOSRENOL ( 800 mgrs)",
+          "FOSRENOL (1 GRAMO)": "FOSRENOL (1 gramo)",
+          "FOSRENOL (1000 MGRS)": "FOSRENOL (1000 mgrs)",
+          "FOSRENOL (1000 MGRS.)": "FOSRENOL (1000 mgrs.)",
+          "FOSRENOL (1000 MGRS.) COMPS.": "FOSRENOL (1000 mgrs.) comps.",
+          "FOSRENOL (1000 MGRS.))": "FOSRENOL (1000 mgrs.))",
+          "FOSRENOL (1000 MGRS.)POLVO ORAL": "FOSRENOL (1000 mgrs.)POLVO ORAL",
+          "FOSRENOL (500 MGRS.)": "FOSRENOL (500 mgrs.)",
+          "FOSRENOL (500)": "FOSRENOL (500)",
+          "FOSRENOL (750 MGRS)": "FOSRENOL (750 mgrs)",
+          "FOSRENOL (750 MGRS.)": "FOSRENOL (750 mgrs.)",
+          "FOSRENOL (750 MGRS.)POLVO ORAL": "FOSRENOL (750 mgrs.)POLVO ORAL",
+          "FOSRENOL (COMP MASTIC 1000 MG)": "FOSRENOL (comp mastic 1000 mg)",
+          "FOSRENOL (COMP MASTIC 500 MG)": "FOSRENOL (comp mastic 500 mg)",
+          "FOSRENOL (COMP MASTIC 750 MG)": "FOSRENOL (comp mastic 750 mg)",
+          "FOSRENOL (SOB 1000 MG)": "FOSRENOL (sob 1000 mg)",
+          "FOSRENOL (SOB 750 MG)": "FOSRENOL (sob 750 mg)",
+          "FOSRENOL (SOBRES DE 1000 MGRS)": "FOSRENOL (sobres de 1000 mgrs)",
+          "FOSRENOL 1000": "FOSRENOL 1000",
+          "FOSRENOL 1000 MG": "FOSRENOL 1000 mg",
+          "FOSRENOL 1000 MG SOBRES": "Fosrenol 1000 mg sobres",
+          "FOSRENOL 1000 MG(POLVO ORAL)": "FOSRENOL 1000 mg(POLVO ORAL)",
+          "FOSRENOL 1000 SOBRE": "Fosrenol 1000 sobre",
+          "FOSRENOL 500 MG": "FOSRENOL 500 mg",
+          "FOSRENOL 750MG": "FOSRENOL 750mg",
+          "INS.LANTUS": "INS.LANTUS",
+          "INSULINA HUMALOG Y LANTUS": "INSULINA HUMALOG y LANTUS",
+          "INSULINA LANTUS": "INSULINA LANTUS",
+          "INSULINA LANTUS Y APIDRA": "INSULINA LANTUS Y APIDRA",
+          "LANTANO CARBONATO 750 MG SOBRES": "LANTANO CARBONATO 750 MG SOBRES",
+          "LANTUS": "LANTUS",
+          "LANTUS 100": "LANTUS 100",
+          "LANTUS 100 UI": "LANTUS 100 UI",
+          "LANTUS INSULINA": "Lantus insulina",
+          "PLANTABEN (SOBRES)": "PLANTABEN (sobres)",
+          "PLANTABEN SOBRES": "PLANTABEN sobres",
+          "PLANTAGO OVATA (SOBRE)": "Plantago Ovata (SOBRE)",
+          "RENAGEL": "RENAGEL",
+          "RENAGEL ( 800 MGR.)": "RENAGEL ( 800 mgr.)",
+          "RENAGEL ( 800M G)": "RENAGEL ( 800m g)",
+          "RENAGEL ( 800MG)": "RENAGEL ( 800mg)",
+          "RENAGEL (800 MGRS.)": "RENAGEL (800 mgrs.)",
+          "RENAGEL 400": "RENAGEL 400",
+          "RENAGEL 800": "RENAGEL 800",
+          "RENAGEL DE 400": "RENAGEL DE 400",
+          "RENAGEL DE 800": "RENAGEL DE 800",
+          "RENVELA": "RENVELA",
+          "RENVELA SOBRES 2,4": "RENVELA SOBRES 2,4",
+          "RENVELA ( COMPS. 800 MGRS.)": "RENVELA ( comps. 800 mgrs.)",
+          "RENVELA (2.4 GR)": "RENVELA (2.4 gr)",
+          "RENVELA (COMP. 800 MG)": "RENVELA (comp. 800 mg)",
+          "RENVELA (SEBRES DE 2,5 G)": "RENVELA (sebres de 2,5 g)",
+          "RENVELA (SOBRES 2,4 G)": "RENVELA (sobres 2,4 g)",
+          "RENVELA (SOBRES DE 2,4 G.)": "RENVELA (sobres de 2,4 g.)",
+          "RENVELA 2,4": "RENVELA 2,4",
+          "RENVELA 2,4 GR": "RENVELA 2,4 GR",
+          "RENVELA 2,4 GRAMOS": "RENVELA 2,4 GRAMOS",
+          "RENVELA 2,4 GRS": "RENVELA 2,4 grs",
+          "RENVELA 2,4 MGRS( COMP.)": "RENVELA 2,4 mgrs( COMP.)",
+          "RENVELA 2,4G SOBRES": "RENVELA 2,4g sobres",
+          "RENVELA 2,4GR": "RENVELA 2,4GR",
+          "RENVELA 2400 MGRS( COMP.)": "RENVELA 2400 mgrs( COMP.)",
+          "RENVELA 800 MGRS( COMP.)": "RENVELA 800 mgrs( COMP.)",
+          "RENVELA SOBRES": "RENVELA sobres",
+          "RENVELA SOBRES 2,4G": "RENVELA SOBRES 2,4G",
+          "RENVELA SOBRES.": "RENVELA sobres.",
+          "SEVELAMER (SOBRES)": "SEVELAMER (SOBRES)",
+          "SEVELAMER 800 MG COMP.": "SEVELAMER 800 MG COMP.",
+          "VELPHORO": "VELPHORO",
+          "VELPHORO (COMP MASTIC 500 MG)": "VELPHORO (comp mastic 500 mg)"
         }
       }
     },
@@ -403,19 +1007,339 @@
       },
       "ZEM 2.5": {
         "tipo": "VITAMINA D",
-        "nombre": "ZEMPLAR (2.5 �grs.)"
+        "nombre": "ZEMPLAR (2.5 mcg)"
       },
       "ZEM 5": {
         "tipo": "VITAMINA D",
-        "nombre": "ZEMPLAR (5 �grs.)"
+        "nombre": "ZEMPLAR (5 mcg)"
       },
       "ZEM-4": {
         "tipo": "VITAMINA D",
-        "nombre": "ZEMPLAR (c�aps. 4 �grs.)"
+        "nombre": "ZEMPLAR (caps. 4 mcg)"
       },
       "ZEM-2": {
         "tipo": "VITAMINA D",
-        "nombre": "ZEMPLAR (c�ps. 2 �grs.)"
+        "nombre": "ZEMPLAR (caps. 2 mcg)"
+      },
+      "ACETATO CALCICO RENACARE": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "ACETATO CALCICO RENACARE"
+      },
+      "CARBONATO CALCICO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "CARBONATO CALCICO"
+      },
+      "CARBONATO CALCICO ( 500MGRS.)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "CARBONATO CALCICO ( 500mgrs.)"
+      },
+      "CARBONATO DE LANTANO 1000 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Carbonato de Lantano 1000 mg"
+      },
+      "FOSRENOL ( 1000 MG) SOBRE": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL ( 1000 mg) sobre"
+      },
+      "FOSRENOL ( 1000 MGRS)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL ( 1000 mgrs)"
+      },
+      "FOSRENOL ( 750 MGRS)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL ( 750 mgrs)"
+      },
+      "FOSRENOL ( 750 MGRS)POLVO ORAL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL ( 750 mgrs)POLVO ORAL"
+      },
+      "FOSRENOL ( 750 MGRS.)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL ( 750 mgrs.)"
+      },
+      "FOSRENOL ( 750 MGRS:)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL ( 750 mgrs:)"
+      },
+      "FOSRENOL ( 800 MGRS)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL ( 800 mgrs)"
+      },
+      "FOSRENOL (1 GRAMO)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL (1 gramo)"
+      },
+      "FOSRENOL (1000 MGRS)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL (1000 mgrs)"
+      },
+      "FOSRENOL (1000 MGRS.)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL (1000 mgrs.)"
+      },
+      "FOSRENOL (1000 MGRS.) COMPS.": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL (1000 mgrs.) comps."
+      },
+      "FOSRENOL (1000 MGRS.))": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL (1000 mgrs.))"
+      },
+      "FOSRENOL (1000 MGRS.)POLVO ORAL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL (1000 mgrs.)POLVO ORAL"
+      },
+      "FOSRENOL (500 MGRS.)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL (500 mgrs.)"
+      },
+      "FOSRENOL (500)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL (500)"
+      },
+      "FOSRENOL (750 MGRS)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL (750 mgrs)"
+      },
+      "FOSRENOL (750 MGRS.)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL (750 mgrs.)"
+      },
+      "FOSRENOL (750 MGRS.)POLVO ORAL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL (750 mgrs.)POLVO ORAL"
+      },
+      "FOSRENOL (COMP MASTIC 1000 MG)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL (comp mastic 1000 mg)"
+      },
+      "FOSRENOL (COMP MASTIC 500 MG)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL (comp mastic 500 mg)"
+      },
+      "FOSRENOL (COMP MASTIC 750 MG)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL (comp mastic 750 mg)"
+      },
+      "FOSRENOL (SOB 1000 MG)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL (sob 1000 mg)"
+      },
+      "FOSRENOL (SOB 750 MG)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL (sob 750 mg)"
+      },
+      "FOSRENOL (SOBRES DE 1000 MGRS)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL (sobres de 1000 mgrs)"
+      },
+      "FOSRENOL 1000": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1000"
+      },
+      "FOSRENOL 1000 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1000 mg"
+      },
+      "FOSRENOL 1000 MG SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Fosrenol 1000 mg sobres"
+      },
+      "FOSRENOL 1000 MG(POLVO ORAL)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1000 mg(POLVO ORAL)"
+      },
+      "FOSRENOL 1000 SOBRE": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Fosrenol 1000 sobre"
+      },
+      "FOSRENOL 500 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 500 mg"
+      },
+      "FOSRENOL 750MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 750mg"
+      },
+      "INS.LANTUS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "INS.LANTUS"
+      },
+      "INSULINA HUMALOG Y LANTUS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "INSULINA HUMALOG y LANTUS"
+      },
+      "INSULINA LANTUS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "INSULINA LANTUS"
+      },
+      "INSULINA LANTUS Y APIDRA": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "INSULINA LANTUS Y APIDRA"
+      },
+      "LANTANO CARBONATO 750 MG SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "LANTANO CARBONATO 750 MG SOBRES"
+      },
+      "LANTUS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "LANTUS"
+      },
+      "LANTUS 100": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "LANTUS 100"
+      },
+      "LANTUS 100 UI": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "LANTUS 100 UI"
+      },
+      "LANTUS INSULINA": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Lantus insulina"
+      },
+      "PLANTABEN (SOBRES)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "PLANTABEN (sobres)"
+      },
+      "PLANTABEN SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "PLANTABEN sobres"
+      },
+      "PLANTAGO OVATA (SOBRE)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Plantago Ovata (SOBRE)"
+      },
+      "RENAGEL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL"
+      },
+      "RENAGEL ( 800 MGR.)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL ( 800 mgr.)"
+      },
+      "RENAGEL ( 800M G)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL ( 800m g)"
+      },
+      "RENAGEL ( 800MG)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL ( 800mg)"
+      },
+      "RENAGEL (800 MGRS.)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL (800 mgrs.)"
+      },
+      "RENAGEL 400": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL 400"
+      },
+      "RENAGEL 800": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL 800"
+      },
+      "RENAGEL DE 400": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL DE 400"
+      },
+      "RENAGEL DE 800": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL DE 800"
+      },
+      "RENVELA": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA"
+      },
+      "RENVELA SOBRES 2,4": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA SOBRES 2,4"
+      },
+      "RENVELA ( COMPS. 800 MGRS.)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA ( comps. 800 mgrs.)"
+      },
+      "RENVELA (2.4 GR)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA (2.4 gr)"
+      },
+      "RENVELA (COMP. 800 MG)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA (comp. 800 mg)"
+      },
+      "RENVELA (SEBRES DE 2,5 G)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA (sebres de 2,5 g)"
+      },
+      "RENVELA (SOBRES 2,4 G)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA (sobres 2,4 g)"
+      },
+      "RENVELA (SOBRES DE 2,4 G.)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA (sobres de 2,4 g.)"
+      },
+      "RENVELA 2,4": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4"
+      },
+      "RENVELA 2,4 GR": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4 GR"
+      },
+      "RENVELA 2,4 GRAMOS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4 GRAMOS"
+      },
+      "RENVELA 2,4 GRS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4 grs"
+      },
+      "RENVELA 2,4 MGRS( COMP.)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4 mgrs( COMP.)"
+      },
+      "RENVELA 2,4G SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4g sobres"
+      },
+      "RENVELA 2,4GR": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4GR"
+      },
+      "RENVELA 2400 MGRS( COMP.)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2400 mgrs( COMP.)"
+      },
+      "RENVELA 800 MGRS( COMP.)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 800 mgrs( COMP.)"
+      },
+      "RENVELA SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA sobres"
+      },
+      "RENVELA SOBRES 2,4G": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA SOBRES 2,4G"
+      },
+      "RENVELA SOBRES.": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA sobres."
+      },
+      "SEVELAMER (SOBRES)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "SEVELAMER (SOBRES)"
+      },
+      "SEVELAMER 800 MG COMP.": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "SEVELAMER 800 MG COMP."
+      },
+      "VELPHORO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "VELPHORO"
+      },
+      "VELPHORO (COMP MASTIC 500 MG)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "VELPHORO (comp mastic 500 mg)"
       }
     }
   },
@@ -425,42 +1349,42 @@
         "codes": [
           "alfa e",
           "ARA",
+          "CERA",
           "epo",
-          "eprex",
-          "CERA"
+          "eprex"
         ],
         "items": {
           "alfa e": "ALFA EPOETINA",
           "ARA": "ARANESP",
+          "CERA": "MIRCERA",
           "epo": "EPOETINA BETA",
-          "eprex": "EPREX",
-          "CERA": "MIRCERA"
+          "eprex": "EPREX"
         }
       },
       "HIERRO": {
         "codes": [
           "feriv",
-          "hierro",
-          "HIE"
+          "HIE",
+          "hierro"
         ],
         "items": {
           "feriv": "FERIV",
-          "hierro": "hierro (III) hidroxido sacarosa",
-          "HIE": "VENOFER"
+          "HIE": "VENOFER",
+          "hierro": "hierro (III) hidroxido sacarosa"
         }
       },
       "VITAMINA D": {
         "codes": [
-          "HIDR",
           "HID-G",
+          "HIDR",
           "par",
           "PARI",
           "ROC-25",
           "ZEM-0"
         ],
         "items": {
-          "HIDR": "HIDROFEROL (amp bebible de 266 mcg)",
           "HID-G": "HIDROFEROL gotas",
+          "HIDR": "HIDROFEROL (amp bebible de 266 mcg)",
           "par": "PARICALCITOL",
           "PARI": "PARICALCITOL",
           "ROC-25": "ROCALTROL (cap 0.25 mcg)",
@@ -481,6 +1405,36 @@
           "MIM-2": "MIMPARA (comp 60 mg)",
           "MIM-3": "MIMPARA (comp 90 mg)",
           "pars": "PARSABIV"
+        }
+      },
+      "QUELANTE_FOSFORO": {
+        "codes": [
+          "FOSRENOL (COMP MASTIC 1000 MG)",
+          "FOSRENOL (COMP MASTIC 500 MG)",
+          "FOSRENOL (COMP MASTIC 750 MG)",
+          "FOSRENOL (SOB 1000 MG)",
+          "FOSRENOL (SOB 750 MG)",
+          "INSULINA LANTUS",
+          "PLANTABEN (SOBRES)",
+          "RENAGEL ( 800MG)",
+          "RENVELA (COMP. 800 MG)",
+          "RENVELA (SOBRES 2,4 G)",
+          "SEVELAMER (SOBRES)",
+          "VELPHORO (COMP MASTIC 500 MG)"
+        ],
+        "items": {
+          "FOSRENOL (COMP MASTIC 1000 MG)": "FOSRENOL (comp mastic 1000 mg)",
+          "FOSRENOL (COMP MASTIC 500 MG)": "FOSRENOL (comp mastic 500 mg)",
+          "FOSRENOL (COMP MASTIC 750 MG)": "FOSRENOL (comp mastic 750 mg)",
+          "FOSRENOL (SOB 1000 MG)": "FOSRENOL (sob 1000 mg)",
+          "FOSRENOL (SOB 750 MG)": "FOSRENOL (sob 750 mg)",
+          "INSULINA LANTUS": "INSULINA LANTUS",
+          "PLANTABEN (SOBRES)": "PLANTABEN (sobres)",
+          "RENAGEL ( 800MG)": "RENAGEL ( 800mg)",
+          "RENVELA (COMP. 800 MG)": "RENVELA (comp. 800 mg)",
+          "RENVELA (SOBRES 2,4 G)": "RENVELA (sobres 2,4 g)",
+          "SEVELAMER (SOBRES)": "SEVELAMER (SOBRES)",
+          "VELPHORO (COMP MASTIC 500 MG)": "VELPHORO (comp mastic 500 mg)"
         }
       }
     },
@@ -560,6 +1514,54 @@
       "ZEM-0": {
         "tipo": "VITAMINA D",
         "nombre": "ZEMPLAR"
+      },
+      "FOSRENOL (COMP MASTIC 1000 MG)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL (comp mastic 1000 mg)"
+      },
+      "FOSRENOL (COMP MASTIC 500 MG)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL (comp mastic 500 mg)"
+      },
+      "FOSRENOL (COMP MASTIC 750 MG)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL (comp mastic 750 mg)"
+      },
+      "FOSRENOL (SOB 1000 MG)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL (sob 1000 mg)"
+      },
+      "FOSRENOL (SOB 750 MG)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL (sob 750 mg)"
+      },
+      "INSULINA LANTUS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "INSULINA LANTUS"
+      },
+      "PLANTABEN (SOBRES)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "PLANTABEN (sobres)"
+      },
+      "RENAGEL ( 800MG)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL ( 800mg)"
+      },
+      "RENVELA (COMP. 800 MG)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA (comp. 800 mg)"
+      },
+      "RENVELA (SOBRES 2,4 G)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA (sobres 2,4 g)"
+      },
+      "SEVELAMER (SOBRES)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "SEVELAMER (SOBRES)"
+      },
+      "VELPHORO (COMP MASTIC 500 MG)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "VELPHORO (comp mastic 500 mg)"
       }
     }
   },
@@ -567,11 +1569,14 @@
     "byTipo": {
       "ERITROPOYETINA": {
         "codes": [
-          "NESP",
+          "434333",
+          "434334",
+          "434335",
+          "434336",
           "BNCRT",
           "EPO",
-          "EPO10",
           "EPO1",
+          "EPO10",
           "EPO2",
           "EPO3",
           "EPO4",
@@ -580,18 +1585,18 @@
           "EPO7",
           "EPO8",
           "EPO9",
-          "Z_EPO",
-          "434334",
-          "434333",
-          "434336",
-          "434335"
+          "NESP",
+          "Z_EPO"
         ],
         "items": {
-          "NESP": "ARANESP",
+          "434333": "Z-EPREX 2000 UI",
+          "434334": "Z-EPREX 1000 UI",
+          "434335": "Z-EPREX 4000 UI",
+          "434336": "Z-EPREX 3000 UI",
           "BNCRT": "BINOCRIT",
           "EPO": "EPREX",
-          "EPO10": "Z-EPO 10.000",
           "EPO1": "Z-EPO 1000",
+          "EPO10": "Z-EPO 10.000",
           "EPO2": "Z-EPO 2000",
           "EPO3": "Z-EPO 3000",
           "EPO4": "Z-EPO 4000",
@@ -600,21 +1605,18 @@
           "EPO7": "Z-EPO 7000",
           "EPO8": "Z-EPO 8000",
           "EPO9": "Z-EPO 9000",
-          "Z_EPO": "Z-EPOPEN 2000",
-          "434334": "Z-EPREX 1000 UI",
-          "434333": "Z-EPREX 2000 UI",
-          "434336": "Z-EPREX 3000 UI",
-          "434335": "Z-EPREX 4000 UI"
+          "NESP": "ARANESP",
+          "Z_EPO": "Z-EPOPEN 2000"
         }
       },
       "VITAMINA D": {
         "codes": [
+          "434337",
           "CALCI",
           "calci",
           "colecal",
-          "434337",
-          "ETPH 0.",
           "Etpf gt",
+          "ETPH 0.",
           "HDF",
           "Hidrofe",
           "paric",
@@ -622,12 +1624,12 @@
           "Zemplar"
         ],
         "items": {
+          "434337": "ETALPHA 0,25",
           "CALCI": "CALCIJEX",
           "calci": "CALCITRIOL",
           "colecal": "DELTIUS 25000",
-          "434337": "ETALPHA 0,25",
-          "ETPH 0.": "ETALPHA 0,5",
           "Etpf gt": "ETALPHA gotas",
+          "ETPH 0.": "ETALPHA 0,5",
           "HDF": "HIDROFEROL",
           "Hidrofe": "HIDROFEROL",
           "paric": "PARICALCITOL",
@@ -649,18 +1651,96 @@
       },
       "CALCIMIMETICO": {
         "codes": [
-          "CALCM",
           "CALCIM",
           "CALCIM9",
-          "prsb2.5",
-          "parsa"
+          "CALCM",
+          "parsa",
+          "prsb2.5"
         ],
         "items": {
-          "CALCM": "MIMPARA 30",
           "CALCIM": "MIMPARA 60",
           "CALCIM9": "MIMPARA 90",
-          "prsb2.5": "PARSABIV 2.5",
-          "parsa": "PARSABIV 5 mg"
+          "CALCM": "MIMPARA 30",
+          "parsa": "PARSABIV 5 mg",
+          "prsb2.5": "PARSABIV 2.5"
+        }
+      },
+      "QUELANTE_FOSFORO": {
+        "codes": [
+          "CARBONATO CALCICO",
+          "FOSRENOL",
+          "FOSRENOL 1 GR",
+          "FOSRENOL 1000",
+          "FOSRENOL 1000 MG",
+          "FOSRENOL 1000MG",
+          "FOSRENOL 500",
+          "FOSRENOL 500 MG",
+          "FOSRENOL 500MG",
+          "FOSRENOL 750",
+          "FOSRENOL 750 MG",
+          "FOSRENOL 750MG",
+          "FOSRENOL POLVO ORAL",
+          "FOSRENOL POLVO ORAL 1000",
+          "FOSRENOL POLVO ORAL 750",
+          "FOSRENOL POLVO ORAL 750MG",
+          "INSULINA LANTUS",
+          "INSULINA LANTUS 20 UNIDADES",
+          "INSULINA LANTUS 8 UNIDADES",
+          "INSULINA LANTUS OPTISET",
+          "LANTANN 30",
+          "LANTUS",
+          "PLANTABEN",
+          "PLANTAGO OVATA",
+          "RENAGEL",
+          "RENAGEL 800",
+          "RENVELA",
+          "RENVELA 2,4 G",
+          "RENVELA 2,4 GMOS",
+          "RENVELA 800",
+          "RENVELA COMPRIMIDOS",
+          "RENVELA SOBRE 2,4 GMOS",
+          "RENVELA SOBRES",
+          "RENVELA SOBRES 2400MG",
+          "SEVELAMER",
+          "VELPHORO"
+        ],
+        "items": {
+          "CARBONATO CALCICO": "CARBONATO CALCICO",
+          "FOSRENOL": "FOSRENOL",
+          "FOSRENOL 1 GR": "FOSRENOL 1 gr",
+          "FOSRENOL 1000": "FOSRENOL 1000",
+          "FOSRENOL 1000 MG": "Fosrenol 1000 mg",
+          "FOSRENOL 1000MG": "FOSRENOL 1000mg",
+          "FOSRENOL 500": "FOSRENOL 500",
+          "FOSRENOL 500 MG": "FOSRENOL 500 MG",
+          "FOSRENOL 500MG": "FOSRENOL 500mg",
+          "FOSRENOL 750": "FOSRENOL 750",
+          "FOSRENOL 750 MG": "FOSRENOL 750 mg",
+          "FOSRENOL 750MG": "Fosrenol 750mg",
+          "FOSRENOL POLVO ORAL": "FOSRENOL POLVO ORAL",
+          "FOSRENOL POLVO ORAL 1000": "FOSRENOL POLVO ORAL 1000",
+          "FOSRENOL POLVO ORAL 750": "FOSRENOL POLVO ORAL 750",
+          "FOSRENOL POLVO ORAL 750MG": "FOSRENOL polvo oral 750mg",
+          "INSULINA LANTUS": "INSULINA LANTUS",
+          "INSULINA LANTUS 20 UNIDADES": "insulina lantus 20 unidades",
+          "INSULINA LANTUS 8 UNIDADES": "insulina lantus 8 unidades",
+          "INSULINA LANTUS OPTISET": "INSULINA LANTUS OPTISET",
+          "LANTANN 30": "LANTANN 30",
+          "LANTUS": "Lantus",
+          "PLANTABEN": "PLANTABEN",
+          "PLANTAGO OVATA": "PLANTAGO OVATA",
+          "RENAGEL": "RENAGEL",
+          "RENAGEL 800": "RENAGEL 800",
+          "RENVELA": "RENVELA",
+          "RENVELA 2,4 G": "Renvela 2,4 g",
+          "RENVELA 2,4 GMOS": "Renvela 2,4 gmos",
+          "RENVELA 800": "RENVELA 800",
+          "RENVELA COMPRIMIDOS": "RENVELA COMPRIMIDOS",
+          "RENVELA SOBRE 2,4 GMOS": "Renvela sobre 2,4 gmos",
+          "RENVELA SOBRES": "RENVELA SOBRES",
+          "RENVELA SOBRES 2400MG": "RENVELA sobres 2400mg",
+          "SEVELAMER": "SEVELAMER",
+          "VELPHORO": "VELPHORO"
         }
       }
     },
@@ -812,6 +1892,150 @@
       "434335": {
         "tipo": "ERITROPOYETINA",
         "nombre": "Z-EPREX 4000 UI"
+      },
+      "CARBONATO CALCICO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "CARBONATO CALCICO"
+      },
+      "FOSRENOL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL"
+      },
+      "FOSRENOL 1 GR": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1 gr"
+      },
+      "FOSRENOL 1000": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1000"
+      },
+      "FOSRENOL 1000 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Fosrenol 1000 mg"
+      },
+      "FOSRENOL 1000MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1000mg"
+      },
+      "FOSRENOL 500": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 500"
+      },
+      "FOSRENOL 500 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 500 MG"
+      },
+      "FOSRENOL 500MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 500mg"
+      },
+      "FOSRENOL 750": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 750"
+      },
+      "FOSRENOL 750 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 750 mg"
+      },
+      "FOSRENOL 750MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Fosrenol 750mg"
+      },
+      "FOSRENOL POLVO ORAL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL POLVO ORAL"
+      },
+      "FOSRENOL POLVO ORAL 1000": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL POLVO ORAL 1000"
+      },
+      "FOSRENOL POLVO ORAL 750": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL POLVO ORAL 750"
+      },
+      "FOSRENOL POLVO ORAL 750MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL polvo oral 750mg"
+      },
+      "INSULINA LANTUS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "INSULINA LANTUS"
+      },
+      "INSULINA LANTUS 20 UNIDADES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "insulina lantus 20 unidades"
+      },
+      "INSULINA LANTUS 8 UNIDADES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "insulina lantus 8 unidades"
+      },
+      "INSULINA LANTUS OPTISET": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "INSULINA LANTUS OPTISET"
+      },
+      "LANTANN 30": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "LANTANN 30"
+      },
+      "LANTUS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Lantus"
+      },
+      "PLANTABEN": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "PLANTABEN"
+      },
+      "PLANTAGO OVATA": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "PLANTAGO OVATA"
+      },
+      "RENAGEL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL"
+      },
+      "RENAGEL 800": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL 800"
+      },
+      "RENVELA": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA"
+      },
+      "RENVELA 2,4 G": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Renvela 2,4 g"
+      },
+      "RENVELA 2,4 GMOS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Renvela 2,4 gmos"
+      },
+      "RENVELA 800": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 800"
+      },
+      "RENVELA COMPRIMIDOS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA COMPRIMIDOS"
+      },
+      "RENVELA SOBRE 2,4 GMOS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Renvela sobre 2,4 gmos"
+      },
+      "RENVELA SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA SOBRES"
+      },
+      "RENVELA SOBRES 2400MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA sobres 2400mg"
+      },
+      "SEVELAMER": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "SEVELAMER"
+      },
+      "VELPHORO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "VELPHORO"
       }
     }
   },
@@ -819,20 +2043,11 @@
     "byTipo": {
       "ERITROPOYETINA": {
         "codes": [
-          "NESP",
-          "NESP1",
-          "NESP10",
-          "NESP 12",
-          "NESP2",
-          "NESP3",
-          "NESP4",
-          "NESP50",
-          "NESP6",
-          "NESP5",
+          "434333",
           "B_inoc",
           "EPO",
-          "EPO10",
           "EPO1",
+          "EPO10",
           "EPO2",
           "EPO3",
           "EPO4",
@@ -840,24 +2055,24 @@
           "EPO6",
           "EPO7",
           "EPO8",
-          "Z_EPO",
-          "434333"
+          "NESP",
+          "NESP 12",
+          "NESP1",
+          "NESP10",
+          "NESP2",
+          "NESP3",
+          "NESP4",
+          "NESP5",
+          "NESP50",
+          "NESP6",
+          "Z_EPO"
         ],
         "items": {
-          "NESP": "ARANESP",
-          "NESP1": "ARANESP 10",
-          "NESP10": "ARANESP 100",
-          "NESP 12": "ARANESP 120",
-          "NESP2": "ARANESP 20",
-          "NESP3": "ARANESP 30",
-          "NESP4": "ARANESP 40",
-          "NESP50": "ARANESP 50",
-          "NESP6": "ARANESP 60",
-          "NESP5": "ARANESP 80",
+          "434333": "EPREX 2000 UI",
           "B_inoc": "BINOCRIT",
           "EPO": "EPO",
-          "EPO10": "EPO 10.000",
           "EPO1": "EPO 1000",
+          "EPO10": "EPO 10.000",
           "EPO2": "EPO 2000",
           "EPO3": "EPO 3000",
           "EPO4": "EPO 4000",
@@ -865,42 +2080,51 @@
           "EPO6": "EPO 6000",
           "EPO7": "EPO 7000",
           "EPO8": "EPO 8000",
-          "Z_EPO": "EPOPEN 2000",
-          "434333": "EPREX 2000 UI"
+          "NESP": "ARANESP",
+          "NESP 12": "ARANESP 120",
+          "NESP1": "ARANESP 10",
+          "NESP10": "ARANESP 100",
+          "NESP2": "ARANESP 20",
+          "NESP3": "ARANESP 30",
+          "NESP4": "ARANESP 40",
+          "NESP5": "ARANESP 80",
+          "NESP50": "ARANESP 50",
+          "NESP6": "ARANESP 60",
+          "Z_EPO": "EPOPEN 2000"
         }
       },
       "VITAMINA D": {
         "codes": [
-          "Z_CAL",
-          "hidr",
           "HIDR",
-          "Z_ROC",
-          "Zemp1",
+          "hidr",
           "Z-ZEM",
-          "Z_ZEM"
+          "Z_CAL",
+          "Z_ROC",
+          "Z_ZEM",
+          "Zemp1"
         ],
         "items": {
-          "Z_CAL": "CALCIJEX",
-          "hidr": "HIDROFEROL 266 mcg capsula blanda",
           "HIDR": "HIDROFEROL amp. 0,266 g",
-          "Z_ROC": "ROCALTROL 0,25 mcg",
-          "Zemp1": "ZEMPLAR 1 mcg",
+          "hidr": "HIDROFEROL 266 mcg capsula blanda",
           "Z-ZEM": "ZEMPLAR 2",
-          "Z_ZEM": "ZEMPLAR 5"
+          "Z_CAL": "CALCIJEX",
+          "Z_ROC": "ROCALTROL 0,25 mcg",
+          "Z_ZEM": "ZEMPLAR 5",
+          "Zemp1": "ZEMPLAR 1 mcg"
         }
       },
       "HIERRO": {
         "codes": [
           "FERIV",
-          "Z_HIE",
           "HIERROS",
-          "VENOF"
+          "VENOF",
+          "Z_HIE"
         ],
         "items": {
           "FERIV": "FERIV",
-          "Z_HIE": "FERRLECIT",
           "HIERROS": "HIERRO SACAROSA",
-          "VENOF": "VENOFER"
+          "VENOF": "VENOFER",
+          "Z_HIE": "FERRLECIT"
         }
       },
       "CALCIMIMETICO": {
@@ -911,6 +2135,91 @@
         "items": {
           "MINP30": "MIMPARA 30 mg",
           "parsa": "PARSABIV 2.5 mg"
+        }
+      },
+      "QUELANTE_FOSFORO": {
+        "codes": [
+          "ACETATO CALCIO RENACARE 950MG",
+          "CARBONATO CALCICO",
+          "CARBONATO DE CALCIO",
+          "FOSRENOL",
+          "FOSRENOL 750",
+          "FOSRENOL POLVO ORAL 1000 MG",
+          "FOSRENOL 1 GR",
+          "FOSRENOL 1000",
+          "FOSRENOL 1000MG (POLVO)",
+          "FOSRENOL 1000MG POLVO",
+          "FOSRENOL 500",
+          "FOSRENOL 500 MG",
+          "FOSRENOL 650MG",
+          "FOSRENOL 750",
+          "FOSRENOL COMPRIMIDOS 1000 MG",
+          "FOSRENOL COMPRIMIDOS 750 MG",
+          "I. LANTUS (GLARGINA)",
+          "INSULINA LANTUS",
+          "LANTUS 100 UI",
+          "PLANTABEN",
+          "PLANTABEN SOBRES",
+          "PLANTABEN,",
+          "RENAGEL",
+          "RENAGEL 800",
+          "RENAGEL 800 G",
+          "RENAGEL 800 MG",
+          "RENAGEL800",
+          "RENVELA",
+          "RENVELA 2,4 GR",
+          "RENVELA 2,4",
+          "RENVELA 2,4 G",
+          "RENVELA 2,4 G.",
+          "RENVELA COMPRIMIDOS 800 MG",
+          "RENVELA SOBRES",
+          "RENVELA SOBRES 2,4G",
+          "RENVELA 2,4 SOBRES",
+          "ROYEN 500 MG (ACETATO DE CALCIO)",
+          "SEVELAMER 2.4 GR SOBRES",
+          "TRELEGY ( VILANTEROL/UNECLIDINIO/FLUTICASONA ELLIPTA 92/55/22 MCG /PULS)",
+          "VELPHORO 500 MG"
+        ],
+        "items": {
+          "ACETATO CALCIO RENACARE 950MG": "ACETATO CALCIO RENACARE 950mg",
+          "CARBONATO CALCICO": "Carbonato calcico",
+          "CARBONATO DE CALCIO": "CARBONATO DE CALCIO",
+          "FOSRENOL": "FOSRENOL",
+          "FOSRENOL 750": "FOSRENOL 750",
+          "FOSRENOL POLVO ORAL 1000 MG": "FOSRENOL POLVO ORAL 1000 mg",
+          "FOSRENOL 1 GR": "FOSRENOL 1 gr",
+          "FOSRENOL 1000": "FOSRENOL 1000",
+          "FOSRENOL 1000MG (POLVO)": "FOSRENOL 1000mg (polvo)",
+          "FOSRENOL 1000MG POLVO": "FOSRENOL 1000mg polvo",
+          "FOSRENOL 500": "FOSRENOL 500",
+          "FOSRENOL 500 MG": "FOSRENOL 500 mg",
+          "FOSRENOL 650MG": "FOSRENOL 650mg",
+          "FOSRENOL COMPRIMIDOS 1000 MG": "FOSRENOL comprimidos 1000 mg",
+          "FOSRENOL COMPRIMIDOS 750 MG": "FOSRENOL comprimidos 750 mg",
+          "I. LANTUS (GLARGINA)": "I. LANTUS (glargina)",
+          "INSULINA LANTUS": "INSULINA LANTUS",
+          "LANTUS 100 UI": "LANTUS 100 UI",
+          "PLANTABEN": "Plantaben",
+          "PLANTABEN SOBRES": "PLANTABEN sobres",
+          "PLANTABEN,": "PLANTABEN,",
+          "RENAGEL": "RENAGEL",
+          "RENAGEL 800": "RENAGEL 800",
+          "RENAGEL 800 G": "Renagel 800 g",
+          "RENAGEL 800 MG": "RENAGEL 800 mg",
+          "RENAGEL800": "renagel800",
+          "RENVELA": "RENVELA",
+          "RENVELA 2,4 GR": "RENVELA 2,4 gr",
+          "RENVELA 2,4": "RENVELA 2,4",
+          "RENVELA 2,4 G": "RENVELA 2,4 g",
+          "RENVELA 2,4 G.": "RENVELA 2,4 g.",
+          "RENVELA COMPRIMIDOS 800 MG": "RENVELA comprimidos 800 mg",
+          "RENVELA SOBRES": "RENVELA sobres",
+          "RENVELA SOBRES 2,4G": "RENVELA sobres 2,4g",
+          "RENVELA 2,4 SOBRES": "Renvela 2,4 sobres",
+          "ROYEN 500 MG (ACETATO DE CALCIO)": "ROYEN 500 mg (Acetato de Calcio)",
+          "SEVELAMER 2.4 GR SOBRES": "SEVELAMER 2.4 gr sobres",
+          "TRELEGY ( VILANTEROL/UNECLIDINIO/FLUTICASONA ELLIPTA 92/55/22 MCG /PULS)": "TRELEGY ( Vilanterol/uneclidinio/fluticasona ellipta 92/55/22 mcg /puls)",
+          "VELPHORO 500 MG": "VELPHORO 500 mg"
         }
       }
     },
@@ -1058,6 +2367,162 @@
       "Z_ZEM": {
         "tipo": "VITAMINA D",
         "nombre": "ZEMPLAR 5"
+      },
+      "ACETATO CALCIO RENACARE 950MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "ACETATO CALCIO RENACARE 950mg"
+      },
+      "CARBONATO CALCICO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Carbonato calcico"
+      },
+      "CARBONATO DE CALCIO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "CARBONATO DE CALCIO"
+      },
+      "FOSRENOL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL"
+      },
+      "FOSRENOL 750": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 750"
+      },
+      "FOSRENOL POLVO ORAL 1000 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL POLVO ORAL 1000 mg"
+      },
+      "FOSRENOL 1 GR": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1 gr"
+      },
+      "FOSRENOL 1000": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1000"
+      },
+      "FOSRENOL 1000MG (POLVO)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1000mg (polvo)"
+      },
+      "FOSRENOL 1000MG POLVO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1000mg polvo"
+      },
+      "FOSRENOL 500": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 500"
+      },
+      "FOSRENOL 500 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 500 mg"
+      },
+      "FOSRENOL 650MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 650mg"
+      },
+      "FOSRENOL COMPRIMIDOS 1000 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL comprimidos 1000 mg"
+      },
+      "FOSRENOL COMPRIMIDOS 750 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL comprimidos 750 mg"
+      },
+      "I. LANTUS (GLARGINA)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "I. LANTUS (glargina)"
+      },
+      "INSULINA LANTUS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "INSULINA LANTUS"
+      },
+      "LANTUS 100 UI": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "LANTUS 100 UI"
+      },
+      "PLANTABEN": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Plantaben"
+      },
+      "PLANTABEN SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "PLANTABEN sobres"
+      },
+      "PLANTABEN,": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "PLANTABEN,"
+      },
+      "RENAGEL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL"
+      },
+      "RENAGEL 800": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL 800"
+      },
+      "RENAGEL 800 G": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Renagel 800 g"
+      },
+      "RENAGEL 800 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL 800 mg"
+      },
+      "RENAGEL800": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "renagel800"
+      },
+      "RENVELA": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA"
+      },
+      "RENVELA 2,4 GR": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4 gr"
+      },
+      "RENVELA 2,4": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4"
+      },
+      "RENVELA 2,4 G": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4 g"
+      },
+      "RENVELA 2,4 G.": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4 g."
+      },
+      "RENVELA COMPRIMIDOS 800 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA comprimidos 800 mg"
+      },
+      "RENVELA SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA sobres"
+      },
+      "RENVELA SOBRES 2,4G": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA sobres 2,4g"
+      },
+      "RENVELA 2,4 SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Renvela 2,4 sobres"
+      },
+      "ROYEN 500 MG (ACETATO DE CALCIO)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "ROYEN 500 mg (Acetato de Calcio)"
+      },
+      "SEVELAMER 2.4 GR SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "SEVELAMER 2.4 gr sobres"
+      },
+      "TRELEGY ( VILANTEROL/UNECLIDINIO/FLUTICASONA ELLIPTA 92/55/22 MCG /PULS)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "TRELEGY ( Vilanterol/uneclidinio/fluticasona ellipta 92/55/22 mcg /puls)"
+      },
+      "VELPHORO 500 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "VELPHORO 500 mg"
       }
     }
   },
@@ -1069,8 +2534,8 @@
           "bino",
           "DARBOPO",
           "EPO",
-          "EPO10",
           "EPO1",
+          "EPO10",
           "EPO2",
           "EPO3",
           "EPO4",
@@ -1085,8 +2550,8 @@
           "bino": "BINOCRIT",
           "DARBOPO": "DARBOPOETINA",
           "EPO": "EPO",
-          "EPO10": "EPO 10.000",
           "EPO1": "EPO 1000",
+          "EPO10": "EPO 10.000",
           "EPO2": "EPO 2000",
           "EPO3": "EPO 3000",
           "EPO4": "EPO 4000",
@@ -1099,22 +2564,22 @@
       },
       "VITAMINA D": {
         "codes": [
-          "Z_CAL",
           "HIDROF",
           "Hidrof",
-          "zemplar",
+          "Z-ZEM",
+          "Z_CAL",
           "ZEM2",
           "ZEM5",
-          "Z-ZEM"
+          "zemplar"
         ],
         "items": {
-          "Z_CAL": "CALCIJEX",
           "HIDROF": "HIDROFEROL",
           "Hidrof": "Hidroferol 0,266 ampolla",
-          "zemplar": "ZEMPLAR",
+          "Z-ZEM": "ZEMPLAR1",
+          "Z_CAL": "CALCIJEX",
           "ZEM2": "ZEMPLAR 2 mcgr",
           "ZEM5": "ZEMPLAR 5 mcgr",
-          "Z-ZEM": "ZEMPLAR1"
+          "zemplar": "ZEMPLAR"
         }
       },
       "CALCIMIMETICO": {
@@ -1143,6 +2608,146 @@
           "ferinje": "FERINJECT",
           "feriv": "FERIV",
           "Z_HIE": "VENOFER"
+        }
+      },
+      "QUELANTE_FOSFORO": {
+        "codes": [
+          "ACETATO CALCICO",
+          "ACETATO CALCICO 950 MG COMPRIMIDOS",
+          "BAJO RENAGEL",
+          "CARBONATO CALC",
+          "CARBONATO CALCICO",
+          "FOSRENOL",
+          "FOSRENOL 1 GR",
+          "FOSRENOL 1000",
+          "FOSRENOL COMPR. 750 MG",
+          "FOSRENOL 1 G",
+          "FOSRENOL 1 GR",
+          "FOSRENOL 1 GR MG",
+          "FOSRENOL 1 GR SOBRES",
+          "FOSRENOL 1000",
+          "FOSRENOL 1000 MG",
+          "FOSRENOL 1000 MG POLVO ORAL",
+          "FOSRENOL 1000MG",
+          "FOSRENOL 1G",
+          "FOSRENOL 1G POLVO ORAL",
+          "FOSRENOL 1GR",
+          "FOSRENOL 500",
+          "FOSRENOL 500 MG",
+          "FOSRENOL 500MG",
+          "FOSRENOL 750",
+          "FOSRENOL 750 MG",
+          "FOSRENOL POLVO 750 MGR",
+          "INSULINA (NOVORAPID Y LANTUS)",
+          "INSULINA LANTUS",
+          "INSULINA LANTUS PLUMA 100 UI/ML",
+          "INSULINA LANTUS PLUMA 100UI/ML",
+          "LANTANON 10",
+          "LANTANON 10MG",
+          "LANTANON 30MG",
+          "LANTANON COMP 30MG",
+          "LANTUS",
+          "LANTUS 100 UI/ML",
+          "LANTUS OPTISET",
+          "PLANTABEN",
+          "PLANTAGO OVATA",
+          "RENAGEL",
+          "RENAGEL 400",
+          "RENAGEL 403",
+          "RENAGEL 800",
+          "RENAGEL 800 MG",
+          "RENAGEL 800 MG CON LAS COMIDAS",
+          "RENAGEL 800MG",
+          "RENAGEL800",
+          "RENVELA",
+          "RENVELA 2,4 G",
+          "RENVELA 2,4 GR",
+          "RENVELA 2,4 GR SOBRES",
+          "RENVELA 800MG",
+          "RENVELA COMP",
+          "RENVELA COMP 800 MG",
+          "RENVELA COMP 800MG",
+          "RENVELA COMPRIMIDOS",
+          "RENVELA COMPRIMIDOS 800MG",
+          "RENVELA SOBRES",
+          "RENVELA SOBRES 2,4",
+          "RENVELA SOBRES 2,4 G",
+          "RENVELA SOBRES 2,4 GR",
+          "RENVELA SOBRES 2,4GR",
+          "RENVELA SOPBRES 2,4 GR",
+          "SEVELAMER",
+          "SEVELAMER 800",
+          "SEVELAMER 800MG",
+          "SUSPENDO RENAGEL.",
+          "VELPHORO"
+        ],
+        "items": {
+          "ACETATO CALCICO": "ACETATO CALCICO",
+          "ACETATO CALCICO 950 MG COMPRIMIDOS": "Acetato calcico 950 mg comprimidos",
+          "BAJO RENAGEL": "Bajo renagel",
+          "CARBONATO CALC": "CARBONATO CALC",
+          "CARBONATO CALCICO": "Carbonato calcico",
+          "FOSRENOL": "FOSRENOL",
+          "FOSRENOL 1 GR": "FOSRENOL 1 GR",
+          "FOSRENOL 1000": "FOSRENOL 1000",
+          "FOSRENOL COMPR. 750 MG": "Fosrenol compr. 750 mg",
+          "FOSRENOL 1 G": "FOSRENOL 1 G",
+          "FOSRENOL 1 GR MG": "FOSRENOL 1 gr MG",
+          "FOSRENOL 1 GR SOBRES": "FOSRENOL 1 GR SOBRES",
+          "FOSRENOL 1000 MG": "FOSRENOL 1000 MG",
+          "FOSRENOL 1000 MG POLVO ORAL": "FOSRENOL 1000 MG POLVO ORAL",
+          "FOSRENOL 1000MG": "FOSRENOL 1000MG",
+          "FOSRENOL 1G": "FOSRENOL 1G",
+          "FOSRENOL 1G POLVO ORAL": "FOSRENOL 1G POLVO ORAL",
+          "FOSRENOL 1GR": "FOSRENOL 1gr",
+          "FOSRENOL 500": "FOSRENOL 500",
+          "FOSRENOL 500 MG": "fosrenol 500 mg",
+          "FOSRENOL 500MG": "FOSRENOL 500mg",
+          "FOSRENOL 750": "FOSRENOL 750",
+          "FOSRENOL 750 MG": "FOSRENOL 750 MG",
+          "FOSRENOL POLVO 750 MGR": "Fosrenol polvo 750 mgr",
+          "INSULINA (NOVORAPID Y LANTUS)": "INSULINA (novorapid y lantus)",
+          "INSULINA LANTUS": "INSULINA LANTUS",
+          "INSULINA LANTUS PLUMA 100 UI/ML": "INSULINA LANTUS PLUMA 100 UI/ml",
+          "INSULINA LANTUS PLUMA 100UI/ML": "INSULINA LANTUS PLUMA 100UI/ML",
+          "LANTANON 10": "Lantanon 10",
+          "LANTANON 10MG": "LANTANON 10mg",
+          "LANTANON 30MG": "LANTANON 30mg",
+          "LANTANON COMP 30MG": "LANTANON comp 30mg",
+          "LANTUS": "LANTUS",
+          "LANTUS 100 UI/ML": "Lantus 100 ui/ML",
+          "LANTUS OPTISET": "Lantus optiset",
+          "PLANTABEN": "PLANTABEN",
+          "PLANTAGO OVATA": "Plantago ovata",
+          "RENAGEL": "RENAGEL",
+          "RENAGEL 400": "Renagel 400",
+          "RENAGEL 403": "RENAGEL 403",
+          "RENAGEL 800": "RENAGEL 800",
+          "RENAGEL 800 MG": "RENAGEL 800 MG",
+          "RENAGEL 800 MG CON LAS COMIDAS": "RENAGEL 800 MG CON LAS COMIDAS",
+          "RENAGEL 800MG": "RENAGEL 800mg",
+          "RENAGEL800": "RENAGEL800",
+          "RENVELA": "RENVELA",
+          "RENVELA 2,4 G": "RENVELA 2,4 G",
+          "RENVELA 2,4 GR": "RENVELA 2,4 GR",
+          "RENVELA 2,4 GR SOBRES": "RENVELA 2,4 GR SOBRES",
+          "RENVELA 800MG": "Renvela 800mg",
+          "RENVELA COMP": "RENVELA comp",
+          "RENVELA COMP 800 MG": "RENVELA COMP 800 MG",
+          "RENVELA COMP 800MG": "RENVELA comp 800mg",
+          "RENVELA COMPRIMIDOS": "RENVELA comprimidos",
+          "RENVELA COMPRIMIDOS 800MG": "Renvela comprimidos 800mg",
+          "RENVELA SOBRES": "RENVELA sobres",
+          "RENVELA SOBRES 2,4": "Renvela sobres 2,4",
+          "RENVELA SOBRES 2,4 G": "RENVELA sobres 2,4 G",
+          "RENVELA SOBRES 2,4 GR": "RENVELA SOBRES 2,4 GR",
+          "RENVELA SOBRES 2,4GR": "RENVELA sobres 2,4gr",
+          "RENVELA SOPBRES 2,4 GR": "RENVELA SOPBRES 2,4 GR",
+          "SEVELAMER": "SEVELAMER",
+          "SEVELAMER 800": "SEVELAMER 800",
+          "SEVELAMER 800MG": "Sevelamer 800mg",
+          "SUSPENDO RENAGEL.": "Suspendo renagel.",
+          "VELPHORO": "VELPHORO"
         }
       }
     },
@@ -1262,6 +2867,270 @@
       "Z-ZEM": {
         "tipo": "VITAMINA D",
         "nombre": "ZEMPLAR1"
+      },
+      "ACETATO CALCICO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "ACETATO CALCICO"
+      },
+      "ACETATO CALCICO 950 MG COMPRIMIDOS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Acetato calcico 950 mg comprimidos"
+      },
+      "BAJO RENAGEL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Bajo renagel"
+      },
+      "CARBONATO CALC": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "CARBONATO CALC"
+      },
+      "CARBONATO CALCICO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Carbonato calcico"
+      },
+      "FOSRENOL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL"
+      },
+      "FOSRENOL 1 GR": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1 GR"
+      },
+      "FOSRENOL 1000": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1000"
+      },
+      "FOSRENOL COMPR. 750 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Fosrenol compr. 750 mg"
+      },
+      "FOSRENOL 1 G": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1 G"
+      },
+      "FOSRENOL 1 GR MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1 gr MG"
+      },
+      "FOSRENOL 1 GR SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1 GR SOBRES"
+      },
+      "FOSRENOL 1000 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1000 MG"
+      },
+      "FOSRENOL 1000 MG POLVO ORAL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1000 MG POLVO ORAL"
+      },
+      "FOSRENOL 1000MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1000MG"
+      },
+      "FOSRENOL 1G": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1G"
+      },
+      "FOSRENOL 1G POLVO ORAL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1G POLVO ORAL"
+      },
+      "FOSRENOL 1GR": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1gr"
+      },
+      "FOSRENOL 500": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 500"
+      },
+      "FOSRENOL 500 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "fosrenol 500 mg"
+      },
+      "FOSRENOL 500MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 500mg"
+      },
+      "FOSRENOL 750": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 750"
+      },
+      "FOSRENOL 750 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 750 MG"
+      },
+      "FOSRENOL POLVO 750 MGR": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Fosrenol polvo 750 mgr"
+      },
+      "INSULINA (NOVORAPID Y LANTUS)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "INSULINA (novorapid y lantus)"
+      },
+      "INSULINA LANTUS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "INSULINA LANTUS"
+      },
+      "INSULINA LANTUS PLUMA 100 UI/ML": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "INSULINA LANTUS PLUMA 100 UI/ml"
+      },
+      "INSULINA LANTUS PLUMA 100UI/ML": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "INSULINA LANTUS PLUMA 100UI/ML"
+      },
+      "LANTANON 10": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Lantanon 10"
+      },
+      "LANTANON 10MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "LANTANON 10mg"
+      },
+      "LANTANON 30MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "LANTANON 30mg"
+      },
+      "LANTANON COMP 30MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "LANTANON comp 30mg"
+      },
+      "LANTUS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "LANTUS"
+      },
+      "LANTUS 100 UI/ML": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Lantus 100 ui/ML"
+      },
+      "LANTUS OPTISET": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Lantus optiset"
+      },
+      "PLANTABEN": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "PLANTABEN"
+      },
+      "PLANTAGO OVATA": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Plantago ovata"
+      },
+      "RENAGEL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL"
+      },
+      "RENAGEL 400": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Renagel 400"
+      },
+      "RENAGEL 403": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL 403"
+      },
+      "RENAGEL 800": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL 800"
+      },
+      "RENAGEL 800 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL 800 MG"
+      },
+      "RENAGEL 800 MG CON LAS COMIDAS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL 800 MG CON LAS COMIDAS"
+      },
+      "RENAGEL 800MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL 800mg"
+      },
+      "RENAGEL800": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL800"
+      },
+      "RENVELA": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA"
+      },
+      "RENVELA 2,4 G": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4 G"
+      },
+      "RENVELA 2,4 GR": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4 GR"
+      },
+      "RENVELA 2,4 GR SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4 GR SOBRES"
+      },
+      "RENVELA 800MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Renvela 800mg"
+      },
+      "RENVELA COMP": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA comp"
+      },
+      "RENVELA COMP 800 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA COMP 800 MG"
+      },
+      "RENVELA COMP 800MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA comp 800mg"
+      },
+      "RENVELA COMPRIMIDOS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA comprimidos"
+      },
+      "RENVELA COMPRIMIDOS 800MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Renvela comprimidos 800mg"
+      },
+      "RENVELA SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA sobres"
+      },
+      "RENVELA SOBRES 2,4": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Renvela sobres 2,4"
+      },
+      "RENVELA SOBRES 2,4 G": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA sobres 2,4 G"
+      },
+      "RENVELA SOBRES 2,4 GR": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA SOBRES 2,4 GR"
+      },
+      "RENVELA SOBRES 2,4GR": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA sobres 2,4gr"
+      },
+      "RENVELA SOPBRES 2,4 GR": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA SOPBRES 2,4 GR"
+      },
+      "SEVELAMER": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "SEVELAMER"
+      },
+      "SEVELAMER 800": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "SEVELAMER 800"
+      },
+      "SEVELAMER 800MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Sevelamer 800mg"
+      },
+      "SUSPENDO RENAGEL.": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Suspendo renagel."
+      },
+      "VELPHORO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "VELPHORO"
       }
     }
   },
@@ -1269,6 +3138,8 @@
     "byTipo": {
       "ERITROPOYETINA": {
         "codes": [
+          "000000",
+          "434333",
           "aran0",
           "aran1",
           "ARAN15",
@@ -1278,8 +3149,8 @@
           "ARAN6",
           "ARAN8",
           "B_in",
-          "EPO10",
           "EPO1",
+          "EPO10",
           "EPO2",
           "EPO3",
           "EPO4",
@@ -1287,11 +3158,11 @@
           "EPO6",
           "EPO7",
           "EPO8",
-          "434333",
-          "000000",
           "ret2000"
         ],
         "items": {
+          "000000": "Neorecormon",
+          "434333": "EPREX",
           "aran0": "ARANESP",
           "aran1": "ARANESP 10",
           "ARAN15": "ARANESP 150",
@@ -1301,8 +3172,8 @@
           "ARAN6": "ARANESP 60",
           "ARAN8": "ARANESP 80",
           "B_in": "Binocrit",
-          "EPO10": "EPO 10.000",
           "EPO1": "EPO 1000",
+          "EPO10": "EPO 10.000",
           "EPO2": "EPO 2000",
           "EPO3": "EPO 3000",
           "EPO4": "EPO 4000",
@@ -1310,29 +3181,27 @@
           "EPO6": "EPO 6000",
           "EPO7": "EPO 7000",
           "EPO8": "EPO 8000",
-          "434333": "EPREX",
-          "000000": "Neorecormon",
           "ret2000": "retacrit 2000"
         }
       },
       "VITAMINA D": {
         "codes": [
-          "Z_CAL",
           "Eta",
           "H_idrof",
           "P_ar",
+          "Z_CAL",
           "Z_ROC",
           "Z_Ze",
           "Z_ZEM"
         ],
         "items": {
-          "Z_CAL": "Calcijex",
           "Eta": "Etalpha",
           "H_idrof": "Hidroferol ampolla beb 266 mcg",
           "P_ar": "Paricalcitol",
+          "Z_CAL": "Calcijex",
           "Z_ROC": "Rocaltrol 0.25",
           "Z_Ze": "Zemplar",
-          "Z_ZEM": "Zemplar 1 �g"
+          "Z_ZEM": "Zemplar 1 g"
         }
       },
       "HIERRO": {
@@ -1349,16 +3218,89 @@
       },
       "CALCIMIMETICO": {
         "codes": [
-          "M_impa",
           "C_CIN",
           "M_im3",
+          "M_impa",
           "P_arsa"
         ],
         "items": {
-          "M_impa": "Mimpara",
           "C_CIN": "Mimpara 30",
           "M_im3": "Mimpara 30",
+          "M_impa": "Mimpara",
           "P_arsa": "Parsabiv (etelcalcetida)"
+        }
+      },
+      "QUELANTE_FOSFORO": {
+        "codes": [
+          "ACETATO CALCICO RENACARE",
+          "ACETATO DE CALCIO",
+          "CARBONATO DE LANTANO",
+          "FOSQUEL ( SEVELAMER)",
+          "FOSQUEL (CARBONATO DE SEVELMERO)",
+          "FOSRENOL 1000",
+          "FOSRENOL 1000 MG (COMPRIMIDOS MASTICABLES)",
+          "FOSRENOL 1000 POLVO ORAL",
+          "FOSRENOL 500",
+          "FOSRENOL 500 MG",
+          "FOSRENOL 750",
+          "FOSRENOL 750 COM",
+          "FOSRENOL 750 MG",
+          "FOSRENOL 750 MG.",
+          "INSULINA LANTUS",
+          "OROCAL 500 MG (CARBONATO DE CALCIO)",
+          "PLANTABEN",
+          "RENAGEL",
+          "RENAGEL 800 MG",
+          "RENAGEL 400",
+          "RENAGEL 800",
+          "RENAGEL 800 MG",
+          "RENAGEL 800 MG.",
+          "RENAGEL 800 MGRS",
+          "RENVELA",
+          "RENVELA 800 MG",
+          "RENVELA 2,4",
+          "RENVELA 2,4 GR",
+          "RENVELA 2,4 GR.",
+          "RENVELA 2,4G",
+          "RENVELA 2.4 GR",
+          "RENVELA SOBRES 2,4 GR",
+          "SEVELAMER 800",
+          "VELPHORO"
+        ],
+        "items": {
+          "ACETATO CALCICO RENACARE": "Acetato calcico Renacare",
+          "ACETATO DE CALCIO": "ACETATO DE CALCIO",
+          "CARBONATO DE LANTANO": "Carbonato de lantano",
+          "FOSQUEL ( SEVELAMER)": "Fosquel ( Sevelamer)",
+          "FOSQUEL (CARBONATO DE SEVELMERO)": "Fosquel (Carbonato de Sevelmero)",
+          "FOSRENOL 1000": "Fosrenol 1000",
+          "FOSRENOL 1000 MG (COMPRIMIDOS MASTICABLES)": "Fosrenol 1000 mg (Comprimidos masticables)",
+          "FOSRENOL 1000 POLVO ORAL": "Fosrenol 1000 polvo oral",
+          "FOSRENOL 500": "FOSRENOL 500",
+          "FOSRENOL 500 MG": "Fosrenol 500 mg",
+          "FOSRENOL 750": "FOSRENOL 750",
+          "FOSRENOL 750 COM": "FOSRENOL 750 Com",
+          "FOSRENOL 750 MG": "FOSRENOL 750 mg",
+          "FOSRENOL 750 MG.": "fosrenol 750 mg.",
+          "INSULINA LANTUS": "INSULINA LANTUS",
+          "OROCAL 500 MG (CARBONATO DE CALCIO)": "Orocal 500 mg (carbonato de calcio)",
+          "PLANTABEN": "PLANTABEN",
+          "RENAGEL": "RENAGEL",
+          "RENAGEL 800 MG": "RENAGEL 800 mg",
+          "RENAGEL 400": "RENAGEL 400",
+          "RENAGEL 800": "RENAGEL 800",
+          "RENAGEL 800 MG.": "RENAGEL 800 mg.",
+          "RENAGEL 800 MGRS": "Renagel 800 mgrs",
+          "RENVELA": "RENVELA",
+          "RENVELA 800 MG": "Renvela 800 mg",
+          "RENVELA 2,4": "RENVELA 2,4",
+          "RENVELA 2,4 GR": "RENVELA 2,4 gr",
+          "RENVELA 2,4 GR.": "RENVELA 2,4 gr.",
+          "RENVELA 2,4G": "Renvela 2,4g",
+          "RENVELA 2.4 GR": "Renvela 2.4 gr",
+          "RENVELA SOBRES 2,4 GR": "RENVELA SOBRES 2,4 gr",
+          "SEVELAMER 800": "Sevelamer 800",
+          "VELPHORO": "Velphoro"
         }
       }
     },
@@ -1501,7 +3443,139 @@
       },
       "Z_ZEM": {
         "tipo": "VITAMINA D",
-        "nombre": "Zemplar 1 �g"
+        "nombre": "Zemplar 1 g"
+      },
+      "ACETATO CALCICO RENACARE": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Acetato calcico Renacare"
+      },
+      "ACETATO DE CALCIO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "ACETATO DE CALCIO"
+      },
+      "CARBONATO DE LANTANO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Carbonato de lantano"
+      },
+      "FOSQUEL ( SEVELAMER)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Fosquel ( Sevelamer)"
+      },
+      "FOSQUEL (CARBONATO DE SEVELMERO)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Fosquel (Carbonato de Sevelmero)"
+      },
+      "FOSRENOL 1000": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Fosrenol 1000"
+      },
+      "FOSRENOL 1000 MG (COMPRIMIDOS MASTICABLES)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Fosrenol 1000 mg (Comprimidos masticables)"
+      },
+      "FOSRENOL 1000 POLVO ORAL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Fosrenol 1000 polvo oral"
+      },
+      "FOSRENOL 500": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 500"
+      },
+      "FOSRENOL 500 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Fosrenol 500 mg"
+      },
+      "FOSRENOL 750": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 750"
+      },
+      "FOSRENOL 750 COM": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 750 Com"
+      },
+      "FOSRENOL 750 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 750 mg"
+      },
+      "FOSRENOL 750 MG.": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "fosrenol 750 mg."
+      },
+      "INSULINA LANTUS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "INSULINA LANTUS"
+      },
+      "OROCAL 500 MG (CARBONATO DE CALCIO)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Orocal 500 mg (carbonato de calcio)"
+      },
+      "PLANTABEN": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "PLANTABEN"
+      },
+      "RENAGEL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL"
+      },
+      "RENAGEL 800 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL 800 mg"
+      },
+      "RENAGEL 400": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL 400"
+      },
+      "RENAGEL 800": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL 800"
+      },
+      "RENAGEL 800 MG.": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL 800 mg."
+      },
+      "RENAGEL 800 MGRS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Renagel 800 mgrs"
+      },
+      "RENVELA": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA"
+      },
+      "RENVELA 800 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Renvela 800 mg"
+      },
+      "RENVELA 2,4": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4"
+      },
+      "RENVELA 2,4 GR": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4 gr"
+      },
+      "RENVELA 2,4 GR.": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4 gr."
+      },
+      "RENVELA 2,4G": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Renvela 2,4g"
+      },
+      "RENVELA 2.4 GR": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Renvela 2.4 gr"
+      },
+      "RENVELA SOBRES 2,4 GR": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA SOBRES 2,4 gr"
+      },
+      "SEVELAMER 800": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Sevelamer 800"
+      },
+      "VELPHORO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Velphoro"
       }
     }
   },
@@ -1509,9 +3583,9 @@
     "byTipo": {
       "ERITROPOYETINA": {
         "codes": [
-          "ARAN10",
           "ARA10",
           "ARA20",
+          "ARAN10",
           "BINOC1",
           "BINOC4",
           "Darbe",
@@ -1520,9 +3594,9 @@
           "RET"
         ],
         "items": {
-          "ARAN10": "ARANESP",
           "ARA10": "ARANESP 10",
           "ARA20": "ARANESP 20",
+          "ARAN10": "ARANESP",
           "BINOC1": "BINOCRIT",
           "BINOC4": "BINOCRIT 4000",
           "Darbe": "Darbepoetina",
@@ -1534,16 +3608,16 @@
       "VITAMINA D": {
         "codes": [
           "ctc",
-          "paric",
           "pari",
+          "paric",
           "ZEM",
           "ZEMP2",
           "ZEMP5"
         ],
         "items": {
           "ctc": "calcitriol 0.25 mg",
-          "paric": "paricalcitol",
           "pari": "paricalcitol 2mcg",
+          "paric": "paricalcitol",
           "ZEM": "ZEMPLAR",
           "ZEMP2": "ZEMPLAR 2mcg",
           "ZEMP5": "ZEMPLAR 5mcg"
@@ -1573,6 +3647,42 @@
           "VENOF": "VENOFER",
           "VENOF50": "VENOFER",
           "VENOFER": "VENOFER"
+        }
+      },
+      "QUELANTE_FOSFORO": {
+        "codes": [
+          "ACETATO CALCICO",
+          "FOSRENOL",
+          "FOSRENOL 1000 SOBRES",
+          "FOSRENOL 500MG",
+          "FOSRENOL 750",
+          "INSULINA LANTUS",
+          "PLANTABEN",
+          "PLANTAGO OVATA",
+          "RENAGEL",
+          "RENVELA 2,4 SOBRES",
+          "RENVELA 800",
+          "SEVELAMER 800",
+          "SEVELAMER SOBRES 2.4G",
+          "VELPHORO",
+          "VELPHORO 500"
+        ],
+        "items": {
+          "ACETATO CALCICO": "ACETATO CALCICO",
+          "FOSRENOL": "FOSRENOL",
+          "FOSRENOL 1000 SOBRES": "Fosrenol 1000 sobres",
+          "FOSRENOL 500MG": "Fosrenol 500mg",
+          "FOSRENOL 750": "FOSRENOL 750",
+          "INSULINA LANTUS": "Insulina Lantus",
+          "PLANTABEN": "plantaben",
+          "PLANTAGO OVATA": "plantago ovata",
+          "RENAGEL": "renagel",
+          "RENVELA 2,4 SOBRES": "RENVELA 2,4 sobres",
+          "RENVELA 800": "Renvela 800",
+          "SEVELAMER 800": "Sevelamer 800",
+          "SEVELAMER SOBRES 2.4G": "SEVELAMER SOBRES 2.4G",
+          "VELPHORO": "VELPHORO",
+          "VELPHORO 500": "velphoro 500"
         }
       }
     },
@@ -1664,6 +3774,66 @@
       "ZEMP5": {
         "tipo": "VITAMINA D",
         "nombre": "ZEMPLAR 5mcg"
+      },
+      "ACETATO CALCICO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "ACETATO CALCICO"
+      },
+      "FOSRENOL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL"
+      },
+      "FOSRENOL 1000 SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Fosrenol 1000 sobres"
+      },
+      "FOSRENOL 500MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Fosrenol 500mg"
+      },
+      "FOSRENOL 750": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 750"
+      },
+      "INSULINA LANTUS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Insulina Lantus"
+      },
+      "PLANTABEN": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "plantaben"
+      },
+      "PLANTAGO OVATA": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "plantago ovata"
+      },
+      "RENAGEL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "renagel"
+      },
+      "RENVELA 2,4 SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4 sobres"
+      },
+      "RENVELA 800": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Renvela 800"
+      },
+      "SEVELAMER 800": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Sevelamer 800"
+      },
+      "SEVELAMER SOBRES 2.4G": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "SEVELAMER SOBRES 2.4G"
+      },
+      "VELPHORO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "VELPHORO"
+      },
+      "VELPHORO 500": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "velphoro 500"
       }
     }
   },
@@ -1671,44 +3841,44 @@
     "byTipo": {
       "ERITROPOYETINA": {
         "codes": [
+          "434335",
           "ar",
-          "NESP20",
-          "NESP30",
-          "NESP60",
           "bin",
           "EPO",
-          "EPO10",
           "EPO1",
+          "EPO10",
           "EPO2",
           "EPO3",
           "EPO4",
           "EPO5",
           "EPO6",
           "EPO8",
-          "434335"
+          "NESP20",
+          "NESP30",
+          "NESP60"
         ],
         "items": {
+          "434335": "Z-EPREX 4000 UI",
           "ar": "ARANESP",
-          "NESP20": "ARANESP",
-          "NESP30": "ARANESP 30",
-          "NESP60": "ARANESP 60",
           "bin": "BINOCRIT",
           "EPO": "EPREX",
-          "EPO10": "Z-EPO 10.000",
           "EPO1": "Z-EPO 1000",
+          "EPO10": "Z-EPO 10.000",
           "EPO2": "Z-EPO 2000",
           "EPO3": "Z-EPO 3000",
           "EPO4": "Z-EPO 4000",
           "EPO5": "Z-EPO 5000",
           "EPO6": "Z-EPO 6000",
           "EPO8": "Z-EPO 8000",
-          "434335": "Z-EPREX 4000 UI"
+          "NESP20": "ARANESP",
+          "NESP30": "ARANESP 30",
+          "NESP60": "ARANESP 60"
         }
       },
       "VITAMINA D": {
         "codes": [
-          "del",
           "434337",
+          "del",
           "HDF",
           "Hidrofe",
           "prctl",
@@ -1717,8 +3887,8 @@
           "ZEMP5"
         ],
         "items": {
-          "del": "deltius",
           "434337": "ETALPHA 0.5",
+          "del": "deltius",
           "HDF": "HIDROFEROL",
           "Hidrofe": "HIDROFEROL",
           "prctl": "PARICALCITOL",
@@ -1739,18 +3909,104 @@
       },
       "CALCIMIMETICO": {
         "codes": [
-          "mim",
-          "MIMP",
           "CALCM30",
           "CALCM60",
+          "mim",
+          "MIMP",
           "par"
         ],
         "items": {
-          "mim": "MIMPARA",
-          "MIMP": "MIMPARA",
           "CALCM30": "MIMPARA",
           "CALCM60": "MIMPARA",
+          "mim": "MIMPARA",
+          "MIMP": "MIMPARA",
           "par": "PARSABIV"
+        }
+      },
+      "QUELANTE_FOSFORO": {
+        "codes": [
+          "ACETATO CALCICO",
+          "CARBONATO CALCICO",
+          "DOLANTINA",
+          "FOSRENOL",
+          "FOSRENOL 1000",
+          "FOSRENOL 1000 POLVO ORAL",
+          "FOSRENOL 1000 SOBRES ORALES",
+          "FOSRENOL 500",
+          "FOSRENOL 750",
+          "FOSRENOL 750 MG",
+          "FOSRENOL 750 POLVOORAL",
+          "FOSRENOL POLVO 1000",
+          "FOSRENOL POLVO ORAL",
+          "FOSRENOL POLVO ORAL 1000",
+          "FOSRENOL POLVO ORAL 1000 MG",
+          "FOSRENOL POLVO ORAL 750",
+          "INSULINA LANTUS",
+          "INSULINA LANTUS 10",
+          "INSULINA LANTUS 100 U/ML (I. GLARGINA)",
+          "INSULINA LANTUS SOLOSTAR",
+          "LANTUS",
+          "NSULINA LANTUS",
+          "PLANTABEN",
+          "PLANTAGO OVA",
+          "PLANTAGO OVATA",
+          "PLANTAGO OVATA 3.5 G",
+          "RENAGEL",
+          "RENAGEL 800",
+          "RENAGEL 800 MG",
+          "RENAGEL 800 MGS",
+          "RENVELA",
+          "RENVELA 2,4",
+          "RENVELA 2,4G",
+          "RENVELA 2.4",
+          "RENVELA 2.4 G",
+          "RENVELA 2.4 GR",
+          "RENVELA 2.4 SOBRES",
+          "RENVELA SOBRES",
+          "SEVELAMER",
+          "VELPHORO"
+        ],
+        "items": {
+          "ACETATO CALCICO": "Acetato Calcico",
+          "CARBONATO CALCICO": "CARBONATO CALCICO",
+          "DOLANTINA": "DOLANTINA",
+          "FOSRENOL": "FOSRENOL",
+          "FOSRENOL 1000": "FOSRENOL 1000",
+          "FOSRENOL 1000 POLVO ORAL": "Fosrenol 1000 polvo oral",
+          "FOSRENOL 1000 SOBRES ORALES": "FOSRENOL 1000 SOBRES ORALES",
+          "FOSRENOL 500": "FOSRENOL 500",
+          "FOSRENOL 750": "FOSRENOL 750",
+          "FOSRENOL 750 MG": "FOSRENOL 750 mg",
+          "FOSRENOL 750 POLVOORAL": "FOSRENOL 750 polvooral",
+          "FOSRENOL POLVO 1000": "FOSRENOL POLVO 1000",
+          "FOSRENOL POLVO ORAL": "FOSRENOL POLVO ORAL",
+          "FOSRENOL POLVO ORAL 1000": "FOSRENOL POLVO ORAL 1000",
+          "FOSRENOL POLVO ORAL 1000 MG": "FOSRENOL POLVO ORAL 1000 mg",
+          "FOSRENOL POLVO ORAL 750": "FOSRENOL POLVO ORAL 750",
+          "INSULINA LANTUS": "INSULINA LANTUS",
+          "INSULINA LANTUS 10": "INSULINA LANTUS 10",
+          "INSULINA LANTUS 100 U/ML (I. GLARGINA)": "Insulina lantus 100 U/ml (I. Glargina)",
+          "INSULINA LANTUS SOLOSTAR": "INSULINA LANTUS SOLOSTAR",
+          "LANTUS": "Lantus",
+          "NSULINA LANTUS": "NSULINA LANTUS",
+          "PLANTABEN": "PLANTABEN",
+          "PLANTAGO OVA": "Plantago ova",
+          "PLANTAGO OVATA": "PLANTAGO OVATA",
+          "PLANTAGO OVATA 3.5 G": "Plantago ovata 3.5 g",
+          "RENAGEL": "RENAGEL",
+          "RENAGEL 800": "RENAGEL 800",
+          "RENAGEL 800 MG": "Renagel 800 mg",
+          "RENAGEL 800 MGS": "Renagel 800 mgs",
+          "RENVELA": "RENVELA",
+          "RENVELA 2,4": "Renvela 2,4",
+          "RENVELA 2,4G": "RENVELA 2,4g",
+          "RENVELA 2.4": "RENVELA 2.4",
+          "RENVELA 2.4 G": "Renvela 2.4 g",
+          "RENVELA 2.4 GR": "RENVELA 2.4 gr",
+          "RENVELA 2.4 SOBRES": "RENVELA 2.4 sobres",
+          "RENVELA SOBRES": "RENVELA SOBRES",
+          "SEVELAMER": "SEVELAMER",
+          "VELPHORO": "VELPHORO"
         }
       }
     },
@@ -1874,6 +4130,166 @@
       "434335": {
         "tipo": "ERITROPOYETINA",
         "nombre": "Z-EPREX 4000 UI"
+      },
+      "ACETATO CALCICO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Acetato Calcico"
+      },
+      "CARBONATO CALCICO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "CARBONATO CALCICO"
+      },
+      "DOLANTINA": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "DOLANTINA"
+      },
+      "FOSRENOL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL"
+      },
+      "FOSRENOL 1000": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1000"
+      },
+      "FOSRENOL 1000 POLVO ORAL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Fosrenol 1000 polvo oral"
+      },
+      "FOSRENOL 1000 SOBRES ORALES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1000 SOBRES ORALES"
+      },
+      "FOSRENOL 500": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 500"
+      },
+      "FOSRENOL 750": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 750"
+      },
+      "FOSRENOL 750 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 750 mg"
+      },
+      "FOSRENOL 750 POLVOORAL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 750 polvooral"
+      },
+      "FOSRENOL POLVO 1000": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL POLVO 1000"
+      },
+      "FOSRENOL POLVO ORAL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL POLVO ORAL"
+      },
+      "FOSRENOL POLVO ORAL 1000": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL POLVO ORAL 1000"
+      },
+      "FOSRENOL POLVO ORAL 1000 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL POLVO ORAL 1000 mg"
+      },
+      "FOSRENOL POLVO ORAL 750": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL POLVO ORAL 750"
+      },
+      "INSULINA LANTUS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "INSULINA LANTUS"
+      },
+      "INSULINA LANTUS 10": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "INSULINA LANTUS 10"
+      },
+      "INSULINA LANTUS 100 U/ML (I. GLARGINA)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Insulina lantus 100 U/ml (I. Glargina)"
+      },
+      "INSULINA LANTUS SOLOSTAR": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "INSULINA LANTUS SOLOSTAR"
+      },
+      "LANTUS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Lantus"
+      },
+      "NSULINA LANTUS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "NSULINA LANTUS"
+      },
+      "PLANTABEN": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "PLANTABEN"
+      },
+      "PLANTAGO OVA": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Plantago ova"
+      },
+      "PLANTAGO OVATA": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "PLANTAGO OVATA"
+      },
+      "PLANTAGO OVATA 3.5 G": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Plantago ovata 3.5 g"
+      },
+      "RENAGEL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL"
+      },
+      "RENAGEL 800": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL 800"
+      },
+      "RENAGEL 800 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Renagel 800 mg"
+      },
+      "RENAGEL 800 MGS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Renagel 800 mgs"
+      },
+      "RENVELA": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA"
+      },
+      "RENVELA 2,4": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Renvela 2,4"
+      },
+      "RENVELA 2,4G": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4g"
+      },
+      "RENVELA 2.4": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2.4"
+      },
+      "RENVELA 2.4 G": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Renvela 2.4 g"
+      },
+      "RENVELA 2.4 GR": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2.4 gr"
+      },
+      "RENVELA 2.4 SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2.4 sobres"
+      },
+      "RENVELA SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA SOBRES"
+      },
+      "SEVELAMER": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "SEVELAMER"
+      },
+      "VELPHORO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "VELPHORO"
       }
     }
   },
@@ -1881,12 +4297,12 @@
     "byTipo": {
       "ERITROPOYETINA": {
         "codes": [
-          "ARAN",
-          "EPO",
-          "EPO10",
-          "EPO1",
           "33455",
           "434337",
+          "ARAN",
+          "EPO",
+          "EPO1",
+          "EPO10",
           "EPO2",
           "EPO3",
           "EPO4",
@@ -1897,12 +4313,12 @@
           "EPO9"
         ],
         "items": {
-          "ARAN": "ARANESP",
-          "EPO": "EPO",
-          "EPO10": "EPO 10.000",
-          "EPO1": "EPO 1000",
           "33455": "EPO 10000",
           "434337": "EPO 10000",
+          "ARAN": "ARANESP",
+          "EPO": "EPO",
+          "EPO1": "EPO 1000",
+          "EPO10": "EPO 10.000",
           "EPO2": "EPO 2000",
           "EPO3": "EPO 3000",
           "EPO4": "EPO 4000",
@@ -1915,15 +4331,15 @@
       },
       "CALCIMIMETICO": {
         "codes": [
+          "0000",
           "Etel",
           "mim",
-          "0000",
           "MIMP60"
         ],
         "items": {
+          "0000": "MIMPARA 30",
           "Etel": "Etelcalcetide",
           "mim": "Mimpara",
-          "0000": "MIMPARA 30",
           "MIMP60": "MIMPARA 60"
         }
       },
@@ -1951,6 +4367,82 @@
           "Z-ZEM": "ZEMPLAR",
           "ZEM2": "ZEMPLAR 2 mcgr",
           "ZEM5": "ZEMPLAR 5 mcgr"
+        }
+      },
+      "QUELANTE_FOSFORO": {
+        "codes": [
+          "ACETATO CALCIO RENACARE 475 MG",
+          "ACETATO DE CALCIO",
+          "ACETATO DE CALCIO RENACARE 475 MG",
+          "CARBONATO DE CALCIO",
+          "FOSRENOL",
+          "FOSRENOL 1 GR",
+          "FOSRENOL 1 G",
+          "FOSRENOL 1 GR",
+          "FOSRENOL 1 GRAMO",
+          "FOSRENOL 1000",
+          "FOSRENOL 1000 MG",
+          "FOSRENOL 1G",
+          "FOSRENOL 750 MG",
+          "FOSRENOL 750MG",
+          "FOSRENOL POLVO ORAL 1000MG",
+          "FOSRENOL SOBRE 1 G",
+          "INSULINA LANTUS",
+          "LANTUS",
+          "PLANTABEN SOBRES",
+          "PLANTAGO OVATA",
+          "RENAGEL",
+          "RENAGEL 800 MG",
+          "RENAGEL 800",
+          "RENAGEL 800 MG",
+          "RENVELA",
+          "RENVELA COMPRIMIDOS",
+          "RENVELA SOBRES",
+          "RENVELA SOBRES 2,4 G",
+          "RENVELA SOBRES 2,4 GR",
+          "RENVELA SOPBRES 2,4 GR",
+          "SEVELAMER 800MG",
+          "SEVELAMERO",
+          "SEVELAMERO 2,4 G",
+          "SEVELAMERO 800",
+          "SEVELAMERO SOBRE 2,4 G",
+          "VELPHORO"
+        ],
+        "items": {
+          "ACETATO CALCIO RENACARE 475 MG": "Acetato calcio Renacare 475 mg",
+          "ACETATO DE CALCIO": "Acetato de calcio",
+          "ACETATO DE CALCIO RENACARE 475 MG": "Acetato de calcio Renacare 475 mg",
+          "CARBONATO DE CALCIO": "Carbonato de calcio",
+          "FOSRENOL": "FOSRENOL",
+          "FOSRENOL 1 GR": "FOSRENOL 1 GR",
+          "FOSRENOL 1 G": "Fosrenol 1 g",
+          "FOSRENOL 1 GRAMO": "Fosrenol 1 gramo",
+          "FOSRENOL 1000": "FOSRENOL 1000",
+          "FOSRENOL 1000 MG": "FOSRENOL 1000 mg",
+          "FOSRENOL 1G": "FOSRENOL 1G",
+          "FOSRENOL 750 MG": "FOSRENOL 750 mg",
+          "FOSRENOL 750MG": "FOSRENOL 750mg",
+          "FOSRENOL POLVO ORAL 1000MG": "FOSRENOL POLVO ORAL 1000mg",
+          "FOSRENOL SOBRE 1 G": "Fosrenol sobre 1 g",
+          "INSULINA LANTUS": "INSULINA LANTUS",
+          "LANTUS": "LANTUS",
+          "PLANTABEN SOBRES": "PLANTABEN sobres",
+          "PLANTAGO OVATA": "Plantago ovata",
+          "RENAGEL": "RENAGEL",
+          "RENAGEL 800 MG": "RENAGEL 800 mg",
+          "RENAGEL 800": "RENAGEL 800",
+          "RENVELA": "RENVELA",
+          "RENVELA COMPRIMIDOS": "Renvela comprimidos",
+          "RENVELA SOBRES": "RENVELA sobres",
+          "RENVELA SOBRES 2,4 G": "RENVELA sobres 2,4 g",
+          "RENVELA SOBRES 2,4 GR": "RENVELA SOBRES 2,4 GR",
+          "RENVELA SOPBRES 2,4 GR": "RENVELA SOPBRES 2,4 GR",
+          "SEVELAMER 800MG": "SEVELAMER 800mg",
+          "SEVELAMERO": "Sevelamero",
+          "SEVELAMERO 2,4 G": "Sevelamero 2,4 g",
+          "SEVELAMERO 800": "Sevelamero 800",
+          "SEVELAMERO SOBRE 2,4 G": "Sevelamero sobre 2,4 g",
+          "VELPHORO": "Velphoro"
         }
       }
     },
@@ -2054,6 +4546,142 @@
       "ZEM5": {
         "tipo": "VITAMINA D",
         "nombre": "ZEMPLAR 5 mcgr"
+      },
+      "ACETATO CALCIO RENACARE 475 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Acetato calcio Renacare 475 mg"
+      },
+      "ACETATO DE CALCIO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Acetato de calcio"
+      },
+      "ACETATO DE CALCIO RENACARE 475 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Acetato de calcio Renacare 475 mg"
+      },
+      "CARBONATO DE CALCIO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Carbonato de calcio"
+      },
+      "FOSRENOL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL"
+      },
+      "FOSRENOL 1 GR": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1 GR"
+      },
+      "FOSRENOL 1 G": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Fosrenol 1 g"
+      },
+      "FOSRENOL 1 GRAMO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Fosrenol 1 gramo"
+      },
+      "FOSRENOL 1000": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1000"
+      },
+      "FOSRENOL 1000 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1000 mg"
+      },
+      "FOSRENOL 1G": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1G"
+      },
+      "FOSRENOL 750 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 750 mg"
+      },
+      "FOSRENOL 750MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 750mg"
+      },
+      "FOSRENOL POLVO ORAL 1000MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL POLVO ORAL 1000mg"
+      },
+      "FOSRENOL SOBRE 1 G": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Fosrenol sobre 1 g"
+      },
+      "INSULINA LANTUS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "INSULINA LANTUS"
+      },
+      "LANTUS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "LANTUS"
+      },
+      "PLANTABEN SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "PLANTABEN sobres"
+      },
+      "PLANTAGO OVATA": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Plantago ovata"
+      },
+      "RENAGEL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL"
+      },
+      "RENAGEL 800 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL 800 mg"
+      },
+      "RENAGEL 800": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL 800"
+      },
+      "RENVELA": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA"
+      },
+      "RENVELA COMPRIMIDOS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Renvela comprimidos"
+      },
+      "RENVELA SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA sobres"
+      },
+      "RENVELA SOBRES 2,4 G": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA sobres 2,4 g"
+      },
+      "RENVELA SOBRES 2,4 GR": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA SOBRES 2,4 GR"
+      },
+      "RENVELA SOPBRES 2,4 GR": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA SOPBRES 2,4 GR"
+      },
+      "SEVELAMER 800MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "SEVELAMER 800mg"
+      },
+      "SEVELAMERO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Sevelamero"
+      },
+      "SEVELAMERO 2,4 G": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Sevelamero 2,4 g"
+      },
+      "SEVELAMERO 800": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Sevelamero 800"
+      },
+      "SEVELAMERO SOBRE 2,4 G": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Sevelamero sobre 2,4 g"
+      },
+      "VELPHORO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Velphoro"
       }
     }
   },
@@ -2065,40 +4693,40 @@
           "BIN",
           "BIN3",
           "binocr",
-          "NESP150",
-          "Z-NESP",
-          "NESP 30",
-          "NESP 40",
-          "NESP 50",
-          "NESP 60",
           "EPO",
-          "EPO10",
           "EPO1",
+          "EPO10",
           "EPO3",
           "EPO4",
           "EPO5",
           "EPO6",
-          "EPO8"
+          "EPO8",
+          "NESP 30",
+          "NESP 40",
+          "NESP 50",
+          "NESP 60",
+          "NESP150",
+          "Z-NESP"
         ],
         "items": {
           "ara": "ARANESP",
           "BIN": "BINOCRIT",
           "BIN3": "BINOCRIT 3000",
           "binocr": "BINOCRIT 5000",
-          "NESP150": "DARBEPOETINA 150",
-          "Z-NESP": "DARBEPOETINA 20",
-          "NESP 30": "DARBEPOETINA 30",
-          "NESP 40": "DARBEPOETINA 40",
-          "NESP 50": "DARBEPOETINA 50",
-          "NESP 60": "DARBEPOETINA 60",
           "EPO": "EPO",
-          "EPO10": "EPO 10.000",
           "EPO1": "EPO 1000",
+          "EPO10": "EPO 10.000",
           "EPO3": "EPO 3000",
           "EPO4": "EPO 4000",
           "EPO5": "EPO 5000",
           "EPO6": "EPO 6000",
-          "EPO8": "EPO 8000"
+          "EPO8": "EPO 8000",
+          "NESP 30": "DARBEPOETINA 30",
+          "NESP 40": "DARBEPOETINA 40",
+          "NESP 50": "DARBEPOETINA 50",
+          "NESP 60": "DARBEPOETINA 60",
+          "NESP150": "DARBEPOETINA 150",
+          "Z-NESP": "DARBEPOETINA 20"
         }
       },
       "VITAMINA D": {
@@ -2129,6 +4757,36 @@
         "items": {
           "CINEC": "MIMPARA",
           "PSB": "PARSABIV"
+        }
+      },
+      "QUELANTE_FOSFORO": {
+        "codes": [
+          "CALCIO ACETATO",
+          "CARBONATO CALCICO",
+          "FOSRENOL",
+          "FOSRENOL 500",
+          "INSULINA LANTUS",
+          "PLANTAGO OVATA",
+          "RENAGEL",
+          "RENVELA",
+          "RENVELA 2,4",
+          "SEVELAMER",
+          "SEVELAMER CARBONATO",
+          "VELPHORO"
+        ],
+        "items": {
+          "CALCIO ACETATO": "CALCIO ACETATO",
+          "CARBONATO CALCICO": "CARBONATO CALCICO",
+          "FOSRENOL": "FOSRENOL",
+          "FOSRENOL 500": "FOSRENOL 500",
+          "INSULINA LANTUS": "INSULINA LANTUS",
+          "PLANTAGO OVATA": "PLANTAGO OVATA",
+          "RENAGEL": "RENAGEL",
+          "RENVELA": "RENVELA",
+          "RENVELA 2,4": "RENVELA 2,4",
+          "SEVELAMER": "SEVELAMER",
+          "SEVELAMER CARBONATO": "SEVELAMER CARBONATO",
+          "VELPHORO": "VELPHORO"
         }
       }
     },
@@ -2228,6 +4886,54 @@
       "ZEMPLAR": {
         "tipo": "VITAMINA D",
         "nombre": "ZEMPLAR"
+      },
+      "CALCIO ACETATO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "CALCIO ACETATO"
+      },
+      "CARBONATO CALCICO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "CARBONATO CALCICO"
+      },
+      "FOSRENOL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL"
+      },
+      "FOSRENOL 500": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 500"
+      },
+      "INSULINA LANTUS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "INSULINA LANTUS"
+      },
+      "PLANTAGO OVATA": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "PLANTAGO OVATA"
+      },
+      "RENAGEL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL"
+      },
+      "RENVELA": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA"
+      },
+      "RENVELA 2,4": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4"
+      },
+      "SEVELAMER": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "SEVELAMER"
+      },
+      "SEVELAMER CARBONATO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "SEVELAMER CARBONATO"
+      },
+      "VELPHORO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "VELPHORO"
       }
     }
   },
@@ -2235,6 +4941,7 @@
     "byTipo": {
       "ERITROPOYETINA": {
         "codes": [
+          "760552",
           "ARAN 0",
           "ARAN10",
           "ARAN100",
@@ -2245,8 +4952,8 @@
           "ARAN6",
           "ARAN8",
           "B_in",
-          "EPO10",
           "EPO1",
+          "EPO10",
           "EPO15",
           "EPO2",
           "EPO3",
@@ -2255,12 +4962,12 @@
           "EPO6",
           "EPO7",
           "EPO8",
-          "Z_EPO",
           "EPREX",
-          "760552",
-          "Z- Epo"
+          "Z- Epo",
+          "Z_EPO"
         ],
         "items": {
+          "760552": "Neorecormon",
           "ARAN 0": "Aranesp",
           "ARAN10": "Aranesp 10",
           "ARAN100": "Aranesp 100",
@@ -2271,8 +4978,8 @@
           "ARAN6": "Aranesp 60",
           "ARAN8": "Aranesp 80",
           "B_in": "Binocrit (Epoetina Alfa)",
-          "EPO10": "EPO 10.000",
           "EPO1": "EPO 1000",
+          "EPO10": "EPO 10.000",
           "EPO15": "EPO 15000",
           "EPO2": "EPO 2000",
           "EPO3": "EPO 3000",
@@ -2281,34 +4988,33 @@
           "EPO6": "EPO 6000",
           "EPO7": "EPO 7000",
           "EPO8": "EPO 8000",
-          "Z_EPO": "Epopen 2000",
           "EPREX": "EPREX",
-          "760552": "Neorecormon",
-          "Z- Epo": "Retacrit"
+          "Z- Epo": "Retacrit",
+          "Z_EPO": "Epopen 2000"
         }
       },
       "VITAMINA D": {
         "codes": [
           "Cal,.",
-          "Z_CAL",
           "E_t",
           "H_IDRO",
           "H_idrof",
           "P_ari",
-          "Z_ROC",
+          "Z_CAL",
           "Z_emp",
-          "z_para"
+          "z_para",
+          "Z_ROC"
         ],
         "items": {
           "Cal,.": "Calcitriol",
-          "Z_CAL": "Calcitriol",
           "E_t": "Etalpha (alfacalcidol)",
           "H_IDRO": "Hidroferol 100 mcg/ml",
           "H_idrof": "Hidroferol 266 mcg/1.5 ml",
           "P_ari": "Paricalcitol",
-          "Z_ROC": "Rocaltrol 0,25",
+          "Z_CAL": "Calcitriol",
           "Z_emp": "Zemplar",
-          "z_para": "Zemplar 1 �g"
+          "z_para": "Zemplar 1 g",
+          "Z_ROC": "Rocaltrol 0,25"
         }
       },
       "HIERRO": {
@@ -2333,6 +5039,60 @@
           "M-30": "Mimpara 30",
           "M-60": "Mimpara 60",
           "P_arsa": "Parsabiv (etelcalcetida)"
+        }
+      },
+      "QUELANTE_FOSFORO": {
+        "codes": [
+          "CARBONATO CALCICO",
+          "CARBONATO DE LANTANO",
+          "FOSQUEL (SEVELAMER) 2.4 GR",
+          "FOSRENOL",
+          "FOSRENOL 1000",
+          "FOSRENOL 1000 MG",
+          "FOSRENOL 500",
+          "FOSRENOL 750",
+          "FOSRENOL 750 MG",
+          "FOSRENOL1000",
+          "INSULINA LANTUS",
+          "LANTUS SOLOSTAR",
+          "RENAGEL",
+          "RENAGEL 400",
+          "RENAGEL 800",
+          "RENAGEL 900 MGRS",
+          "RENVELA",
+          "RENVELA 2,4",
+          "RENVELA 2,4 GR",
+          "RENVELA 2.4 GR",
+          "RENVELA SOBRES",
+          "SEVELAMERO",
+          "SEVELAMERO TEVA 800MG",
+          "VELPHORO"
+        ],
+        "items": {
+          "CARBONATO CALCICO": "CARBONATO CALCICO",
+          "CARBONATO DE LANTANO": "Carbonato de lantano",
+          "FOSQUEL (SEVELAMER) 2.4 GR": "Fosquel (Sevelamer) 2.4 gr",
+          "FOSRENOL": "Fosrenol",
+          "FOSRENOL 1000": "FOSRENOL 1000",
+          "FOSRENOL 1000 MG": "Fosrenol 1000 mg",
+          "FOSRENOL 500": "FOSRENOL 500",
+          "FOSRENOL 750": "FOSRENOL 750",
+          "FOSRENOL 750 MG": "Fosrenol 750 MG",
+          "FOSRENOL1000": "Fosrenol1000",
+          "INSULINA LANTUS": "INSULINA LANTUS",
+          "LANTUS SOLOSTAR": "Lantus Solostar",
+          "RENAGEL": "RENAGEL",
+          "RENAGEL 400": "Renagel 400",
+          "RENAGEL 800": "RENAGEL 800",
+          "RENAGEL 900 MGRS": "RENAGEL 900 mgrs",
+          "RENVELA": "Renvela",
+          "RENVELA 2,4": "RENVELA 2,4",
+          "RENVELA 2,4 GR": "RENVELA 2,4 GR",
+          "RENVELA 2.4 GR": "Renvela 2.4 gr",
+          "RENVELA SOBRES": "Renvela sobres",
+          "SEVELAMERO": "Sevelamero",
+          "SEVELAMERO TEVA 800MG": "Sevelamero Teva 800mg",
+          "VELPHORO": "Velphoro"
         }
       }
     },
@@ -2491,7 +5251,103 @@
       },
       "z_para": {
         "tipo": "VITAMINA D",
-        "nombre": "Zemplar 1 �g"
+        "nombre": "Zemplar 1 g"
+      },
+      "CARBONATO CALCICO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "CARBONATO CALCICO"
+      },
+      "CARBONATO DE LANTANO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Carbonato de lantano"
+      },
+      "FOSQUEL (SEVELAMER) 2.4 GR": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Fosquel (Sevelamer) 2.4 gr"
+      },
+      "FOSRENOL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Fosrenol"
+      },
+      "FOSRENOL 1000": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1000"
+      },
+      "FOSRENOL 1000 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Fosrenol 1000 mg"
+      },
+      "FOSRENOL 500": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 500"
+      },
+      "FOSRENOL 750": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 750"
+      },
+      "FOSRENOL 750 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Fosrenol 750 MG"
+      },
+      "FOSRENOL1000": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Fosrenol1000"
+      },
+      "INSULINA LANTUS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "INSULINA LANTUS"
+      },
+      "LANTUS SOLOSTAR": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Lantus Solostar"
+      },
+      "RENAGEL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL"
+      },
+      "RENAGEL 400": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Renagel 400"
+      },
+      "RENAGEL 800": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL 800"
+      },
+      "RENAGEL 900 MGRS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL 900 mgrs"
+      },
+      "RENVELA": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Renvela"
+      },
+      "RENVELA 2,4": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4"
+      },
+      "RENVELA 2,4 GR": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4 GR"
+      },
+      "RENVELA 2.4 GR": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Renvela 2.4 gr"
+      },
+      "RENVELA SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Renvela sobres"
+      },
+      "SEVELAMERO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Sevelamero"
+      },
+      "SEVELAMERO TEVA 800MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Sevelamero Teva 800mg"
+      },
+      "VELPHORO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Velphoro"
       }
     }
   },
@@ -2503,8 +5359,8 @@
           "bino",
           "DARBOPO",
           "EPO",
-          "EPO10",
           "EPO1",
+          "EPO10",
           "EPO2",
           "EPO3",
           "EPO4",
@@ -2519,8 +5375,8 @@
           "bino": "BINOCRIT",
           "DARBOPO": "DARBOPOETINA",
           "EPO": "EPO",
-          "EPO10": "EPO 10.000",
           "EPO1": "EPO 1000",
+          "EPO10": "EPO 10.000",
           "EPO2": "EPO 2000",
           "EPO3": "EPO 3000",
           "EPO4": "EPO 4000",
@@ -2533,22 +5389,22 @@
       },
       "VITAMINA D": {
         "codes": [
-          "Z_CAL",
           "HIDROF",
           "Hidrof",
-          "zemplar",
+          "Z-ZEM",
+          "Z_CAL",
           "ZEM2",
           "ZEM5",
-          "Z-ZEM"
+          "zemplar"
         ],
         "items": {
-          "Z_CAL": "CALCIJEX",
           "HIDROF": "HIDROFEROL",
           "Hidrof": "Hidroferol 0,266 ampolla",
-          "zemplar": "ZEMPLAR",
+          "Z-ZEM": "ZEMPLAR1",
+          "Z_CAL": "CALCIJEX",
           "ZEM2": "ZEMPLAR 2 mcgr",
           "ZEM5": "ZEMPLAR 5 mcgr",
-          "Z-ZEM": "ZEMPLAR1"
+          "zemplar": "ZEMPLAR"
         }
       },
       "CALCIMIMETICO": {
@@ -2575,6 +5431,146 @@
         "items": {
           "feriv": "FERIV",
           "Z_HIE": "VENOFER"
+        }
+      },
+      "QUELANTE_FOSFORO": {
+        "codes": [
+          "ACETATO CALCICO",
+          "ACETATO CALCICO 950 MG COMPRIMIDOS",
+          "BAJO RENAGEL",
+          "CARBONATO CALC",
+          "CARBONATO CALCICO",
+          "FOSRENOL",
+          "FOSRENOL 1 GR",
+          "FOSRENOL 1000",
+          "FOSRENOL COMPR. 750 MG",
+          "FOSRENOL 1 G",
+          "FOSRENOL 1 GR",
+          "FOSRENOL 1 GR MG",
+          "FOSRENOL 1 GR SOBRES",
+          "FOSRENOL 1000",
+          "FOSRENOL 1000 MG",
+          "FOSRENOL 1000 MG POLVO ORAL",
+          "FOSRENOL 1000MG",
+          "FOSRENOL 1G",
+          "FOSRENOL 1G POLVO ORAL",
+          "FOSRENOL 1GR",
+          "FOSRENOL 500",
+          "FOSRENOL 500 MG",
+          "FOSRENOL 500MG",
+          "FOSRENOL 750",
+          "FOSRENOL 750 MG",
+          "FOSRENOL POLVO 750 MGR",
+          "INSULINA (NOVORAPID Y LANTUS)",
+          "INSULINA LANTUS",
+          "INSULINA LANTUS PLUMA 100 UI/ML",
+          "INSULINA LANTUS PLUMA 100UI/ML",
+          "LANTANON 10",
+          "LANTANON 10MG",
+          "LANTANON 30MG",
+          "LANTANON COMP 30MG",
+          "LANTUS",
+          "LANTUS 100 UI/ML",
+          "LANTUS OPTISET",
+          "PLANTABEN",
+          "PLANTAGO OVATA",
+          "RENAGEL",
+          "RENAGEL 400",
+          "RENAGEL 403",
+          "RENAGEL 800",
+          "RENAGEL 800 MG",
+          "RENAGEL 800 MG CON LAS COMIDAS",
+          "RENAGEL 800MG",
+          "RENAGEL800",
+          "RENVELA",
+          "RENVELA 2,4 G",
+          "RENVELA 2,4 GR",
+          "RENVELA 2,4 GR SOBRES",
+          "RENVELA 800MG",
+          "RENVELA COMP",
+          "RENVELA COMP 800 MG",
+          "RENVELA COMP 800MG",
+          "RENVELA COMPRIMIDOS",
+          "RENVELA COMPRIMIDOS 800MG",
+          "RENVELA SOBRES",
+          "RENVELA SOBRES 2,4",
+          "RENVELA SOBRES 2,4 G",
+          "RENVELA SOBRES 2,4 GR",
+          "RENVELA SOBRES 2,4GR",
+          "RENVELA SOPBRES 2,4 GR",
+          "SEVELAMER",
+          "SEVELAMER 800",
+          "SEVELAMER 800MG",
+          "SUSPENDO RENAGEL.",
+          "VELPHORO"
+        ],
+        "items": {
+          "ACETATO CALCICO": "ACETATO CALCICO",
+          "ACETATO CALCICO 950 MG COMPRIMIDOS": "Acetato calcico 950 mg comprimidos",
+          "BAJO RENAGEL": "Bajo renagel",
+          "CARBONATO CALC": "CARBONATO CALC",
+          "CARBONATO CALCICO": "Carbonato calcico",
+          "FOSRENOL": "FOSRENOL",
+          "FOSRENOL 1 GR": "FOSRENOL 1 GR",
+          "FOSRENOL 1000": "FOSRENOL 1000",
+          "FOSRENOL COMPR. 750 MG": "Fosrenol compr. 750 mg",
+          "FOSRENOL 1 G": "FOSRENOL 1 G",
+          "FOSRENOL 1 GR MG": "FOSRENOL 1 gr MG",
+          "FOSRENOL 1 GR SOBRES": "FOSRENOL 1 GR SOBRES",
+          "FOSRENOL 1000 MG": "FOSRENOL 1000 MG",
+          "FOSRENOL 1000 MG POLVO ORAL": "FOSRENOL 1000 MG POLVO ORAL",
+          "FOSRENOL 1000MG": "FOSRENOL 1000MG",
+          "FOSRENOL 1G": "FOSRENOL 1G",
+          "FOSRENOL 1G POLVO ORAL": "FOSRENOL 1G POLVO ORAL",
+          "FOSRENOL 1GR": "FOSRENOL 1gr",
+          "FOSRENOL 500": "FOSRENOL 500",
+          "FOSRENOL 500 MG": "fosrenol 500 mg",
+          "FOSRENOL 500MG": "FOSRENOL 500mg",
+          "FOSRENOL 750": "FOSRENOL 750",
+          "FOSRENOL 750 MG": "FOSRENOL 750 MG",
+          "FOSRENOL POLVO 750 MGR": "Fosrenol polvo 750 mgr",
+          "INSULINA (NOVORAPID Y LANTUS)": "INSULINA (novorapid y lantus)",
+          "INSULINA LANTUS": "INSULINA LANTUS",
+          "INSULINA LANTUS PLUMA 100 UI/ML": "INSULINA LANTUS PLUMA 100 UI/ml",
+          "INSULINA LANTUS PLUMA 100UI/ML": "INSULINA LANTUS PLUMA 100UI/ML",
+          "LANTANON 10": "Lantanon 10",
+          "LANTANON 10MG": "LANTANON 10mg",
+          "LANTANON 30MG": "LANTANON 30mg",
+          "LANTANON COMP 30MG": "LANTANON comp 30mg",
+          "LANTUS": "LANTUS",
+          "LANTUS 100 UI/ML": "Lantus 100 ui/ML",
+          "LANTUS OPTISET": "Lantus optiset",
+          "PLANTABEN": "PLANTABEN",
+          "PLANTAGO OVATA": "Plantago ovata",
+          "RENAGEL": "RENAGEL",
+          "RENAGEL 400": "Renagel 400",
+          "RENAGEL 403": "RENAGEL 403",
+          "RENAGEL 800": "RENAGEL 800",
+          "RENAGEL 800 MG": "RENAGEL 800 MG",
+          "RENAGEL 800 MG CON LAS COMIDAS": "RENAGEL 800 MG CON LAS COMIDAS",
+          "RENAGEL 800MG": "RENAGEL 800mg",
+          "RENAGEL800": "RENAGEL800",
+          "RENVELA": "RENVELA",
+          "RENVELA 2,4 G": "RENVELA 2,4 G",
+          "RENVELA 2,4 GR": "RENVELA 2,4 GR",
+          "RENVELA 2,4 GR SOBRES": "RENVELA 2,4 GR SOBRES",
+          "RENVELA 800MG": "Renvela 800mg",
+          "RENVELA COMP": "RENVELA comp",
+          "RENVELA COMP 800 MG": "RENVELA COMP 800 MG",
+          "RENVELA COMP 800MG": "RENVELA comp 800mg",
+          "RENVELA COMPRIMIDOS": "RENVELA comprimidos",
+          "RENVELA COMPRIMIDOS 800MG": "Renvela comprimidos 800mg",
+          "RENVELA SOBRES": "RENVELA sobres",
+          "RENVELA SOBRES 2,4": "Renvela sobres 2,4",
+          "RENVELA SOBRES 2,4 G": "RENVELA SOBRES 2,4 G",
+          "RENVELA SOBRES 2,4 GR": "RENVELA SOBRES 2,4 GR",
+          "RENVELA SOBRES 2,4GR": "RENVELA sobres 2,4gr",
+          "RENVELA SOPBRES 2,4 GR": "RENVELA SOPBRES 2,4 GR",
+          "SEVELAMER": "SEVELAMER",
+          "SEVELAMER 800": "SEVELAMER 800",
+          "SEVELAMER 800MG": "Sevelamer 800mg",
+          "SUSPENDO RENAGEL.": "Suspendo renagel.",
+          "VELPHORO": "VELPHORO"
         }
       }
     },
@@ -2690,6 +5686,270 @@
       "Z-ZEM": {
         "tipo": "VITAMINA D",
         "nombre": "ZEMPLAR1"
+      },
+      "ACETATO CALCICO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "ACETATO CALCICO"
+      },
+      "ACETATO CALCICO 950 MG COMPRIMIDOS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Acetato calcico 950 mg comprimidos"
+      },
+      "BAJO RENAGEL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Bajo renagel"
+      },
+      "CARBONATO CALC": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "CARBONATO CALC"
+      },
+      "CARBONATO CALCICO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Carbonato calcico"
+      },
+      "FOSRENOL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL"
+      },
+      "FOSRENOL 1 GR": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1 GR"
+      },
+      "FOSRENOL 1000": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1000"
+      },
+      "FOSRENOL COMPR. 750 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Fosrenol compr. 750 mg"
+      },
+      "FOSRENOL 1 G": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1 G"
+      },
+      "FOSRENOL 1 GR MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1 gr MG"
+      },
+      "FOSRENOL 1 GR SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1 GR SOBRES"
+      },
+      "FOSRENOL 1000 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1000 MG"
+      },
+      "FOSRENOL 1000 MG POLVO ORAL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1000 MG POLVO ORAL"
+      },
+      "FOSRENOL 1000MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1000MG"
+      },
+      "FOSRENOL 1G": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1G"
+      },
+      "FOSRENOL 1G POLVO ORAL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1G POLVO ORAL"
+      },
+      "FOSRENOL 1GR": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1gr"
+      },
+      "FOSRENOL 500": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 500"
+      },
+      "FOSRENOL 500 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "fosrenol 500 mg"
+      },
+      "FOSRENOL 500MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 500mg"
+      },
+      "FOSRENOL 750": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 750"
+      },
+      "FOSRENOL 750 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 750 MG"
+      },
+      "FOSRENOL POLVO 750 MGR": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Fosrenol polvo 750 mgr"
+      },
+      "INSULINA (NOVORAPID Y LANTUS)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "INSULINA (novorapid y lantus)"
+      },
+      "INSULINA LANTUS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "INSULINA LANTUS"
+      },
+      "INSULINA LANTUS PLUMA 100 UI/ML": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "INSULINA LANTUS PLUMA 100 UI/ml"
+      },
+      "INSULINA LANTUS PLUMA 100UI/ML": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "INSULINA LANTUS PLUMA 100UI/ML"
+      },
+      "LANTANON 10": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Lantanon 10"
+      },
+      "LANTANON 10MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "LANTANON 10mg"
+      },
+      "LANTANON 30MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "LANTANON 30mg"
+      },
+      "LANTANON COMP 30MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "LANTANON comp 30mg"
+      },
+      "LANTUS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "LANTUS"
+      },
+      "LANTUS 100 UI/ML": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Lantus 100 ui/ML"
+      },
+      "LANTUS OPTISET": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Lantus optiset"
+      },
+      "PLANTABEN": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "PLANTABEN"
+      },
+      "PLANTAGO OVATA": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Plantago ovata"
+      },
+      "RENAGEL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL"
+      },
+      "RENAGEL 400": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Renagel 400"
+      },
+      "RENAGEL 403": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL 403"
+      },
+      "RENAGEL 800": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL 800"
+      },
+      "RENAGEL 800 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL 800 MG"
+      },
+      "RENAGEL 800 MG CON LAS COMIDAS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL 800 MG CON LAS COMIDAS"
+      },
+      "RENAGEL 800MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL 800mg"
+      },
+      "RENAGEL800": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL800"
+      },
+      "RENVELA": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA"
+      },
+      "RENVELA 2,4 G": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4 G"
+      },
+      "RENVELA 2,4 GR": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4 GR"
+      },
+      "RENVELA 2,4 GR SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4 GR SOBRES"
+      },
+      "RENVELA 800MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Renvela 800mg"
+      },
+      "RENVELA COMP": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA comp"
+      },
+      "RENVELA COMP 800 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA COMP 800 MG"
+      },
+      "RENVELA COMP 800MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA comp 800mg"
+      },
+      "RENVELA COMPRIMIDOS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA comprimidos"
+      },
+      "RENVELA COMPRIMIDOS 800MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Renvela comprimidos 800mg"
+      },
+      "RENVELA SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA sobres"
+      },
+      "RENVELA SOBRES 2,4": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Renvela sobres 2,4"
+      },
+      "RENVELA SOBRES 2,4 G": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA SOBRES 2,4 G"
+      },
+      "RENVELA SOBRES 2,4 GR": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA SOBRES 2,4 GR"
+      },
+      "RENVELA SOBRES 2,4GR": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA sobres 2,4gr"
+      },
+      "RENVELA SOPBRES 2,4 GR": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA SOPBRES 2,4 GR"
+      },
+      "SEVELAMER": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "SEVELAMER"
+      },
+      "SEVELAMER 800": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "SEVELAMER 800"
+      },
+      "SEVELAMER 800MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Sevelamer 800mg"
+      },
+      "SUSPENDO RENAGEL.": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Suspendo renagel."
+      },
+      "VELPHORO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "VELPHORO"
       }
     }
   },
@@ -2698,35 +5958,35 @@
       "ERITROPOYETINA": {
         "codes": [
           "Ar",
+          "ARA",
           "ARA20",
           "ARA30",
-          "ARA",
           "BINOC1",
           "BINOC3",
           "BINOC4",
           "BINOC5",
           "BINOC6",
+          "EP8",
           "EPO",
           "EPREX",
           "ERI2000",
-          "EP8",
           "NEOR5",
           "rt"
         ],
         "items": {
           "Ar": "ARANESP",
+          "ARA": "ARANESP 80",
           "ARA20": "ARANESP 20",
           "ARA30": "ARANESP 30",
-          "ARA": "ARANESP 80",
           "BINOC1": "BINOCRIT",
           "BINOC3": "BINOCRIT 3000",
           "BINOC4": "BINOCRIT 4000",
           "BINOC5": "BINOCRIT 5000",
           "BINOC6": "BINOCRIT 6000",
+          "EP8": "EPREX 8000",
           "EPO": "EPO",
           "EPREX": "EPREX",
           "ERI2000": "EPREX 2000",
-          "EP8": "EPREX 8000",
           "NEOR5": "NEORECORMON 5000",
           "rt": "RETACRIT"
         }
@@ -2761,14 +6021,40 @@
       },
       "HIERRO": {
         "codes": [
-          "fj",
           "FER",
+          "fj",
           "VENOF"
         ],
         "items": {
-          "fj": "Ferinject",
           "FER": "FERIV",
+          "fj": "Ferinject",
           "VENOF": "VENOFER"
+        }
+      },
+      "QUELANTE_FOSFORO": {
+        "codes": [
+          "FOSRENOL 1000 SOBRES",
+          "FOSRENOL 750",
+          "INSULINA LANTUS",
+          "PLANTABEN",
+          "RENAGEL",
+          "RENAGEL 800",
+          "RENVELA 2,4 SOBRES",
+          "RENVELA 800",
+          "SEVELAMER 800",
+          "VELPHORO"
+        ],
+        "items": {
+          "FOSRENOL 1000 SOBRES": "fosrenol 1000 sobres",
+          "FOSRENOL 750": "FOSRENOL 750",
+          "INSULINA LANTUS": "insulina lantus",
+          "PLANTABEN": "plantaben",
+          "RENAGEL": "renagel",
+          "RENAGEL 800": "RENAGEL 800",
+          "RENVELA 2,4 SOBRES": "RENVELA 2,4 sobres",
+          "RENVELA 800": "renvela 800",
+          "SEVELAMER 800": "sevelamer 800",
+          "VELPHORO": "Velphoro"
         }
       }
     },
@@ -2876,6 +6162,46 @@
       "ZEMP5": {
         "tipo": "VITAMINA D",
         "nombre": "ZEMPLAR 5mcg"
+      },
+      "FOSRENOL 1000 SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "fosrenol 1000 sobres"
+      },
+      "FOSRENOL 750": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 750"
+      },
+      "INSULINA LANTUS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "insulina lantus"
+      },
+      "PLANTABEN": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "plantaben"
+      },
+      "RENAGEL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "renagel"
+      },
+      "RENAGEL 800": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL 800"
+      },
+      "RENVELA 2,4 SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4 sobres"
+      },
+      "RENVELA 800": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "renvela 800"
+      },
+      "SEVELAMER 800": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "sevelamer 800"
+      },
+      "VELPHORO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Velphoro"
       }
     }
   },
@@ -2883,6 +6209,7 @@
     "byTipo": {
       "ERITROPOYETINA": {
         "codes": [
+          "Biosim",
           "DAR",
           "DAR 10",
           "DAR 100",
@@ -2893,22 +6220,22 @@
           "DAR 50",
           "DAR 60",
           "DAR 80",
-          "Biosim",
-          "EPO0",
-          "EPOP",
           "EPO",
-          "EPO10",
+          "EPO0",
           "EPO1",
+          "EPO10",
           "EPO2",
           "EPO3",
           "EPO4",
           "EPO5",
           "EPO6",
           "EPO8",
+          "EPOP",
           "MCR",
           "RETA"
         ],
         "items": {
+          "Biosim": "BINOCRIT",
           "DAR": "ARANESP",
           "DAR 10": "ARANESP 10",
           "DAR 100": "ARANESP 100",
@@ -2919,18 +6246,17 @@
           "DAR 50": "ARANESP 50",
           "DAR 60": "ARANESP 60",
           "DAR 80": "ARANESP 80",
-          "Biosim": "BINOCRIT",
-          "EPO0": "EPO",
-          "EPOP": "EPOPEN",
           "EPO": "EPREX",
-          "EPO10": "EPREX 10.000",
+          "EPO0": "EPO",
           "EPO1": "EPREX 1000",
+          "EPO10": "EPREX 10.000",
           "EPO2": "EPREX 2000",
           "EPO3": "EPREX 3000",
           "EPO4": "EPREX 4000",
           "EPO5": "EPREX 5000",
           "EPO6": "EPREX 6000",
           "EPO8": "EPREX 8000",
+          "EPOP": "EPOPEN",
           "MCR": "MIRCERA",
           "RETA": "RETACRIT"
         }
@@ -2953,7 +6279,7 @@
           "DEL": "DELTIUS",
           "ETAL": "ETALPHA",
           "ETHALPH": "ETALPHA Sol. iny. 1 mcg/0,5 ml (Alfacalcidol",
-          "HIDR": "HIDROFEROL 266 �g",
+          "HIDR": "HIDROFEROL 266 g",
           "PARI": "PARICALCITOL 1 mg",
           "VIT": "VITAMINA D3 NM 25.000 UI",
           "ZEM": "ZEMPLAR",
@@ -2981,6 +6307,146 @@
         "items": {
           "MIM": "MIMPARA",
           "P_ars": "Parsabiv (Etelcalcetida)"
+        }
+      },
+      "QUELANTE_FOSFORO": {
+        "codes": [
+          "ACETATO CALCICO 500 MG. caps",
+          "ACETATO CALCICO 500 MG. caps",
+          "ACETATO DE CALCIO",
+          "CARBONATO CALCICO 500 MG; COMP MAST",
+          "CARBONATO CALCICO 2500 MG; POL S.O.",
+          "CARBONATO CALCIO 500 MG. COMP. MAST.",
+          "CARBONATO CALCIO 500 MG; COMP MAST",
+          "CARBONATO DE CALCIO",
+          "CARBONATO DE LANTANO",
+          "CARBONATO DE SEVELAMERO 2,4 G; SOBRES",
+          "CARBONATO LANTANO 1000 MG; COMP MAST",
+          "CARBONATO LANTANO 1000 MG. COMP MAST",
+          "CARBONATO LANTANO 1000 MG. COMP. MAST",
+          "CARBONATO LANTANO 750 MG; COMP MASTIC",
+          "CARBONATO SEVELAMERO 2,4 GR. POLVO S.O.",
+          "CARBONATO SEVELAMERO 2,4 GR; POLV S.O.",
+          "CARBONATO SEVELAMERO 2,4 GR; POLVO S.O.",
+          "FOSRENOL",
+          "FOSRENOL 750",
+          "FOSRENOL 1000 MG",
+          "FOSRENOL 750",
+          "FOSRENOL 1000",
+          "FOSRENOL 750",
+          "FOSRENOL 1000 MG",
+          "FOSRENOL 1000, POLVO ORAL",
+          "FOSRENOL 750",
+          "FOSRENOL 750 MG",
+          "FOSRENOL 1 G. POLVO ORAL",
+          "FOSRENOL 1 GR. POLVO ORAL",
+          "FOSRENOL 1000 MG, COMP MASTICA",
+          "FOSRENOL 1000 MG; POLVO",
+          "FOSRENOL 1000 POLVO ORAL",
+          "FOSRENOL 500",
+          "FOSRENOL 750",
+          "FOSRENOL 750 MG",
+          "INSULINA LANTUS",
+          "INSULINA LANTUS",
+          "INSULINA LANTUS SOLOSTAR",
+          "LANTUS",
+          "LANTUS 100 UI",
+          "LANTUS SOLOSTAR",
+          "LAVENTAIR ELLIPTA (55/22 UMECLIDINIO/VILANTEROL)",
+          "OSVAREN 435/235 (ACETATO CALCICO/CARBONATO MAGNESICO)",
+          "PLANTABEN",
+          "PLANTABEN SOBRES",
+          "PLANTABEN, SOBRES",
+          "PLANTAGO OVATA POLVO PARA S.O.",
+          "RELVAR FLUTICASONA/VILANTEROL",
+          "RENAGEL",
+          "RENAGEL 800 MG",
+          "RENAGEL 800",
+          "RENAGEL 800",
+          "RENAGEL 800 MG",
+          "RENAGEL 800 MG; 180 COMP",
+          "RENAGEL 800, COMP",
+          "RENAGEL 800",
+          "RENAGEL 800 MG.",
+          "RENVELA",
+          "RENVELA 2,4",
+          "RENVELA 800 MG COMP.",
+          "RENVELA 2,4 G",
+          "RENVELA 2,4 G; SOBRES",
+          "RENVELA 2,4, SOBRES",
+          "RENVELA 800 MG; COMP",
+          "RENVELA 2,4 G",
+          "RENVELA 2,4 G, SOBRES",
+          "RENVELA 2,4 G; SOBRES",
+          "SEVELAMER 2.4 G (CLORHIDRATO DE SEVELAMER)",
+          "SEVELAMERO CARBONATO 2,4 G; POLVO S.O.",
+          "VELPHORO"
+        ],
+        "items": {
+          "ACETATO CALCICO 500 MG. caps": "ACETATO CALCICO 500 mg. caps",
+          "ACETATO CALCICO 500 MG. caps__bb0cbf": "ACETATO CALCICO 500 mg. caps",
+          "ACETATO DE CALCIO": "Acetato de Calcio",
+          "CARBONATO CALCICO 500 MG; COMP MAST": "CARBONATO CALCICO 500 mg; comp mast",
+          "CARBONATO CALCICO 2500 MG; POL S.O.": "CARBONATO CALCICO 2500 mg; pol s.o.",
+          "CARBONATO CALCIO 500 MG. COMP. MAST.": "CARBONATO CALCIO 500 mg. comp. mast.",
+          "CARBONATO CALCIO 500 MG; COMP MAST": "CARBONATO CALCIO 500 mg; comp mast",
+          "CARBONATO DE CALCIO": "CARBONATO DE CALCIO",
+          "CARBONATO DE LANTANO": "Carbonato de Lantano",
+          "CARBONATO DE SEVELAMERO 2,4 G; SOBRES": "CARBONATO DE SEVELAMERO 2,4 g; sobres",
+          "CARBONATO LANTANO 1000 MG; COMP MAST": "CARBONATO LANTANO 1000 mg; comp mast",
+          "CARBONATO LANTANO 1000 MG. COMP MAST": "CARBONATO LANTANO 1000 mg. comp mast",
+          "CARBONATO LANTANO 1000 MG. COMP. MAST": "CARBONATO LANTANO 1000 mg. comp. Mast",
+          "CARBONATO LANTANO 750 MG; COMP MASTIC": "CARBONATO LANTANO 750 mg; comp mastic",
+          "CARBONATO SEVELAMERO 2,4 GR. POLVO S.O.": "CARBONATO SEVELAMERO 2,4 gr. Polvo s.o.",
+          "CARBONATO SEVELAMERO 2,4 GR; POLV S.O.": "CARBONATO SEVELAMERO 2,4 gr; polv s.o.",
+          "CARBONATO SEVELAMERO 2,4 GR; POLVO S.O.": "CARBONATO SEVELAMERO 2,4 gr; polvo s.o.",
+          "FOSRENOL": "FOSRENOL",
+          "FOSRENOL 750": "FOSRENOL 750",
+          "FOSRENOL 1000 MG": "FOSRENOL 1000 mg",
+          "FOSRENOL 750__cbdebf": "FOSRENOL 750",
+          "FOSRENOL 1000": "FOSRENOL 1000",
+          "FOSRENOL 750__f71831": "FOSRENOL 750",
+          "FOSRENOL 1000 MG__d85228": "FOSRENOL 1000 mg",
+          "FOSRENOL 1000, POLVO ORAL": "FOSRENOL 1000, polvo oral",
+          "FOSRENOL 750__887bbe": "FOSRENOL 750",
+          "FOSRENOL 750 MG": "FOSRENOL 750 mg",
+          "FOSRENOL 1 G. POLVO ORAL": "FOSRENOL 1 g. polvo oral",
+          "FOSRENOL 1 GR. POLVO ORAL": "FOSRENOL 1 gr. Polvo oral",
+          "FOSRENOL 1000 MG, COMP MASTICA": "FOSRENOL 1000 mg, comp mastica",
+          "FOSRENOL 1000 MG; POLVO": "FOSRENOL 1000 mg; polvo",
+          "FOSRENOL 1000 POLVO ORAL": "Fosrenol 1000 polvo oral",
+          "FOSRENOL 500": "FOSRENOL 500",
+          "INSULINA LANTUS": "INSULINA LANTUS",
+          "INSULINA LANTUS SOLOSTAR": "Insulina LANTUS SOLOSTAR",
+          "LANTUS": "LANTUS",
+          "LANTUS 100 UI": "LANTUS 100 UI",
+          "LANTUS SOLOSTAR": "LANTUS SOLOSTAR",
+          "LAVENTAIR ELLIPTA (55/22 UMECLIDINIO/VILANTEROL)": "LAVENTAIR ELLIPTA (55/22 umeclidinio/vilanterol)",
+          "OSVAREN 435/235 (ACETATO CALCICO/CARBONATO MAGNESICO)": "OSVAREN 435/235 (ACETATO CALCICO/CARBONATO MAGNESICO)",
+          "PLANTABEN": "PLANTABEN",
+          "PLANTABEN SOBRES": "PLANTABEN sobres",
+          "PLANTABEN, SOBRES": "PLANTABEN, sobres",
+          "PLANTAGO OVATA POLVO PARA S.O.": "PLANTAGO OVATA polvo para s.o.",
+          "RELVAR FLUTICASONA/VILANTEROL": "RELVAR fluticasona/vilanterol",
+          "RENAGEL": "RENAGEL",
+          "RENAGEL 800 MG": "RENAGEL 800 mg",
+          "RENAGEL 800": "RENAGEL 800",
+          "RENAGEL 800__a41834": "RENAGEL 800",
+          "RENAGEL 800 MG__97182a": "RENAGEL 800 mg",
+          "RENAGEL 800 MG; 180 COMP": "RENAGEL 800 mg; 180 comp",
+          "RENAGEL 800, COMP": "RENAGEL 800, comp",
+          "RENAGEL 800 MG.": "RENAGEL 800 mg.",
+          "RENVELA": "RENVELA",
+          "RENVELA 2,4": "RENVELA 2,4",
+          "RENVELA 800 MG COMP.": "RENVELA 800 mg Comp.",
+          "RENVELA 2,4 G": "RENVELA 2,4 g",
+          "RENVELA 2,4 G; SOBRES": "RENVELA 2,4 g; sobres",
+          "RENVELA 2,4, SOBRES": "RENVELA 2,4, sobres",
+          "RENVELA 800 MG; COMP": "RENVELA 800 mg; comp",
+          "RENVELA 2,4 G, SOBRES": "RENVELA 2,4 g, sobres",
+          "SEVELAMER 2.4 G (CLORHIDRATO DE SEVELAMER)": "SEVELAMER 2.4 G (clorhidrato de sevelamer)",
+          "SEVELAMERO CARBONATO 2,4 G; POLVO S.O.": "SEVELAMERO CARBONATO 2,4 g; polvo s.o.",
+          "VELPHORO": "VELPHORO"
         }
       }
     },
@@ -3095,7 +6561,7 @@
       },
       "HIDR": {
         "tipo": "VITAMINA D",
-        "nombre": "HIDROFEROL 266 �g"
+        "nombre": "HIDROFEROL 266 g"
       },
       "H_ierr": {
         "tipo": "HIERRO",
@@ -3140,6 +6606,262 @@
       "ZEM5": {
         "tipo": "VITAMINA D",
         "nombre": "ZEMPLAR 5"
+      },
+      "ACETATO CALCICO 500 MG. caps": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "ACETATO CALCICO 500 mg. caps"
+      },
+      "ACETATO CALCICO 500 MG. caps__bb0cbf": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "ACETATO CALCICO 500 mg. caps"
+      },
+      "ACETATO DE CALCIO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Acetato de Calcio"
+      },
+      "CARBONATO CALCICO 500 MG; COMP MAST": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "CARBONATO CALCICO 500 mg; comp mast"
+      },
+      "CARBONATO CALCICO 2500 MG; POL S.O.": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "CARBONATO CALCICO 2500 mg; pol s.o."
+      },
+      "CARBONATO CALCIO 500 MG. COMP. MAST.": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "CARBONATO CALCIO 500 mg. comp. mast."
+      },
+      "CARBONATO CALCIO 500 MG; COMP MAST": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "CARBONATO CALCIO 500 mg; comp mast"
+      },
+      "CARBONATO DE CALCIO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "CARBONATO DE CALCIO"
+      },
+      "CARBONATO DE LANTANO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Carbonato de Lantano"
+      },
+      "CARBONATO DE SEVELAMERO 2,4 G; SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "CARBONATO DE SEVELAMERO 2,4 g; sobres"
+      },
+      "CARBONATO LANTANO 1000 MG; COMP MAST": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "CARBONATO LANTANO 1000 mg; comp mast"
+      },
+      "CARBONATO LANTANO 1000 MG. COMP MAST": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "CARBONATO LANTANO 1000 mg. comp mast"
+      },
+      "CARBONATO LANTANO 1000 MG. COMP. MAST": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "CARBONATO LANTANO 1000 mg. comp. Mast"
+      },
+      "CARBONATO LANTANO 750 MG; COMP MASTIC": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "CARBONATO LANTANO 750 mg; comp mastic"
+      },
+      "CARBONATO SEVELAMERO 2,4 GR. POLVO S.O.": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "CARBONATO SEVELAMERO 2,4 gr. Polvo s.o."
+      },
+      "CARBONATO SEVELAMERO 2,4 GR; POLV S.O.": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "CARBONATO SEVELAMERO 2,4 gr; polv s.o."
+      },
+      "CARBONATO SEVELAMERO 2,4 GR; POLVO S.O.": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "CARBONATO SEVELAMERO 2,4 gr; polvo s.o."
+      },
+      "FOSRENOL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL"
+      },
+      "FOSRENOL 750": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 750"
+      },
+      "FOSRENOL 1000 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1000 mg"
+      },
+      "FOSRENOL 750__cbdebf": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 750"
+      },
+      "FOSRENOL 1000": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1000"
+      },
+      "FOSRENOL 750__f71831": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 750"
+      },
+      "FOSRENOL 1000 MG__d85228": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1000 mg"
+      },
+      "FOSRENOL 1000, POLVO ORAL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1000, polvo oral"
+      },
+      "FOSRENOL 750__887bbe": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 750"
+      },
+      "FOSRENOL 750 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 750 mg"
+      },
+      "FOSRENOL 1 G. POLVO ORAL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1 g. polvo oral"
+      },
+      "FOSRENOL 1 GR. POLVO ORAL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1 gr. Polvo oral"
+      },
+      "FOSRENOL 1000 MG, COMP MASTICA": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1000 mg, comp mastica"
+      },
+      "FOSRENOL 1000 MG; POLVO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1000 mg; polvo"
+      },
+      "FOSRENOL 1000 POLVO ORAL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Fosrenol 1000 polvo oral"
+      },
+      "FOSRENOL 500": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 500"
+      },
+      "INSULINA LANTUS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "INSULINA LANTUS"
+      },
+      "INSULINA LANTUS SOLOSTAR": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Insulina LANTUS SOLOSTAR"
+      },
+      "LANTUS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "LANTUS"
+      },
+      "LANTUS 100 UI": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "LANTUS 100 UI"
+      },
+      "LANTUS SOLOSTAR": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "LANTUS SOLOSTAR"
+      },
+      "LAVENTAIR ELLIPTA (55/22 UMECLIDINIO/VILANTEROL)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "LAVENTAIR ELLIPTA (55/22 umeclidinio/vilanterol)"
+      },
+      "OSVAREN 435/235 (ACETATO CALCICO/CARBONATO MAGNESICO)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "OSVAREN 435/235 (ACETATO CALCICO/CARBONATO MAGNESICO)"
+      },
+      "PLANTABEN": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "PLANTABEN"
+      },
+      "PLANTABEN SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "PLANTABEN sobres"
+      },
+      "PLANTABEN, SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "PLANTABEN, sobres"
+      },
+      "PLANTAGO OVATA POLVO PARA S.O.": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "PLANTAGO OVATA polvo para s.o."
+      },
+      "RELVAR FLUTICASONA/VILANTEROL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RELVAR fluticasona/vilanterol"
+      },
+      "RENAGEL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL"
+      },
+      "RENAGEL 800 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL 800 mg"
+      },
+      "RENAGEL 800": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL 800"
+      },
+      "RENAGEL 800__a41834": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL 800"
+      },
+      "RENAGEL 800 MG__97182a": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL 800 mg"
+      },
+      "RENAGEL 800 MG; 180 COMP": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL 800 mg; 180 comp"
+      },
+      "RENAGEL 800, COMP": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL 800, comp"
+      },
+      "RENAGEL 800 MG.": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL 800 mg."
+      },
+      "RENVELA": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA"
+      },
+      "RENVELA 2,4": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4"
+      },
+      "RENVELA 800 MG COMP.": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 800 mg Comp."
+      },
+      "RENVELA 2,4 G": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4 g"
+      },
+      "RENVELA 2,4 G; SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4 g; sobres"
+      },
+      "RENVELA 2,4, SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4, sobres"
+      },
+      "RENVELA 800 MG; COMP": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 800 mg; comp"
+      },
+      "RENVELA 2,4 G, SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4 g, sobres"
+      },
+      "SEVELAMER 2.4 G (CLORHIDRATO DE SEVELAMER)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "SEVELAMER 2.4 G (clorhidrato de sevelamer)"
+      },
+      "SEVELAMERO CARBONATO 2,4 G; POLVO S.O.": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "SEVELAMERO CARBONATO 2,4 g; polvo s.o."
+      },
+      "VELPHORO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "VELPHORO"
       }
     }
   },
@@ -3147,6 +6869,8 @@
     "byTipo": {
       "ERITROPOYETINA": {
         "codes": [
+          "ARA",
+          "ARA 60",
           "ARA10",
           "ARA100",
           "ARA15",
@@ -3155,8 +6879,6 @@
           "ARA30",
           "ARA40",
           "ARA50",
-          "ARA 60",
-          "ARA",
           "BINOC1",
           "BINOC10",
           "BINOC2",
@@ -3166,6 +6888,8 @@
           "BINOC6",
           "BINOC8",
           "CERA",
+          "EP6",
+          "EP8",
           "EPO",
           "EPREX",
           "ERI1000",
@@ -3173,15 +6897,15 @@
           "ERI3000",
           "ERI4000",
           "ERI5000",
-          "EP6",
-          "EP8",
-          "NEOR5",
           "NEOR2",
           "NEOR3",
           "NEOR4",
+          "NEOR5",
           "RET"
         ],
         "items": {
+          "ARA": "ARANESP 80",
+          "ARA 60": "ARANESP 60",
           "ARA10": "ARANESP 10",
           "ARA100": "ARANESP 100",
           "ARA15": "ARANESP 15",
@@ -3190,8 +6914,6 @@
           "ARA30": "ARANESP 30",
           "ARA40": "ARANESP 40",
           "ARA50": "ARANESP 50",
-          "ARA 60": "ARANESP 60",
-          "ARA": "ARANESP 80",
           "BINOC1": "BINOCRIT",
           "BINOC10": "BINOCRIT 10000",
           "BINOC2": "BINOCRIT 2000",
@@ -3201,6 +6923,8 @@
           "BINOC6": "BINOCRIT 6000",
           "BINOC8": "BINOCRIT 8000",
           "CERA": "CERA RO0503821",
+          "EP6": "EPREX 6000",
+          "EP8": "EPREX 8000",
           "EPO": "EPO",
           "EPREX": "EPREX",
           "ERI1000": "EPREX 1000",
@@ -3208,12 +6932,10 @@
           "ERI3000": "EPREX 3000",
           "ERI4000": "EPREX 4000",
           "ERI5000": "EPREX 5000",
-          "EP6": "EPREX 6000",
-          "EP8": "EPREX 8000",
-          "NEOR5": "NEORECORMON 5000",
           "NEOR2": "NEORECORMON 2000",
           "NEOR3": "NEORECORMON 3000",
           "NEOR4": "NEORECORMON 4000",
+          "NEOR5": "NEORECORMON 5000",
           "RET": "RETACRIT"
         }
       },
@@ -3222,8 +6944,8 @@
           "CALCI",
           "etalpha",
           "hi",
-          "paric",
           "pari",
+          "paric",
           "ROCA",
           "ZEM",
           "ZEMP2",
@@ -3233,8 +6955,8 @@
           "CALCI": "CALCIJEX",
           "etalpha": "ETALPHA",
           "hi": "hidroferol",
-          "paric": "paricalcitol",
           "pari": "paricalcitol 2mcg",
+          "paric": "paricalcitol",
           "ROCA": "ROCALTROL",
           "ZEM": "ZEMPLAR",
           "ZEMP2": "ZEMPLAR 2mcg",
@@ -3255,18 +6977,145 @@
       },
       "HIERRO": {
         "codes": [
-          "fer",
           "FER",
+          "fer",
           "VENOF",
           "VENOF50",
           "VENOFER"
         ],
         "items": {
-          "fer": "ferinject",
           "FER": "FERIV",
+          "fer": "ferinject",
           "VENOF": "VENOFER",
           "VENOF50": "VENOFER",
           "VENOFER": "VENOFER"
+        }
+      },
+      "QUELANTE_FOSFORO": {
+        "codes": [
+          "ACETATO CALCIO 475 MG",
+          "CARBONATO CALCICO",
+          "CARBONATO CALCICO 500 MG",
+          "CARBONATO DE LANTANO",
+          "CARBONATO DE LANTANO 1000 MG",
+          "CARBONATO DE LANTANO 1200",
+          "CARBONATO DE LANTANO 500 MG",
+          "CARBONATO LANTANO",
+          "COLESEVELAM",
+          "DEMILOS 600/1000(CARBONATO CALCICO/VIT D3)",
+          "FOSRENOL",
+          "FOSRENOL 750",
+          "FOSRENOL 1000",
+          "FOSRENOL 1000 (CP MASTICABLE)",
+          "FOSRENOL 1000 MG",
+          "FOSRENOL 1000 POLVO ORAL",
+          "FOSRENOL 1000 SOBRES",
+          "FOSRENOL 500",
+          "FOSRENOL 500 MG",
+          "FOSRENOL 500MG",
+          "FOSRENOL 750",
+          "FOSRENOL 750 MG",
+          "FOSRENOL POLVO ORAL",
+          "FOSRENOL POLVO ORAL 1000MG",
+          "FOSRENOL POLVOS",
+          "FOSRENOL SOBRES",
+          "FOSRENOL1000",
+          "IINSULINA LANTUS (GLARGINA)",
+          "INSULINA (LANTUS)",
+          "INSULINA LANTUS",
+          "INSULINA LANTUS 100UI",
+          "INSULINA LANTUS 20",
+          "INSULINA LANTUS 8 UI",
+          "LANTANON 10",
+          "LANTUS",
+          "LANTUS INYEC",
+          "PLANTABEN",
+          "PLANTABEN 500 MG",
+          "PLANTABEN SOBRES",
+          "PLANTAGO OVATA",
+          "RELVAR ( VILANTEROL/FLUTICASONA)",
+          "RENAGEL",
+          "RENAGEL 800",
+          "RENAGEL 800 MG",
+          "RENAGEL 800",
+          "RENAGEL 800 MG",
+          "RENAGEL 800 MG COMP",
+          "RENAGEL 800 MG COMP.",
+          "RENVELA",
+          "RENVELA 2,4",
+          "RENVELA 2,4 G",
+          "RENVELA 2,4 SOBRES",
+          "RENVELA 2.4G SOBRES",
+          "RENVELA 800",
+          "RENVELA 800 MG",
+          "RENVELA 800MG",
+          "RENVELA SOBRES",
+          "RENVELA SOBRES 2,4",
+          "SEVELAMER",
+          "SEVELAMER 2,5 G",
+          "SEVELAMER 800",
+          "VELPHORO 500"
+        ],
+        "items": {
+          "ACETATO CALCIO 475 MG": "Acetato calcio 475 mg",
+          "CARBONATO CALCICO": "CARBONATO CALCICO",
+          "CARBONATO CALCICO 500 MG": "CARBONATO CALCICO 500 mg",
+          "CARBONATO DE LANTANO": "CARBONATO DE LANTANO",
+          "CARBONATO DE LANTANO 1000 MG": "CARBONATO DE LANTANO 1000 mg",
+          "CARBONATO DE LANTANO 1200": "CARBONATO DE LANTANO 1200",
+          "CARBONATO DE LANTANO 500 MG": "CARBONATO DE LANTANO 500 mg",
+          "CARBONATO LANTANO": "CARBONATO LANTANO",
+          "COLESEVELAM": "COLESEVELAM",
+          "DEMILOS 600/1000(CARBONATO CALCICO/VIT D3)": "DEMILOS 600/1000(carbonato calcico/vit D3)",
+          "FOSRENOL": "fosrenol",
+          "FOSRENOL 750": "FOSRENOL 750",
+          "FOSRENOL 1000": "FOSRENOL 1000",
+          "FOSRENOL 1000 (CP MASTICABLE)": "FOSRENOL 1000 (cp masticable)",
+          "FOSRENOL 1000 MG": "Fosrenol 1000 mg",
+          "FOSRENOL 1000 POLVO ORAL": "FOSRENOL 1000 polvo oral",
+          "FOSRENOL 1000 SOBRES": "FOSRENOL 1000 sobres",
+          "FOSRENOL 500": "FOSRENOL 500",
+          "FOSRENOL 500 MG": "FOSRENOL 500 mg",
+          "FOSRENOL 500MG": "Fosrenol 500mg",
+          "FOSRENOL 750 MG": "FOSRENOL 750 MG",
+          "FOSRENOL POLVO ORAL": "FOSRENOL POLVO ORAL",
+          "FOSRENOL POLVO ORAL 1000MG": "FOSRENOL POLVO ORAL 1000mg",
+          "FOSRENOL POLVOS": "fosrenol polvos",
+          "FOSRENOL SOBRES": "fosrenol sobres",
+          "FOSRENOL1000": "FOSRENOL1000",
+          "IINSULINA LANTUS (GLARGINA)": "IINSULINA lantus (glargina)",
+          "INSULINA (LANTUS)": "INSULINA (LANTUS)",
+          "INSULINA LANTUS": "INSULINA LANTUS",
+          "INSULINA LANTUS 100UI": "INSULINA LANTUS 100UI",
+          "INSULINA LANTUS 20": "INSULINA LANTUS 20",
+          "INSULINA LANTUS 8 UI": "INSULINA LANTUS 8 UI",
+          "LANTANON 10": "LANTANON 10",
+          "LANTUS": "LANTUS",
+          "LANTUS INYEC": "Lantus inyec",
+          "PLANTABEN": "PLANTABEN",
+          "PLANTABEN 500 MG": "PLANTABEN 500 mg",
+          "PLANTABEN SOBRES": "PLANTABEN sobres",
+          "PLANTAGO OVATA": "PLANTAGO OVATA",
+          "RELVAR ( VILANTEROL/FLUTICASONA)": "RELVAR ( VILANTEROL/FLUTICASONA)",
+          "RENAGEL": "RENAGEL",
+          "RENAGEL 800": "RENAGEL 800",
+          "RENAGEL 800 MG": "RENAGEL 800 MG",
+          "RENAGEL 800 MG COMP": "RENAGEL 800 mg comp",
+          "RENAGEL 800 MG COMP.": "RENAGEL 800 mg comp.",
+          "RENVELA": "RENVELA",
+          "RENVELA 2,4": "RENVELA 2,4",
+          "RENVELA 2,4 G": "RENVELA 2,4 g",
+          "RENVELA 2,4 SOBRES": "RENVELA 2,4 sobres",
+          "RENVELA 2.4G SOBRES": "RENVELA 2.4g sobres",
+          "RENVELA 800": "RENVELA 800",
+          "RENVELA 800 MG": "RENVELA 800 mg",
+          "RENVELA 800MG": "RENVELA 800mg",
+          "RENVELA SOBRES": "RENVELA SOBRES",
+          "RENVELA SOBRES 2,4": "RENVELA SOBRES 2,4",
+          "SEVELAMER": "SEVELAMER",
+          "SEVELAMER 2,5 G": "Sevelamer 2,5 g",
+          "SEVELAMER 800": "sevelamer 800",
+          "VELPHORO 500": "velphoro 500"
         }
       }
     },
@@ -3470,6 +7319,242 @@
       "ZEMP5": {
         "tipo": "VITAMINA D",
         "nombre": "ZEMPLAR 5mcg"
+      },
+      "ACETATO CALCIO 475 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Acetato calcio 475 mg"
+      },
+      "CARBONATO CALCICO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "CARBONATO CALCICO"
+      },
+      "CARBONATO CALCICO 500 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "CARBONATO CALCICO 500 mg"
+      },
+      "CARBONATO DE LANTANO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "CARBONATO DE LANTANO"
+      },
+      "CARBONATO DE LANTANO 1000 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "CARBONATO DE LANTANO 1000 mg"
+      },
+      "CARBONATO DE LANTANO 1200": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "CARBONATO DE LANTANO 1200"
+      },
+      "CARBONATO DE LANTANO 500 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "CARBONATO DE LANTANO 500 mg"
+      },
+      "CARBONATO LANTANO": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "CARBONATO LANTANO"
+      },
+      "COLESEVELAM": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "COLESEVELAM"
+      },
+      "DEMILOS 600/1000(CARBONATO CALCICO/VIT D3)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "DEMILOS 600/1000(carbonato calcico/vit D3)"
+      },
+      "FOSRENOL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "fosrenol"
+      },
+      "FOSRENOL 750": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 750"
+      },
+      "FOSRENOL 1000": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1000"
+      },
+      "FOSRENOL 1000 (CP MASTICABLE)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1000 (cp masticable)"
+      },
+      "FOSRENOL 1000 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Fosrenol 1000 mg"
+      },
+      "FOSRENOL 1000 POLVO ORAL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1000 polvo oral"
+      },
+      "FOSRENOL 1000 SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 1000 sobres"
+      },
+      "FOSRENOL 500": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 500"
+      },
+      "FOSRENOL 500 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 500 mg"
+      },
+      "FOSRENOL 500MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Fosrenol 500mg"
+      },
+      "FOSRENOL 750 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL 750 MG"
+      },
+      "FOSRENOL POLVO ORAL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL POLVO ORAL"
+      },
+      "FOSRENOL POLVO ORAL 1000MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL POLVO ORAL 1000mg"
+      },
+      "FOSRENOL POLVOS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "fosrenol polvos"
+      },
+      "FOSRENOL SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "fosrenol sobres"
+      },
+      "FOSRENOL1000": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "FOSRENOL1000"
+      },
+      "IINSULINA LANTUS (GLARGINA)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "IINSULINA lantus (glargina)"
+      },
+      "INSULINA (LANTUS)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "INSULINA (LANTUS)"
+      },
+      "INSULINA LANTUS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "INSULINA LANTUS"
+      },
+      "INSULINA LANTUS 100UI": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "INSULINA LANTUS 100UI"
+      },
+      "INSULINA LANTUS 20": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "INSULINA LANTUS 20"
+      },
+      "INSULINA LANTUS 8 UI": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "INSULINA LANTUS 8 UI"
+      },
+      "LANTANON 10": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "LANTANON 10"
+      },
+      "LANTUS": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "LANTUS"
+      },
+      "LANTUS INYEC": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Lantus inyec"
+      },
+      "PLANTABEN": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "PLANTABEN"
+      },
+      "PLANTABEN 500 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "PLANTABEN 500 mg"
+      },
+      "PLANTABEN SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "PLANTABEN sobres"
+      },
+      "PLANTAGO OVATA": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "PLANTAGO OVATA"
+      },
+      "RELVAR ( VILANTEROL/FLUTICASONA)": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RELVAR ( VILANTEROL/FLUTICASONA)"
+      },
+      "RENAGEL": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL"
+      },
+      "RENAGEL 800": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL 800"
+      },
+      "RENAGEL 800 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL 800 MG"
+      },
+      "RENAGEL 800 MG COMP": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL 800 mg comp"
+      },
+      "RENAGEL 800 MG COMP.": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENAGEL 800 mg comp."
+      },
+      "RENVELA": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA"
+      },
+      "RENVELA 2,4": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4"
+      },
+      "RENVELA 2,4 G": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4 g"
+      },
+      "RENVELA 2,4 SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2,4 sobres"
+      },
+      "RENVELA 2.4G SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 2.4g sobres"
+      },
+      "RENVELA 800": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 800"
+      },
+      "RENVELA 800 MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 800 mg"
+      },
+      "RENVELA 800MG": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA 800mg"
+      },
+      "RENVELA SOBRES": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA SOBRES"
+      },
+      "RENVELA SOBRES 2,4": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "RENVELA SOBRES 2,4"
+      },
+      "SEVELAMER": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "SEVELAMER"
+      },
+      "SEVELAMER 2,5 G": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "Sevelamer 2,5 g"
+      },
+      "SEVELAMER 800": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "sevelamer 800"
+      },
+      "VELPHORO 500": {
+        "tipo": "QUELANTE_FOSFORO",
+        "nombre": "velphoro 500"
       }
     }
   }
