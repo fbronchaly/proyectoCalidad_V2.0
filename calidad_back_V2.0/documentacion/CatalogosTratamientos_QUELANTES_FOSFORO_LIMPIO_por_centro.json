@@ -1,0 +1,452 @@
+{
+  "centros": {
+    "/NFS/restores/NF6_SantaEngracia.gdb": {
+      "byTipo": {
+        "QUELANTES DEL FSFORO-QUELANTES CLCICOS": {
+          "label": "QUELANTES DEL FSFORO-QUELANTES CLCICOS",
+          "codes": [
+            "CaCo",
+            "OSV",
+            "ROY",
+            "caos",
+            "mas",
+            "ntc"
+          ],
+          "items": {
+            "CaCo": "CARBONATO CALCICO",
+            "OSV": "OSVAREN",
+            "ROY": "ROYEN 500",
+            "caos": "CAOSINA",
+            "mas": "MASTICAL",
+            "ntc": "NATECAL"
+          }
+        },
+        "QUELANTES DEL FSFORO: CARBONATO DE LANTANO": {
+          "label": "QUELANTES DEL FSFORO: CARBONATO DE LANTANO",
+          "codes": [
+            "FOS1000",
+            "FOS750",
+            "FOSPOLV",
+            "FOSR"
+          ],
+          "items": {
+            "FOS1000": "FOSRENOL 1000",
+            "FOS750": "FOSRENOL 750",
+            "FOSPOLV": "FOSRENOL POLVO ORAL",
+            "FOSR": "FOSRENOL 500"
+          }
+        },
+        "QUELANTES DEL FSFORO: QUELANTES ALUMNICOS": {
+          "label": "QUELANTES DEL FSFORO: QUELANTES ALUMNICOS",
+          "codes": [
+            "ALM"
+          ],
+          "items": {
+            "ALM": "ALMAX"
+          }
+        },
+        "QUELANTES DEL FSFORO: SEVELAMER": {
+          "label": "QUELANTES DEL FSFORO: SEVELAMER",
+          "codes": [
+            "REN",
+            "ren",
+            "rencap",
+            "renv"
+          ],
+          "items": {
+            "REN": "RENAGEL",
+            "ren": "RENVELA SOBRES",
+            "rencap": "RENVELA COMPRIMIDOS",
+            "renv": "RENVELA 800"
+          }
+        }
+      }
+    },
+    "/NFS/restores/NF6_LosOlmos.gdb": {
+      "byTipo": {
+        "QUELANTES DEL FSFORO-APORTES CA": {
+          "label": "QUELANTES DEL FSFORO-APORTES CA",
+          "codes": [
+            "ACE950",
+            "CAOS",
+            "CARBOC",
+            "MAS",
+            "NATEC",
+            "OSV",
+            "RENV800",
+            "ROY",
+            "ROY25",
+            "carca",
+            "ideo"
+          ],
+          "items": {
+            "ACE950": "ACETATO CALCIO RENACARE 950mg",
+            "CAOS": "CAOSINA sobres 2,5 g (Ca=1g)",
+            "CARBOC": "CARBOCAL comp 1.5 g (Ca=600)",
+            "MAS": "MASTICAL 1,25 g (Ca=500)",
+            "NATEC": "NATECAL comp 1.5 g (Ca=600)",
+            "OSV": "OSVAREN 435/235 mg",
+            "RENV800": "RENVELA comprimidos 800 mg",
+            "ROY": "ROYEN comp. 500 mg",
+            "ROY25": "ROYEN sobres 2,5 g.",
+            "carca": "CARBONATO DE CALCIO",
+            "ideo": "IDEOS"
+          }
+        }
+      }
+    },
+    "/NFS/restores/NF6_LosLlanos.gdb": {
+      "byTipo": {
+        "QUELANTES DEL FOSFORO ALUMINICOS": {
+          "label": "QUELANTES DEL FOSFORO ALUMINICOS",
+          "codes": [
+            "HDRO",
+            "PEPS"
+          ],
+          "items": {
+            "HDRO": "HIDROXIDO DE ALUMINIO",
+            "PEPS": "PEPSAMAR"
+          }
+        },
+        "QUELANTES DEL FSFORO CALCICOS": {
+          "label": "QUELANTES DEL FSFORO CALCICOS",
+          "codes": [
+            "660684",
+            "ACET CA",
+            "CAOSINA",
+            "MAS",
+            "ROY",
+            "ROYEN",
+            "VELP"
+          ],
+          "items": {
+            "660684": "Osvaren 435/235 mg",
+            "ACET CA": "ACETATO CALCICO",
+            "CAOSINA": "CAOSINA",
+            "MAS": "MASTICAL",
+            "ROY": "ROYEN",
+            "ROYEN": "ROYEN 2,5gr sobres",
+            "VELP": "VELPHORO"
+          }
+        }
+      }
+    },
+    "/NFS/restores/NF6_ElCastanar.gdb": {
+      "byTipo": {
+        "QUELANTES DEL FSFORO-APORTES CA": {
+          "label": "QUELANTES DEL FSFORO-APORTES CA",
+          "codes": [
+            "A_ ce",
+            "Cao",
+            "M_as",
+            "O_sv",
+            "R_oye"
+          ],
+          "items": {
+            "A_ ce": "Acetato calcico Renacare",
+            "Cao": "Caosina",
+            "M_as": "Mastical",
+            "O_sv": "Osvaren",
+            "R_oye": "Royen"
+          }
+        }
+      }
+    },
+    "/NFS/restores/NF6_Getafe.gdb": {
+      "byTipo": {
+        "QUELANTES DEL FSFORO-APORTES CA": {
+          "label": "QUELANTES DEL FSFORO-APORTES CA",
+          "codes": [
+            "996110",
+            "ACETA",
+            "Ace",
+            "CAL",
+            "CALCI",
+            "SUG",
+            "ca",
+            "nat",
+            "r"
+          ],
+          "items": {
+            "996110": "Caosina oral monodosis 1000 mg",
+            "ACETA": "Acetato clcico",
+            "Ace": "Acetato calcio 475 mg",
+            "CAL": "CALCIUM SANDOZ",
+            "CALCI": "CALCIJEX",
+            "SUG": "ROYEN 500 mg",
+            "ca": "Caosina",
+            "nat": "natecal",
+            "r": "MASTICAL"
+          }
+        }
+      }
+    },
+    "/NFS/restores/NF6_LosLauros.gdb": {
+      "byTipo": {
+        "QUELANTES DEL FOSFORO": {
+          "label": "QUELANTES DEL FOSFORO",
+          "codes": [
+            "FOSR",
+            "fosrmc",
+            "rest",
+            "vel"
+          ],
+          "items": {
+            "FOSR": "FOSRENOL comp masticables 1000mg",
+            "fosrmc": "FOSRENOL 1000 (cp masticable)",
+            "rest": "RESTAFOS 800 mg",
+            "vel": "velphoro 500"
+          }
+        },
+        "QUELANTES DEL FSFORO-APORTES CA": {
+          "label": "QUELANTES DEL FSFORO-APORTES CA",
+          "codes": [
+            "996110",
+            "CAL",
+            "RE",
+            "SUG",
+            "adi",
+            "caca",
+            "nat",
+            "r"
+          ],
+          "items": {
+            "996110": "CAOSINA",
+            "CAL": "CALCIUM SANDOZ",
+            "RE": "RENVELA 2,4 sobres",
+            "SUG": "ROYEN",
+            "adi": "adiaval",
+            "caca": "carbonato calcico 500mg",
+            "nat": "natecal",
+            "r": "MASTICAL"
+          }
+        }
+      }
+    },
+    "/NFS/restores/NF6_FJD.gdb": {
+      "byTipo": {
+        "QUELANTES DEL FSFORO: CARBONATO DE LANTANO": {
+          "label": "QUELANTES DEL FSFORO: CARBONATO DE LANTANO",
+          "codes": [
+            "FOSR",
+            "Fosr500",
+            "fsr",
+            "fsr1000",
+            "fsr750"
+          ],
+          "items": {
+            "FOSR": "FOSRENOL",
+            "Fosr500": "FOSRRENOL",
+            "fsr": "FOSRENOL POLVO ORAL",
+            "fsr1000": "FOSRENOL",
+            "fsr750": "FOSRENOL POLVO ORAL"
+          }
+        },
+        "QUELANTES DEL FSFORO: QUELANTES ALUMNICOS": {
+          "label": "QUELANTES DEL FSFORO: QUELANTES ALUMNICOS",
+          "codes": [
+            "Alm"
+          ],
+          "items": {
+            "Alm": "ALMAX"
+          }
+        },
+        "QUELANTES DEL FSFORO: SEVELAMER": {
+          "label": "QUELANTES DEL FSFORO: SEVELAMER",
+          "codes": [
+            "REN",
+            "rnvsobr"
+          ],
+          "items": {
+            "REN": "RENAGEL",
+            "rnvsobr": "RENVELA SOBRES"
+          }
+        }
+      }
+    },
+    "/NFS/restores/NF6_HRJC.gdb": {
+      "byTipo": {
+        "QUELANTES DEL FOSFORO ALUMINICOS": {
+          "label": "QUELANTES DEL FOSFORO ALUMINICOS",
+          "codes": [
+            "PEPS"
+          ],
+          "items": {
+            "PEPS": "PEPSAMAR"
+          }
+        },
+        "QUELANTES DEL FSFORO CALCICOS": {
+          "label": "QUELANTES DEL FSFORO CALCICOS",
+          "codes": [
+            "1",
+            "660684",
+            "ACE",
+            "ACet",
+            "CAOSINA",
+            "Id",
+            "Ma",
+            "ROY"
+          ],
+          "items": {
+            "1": "ROYEN 2,5gr sobres",
+            "660684": "Osvaren 435/235 mg",
+            "ACE": "Acetato de calcio Renacare",
+            "ACet": "Acetato de calcio",
+            "CAOSINA": "CAOSINA",
+            "Id": "Ideos",
+            "Ma": "Mastical",
+            "ROY": "Royen"
+          }
+        }
+      }
+    },
+    "/NFS/restores/NF6_InfantaElena.gdb": {
+      "byTipo": {
+        "QUELANTES DEL FOSFORO NO CALCICOS": {
+          "label": "QUELANTES DEL FOSFORO NO CALCICOS",
+          "codes": [
+            "OSVAREN",
+            "PEPSAMA",
+            "RE",
+            "RENAGEL",
+            "RENVELA",
+            "alm",
+            "fosr",
+            "renv",
+            "vph"
+          ],
+          "items": {
+            "OSVAREN": "OSVAREN",
+            "PEPSAMA": "PEPSAMAR",
+            "RE": "RENVELA",
+            "RENAGEL": "SEVELAMER",
+            "RENVELA": "SEVELAMER CARBONATO",
+            "alm": "ALMAX",
+            "fosr": "FOSRENOL",
+            "renv": "RENAGEL",
+            "vph": "VELPHORO"
+          }
+        },
+        "QUELANTES DEL FSFORO-APORTES CA": {
+          "label": "QUELANTES DEL FSFORO-APORTES CA",
+          "codes": [
+            "C",
+            "CALCIO",
+            "CARBCA",
+            "nate"
+          ],
+          "items": {
+            "C": "CAOSINA",
+            "CALCIO": "CALCIO ACETATO",
+            "CARBCA": "CARBONATO CALCICO",
+            "nate": "NATECAL"
+          }
+        }
+      }
+    },
+    "/NFS/restores/NF6_LasEncinas.gdb": {
+      "byTipo": {
+        "QUELANTES DEL FSFORO-APORTES CA": {
+          "label": "QUELANTES DEL FSFORO-APORTES CA",
+          "codes": [
+            "A_ceta",
+            "C_alc",
+            "C_arb",
+            "I_deo",
+            "N_ate",
+            "O-svar",
+            "O_roc",
+            "O_sva",
+            "P_hos",
+            "R-oyen",
+            "mast"
+          ],
+          "items": {
+            "A_ceta": "Acetato clcico + carbonato de magnesio",
+            "C_alc": "Calcium aC fixat (Acetato clcico)",
+            "C_arb": "Carbonato clcico",
+            "I_deo": "Ideos forte (Carbonato de Ca +Colecalciferol)",
+            "N_ate": "Natecal 1500 mg (600 mg calcio)",
+            "O-svar": "Osvaren",
+            "O_roc": "Orocal (Carbonato clcico) 500 mg",
+            "O_sva": "OsvaRen",
+            "P_hos": "Phosphosorb (Acetato clcico)",
+            "R-oyen": "Royen (Acetato clcico) 500 mg",
+            "mast": "Mastical"
+          }
+        }
+      }
+    },
+    "/NFS/restores/NF6_LosLlanos3.gdb": {
+      "byTipo": {
+        "QUELANTES DEL FOSFORO ALUMINICOS": {
+          "label": "QUELANTES DEL FOSFORO ALUMINICOS",
+          "codes": [
+            "HDRO",
+            "PEPS"
+          ],
+          "items": {
+            "HDRO": "HIDROXIDO DE ALUMINIO",
+            "PEPS": "PEPSAMAR"
+          }
+        },
+        "QUELANTES DEL FSFORO CALCICOS": {
+          "label": "QUELANTES DEL FSFORO CALCICOS",
+          "codes": [
+            "660684",
+            "ACET CA",
+            "CAOSINA",
+            "FOSQ",
+            "MAS",
+            "NATECAD",
+            "ROY",
+            "ROYEN",
+            "VELP",
+            "md"
+          ],
+          "items": {
+            "660684": "Osvaren 435/235 mg",
+            "ACET CA": "ACETATO CALCICO",
+            "CAOSINA": "CAOSINA",
+            "FOSQ": "FOSQUEL",
+            "MAS": "MASTICAL",
+            "NATECAD": "NATECAL D 1500/400 mg/UI",
+            "ROY": "ROYEN",
+            "ROYEN": "ROYEN 2,5gr sobres",
+            "VELP": "VELPHORO",
+            "md": "MASTICAL D 500mg/400UI"
+          }
+        }
+      }
+    },
+    "/NFS/restores/NF6_VILLALBA.gdb": {
+      "byTipo": {
+        "QUELANTES DEL FSFORO-APORTES CA": {
+          "label": "QUELANTES DEL FSFORO-APORTES CA",
+          "codes": [
+            "996110",
+            "CAL",
+            "RE",
+            "SUG",
+            "VEL",
+            "carb",
+            "nat",
+            "pm",
+            "r"
+          ],
+          "items": {
+            "996110": "CAOSINA",
+            "CAL": "CALCIUM SANDOZ",
+            "RE": "RENVELA 2,4 sobres",
+            "SUG": "ROYEN",
+            "VEL": "Velphoro",
+            "carb": "CARBONATO CLCICO",
+            "nat": "natecal",
+            "pm": "Pamidronato",
+            "r": "MASTICAL"
+          }
+        }
+      }
+    }
+  }
+}

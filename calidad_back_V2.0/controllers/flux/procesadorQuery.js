@@ -1,8 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 
-const catalogosMedicamentos = require('../../documentacion/CatalogosMedicamentos.index.json');
-const catalogosTratamientos = require('../../documentacion/CatalogosTratamientos_CAPTORES_FOSFORO_por_centro.json');
+const catalogosMedicamentosCAPTORES = require('../../documentacion/CatalogosMedicamentos_QUELANTES_FOSFORO_por_centro.json');
+const catalogosTratamientosCAPTORES = require('../../documentacion/CatalogosTratamientos_CAPTORES_FOSFORO_por_centro.json');
+const catalogosMedicamentosCALCIVITD = require('../../documentacion/CatalogosMedicamentos.index.json');
+const catalogosTratamientosCALCIVITD = require('../../documentacion/CatalogosTratamientos_CAPTORES_FOSFORO_por_centro.json');
 
 // Rutas a archivos de configuración
 const RUTA_ACCESOS_VASCULARES = path.resolve(__dirname, '../../documentacion/accesos_vasculares.json');
@@ -112,14 +114,14 @@ function obtenerCodigosCaptoresPorCentro(nombreCentro) {
   };
 
   // 1. Medicamentos: Estructura { centros: { "/ruta": ... } }
-  const mapMed = catalogosMedicamentos.centros || {};
+  const mapMed = catalogosMedicamentosCAPTORES.centros || {};
   const nodoMed = encontrarNodoCentro(mapMed);
   if (nodoMed && nodoMed.byTipo) {
       extraerDeByTipo(nodoMed.byTipo);
   }
 
   // 2. Tratamientos: Estructura { "/ruta": ... } (Directo en raíz)
-  const nodoTrat = encontrarNodoCentro(catalogosTratamientos);
+  const nodoTrat = encontrarNodoCentro(catalogosTratamientosCAPTORES);
   if (nodoTrat && nodoTrat.byTipo) {
       extraerDeByTipo(nodoTrat.byTipo);
   }
@@ -170,14 +172,14 @@ function obtenerCodigosVitDCalcimimPorCentro(nombreCentro) {
   };
 
   // 1. Medicamentos
-  const mapMed = catalogosMedicamentos.centros || {};
+  const mapMed = catalogosMedicamentosCALCIVITD.centros || {};
   const nodoMed = encontrarNodoCentro(mapMed);
   if (nodoMed && nodoMed.byTipo) {
       extraerDeByTipo(nodoMed.byTipo);
   }
 
   // 2. Tratamientos
-  const nodoTrat = encontrarNodoCentro(catalogosTratamientos);
+  const nodoTrat = encontrarNodoCentro(catalogosTratamientosCALCIVITD);
   if (nodoTrat && nodoTrat.byTipo) {
       extraerDeByTipo(nodoTrat.byTipo);
   }

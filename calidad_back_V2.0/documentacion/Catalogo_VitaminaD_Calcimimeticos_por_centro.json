@@ -1,0 +1,624 @@
+{
+  "/NFS/restores/NF6_OsCarballos.gdb": {
+    "byTipo": {
+      "VITAMINA D": {
+        "codes": [
+          "ALF",
+          "HIDR",
+          "ROC-2",
+          "ROC-25",
+          "ZEM 2.5",
+          "ZEM 5",
+          "ZEM-0",
+          "ZEM-2"
+        ],
+        "items": {
+          "ALF": "ALFACALCIDOL",
+          "HIDR": "HIDROFEROL (amp. bebibles de 266 mcg)",
+          "ROC-2": "ROCALTROL (0.50 mcg)",
+          "ROC-25": "ROCALTROL (0.25 mcg)",
+          "ZEM 2.5": "ZEMPLAR (2.5 mcg)",
+          "ZEM 5": "ZEMPLAR (5 mcg)",
+          "ZEM-0": "ZEMPLAR",
+          "ZEM-2": "ZEMPLAR (caps. 2 mcg)"
+        }
+      },
+      "CALCIMIMETICO": {
+        "codes": [
+          "CINA 60",
+          "CINA30",
+          "MIM",
+          "MIM-1",
+          "MIM-2",
+          "MIM-3",
+          "pars 5",
+          "pars10",
+          "pars2.5"
+        ],
+        "items": {
+          "CINA 60": "CINACALCET (comps de 60 mg)",
+          "CINA30": "CINACALCET (comps de 30 mg)",
+          "MIM": "MIMPARA",
+          "MIM-1": "MIMPARA (30 mgrs.)",
+          "MIM-2": "MIMPARA (60 mgrs.)",
+          "MIM-3": "MIMPARA (90 mgrs.)",
+          "pars 5": "PARSABIV 5",
+          "pars10": "PARSABIV 10",
+          "pars2.5": "PARSABIV 2.5"
+        }
+      }
+    }
+  },
+  "/NFS/restores/NF6_OsCarballosII.gdb": {
+    "byTipo": {
+      "VITAMINA D": {
+        "codes": [
+          "ALF",
+          "HIDR",
+          "hidr",
+          "par",
+          "PARI",
+          "ROC-2",
+          "ROC-25",
+          "ZEM 2.5",
+          "ZEM 5",
+          "ZEM-0",
+          "ZEM-2",
+          "ZEM-4"
+        ],
+        "items": {
+          "ALF": "ALFACALCIDOL",
+          "HIDR": "HIDROFEROL (amp bebible de 266 mcg)",
+          "hidr": "HIDROFEROL (cap 0,266 mg)",
+          "par": "PARICALCITOL",
+          "PARI": "PARICALCITOL",
+          "ROC-2": "ROCALTROL (cap 0.5 mcg)",
+          "ROC-25": "ROCALTROL (cap 0.25 mcg)",
+          "ZEM 2.5": "ZEMPLAR (2.5 mcg)",
+          "ZEM 5": "ZEMPLAR (5 mcg)",
+          "ZEM-0": "ZEMPLAR",
+          "ZEM-2": "ZEMPLAR (caps. 2 mcg)",
+          "ZEM-4": "ZEMPLAR (caps. 4 mcg)"
+        }
+      },
+      "CALCIMIMETICO": {
+        "codes": [
+          "MIM",
+          "MIM-1",
+          "MIM-2",
+          "pars"
+        ],
+        "items": {
+          "MIM": "MIMPARA",
+          "MIM-1": "MIMPARA (CINACALCET comp 30 mg)",
+          "MIM-2": "MIMPARA (CINACALCET comp 60 mg)",
+          "pars": "PARSABIV"
+        }
+      }
+    }
+  },
+  "/NFS/restores/NF6_Teixedal.gdb": {
+    "byTipo": {
+      "VITAMINA D": {
+        "codes": [
+          "HID-G",
+          "HIDR",
+          "par",
+          "PARI",
+          "ROC-25",
+          "ZEM-0"
+        ],
+        "items": {
+          "HID-G": "HIDROFEROL gotas",
+          "HIDR": "HIDROFEROL (amp bebible de 266 mcg)",
+          "par": "PARICALCITOL",
+          "PARI": "PARICALCITOL",
+          "ROC-25": "ROCALTROL (cap 0.25 mcg)",
+          "ZEM-0": "ZEMPLAR"
+        }
+      },
+      "CALCIMIMETICO": {
+        "codes": [
+          "MIM",
+          "MIM-1",
+          "MIM-2",
+          "MIM-3",
+          "pars"
+        ],
+        "items": {
+          "MIM": "MIMPARA",
+          "MIM-1": "MIMPARA (comp 30 mg)",
+          "MIM-2": "MIMPARA (comp 60 mg)",
+          "MIM-3": "MIMPARA (comp 90 mg)",
+          "pars": "PARSABIV"
+        }
+      }
+    }
+  },
+  "/NFS/restores/NF6_SantaEngracia.gdb": {
+    "byTipo": {
+      "VITAMINA D": {
+        "codes": [
+          "434337",
+          "CALCI",
+          "calci",
+          "colecal",
+          "Etpf gt",
+          "ETPH 0.",
+          "HDF",
+          "Hidrofe",
+          "paric",
+          "Z_ROC",
+          "Zemplar"
+        ],
+        "items": {
+          "434337": "ETALPHA 0,25",
+          "CALCI": "CALCIJEX",
+          "calci": "CALCITRIOL",
+          "colecal": "DELTIUS 25000",
+          "Etpf gt": "ETALPHA gotas",
+          "ETPH 0.": "ETALPHA 0,5",
+          "HDF": "HIDROFEROL",
+          "Hidrofe": "HIDROFEROL",
+          "paric": "PARICALCITOL",
+          "Z_ROC": "ROCALTROL 0,25",
+          "Zemplar": "ZEMPLAR"
+        }
+      },
+      "CALCIMIMETICO": {
+        "codes": [
+          "CALCIM",
+          "CALCIM9",
+          "CALCM",
+          "parsa",
+          "prsb2.5"
+        ],
+        "items": {
+          "CALCIM": "MIMPARA 60",
+          "CALCIM9": "MIMPARA 90",
+          "CALCM": "MIMPARA 30",
+          "parsa": "PARSABIV 5 mg",
+          "prsb2.5": "PARSABIV 2.5"
+        }
+      }
+    }
+  },
+  "/NFS/restores/NF6_LosOlmos.gdb": {
+    "byTipo": {
+      "VITAMINA D": {
+        "codes": [
+          "HIDR",
+          "hidr",
+          "Z-ZEM",
+          "Z_CAL",
+          "Z_ROC",
+          "Z_ZEM",
+          "Zemp1"
+        ],
+        "items": {
+          "HIDR": "HIDROFEROL amp. 0,266 g",
+          "hidr": "HIDROFEROL 266 mcg capsula blanda",
+          "Z-ZEM": "ZEMPLAR 2",
+          "Z_CAL": "CALCIJEX",
+          "Z_ROC": "ROCALTROL 0,25 mcg",
+          "Z_ZEM": "ZEMPLAR 5",
+          "Zemp1": "ZEMPLAR 1 mcg"
+        }
+      },
+      "CALCIMIMETICO": {
+        "codes": [
+          "MINP30",
+          "parsa"
+        ],
+        "items": {
+          "MINP30": "MIMPARA 30 mg",
+          "parsa": "PARSABIV 2.5 mg"
+        }
+      }
+    }
+  },
+  "/NFS/restores/NF6_LosLlanos.gdb": {
+    "byTipo": {
+      "VITAMINA D": {
+        "codes": [
+          "HIDROF",
+          "Hidrof",
+          "Z-ZEM",
+          "Z_CAL",
+          "ZEM2",
+          "ZEM5",
+          "zemplar"
+        ],
+        "items": {
+          "HIDROF": "HIDROFEROL",
+          "Hidrof": "Hidroferol 0,266 ampolla",
+          "Z-ZEM": "ZEMPLAR1",
+          "Z_CAL": "CALCIJEX",
+          "ZEM2": "ZEMPLAR 2 mcgr",
+          "ZEM5": "ZEMPLAR 5 mcgr",
+          "zemplar": "ZEMPLAR"
+        }
+      },
+      "CALCIMIMETICO": {
+        "codes": [
+          "ETELCAL",
+          "MIMP",
+          "mimp",
+          "MIMP30",
+          "MIMP60"
+        ],
+        "items": {
+          "ETELCAL": "ETELCALCETIDA",
+          "MIMP": "MIMPARA",
+          "mimp": "Mimpara",
+          "MIMP30": "MIMPARA 30",
+          "MIMP60": "MIMPARA 60"
+        }
+      }
+    }
+  },
+  "/NFS/restores/NF6_ElCastanar.gdb": {
+    "byTipo": {
+      "VITAMINA D": {
+        "codes": [
+          "Eta",
+          "H_idrof",
+          "P_ar",
+          "Z_CAL",
+          "Z_ROC",
+          "Z_Ze",
+          "Z_ZEM"
+        ],
+        "items": {
+          "Eta": "Etalpha",
+          "H_idrof": "Hidroferol ampolla beb 266 mcg",
+          "P_ar": "Paricalcitol",
+          "Z_CAL": "Calcijex",
+          "Z_ROC": "Rocaltrol 0.25",
+          "Z_Ze": "Zemplar",
+          "Z_ZEM": "Zemplar 1 g"
+        }
+      },
+      "CALCIMIMETICO": {
+        "codes": [
+          "C_CIN",
+          "M_im3",
+          "M_impa",
+          "P_arsa"
+        ],
+        "items": {
+          "C_CIN": "Mimpara 30",
+          "M_im3": "Mimpara 30",
+          "M_impa": "Mimpara",
+          "P_arsa": "Parsabiv (etelcalcetida)"
+        }
+      }
+    }
+  },
+  "/NFS/restores/NF6_Getafe.gdb": {
+    "byTipo": {
+      "VITAMINA D": {
+        "codes": [
+          "ctc",
+          "pari",
+          "paric",
+          "ZEM",
+          "ZEMP2",
+          "ZEMP5"
+        ],
+        "items": {
+          "ctc": "calcitriol 0.25 mg",
+          "pari": "paricalcitol 2mcg",
+          "paric": "paricalcitol",
+          "ZEM": "ZEMPLAR",
+          "ZEMP2": "ZEMPLAR 2mcg",
+          "ZEMP5": "ZEMPLAR 5mcg"
+        }
+      },
+      "CALCIMIMETICO": {
+        "codes": [
+          "ETEL",
+          "MIM",
+          "parsa"
+        ],
+        "items": {
+          "ETEL": "ETELCALCETIDA",
+          "MIM": "MIMPARA",
+          "parsa": "parsabiv"
+        }
+      }
+    }
+  },
+  "/NFS/restores/NF6_FJD.gdb": {
+    "byTipo": {
+      "VITAMINA D": {
+        "codes": [
+          "434337",
+          "del",
+          "HDF",
+          "Hidrofe",
+          "prctl",
+          "ze",
+          "ZEMP2",
+          "ZEMP5"
+        ],
+        "items": {
+          "434337": "ETALPHA 0.5",
+          "del": "deltius",
+          "HDF": "HIDROFEROL",
+          "Hidrofe": "HIDROFEROL",
+          "prctl": "PARICALCITOL",
+          "ze": "ZEMPLAR",
+          "ZEMP2": "ZEMPLAR",
+          "ZEMP5": "ZEMPLAR"
+        }
+      },
+      "CALCIMIMETICO": {
+        "codes": [
+          "CALCM30",
+          "CALCM60",
+          "mim",
+          "MIMP",
+          "par"
+        ],
+        "items": {
+          "CALCM30": "MIMPARA",
+          "CALCM60": "MIMPARA",
+          "mim": "MIMPARA",
+          "MIMP": "MIMPARA",
+          "par": "PARSABIV"
+        }
+      }
+    }
+  },
+  "/NFS/restores/NF6_HRJC.gdb": {
+    "byTipo": {
+      "VITAMINA D": {
+        "codes": [
+          "H",
+          "PARI",
+          "Z-ZEM",
+          "ZEM2",
+          "ZEM5"
+        ],
+        "items": {
+          "H": "Hidroferol",
+          "PARI": "PARICALCITOL",
+          "Z-ZEM": "ZEMPLAR",
+          "ZEM2": "ZEMPLAR 2 mcgr",
+          "ZEM5": "ZEMPLAR 5 mcgr"
+        }
+      },
+      "CALCIMIMETICO": {
+        "codes": [
+          "0000",
+          "Etel",
+          "mim",
+          "MIMP60"
+        ],
+        "items": {
+          "0000": "MIMPARA 30",
+          "Etel": "Etelcalcetide",
+          "mim": "Mimpara",
+          "MIMP60": "MIMPARA 60"
+        }
+      }
+    }
+  },
+  "/NFS/restores/NF6_InfantaElena.gdb": {
+    "byTipo": {
+      "VITAMINA D": {
+        "codes": [
+          "hidro",
+          "ZEMPLAR"
+        ],
+        "items": {
+          "hidro": "HIDROFEROL",
+          "ZEMPLAR": "ZEMPLAR"
+        }
+      },
+      "CALCIMIMETICO": {
+        "codes": [
+          "CINEC",
+          "PSB"
+        ],
+        "items": {
+          "CINEC": "MIMPARA",
+          "PSB": "PARSABIV"
+        }
+      }
+    }
+  },
+  "/NFS/restores/NF6_LasEncinas.gdb": {
+    "byTipo": {
+      "VITAMINA D": {
+        "codes": [
+          "Cal,.",
+          "E_t",
+          "H_IDRO",
+          "H_idrof",
+          "P_ari",
+          "Z_CAL",
+          "Z_emp",
+          "z_para",
+          "Z_ROC"
+        ],
+        "items": {
+          "Cal,.": "Calcitriol",
+          "E_t": "Etalpha (alfacalcidol)",
+          "H_IDRO": "Hidroferol 100 mcg/ml",
+          "H_idrof": "Hidroferol 266 mcg/1.5 ml",
+          "P_ari": "Paricalcitol",
+          "Z_CAL": "Calcitriol",
+          "Z_emp": "Zemplar",
+          "z_para": "Zemplar 1 g",
+          "Z_ROC": "Rocaltrol 0,25"
+        }
+      },
+      "CALCIMIMETICO": {
+        "codes": [
+          "M-30",
+          "M-60",
+          "P_arsa"
+        ],
+        "items": {
+          "M-30": "Mimpara 30",
+          "M-60": "Mimpara 60",
+          "P_arsa": "Parsabiv (etelcalcetida)"
+        }
+      }
+    }
+  },
+  "/NFS/restores/NF6_LosLlanos3.gdb": {
+    "byTipo": {
+      "VITAMINA D": {
+        "codes": [
+          "HIDROF",
+          "Hidrof",
+          "Z-ZEM",
+          "Z_CAL",
+          "ZEM2",
+          "ZEM5",
+          "zemplar"
+        ],
+        "items": {
+          "HIDROF": "HIDROFEROL",
+          "Hidrof": "Hidroferol 0,266 ampolla",
+          "Z-ZEM": "ZEMPLAR1",
+          "Z_CAL": "CALCIJEX",
+          "ZEM2": "ZEMPLAR 2 mcgr",
+          "ZEM5": "ZEMPLAR 5 mcgr",
+          "zemplar": "ZEMPLAR"
+        }
+      },
+      "CALCIMIMETICO": {
+        "codes": [
+          "ETELCAL",
+          "MIMP",
+          "mimp",
+          "MIMP30",
+          "MIMP60"
+        ],
+        "items": {
+          "ETELCAL": "ETELCALCETIDA",
+          "MIMP": "MIMPARA",
+          "mimp": "Mimpara",
+          "MIMP30": "MIMPARA 30",
+          "MIMP60": "MIMPARA 60"
+        }
+      }
+    }
+  },
+  "/NFS/restores/NF6_VILLALBA.gdb": {
+    "byTipo": {
+      "VITAMINA D": {
+        "codes": [
+          "etalpha",
+          "hi",
+          "ZEM",
+          "ZEMP2",
+          "ZEMP5"
+        ],
+        "items": {
+          "etalpha": "ETALPHA",
+          "hi": "hidroferol",
+          "ZEM": "ZEMPLAR",
+          "ZEMP2": "ZEMPLAR 2mcg",
+          "ZEMP5": "ZEMPLAR 5mcg"
+        }
+      },
+      "CALCIMIMETICO": {
+        "codes": [
+          "ete",
+          "etec",
+          "MIM"
+        ],
+        "items": {
+          "ete": "Etecalcetida",
+          "etec": "Etecalcetida",
+          "MIM": "MIMPARA"
+        }
+      }
+    }
+  },
+  "/NFS/restores/NF6_LosPinos.gdb": {
+    "byTipo": {
+      "VITAMINA D": {
+        "codes": [
+          "CAL",
+          "DEL",
+          "ETAL",
+          "ETHALPH",
+          "HIDR",
+          "PARI",
+          "VIT",
+          "ZEM",
+          "ZEM2",
+          "ZEM5"
+        ],
+        "items": {
+          "CAL": "CALCIJEX",
+          "DEL": "DELTIUS",
+          "ETAL": "ETALPHA",
+          "ETHALPH": "ETALPHA Sol. iny. 1 mcg/0,5 ml (Alfacalcidol",
+          "HIDR": "HIDROFEROL 266 g",
+          "PARI": "PARICALCITOL 1 mg",
+          "VIT": "VITAMINA D3 NM 25.000 UI",
+          "ZEM": "ZEMPLAR",
+          "ZEM2": "ZEMPLAR 2",
+          "ZEM5": "ZEMPLAR 5"
+        }
+      },
+      "CALCIMIMETICO": {
+        "codes": [
+          "MIM",
+          "P_ars"
+        ],
+        "items": {
+          "MIM": "MIMPARA",
+          "P_ars": "Parsabiv (Etelcalcetida)"
+        }
+      }
+    }
+  },
+  "/NFS/restores/NF6_LosLauros.gdb": {
+    "byTipo": {
+      "VITAMINA D": {
+        "codes": [
+          "CALCI",
+          "etalpha",
+          "hi",
+          "pari",
+          "paric",
+          "ROCA",
+          "ZEM",
+          "ZEMP2",
+          "ZEMP5"
+        ],
+        "items": {
+          "CALCI": "CALCIJEX",
+          "etalpha": "ETALPHA",
+          "hi": "hidroferol",
+          "pari": "paricalcitol 2mcg",
+          "paric": "paricalcitol",
+          "ROCA": "ROCALTROL",
+          "ZEM": "ZEMPLAR",
+          "ZEMP2": "ZEMPLAR 2mcg",
+          "ZEMP5": "ZEMPLAR 5mcg"
+        }
+      },
+      "CALCIMIMETICO": {
+        "codes": [
+          "cin",
+          "MIM",
+          "parsa"
+        ],
+        "items": {
+          "cin": "cinacalcet",
+          "MIM": "MIMPARA",
+          "parsa": "parsabiv"
+        }
+      }
+    }
+  }
+}
