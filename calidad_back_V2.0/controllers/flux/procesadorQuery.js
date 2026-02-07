@@ -5,6 +5,8 @@ const catalogosMedicamentosCAPTORES = require('../../documentacion/CatalogosMedi
 const catalogosTratamientosCAPTORES = require('../../documentacion/CatalogosTratamientos_CAPTORES_FOSFORO_por_centro.json');
 const catalogosMedicamentosCALCIVITD = require('../../documentacion/CatalogosMedicamentos.index.json');
 const catalogosTratamientosCALCIVITD = require('../../documentacion/CatalogosTratamientos_CAPTORES_FOSFORO_por_centro.json');
+const catalogoVitaminaDCalcimimeticos = require('../../documentacion/Catalogo_VitaminaD_Calcimimeticos_por_centro.json');
+const catalogosTratamientosEPO = require('../../documentacion/CatalogosTratamientos_ERITo_EPO_por_centro.json');
 
 // Rutas a archivos de configuración
 const RUTA_ACCESOS_VASCULARES = path.resolve(__dirname, '../../documentacion/accesos_vasculares.json');
@@ -187,6 +189,44 @@ function obtenerCodigosVitDCalcimimPorCentro(nombreCentro) {
   return [...new Set(codigos)];
 }
 
+function obtenerCodigosVitaminaDPorCentro(nombreCentro) {
+  const centroBuscado = nombreCentro.toLowerCase(); 
+
+  // Helper interno para buscar nodo
+  const encontrarNodoCentro = (mapaCentros) => {
+    if (!mapaCentros) return null;
+    const key = Object.keys(mapaCentros).find(k => {
+      if (!k.includes('/')) return false; 
+      const nombreKey = path.basename(k)
+        .replace(/^NF6_/i, '')
+        .replace(/\.gdb$/i, '')
+        .toLowerCase();
+      return nombreKey === centroBuscado;
+    });
+    return key ? mapaCentros[key] : null;
+  };
+
+  const codigos = [];
+
+  // Usamos el catálogo específico cargado
+  const nodo = encontrarNodoCentro(catalogoVitaminaDCalcimimeticos);
+  
+  if (nodo && nodo.byTipo) {
+     const claves = Object.keys(nodo.byTipo);
+     // Buscar keys que contengan "VITAMINA D"
+     const clavesVitD = claves.filter(k => k.toUpperCase().includes('VITAMINA D'));
+
+     clavesVitD.forEach(k => {
+        const entry = nodo.byTipo[k];
+        if (entry && Array.isArray(entry.codes)) {
+            codigos.push(...entry.codes);
+        }
+     });
+  }
+
+  return [...new Set(codigos)];
+}
+
 function aplicarCodigosCaptoresPorBase(query, config) {
   if (!query || !query.includes(':CODIGOS_CAPTORES')) return query;
 
@@ -242,6 +282,103 @@ function aplicarCodigosVitDCalcimimPorBase(query, config) {
   }
   
   return query.replace(/:CODIGOS_VITD_CALCIMIM/g, listaSQL || "''");
+}
+
+function aplicarCodigosVitaminaDPorBase(query, config) {
+  if (!query || !query.includes(':CODIGOS_VITAMINA_D')) return query;
+
+  let baseData = config.nombre || config.database || '';
+  baseData = path.basename(String(baseData));          
+  baseData = baseData.replace(/^NF6_/i, '').replace(/\.gdb$/i, ''); 
+
+  const codigosRaw = obtenerCodigosVitaminaDPorCentro(baseData);
+
+  // NORMALIZACIÓN
+  const codigosNorm = [...new Set(
+    codigosRaw
+      .map(c => String(c).trim().toUpperCase())
+      .filter(Boolean)
+  )];
+  
+  const listaSQL = codigosNorm.map(c => `'${c}'`).join(',');
+  
+  if (!listaSQL) {
+    console.warn(`⚠️ VITAMINA D VACÍO para ${baseData}.`);
+  }
+  
+  return query.replace(/:CODIGOS_VITAMINA_D/g, listaSQL || "''");
+}
+
+/**
+ * Lógica para obtener códigos de Eritropoyetina (EPO)
+ */
+function obtenerCodigosEpoPorCentro(nombreCentro) {
+  const centroBuscado = nombreCentro.toLowerCase(); 
+
+  // Helper interno para buscar nodo (Reutilizando patrón existente)
+  const encontrarNodoCentro = (mapaCentros) => {
+    if (!mapaCentros) return null;
+    const key = Object.keys(mapaCentros).find(k => {
+      // Ignoramos claves que no sean rutas
+      if (!k.includes('/')) return false; 
+      
+      const nombreKey = path.basename(k)
+        .replace(/^NF6_/i, '')
+        .replace(/\.gdb$/i, '')
+        .toLowerCase();
+      
+      return nombreKey === centroBuscado;
+    });
+    return key ? mapaCentros[key] : null;
+  };
+
+  const codigos = [];
+  const nodo = encontrarNodoCentro(catalogosTratamientosEPO);
+
+  if (nodo && nodo.byTipo) {
+    // Buscamos categorías relacionadas con Eritropoyetina
+    const claves = Object.keys(nodo.byTipo);
+    const keywords = ['ERITROPOYETINA', 'EPO', 'ARANESP', 'MIRCERA'];
+
+    const clavesInteres = claves.filter(k => {
+        const upper = k.toUpperCase();
+        return keywords.some(w => upper.includes(w));
+    });
+
+    clavesInteres.forEach(k => {
+        const entry = nodo.byTipo[k];
+        if (entry && Array.isArray(entry.codes)) {
+            codigos.push(...entry.codes);
+        }
+    });
+  }
+
+  return [...new Set(codigos)];
+}
+
+function aplicarCodigosEpoPorCentro(query, config) {
+  if (!query || !query.includes(':CODIGOS_EPO')) return query;
+
+  let baseData = config.nombre || config.database || '';
+  baseData = path.basename(String(baseData));          
+  baseData = baseData.replace(/^NF6_/i, '').replace(/\.gdb$/i, ''); 
+
+  const codigosRaw = obtenerCodigosEpoPorCentro(baseData);
+
+  // Normalización
+  const codigosNorm = [...new Set(
+    codigosRaw
+      .map(c => String(c).trim().toUpperCase())
+      .filter(Boolean)
+  )];
+  
+  const listaSQL = codigosNorm.map(c => `'${c}'`).join(',');
+  
+  if (!listaSQL) {
+    console.warn(`⚠️ CÓDIGOS EPO VACÍO para ${baseData}.`);
+  }
+  
+  return query.replace(/:CODIGOS_EPO/g, listaSQL || "''");
 }
 
 /**
@@ -361,6 +498,8 @@ function procesarQuery(queryOriginal, config) {
   
   query = aplicarCodigosCaptoresPorBase(query, config); // Nueva integración
   query = aplicarCodigosVitDCalcimimPorBase(query, config); // Vitamina D y Calcimiméticos
+  query = aplicarCodigosVitaminaDPorBase(query, config); // SÓLO Vitamina D
+  query = aplicarCodigosEpoPorCentro(query, config); // Códigos de Eritropoyetina (EPO)
   query = aplicarCodTestPorBase(query, config);
   query = aplicarCodigosCateterTunelizadoPorBase(query, config); 
   query = aplicarCodigosCateterPorBase(query, config);

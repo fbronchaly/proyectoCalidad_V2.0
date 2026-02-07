@@ -1,0 +1,1487 @@
+{
+  "/NFS/restores/NF6_OsCarballos.gdb": {
+    "byTipo": {
+      "ERITROPOYETINA": {
+        "codes": [
+          "alfa e",
+          "ARA",
+          "BINO",
+          "bn",
+          "CERA",
+          "EPO",
+          "epo",
+          "eprex",
+          "reta",
+          "RETR"
+        ]
+      }
+    },
+    "byCode": {
+      "alfa e": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ALFA EPOETINA"
+      },
+      "ARA": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP"
+      },
+      "bn": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT"
+      },
+      "BINO": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT 1000"
+      },
+      "epo": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPOETINA BETA"
+      },
+      "eprex": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX"
+      },
+      "EPO": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ERITROPOYETINA"
+      },
+      "CERA": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "MIRCERA"
+      },
+      "reta": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "RETACRIT"
+      },
+      "RETR": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "RETRACRIT 1000"
+      }
+    }
+  },
+  "/NFS/restores/NF6_OsCarballosII.gdb": {
+    "byTipo": {
+      "ERITROPOYETINA": {
+        "codes": [
+          "alfa e",
+          "ARA",
+          "CERA",
+          "ep",
+          "EPO",
+          "epo",
+          "eprex",
+          "reta"
+        ]
+      }
+    },
+    "byCode": {
+      "alfa e": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ALFA EPOETINA"
+      },
+      "ARA": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP"
+      },
+      "epo": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPOETINA BETA"
+      },
+      "ep": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPOETINA ZETA"
+      },
+      "eprex": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX"
+      },
+      "EPO": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ERITROPOYETINA"
+      },
+      "CERA": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "MIRCERA"
+      },
+      "reta": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "RETACRIT"
+      }
+    }
+  },
+  "/NFS/restores/NF6_Teixedal.gdb": {
+    "byTipo": {
+      "ERITROPOYETINA": {
+        "codes": [
+          "alfa e",
+          "ARA",
+          "CERA",
+          "epo",
+          "eprex"
+        ]
+      }
+    },
+    "byCode": {
+      "alfa e": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ALFA EPOETINA"
+      },
+      "ARA": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP"
+      },
+      "epo": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPOETINA BETA"
+      },
+      "eprex": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX"
+      },
+      "CERA": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "MIRCERA"
+      }
+    }
+  },
+  "/NFS/restores/NF6_SantaEngracia.gdb": {
+    "byTipo": {
+      "ERITROPOYETINA": {
+        "codes": [
+          "434333",
+          "434334",
+          "434335",
+          "434336",
+          "BNCRT",
+          "EPO",
+          "EPO1",
+          "EPO10",
+          "EPO2",
+          "EPO3",
+          "EPO4",
+          "EPO5",
+          "EPO6",
+          "EPO7",
+          "EPO8",
+          "EPO9",
+          "NESP",
+          "Z_EPO"
+        ]
+      }
+    },
+    "byCode": {
+      "NESP": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP"
+      },
+      "BNCRT": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT"
+      },
+      "EPO": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX"
+      },
+      "EPO10": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPO 10.000"
+      },
+      "EPO1": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPO 1000"
+      },
+      "EPO2": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPO 2000"
+      },
+      "EPO3": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPO 3000"
+      },
+      "EPO4": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPO 4000"
+      },
+      "EPO5": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPO 5000"
+      },
+      "EPO6": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPO 6000"
+      },
+      "EPO7": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPO 7000"
+      },
+      "EPO8": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPO 8000"
+      },
+      "EPO9": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPO 9000"
+      },
+      "Z_EPO": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPOPEN 2000"
+      },
+      "434334": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPREX 1000 UI"
+      },
+      "434333": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPREX 2000 UI"
+      },
+      "434336": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPREX 3000 UI"
+      },
+      "434335": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPREX 4000 UI"
+      }
+    }
+  },
+  "/NFS/restores/NF6_LosOlmos.gdb": {
+    "byTipo": {
+      "ERITROPOYETINA": {
+        "codes": [
+          "434333",
+          "B_inoc",
+          "EPO",
+          "EPO1",
+          "EPO10",
+          "EPO2",
+          "EPO3",
+          "EPO4",
+          "EPO5",
+          "EPO6",
+          "EPO7",
+          "EPO8",
+          "NESP",
+          "NESP 12",
+          "NESP1",
+          "NESP10",
+          "NESP2",
+          "NESP3",
+          "NESP4",
+          "NESP5",
+          "NESP50",
+          "NESP6",
+          "Z_EPO"
+        ]
+      }
+    },
+    "byCode": {
+      "NESP": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP"
+      },
+      "NESP1": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 10"
+      },
+      "NESP10": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 100"
+      },
+      "NESP 12": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 120"
+      },
+      "NESP2": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 20"
+      },
+      "NESP3": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 30"
+      },
+      "NESP4": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 40"
+      },
+      "NESP50": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 50"
+      },
+      "NESP6": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 60"
+      },
+      "NESP5": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 80"
+      },
+      "B_inoc": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT"
+      },
+      "EPO": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO"
+      },
+      "EPO10": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 10.000"
+      },
+      "EPO1": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 1000"
+      },
+      "EPO2": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 2000"
+      },
+      "EPO3": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 3000"
+      },
+      "EPO4": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 4000"
+      },
+      "EPO5": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 5000"
+      },
+      "EPO6": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 6000"
+      },
+      "EPO7": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 7000"
+      },
+      "EPO8": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 8000"
+      },
+      "Z_EPO": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPOPEN 2000"
+      },
+      "434333": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX 2000 UI"
+      }
+    }
+  },
+  "/NFS/restores/NF6_LosLlanos.gdb": {
+    "byTipo": {
+      "ERITROPOYETINA": {
+        "codes": [
+          "ARAN",
+          "bino",
+          "DARBOPO",
+          "EPO",
+          "EPO1",
+          "EPO10",
+          "EPO2",
+          "EPO3",
+          "EPO4",
+          "EPO5",
+          "EPO6",
+          "EPO7",
+          "EPO8",
+          "EPO9"
+        ]
+      }
+    },
+    "byCode": {
+      "ARAN": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP"
+      },
+      "bino": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT"
+      },
+      "DARBOPO": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "DARBOPOETINA"
+      },
+      "EPO": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO"
+      },
+      "EPO10": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 10.000"
+      },
+      "EPO1": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 1000"
+      },
+      "EPO2": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 2000"
+      },
+      "EPO3": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 3000"
+      },
+      "EPO4": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 4000"
+      },
+      "EPO5": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 5000"
+      },
+      "EPO6": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 6000"
+      },
+      "EPO7": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 7000"
+      },
+      "EPO8": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 8000"
+      },
+      "EPO9": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 9000"
+      }
+    }
+  },
+  "/NFS/restores/NF6_ElCastanar.gdb": {
+    "byTipo": {
+      "ERITROPOYETINA": {
+        "codes": [
+          "000000",
+          "434333",
+          "aran0",
+          "aran1",
+          "ARAN15",
+          "ARAN2",
+          "aran4",
+          "aran5",
+          "ARAN6",
+          "ARAN8",
+          "B_in",
+          "EPO1",
+          "EPO10",
+          "EPO2",
+          "EPO3",
+          "EPO4",
+          "EPO5",
+          "EPO6",
+          "EPO7",
+          "EPO8",
+          "ret2000"
+        ]
+      }
+    },
+    "byCode": {
+      "aran0": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP"
+      },
+      "aran1": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 10"
+      },
+      "ARAN15": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 150"
+      },
+      "ARAN2": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 20"
+      },
+      "aran4": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 40"
+      },
+      "aran5": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 50"
+      },
+      "ARAN6": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 60"
+      },
+      "ARAN8": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 80"
+      },
+      "B_in": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Binocrit"
+      },
+      "EPO10": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 10.000"
+      },
+      "EPO1": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 1000"
+      },
+      "EPO2": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 2000"
+      },
+      "EPO3": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 3000"
+      },
+      "EPO4": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 4000"
+      },
+      "EPO5": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 5000"
+      },
+      "EPO6": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 6000"
+      },
+      "EPO7": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 7000"
+      },
+      "EPO8": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 8000"
+      },
+      "434333": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX"
+      },
+      "000000": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Neorecormon"
+      },
+      "ret2000": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "retacrit 2000"
+      }
+    }
+  },
+  "/NFS/restores/NF6_Getafe.gdb": {
+    "byTipo": {
+      "ERITROPOYETINA": {
+        "codes": [
+          "ARA10",
+          "ARA20",
+          "ARAN10",
+          "BINOC1",
+          "BINOC4",
+          "Darbe",
+          "EPO",
+          "EPREX",
+          "RET"
+        ]
+      }
+    },
+    "byCode": {
+      "ARAN10": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP"
+      },
+      "ARA10": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 10"
+      },
+      "ARA20": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 20"
+      },
+      "BINOC1": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT"
+      },
+      "BINOC4": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT 4000"
+      },
+      "Darbe": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Darbepoetina"
+      },
+      "EPO": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO"
+      },
+      "EPREX": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX"
+      },
+      "RET": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "RETACRIT"
+      }
+    }
+  },
+  "/NFS/restores/NF6_FJD.gdb": {
+    "byTipo": {
+      "ERITROPOYETINA": {
+        "codes": [
+          "434335",
+          "ar",
+          "bin",
+          "EPO",
+          "EPO1",
+          "EPO10",
+          "EPO2",
+          "EPO3",
+          "EPO4",
+          "EPO5",
+          "EPO6",
+          "EPO8",
+          "NESP20",
+          "NESP30",
+          "NESP60"
+        ]
+      }
+    },
+    "byCode": {
+      "ar": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP"
+      },
+      "NESP20": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP"
+      },
+      "NESP30": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 30"
+      },
+      "NESP60": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 60"
+      },
+      "bin": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT"
+      },
+      "EPO": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX"
+      },
+      "EPO10": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPO 10.000"
+      },
+      "EPO1": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPO 1000"
+      },
+      "EPO2": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPO 2000"
+      },
+      "EPO3": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPO 3000"
+      },
+      "EPO4": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPO 4000"
+      },
+      "EPO5": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPO 5000"
+      },
+      "EPO6": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPO 6000"
+      },
+      "EPO8": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPO 8000"
+      },
+      "434335": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Z-EPREX 4000 UI"
+      }
+    }
+  },
+  "/NFS/restores/NF6_HRJC.gdb": {
+    "byTipo": {
+      "ERITROPOYETINA": {
+        "codes": [
+          "33455",
+          "434337",
+          "ARAN",
+          "EPO",
+          "EPO1",
+          "EPO10",
+          "EPO2",
+          "EPO3",
+          "EPO4",
+          "EPO5",
+          "EPO6",
+          "EPO7",
+          "EPO8",
+          "EPO9"
+        ]
+      }
+    },
+    "byCode": {
+      "ARAN": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP"
+      },
+      "EPO": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO"
+      },
+      "EPO10": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 10.000"
+      },
+      "EPO1": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 1000"
+      },
+      "33455": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 10000"
+      },
+      "434337": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 10000"
+      },
+      "EPO2": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 2000"
+      },
+      "EPO3": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 3000"
+      },
+      "EPO4": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 4000"
+      },
+      "EPO5": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 5000"
+      },
+      "EPO6": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 6000"
+      },
+      "EPO7": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 7000"
+      },
+      "EPO8": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 8000"
+      },
+      "EPO9": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 9000"
+      }
+    }
+  },
+  "/NFS/restores/NF6_InfantaElena.gdb": {
+    "byTipo": {
+      "ERITROPOYETINA": {
+        "codes": [
+          "ara",
+          "BIN",
+          "BIN3",
+          "binocr",
+          "EPO",
+          "EPO1",
+          "EPO10",
+          "EPO3",
+          "EPO4",
+          "EPO5",
+          "EPO6",
+          "EPO8",
+          "NESP 30",
+          "NESP 40",
+          "NESP 50",
+          "NESP 60",
+          "NESP150",
+          "Z-NESP"
+        ]
+      }
+    },
+    "byCode": {
+      "ara": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP"
+      },
+      "BIN": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT"
+      },
+      "BIN3": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT 3000"
+      },
+      "binocr": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT 5000"
+      },
+      "NESP150": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "DARBEPOETINA 150"
+      },
+      "Z-NESP": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "DARBEPOETINA 20"
+      },
+      "NESP 30": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "DARBEPOETINA 30"
+      },
+      "NESP 40": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "DARBEPOETINA 40"
+      },
+      "NESP 50": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "DARBEPOETINA 50"
+      },
+      "NESP 60": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "DARBEPOETINA 60"
+      },
+      "EPO": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO"
+      },
+      "EPO10": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 10.000"
+      },
+      "EPO1": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 1000"
+      },
+      "EPO3": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 3000"
+      },
+      "EPO4": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 4000"
+      },
+      "EPO5": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 5000"
+      },
+      "EPO6": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 6000"
+      },
+      "EPO8": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 8000"
+      }
+    }
+  },
+  "/NFS/restores/NF6_LasEncinas.gdb": {
+    "byTipo": {
+      "ERITROPOYETINA": {
+        "codes": [
+          "760552",
+          "ARAN 0",
+          "ARAN10",
+          "ARAN100",
+          "ARAN120",
+          "aran2",
+          "aran4",
+          "ARAN5",
+          "ARAN6",
+          "ARAN8",
+          "B_in",
+          "EPO1",
+          "EPO10",
+          "EPO15",
+          "EPO2",
+          "EPO3",
+          "EPO4",
+          "EPO5",
+          "EPO6",
+          "EPO7",
+          "EPO8",
+          "EPREX",
+          "Z- Epo",
+          "Z_EPO"
+        ]
+      }
+    },
+    "byCode": {
+      "ARAN 0": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Aranesp"
+      },
+      "ARAN10": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Aranesp 10"
+      },
+      "ARAN100": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Aranesp 100"
+      },
+      "ARAN120": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Aranesp 120"
+      },
+      "aran2": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Aranesp 20"
+      },
+      "aran4": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Aranesp 40"
+      },
+      "ARAN5": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Aranesp 50"
+      },
+      "ARAN6": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Aranesp 60"
+      },
+      "ARAN8": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Aranesp 80"
+      },
+      "B_in": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Binocrit (Epoetina Alfa)"
+      },
+      "EPO10": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 10.000"
+      },
+      "EPO1": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 1000"
+      },
+      "EPO15": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 15000"
+      },
+      "EPO2": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 2000"
+      },
+      "EPO3": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 3000"
+      },
+      "EPO4": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 4000"
+      },
+      "EPO5": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 5000"
+      },
+      "EPO6": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 6000"
+      },
+      "EPO7": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 7000"
+      },
+      "EPO8": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 8000"
+      },
+      "Z_EPO": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Epopen 2000"
+      },
+      "EPREX": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX"
+      },
+      "760552": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Neorecormon"
+      },
+      "Z- Epo": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "Retacrit"
+      }
+    }
+  },
+  "/NFS/restores/NF6_LosLlanos3.gdb": {
+    "byTipo": {
+      "ERITROPOYETINA": {
+        "codes": [
+          "ARAN",
+          "bino",
+          "DARBOPO",
+          "EPO",
+          "EPO1",
+          "EPO10",
+          "EPO2",
+          "EPO3",
+          "EPO4",
+          "EPO5",
+          "EPO6",
+          "EPO7",
+          "EPO8",
+          "EPO9"
+        ]
+      }
+    },
+    "byCode": {
+      "ARAN": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP"
+      },
+      "bino": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT"
+      },
+      "DARBOPO": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "DARBOPOETINA"
+      },
+      "EPO": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO"
+      },
+      "EPO10": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 10.000"
+      },
+      "EPO1": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 1000"
+      },
+      "EPO2": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 2000"
+      },
+      "EPO3": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 3000"
+      },
+      "EPO4": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 4000"
+      },
+      "EPO5": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 5000"
+      },
+      "EPO6": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 6000"
+      },
+      "EPO7": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 7000"
+      },
+      "EPO8": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 8000"
+      },
+      "EPO9": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO 9000"
+      }
+    }
+  },
+  "/NFS/restores/NF6_VILLALBA.gdb": {
+    "byTipo": {
+      "ERITROPOYETINA": {
+        "codes": [
+          "Ar",
+          "ARA",
+          "ARA20",
+          "ARA30",
+          "BINOC1",
+          "BINOC3",
+          "BINOC4",
+          "BINOC5",
+          "BINOC6",
+          "EP8",
+          "EPO",
+          "EPREX",
+          "ERI2000",
+          "NEOR5",
+          "rt"
+        ]
+      }
+    },
+    "byCode": {
+      "Ar": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP"
+      },
+      "ARA20": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 20"
+      },
+      "ARA30": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 30"
+      },
+      "ARA": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 80"
+      },
+      "BINOC1": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT"
+      },
+      "BINOC3": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT 3000"
+      },
+      "BINOC4": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT 4000"
+      },
+      "BINOC5": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT 5000"
+      },
+      "BINOC6": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT 6000"
+      },
+      "EPO": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO"
+      },
+      "EPREX": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX"
+      },
+      "ERI2000": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX 2000"
+      },
+      "EP8": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX 8000"
+      },
+      "NEOR5": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "NEORECORMON 5000"
+      },
+      "rt": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "RETACRIT"
+      }
+    }
+  },
+  "/NFS/restores/NF6_LosPinos.gdb": {
+    "byTipo": {
+      "ERITROPOYETINA": {
+        "codes": [
+          "Biosim",
+          "DAR",
+          "DAR 10",
+          "DAR 100",
+          "DAR 150",
+          "DAR 20",
+          "DAR 30",
+          "DAR 40",
+          "DAR 50",
+          "DAR 60",
+          "DAR 80",
+          "EPO",
+          "EPO0",
+          "EPO1",
+          "EPO10",
+          "EPO2",
+          "EPO3",
+          "EPO4",
+          "EPO5",
+          "EPO6",
+          "EPO8",
+          "EPOP",
+          "MCR",
+          "RETA"
+        ]
+      }
+    },
+    "byCode": {
+      "DAR": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP"
+      },
+      "DAR 10": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 10"
+      },
+      "DAR 100": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 100"
+      },
+      "DAR 150": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 150"
+      },
+      "DAR 20": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 20"
+      },
+      "DAR 30": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 30"
+      },
+      "DAR 40": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 40"
+      },
+      "DAR 50": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 50"
+      },
+      "DAR 60": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 60"
+      },
+      "DAR 80": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 80"
+      },
+      "Biosim": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT"
+      },
+      "EPO0": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO"
+      },
+      "EPOP": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPOPEN"
+      },
+      "EPO": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX"
+      },
+      "EPO10": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX 10.000"
+      },
+      "EPO1": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX 1000"
+      },
+      "EPO2": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX 2000"
+      },
+      "EPO3": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX 3000"
+      },
+      "EPO4": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX 4000"
+      },
+      "EPO5": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX 5000"
+      },
+      "EPO6": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX 6000"
+      },
+      "EPO8": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX 8000"
+      },
+      "MCR": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "MIRCERA"
+      },
+      "RETA": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "RETACRIT"
+      }
+    }
+  },
+  "/NFS/restores/NF6_LosLauros.gdb": {
+    "byTipo": {
+      "ERITROPOYETINA": {
+        "codes": [
+          "ARA",
+          "ARA 60",
+          "ARA10",
+          "ARA100",
+          "ARA15",
+          "ARA150",
+          "ARA20",
+          "ARA30",
+          "ARA40",
+          "ARA50",
+          "BINOC1",
+          "BINOC10",
+          "BINOC2",
+          "BINOC3",
+          "BINOC4",
+          "BINOC5",
+          "BINOC6",
+          "BINOC8",
+          "CERA",
+          "EP6",
+          "EP8",
+          "EPO",
+          "EPREX",
+          "ERI1000",
+          "ERI2000",
+          "ERI3000",
+          "ERI4000",
+          "ERI5000",
+          "NEOR2",
+          "NEOR3",
+          "NEOR4",
+          "NEOR5",
+          "RET"
+        ]
+      }
+    },
+    "byCode": {
+      "ARA10": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 10"
+      },
+      "ARA100": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 100"
+      },
+      "ARA15": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 15"
+      },
+      "ARA150": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 150"
+      },
+      "ARA20": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 20"
+      },
+      "ARA30": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 30"
+      },
+      "ARA40": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 40"
+      },
+      "ARA50": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 50"
+      },
+      "ARA 60": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 60"
+      },
+      "ARA": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "ARANESP 80"
+      },
+      "BINOC1": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT"
+      },
+      "BINOC10": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT 10000"
+      },
+      "BINOC2": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT 2000"
+      },
+      "BINOC3": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT 3000"
+      },
+      "BINOC4": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT 4000"
+      },
+      "BINOC5": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT 5000"
+      },
+      "BINOC6": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT 6000"
+      },
+      "BINOC8": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "BINOCRIT 8000"
+      },
+      "CERA": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "CERA RO0503821"
+      },
+      "EPO": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPO"
+      },
+      "EPREX": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX"
+      },
+      "ERI1000": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX 1000"
+      },
+      "ERI2000": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX 2000"
+      },
+      "ERI3000": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX 3000"
+      },
+      "ERI4000": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX 4000"
+      },
+      "ERI5000": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX 5000"
+      },
+      "EP6": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX 6000"
+      },
+      "EP8": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "EPREX 8000"
+      },
+      "NEOR5": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "NEORECORMON 5000"
+      },
+      "NEOR2": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "NEORECORMON 2000"
+      },
+      "NEOR3": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "NEORECORMON 3000"
+      },
+      "NEOR4": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "NEORECORMON 4000"
+      },
+      "RET": {
+        "tipo": "ERITROPOYETINA",
+        "nombre": "RETACRIT"
+      }
+    }
+  }
+}
