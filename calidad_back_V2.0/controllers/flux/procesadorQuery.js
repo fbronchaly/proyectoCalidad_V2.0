@@ -4,12 +4,10 @@ const path = require('path');
 const catalogosMedicamentosCAPTORES = require('../../documentacion/CatalogosMedicamentos_QUELANTES_FOSFORO_por_centro.json');
 const catalogosTratamientosCAPTORES = require('../../documentacion/CatalogosTratamientos_CAPTORES_FOSFORO_por_centro.json');
 const catalogosMedicamentosCALCIVITD = require('../../documentacion/CatalogosMedicamentos.index.json');
-const catalogosTratamientosCALCIVITD = require('../../documentacion/CatalogosTratamientos_CAPTORES_FOSFORO_por_centro.json');
-const catalogoVitaminaDCalcimimeticos = require('../../documentacion/Catalogo_VitaminaD_Calcimimeticos_por_centro.json');
-const catalogosTratamientosEPO = require('../../documentacion/CatalogosTratamientos_ERITo_EPO_por_centro.json');
 
 // Rutas a archivos de configuración
 const RUTA_ACCESOS_VASCULARES = path.resolve(__dirname, '../../documentacion/accesos_vasculares.json');
+const RUTA_COMPACTADOS = path.resolve(__dirname, '../../documentacion/compactados'); // Nueva ruta
 const groupedTests = require('../../comorbilidad/transformed_grouped_tests.json'); 
 
 // Cache en memoria
@@ -69,166 +67,98 @@ function getMapaAccesosVasculares() {
 }
 
 /**
- * Lógica corregida para leer la estructura real de los JSONs (Objetos, no Arrays)
+ * HELPER GENÉRICO PARA LEER DE COMPACTADOS
  */
-function obtenerCodigosCaptoresPorCentro(nombreCentro) {
-  const centroBuscado = nombreCentro.toLowerCase(); // ej: 'losolmos'
+function obtenerCodigosDeCompactado(nombreCentro, categorias) {
+  // Limpieza del nombre base (ej: NF6_DB1.gdb -> DB1)
+  let baseData = path.basename(String(nombreCentro));          
+  baseData = baseData.replace(/^NF6_/i, '').replace(/\.gdb$/i, '').replace(/\.json$/i, ''); 
 
-  // Helper para buscar el nodo del centro en un objeto mapa {ruta: data}
-  // Normaliza las rutas "/NFS/.../NF6_LosOlmos.gdb" a "losolmos" para comparar"
-  const encontrarNodoCentro = (mapaCentros) => {
-    if (!mapaCentros) return null;
-    const key = Object.keys(mapaCentros).find(k => {
-      // Ignoramos claves que no sean rutas (ej: "version", "source_file")
-      if (!k.includes('/')) return false; 
-      
-      const nombreKey = path.basename(k)
-        .replace(/^NF6_/i, '')
-        .replace(/\.gdb$/i, '')
-        .toLowerCase();
-      
-      return nombreKey === centroBuscado;
-    });
-    return key ? mapaCentros[key] : null;
-  };
+  const nombreFichero = `${baseData}_compacted.json`;
+  const rutaCompleta = path.join(RUTA_COMPACTADOS, nombreFichero);
+  let codigos = [];
 
-  const codigos = [];
-
-  // Función interna para extraer códigos de un nodo 'byTipo' buscando palabras clave
-  const extraerDeByTipo = (byTipoObj) => {
-    if (!byTipoObj) return;
-    const claves = Object.keys(byTipoObj);
-    
-    // Palabras clave para identificar captores de fósforo en los nombres de categoría (ej: "QUELANTES DEL FSFORO")
-    const keywords = ['FOSFORO', 'FSFORO', 'PHOS', 'CAPTOR', 'QUELANTE'];
-    
-    const clavesInteres = claves.filter(k => {
-        const upper = k.toUpperCase();
-        return keywords.some(w => upper.includes(w));
-    });
-
-    clavesInteres.forEach(k => {
-        const entry = byTipoObj[k];
-        if (entry && Array.isArray(entry.codes)) {
-            codigos.push(...entry.codes);
-        }
-    });
-  };
-
-  // 1. Medicamentos: Estructura { centros: { "/ruta": ... } }
-  const mapMed = catalogosMedicamentosCAPTORES.centros || {};
-  const nodoMed = encontrarNodoCentro(mapMed);
-  if (nodoMed && nodoMed.byTipo) {
-      extraerDeByTipo(nodoMed.byTipo);
+  if (fs.existsSync(rutaCompleta)) {
+    try {
+        const contenido = fs.readFileSync(rutaCompleta, 'utf8');
+        const data = JSON.parse(contenido);
+        // categorias puede ser string 'EPO' o array ['VITAMINA_D', 'CALCIMIMETICOS']
+        const cats = Array.isArray(categorias) ? categorias : [categorias];
+        
+        cats.forEach(cat => {
+            if (data[cat] && Array.isArray(data[cat])) {
+                 data[cat].forEach(grupo => {
+                     if (grupo.CODIGOS && Array.isArray(grupo.CODIGOS)) {
+                         codigos = codigos.concat(grupo.CODIGOS);
+                     }
+                 });
+            }
+        });
+    } catch (err) {
+        console.error(`Error leyendo compactado ${baseData} para ${categorias}:`, err);
+    }
+  } else {
+    // Si no existe compactado, quizás queramos fallar silenciosamente o loguear warning solo una vez.
+    // console.warn(`Compactado no encontrado: ${rutaCompleta}`);
   }
-
-  // 2. Tratamientos: Estructura { "/ruta": ... } (Directo en raíz)
-  const nodoTrat = encontrarNodoCentro(catalogosTratamientosCAPTORES);
-  if (nodoTrat && nodoTrat.byTipo) {
-      extraerDeByTipo(nodoTrat.byTipo);
-  }
-
   return [...new Set(codigos)];
 }
 
 /**
- * Lógica para obtener códigos de Vitamina D y Calcimiméticos
+ * Obtiene códigos de Captores clasificados (Cálcicos vs No Cálcicos)
+ * @param {string} nombreCentro 
+ * @param {string} tipo Filtro: 'CALCICOS', 'NO_CALCICOS', 'TODOS'
  */
-function obtenerCodigosVitDCalcimimPorCentro(nombreCentro) {
-  const centroBuscado = nombreCentro.toLowerCase(); 
-
-  const encontrarNodoCentro = (mapaCentros) => {
-    if (!mapaCentros) return null;
-    const key = Object.keys(mapaCentros).find(k => {
-      if (!k.includes('/')) return false; 
-      const nombreKey = path.basename(k)
-        .replace(/^NF6_/i, '')
-        .replace(/\.gdb$/i, '')
-        .toLowerCase();
-      return nombreKey === centroBuscado;
-    });
-    return key ? mapaCentros[key] : null;
-  };
-
-  const codigos = [];
-
-  const extraerDeByTipo = (byTipoObj) => {
-    if (!byTipoObj) return;
-    const claves = Object.keys(byTipoObj);
-    
-    // Palabras clave para Vitamina D (oral/IV) y Calcimiméticos
-    // Incluyo marcas comunes por si acaso aparecen como categoría
-    const keywords = ['VITAMINA D', 'CALCIMIM', 'CALCITRIOL', 'CINACALCET', 'PARICALCITOL', 'ETELCALCETIDA', 'ZEMPLAR', 'MIMPARA', 'PARSABIV', 'ROCALTROL'];
-    
-    const clavesInteres = claves.filter(k => {
-        const upper = k.toUpperCase();
-        return keywords.some(w => upper.includes(w));
-    });
-
-    clavesInteres.forEach(k => {
-        const entry = byTipoObj[k];
-        if (entry && Array.isArray(entry.codes)) {
-            codigos.push(...entry.codes);
-        }
-    });
-  };
-
-  // 1. Medicamentos
-  const mapMed = catalogosMedicamentosCALCIVITD.centros || {};
-  const nodoMed = encontrarNodoCentro(mapMed);
-  if (nodoMed && nodoMed.byTipo) {
-      extraerDeByTipo(nodoMed.byTipo);
+function obtenerCodigosCaptoresClasificados(nombreCentro, tipo = 'TODOS') {
+  if (tipo === 'CALCICOS') {
+    return obtenerCodigosDeCompactado(nombreCentro, 'CAPTORES_CALCICOS');
+  } else if (tipo === 'NO_CALCICOS') {
+    return obtenerCodigosDeCompactado(nombreCentro, 'CAPTORES_NO_CALCICOS'); 
+  } else {
+    // TODOS
+    return obtenerCodigosDeCompactado(nombreCentro, ['CAPTORES_CALCICOS', 'CAPTORES_NO_CALCICOS']);
   }
-
-  // 2. Tratamientos
-  const nodoTrat = encontrarNodoCentro(catalogosTratamientosCALCIVITD);
-  if (nodoTrat && nodoTrat.byTipo) {
-      extraerDeByTipo(nodoTrat.byTipo);
-  }
-
-  return [...new Set(codigos)];
 }
 
+/**
+ * Lógica corregida para leer la estructura real de los JSONs (Objetos, no Arrays)
+ * Mantenemos la original por compatibilidad, pero internamente ahora llama a la clasificada con 'TODOS'
+ */
+function obtenerCodigosCaptoresPorCentro(nombreCentro) {
+  return obtenerCodigosCaptoresClasificados(nombreCentro, 'TODOS');
+}
+
+/**
+ * Lógica para obtener códigos de Vitamina D y Calcimiméticos (USANDO COMPACTADOS)
+ */
+function obtenerCodigosVitDCalcimimPorCentro(nombreCentro) {
+  return obtenerCodigosDeCompactado(nombreCentro, ['VITAMINA_D', 'CALCIMIMETICOS']);
+}
+
+/**
+ * Lógica para obtener códigos de SÓLO Vitamina D (USANDO COMPACTADOS)
+ */
 function obtenerCodigosVitaminaDPorCentro(nombreCentro) {
-  const centroBuscado = nombreCentro.toLowerCase(); 
+  return obtenerCodigosDeCompactado(nombreCentro, 'VITAMINA_D');
+}
 
-  // Helper interno para buscar nodo
-  const encontrarNodoCentro = (mapaCentros) => {
-    if (!mapaCentros) return null;
-    const key = Object.keys(mapaCentros).find(k => {
-      if (!k.includes('/')) return false; 
-      const nombreKey = path.basename(k)
-        .replace(/^NF6_/i, '')
-        .replace(/\.gdb$/i, '')
-        .toLowerCase();
-      return nombreKey === centroBuscado;
-    });
-    return key ? mapaCentros[key] : null;
-  };
+/**
+ * Lógica para obtener códigos de SÓLO Calcimiméticos (USANDO COMPACTADOS)
+ */
+function obtenerCodigosCalcimimeticosPorCentro(nombreCentro) {
+  return obtenerCodigosDeCompactado(nombreCentro, 'CALCIMIMETICOS');
+}
 
-  const codigos = [];
-
-  // Usamos el catálogo específico cargado
-  const nodo = encontrarNodoCentro(catalogoVitaminaDCalcimimeticos);
-  
-  if (nodo && nodo.byTipo) {
-     const claves = Object.keys(nodo.byTipo);
-     // Buscar keys que contengan "VITAMINA D"
-     const clavesVitD = claves.filter(k => k.toUpperCase().includes('VITAMINA D'));
-
-     clavesVitD.forEach(k => {
-        const entry = nodo.byTipo[k];
-        if (entry && Array.isArray(entry.codes)) {
-            codigos.push(...entry.codes);
-        }
-     });
-  }
-
-  return [...new Set(codigos)];
+/**
+ * Lógica para obtener códigos de Eritropoyetina (EPO) (USANDO COMPACTADOS)
+ */
+function obtenerCodigosEpoPorCentro(nombreCentro) {
+  return obtenerCodigosDeCompactado(nombreCentro, 'EPO');
 }
 
 function aplicarCodigosCaptoresPorBase(query, config) {
-  if (!query || !query.includes(':CODIGOS_CAPTORES')) return query;
+  // Soporte para etiqueta antigua (:CODIGOS_CAPTORES) y nueva (<LISTA_CAPTORES_FOSFORO>)
+  if (!query || (!query.includes(':CODIGOS_CAPTORES') && !query.includes('<LISTA_CAPTORES_FOSFORO>'))) return query;
 
   // Extraer nombre limpio del centro a partir de config
   let baseData = config.nombre || config.database || '';
@@ -244,18 +174,50 @@ function aplicarCodigosCaptoresPorBase(query, config) {
       .filter(Boolean)
   )];
   
-  // (opcional pero muy útil para confirmar)
-  console.log('🧩 CAPTORES NORMALIZADOS:', codigosNorm);
-  
   const listaSQL = codigosNorm.map(c => `'${c}'`).join(',');
+  const replacement = listaSQL || "''";
 
-
-   // OJO: si está vacío, ahora lo dejamos visible (para que lo detectes rápido)
    if (!listaSQL) {
-    console.warn(`⚠️ CAPTORES VACÍO para ${baseData}. Revisa la clave del centro en los JSON de catálogos.`);
+    console.warn(`⚠️ CAPTORES VACÍO para ${baseData}.`);
   }
   
-  return query.replace(/:CODIGOS_CAPTORES/g, listaSQL || "''");
+  let result = query.replace(/:CODIGOS_CAPTORES/g, replacement);
+  result = result.replace(/<LISTA_CAPTORES_FOSFORO>/g, replacement);
+  return result;
+}
+
+function aplicarCodigosCaptoresCalcicosPorBase(query, config) {
+  if (!query || !query.includes('<LISTA_CAPTORES_CALCICOS>')) return query;
+
+  let baseData = config.nombre || config.database || '';
+  baseData = path.basename(String(baseData));          
+  baseData = baseData.replace(/^NF6_/i, '').replace(/\.gdb$/i, ''); 
+
+  const codigosRaw = obtenerCodigosCaptoresClasificados(baseData, 'CALCICOS');
+
+  const codigosNorm = [...new Set(codigosRaw.map(c => String(c).trim().toUpperCase()).filter(Boolean))];
+  const listaSQL = codigosNorm.map(c => `'${c}'`).join(',');
+
+  if (!listaSQL) console.warn(`⚠️ CAPTORES CÁLCICOS VACÍO para ${baseData}.`);
+
+  return query.replace(/<LISTA_CAPTORES_CALCICOS>/g, listaSQL || "''");
+}
+
+function aplicarCodigosCaptoresNoCalcicosPorBase(query, config) {
+  if (!query || !query.includes('<LISTA_CAPTORES_NO_CALCICOS>')) return query;
+
+  let baseData = config.nombre || config.database || '';
+  baseData = path.basename(String(baseData));          
+  baseData = baseData.replace(/^NF6_/i, '').replace(/\.gdb$/i, ''); 
+
+  const codigosRaw = obtenerCodigosCaptoresClasificados(baseData, 'NO_CALCICOS');
+
+  const codigosNorm = [...new Set(codigosRaw.map(c => String(c).trim().toUpperCase()).filter(Boolean))];
+  const listaSQL = codigosNorm.map(c => `'${c}'`).join(',');
+
+  if (!listaSQL) console.warn(`⚠️ CAPTORES NO CÁLCICOS VACÍO para ${baseData}.`);
+
+  return query.replace(/<LISTA_CAPTORES_NO_CALCICOS>/g, listaSQL || "''");
 }
 
 function aplicarCodigosVitDCalcimimPorBase(query, config) {
@@ -309,51 +271,29 @@ function aplicarCodigosVitaminaDPorBase(query, config) {
   return query.replace(/:CODIGOS_VITAMINA_D/g, listaSQL || "''");
 }
 
-/**
- * Lógica para obtener códigos de Eritropoyetina (EPO)
- */
-function obtenerCodigosEpoPorCentro(nombreCentro) {
-  const centroBuscado = nombreCentro.toLowerCase(); 
+function aplicarCodigosCalcimimeticosPorBase(query, config) {
+  if (!query || !query.includes(':CODIGOS_CALCIMIMETICOS')) return query;
 
-  // Helper interno para buscar nodo (Reutilizando patrón existente)
-  const encontrarNodoCentro = (mapaCentros) => {
-    if (!mapaCentros) return null;
-    const key = Object.keys(mapaCentros).find(k => {
-      // Ignoramos claves que no sean rutas
-      if (!k.includes('/')) return false; 
-      
-      const nombreKey = path.basename(k)
-        .replace(/^NF6_/i, '')
-        .replace(/\.gdb$/i, '')
-        .toLowerCase();
-      
-      return nombreKey === centroBuscado;
-    });
-    return key ? mapaCentros[key] : null;
-  };
+  let baseData = config.nombre || config.database || '';
+  baseData = path.basename(String(baseData));          
+  baseData = baseData.replace(/^NF6_/i, '').replace(/\.gdb$/i, ''); 
 
-  const codigos = [];
-  const nodo = encontrarNodoCentro(catalogosTratamientosEPO);
+  const codigosRaw = obtenerCodigosCalcimimeticosPorCentro(baseData);
 
-  if (nodo && nodo.byTipo) {
-    // Buscamos categorías relacionadas con Eritropoyetina
-    const claves = Object.keys(nodo.byTipo);
-    const keywords = ['ERITROPOYETINA', 'EPO', 'ARANESP', 'MIRCERA'];
-
-    const clavesInteres = claves.filter(k => {
-        const upper = k.toUpperCase();
-        return keywords.some(w => upper.includes(w));
-    });
-
-    clavesInteres.forEach(k => {
-        const entry = nodo.byTipo[k];
-        if (entry && Array.isArray(entry.codes)) {
-            codigos.push(...entry.codes);
-        }
-    });
+  // NORMALIZACIÓN
+  const codigosNorm = [...new Set(
+    codigosRaw
+      .map(c => String(c).trim().toUpperCase())
+      .filter(Boolean)
+  )];
+  
+  const listaSQL = codigosNorm.map(c => `'${c}'`).join(',');
+  
+  if (!listaSQL) {
+    console.warn(`⚠️ CALCIMIMETICOS VACÍO para ${baseData}.`);
   }
-
-  return [...new Set(codigos)];
+  
+  return query.replace(/:CODIGOS_CALCIMIMETICOS/g, listaSQL || "''");
 }
 
 function aplicarCodigosEpoPorCentro(query, config) {
@@ -408,7 +348,7 @@ function aplicarCodigosFavAutologaPorBase(query, config) {
   const accesos = mapa[db] || mapa[fileKey] || mapa[fileNoExtKey] || [];
 
   const codigos = accesos
-        .filter(a => a && a.ES_CATETER === 2 && a.CODIGO != null)
+        .filter(a => a && a.ES_CATETER === 2 && !String(a.TIPOACCESO).toUpperCase().includes('PROTESIS') && a.CODIGO != null)
         .map(a => a.CODIGO);
 
   return query.replace(/<CODIGOS_FAV_AUTOLOGA>/gi, codigos.length ? codigos.join(',') : '-99999');
@@ -422,8 +362,14 @@ function aplicarCodigosProtesisPorBase(query, config) {
   const fileNoExtKey = fileKey.replace(/\.gdb$/i, '');
   const accesos = mapa[db] || mapa[fileKey] || mapa[fileNoExtKey] || [];
 
+  // Prótesis: ES_CATETER 2 o 3, pero especificando que es prótesis
+  // A veces ES_CATETER=3 es prótesis directo, pero filtramos por nombre por seguridad
   const codigos = accesos
-      .filter(a => a && a.ES_CATETER === 3 && a.CODIGO != null)
+      .filter(a => a && a.CODIGO != null && (
+          String(a.TIPOACCESO).toUpperCase().includes('PROTESIS') || 
+          String(a.TIPOACCESO).toUpperCase().includes('PTFE') ||
+          String(a.TIPOACCESO).toUpperCase().includes('GRAFT')
+      ))
       .map(a => a.CODIGO);
 
   return query.replace(/<CODIGOS_PROTESIS>/gi, codigos.length ? codigos.join(',') : '-99999');
@@ -438,56 +384,79 @@ function aplicarCodigosCateterPorBase(query, config) {
   const accesos = mapa[db] || mapa[fileKey] || mapa[fileNoExtKey] || [];
 
   const codigos = accesos
-      .filter(a => a && a.ES_CATETER === -1 && a.CODIGO != null)
+      .filter(a => a && a.ES_CATETER === 1 && a.CODIGO != null)
       .map(a => a.CODIGO);
 
   return query.replace(/<CODIGOS_CATETER>/gi, codigos.length ? codigos.join(',') : '-99999');
 }
 
 function aplicarCodTestPorBase(query, config) {
-  if (!query) return query;
-  const baseName = config.database;
-  if (!baseName) return query;
-
   let queryModificada = query;
+  // Busca patrones <CODTEST_NOMBRE_TEST>
   const regex = /<CODTEST_([A-Z0-9_]+)>/gi;
   let match;
+  
+  // Extraer nombre limpio de la base
+  let baseName = config.nombre || config.database || '';
+  baseName = path.basename(String(baseName));          
+  baseName = baseName.replace(/^NF6_/i, '').replace(/\.gdb$/i, ''); 
 
+  // Como exec es stateful con /g, iteramos
+  // Para evitar bucles infinitos si reemplazamos algo que vuelve a matchear (poco probable aquí),
+  // recolectamos los matches primero.
+  const matches = [];
   while ((match = regex.exec(query)) !== null) {
-    const testKey = match[1];
-    const mapaTest = groupedTests[testKey];
-    if (mapaTest && mapaTest[baseName]) {
-      const placeholder = new RegExp(`<CODTEST_${testKey}>`, 'gi');
-      queryModificada = queryModificada.replace(placeholder, String(mapaTest[baseName]));
-    }
+      matches.push({ full: match[0], key: match[1] });
+  }
+
+  for (const m of matches) {
+      const testKey = m.key;
+      const mapaTest = groupedTests[testKey];
+      if (mapaTest && mapaTest[baseName]) {
+          // Reemplazar todas las ocurrencias
+          queryModificada = queryModificada.split(m.full).join(String(mapaTest[baseName]));
+      } else {
+         // Si no encuentro mapeo, dejo un valor imposible o NULL según convenga, o el tag original.
+         // Dejar el tag suele romper el SQL. Ponemos -99999.
+         // queryModificada = queryModificada.split(m.full).join('-99999');
+      }
   }
   return queryModificada;
 }
 
 function aplicarCodigosCateterTunelizadoPorBase(query, config) {
-    if (!query || !query.includes('<CODIGOS_CATETER_TUNELIZADO>')) return query;
-  
-    const mapa = getMapaAccesosVasculares();
-    const db = String(config?.database || '').trim().toLowerCase();
-    const fileKey = path.basename(db);
-    const fileNoExtKey = fileKey.replace(/\.gdb$/i, '');
-    const accesos = mapa[db] || mapa[fileKey] || mapa[fileNoExtKey] || [];
-  
-    // Captura:
-    // - "CATETER TUNELIZADO"
-    // - "CATETER TRANSITORIO TUNELIZADO"
-    const codigos = accesos
-      .filter(a =>
-        a &&
-        a.CODIGO != null &&
-        typeof a.TIPOACCESO === 'string' &&
-        a.TIPOACCESO.includes('CATETER') &&
-        a.TIPOACCESO.includes('TUNELIZADO')
-      )
-      .map(a => a.CODIGO);
-  
-    return query.replace(/<CODIGOS_CATETER_TUNELIZADO>/gi, codigos.length ? codigos.join(',') : '-99999');
+  const PLACEHOLDER = '<CODIGOS_CATETER_TUNELIZADO>';
+  if (!query || !query.includes(PLACEHOLDER)) return query;
+
+  const mapa = getMapaAccesosVasculares();
+  const db = String(config?.database || '').trim().toLowerCase();
+  const fileKey = path.basename(db);
+  const fileNoExtKey = fileKey.replace(/\.gdb$/i, '');
+  const accesos = mapa[db] || mapa[fileKey] || mapa[fileNoExtKey] || [];
+
+  const codigos = accesos
+    .filter(a => {
+      if (!a || a.CODIGO == null || typeof a.TIPOACCESO !== 'string') return false;
+      const tipo = a.TIPOACCESO.toUpperCase();
+      // CORRECCIÓN: Aceptamos TUNELIZADO o PERMANENTE como válidos
+      return tipo.includes('CATETER') && (tipo.includes('TUNELIZADO') || tipo.includes('PERMANENTE'));
+    })
+    .map(a => a.CODIGO);
+
+  const valorFinal = codigos.length ? codigos.join(',') : '-99999';
+
+  // LOGS DE DEPURACIÓN SOLICITADOS
+  console.log(`[PROCESADOR] Placeholder detectado: ${PLACEHOLDER}`);
+  console.log(`[PROCESADOR] Centro: ${fileNoExtKey}`);
+  console.log(`[PROCESADOR] Códigos encontrados: ${codigos.length > 0 ? codigos.join(', ') : 'NO DEFINIDO (0 encontrados)'}`);
+  console.log(`[PROCESADOR] Valor final aplicado: ${valorFinal}`);
+
+  if (codigos.length === 0) {
+    console.error(`[ERROR CONFIG] El placeholder ${PLACEHOLDER} no resolvió códigos para centro '${fileNoExtKey}'. Se aplicará centinela ${valorFinal}. Revisar accesos_vasculares.json`);
   }
+
+  return query.replace(/<CODIGOS_CATETER_TUNELIZADO>/gi, valorFinal);
+}
   
 
 /**
@@ -496,9 +465,12 @@ function aplicarCodigosCateterTunelizadoPorBase(query, config) {
 function procesarQuery(queryOriginal, config) {
   let query = queryOriginal;
   
-  query = aplicarCodigosCaptoresPorBase(query, config); // Nueva integración
+  query = aplicarCodigosCaptoresPorBase(query, config); // Generales
+  query = aplicarCodigosCaptoresCalcicosPorBase(query, config); // Específicos Cálcicos
+  query = aplicarCodigosCaptoresNoCalcicosPorBase(query, config); // Específicos No Cálcicos
   query = aplicarCodigosVitDCalcimimPorBase(query, config); // Vitamina D y Calcimiméticos
   query = aplicarCodigosVitaminaDPorBase(query, config); // SÓLO Vitamina D
+  query = aplicarCodigosCalcimimeticosPorBase(query, config); // SÓLO Calcimiméticos
   query = aplicarCodigosEpoPorCentro(query, config); // Códigos de Eritropoyetina (EPO)
   query = aplicarCodTestPorBase(query, config);
   query = aplicarCodigosCateterTunelizadoPorBase(query, config); 

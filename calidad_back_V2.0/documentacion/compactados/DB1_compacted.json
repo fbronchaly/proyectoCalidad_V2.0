@@ -1,0 +1,219 @@
+{
+  "CENTRO": "DB1",
+  "EPO": [
+    {
+      "CODGRUPO": 1,
+      "DESCRIPCION": "Eritropoyetina",
+      "PRESENTACIONES": [
+        "ARANESP",
+        "BINOCRIT",
+        "EPREX",
+        "Z-EPO 10.000",
+        "Z-EPO 1000",
+        "Z-EPO 2000",
+        "Z-EPO 3000",
+        "Z-EPO 4000",
+        "Z-EPO 5000",
+        "Z-EPO 6000",
+        "Z-EPO 7000",
+        "Z-EPO 8000",
+        "Z-EPO 9000",
+        "Z-EPOPEN 2000",
+        "Z-EPREX 1000 UI",
+        "Z-EPREX 2000 UI",
+        "Z-EPREX 3000 UI",
+        "Z-EPREX 4000 UI"
+      ],
+      "CODIGOS": [
+        "434333",
+        "434334",
+        "434335",
+        "434336",
+        "BNCRT",
+        "EPO",
+        "EPO1",
+        "EPO10",
+        "EPO2",
+        "EPO3",
+        "EPO4",
+        "EPO5",
+        "EPO6",
+        "EPO7",
+        "EPO8",
+        "EPO9",
+        "NESP",
+        "Z_EPO"
+      ]
+    }
+  ],
+  "VITAMINA_D": [
+    {
+      "CODGRUPO": 3,
+      "DESCRIPCION": "Calcitriol IV",
+      "PRESENTACIONES": [
+        "CALCIJEX",
+        "ETALPHA 0,25"
+      ],
+      "CODIGOS": [
+        "434337",
+        "CALCI"
+      ]
+    },
+    {
+      "CODGRUPO": 13,
+      "DESCRIPCION": "Vitamina D Oral",
+      "PRESENTACIONES": [
+        "ETALPHA 0,5",
+        "ETALPHA gotas",
+        "ROCALTROL 0,25"
+      ],
+      "CODIGOS": [
+        "ETPH 0.",
+        "Etpf gt",
+        "Z_ROC"
+      ]
+    },
+    {
+      "CODGRUPO": 34,
+      "DESCRIPCION": "Otros",
+      "PRESENTACIONES": [
+        "ZEMPLAR"
+      ],
+      "CODIGOS": [
+        "Zemplar"
+      ]
+    }
+  ],
+  "CALCIMIMETICOS": [
+    {
+      "CODGRUPO": 34,
+      "DESCRIPCION": "Otros",
+      "PRESENTACIONES": [
+        "PARSABIV 2.5"
+      ],
+      "CODIGOS": [
+        "prsb2.5"
+      ]
+    },
+    {
+      "CODGRUPO": 41,
+      "DESCRIPCION": "Calcimim�ticos",
+      "PRESENTACIONES": [
+        "MIMPARA 30"
+      ],
+      "CODIGOS": [
+        "CALCM"
+      ]
+    },
+    {
+      "CODGRUPO": 47,
+      "DESCRIPCION": "Cinacalcet",
+      "PRESENTACIONES": [
+        "MIMPARA 60",
+        "MIMPARA 90"
+      ],
+      "CODIGOS": [
+        "CALCIM",
+        "CALCIM9"
+      ]
+    }
+  ],
+  "CAPTORES_CALCICOS": [
+    {
+      "CODGRUPO": 12,
+      "DESCRIPCION": "Quelantes del F�sforo-quelantes c�lcicos",
+      "PRESENTACIONES": [
+        "CAOSINA",
+        "CARBONATO CALCICO",
+        "MASTICAL",
+        "NATECAL",
+        "OSVAREN ",
+        "ROYEN 500"
+      ],
+      "CODIGOS": [
+        "CaCo",
+        "OSV",
+        "ROY",
+        "caos",
+        "mas",
+        "ntc"
+      ]
+    },
+    {
+      "CODGRUPO": 24,
+      "DESCRIPCION": "Resincalcio",
+      "PRESENTACIONES": [
+        "RESINCALCIO"
+      ],
+      "CODIGOS": [
+        "resin"
+      ]
+    },
+    {
+      "CODGRUPO": 34,
+      "DESCRIPCION": "Otros",
+      "PRESENTACIONES": [
+        "MASTICAL D"
+      ],
+      "CODIGOS": [
+        "mast D"
+      ]
+    }
+  ],
+  "CAPTORES_NO_CALCICOS": [
+    {
+      "CODGRUPO": 34,
+      "DESCRIPCION": "Otros",
+      "PRESENTACIONES": [
+        "SEVELAMER",
+        "VELPHORO"
+      ],
+      "CODIGOS": [
+        "SVLMR",
+        "velpho"
+      ]
+    },
+    {
+      "CODGRUPO": 42,
+      "DESCRIPCION": "Quelantes del f�sforo: sevelamer",
+      "PRESENTACIONES": [
+        "RENAGEL",
+        "RENVELA 800",
+        "RENVELA COMPRIMIDOS",
+        "RENVELA SOBRES"
+      ],
+      "CODIGOS": [
+        "REN",
+        "ren",
+        "rencap",
+        "renv"
+      ]
+    },
+    {
+      "CODGRUPO": 43,
+      "DESCRIPCION": "Quelantes del f�sforo: quelantes alum�nicos",
+      "PRESENTACIONES": [
+        "ALMAX"
+      ],
+      "CODIGOS": [
+        "ALM"
+      ]
+    },
+    {
+      "CODGRUPO": 46,
+      "DESCRIPCION": "Quelantes del f�sforo: carbonato de lantano",
+      "PRESENTACIONES": [
+        "FOSRENOL 1000",
+        "FOSRENOL 500",
+        "FOSRENOL 750",
+        "FOSRENOL POLVO ORAL"
+      ],
+      "CODIGOS": [
+        "FOS1000",
+        "FOS750",
+        "FOSPOLV",
+        "FOSR"
+      ]
+    }
+  ]
+}

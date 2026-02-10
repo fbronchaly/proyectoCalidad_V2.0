@@ -1,0 +1,248 @@
+{
+  "CENTRO": "DB2",
+  "EPO": [
+    {
+      "CODGRUPO": 1,
+      "DESCRIPCION": "Eritropoyetina",
+      "PRESENTACIONES": [
+        "BINOCRIT",
+        "EPO",
+        "EPO 10.000",
+        "EPO 1000",
+        "EPO 2000",
+        "EPO 3000",
+        "EPO 4000",
+        "EPO 5000",
+        "EPO 6000",
+        "EPO 7000",
+        "EPO 8000",
+        "EPO 9000",
+        "EPOPEN 2000",
+        "EPOPEN 2000 UI",
+        "EPREX 2000 UI",
+        "ERANTIN 2000 UI",
+        "SIN EPO"
+      ],
+      "CODIGOS": [
+        "334334",
+        "33455",
+        "434333",
+        "B_inoc",
+        "EPO",
+        "EPO1",
+        "EPO10",
+        "EPO2",
+        "EPO3",
+        "EPO4",
+        "EPO5",
+        "EPO6",
+        "EPO7",
+        "EPO8",
+        "EPO9",
+        "SINEPO",
+        "Z_EPO"
+      ]
+    },
+    {
+      "CODGRUPO": 49,
+      "DESCRIPCION": "Darbepoetina",
+      "PRESENTACIONES": [
+        "ARANESP",
+        "ARANESP 10",
+        "ARANESP 100",
+        "ARANESP 120",
+        "ARANESP 20",
+        "ARANESP 30",
+        "ARANESP 40",
+        "ARANESP 50",
+        "ARANESP 60",
+        "ARANESP 80"
+      ],
+      "CODIGOS": [
+        "NESP",
+        "NESP 12",
+        "NESP1",
+        "NESP10",
+        "NESP2",
+        "NESP3",
+        "NESP4",
+        "NESP5",
+        "NESP50",
+        "NESP6",
+        "NESP8"
+      ]
+    }
+  ],
+  "VITAMINA_D": [
+    {
+      "CODGRUPO": 3,
+      "DESCRIPCION": "Calcitriol IV",
+      "PRESENTACIONES": [
+        "CALCIJEX",
+        "CALCITRIOL 1mg"
+      ],
+      "CODIGOS": [
+        "Z_CAL",
+        "calcit"
+      ]
+    },
+    {
+      "CODGRUPO": 13,
+      "DESCRIPCION": "Vitamina D Oral",
+      "PRESENTACIONES": [
+        "ROCALTROL 0,25 mcg"
+      ],
+      "CODIGOS": [
+        "Z_ROC"
+      ]
+    },
+    {
+      "CODGRUPO": 36,
+      "DESCRIPCION": "Paricalcitol",
+      "PRESENTACIONES": [
+        "ZEMPLAR 1 mcg",
+        "ZEMPLAR 2",
+        "ZEMPLAR 5"
+      ],
+      "CODIGOS": [
+        "Z-ZEM",
+        "Z_ZEM",
+        "Zemp1"
+      ]
+    }
+  ],
+  "CALCIMIMETICOS": [
+    {
+      "CODGRUPO": 34,
+      "DESCRIPCION": "Otros",
+      "PRESENTACIONES": [
+        "CINACALCET",
+        "CINACALCET 30 mg "
+      ],
+      "CODIGOS": [
+        "Cin",
+        "cincet"
+      ]
+    },
+    {
+      "CODGRUPO": 37,
+      "DESCRIPCION": "Cinacalcet",
+      "PRESENTACIONES": [
+        "MIMPARA 30 mg",
+        "MIMPARA 60 mg",
+        "MIMPARA 90 mg"
+      ],
+      "CODIGOS": [
+        "MINP30",
+        "MINP60",
+        "MINP90"
+      ]
+    }
+  ],
+  "CAPTORES_CALCICOS": [
+    {
+      "CODGRUPO": 12,
+      "DESCRIPCION": "Quelantes del F�sforo-Aportes Ca",
+      "PRESENTACIONES": [
+        "ACETATO CALCIO RENACARE 950mg",
+        "CAOSINA sobres 2,5 g (Ca=1g)",
+        "CARBOCAL comp 1.5 g (Ca=600)",
+        "CARBONATO DE CALCIO",
+        "IDEOS ",
+        "MASTICAL 1,25 g (Ca=500)",
+        "NATECAL comp 1.5 g (Ca=600)",
+        "OSVAREN 435/235 mg",
+        "RENVELA comprimidos 800 mg",
+        "ROYEN comp. 500 mg",
+        "ROYEN sobres 2,5 g."
+      ],
+      "CODIGOS": [
+        "ACE950",
+        "CAOS",
+        "CARBOC",
+        "MAS",
+        "NATEC",
+        "OSV",
+        "RENV800",
+        "ROY",
+        "ROY25",
+        "carca",
+        "ideo"
+      ]
+    },
+    {
+      "CODGRUPO": 24,
+      "DESCRIPCION": "Resincalcio",
+      "PRESENTACIONES": [
+        "RESIN CALCIO",
+        "RESINCALCIO sobres 15g"
+      ],
+      "CODIGOS": [
+        "RESCAL",
+        "resi"
+      ]
+    }
+  ],
+  "CAPTORES_NO_CALCICOS": [
+    {
+      "CODGRUPO": 12,
+      "DESCRIPCION": "Quelantes del F�sforo-Aportes Ca",
+      "PRESENTACIONES": [
+        "RENVELA comprimidos 800 mg"
+      ],
+      "CODIGOS": [
+        "RENV800"
+      ]
+    },
+    {
+      "CODGRUPO": 34,
+      "DESCRIPCION": "Otros",
+      "PRESENTACIONES": [
+        "VELPHORO 500 mg"
+      ],
+      "CODIGOS": [
+        "velp"
+      ]
+    },
+    {
+      "CODGRUPO": 38,
+      "DESCRIPCION": "Carbonato de Lantano",
+      "PRESENTACIONES": [
+        "FOSRENOL  POLVO ORAL 1000 mg",
+        "FOSRENOL 500 mg",
+        "FOSRENOL comprimidos 1000 mg",
+        "FOSRENOL comprimidos 650 mg",
+        "FOSRENOL comprimidos 750 mg"
+      ],
+      "CODIGOS": [
+        "FOS1000",
+        "FOS650",
+        "FOS750",
+        "FOSR",
+        "FOSR500"
+      ]
+    },
+    {
+      "CODGRUPO": 40,
+      "DESCRIPCION": "Sevelamer",
+      "PRESENTACIONES": [
+        "RENAGEL 800 mg",
+        "RENVELA sobres 2,4g"
+      ],
+      "CODIGOS": [
+        "REN",
+        "RENV"
+      ]
+    },
+    {
+      "CODGRUPO": 50,
+      "DESCRIPCION": "Quelantes de F�sforo",
+      "PRESENTACIONES": [
+        "SEVELAMER 2.4 gr sobres "
+      ],
+      "CODIGOS": [
+        "seve"
+      ]
+    }
+  ]
+}

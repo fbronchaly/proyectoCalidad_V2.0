@@ -1,0 +1,241 @@
+{
+  "CENTRO": "DB15",
+  "EPO": [
+    {
+      "CODGRUPO": 1,
+      "DESCRIPCION": "EPO",
+      "PRESENTACIONES": [
+        "EPOETINA ZETA ",
+        "EPREX",
+        "ERITROPOYETINA",
+        "RETACRIT"
+      ],
+      "CODIGOS": [
+        "EPO",
+        "ep",
+        "eprex",
+        "reta"
+      ]
+    },
+    {
+      "CODGRUPO": 25,
+      "DESCRIPCION": "Antibi�ticos",
+      "PRESENTACIONES": [
+        "CEPOREX (comps. de 500 mgrs.)"
+      ],
+      "CODIGOS": [
+        "CEPO"
+      ]
+    },
+    {
+      "CODGRUPO": 35,
+      "DESCRIPCION": "Darbopoetina",
+      "PRESENTACIONES": [
+        "ARANESP"
+      ],
+      "CODIGOS": [
+        "ARA"
+      ]
+    },
+    {
+      "CODGRUPO": 76,
+      "DESCRIPCION": "CERA",
+      "PRESENTACIONES": [
+        "MIRCERA"
+      ],
+      "CODIGOS": [
+        "CERA"
+      ]
+    }
+  ],
+  "VITAMINA_D": [
+    {
+      "CODGRUPO": 3,
+      "DESCRIPCION": "Derivados Vit D IV",
+      "PRESENTACIONES": [
+        "ZEMPLAR",
+        "ZEMPLAR (2.5 �grs.)",
+        "ZEMPLAR (5 �grs.)"
+      ],
+      "CODIGOS": [
+        "ZEM 2.5",
+        "ZEM 5",
+        "ZEM-0"
+      ]
+    },
+    {
+      "CODGRUPO": 13,
+      "DESCRIPCION": "Vitamina D Oral",
+      "PRESENTACIONES": [
+        "ETALPHA",
+        "ROCALTROL (cap 0.25 mcg)",
+        "ROCALTROL (cap 0.5 mcg)",
+        "ZEMPLAR (c�aps. 4 �grs.)",
+        "ZEMPLAR (c�ps. 1 �gr.)",
+        "ZEMPLAR (c�ps. 2 �grs.)"
+      ],
+      "CODIGOS": [
+        "ROC-2",
+        "ROC-25",
+        "ZEM-1",
+        "ZEM-2",
+        "ZEM-4",
+        "etal"
+      ]
+    },
+    {
+      "CODGRUPO": 40,
+      "DESCRIPCION": "Calcimim�ticos",
+      "PRESENTACIONES": [
+        "PARICALCITOL "
+      ],
+      "CODIGOS": [
+        "PARI",
+        "par"
+      ]
+    }
+  ],
+  "CALCIMIMETICOS": [
+    {
+      "CODGRUPO": 40,
+      "DESCRIPCION": "Calcimim�ticos",
+      "PRESENTACIONES": [
+        "MIMPARA   ",
+        "MIMPARA (CINACALCET comp 30 mg)",
+        "MIMPARA (CINACALCET comp 60 mg)",
+        "MIMPARA (CINACALCET comp 90 mg)",
+        "PARICALCITOL ",
+        "PARSABIV"
+      ],
+      "CODIGOS": [
+        "MIM",
+        "MIM-1",
+        "MIM-2",
+        "MIM-3",
+        "PARI",
+        "par",
+        "pars"
+      ]
+    }
+  ],
+  "CAPTORES_CALCICOS": [
+    {
+      "CODGRUPO": 12,
+      "DESCRIPCION": "Quelantes. Aportes Calcio",
+      "PRESENTACIONES": [
+        "CALCIUM SANDOZ",
+        "CAOSINA (sobre de 2.5 grs.)",
+        "MASTICAL (comp masticable 1.25 g)",
+        "MASTICAL (comp masticable 500 mg)",
+        "OSVAREN (comp 435/235)",
+        "ROYEN (cap 500 mg)",
+        "ROYEN (sob 2.5 g)"
+      ],
+      "CODIGOS": [
+        "CAO",
+        "CS",
+        "MAS",
+        "OSV",
+        "ROY",
+        "ROY2",
+        "mast"
+      ]
+    },
+    {
+      "CODGRUPO": 13,
+      "DESCRIPCION": "Vitamina D Oral",
+      "PRESENTACIONES": [
+        "Natecal D"
+      ],
+      "CODIGOS": [
+        "natecal"
+      ]
+    },
+    {
+      "CODGRUPO": 24,
+      "DESCRIPCION": "Resinas de intercambio",
+      "PRESENTACIONES": [
+        "RESINCALCIO (sob 15 g)"
+      ],
+      "CODIGOS": [
+        "RESIN"
+      ]
+    }
+  ],
+  "CAPTORES_NO_CALCICOS": [
+    {
+      "CODGRUPO": 36,
+      "DESCRIPCION": "Quelantes aluminicos",
+      "PRESENTACIONES": [
+        "ALMAX (500 mgrs.)",
+        "ALMAX (pastillas masticables 1 gr.)",
+        "ALMAX (sobres de 1.5 grs.)",
+        "ALMAX (suspensi�n)",
+        "PEPSAMAR (233 mgrs.)"
+      ],
+      "CODIGOS": [
+        "ALM-C",
+        "ALM-M",
+        "ALM-S",
+        "ALM-SU",
+        "PEP"
+      ]
+    },
+    {
+      "CODGRUPO": 37,
+      "DESCRIPCION": "Quelantes Carb. de lantano",
+      "PRESENTACIONES": [
+        "FOSRENOL (comp mastic 1000 mg)",
+        "FOSRENOL (comp mastic 500 mg)",
+        "FOSRENOL (comp mastic 750 mg)",
+        "FOSRENOL (sob 1000 mg)",
+        "FOSRENOL (sob 750 mg)",
+        "LANTANO CARBONATO (SOBRES)",
+        "LANTANO CARBONATO 750 MG SOBRES"
+      ],
+      "CODIGOS": [
+        "FOS-1",
+        "FOS-2",
+        "FOS-3",
+        "FOS1000",
+        "FOS750P",
+        "LAN750",
+        "LANT"
+      ]
+    },
+    {
+      "CODGRUPO": 38,
+      "DESCRIPCION": "Quelantes Sevelamer",
+      "PRESENTACIONES": [
+        "FOSQUEL (comp 800 mg) ",
+        "FOSQUEL (sob 2,4 g)",
+        "RENAGEL ( 800mg)",
+        "RENVELA (comp. 800 mg)",
+        "RENVELA (sobres 2,4 g)",
+        "RESTAFOS",
+        "SEVELAMER (SOBRES)",
+        "SEVELAMER 800 MG COMP."
+      ],
+      "CODIGOS": [
+        "Fo",
+        "QUE SEV",
+        "REN800",
+        "RENV",
+        "Resta",
+        "SEVEL",
+        "SEVELAM",
+        "fos"
+      ]
+    },
+    {
+      "CODGRUPO": 85,
+      "DESCRIPCION": "Quelantes f�sforo base de hierro",
+      "PRESENTACIONES": [
+        "VELPHORO (comp mastic 500 mg)"
+      ],
+      "CODIGOS": [
+        "velph"
+      ]
+    }
+  ]
+}

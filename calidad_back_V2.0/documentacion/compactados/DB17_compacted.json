@@ -1,0 +1,246 @@
+{
+  "CENTRO": "DB17",
+  "EPO": [
+    {
+      "CODGRUPO": 35,
+      "DESCRIPCION": "NESP",
+      "PRESENTACIONES": [
+        "ARANESP",
+        "ARANESP 10",
+        "ARANESP 100",
+        "ARANESP 15",
+        "ARANESP 20",
+        "ARANESP 30",
+        "ARANESP 40",
+        "ARANESP 50",
+        "ARANESP 60",
+        "ARANESP 80"
+      ],
+      "CODIGOS": [
+        "ARA",
+        "ARA 60",
+        "ARA10",
+        "ARA100",
+        "ARA15",
+        "ARA20",
+        "ARA30",
+        "ARA40",
+        "ARA50",
+        "Ar"
+      ]
+    },
+    {
+      "CODGRUPO": 49,
+      "DESCRIPCION": "EPREX",
+      "PRESENTACIONES": [
+        "EPREX 1000",
+        "EPREX 2000",
+        "EPREX 3000",
+        "EPREX 4000",
+        "EPREX 5000",
+        "EPREX 6000",
+        "EPREX 8000"
+      ],
+      "CODIGOS": [
+        "EP6",
+        "EP8",
+        "ERI1000",
+        "ERI2000",
+        "ERI3000",
+        "ERI4000",
+        "ERI5000"
+      ]
+    },
+    {
+      "CODGRUPO": 59,
+      "DESCRIPCION": "eritropoyetina",
+      "PRESENTACIONES": [
+        "BINOCRIT",
+        "BINOCRIT 10000",
+        "BINOCRIT 12000",
+        "BINOCRIT 2000",
+        "BINOCRIT 3000",
+        "BINOCRIT 4000",
+        "BINOCRIT 5000",
+        "BINOCRIT 6000",
+        "BINOCRIT 8000",
+        "EPO",
+        "RETACRIT"
+      ],
+      "CODIGOS": [
+        "BINOC1",
+        "BINOC10",
+        "BINOC12",
+        "BINOC2",
+        "BINOC3",
+        "BINOC4",
+        "BINOC5",
+        "BINOC6",
+        "BINOC8",
+        "EPO",
+        "rt"
+      ]
+    }
+  ],
+  "VITAMINA_D": [
+    {
+      "CODGRUPO": 13,
+      "DESCRIPCION": "Vitamina D Oral",
+      "PRESENTACIONES": [
+        "ROCALTROL"
+      ],
+      "CODIGOS": [
+        "ROCA"
+      ]
+    },
+    {
+      "CODGRUPO": 22,
+      "DESCRIPCION": "Vitaminas",
+      "PRESENTACIONES": [
+        "ETALPHA"
+      ],
+      "CODIGOS": [
+        "etalpha"
+      ]
+    },
+    {
+      "CODGRUPO": 51,
+      "DESCRIPCION": "PARICALCITOL",
+      "PRESENTACIONES": [
+        "ZEMPLAR",
+        "ZEMPLAR 2mcg",
+        "ZEMPLAR 5mcg"
+      ],
+      "CODIGOS": [
+        "ZEM",
+        "ZEMP2",
+        "ZEMP5"
+      ]
+    }
+  ],
+  "CALCIMIMETICOS": [
+    {
+      "CODGRUPO": 54,
+      "DESCRIPCION": "Cinacalcet",
+      "PRESENTACIONES": [
+        "Etecalcetida",
+        "MIMPARA "
+      ],
+      "CODIGOS": [
+        "MIM",
+        "ete",
+        "etec"
+      ]
+    }
+  ],
+  "CAPTORES_CALCICOS": [
+    {
+      "CODGRUPO": 12,
+      "DESCRIPCION": "Quelantes del F�sforo-Aportes Ca",
+      "PRESENTACIONES": [
+        "CALCIUM SANDOZ",
+        "CAOSINA",
+        "CARBONATO C�LCICO",
+        "MASTICAL",
+        "Pamidronato",
+        "RENVELA 2,4 sobres",
+        "ROYEN",
+        "Velphoro",
+        "natecal"
+      ],
+      "CODIGOS": [
+        "996110",
+        "CAL",
+        "RE",
+        "SUG",
+        "VEL",
+        "carb",
+        "nat",
+        "pm",
+        "r"
+      ]
+    },
+    {
+      "CODGRUPO": 24,
+      "DESCRIPCION": "Resincalcio",
+      "PRESENTACIONES": [
+        "resincalcio polvos",
+        "resincalcio sobres"
+      ],
+      "CODIGOS": [
+        "res",
+        "resi"
+      ]
+    },
+    {
+      "CODGRUPO": 34,
+      "DESCRIPCION": "Otros",
+      "PRESENTACIONES": [
+        "caosina"
+      ],
+      "CODIGOS": [
+        "ca"
+      ]
+    },
+    {
+      "CODGRUPO": 58,
+      "DESCRIPCION": "Acetato calcico-magnesio carbonato",
+      "PRESENTACIONES": [
+        "OSVAREN 435/234"
+      ],
+      "CODIGOS": [
+        "OSV"
+      ]
+    }
+  ],
+  "CAPTORES_NO_CALCICOS": [
+    {
+      "CODGRUPO": 12,
+      "DESCRIPCION": "Quelantes del F�sforo-Aportes Ca",
+      "PRESENTACIONES": [
+        "RENVELA 2,4 sobres",
+        "Velphoro"
+      ],
+      "CODIGOS": [
+        "RE",
+        "VEL"
+      ]
+    },
+    {
+      "CODGRUPO": 21,
+      "DESCRIPCION": "Protectores g�stricos",
+      "PRESENTACIONES": [
+        "almax"
+      ],
+      "CODIGOS": [
+        "almax"
+      ]
+    },
+    {
+      "CODGRUPO": 47,
+      "DESCRIPCION": "Sevelamer",
+      "PRESENTACIONES": [
+        "renagel",
+        "renvela 800",
+        "sevelamer 800"
+      ],
+      "CODIGOS": [
+        "re",
+        "ren",
+        "sev"
+      ]
+    },
+    {
+      "CODGRUPO": 48,
+      "DESCRIPCION": "Carbonato de lantano",
+      "PRESENTACIONES": [
+        "FOSRENOL 750",
+        "fosrenol 1000 sobres"
+      ],
+      "CODIGOS": [
+        "fos750",
+        "fosr"
+      ]
+    }
+  ]
+}

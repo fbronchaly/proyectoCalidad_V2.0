@@ -1,0 +1,188 @@
+{
+  "CENTRO": "DB9",
+  "EPO": [
+    {
+      "CODGRUPO": 1,
+      "DESCRIPCION": "EPO",
+      "PRESENTACIONES": [
+        "ARANESP",
+        "EPO",
+        "EPO 10.000",
+        "EPO 1000",
+        "EPO 10000",
+        "EPO 2000",
+        "EPO 3000",
+        "EPO 4000",
+        "EPO 5000",
+        "EPO 6000",
+        "EPO 7000",
+        "EPO 8000",
+        "EPO 9000"
+      ],
+      "CODIGOS": [
+        "33455",
+        "434337",
+        "ARAN",
+        "EPO",
+        "EPO1",
+        "EPO10",
+        "EPO2",
+        "EPO3",
+        "EPO4",
+        "EPO5",
+        "EPO6",
+        "EPO7",
+        "EPO8",
+        "EPO9"
+      ]
+    }
+  ],
+  "VITAMINA_D": [
+    {
+      "CODGRUPO": 2,
+      "DESCRIPCION": "Paricalcitol",
+      "PRESENTACIONES": [
+        "PARICALCITOL",
+        "ZEMPLAR",
+        "ZEMPLAR 2 mcgr",
+        "ZEMPLAR 5 mcgr"
+      ],
+      "CODIGOS": [
+        "PARI",
+        "Z-ZEM",
+        "ZEM2",
+        "ZEM5"
+      ]
+    },
+    {
+      "CODGRUPO": 3,
+      "DESCRIPCION": "Calcitriol IV",
+      "PRESENTACIONES": [
+        "CALCIJEX"
+      ],
+      "CODIGOS": [
+        "Z_CAL"
+      ]
+    },
+    {
+      "CODGRUPO": 13,
+      "DESCRIPCION": "Vitamina D Oral",
+      "PRESENTACIONES": [
+        "ROCALTROL "
+      ],
+      "CODIGOS": [
+        "ROC"
+      ]
+    }
+  ],
+  "CALCIMIMETICOS": [
+    {
+      "CODGRUPO": 39,
+      "DESCRIPCION": "Cinacalcet",
+      "PRESENTACIONES": [
+        "MIMPARA 30",
+        "MIMPARA 60"
+      ],
+      "CODIGOS": [
+        "0000",
+        "MIMP60"
+      ]
+    }
+  ],
+  "CAPTORES_CALCICOS": [
+    {
+      "CODGRUPO": 12,
+      "DESCRIPCION": "Quelantes del F�sforo calcicos",
+      "PRESENTACIONES": [
+        "Acetato de calcio",
+        "Acetato de calcio Renacare",
+        "CAOSINA",
+        "Ideos",
+        "Mastical",
+        "Osvaren 435/235 mg",
+        "ROYEN 2,5gr sobres",
+        "Royen "
+      ],
+      "CODIGOS": [
+        "1",
+        "660684",
+        "ACE",
+        "ACet",
+        "CAOSINA",
+        "Id",
+        "Ma",
+        "ROY"
+      ]
+    },
+    {
+      "CODGRUPO": 34,
+      "DESCRIPCION": "Otros",
+      "PRESENTACIONES": [
+        "Calcio Sandoz",
+        "Resincalcio"
+      ],
+      "CODIGOS": [
+        "Cal",
+        "Res"
+      ]
+    }
+  ],
+  "CAPTORES_NO_CALCICOS": [
+    {
+      "CODGRUPO": 35,
+      "DESCRIPCION": "Quelantes del fosforo aluminicos",
+      "PRESENTACIONES": [
+        "PEPSAMAR"
+      ],
+      "CODIGOS": [
+        "PEPS"
+      ]
+    },
+    {
+      "CODGRUPO": 40,
+      "DESCRIPCION": "Sevelamer",
+      "PRESENTACIONES": [
+        "RENAGEL "
+      ],
+      "CODIGOS": [
+        "REN"
+      ]
+    },
+    {
+      "CODGRUPO": 41,
+      "DESCRIPCION": "Lantano",
+      "PRESENTACIONES": [
+        "FOSRENOL"
+      ],
+      "CODIGOS": [
+        "FOSR"
+      ]
+    },
+    {
+      "CODGRUPO": 43,
+      "DESCRIPCION": "Carbonato de Sevelamero",
+      "PRESENTACIONES": [
+        "RENVELA sobres"
+      ],
+      "CODIGOS": [
+        "43"
+      ]
+    },
+    {
+      "CODGRUPO": 150,
+      "DESCRIPCION": "Quelante del fosforo NO calcico",
+      "PRESENTACIONES": [
+        "FOSQUEL",
+        "Lokelma ",
+        "Sevelamero",
+        "Velphoro"
+      ],
+      "CODIGOS": [
+        "Fosq",
+        "LOK",
+        "Sev",
+        "VEL"
+      ]
+    }
+  ]
+}

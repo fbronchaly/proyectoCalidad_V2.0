@@ -3,6 +3,7 @@ const fs = require('fs/promises');
 const path = require('path');
 const consultaGenerica = require('./consultaGenerica'); 
 const cargarCatalogoIndices = require('./cargarCatalogoIndices');
+const { calcularAgregacionGlobal } = require('./agregadorResultados');
 
 /**
  * @param {string} fechaInicio - fecha inicio (DD-MM-YYYY o YYYY-MM-DD)
@@ -71,15 +72,9 @@ const comienzoFlujo = async (fechaInicio, fechaFin, baseDatos, indices, onProgre
       //     - devuelve array por base con { baseData, resultado, numeroDePacientes, [error] }
       const porBase = await consultaGenerica(intervalo, baseDatos, def.template);
 
-      // 2.3) Resumen de totales (suma de todas las bases)
-      const totales = porBase.reduce(
-        (acc, r) => {
-          acc.resultado += Number(r.resultado || 0);
-          acc.numero_pacientes += Number(r.numeroDePacientes || r.numero_pacientes || 0);
-          return acc;
-        },
-        { resultado: 0, numero_pacientes: 0 }
-      );
+      // 2.3) Resumen de totales (Cálculo inteligente: Suma o Ponderado)
+      // Usamos el módulo de agregación para distinguir conteos vs porcentajes
+      const totales = calcularAgregacionGlobal(porBase, def);
 
       // 2.4) Estructura final (lista para insertar en MongoDB)
       salida.push({

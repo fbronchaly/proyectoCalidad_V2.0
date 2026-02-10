@@ -1,0 +1,227 @@
+{
+  "CENTRO": "DB13",
+  "EPO": [
+    {
+      "CODGRUPO": 1,
+      "DESCRIPCION": "EPO",
+      "PRESENTACIONES": [
+        "ARANESP",
+        "BINOCRIT",
+        "DARBOPOETINA",
+        "EPO",
+        "EPO 10.000",
+        "EPO 1000",
+        "EPO 2000",
+        "EPO 3000",
+        "EPO 4000",
+        "EPO 5000",
+        "EPO 6000",
+        "EPO 7000",
+        "EPO 8000",
+        "EPO 9000"
+      ],
+      "CODIGOS": [
+        "ARAN",
+        "DARBOPO",
+        "EPO",
+        "EPO1",
+        "EPO10",
+        "EPO2",
+        "EPO3",
+        "EPO4",
+        "EPO5",
+        "EPO6",
+        "EPO7",
+        "EPO8",
+        "EPO9",
+        "bino"
+      ]
+    }
+  ],
+  "VITAMINA_D": [
+    {
+      "CODGRUPO": 2,
+      "DESCRIPCION": "Paricalcitol",
+      "PRESENTACIONES": [
+        "ZEMPLAR",
+        "ZEMPLAR 2 mcgr",
+        "ZEMPLAR 5 mcgr",
+        "ZEMPLAR1"
+      ],
+      "CODIGOS": [
+        "Z-ZEM",
+        "ZEM2",
+        "ZEM5",
+        "zemplar"
+      ]
+    },
+    {
+      "CODGRUPO": 3,
+      "DESCRIPCION": "Calcitriol IV",
+      "PRESENTACIONES": [
+        "CALCIJEX"
+      ],
+      "CODIGOS": [
+        "Z_CAL"
+      ]
+    },
+    {
+      "CODGRUPO": 13,
+      "DESCRIPCION": "Vitamina D Oral",
+      "PRESENTACIONES": [
+        "ROCALTROL 0,25"
+      ],
+      "CODIGOS": [
+        "ROC"
+      ]
+    }
+  ],
+  "CALCIMIMETICOS": [
+    {
+      "CODGRUPO": 22,
+      "DESCRIPCION": "Vitaminas",
+      "PRESENTACIONES": [
+        "ETELCALCETIDA"
+      ],
+      "CODIGOS": [
+        "ETELCAL"
+      ]
+    },
+    {
+      "CODGRUPO": 39,
+      "DESCRIPCION": "Cinacalcet",
+      "PRESENTACIONES": [
+        "MIMPARA",
+        "MIMPARA 30",
+        "MIMPARA 60",
+        "MIMPARA 90",
+        "Mimpara"
+      ],
+      "CODIGOS": [
+        "MIMP",
+        "MIMP30",
+        "MIMP60",
+        "MIMP90",
+        "mimp"
+      ]
+    }
+  ],
+  "CAPTORES_CALCICOS": [
+    {
+      "CODGRUPO": 12,
+      "DESCRIPCION": "Quelantes del F�sforo calcicos",
+      "PRESENTACIONES": [
+        "ACETATO CALCICO ",
+        "CAOSINA",
+        "FOSQUEL",
+        "MASTICAL",
+        "MASTICAL D 500mg/400UI",
+        "NATECAL D 1500/400 mg/UI",
+        "Osvaren 435/235 mg",
+        "ROYEN",
+        "ROYEN 2,5gr sobres",
+        "VELPHORO"
+      ],
+      "CODIGOS": [
+        "660684",
+        "ACET CA",
+        "CAOSINA",
+        "FOSQ",
+        "MAS",
+        "NATECAD",
+        "ROY",
+        "ROYEN",
+        "VELP",
+        "md"
+      ]
+    },
+    {
+      "CODGRUPO": 24,
+      "DESCRIPCION": "Resincalcio",
+      "PRESENTACIONES": [
+        "RESIN CALCIO"
+      ],
+      "CODIGOS": [
+        "RESIN C"
+      ]
+    },
+    {
+      "CODGRUPO": 34,
+      "DESCRIPCION": "Otros",
+      "PRESENTACIONES": [
+        "CALCIO"
+      ],
+      "CODIGOS": [
+        "Ca/viD3"
+      ]
+    }
+  ],
+  "CAPTORES_NO_CALCICOS": [
+    {
+      "CODGRUPO": 12,
+      "DESCRIPCION": "Quelantes del F�sforo calcicos",
+      "PRESENTACIONES": [
+        "VELPHORO"
+      ],
+      "CODIGOS": [
+        "VELP"
+      ]
+    },
+    {
+      "CODGRUPO": 21,
+      "DESCRIPCION": "Protectores g�stricos",
+      "PRESENTACIONES": [
+        "ALMAX"
+      ],
+      "CODIGOS": [
+        "ALM"
+      ]
+    },
+    {
+      "CODGRUPO": 35,
+      "DESCRIPCION": "Quelantes del fosforo aluminicos",
+      "PRESENTACIONES": [
+        "HIDROXIDO DE ALUMINIO",
+        "PEPSAMAR"
+      ],
+      "CODIGOS": [
+        "HDRO",
+        "PEPS"
+      ]
+    },
+    {
+      "CODGRUPO": 40,
+      "DESCRIPCION": "Sevelamer",
+      "PRESENTACIONES": [
+        "RENAGEL ",
+        "SEVELAMER 800"
+      ],
+      "CODIGOS": [
+        "REN",
+        "SEVELAM"
+      ]
+    },
+    {
+      "CODGRUPO": 41,
+      "DESCRIPCION": "Lantano",
+      "PRESENTACIONES": [
+        "FOSRENOL",
+        "fosrenol"
+      ],
+      "CODIGOS": [
+        "FOSR",
+        "fosreno"
+      ]
+    },
+    {
+      "CODGRUPO": 43,
+      "DESCRIPCION": "Carbonato de Sevelamero",
+      "PRESENTACIONES": [
+        "RENVELA sobres"
+      ],
+      "CODIGOS": [
+        "43"
+      ]
+    }
+  ]
+}

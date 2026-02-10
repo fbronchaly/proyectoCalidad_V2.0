@@ -1,0 +1,3809 @@
+{
+  "ok": true,
+  "results": [
+    {
+      "code": "DB5",
+      "ok": true,
+      "rows": [
+        {
+          "CODGRUPO": 0,
+          "DESCGRUPO": "antibioticos",
+          "CODPRES": "CIP",
+          "NOM_REGISTRADO": "Ciprofloxacino 500 mg"
+        },
+        {
+          "CODGRUPO": 0,
+          "DESCGRUPO": "antibioticos",
+          "CODPRES": "D",
+          "NOM_REGISTRADO": "DALBAVANCINA"
+        },
+        {
+          "CODGRUPO": 1,
+          "DESCGRUPO": "Broncodilatadores",
+          "CODPRES": "atr",
+          "NOM_REGISTRADO": "Atrovent"
+        },
+        {
+          "CODGRUPO": 1,
+          "DESCGRUPO": "Broncodilatadores",
+          "CODPRES": "996108",
+          "NOM_REGISTRADO": "Mirtazapina"
+        },
+        {
+          "CODGRUPO": 1,
+          "DESCGRUPO": "Broncodilatadores",
+          "CODPRES": "996112",
+          "NOM_REGISTRADO": "Quetiapina"
+        },
+        {
+          "CODGRUPO": 1,
+          "DESCGRUPO": "Broncodilatadores",
+          "CODPRES": "SP",
+          "NOM_REGISTRADO": "SPIRIVA"
+        },
+        {
+          "CODGRUPO": 1,
+          "DESCGRUPO": "Broncodilatadores",
+          "CODPRES": "SPR",
+          "NOM_REGISTRADO": "Spiolto respimat "
+        },
+        {
+          "CODGRUPO": 1,
+          "DESCGRUPO": "Broncodilatadores",
+          "CODPRES": "bre",
+          "NOM_REGISTRADO": "bretaris genuair"
+        },
+        {
+          "CODGRUPO": 1,
+          "DESCGRUPO": "Broncodilatadores",
+          "CODPRES": "flu",
+          "NOM_REGISTRADO": "fluticasona"
+        },
+        {
+          "CODGRUPO": 1,
+          "DESCGRUPO": "Broncodilatadores",
+          "CODPRES": "fos",
+          "NOM_REGISTRADO": "foster nexthaller 100/6"
+        },
+        {
+          "CODGRUPO": 1,
+          "DESCGRUPO": "Broncodilatadores",
+          "CODPRES": "montel",
+          "NOM_REGISTRADO": "montelukast 10"
+        },
+        {
+          "CODGRUPO": 1,
+          "DESCGRUPO": "Broncodilatadores",
+          "CODPRES": "plu",
+          "NOM_REGISTRADO": "plusvent"
+        },
+        {
+          "CODGRUPO": 1,
+          "DESCGRUPO": "Broncodilatadores",
+          "CODPRES": "RIL",
+          "NOM_REGISTRADO": "rilast inh"
+        },
+        {
+          "CODGRUPO": 1,
+          "DESCGRUPO": "Broncodilatadores",
+          "CODPRES": "singula",
+          "NOM_REGISTRADO": "singulair"
+        },
+        {
+          "CODGRUPO": 5,
+          "DESCGRUPO": "Antihipertensivos IECA",
+          "CODPRES": "cap",
+          "NOM_REGISTRADO": "Captopril 50 mg"
+        },
+        {
+          "CODGRUPO": 5,
+          "DESCGRUPO": "Antihipertensivos IECA",
+          "CODPRES": "996111",
+          "NOM_REGISTRADO": "Enalapril"
+        },
+        {
+          "CODGRUPO": 5,
+          "DESCGRUPO": "Antihipertensivos IECA",
+          "CODPRES": "ramip",
+          "NOM_REGISTRADO": "RAMIPRIL"
+        },
+        {
+          "CODGRUPO": 5,
+          "DESCGRUPO": "Antihipertensivos IECA",
+          "CODPRES": "ramp",
+          "NOM_REGISTRADO": "RAMIPRIL 5 mg"
+        },
+        {
+          "CODGRUPO": 5,
+          "DESCGRUPO": "Antihipertensivos IECA",
+          "CODPRES": "hip",
+          "NOM_REGISTRADO": "hipertene 10"
+        },
+        {
+          "CODGRUPO": 5,
+          "DESCGRUPO": "Antihipertensivos IECA",
+          "CODPRES": "lisi",
+          "NOM_REGISTRADO": "lisinopril "
+        },
+        {
+          "CODGRUPO": 5,
+          "DESCGRUPO": "Antihipertensivos IECA",
+          "CODPRES": "lis",
+          "NOM_REGISTRADO": "lisinopril 12.5"
+        },
+        {
+          "CODGRUPO": 5,
+          "DESCGRUPO": "Antihipertensivos IECA",
+          "CODPRES": "per",
+          "NOM_REGISTRADO": "perindopril"
+        },
+        {
+          "CODGRUPO": 5,
+          "DESCGRUPO": "Antihipertensivos IECA",
+          "CODPRES": "ramh",
+          "NOM_REGISTRADO": "ramipril/HCT"
+        },
+        {
+          "CODGRUPO": 5,
+          "DESCGRUPO": "Antihipertensivos IECA",
+          "CODPRES": "renitec",
+          "NOM_REGISTRADO": "renitec"
+        },
+        {
+          "CODGRUPO": 6,
+          "DESCGRUPO": "Antihipertensivos Antag Ca",
+          "CODPRES": "AML",
+          "NOM_REGISTRADO": "Amlodipino 10 mg"
+        },
+        {
+          "CODGRUPO": 6,
+          "DESCGRUPO": "Antihipertensivos Antag Ca",
+          "CODPRES": "aml",
+          "NOM_REGISTRADO": "Amlodipino 5 mg"
+        },
+        {
+          "CODGRUPO": 6,
+          "DESCGRUPO": "Antihipertensivos Antag Ca",
+          "CODPRES": "BR",
+          "NOM_REGISTRADO": "BARNIDIPINO"
+        },
+        {
+          "CODGRUPO": 6,
+          "DESCGRUPO": "Antihipertensivos Antag Ca",
+          "CODPRES": "ler",
+          "NOM_REGISTRADO": "Lercanidipino 10"
+        },
+        {
+          "CODGRUPO": 6,
+          "DESCGRUPO": "Antihipertensivos Antag Ca",
+          "CODPRES": "man",
+          "NOM_REGISTRADO": "MANIDIPINO 10 mg"
+        },
+        {
+          "CODGRUPO": 6,
+          "DESCGRUPO": "Antihipertensivos Antag Ca",
+          "CODPRES": "Mani",
+          "NOM_REGISTRADO": "Manidipino "
+        },
+        {
+          "CODGRUPO": 6,
+          "DESCGRUPO": "Antihipertensivos Antag Ca",
+          "CODPRES": "nicar",
+          "NOM_REGISTRADO": "NICARDIPINO"
+        },
+        {
+          "CODGRUPO": 6,
+          "DESCGRUPO": "Antihipertensivos Antag Ca",
+          "CODPRES": "NIMODIP",
+          "NOM_REGISTRADO": "NIMODIPINO 30"
+        },
+        {
+          "CODGRUPO": 6,
+          "DESCGRUPO": "Antihipertensivos Antag Ca",
+          "CODPRES": "ada",
+          "NOM_REGISTRADO": "adalat 60"
+        },
+        {
+          "CODGRUPO": 6,
+          "DESCGRUPO": "Antihipertensivos Antag Ca",
+          "CODPRES": "art",
+          "NOM_REGISTRADO": "artedil"
+        },
+        {
+          "CODGRUPO": 6,
+          "DESCGRUPO": "Antihipertensivos Antag Ca",
+          "CODPRES": "art1",
+          "NOM_REGISTRADO": "artedil"
+        },
+        {
+          "CODGRUPO": 6,
+          "DESCGRUPO": "Antihipertensivos Antag Ca",
+          "CODPRES": "bar10",
+          "NOM_REGISTRADO": "barnix 10"
+        },
+        {
+          "CODGRUPO": 6,
+          "DESCGRUPO": "Antihipertensivos Antag Ca",
+          "CODPRES": "cad",
+          "NOM_REGISTRADO": "caduet 5/10"
+        },
+        {
+          "CODGRUPO": 6,
+          "DESCGRUPO": "Antihipertensivos Antag Ca",
+          "CODPRES": "dil",
+          "NOM_REGISTRADO": "diltiazem"
+        },
+        {
+          "CODGRUPO": 6,
+          "DESCGRUPO": "Antihipertensivos Antag Ca",
+          "CODPRES": "din",
+          "NOM_REGISTRADO": "dinisor 120 retard"
+        },
+        {
+          "CODGRUPO": 6,
+          "DESCGRUPO": "Antihipertensivos Antag Ca",
+          "CODPRES": "din60",
+          "NOM_REGISTRADO": "dinisor 60"
+        },
+        {
+          "CODGRUPO": 6,
+          "DESCGRUPO": "Antihipertensivos Antag Ca",
+          "CODPRES": "nif",
+          "NOM_REGISTRADO": "nifedipino"
+        },
+        {
+          "CODGRUPO": 6,
+          "DESCGRUPO": "Antihipertensivos Antag Ca",
+          "CODPRES": "nfd",
+          "NOM_REGISTRADO": "nifedipino 60 mg"
+        },
+        {
+          "CODGRUPO": 6,
+          "DESCGRUPO": "Antihipertensivos Antag Ca",
+          "CODPRES": "vera",
+          "NOM_REGISTRADO": "verapamilo 120 retard"
+        },
+        {
+          "CODGRUPO": 7,
+          "DESCGRUPO": "Alfabloqueantes",
+          "CODPRES": "EP1",
+          "NOM_REGISTRADO": "CARDURAN NEO 4"
+        },
+        {
+          "CODGRUPO": 7,
+          "DESCGRUPO": "Alfabloqueantes",
+          "CODPRES": "dox 4",
+          "NOM_REGISTRADO": "Doxazosina 4 mg"
+        },
+        {
+          "CODGRUPO": 7,
+          "DESCGRUPO": "Alfabloqueantes",
+          "CODPRES": "ROC",
+          "NOM_REGISTRADO": "Doxazosina 8 mg"
+        },
+        {
+          "CODGRUPO": 7,
+          "DESCGRUPO": "Alfabloqueantes",
+          "CODPRES": "acf",
+          "NOM_REGISTRADO": "acfol"
+        },
+        {
+          "CODGRUPO": 7,
+          "DESCGRUPO": "Alfabloqueantes",
+          "CODPRES": "silod",
+          "NOM_REGISTRADO": "silodosina 4 mg"
+        },
+        {
+          "CODGRUPO": 7,
+          "DESCGRUPO": "Alfabloqueantes",
+          "CODPRES": "slx",
+          "NOM_REGISTRADO": "silodyx"
+        },
+        {
+          "CODGRUPO": 8,
+          "DESCGRUPO": "Betabloqueantes",
+          "CODPRES": "996114",
+          "NOM_REGISTRADO": "Atenolol"
+        },
+        {
+          "CODGRUPO": 8,
+          "DESCGRUPO": "Betabloqueantes",
+          "CODPRES": "Bis1.25",
+          "NOM_REGISTRADO": "Bisoprolol 1.25 mg"
+        },
+        {
+          "CODGRUPO": 8,
+          "DESCGRUPO": "Betabloqueantes",
+          "CODPRES": "bis",
+          "NOM_REGISTRADO": "Bisoprolol 2.5 mg"
+        },
+        {
+          "CODGRUPO": 8,
+          "DESCGRUPO": "Betabloqueantes",
+          "CODPRES": "BI",
+          "NOM_REGISTRADO": "Bisoprolol 5 mg"
+        },
+        {
+          "CODGRUPO": 8,
+          "DESCGRUPO": "Betabloqueantes",
+          "CODPRES": "carve",
+          "NOM_REGISTRADO": "Carvedilol  12.5 mg"
+        },
+        {
+          "CODGRUPO": 8,
+          "DESCGRUPO": "Betabloqueantes",
+          "CODPRES": "car",
+          "NOM_REGISTRADO": "Carvedilol25 mg"
+        },
+        {
+          "CODGRUPO": 8,
+          "DESCGRUPO": "Betabloqueantes",
+          "CODPRES": "carv625",
+          "NOM_REGISTRADO": "Carvedilol6.25 mg"
+        },
+        {
+          "CODGRUPO": 8,
+          "DESCGRUPO": "Betabloqueantes",
+          "CODPRES": "ENC",
+          "NOM_REGISTRADO": "ENCONCOR 2.5"
+        },
+        {
+          "CODGRUPO": 8,
+          "DESCGRUPO": "Betabloqueantes",
+          "CODPRES": "LOV",
+          "NOM_REGISTRADO": "LOBIVON 5 mg"
+        },
+        {
+          "CODGRUPO": 8,
+          "DESCGRUPO": "Betabloqueantes",
+          "CODPRES": "meto",
+          "NOM_REGISTRADO": "METOPROLOL"
+        },
+        {
+          "CODGRUPO": 8,
+          "DESCGRUPO": "Betabloqueantes",
+          "CODPRES": "bel",
+          "NOM_REGISTRADO": "beloken 50 mg"
+        },
+        {
+          "CODGRUPO": 8,
+          "DESCGRUPO": "Betabloqueantes",
+          "CODPRES": "cb",
+          "NOM_REGISTRADO": "combigan colirio"
+        },
+        {
+          "CODGRUPO": 8,
+          "DESCGRUPO": "Betabloqueantes",
+          "CODPRES": "coro",
+          "NOM_REGISTRADO": "coropres "
+        },
+        {
+          "CODGRUPO": 8,
+          "DESCGRUPO": "Betabloqueantes",
+          "CODPRES": "cor",
+          "NOM_REGISTRADO": "coropres 6.25"
+        },
+        {
+          "CODGRUPO": 8,
+          "DESCGRUPO": "Betabloqueantes",
+          "CODPRES": "ENM",
+          "NOM_REGISTRADO": "emconcor 2.5"
+        },
+        {
+          "CODGRUPO": 8,
+          "DESCGRUPO": "Betabloqueantes",
+          "CODPRES": "lab",
+          "NOM_REGISTRADO": "labetalol"
+        },
+        {
+          "CODGRUPO": 8,
+          "DESCGRUPO": "Betabloqueantes",
+          "CODPRES": "met",
+          "NOM_REGISTRADO": "metoprolol 50"
+        },
+        {
+          "CODGRUPO": 8,
+          "DESCGRUPO": "Betabloqueantes",
+          "CODPRES": "neb",
+          "NOM_REGISTRADO": "nebivolol 5"
+        },
+        {
+          "CODGRUPO": 8,
+          "DESCGRUPO": "Betabloqueantes",
+          "CODPRES": "sil",
+          "NOM_REGISTRADO": "silostar"
+        },
+        {
+          "CODGRUPO": 8,
+          "DESCGRUPO": "Betabloqueantes",
+          "CODPRES": "sumial",
+          "NOM_REGISTRADO": "sumial 10"
+        },
+        {
+          "CODGRUPO": 9,
+          "DESCGRUPO": "Antihipertensivos otros",
+          "CODPRES": "ALD",
+          "NOM_REGISTRADO": "Aldactone"
+        },
+        {
+          "CODGRUPO": 9,
+          "DESCGRUPO": "Antihipertensivos otros",
+          "CODPRES": "balzk",
+          "NOM_REGISTRADO": "Balzak "
+        },
+        {
+          "CODGRUPO": 9,
+          "DESCGRUPO": "Antihipertensivos otros",
+          "CODPRES": "balz",
+          "NOM_REGISTRADO": "Balzak plus 40/10/12.5"
+        },
+        {
+          "CODGRUPO": 9,
+          "DESCGRUPO": "Antihipertensivos otros",
+          "CODPRES": "Capen",
+          "NOM_REGISTRADO": "Capenon HCT 40/10"
+        },
+        {
+          "CODGRUPO": 9,
+          "DESCGRUPO": "Antihipertensivos otros",
+          "CODPRES": "CEF",
+          "NOM_REGISTRADO": "EXFORGE"
+        },
+        {
+          "CODGRUPO": 9,
+          "DESCGRUPO": "Antihipertensivos otros",
+          "CODPRES": "moxom",
+          "NOM_REGISTRADO": "MOXON 0.2 mg"
+        },
+        {
+          "CODGRUPO": 9,
+          "DESCGRUPO": "Antihipertensivos otros",
+          "CODPRES": "apro",
+          "NOM_REGISTRADO": "aprovel 150"
+        },
+        {
+          "CODGRUPO": 9,
+          "DESCGRUPO": "Antihipertensivos otros",
+          "CODPRES": "mox",
+          "NOM_REGISTRADO": "moxon 0.6"
+        },
+        {
+          "CODGRUPO": 10,
+          "DESCGRUPO": "Diur�ticos",
+          "CODPRES": "FUR",
+          "NOM_REGISTRADO": "Furosemida 40 mg"
+        },
+        {
+          "CODGRUPO": 10,
+          "DESCGRUPO": "Diur�ticos",
+          "CODPRES": "tor",
+          "NOM_REGISTRADO": "Torasemida 10 mg"
+        },
+        {
+          "CODGRUPO": 10,
+          "DESCGRUPO": "Diur�ticos",
+          "CODPRES": "ald",
+          "NOM_REGISTRADO": "aldactone 100"
+        },
+        {
+          "CODGRUPO": 10,
+          "DESCGRUPO": "Diur�ticos",
+          "CODPRES": "esi",
+          "NOM_REGISTRADO": "esidrex 25"
+        },
+        {
+          "CODGRUPO": 10,
+          "DESCGRUPO": "Diur�ticos",
+          "CODPRES": "espir",
+          "NOM_REGISTRADO": "espironolactona"
+        },
+        {
+          "CODGRUPO": 10,
+          "DESCGRUPO": "Diur�ticos",
+          "CODPRES": "hig",
+          "NOM_REGISTRADO": "higrotona"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "atorvas",
+          "NOM_REGISTRADO": "Atorvastatina 10 mg"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "ator",
+          "NOM_REGISTRADO": "Atorvastatina 20 mg"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "AT",
+          "NOM_REGISTRADO": "Atorvastatina 40 mg"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "atvs",
+          "NOM_REGISTRADO": "Atorvastatina 60 mg"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "AtEz",
+          "NOM_REGISTRADO": "Atorvastatina/Ezetimiba"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "atz",
+          "NOM_REGISTRADO": "Atozet 10/40 mg"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "aT",
+          "NOM_REGISTRADO": "Atozet 10/80 mg"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "cre",
+          "NOM_REGISTRADO": "Crestor 10 mg"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "CALCIJ",
+          "NOM_REGISTRADO": "EZETROL"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "EZET",
+          "NOM_REGISTRADO": "Ezetimiba 10 mg"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "ezesim",
+          "NOM_REGISTRADO": "Ezetimiba/Simvastatina"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "VEN",
+          "NOM_REGISTRADO": "GENFIBROCILO"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "INEG",
+          "NOM_REGISTRADO": "INEGY 10/40"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "LIV",
+          "NOM_REGISTRADO": "LIVAZO"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "lipo",
+          "NOM_REGISTRADO": "Lipocomb"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "Lov",
+          "NOM_REGISTRADO": "Lovastatina"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "or12",
+          "NOM_REGISTRADO": "ORVATEZ 10/20MG"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "996115",
+          "NOM_REGISTRADO": "Omacor"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "oma",
+          "NOM_REGISTRADO": "Omacor"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "orvatez",
+          "NOM_REGISTRADO": "Orvatez 10/40"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "PRAV",
+          "NOM_REGISTRADO": "PRAVASTATINA 20"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "ROSU",
+          "NOM_REGISTRADO": "ROSUVASTATINA"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "SECA",
+          "NOM_REGISTRADO": "SECALIP"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "smvs",
+          "NOM_REGISTRADO": "SIMVASTATINA 10 mg"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "SIM",
+          "NOM_REGISTRADO": "SIMVASTATINA 20 mg"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "smv40",
+          "NOM_REGISTRADO": "SIMVASTATINA 40 mg"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "SIMEZE",
+          "NOM_REGISTRADO": "Simvastatina/ezetimiba"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "VIT10/2",
+          "NOM_REGISTRADO": "VITORIN 10/20"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "VYT",
+          "NOM_REGISTRADO": "VYTORIN 10/20"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "zara",
+          "NOM_REGISTRADO": "Zarator"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "cardyl",
+          "NOM_REGISTRADO": "cardyl 10"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "fb",
+          "NOM_REGISTRADO": "fenofibrato"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "ine",
+          "NOM_REGISTRADO": "inegy"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "0M 3",
+          "NOM_REGISTRADO": "omega 3"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "pr",
+          "NOM_REGISTRADO": "pravastatina"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "pra",
+          "NOM_REGISTRADO": "pravastatina"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "prov",
+          "NOM_REGISTRADO": "provisacor"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "sec",
+          "NOM_REGISTRADO": "secalip 145"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "sim10",
+          "NOM_REGISTRADO": "sinvastatina 10"
+        },
+        {
+          "CODGRUPO": 11,
+          "DESCGRUPO": "Hipolipemiantes",
+          "CODPRES": "vitorin",
+          "NOM_REGISTRADO": "vitorin 10/40"
+        },
+        {
+          "CODGRUPO": 12,
+          "DESCGRUPO": "Quelantes del F�sforo-Aportes Ca",
+          "CODPRES": "Ace",
+          "NOM_REGISTRADO": "Acetato calcio 475 mg"
+        },
+        {
+          "CODGRUPO": 12,
+          "DESCGRUPO": "Quelantes del F�sforo-Aportes Ca",
+          "CODPRES": "ACETA",
+          "NOM_REGISTRADO": "Acetato c�lcico"
+        },
+        {
+          "CODGRUPO": 12,
+          "DESCGRUPO": "Quelantes del F�sforo-Aportes Ca",
+          "CODPRES": "CALCI",
+          "NOM_REGISTRADO": "CALCIJEX"
+        },
+        {
+          "CODGRUPO": 12,
+          "DESCGRUPO": "Quelantes del F�sforo-Aportes Ca",
+          "CODPRES": "CAL",
+          "NOM_REGISTRADO": "CALCIUM SANDOZ"
+        },
+        {
+          "CODGRUPO": 12,
+          "DESCGRUPO": "Quelantes del F�sforo-Aportes Ca",
+          "CODPRES": "ca",
+          "NOM_REGISTRADO": "Caosina"
+        },
+        {
+          "CODGRUPO": 12,
+          "DESCGRUPO": "Quelantes del F�sforo-Aportes Ca",
+          "CODPRES": "996110",
+          "NOM_REGISTRADO": "Caosina oral monodosis 1000 mg"
+        },
+        {
+          "CODGRUPO": 12,
+          "DESCGRUPO": "Quelantes del F�sforo-Aportes Ca",
+          "CODPRES": "r",
+          "NOM_REGISTRADO": "MASTICAL"
+        },
+        {
+          "CODGRUPO": 12,
+          "DESCGRUPO": "Quelantes del F�sforo-Aportes Ca",
+          "CODPRES": "SUG",
+          "NOM_REGISTRADO": "ROYEN 500 mg"
+        },
+        {
+          "CODGRUPO": 12,
+          "DESCGRUPO": "Quelantes del F�sforo-Aportes Ca",
+          "CODPRES": "nat",
+          "NOM_REGISTRADO": "natecal"
+        },
+        {
+          "CODGRUPO": 13,
+          "DESCGRUPO": "Vitamina D Oral",
+          "CODPRES": "DE",
+          "NOM_REGISTRADO": "DELTIUS"
+        },
+        {
+          "CODGRUPO": 13,
+          "DESCGRUPO": "Vitamina D Oral",
+          "CODPRES": "DEM",
+          "NOM_REGISTRADO": "DEMILOS 600/1000(carbonato calcico/vit D3)"
+        },
+        {
+          "CODGRUPO": 13,
+          "DESCGRUPO": "Vitamina D Oral",
+          "CODPRES": "hi",
+          "NOM_REGISTRADO": "Hidroferol"
+        },
+        {
+          "CODGRUPO": 13,
+          "DESCGRUPO": "Vitamina D Oral",
+          "CODPRES": "ROCA",
+          "NOM_REGISTRADO": "ROCALTROL"
+        },
+        {
+          "CODGRUPO": 13,
+          "DESCGRUPO": "Vitamina D Oral",
+          "CODPRES": "vsyl",
+          "NOM_REGISTRADO": "Videsil"
+        },
+        {
+          "CODGRUPO": 13,
+          "DESCGRUPO": "Vitamina D Oral",
+          "CODPRES": "ctc",
+          "NOM_REGISTRADO": "calcitriol 0.25 mg"
+        },
+        {
+          "CODGRUPO": 14,
+          "DESCGRUPO": "Antidepresivos",
+          "CODPRES": "Dumi",
+          "NOM_REGISTRADO": "Dumirox"
+        },
+        {
+          "CODGRUPO": 14,
+          "DESCGRUPO": "Antidepresivos",
+          "CODPRES": "nob",
+          "NOM_REGISTRADO": "Nobritol"
+        },
+        {
+          "CODGRUPO": 14,
+          "DESCGRUPO": "Antidepresivos",
+          "CODPRES": "traz",
+          "NOM_REGISTRADO": "Trazodona 100 mg"
+        },
+        {
+          "CODGRUPO": 14,
+          "DESCGRUPO": "Antidepresivos",
+          "CODPRES": "VAL",
+          "NOM_REGISTRADO": "VALDOXAN"
+        },
+        {
+          "CODGRUPO": 14,
+          "DESCGRUPO": "Antidepresivos",
+          "CODPRES": "vnl",
+          "NOM_REGISTRADO": "Venlafaxina Retard 75 mg"
+        },
+        {
+          "CODGRUPO": 14,
+          "DESCGRUPO": "Antidepresivos",
+          "CODPRES": "XERI",
+          "NOM_REGISTRADO": "XERISTAR "
+        },
+        {
+          "CODGRUPO": 14,
+          "DESCGRUPO": "Antidepresivos",
+          "CODPRES": "alp",
+          "NOM_REGISTRADO": "alprazolan"
+        },
+        {
+          "CODGRUPO": 14,
+          "DESCGRUPO": "Antidepresivos",
+          "CODPRES": "ana",
+          "NOM_REGISTRADO": "anafranil"
+        },
+        {
+          "CODGRUPO": 14,
+          "DESCGRUPO": "Antidepresivos",
+          "CODPRES": "bes",
+          "NOM_REGISTRADO": "besitran 50"
+        },
+        {
+          "CODGRUPO": 14,
+          "DESCGRUPO": "Antidepresivos",
+          "CODPRES": "brin",
+          "NOM_REGISTRADO": "brintellix 10"
+        },
+        {
+          "CODGRUPO": 14,
+          "DESCGRUPO": "Antidepresivos",
+          "CODPRES": "ct",
+          "NOM_REGISTRADO": "cetralina "
+        },
+        {
+          "CODGRUPO": 14,
+          "DESCGRUPO": "Antidepresivos",
+          "CODPRES": "cit",
+          "NOM_REGISTRADO": "citalopram 20"
+        },
+        {
+          "CODGRUPO": 14,
+          "DESCGRUPO": "Antidepresivos",
+          "CODPRES": "CY",
+          "NOM_REGISTRADO": "cymbalta 60"
+        },
+        {
+          "CODGRUPO": 14,
+          "DESCGRUPO": "Antidepresivos",
+          "CODPRES": "dul",
+          "NOM_REGISTRADO": "duloxetina 30"
+        },
+        {
+          "CODGRUPO": 14,
+          "DESCGRUPO": "Antidepresivos",
+          "CODPRES": "escital",
+          "NOM_REGISTRADO": "escitalopram"
+        },
+        {
+          "CODGRUPO": 14,
+          "DESCGRUPO": "Antidepresivos",
+          "CODPRES": "flx",
+          "NOM_REGISTRADO": "fluoxetina"
+        },
+        {
+          "CODGRUPO": 14,
+          "DESCGRUPO": "Antidepresivos",
+          "CODPRES": "lam",
+          "NOM_REGISTRADO": "lamotrigina 25"
+        },
+        {
+          "CODGRUPO": 14,
+          "DESCGRUPO": "Antidepresivos",
+          "CODPRES": "par",
+          "NOM_REGISTRADO": "paroxetina"
+        },
+        {
+          "CODGRUPO": 14,
+          "DESCGRUPO": "Antidepresivos",
+          "CODPRES": "pris",
+          "NOM_REGISTRADO": "pristiq"
+        },
+        {
+          "CODGRUPO": 14,
+          "DESCGRUPO": "Antidepresivos",
+          "CODPRES": "proz",
+          "NOM_REGISTRADO": "prozac 20"
+        },
+        {
+          "CODGRUPO": 14,
+          "DESCGRUPO": "Antidepresivos",
+          "CODPRES": "rex",
+          "NOM_REGISTRADO": "rexer flas 30"
+        },
+        {
+          "CODGRUPO": 14,
+          "DESCGRUPO": "Antidepresivos",
+          "CODPRES": "ser",
+          "NOM_REGISTRADO": "sertralina "
+        },
+        {
+          "CODGRUPO": 14,
+          "DESCGRUPO": "Antidepresivos",
+          "CODPRES": "sul",
+          "NOM_REGISTRADO": "sulpirida"
+        },
+        {
+          "CODGRUPO": 15,
+          "DESCGRUPO": "Ansiol�ticos",
+          "CODPRES": "AUG 2",
+          "NOM_REGISTRADO": "AUGMENTINE"
+        },
+        {
+          "CODGRUPO": 15,
+          "DESCGRUPO": "Ansiol�ticos",
+          "CODPRES": "brom",
+          "NOM_REGISTRADO": "Bromazepam 1,5"
+        },
+        {
+          "CODGRUPO": 15,
+          "DESCGRUPO": "Ansiol�ticos",
+          "CODPRES": "DIAZ",
+          "NOM_REGISTRADO": "Diazepam 2.5"
+        },
+        {
+          "CODGRUPO": 15,
+          "DESCGRUPO": "Ansiol�ticos",
+          "CODPRES": "diaz",
+          "NOM_REGISTRADO": "Diazepam10 mg"
+        },
+        {
+          "CODGRUPO": 15,
+          "DESCGRUPO": "Ansiol�ticos",
+          "CODPRES": "LOR",
+          "NOM_REGISTRADO": "LORAZEPAM"
+        },
+        {
+          "CODGRUPO": 15,
+          "DESCGRUPO": "Ansiol�ticos",
+          "CODPRES": "RIV",
+          "NOM_REGISTRADO": "RIVOTRIL 0,5"
+        },
+        {
+          "CODGRUPO": 15,
+          "DESCGRUPO": "Ansiol�ticos",
+          "CODPRES": "somnl",
+          "NOM_REGISTRADO": "Somnovit 1 mg"
+        },
+        {
+          "CODGRUPO": 15,
+          "DESCGRUPO": "Ansiol�ticos",
+          "CODPRES": "996113",
+          "NOM_REGISTRADO": "Stilnox"
+        },
+        {
+          "CODGRUPO": 15,
+          "DESCGRUPO": "Ansiol�ticos",
+          "CODPRES": "TIA",
+          "NOM_REGISTRADO": "TIAPRIZAL 100"
+        },
+        {
+          "CODGRUPO": 15,
+          "DESCGRUPO": "Ansiol�ticos",
+          "CODPRES": "TRAN",
+          "NOM_REGISTRADO": "Trankimazin 2"
+        },
+        {
+          "CODGRUPO": 15,
+          "DESCGRUPO": "Ansiol�ticos",
+          "CODPRES": "Tx",
+          "NOM_REGISTRADO": "Tranxilium"
+        },
+        {
+          "CODGRUPO": 15,
+          "DESCGRUPO": "Ansiol�ticos",
+          "CODPRES": "ZOLPI",
+          "NOM_REGISTRADO": "ZOLPIDEM"
+        },
+        {
+          "CODGRUPO": 15,
+          "DESCGRUPO": "Ansiol�ticos",
+          "CODPRES": "cl",
+          "NOM_REGISTRADO": "clorazepato"
+        },
+        {
+          "CODGRUPO": 15,
+          "DESCGRUPO": "Ansiol�ticos",
+          "CODPRES": "lor",
+          "NOM_REGISTRADO": "lormetazepam"
+        },
+        {
+          "CODGRUPO": 15,
+          "DESCGRUPO": "Ansiol�ticos",
+          "CODPRES": "or",
+          "NOM_REGISTRADO": "orfidal"
+        },
+        {
+          "CODGRUPO": 15,
+          "DESCGRUPO": "Ansiol�ticos",
+          "CODPRES": "tra",
+          "NOM_REGISTRADO": "trankimazin 0,5"
+        },
+        {
+          "CODGRUPO": 15,
+          "DESCGRUPO": "Ansiol�ticos",
+          "CODPRES": "tran",
+          "NOM_REGISTRADO": "trankimazin 0.25"
+        },
+        {
+          "CODGRUPO": 15,
+          "DESCGRUPO": "Ansiol�ticos",
+          "CODPRES": "tryp",
+          "NOM_REGISTRADO": "tryptizol 10"
+        },
+        {
+          "CODGRUPO": 16,
+          "DESCGRUPO": "Antiepil�pticos",
+          "CODPRES": "GABA",
+          "NOM_REGISTRADO": "Gabapentina"
+        },
+        {
+          "CODGRUPO": 16,
+          "DESCGRUPO": "Antiepil�pticos",
+          "CODPRES": "kp",
+          "NOM_REGISTRADO": "Keppa"
+        },
+        {
+          "CODGRUPO": 16,
+          "DESCGRUPO": "Antiepil�pticos",
+          "CODPRES": "Oxca",
+          "NOM_REGISTRADO": "OXCARBAZEPINA"
+        },
+        {
+          "CODGRUPO": 16,
+          "DESCGRUPO": "Antiepil�pticos",
+          "CODPRES": "biv",
+          "NOM_REGISTRADO": "biviact 25"
+        },
+        {
+          "CODGRUPO": 16,
+          "DESCGRUPO": "Antiepil�pticos",
+          "CODPRES": "fy",
+          "NOM_REGISTRADO": "fycompa"
+        },
+        {
+          "CODGRUPO": 16,
+          "DESCGRUPO": "Antiepil�pticos",
+          "CODPRES": "laco",
+          "NOM_REGISTRADO": "lacosamida "
+        },
+        {
+          "CODGRUPO": 16,
+          "DESCGRUPO": "Antiepil�pticos",
+          "CODPRES": "lamic",
+          "NOM_REGISTRADO": "lamictal 200"
+        },
+        {
+          "CODGRUPO": 16,
+          "DESCGRUPO": "Antiepil�pticos",
+          "CODPRES": "leve",
+          "NOM_REGISTRADO": "levetiracetam"
+        },
+        {
+          "CODGRUPO": 16,
+          "DESCGRUPO": "Antiepil�pticos",
+          "CODPRES": "lum",
+          "NOM_REGISTRADO": "luminal 100"
+        },
+        {
+          "CODGRUPO": 16,
+          "DESCGRUPO": "Antiepil�pticos",
+          "CODPRES": "ly",
+          "NOM_REGISTRADO": "lyrica"
+        },
+        {
+          "CODGRUPO": 16,
+          "DESCGRUPO": "Antiepil�pticos",
+          "CODPRES": "noi",
+          "NOM_REGISTRADO": "noiafren 10"
+        },
+        {
+          "CODGRUPO": 16,
+          "DESCGRUPO": "Antiepil�pticos",
+          "CODPRES": "si",
+          "NOM_REGISTRADO": "sinergina"
+        },
+        {
+          "CODGRUPO": 16,
+          "DESCGRUPO": "Antiepil�pticos",
+          "CODPRES": "top",
+          "NOM_REGISTRADO": "topiramato"
+        },
+        {
+          "CODGRUPO": 16,
+          "DESCGRUPO": "Antiepil�pticos",
+          "CODPRES": "vim",
+          "NOM_REGISTRADO": "vimpat 50"
+        },
+        {
+          "CODGRUPO": 16,
+          "DESCGRUPO": "Antiepil�pticos",
+          "CODPRES": "AcVal",
+          "NOM_REGISTRADO": "�cido valpr�ico"
+        },
+        {
+          "CODGRUPO": 16,
+          "DESCGRUPO": "Antiepil�pticos",
+          "CODPRES": "val",
+          "NOM_REGISTRADO": "�cido valproico "
+        },
+        {
+          "CODGRUPO": 17,
+          "DESCGRUPO": "Neurol�pticos Otros",
+          "CODPRES": "Arip",
+          "NOM_REGISTRADO": "Aripiprazol"
+        },
+        {
+          "CODGRUPO": 17,
+          "DESCGRUPO": "Neurol�pticos Otros",
+          "CODPRES": "ris",
+          "NOM_REGISTRADO": "RISPERIDONA"
+        },
+        {
+          "CODGRUPO": 17,
+          "DESCGRUPO": "Neurol�pticos Otros",
+          "CODPRES": "ari",
+          "NOM_REGISTRADO": "aricept 5"
+        },
+        {
+          "CODGRUPO": 17,
+          "DESCGRUPO": "Neurol�pticos Otros",
+          "CODPRES": "hal",
+          "NOM_REGISTRADO": "haloperidol"
+        },
+        {
+          "CODGRUPO": 17,
+          "DESCGRUPO": "Neurol�pticos Otros",
+          "CODPRES": "pro",
+          "NOM_REGISTRADO": "prometax parche 4.6mg"
+        },
+        {
+          "CODGRUPO": 19,
+          "DESCGRUPO": "Tto Acidosis",
+          "CODPRES": "bi",
+          "NOM_REGISTRADO": "Bicarbonato"
+        },
+        {
+          "CODGRUPO": 20,
+          "DESCGRUPO": "Antiagregantes",
+          "CODPRES": "EP10",
+          "NOM_REGISTRADO": "ADIRO"
+        },
+        {
+          "CODGRUPO": 20,
+          "DESCGRUPO": "Antiagregantes",
+          "CODPRES": "clop",
+          "NOM_REGISTRADO": "Clopidogrel"
+        },
+        {
+          "CODGRUPO": 20,
+          "DESCGRUPO": "Antiagregantes",
+          "CODPRES": "cop",
+          "NOM_REGISTRADO": "Clopidogrel 75 mg"
+        },
+        {
+          "CODGRUPO": 20,
+          "DESCGRUPO": "Antiagregantes",
+          "CODPRES": "Disg",
+          "NOM_REGISTRADO": "Disgren "
+        },
+        {
+          "CODGRUPO": 20,
+          "DESCGRUPO": "Antiagregantes",
+          "CODPRES": "PLAV",
+          "NOM_REGISTRADO": "PALVIX 75 mg"
+        },
+        {
+          "CODGRUPO": 20,
+          "DESCGRUPO": "Antiagregantes",
+          "CODPRES": "PL",
+          "NOM_REGISTRADO": "PLAVIX 75"
+        },
+        {
+          "CODGRUPO": 20,
+          "DESCGRUPO": "Antiagregantes",
+          "CODPRES": "PLAVIX",
+          "NOM_REGISTRADO": "PLAVIX 75"
+        },
+        {
+          "CODGRUPO": 20,
+          "DESCGRUPO": "Antiagregantes",
+          "CODPRES": "tcg",
+          "NOM_REGISTRADO": "TICAGRELOR 90 mg"
+        },
+        {
+          "CODGRUPO": 20,
+          "DESCGRUPO": "Antiagregantes",
+          "CODPRES": "TROMA",
+          "NOM_REGISTRADO": "TROMALYT 150 mg"
+        },
+        {
+          "CODGRUPO": 20,
+          "DESCGRUPO": "Antiagregantes",
+          "CODPRES": "tif",
+          "NOM_REGISTRADO": "Triflusal"
+        },
+        {
+          "CODGRUPO": 20,
+          "DESCGRUPO": "Antiagregantes",
+          "CODPRES": "UROKI",
+          "NOM_REGISTRADO": "UROQUINASA"
+        },
+        {
+          "CODGRUPO": 20,
+          "DESCGRUPO": "Antiagregantes",
+          "CODPRES": "bili",
+          "NOM_REGISTRADO": "bilique(ticagrelor)"
+        },
+        {
+          "CODGRUPO": 20,
+          "DESCGRUPO": "Antiagregantes",
+          "CODPRES": "isc",
+          "NOM_REGISTRADO": "iscover"
+        },
+        {
+          "CODGRUPO": 20,
+          "DESCGRUPO": "Antiagregantes",
+          "CODPRES": "mg",
+          "NOM_REGISTRADO": "prasugrel"
+        },
+        {
+          "CODGRUPO": 21,
+          "DESCGRUPO": "Protectores g�stricos",
+          "CODPRES": "FAM",
+          "NOM_REGISTRADO": "FAMOTIDINA"
+        },
+        {
+          "CODGRUPO": 21,
+          "DESCGRUPO": "Protectores g�stricos",
+          "CODPRES": "LAC",
+          "NOM_REGISTRADO": "LACTOBACILLUS SP"
+        },
+        {
+          "CODGRUPO": 21,
+          "DESCGRUPO": "Protectores g�stricos",
+          "CODPRES": "lanso",
+          "NOM_REGISTRADO": "LANZOPRAZOL 30"
+        },
+        {
+          "CODGRUPO": 21,
+          "DESCGRUPO": "Protectores g�stricos",
+          "CODPRES": "NEX",
+          "NOM_REGISTRADO": "NEXIUM 20"
+        },
+        {
+          "CODGRUPO": 21,
+          "DESCGRUPO": "Protectores g�stricos",
+          "CODPRES": "OMEP",
+          "NOM_REGISTRADO": "OMEPRAZOL"
+        },
+        {
+          "CODGRUPO": 21,
+          "DESCGRUPO": "Protectores g�stricos",
+          "CODPRES": "OM",
+          "NOM_REGISTRADO": "OMEPRAZOL 20"
+        },
+        {
+          "CODGRUPO": 21,
+          "DESCGRUPO": "Protectores g�stricos",
+          "CODPRES": "PAN",
+          "NOM_REGISTRADO": "Pantoprazol 20mg"
+        },
+        {
+          "CODGRUPO": 21,
+          "DESCGRUPO": "Protectores g�stricos",
+          "CODPRES": "PAN40",
+          "NOM_REGISTRADO": "Pantoprazol 40mg"
+        },
+        {
+          "CODGRUPO": 21,
+          "DESCGRUPO": "Protectores g�stricos",
+          "CODPRES": "almax",
+          "NOM_REGISTRADO": "almax"
+        },
+        {
+          "CODGRUPO": 21,
+          "DESCGRUPO": "Protectores g�stricos",
+          "CODPRES": "ra",
+          "NOM_REGISTRADO": "ranitidina"
+        },
+        {
+          "CODGRUPO": 22,
+          "DESCGRUPO": "Vitaminas",
+          "CODPRES": "ACF",
+          "NOM_REGISTRADO": "ACIDO FOLICO"
+        },
+        {
+          "CODGRUPO": 22,
+          "DESCGRUPO": "Vitaminas",
+          "CODPRES": "au E",
+          "NOM_REGISTRADO": "AUXINA E"
+        },
+        {
+          "CODGRUPO": 22,
+          "DESCGRUPO": "Vitaminas",
+          "CODPRES": "Be",
+          "NOM_REGISTRADO": "Benerva "
+        },
+        {
+          "CODGRUPO": 22,
+          "DESCGRUPO": "Vitaminas",
+          "CODPRES": "etalpha",
+          "NOM_REGISTRADO": "ETALPHA"
+        },
+        {
+          "CODGRUPO": 22,
+          "DESCGRUPO": "Vitaminas",
+          "CODPRES": "ferb",
+          "NOM_REGISTRADO": "Ferbisol "
+        },
+        {
+          "CODGRUPO": 22,
+          "DESCGRUPO": "Vitaminas",
+          "CODPRES": "MED",
+          "NOM_REGISTRADO": "MEDEBIOTIN"
+        },
+        {
+          "CODGRUPO": 22,
+          "DESCGRUPO": "Vitaminas",
+          "CODPRES": "NEURA",
+          "NOM_REGISTRADO": "NEURALEX"
+        },
+        {
+          "CODGRUPO": 22,
+          "DESCGRUPO": "Vitaminas",
+          "CODPRES": "pir",
+          "NOM_REGISTRADO": "PIRIDOXINA"
+        },
+        {
+          "CODGRUPO": 22,
+          "DESCGRUPO": "Vitaminas",
+          "CODPRES": "vi",
+          "NOM_REGISTRADO": "VIMIN 50"
+        },
+        {
+          "CODGRUPO": 22,
+          "DESCGRUPO": "Vitaminas",
+          "CODPRES": "vit B12",
+          "NOM_REGISTRADO": "VITAMINA B12"
+        },
+        {
+          "CODGRUPO": 22,
+          "DESCGRUPO": "Vitaminas",
+          "CODPRES": "Vit. C",
+          "NOM_REGISTRADO": "VITAMINA C"
+        },
+        {
+          "CODGRUPO": 22,
+          "DESCGRUPO": "Vitaminas",
+          "CODPRES": "bec",
+          "NOM_REGISTRADO": "becocyme"
+        },
+        {
+          "CODGRUPO": 22,
+          "DESCGRUPO": "Vitaminas",
+          "CODPRES": "ben",
+          "NOM_REGISTRADO": "benadon"
+        },
+        {
+          "CODGRUPO": 22,
+          "DESCGRUPO": "Vitaminas",
+          "CODPRES": "fo",
+          "NOM_REGISTRADO": "folidoce"
+        },
+        {
+          "CODGRUPO": 22,
+          "DESCGRUPO": "Vitaminas",
+          "CODPRES": "hidrox",
+          "NOM_REGISTRADO": "hidroxil B12 B6 B1"
+        },
+        {
+          "CODGRUPO": 22,
+          "DESCGRUPO": "Vitaminas",
+          "CODPRES": "opt",
+          "NOM_REGISTRADO": "optovite B12 ampollas"
+        },
+        {
+          "CODGRUPO": 22,
+          "DESCGRUPO": "Vitaminas",
+          "CODPRES": "paric",
+          "NOM_REGISTRADO": "paricalcitol"
+        },
+        {
+          "CODGRUPO": 22,
+          "DESCGRUPO": "Vitaminas",
+          "CODPRES": "pari",
+          "NOM_REGISTRADO": "paricalcitol 2mcg"
+        },
+        {
+          "CODGRUPO": 22,
+          "DESCGRUPO": "Vitaminas",
+          "CODPRES": "tia",
+          "NOM_REGISTRADO": "tiamina 300mg(Benerva)"
+        },
+        {
+          "CODGRUPO": 22,
+          "DESCGRUPO": "Vitaminas",
+          "CODPRES": "zol",
+          "NOM_REGISTRADO": "zolico"
+        },
+        {
+          "CODGRUPO": 23,
+          "DESCGRUPO": "Laxantes",
+          "CODPRES": "casen",
+          "NOM_REGISTRADO": "casenlax"
+        },
+        {
+          "CODGRUPO": 23,
+          "DESCGRUPO": "Laxantes",
+          "CODPRES": "duph",
+          "NOM_REGISTRADO": "duphalac sobres"
+        },
+        {
+          "CODGRUPO": 23,
+          "DESCGRUPO": "Laxantes",
+          "CODPRES": "emp",
+          "NOM_REGISTRADO": "emportal"
+        },
+        {
+          "CODGRUPO": 23,
+          "DESCGRUPO": "Laxantes",
+          "CODPRES": "emu",
+          "NOM_REGISTRADO": "emuliquen"
+        },
+        {
+          "CODGRUPO": 23,
+          "DESCGRUPO": "Laxantes",
+          "CODPRES": "macro",
+          "NOM_REGISTRADO": "macrogol"
+        },
+        {
+          "CODGRUPO": 23,
+          "DESCGRUPO": "Laxantes",
+          "CODPRES": "mov",
+          "NOM_REGISTRADO": "movicol"
+        },
+        {
+          "CODGRUPO": 23,
+          "DESCGRUPO": "Laxantes",
+          "CODPRES": "pl",
+          "NOM_REGISTRADO": "plantaben"
+        },
+        {
+          "CODGRUPO": 24,
+          "DESCGRUPO": "Resincalcio",
+          "CODPRES": "res",
+          "NOM_REGISTRADO": "Resincalcio polvos"
+        },
+        {
+          "CODGRUPO": 24,
+          "DESCGRUPO": "Resincalcio",
+          "CODPRES": "resi",
+          "NOM_REGISTRADO": "Resincalcio sobres"
+        },
+        {
+          "CODGRUPO": 25,
+          "DESCGRUPO": "Antibi�ticos",
+          "CODPRES": "AUG",
+          "NOM_REGISTRADO": "AUGMENTINE 1000"
+        },
+        {
+          "CODGRUPO": 25,
+          "DESCGRUPO": "Antibi�ticos",
+          "CODPRES": "AUG500",
+          "NOM_REGISTRADO": "AUGMENTINE 500"
+        },
+        {
+          "CODGRUPO": 25,
+          "DESCGRUPO": "Antibi�ticos",
+          "CODPRES": "az",
+          "NOM_REGISTRADO": "Azitromicina"
+        },
+        {
+          "CODGRUPO": 25,
+          "DESCGRUPO": "Antibi�ticos",
+          "CODPRES": "CEFA",
+          "NOM_REGISTRADO": "CEFAZOLINA"
+        },
+        {
+          "CODGRUPO": 25,
+          "DESCGRUPO": "Antibi�ticos",
+          "CODPRES": "CEFIXI",
+          "NOM_REGISTRADO": "CEFIXIMA"
+        },
+        {
+          "CODGRUPO": 25,
+          "DESCGRUPO": "Antibi�ticos",
+          "CODPRES": "CEPTA",
+          "NOM_REGISTRADO": "CEFTAZIDIMA"
+        },
+        {
+          "CODGRUPO": 25,
+          "DESCGRUPO": "Antibi�ticos",
+          "CODPRES": "cm",
+          "NOM_REGISTRADO": "CEMIDON B6 "
+        },
+        {
+          "CODGRUPO": 25,
+          "DESCGRUPO": "Antibi�ticos",
+          "CODPRES": "Cef",
+          "NOM_REGISTRADO": "Cefadroxilo"
+        },
+        {
+          "CODGRUPO": 25,
+          "DESCGRUPO": "Antibi�ticos",
+          "CODPRES": "Dapt",
+          "NOM_REGISTRADO": "Daptomicina"
+        },
+        {
+          "CODGRUPO": 25,
+          "DESCGRUPO": "Antibi�ticos",
+          "CODPRES": "fsf",
+          "NOM_REGISTRADO": "FOSFOMICINA"
+        },
+        {
+          "CODGRUPO": 25,
+          "DESCGRUPO": "Antibi�ticos",
+          "CODPRES": "GENT80",
+          "NOM_REGISTRADO": "GENTAMICINA"
+        },
+        {
+          "CODGRUPO": 25,
+          "DESCGRUPO": "Antibi�ticos",
+          "CODPRES": "MERONEM",
+          "NOM_REGISTRADO": "MERONEM"
+        },
+        {
+          "CODGRUPO": 25,
+          "DESCGRUPO": "Antibi�ticos",
+          "CODPRES": "MERON",
+          "NOM_REGISTRADO": "MERONEM 500"
+        },
+        {
+          "CODGRUPO": 25,
+          "DESCGRUPO": "Antibi�ticos",
+          "CODPRES": "nor",
+          "NOM_REGISTRADO": "Norfloxacino"
+        },
+        {
+          "CODGRUPO": 25,
+          "DESCGRUPO": "Antibi�ticos",
+          "CODPRES": "rfx",
+          "NOM_REGISTRADO": "RIFAXIMINA 200 mg"
+        },
+        {
+          "CODGRUPO": 25,
+          "DESCGRUPO": "Antibi�ticos",
+          "CODPRES": "TOBRA",
+          "NOM_REGISTRADO": "TOBRAMICINA"
+        },
+        {
+          "CODGRUPO": 25,
+          "DESCGRUPO": "Antibi�ticos",
+          "CODPRES": "VANCOM",
+          "NOM_REGISTRADO": "VANCOMICINA"
+        },
+        {
+          "CODGRUPO": 25,
+          "DESCGRUPO": "Antibi�ticos",
+          "CODPRES": "VANCO",
+          "NOM_REGISTRADO": "VANCOMICINA 500"
+        },
+        {
+          "CODGRUPO": 25,
+          "DESCGRUPO": "Antibi�ticos",
+          "CODPRES": "VANCO10",
+          "NOM_REGISTRADO": "VANCOMOCINA 1000"
+        },
+        {
+          "CODGRUPO": 25,
+          "DESCGRUPO": "Antibi�ticos",
+          "CODPRES": "amb",
+          "NOM_REGISTRADO": "ambisome"
+        },
+        {
+          "CODGRUPO": 25,
+          "DESCGRUPO": "Antibi�ticos",
+          "CODPRES": "amx",
+          "NOM_REGISTRADO": "amoxicilina 500 mg"
+        },
+        {
+          "CODGRUPO": 25,
+          "DESCGRUPO": "Antibi�ticos",
+          "CODPRES": "amp",
+          "NOM_REGISTRADO": "ampicilia"
+        },
+        {
+          "CODGRUPO": 25,
+          "DESCGRUPO": "Antibi�ticos",
+          "CODPRES": "benz",
+          "NOM_REGISTRADO": "benzetacil inyectable"
+        },
+        {
+          "CODGRUPO": 25,
+          "DESCGRUPO": "Antibi�ticos",
+          "CODPRES": "cef",
+          "NOM_REGISTRADO": "cefotaxima"
+        },
+        {
+          "CODGRUPO": 25,
+          "DESCGRUPO": "Antibi�ticos",
+          "CODPRES": "c",
+          "NOM_REGISTRADO": "cefuroxima"
+        },
+        {
+          "CODGRUPO": 25,
+          "DESCGRUPO": "Antibi�ticos",
+          "CODPRES": "do",
+          "NOM_REGISTRADO": "doxaciclina 100"
+        },
+        {
+          "CODGRUPO": 25,
+          "DESCGRUPO": "Antibi�ticos",
+          "CODPRES": "im",
+          "NOM_REGISTRADO": "imipenem "
+        },
+        {
+          "CODGRUPO": 25,
+          "DESCGRUPO": "Antibi�ticos",
+          "CODPRES": "isa",
+          "NOM_REGISTRADO": "isavuconazol"
+        },
+        {
+          "CODGRUPO": 25,
+          "DESCGRUPO": "Antibi�ticos",
+          "CODPRES": "lev",
+          "NOM_REGISTRADO": "levofloxacino"
+        },
+        {
+          "CODGRUPO": 25,
+          "DESCGRUPO": "Antibi�ticos",
+          "CODPRES": "mero",
+          "NOM_REGISTRADO": "meropenem"
+        },
+        {
+          "CODGRUPO": 25,
+          "DESCGRUPO": "Antibi�ticos",
+          "CODPRES": "RIFA",
+          "NOM_REGISTRADO": "rifaximina 400"
+        },
+        {
+          "CODGRUPO": 25,
+          "DESCGRUPO": "Antibi�ticos",
+          "CODPRES": "sep",
+          "NOM_REGISTRADO": "septrim"
+        },
+        {
+          "CODGRUPO": 25,
+          "DESCGRUPO": "Antibi�ticos",
+          "CODPRES": "zit",
+          "NOM_REGISTRADO": "zitromax "
+        },
+        {
+          "CODGRUPO": 26,
+          "DESCGRUPO": "Anticoagulantes",
+          "CODPRES": "Apixa",
+          "NOM_REGISTRADO": "Apixaban "
+        },
+        {
+          "CODGRUPO": 26,
+          "DESCGRUPO": "Anticoagulantes",
+          "CODPRES": "CLEX",
+          "NOM_REGISTRADO": "Clexane 40 sc"
+        },
+        {
+          "CODGRUPO": 26,
+          "DESCGRUPO": "Anticoagulantes",
+          "CODPRES": "SINTROM",
+          "NOM_REGISTRADO": "SINTROM"
+        },
+        {
+          "CODGRUPO": 26,
+          "DESCGRUPO": "Anticoagulantes",
+          "CODPRES": "aldo",
+          "NOM_REGISTRADO": "aldocumar 5 mg"
+        },
+        {
+          "CODGRUPO": 26,
+          "DESCGRUPO": "Anticoagulantes",
+          "CODPRES": "hib",
+          "NOM_REGISTRADO": "hibor"
+        },
+        {
+          "CODGRUPO": 27,
+          "DESCGRUPO": "Suplementos nutricionales",
+          "CODPRES": "ff",
+          "NOM_REGISTRADO": "FOSFATO NM 3,6 G"
+        },
+        {
+          "CODGRUPO": 27,
+          "DESCGRUPO": "Suplementos nutricionales",
+          "CODPRES": "nut ",
+          "NOM_REGISTRADO": "Nut Avant "
+        },
+        {
+          "CODGRUPO": 27,
+          "DESCGRUPO": "Suplementos nutricionales",
+          "CODPRES": "PP",
+          "NOM_REGISTRADO": "ProtePlus NM 20g"
+        },
+        {
+          "CODGRUPO": 27,
+          "DESCGRUPO": "Suplementos nutricionales",
+          "CODPRES": "fre",
+          "NOM_REGISTRADO": "fresubin"
+        },
+        {
+          "CODGRUPO": 27,
+          "DESCGRUPO": "Suplementos nutricionales",
+          "CODPRES": "renil",
+          "NOM_REGISTRADO": "renilon bat"
+        },
+        {
+          "CODGRUPO": 27,
+          "DESCGRUPO": "Suplementos nutricionales",
+          "CODPRES": "RED",
+          "NOM_REGISTRADO": "resource enegy drink"
+        },
+        {
+          "CODGRUPO": 27,
+          "DESCGRUPO": "Suplementos nutricionales",
+          "CODPRES": "sup",
+          "NOM_REGISTRADO": "suplena comp"
+        },
+        {
+          "CODGRUPO": 28,
+          "DESCGRUPO": "Insulina",
+          "CODPRES": "API",
+          "NOM_REGISTRADO": "APIDRA 100 INSULINA"
+        },
+        {
+          "CODGRUPO": 28,
+          "DESCGRUPO": "Insulina",
+          "CODPRES": "Ab",
+          "NOM_REGISTRADO": "Abasaglar"
+        },
+        {
+          "CODGRUPO": 28,
+          "DESCGRUPO": "Insulina",
+          "CODPRES": "INS",
+          "NOM_REGISTRADO": "INSULINA INSULATARD"
+        },
+        {
+          "CODGRUPO": 28,
+          "DESCGRUPO": "Insulina",
+          "CODPRES": "IN",
+          "NOM_REGISTRADO": "INSULINA NOVOMIX 30"
+        },
+        {
+          "CODGRUPO": 28,
+          "DESCGRUPO": "Insulina",
+          "CODPRES": "INSULIN",
+          "NOM_REGISTRADO": "INSULINA NOVORAPID FLEXPEN"
+        },
+        {
+          "CODGRUPO": 28,
+          "DESCGRUPO": "Insulina",
+          "CODPRES": "ins",
+          "NOM_REGISTRADO": "Insulina Abasaglar"
+        },
+        {
+          "CODGRUPO": 28,
+          "DESCGRUPO": "Insulina",
+          "CODPRES": "atrapid",
+          "NOM_REGISTRADO": "Insulina Actrapid"
+        },
+        {
+          "CODGRUPO": 28,
+          "DESCGRUPO": "Insulina",
+          "CODPRES": "insfp",
+          "NOM_REGISTRADO": "Insulina Fiasp"
+        },
+        {
+          "CODGRUPO": 28,
+          "DESCGRUPO": "Insulina",
+          "CODPRES": "insh",
+          "NOM_REGISTRADO": "Insulina Humalog"
+        },
+        {
+          "CODGRUPO": 28,
+          "DESCGRUPO": "Insulina",
+          "CODPRES": "in huma",
+          "NOM_REGISTRADO": "Insulina Humalog mix 25"
+        },
+        {
+          "CODGRUPO": 28,
+          "DESCGRUPO": "Insulina",
+          "CODPRES": "mix 50",
+          "NOM_REGISTRADO": "Insulina Humalog mix 50"
+        },
+        {
+          "CODGRUPO": 28,
+          "DESCGRUPO": "Insulina",
+          "CODPRES": "inK",
+          "NOM_REGISTRADO": "Insulina Kwikpen"
+        },
+        {
+          "CODGRUPO": 28,
+          "DESCGRUPO": "Insulina",
+          "CODPRES": "lan",
+          "NOM_REGISTRADO": "Insulina Lantus"
+        },
+        {
+          "CODGRUPO": 28,
+          "DESCGRUPO": "Insulina",
+          "CODPRES": "insulin",
+          "NOM_REGISTRADO": "Insulina Levemir"
+        },
+        {
+          "CODGRUPO": 28,
+          "DESCGRUPO": "Insulina",
+          "CODPRES": "touj",
+          "NOM_REGISTRADO": "Insulina Toujeo"
+        },
+        {
+          "CODGRUPO": 28,
+          "DESCGRUPO": "Insulina",
+          "CODPRES": "insu",
+          "NOM_REGISTRADO": "Insulina Tresiba"
+        },
+        {
+          "CODGRUPO": 28,
+          "DESCGRUPO": "Insulina",
+          "CODPRES": "nov",
+          "NOM_REGISTRADO": "NOVOMIX 30"
+        },
+        {
+          "CODGRUPO": 28,
+          "DESCGRUPO": "Insulina",
+          "CODPRES": "nov50",
+          "NOM_REGISTRADO": "NOVOMIX50 FLEXPEN"
+        },
+        {
+          "CODGRUPO": 28,
+          "DESCGRUPO": "Insulina",
+          "CODPRES": "NOV",
+          "NOM_REGISTRADO": "NOVORAPID"
+        },
+        {
+          "CODGRUPO": 28,
+          "DESCGRUPO": "Insulina",
+          "CODPRES": "HU",
+          "NOM_REGISTRADO": "humalog pen"
+        },
+        {
+          "CODGRUPO": 28,
+          "DESCGRUPO": "Insulina",
+          "CODPRES": "mix",
+          "NOM_REGISTRADO": "mixtar 30 novolet"
+        },
+        {
+          "CODGRUPO": 29,
+          "DESCGRUPO": "Endocrinolog�a Otros",
+          "CODPRES": "ARAN15",
+          "NOM_REGISTRADO": "EUTIROX"
+        },
+        {
+          "CODGRUPO": 29,
+          "DESCGRUPO": "Endocrinolog�a Otros",
+          "CODPRES": "vid",
+          "NOM_REGISTRADO": "vidagliptina  50 mg"
+        },
+        {
+          "CODGRUPO": 30,
+          "DESCGRUPO": "Antianginosos",
+          "CODPRES": "COR",
+          "NOM_REGISTRADO": "CORONUR"
+        },
+        {
+          "CODGRUPO": 30,
+          "DESCGRUPO": "Antianginosos",
+          "CODPRES": "ntf",
+          "NOM_REGISTRADO": "NITROFIX parche"
+        },
+        {
+          "CODGRUPO": 30,
+          "DESCGRUPO": "Antianginosos",
+          "CODPRES": "ntg",
+          "NOM_REGISTRADO": "NITROGLICERINA parche"
+        },
+        {
+          "CODGRUPO": 30,
+          "DESCGRUPO": "Antianginosos",
+          "CODPRES": "NI",
+          "NOM_REGISTRADO": "NITROPLAST PARCHES"
+        },
+        {
+          "CODGRUPO": 30,
+          "DESCGRUPO": "Antianginosos",
+          "CODPRES": "caf",
+          "NOM_REGISTRADO": "cafinitrina"
+        },
+        {
+          "CODGRUPO": 30,
+          "DESCGRUPO": "Antianginosos",
+          "CODPRES": "dia",
+          "NOM_REGISTRADO": "diafusor"
+        },
+        {
+          "CODGRUPO": 30,
+          "DESCGRUPO": "Antianginosos",
+          "CODPRES": "dip",
+          "NOM_REGISTRADO": "dipiridamol"
+        },
+        {
+          "CODGRUPO": 30,
+          "DESCGRUPO": "Antianginosos",
+          "CODPRES": "nit",
+          "NOM_REGISTRADO": "nitroglicrina sl"
+        },
+        {
+          "CODGRUPO": 30,
+          "DESCGRUPO": "Antianginosos",
+          "CODPRES": "unik",
+          "NOM_REGISTRADO": "uniket 20mg"
+        },
+        {
+          "CODGRUPO": 30,
+          "DESCGRUPO": "Antianginosos",
+          "CODPRES": "uni",
+          "NOM_REGISTRADO": "uniket retard "
+        },
+        {
+          "CODGRUPO": 31,
+          "DESCGRUPO": "Antiarr�tmicos",
+          "CODPRES": "amd",
+          "NOM_REGISTRADO": "Amiodarona "
+        },
+        {
+          "CODGRUPO": 31,
+          "DESCGRUPO": "Antiarr�tmicos",
+          "CODPRES": "dig",
+          "NOM_REGISTRADO": "Digoxina 0.25"
+        },
+        {
+          "CODGRUPO": 31,
+          "DESCGRUPO": "Antiarr�tmicos",
+          "CODPRES": "TRANGO",
+          "NOM_REGISTRADO": "TRANGOREX"
+        },
+        {
+          "CODGRUPO": 31,
+          "DESCGRUPO": "Antiarr�tmicos",
+          "CODPRES": "apoc",
+          "NOM_REGISTRADO": "apocard 100"
+        },
+        {
+          "CODGRUPO": 31,
+          "DESCGRUPO": "Antiarr�tmicos",
+          "CODPRES": "corl",
+          "NOM_REGISTRADO": "corlentor 5"
+        },
+        {
+          "CODGRUPO": 31,
+          "DESCGRUPO": "Antiarr�tmicos",
+          "CODPRES": "ivad",
+          "NOM_REGISTRADO": "ivadravina 5mg"
+        },
+        {
+          "CODGRUPO": 32,
+          "DESCGRUPO": "Inmunosupresores",
+          "CODPRES": "EP2",
+          "NOM_REGISTRADO": "CELLCEPT"
+        },
+        {
+          "CODGRUPO": 32,
+          "DESCGRUPO": "Inmunosupresores",
+          "CODPRES": "imu",
+          "NOM_REGISTRADO": "Imurel"
+        },
+        {
+          "CODGRUPO": 32,
+          "DESCGRUPO": "Inmunosupresores",
+          "CODPRES": "CAR",
+          "NOM_REGISTRADO": "MYFORTIC 360"
+        },
+        {
+          "CODGRUPO": 32,
+          "DESCGRUPO": "Inmunosupresores",
+          "CODPRES": "cer",
+          "NOM_REGISTRADO": "certican"
+        },
+        {
+          "CODGRUPO": 32,
+          "DESCGRUPO": "Inmunosupresores",
+          "CODPRES": "gen",
+          "NOM_REGISTRADO": "genoxal 500"
+        },
+        {
+          "CODGRUPO": 32,
+          "DESCGRUPO": "Inmunosupresores",
+          "CODPRES": "hu",
+          "NOM_REGISTRADO": "humira"
+        },
+        {
+          "CODGRUPO": 32,
+          "DESCGRUPO": "Inmunosupresores",
+          "CODPRES": "ixa",
+          "NOM_REGISTRADO": "ixazomib"
+        },
+        {
+          "CODGRUPO": 32,
+          "DESCGRUPO": "Inmunosupresores",
+          "CODPRES": "mds",
+          "NOM_REGISTRADO": "modigraf"
+        },
+        {
+          "CODGRUPO": 32,
+          "DESCGRUPO": "Inmunosupresores",
+          "CODPRES": "prograf",
+          "NOM_REGISTRADO": "prograf"
+        },
+        {
+          "CODGRUPO": 32,
+          "DESCGRUPO": "Inmunosupresores",
+          "CODPRES": "rap",
+          "NOM_REGISTRADO": "rapamune "
+        },
+        {
+          "CODGRUPO": 32,
+          "DESCGRUPO": "Inmunosupresores",
+          "CODPRES": "san ",
+          "NOM_REGISTRADO": "sandimun neoral"
+        },
+        {
+          "CODGRUPO": 32,
+          "DESCGRUPO": "Inmunosupresores",
+          "CODPRES": "sir",
+          "NOM_REGISTRADO": "sirolimus"
+        },
+        {
+          "CODGRUPO": 32,
+          "DESCGRUPO": "Inmunosupresores",
+          "CODPRES": "tac",
+          "NOM_REGISTRADO": "tacrolimus"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "ACIC",
+          "NOM_REGISTRADO": "ACICLOVIR 200"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "ad",
+          "NOM_REGISTRADO": "ADVAGRAF"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "AR",
+          "NOM_REGISTRADO": "ARIMIDEX 1 mg"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "AZ",
+          "NOM_REGISTRADO": "AZITEC"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "ac",
+          "NOM_REGISTRADO": "Actonel "
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "ANIF",
+          "NOM_REGISTRADO": "Anifrolumab 300 mg"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "BNL",
+          "NOM_REGISTRADO": "BELIMUMAB"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "BOR",
+          "NOM_REGISTRADO": "BOREA"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "beta",
+          "NOM_REGISTRADO": "Betametasona"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "CARB",
+          "NOM_REGISTRADO": "CARBAMAZEPINA 200"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "cS",
+          "NOM_REGISTRADO": "CIALIS 5 MG"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "cicl",
+          "NOM_REGISTRADO": "CICLOSTAZOL"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "CALCOL",
+          "NOM_REGISTRADO": "Calcio/colecalfiferol 1000 mg / 880 UI"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "cHCT",
+          "NOM_REGISTRADO": "Candesartan-HCT"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "cele",
+          "NOM_REGISTRADO": "Celebrem "
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "DUR",
+          "NOM_REGISTRADO": "DUROGESIC 25 parches"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "dib",
+          "NOM_REGISTRADO": "Diben"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "FLU",
+          "NOM_REGISTRADO": "FLUCONAZOL 50"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "flumil",
+          "NOM_REGISTRADO": "FLUMIL  200"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "fosmx",
+          "NOM_REGISTRADO": "FOSAMAX cap"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "fsinc",
+          "NOM_REGISTRADO": "FOSLAINCO  10.8/24.4 g"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "fluv",
+          "NOM_REGISTRADO": "Fluvestrant"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "gat",
+          "NOM_REGISTRADO": "GATICA(pregabalina)"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "Hy",
+          "NOM_REGISTRADO": "Hydrea"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "IBUPRO",
+          "NOM_REGISTRADO": "IBUPROFENO 400 mg"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "id",
+          "NOM_REGISTRADO": "IDEOS"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "LAM",
+          "NOM_REGISTRADO": "LAMIVUDINA"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "levono",
+          "NOM_REGISTRADO": "Levonogestrel/etinilestradiol"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "levo",
+          "NOM_REGISTRADO": "Levotiroxina"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "lok10",
+          "NOM_REGISTRADO": "Lokelma 10gr sobres"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "lok",
+          "NOM_REGISTRADO": "Lokelma 5gr sobres"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "MG",
+          "NOM_REGISTRADO": "MAGNOGENE"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "mot",
+          "NOM_REGISTRADO": "Motilium"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "no",
+          "NOM_REGISTRADO": "Noctamid"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "olm",
+          "NOM_REGISTRADO": "Olmesartan"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "oxx",
+          "NOM_REGISTRADO": "Otros"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "PARAIV",
+          "NOM_REGISTRADO": "PARACETAMOL IV"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "pred",
+          "NOM_REGISTRADO": "PREDNISONA 10"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "pred2,5",
+          "NOM_REGISTRADO": "PREDNISONA 2,5"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "pred5",
+          "NOM_REGISTRADO": "PREDNISONA 5"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "MUP",
+          "NOM_REGISTRADO": "Paciente en centro de di�lisis perif�rico no Hospitalario. Nefr�logos no tenemos acceso a MUP. Rogamos actualizar medicaci�n. Muchas gracias."
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "PEN",
+          "NOM_REGISTRADO": "Pentamidina"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "pent",
+          "NOM_REGISTRADO": "Pentasa"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "RASA",
+          "NOM_REGISTRADO": "Rasagilina "
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "Rise",
+          "NOM_REGISTRADO": "Risedronato"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "SOM",
+          "NOM_REGISTRADO": "SOMATOSTATINA"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "SOR",
+          "NOM_REGISTRADO": "SORBISTERIT"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "spi",
+          "NOM_REGISTRADO": "SPIOLTO RESPIMAT"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "see",
+          "NOM_REGISTRADO": "Seebri inh"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "tam",
+          "NOM_REGISTRADO": "TAMSULOSINA 0,4 mg"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "TAU",
+          "NOM_REGISTRADO": "TAUROLOK"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "test",
+          "NOM_REGISTRADO": "TESTOSTERONA EXOGENA "
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "TR",
+          "NOM_REGISTRADO": "TRAJENTA"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "tega",
+          "NOM_REGISTRADO": "Tegaderm"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "tiza",
+          "NOM_REGISTRADO": "Tizanidina"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "Vel",
+          "NOM_REGISTRADO": "VELTASSA"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "vesom",
+          "NOM_REGISTRADO": "Vesomni"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "WIL",
+          "NOM_REGISTRADO": "WILZIN CAPS 50mg"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "996109",
+          "NOM_REGISTRADO": "XICIL"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "zal",
+          "NOM_REGISTRADO": "Zaldiar"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "zyn",
+          "NOM_REGISTRADO": "Zyntabac"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "aciclor",
+          "NOM_REGISTRADO": "aciclovir 800"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "ak",
+          "NOM_REGISTRADO": "akalca"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "alb",
+          "NOM_REGISTRADO": "albumina 20%"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "anas",
+          "NOM_REGISTRADO": "anasma"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "anexate",
+          "NOM_REGISTRADO": "anexate"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "anfo",
+          "NOM_REGISTRADO": "anfotericina B inh 100/20"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "arc",
+          "NOM_REGISTRADO": "arcoxia 60"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "as",
+          "NOM_REGISTRADO": "astonin"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "at",
+          "NOM_REGISTRADO": "atarax"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "audi",
+          "NOM_REGISTRADO": "audiovit"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "av",
+          "NOM_REGISTRADO": "avidart "
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "aza",
+          "NOM_REGISTRADO": "azatioprina"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "bica",
+          "NOM_REGISTRADO": "bicalutamida"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "bude",
+          "NOM_REGISTRADO": "budesonida"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "cas",
+          "NOM_REGISTRADO": "casenbiotic"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "cat",
+          "NOM_REGISTRADO": "catapresan"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "cem",
+          "NOM_REGISTRADO": "cemidon(isoniacida-piridoxina)150/25"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "ce",
+          "NOM_REGISTRADO": "cetraxal"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "CHAM",
+          "NOM_REGISTRADO": "champix"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "clon",
+          "NOM_REGISTRADO": "clonazepam 0,5"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "colis",
+          "NOM_REGISTRADO": "colistimetato"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "dac",
+          "NOM_REGISTRADO": "dacortin 5"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "dec",
+          "NOM_REGISTRADO": "decapeptyl semestral"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "dexa",
+          "NOM_REGISTRADO": "dexametasona"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "dex",
+          "NOM_REGISTRADO": "dexnon 100"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "diph",
+          "NOM_REGISTRADO": "diphenhydramine"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "dol",
+          "NOM_REGISTRADO": "dolquine 200"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "dom",
+          "NOM_REGISTRADO": "domperidona"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "don",
+          "NOM_REGISTRADO": "donepezilo"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "duo",
+          "NOM_REGISTRADO": "duodart "
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "eple",
+          "NOM_REGISTRADO": "eplerenona"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "esp",
+          "NOM_REGISTRADO": "espiriva caps"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "eta",
+          "NOM_REGISTRADO": "etambutol 1200"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "ETAM",
+          "NOM_REGISTRADO": "etambutol 400"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "eve",
+          "NOM_REGISTRADO": "everolimus"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "fem",
+          "NOM_REGISTRADO": "femara"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "for",
+          "NOM_REGISTRADO": "fortasec"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "fort",
+          "NOM_REGISTRADO": "fortecortin"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "hy",
+          "NOM_REGISTRADO": "hydrea 500"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "indo",
+          "NOM_REGISTRADO": "indometacina 25"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "iso",
+          "NOM_REGISTRADO": "isoniacida 150"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "lar",
+          "NOM_REGISTRADO": "largactil"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "lata",
+          "NOM_REGISTRADO": "latanoprost"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "le",
+          "NOM_REGISTRADO": "levothroid"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "lon",
+          "NOM_REGISTRADO": "loniten 10"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "m",
+          "NOM_REGISTRADO": "megestrol"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "METP",
+          "NOM_REGISTRADO": "metilprednisolona 16 mg"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "mon",
+          "NOM_REGISTRADO": "monoprost"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "myc",
+          "NOM_REGISTRADO": "mycostatin oral"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "nal",
+          "NOM_REGISTRADO": "naltrexona"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "nap",
+          "NOM_REGISTRADO": "naproxeno"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "NEUP",
+          "NOM_REGISTRADO": "neupogen(filgastrin) sc"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "neu",
+          "NOM_REGISTRADO": "neupro parche"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "NEU",
+          "NOM_REGISTRADO": "neurontin 300"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "omnic",
+          "NOM_REGISTRADO": "omnic 0.4"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "on",
+          "NOM_REGISTRADO": "onbrez"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "onda",
+          "NOM_REGISTRADO": "ondansetron 4mg"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "Op ",
+          "NOM_REGISTRADO": "oprymea"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "parsa",
+          "NOM_REGISTRADO": "parsabiv"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "PER",
+          "NOM_REGISTRADO": "permixon"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "pia",
+          "NOM_REGISTRADO": "pirazinamida 1000"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "plago",
+          "NOM_REGISTRADO": "plantago ovata"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "pt",
+          "NOM_REGISTRADO": "potasion"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "pre",
+          "NOM_REGISTRADO": "prednisona"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "PRIM",
+          "NOM_REGISTRADO": "primperan"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "probic",
+          "NOM_REGISTRADO": "probic"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "pul",
+          "NOM_REGISTRADO": "pulmicort TBH"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "rep",
+          "NOM_REGISTRADO": "repaglinida"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "rifab",
+          "NOM_REGISTRADO": "rifabutina"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "rif",
+          "NOM_REGISTRADO": "rifampicina 600"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "rifin",
+          "NOM_REGISTRADO": "rifinah"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "sal",
+          "NOM_REGISTRADO": "salbutamol"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "serc",
+          "NOM_REGISTRADO": "serc"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "SER",
+          "NOM_REGISTRADO": "seretide 50/500 inh"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "SIL",
+          "NOM_REGISTRADO": "silodosina 8"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "sin",
+          "NOM_REGISTRADO": "sinemet plus"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "sum",
+          "NOM_REGISTRADO": "sumatriptan"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "sym",
+          "NOM_REGISTRADO": "symbicort"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "TAL",
+          "NOM_REGISTRADO": "talidomida"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "tamoxif",
+          "NOM_REGISTRADO": "tamoxifeno 20"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "teb",
+          "NOM_REGISTRADO": "tebetane"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "trb",
+          "NOM_REGISTRADO": "terbasmin inh"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "tim",
+          "NOM_REGISTRADO": "timolol 0.5 col"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "trd",
+          "NOM_REGISTRADO": "tirodril 5mg"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "ul",
+          "NOM_REGISTRADO": "ulunar inh"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "urb",
+          "NOM_REGISTRADO": "urbason"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "urell",
+          "NOM_REGISTRADO": "urell(arandanos)"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "uro",
+          "NOM_REGISTRADO": "urolosin 0.4"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "ven",
+          "NOM_REGISTRADO": "ventolin inh"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "ver",
+          "NOM_REGISTRADO": "versatis"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "zov",
+          "NOM_REGISTRADO": "zovirax"
+        },
+        {
+          "CODGRUPO": 34,
+          "DESCGRUPO": "Otros",
+          "CODPRES": "ac asc",
+          "NOM_REGISTRADO": "�cido asc�rbico"
+        },
+        {
+          "CODGRUPO": 35,
+          "DESCGRUPO": "NESP",
+          "CODPRES": "ARAN4",
+          "NOM_REGISTRADO": null
+        },
+        {
+          "CODGRUPO": 35,
+          "DESCGRUPO": "NESP",
+          "CODPRES": "ARAN20",
+          "NOM_REGISTRADO": null
+        },
+        {
+          "CODGRUPO": 35,
+          "DESCGRUPO": "NESP",
+          "CODPRES": "ARAN30",
+          "NOM_REGISTRADO": null
+        },
+        {
+          "CODGRUPO": 35,
+          "DESCGRUPO": "NESP",
+          "CODPRES": "ARAN40",
+          "NOM_REGISTRADO": null
+        },
+        {
+          "CODGRUPO": 35,
+          "DESCGRUPO": "NESP",
+          "CODPRES": "ARAN10",
+          "NOM_REGISTRADO": "ARANESP"
+        },
+        {
+          "CODGRUPO": 35,
+          "DESCGRUPO": "NESP",
+          "CODPRES": "ARA10",
+          "NOM_REGISTRADO": "ARANESP 10"
+        },
+        {
+          "CODGRUPO": 35,
+          "DESCGRUPO": "NESP",
+          "CODPRES": "ARA100",
+          "NOM_REGISTRADO": "ARANESP 100"
+        },
+        {
+          "CODGRUPO": 35,
+          "DESCGRUPO": "NESP",
+          "CODPRES": "ARA15",
+          "NOM_REGISTRADO": "ARANESP 15"
+        },
+        {
+          "CODGRUPO": 35,
+          "DESCGRUPO": "NESP",
+          "CODPRES": "ARA150",
+          "NOM_REGISTRADO": "ARANESP 150"
+        },
+        {
+          "CODGRUPO": 35,
+          "DESCGRUPO": "NESP",
+          "CODPRES": "ARA20",
+          "NOM_REGISTRADO": "ARANESP 20"
+        },
+        {
+          "CODGRUPO": 35,
+          "DESCGRUPO": "NESP",
+          "CODPRES": "ARA30",
+          "NOM_REGISTRADO": "ARANESP 30"
+        },
+        {
+          "CODGRUPO": 35,
+          "DESCGRUPO": "NESP",
+          "CODPRES": "ARA40",
+          "NOM_REGISTRADO": "ARANESP 40"
+        },
+        {
+          "CODGRUPO": 35,
+          "DESCGRUPO": "NESP",
+          "CODPRES": "ARA50",
+          "NOM_REGISTRADO": "ARANESP 50"
+        },
+        {
+          "CODGRUPO": 35,
+          "DESCGRUPO": "NESP",
+          "CODPRES": "ARA 60",
+          "NOM_REGISTRADO": "ARANESP 60"
+        },
+        {
+          "CODGRUPO": 35,
+          "DESCGRUPO": "NESP",
+          "CODPRES": "ARA",
+          "NOM_REGISTRADO": "ARANESP 80"
+        },
+        {
+          "CODGRUPO": 37,
+          "DESCGRUPO": "Antihipertensivos ARA-II",
+          "CODPRES": "PARACIV",
+          "NOM_REGISTRADO": "ATACANT"
+        },
+        {
+          "CODGRUPO": 37,
+          "DESCGRUPO": "Antihipertensivos ARA-II",
+          "CODPRES": "cand",
+          "NOM_REGISTRADO": "Candesartan"
+        },
+        {
+          "CODGRUPO": 37,
+          "DESCGRUPO": "Antihipertensivos ARA-II",
+          "CODPRES": "dio",
+          "NOM_REGISTRADO": "Diovan"
+        },
+        {
+          "CODGRUPO": 37,
+          "DESCGRUPO": "Antihipertensivos ARA-II",
+          "CODPRES": "irb",
+          "NOM_REGISTRADO": "IRBESARTAN 150 mg"
+        },
+        {
+          "CODGRUPO": 37,
+          "DESCGRUPO": "Antihipertensivos ARA-II",
+          "CODPRES": "losar",
+          "NOM_REGISTRADO": "LOSARTAN"
+        },
+        {
+          "CODGRUPO": 37,
+          "DESCGRUPO": "Antihipertensivos ARA-II",
+          "CODPRES": "OLM",
+          "NOM_REGISTRADO": "OLMETEC "
+        },
+        {
+          "CODGRUPO": 37,
+          "DESCGRUPO": "Antihipertensivos ARA-II",
+          "CODPRES": "olam",
+          "NOM_REGISTRADO": "Olmesart�n/Amlodipino"
+        },
+        {
+          "CODGRUPO": 37,
+          "DESCGRUPO": "Antihipertensivos ARA-II",
+          "CODPRES": "ARAN100",
+          "NOM_REGISTRADO": "PARAPRES"
+        },
+        {
+          "CODGRUPO": 37,
+          "DESCGRUPO": "Antihipertensivos ARA-II",
+          "CODPRES": "Val ",
+          "NOM_REGISTRADO": "Valsartan"
+        },
+        {
+          "CODGRUPO": 37,
+          "DESCGRUPO": "Antihipertensivos ARA-II",
+          "CODPRES": "mica",
+          "NOM_REGISTRADO": "micardis"
+        },
+        {
+          "CODGRUPO": 37,
+          "DESCGRUPO": "Antihipertensivos ARA-II",
+          "CODPRES": "tlm",
+          "NOM_REGISTRADO": "telmisartan"
+        },
+        {
+          "CODGRUPO": 38,
+          "DESCGRUPO": "Carnitina",
+          "CODPRES": "CARNI",
+          "NOM_REGISTRADO": "CARNICOR"
+        },
+        {
+          "CODGRUPO": 39,
+          "DESCGRUPO": "Antihistam�nicos",
+          "CODPRES": "ceti",
+          "NOM_REGISTRADO": "Cetirizina"
+        },
+        {
+          "CODGRUPO": 39,
+          "DESCGRUPO": "Antihistam�nicos",
+          "CODPRES": "deslt",
+          "NOM_REGISTRADO": "Desloratadina"
+        },
+        {
+          "CODGRUPO": 39,
+          "DESCGRUPO": "Antihistam�nicos",
+          "CODPRES": "ebas",
+          "NOM_REGISTRADO": "Ebastina"
+        },
+        {
+          "CODGRUPO": 39,
+          "DESCGRUPO": "Antihistam�nicos",
+          "CODPRES": "lrd",
+          "NOM_REGISTRADO": "Loratadina"
+        },
+        {
+          "CODGRUPO": 39,
+          "DESCGRUPO": "Antihistam�nicos",
+          "CODPRES": "POLA",
+          "NOM_REGISTRADO": "POLARAMINE IV"
+        },
+        {
+          "CODGRUPO": 39,
+          "DESCGRUPO": "Antihistam�nicos",
+          "CODPRES": "POL",
+          "NOM_REGISTRADO": "POLARAMINE oral"
+        },
+        {
+          "CODGRUPO": 39,
+          "DESCGRUPO": "Antihistam�nicos",
+          "CODPRES": "ZAS",
+          "NOM_REGISTRADO": "ZASTEN"
+        },
+        {
+          "CODGRUPO": 39,
+          "DESCGRUPO": "Antihistam�nicos",
+          "CODPRES": "bil",
+          "NOM_REGISTRADO": "bilastina"
+        },
+        {
+          "CODGRUPO": 39,
+          "DESCGRUPO": "Antihistam�nicos",
+          "CODPRES": "fen",
+          "NOM_REGISTRADO": "fenergan"
+        },
+        {
+          "CODGRUPO": 40,
+          "DESCGRUPO": "Venodilatadores",
+          "CODPRES": "pentxif",
+          "NOM_REGISTRADO": "PENTOXIFILINA"
+        },
+        {
+          "CODGRUPO": 40,
+          "DESCGRUPO": "Venodilatadores",
+          "CODPRES": "hem",
+          "NOM_REGISTRADO": "hemovas 400"
+        },
+        {
+          "CODGRUPO": 40,
+          "DESCGRUPO": "Venodilatadores",
+          "CODPRES": "trim",
+          "NOM_REGISTRADO": "trimetazidina 20"
+        },
+        {
+          "CODGRUPO": 40,
+          "DESCGRUPO": "Venodilatadores",
+          "CODPRES": "veno",
+          "NOM_REGISTRADO": "venoruton"
+        },
+        {
+          "CODGRUPO": 41,
+          "DESCGRUPO": "Hipouricemiantes",
+          "CODPRES": "AD",
+          "NOM_REGISTRADO": "Adenuric"
+        },
+        {
+          "CODGRUPO": 41,
+          "DESCGRUPO": "Hipouricemiantes",
+          "CODPRES": "zy",
+          "NOM_REGISTRADO": "Alopurinol 100 mg"
+        },
+        {
+          "CODGRUPO": 41,
+          "DESCGRUPO": "Hipouricemiantes",
+          "CODPRES": "alo",
+          "NOM_REGISTRADO": "Alopurinol 300 mg"
+        },
+        {
+          "CODGRUPO": 41,
+          "DESCGRUPO": "Hipouricemiantes",
+          "CODPRES": "barnix",
+          "NOM_REGISTRADO": "barnix 20"
+        },
+        {
+          "CODGRUPO": 41,
+          "DESCGRUPO": "Hipouricemiantes",
+          "CODPRES": "col",
+          "NOM_REGISTRADO": "colchicina"
+        },
+        {
+          "CODGRUPO": 41,
+          "DESCGRUPO": "Hipouricemiantes",
+          "CODPRES": "colch",
+          "NOM_REGISTRADO": "colchimax"
+        },
+        {
+          "CODGRUPO": 42,
+          "DESCGRUPO": "Procin�ticos",
+          "CODPRES": "cid",
+          "NOM_REGISTRADO": "cidine"
+        },
+        {
+          "CODGRUPO": 42,
+          "DESCGRUPO": "Procin�ticos",
+          "CODPRES": "levog",
+          "NOM_REGISTRADO": "levogastrol 25"
+        },
+        {
+          "CODGRUPO": 43,
+          "DESCGRUPO": "Prostaglandinas",
+          "CODPRES": "SUGI",
+          "NOM_REGISTRADO": "SUGIRAN"
+        },
+        {
+          "CODGRUPO": 44,
+          "DESCGRUPO": "Opiaceos",
+          "CODPRES": "bru",
+          "NOM_REGISTRADO": "Buprenorfina parches"
+        },
+        {
+          "CODGRUPO": 44,
+          "DESCGRUPO": "Opiaceos",
+          "CODPRES": "fent",
+          "NOM_REGISTRADO": "fentanilo"
+        },
+        {
+          "CODGRUPO": 44,
+          "DESCGRUPO": "Opiaceos",
+          "CODPRES": "mor",
+          "NOM_REGISTRADO": "morfina retard"
+        },
+        {
+          "CODGRUPO": 44,
+          "DESCGRUPO": "Opiaceos",
+          "CODPRES": "oxi",
+          "NOM_REGISTRADO": "oxynorm 10 sol oral"
+        },
+        {
+          "CODGRUPO": 44,
+          "DESCGRUPO": "Opiaceos",
+          "CODPRES": "tar",
+          "NOM_REGISTRADO": "targin 20/10"
+        },
+        {
+          "CODGRUPO": 44,
+          "DESCGRUPO": "Opiaceos",
+          "CODPRES": "tr",
+          "NOM_REGISTRADO": "tramadol"
+        },
+        {
+          "CODGRUPO": 44,
+          "DESCGRUPO": "Opiaceos",
+          "CODPRES": "yan",
+          "NOM_REGISTRADO": "yantil"
+        },
+        {
+          "CODGRUPO": 45,
+          "DESCGRUPO": "AntiHTA vasodilatadores",
+          "CODPRES": "bos",
+          "NOM_REGISTRADO": "Bosentan"
+        },
+        {
+          "CODGRUPO": 45,
+          "DESCGRUPO": "AntiHTA vasodilatadores",
+          "CODPRES": "card",
+          "NOM_REGISTRADO": "CARDURAN"
+        },
+        {
+          "CODGRUPO": 45,
+          "DESCGRUPO": "AntiHTA vasodilatadores",
+          "CODPRES": "ir",
+          "NOM_REGISTRADO": "Irbesartan"
+        },
+        {
+          "CODGRUPO": 45,
+          "DESCGRUPO": "AntiHTA vasodilatadores",
+          "CODPRES": "hid",
+          "NOM_REGISTRADO": "hidralazina 25"
+        },
+        {
+          "CODGRUPO": 45,
+          "DESCGRUPO": "AntiHTA vasodilatadores",
+          "CODPRES": "hyd",
+          "NOM_REGISTRADO": "hydrapres"
+        },
+        {
+          "CODGRUPO": 45,
+          "DESCGRUPO": "AntiHTA vasodilatadores",
+          "CODPRES": "la",
+          "NOM_REGISTRADO": "lacidipino"
+        },
+        {
+          "CODGRUPO": 45,
+          "DESCGRUPO": "AntiHTA vasodilatadores",
+          "CODPRES": "verap",
+          "NOM_REGISTRADO": "verapamilo 80"
+        },
+        {
+          "CODGRUPO": 48,
+          "DESCGRUPO": "Carbonato de lantano",
+          "CODPRES": "fos750",
+          "NOM_REGISTRADO": "FOSRENOL 750"
+        },
+        {
+          "CODGRUPO": 48,
+          "DESCGRUPO": "Carbonato de lantano",
+          "CODPRES": "fosr",
+          "NOM_REGISTRADO": "Fosrenol 1000 sobres"
+        },
+        {
+          "CODGRUPO": 48,
+          "DESCGRUPO": "Carbonato de lantano",
+          "CODPRES": "fosre",
+          "NOM_REGISTRADO": "Fosrenol 500mg"
+        },
+        {
+          "CODGRUPO": 49,
+          "DESCGRUPO": "EPREX",
+          "CODPRES": "EP3",
+          "NOM_REGISTRADO": null
+        },
+        {
+          "CODGRUPO": 49,
+          "DESCGRUPO": "EPREX",
+          "CODPRES": "EP5",
+          "NOM_REGISTRADO": null
+        },
+        {
+          "CODGRUPO": 49,
+          "DESCGRUPO": "EPREX",
+          "CODPRES": "ERI1000",
+          "NOM_REGISTRADO": "EPREX 1000"
+        },
+        {
+          "CODGRUPO": 49,
+          "DESCGRUPO": "EPREX",
+          "CODPRES": "ERI2000",
+          "NOM_REGISTRADO": "EPREX 2000"
+        },
+        {
+          "CODGRUPO": 49,
+          "DESCGRUPO": "EPREX",
+          "CODPRES": "ERI3000",
+          "NOM_REGISTRADO": "EPREX 3000"
+        },
+        {
+          "CODGRUPO": 49,
+          "DESCGRUPO": "EPREX",
+          "CODPRES": "ERI4000",
+          "NOM_REGISTRADO": "EPREX 4000"
+        },
+        {
+          "CODGRUPO": 49,
+          "DESCGRUPO": "EPREX",
+          "CODPRES": "ERI5000",
+          "NOM_REGISTRADO": "EPREX 5000"
+        },
+        {
+          "CODGRUPO": 49,
+          "DESCGRUPO": "EPREX",
+          "CODPRES": "EP6",
+          "NOM_REGISTRADO": "EPREX 6000"
+        },
+        {
+          "CODGRUPO": 49,
+          "DESCGRUPO": "EPREX",
+          "CODPRES": "EP8",
+          "NOM_REGISTRADO": "EPREX 8000"
+        },
+        {
+          "CODGRUPO": 50,
+          "DESCGRUPO": "HIERRO",
+          "CODPRES": "Ferin",
+          "NOM_REGISTRADO": "FERINJECT"
+        },
+        {
+          "CODGRUPO": 50,
+          "DESCGRUPO": "HIERRO",
+          "CODPRES": "FER",
+          "NOM_REGISTRADO": "FERIV"
+        },
+        {
+          "CODGRUPO": 50,
+          "DESCGRUPO": "HIERRO",
+          "CODPRES": "VENOF",
+          "NOM_REGISTRADO": "VENOFER"
+        },
+        {
+          "CODGRUPO": 50,
+          "DESCGRUPO": "HIERRO",
+          "CODPRES": "VENOF50",
+          "NOM_REGISTRADO": "VENOFER"
+        },
+        {
+          "CODGRUPO": 50,
+          "DESCGRUPO": "HIERRO",
+          "CODPRES": "VENOFER",
+          "NOM_REGISTRADO": "VENOFER"
+        },
+        {
+          "CODGRUPO": 51,
+          "DESCGRUPO": "PARICALCITOL",
+          "CODPRES": "ZEM",
+          "NOM_REGISTRADO": "ZEMPLAR"
+        },
+        {
+          "CODGRUPO": 51,
+          "DESCGRUPO": "PARICALCITOL",
+          "CODPRES": "ZEMP2",
+          "NOM_REGISTRADO": "ZEMPLAR 2mcg"
+        },
+        {
+          "CODGRUPO": 51,
+          "DESCGRUPO": "PARICALCITOL",
+          "CODPRES": "ZEMP5",
+          "NOM_REGISTRADO": "ZEMPLAR 5mcg"
+        },
+        {
+          "CODGRUPO": 53,
+          "DESCGRUPO": "CERA",
+          "CODPRES": "CERA",
+          "NOM_REGISTRADO": "CERA RO0503821"
+        },
+        {
+          "CODGRUPO": 54,
+          "DESCGRUPO": "Cinacalcet",
+          "CODPRES": "MIM",
+          "NOM_REGISTRADO": "MIMPARA "
+        },
+        {
+          "CODGRUPO": 56,
+          "DESCGRUPO": "NEORECORMON",
+          "CODPRES": "NEOR5",
+          "NOM_REGISTRADO": "NEORECORMON  5000"
+        },
+        {
+          "CODGRUPO": 56,
+          "DESCGRUPO": "NEORECORMON",
+          "CODPRES": "NEOR1",
+          "NOM_REGISTRADO": "NEORECORMON 1000"
+        },
+        {
+          "CODGRUPO": 56,
+          "DESCGRUPO": "NEORECORMON",
+          "CODPRES": "NEOR2",
+          "NOM_REGISTRADO": "NEORECORMON 2000"
+        },
+        {
+          "CODGRUPO": 56,
+          "DESCGRUPO": "NEORECORMON",
+          "CODPRES": "NEOR3",
+          "NOM_REGISTRADO": "NEORECORMON 3000"
+        },
+        {
+          "CODGRUPO": 56,
+          "DESCGRUPO": "NEORECORMON",
+          "CODPRES": "NEOR4",
+          "NOM_REGISTRADO": "NEORECORMON 4000"
+        },
+        {
+          "CODGRUPO": 56,
+          "DESCGRUPO": "NEORECORMON",
+          "CODPRES": "NEOR6",
+          "NOM_REGISTRADO": "NEORECORMON 6000"
+        },
+        {
+          "CODGRUPO": 57,
+          "DESCGRUPO": "Carbonato de Sevelamer",
+          "CODPRES": "RE",
+          "NOM_REGISTRADO": "RENVELA 2,4 sobres"
+        },
+        {
+          "CODGRUPO": 57,
+          "DESCGRUPO": "Carbonato de Sevelamer",
+          "CODPRES": "ren",
+          "NOM_REGISTRADO": "Renvela 800"
+        },
+        {
+          "CODGRUPO": 57,
+          "DESCGRUPO": "Carbonato de Sevelamer",
+          "CODPRES": "ReFos",
+          "NOM_REGISTRADO": "Restafos 800 mg"
+        },
+        {
+          "CODGRUPO": 57,
+          "DESCGRUPO": "Carbonato de Sevelamer",
+          "CODPRES": "sev",
+          "NOM_REGISTRADO": "Sevelamer 800"
+        },
+        {
+          "CODGRUPO": 57,
+          "DESCGRUPO": "Carbonato de Sevelamer",
+          "CODPRES": "re",
+          "NOM_REGISTRADO": "renagel"
+        },
+        {
+          "CODGRUPO": 59,
+          "DESCGRUPO": "eritropoyetina",
+          "CODPRES": "BINOC1",
+          "NOM_REGISTRADO": "BINOCRIT"
+        },
+        {
+          "CODGRUPO": 59,
+          "DESCGRUPO": "eritropoyetina",
+          "CODPRES": "BINOC10",
+          "NOM_REGISTRADO": "BINOCRIT 10000"
+        },
+        {
+          "CODGRUPO": 59,
+          "DESCGRUPO": "eritropoyetina",
+          "CODPRES": "BINOC12",
+          "NOM_REGISTRADO": "BINOCRIT 12000"
+        },
+        {
+          "CODGRUPO": 59,
+          "DESCGRUPO": "eritropoyetina",
+          "CODPRES": "BINOC2",
+          "NOM_REGISTRADO": "BINOCRIT 2000"
+        },
+        {
+          "CODGRUPO": 59,
+          "DESCGRUPO": "eritropoyetina",
+          "CODPRES": "BINOC3",
+          "NOM_REGISTRADO": "BINOCRIT 3000"
+        },
+        {
+          "CODGRUPO": 59,
+          "DESCGRUPO": "eritropoyetina",
+          "CODPRES": "BINOC4",
+          "NOM_REGISTRADO": "BINOCRIT 4000"
+        },
+        {
+          "CODGRUPO": 59,
+          "DESCGRUPO": "eritropoyetina",
+          "CODPRES": "BINOC5",
+          "NOM_REGISTRADO": "BINOCRIT 5000"
+        },
+        {
+          "CODGRUPO": 59,
+          "DESCGRUPO": "eritropoyetina",
+          "CODPRES": "BINOC6",
+          "NOM_REGISTRADO": "BINOCRIT 6000"
+        },
+        {
+          "CODGRUPO": 59,
+          "DESCGRUPO": "eritropoyetina",
+          "CODPRES": "BINOC8",
+          "NOM_REGISTRADO": "BINOCRIT 8000"
+        },
+        {
+          "CODGRUPO": 59,
+          "DESCGRUPO": "eritropoyetina",
+          "CODPRES": "EPO",
+          "NOM_REGISTRADO": "EPO"
+        },
+        {
+          "CODGRUPO": 59,
+          "DESCGRUPO": "eritropoyetina",
+          "CODPRES": "RET",
+          "NOM_REGISTRADO": "RETACRIT"
+        },
+        {
+          "CODGRUPO": 101,
+          "DESCGRUPO": "analgesicos",
+          "CODPRES": "NOLO",
+          "NOM_REGISTRADO": "NOLOTIL"
+        },
+        {
+          "CODGRUPO": 101,
+          "DESCGRUPO": "analgesicos",
+          "CODPRES": "PARACET",
+          "NOM_REGISTRADO": "PARACETAMOL IV"
+        },
+        {
+          "CODGRUPO": 101,
+          "DESCGRUPO": "analgesicos",
+          "CODPRES": "PARACEO",
+          "NOM_REGISTRADO": "PARACETAMOL OR"
+        },
+        {
+          "CODGRUPO": 101,
+          "DESCGRUPO": "analgesicos",
+          "CODPRES": "VALIUM",
+          "NOM_REGISTRADO": "VALIUM 10"
+        },
+        {
+          "CODGRUPO": 103,
+          "DESCGRUPO": "",
+          "CODPRES": "csd",
+          "NOM_REGISTRADO": "Casodex"
+        },
+        {
+          "CODGRUPO": 103,
+          "DESCGRUPO": "",
+          "CODPRES": "INX",
+          "NOM_REGISTRADO": "Esomeprazol ( INEXIUM ) "
+        },
+        {
+          "CODGRUPO": 103,
+          "DESCGRUPO": "",
+          "CODPRES": "olz",
+          "NOM_REGISTRADO": "Olanzapina"
+        },
+        {
+          "CODGRUPO": 103,
+          "DESCGRUPO": "",
+          "CODPRES": "cn",
+          "NOM_REGISTRADO": "circandin 2 mg"
+        },
+        {
+          "CODGRUPO": 103,
+          "DESCGRUPO": "",
+          "CODPRES": "ln",
+          "NOM_REGISTRADO": "linagliptina"
+        },
+        {
+          "CODGRUPO": 103,
+          "DESCGRUPO": "",
+          "CODPRES": "rbp",
+          "NOM_REGISTRADO": "rabeprazol"
+        },
+        {
+          "CODGRUPO": 106,
+          "DESCGRUPO": "antidiabeticos orales",
+          "CODPRES": "Dapa",
+          "NOM_REGISTRADO": "Dapaglifozina"
+        },
+        {
+          "CODGRUPO": 106,
+          "DESCGRUPO": "antidiabeticos orales",
+          "CODPRES": "Emp",
+          "NOM_REGISTRADO": "Empaglifozina"
+        },
+        {
+          "CODGRUPO": 106,
+          "DESCGRUPO": "antidiabeticos orales",
+          "CODPRES": "VPD",
+          "NOM_REGISTRADO": "VIPIDIA"
+        },
+        {
+          "CODGRUPO": 106,
+          "DESCGRUPO": "antidiabeticos orales",
+          "CODPRES": "Vil",
+          "NOM_REGISTRADO": "Vildagliptina 50 mg"
+        },
+        {
+          "CODGRUPO": 106,
+          "DESCGRUPO": "antidiabeticos orales",
+          "CODPRES": "galv",
+          "NOM_REGISTRADO": "galvus"
+        },
+        {
+          "CODGRUPO": 106,
+          "DESCGRUPO": "antidiabeticos orales",
+          "CODPRES": "ja",
+          "NOM_REGISTRADO": "jalra 50"
+        },
+        {
+          "CODGRUPO": 110,
+          "DESCGRUPO": "Quelante de fosforo no Calcico",
+          "CODPRES": "Fosq",
+          "NOM_REGISTRADO": "FOSQUEL"
+        },
+        {
+          "CODGRUPO": 110,
+          "DESCGRUPO": "Quelante de fosforo no Calcico",
+          "CODPRES": "FOSR",
+          "NOM_REGISTRADO": "FOSRENOL"
+        },
+        {
+          "CODGRUPO": 112,
+          "DESCGRUPO": "QUELANTE FERRICO",
+          "CODPRES": "vlp",
+          "NOM_REGISTRADO": "VELPHORO"
+        },
+        {
+          "CODGRUPO": 112,
+          "DESCGRUPO": "QUELANTE FERRICO",
+          "CODPRES": "vel",
+          "NOM_REGISTRADO": "Velphoro 500"
+        },
+        {
+          "CODGRUPO": 113,
+          "DESCGRUPO": "QUELANTE MAGNESIO",
+          "CODPRES": "OSV",
+          "NOM_REGISTRADO": "OSVAREN 435/234"
+        },
+        {
+          "CODGRUPO": 115,
+          "DESCGRUPO": "Antimigra�osos",
+          "CODPRES": "Zolm",
+          "NOM_REGISTRADO": "Zolmitript�n"
+        }
+      ]
+    }
+  ]
+}

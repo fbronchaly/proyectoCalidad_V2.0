@@ -1,0 +1,323 @@
+{
+  "CENTRO": "DB18",
+  "EPO": [
+    {
+      "CODGRUPO": 1,
+      "DESCRIPCION": "EPO-alfa",
+      "PRESENTACIONES": [
+        "BINOCRIT",
+        "EPOPEN",
+        "EPREX",
+        "EPREX 10.000",
+        "EPREX 1000",
+        "EPREX 2000",
+        "EPREX 3000",
+        "EPREX 4000",
+        "EPREX 5000",
+        "EPREX 6000",
+        "EPREX 7000",
+        "EPREX 8000"
+      ],
+      "CODIGOS": [
+        "Biosim",
+        "EPO",
+        "EPO1",
+        "EPO10",
+        "EPO2",
+        "EPO3",
+        "EPO4",
+        "EPO5",
+        "EPO6",
+        "EPO7",
+        "EPO8",
+        "EPOP"
+      ]
+    },
+    {
+      "CODGRUPO": 34,
+      "DESCRIPCION": "Otros",
+      "PRESENTACIONES": [
+        "EPO"
+      ],
+      "CODIGOS": [
+        "EPO0"
+      ]
+    },
+    {
+      "CODGRUPO": 46,
+      "DESCRIPCION": "EPO-beta",
+      "PRESENTACIONES": [
+        "ERANTIN",
+        "MIRCERA",
+        "NEORECORMON"
+      ],
+      "CODIGOS": [
+        "ERAN",
+        "MCR",
+        "NEO"
+      ]
+    },
+    {
+      "CODGRUPO": 47,
+      "DESCRIPCION": "Darbepoetina",
+      "PRESENTACIONES": [
+        "ARANESP",
+        "ARANESP 10",
+        "ARANESP 100",
+        "ARANESP 15",
+        "ARANESP 150",
+        "ARANESP 20",
+        "ARANESP 30",
+        "ARANESP 300",
+        "ARANESP 40",
+        "ARANESP 50",
+        "ARANESP 60",
+        "ARANESP 80",
+        "DARBEPOETIN 60"
+      ],
+      "CODIGOS": [
+        "Ar",
+        "DAR",
+        "DAR 10",
+        "DAR 100",
+        "DAR 15",
+        "DAR 150",
+        "DAR 20",
+        "DAR 30",
+        "DAR 300",
+        "DAR 40",
+        "DAR 50",
+        "DAR 60",
+        "DAR 80"
+      ]
+    },
+    {
+      "CODGRUPO": 71,
+      "DESCRIPCION": "EPO-zeta",
+      "PRESENTACIONES": [
+        "EPORATIO",
+        "RETACRIT"
+      ],
+      "CODIGOS": [
+        "EPOR",
+        "RETA"
+      ]
+    }
+  ],
+  "VITAMINA_D": [
+    {
+      "CODGRUPO": 13,
+      "DESCRIPCION": "Vitamina D Oral",
+      "PRESENTACIONES": [
+        "CALCITRIOL 0.25 mcg "
+      ],
+      "CODIGOS": [
+        "CALCI"
+      ]
+    },
+    {
+      "CODGRUPO": 48,
+      "DESCRIPCION": "Alfacalcidol (Etalpha)",
+      "PRESENTACIONES": [
+        "ETALPHA",
+        "ETALPHA Sol. iny. 1 mcg/0,5 ml (Alfacalcidol"
+      ],
+      "CODIGOS": [
+        "ETAL",
+        "ETHALPH"
+      ]
+    },
+    {
+      "CODGRUPO": 49,
+      "DESCRIPCION": "Calcitriol i.v. (Calcijex-Rocaltrol)",
+      "PRESENTACIONES": [
+        "CALCIJEX",
+        "ROCALTROL 0,25"
+      ],
+      "CODIGOS": [
+        "CAL",
+        "ROC"
+      ]
+    },
+    {
+      "CODGRUPO": 50,
+      "DESCRIPCION": "Paricalcitol i.v.(Zemplar)",
+      "PRESENTACIONES": [
+        "ZEMPLAR",
+        "ZEMPLAR 2",
+        "ZEMPLAR 5"
+      ],
+      "CODIGOS": [
+        "ZEM",
+        "ZEM2",
+        "ZEM5"
+      ]
+    },
+    {
+      "CODGRUPO": 67,
+      "DESCRIPCION": "Paricalcitol v.o.(Zemplar v.o.)",
+      "PRESENTACIONES": [
+        "PARICALCITOL 1 mg",
+        "ZEMPLAR 1 �g;   28 c�ps blanda"
+      ],
+      "CODIGOS": [
+        "PARI",
+        "ZEM1"
+      ]
+    }
+  ],
+  "CALCIMIMETICOS": [
+    {
+      "CODGRUPO": 34,
+      "DESCRIPCION": "Otros",
+      "PRESENTACIONES": [
+        "Parsabiv   (Etelcalcetida)"
+      ],
+      "CODIGOS": [
+        "P_ars"
+      ]
+    },
+    {
+      "CODGRUPO": 45,
+      "DESCRIPCION": "Calciomim�ticos",
+      "PRESENTACIONES": [
+        "MIMPARA"
+      ],
+      "CODIGOS": [
+        "MIM"
+      ]
+    }
+  ],
+  "CAPTORES_CALCICOS": [
+    {
+      "CODGRUPO": 24,
+      "DESCRIPCION": "Resincalcio",
+      "PRESENTACIONES": [
+        "RESINCALCIO sobres 15 g."
+      ],
+      "CODIGOS": [
+        "RESINCA"
+      ]
+    },
+    {
+      "CODGRUPO": 34,
+      "DESCRIPCION": "Otros",
+      "PRESENTACIONES": [
+        "Natecal D"
+      ],
+      "CODIGOS": [
+        "N_ate"
+      ]
+    },
+    {
+      "CODGRUPO": 37,
+      "DESCRIPCION": "Calcio oral / IV.",
+      "PRESENTACIONES": [
+        "CARBONATO DE CALCIO",
+        "IDEOS  (calcio y Vit D3)",
+        "calcio 500mg"
+      ],
+      "CODIGOS": [
+        "Calcio",
+        "ID",
+        "calc"
+      ]
+    },
+    {
+      "CODGRUPO": 51,
+      "DESCRIPCION": "Quelantes C�lcicos(Caosina)",
+      "PRESENTACIONES": [
+        "CAOSINA Polvo Susp Oral, 60 sobres",
+        "OSVAREN 435/235  (ACETATO CALCICO/CARBONATO MAGNESICO)"
+      ],
+      "CODIGOS": [
+        "CAO",
+        "OSV"
+      ]
+    },
+    {
+      "CODGRUPO": 52,
+      "DESCRIPCION": "Quelantes C�lcicos(Mastical)",
+      "PRESENTACIONES": [
+        "MASTICAL"
+      ],
+      "CODIGOS": [
+        "MAS"
+      ]
+    },
+    {
+      "CODGRUPO": 53,
+      "DESCRIPCION": "Quelantes C�lcicos(Royen)",
+      "PRESENTACIONES": [
+        "ROYEN"
+      ],
+      "CODIGOS": [
+        "ROY"
+      ]
+    }
+  ],
+  "CAPTORES_NO_CALCICOS": [
+    {
+      "CODGRUPO": 34,
+      "DESCRIPCION": "Otros",
+      "PRESENTACIONES": [
+        "VELPHORO"
+      ],
+      "CODIGOS": [
+        "VEL"
+      ]
+    },
+    {
+      "CODGRUPO": 54,
+      "DESCRIPCION": "Quelantes Alum�nicos(Pepsamar)",
+      "PRESENTACIONES": [
+        "PEPSAMAR"
+      ],
+      "CODIGOS": [
+        "PEP"
+      ]
+    },
+    {
+      "CODGRUPO": 55,
+      "DESCRIPCION": "Sevelamer(Renagel)",
+      "PRESENTACIONES": [
+        "FOSQUEL ",
+        "RENAGEL",
+        "RENAGEL  800 mg; 180 comp",
+        "SEVELAMER 2.4 G (clorhidrato de sevelamer)"
+      ],
+      "CODIGOS": [
+        "FO",
+        "REN",
+        "RENA",
+        "SEVELA"
+      ]
+    },
+    {
+      "CODGRUPO": 56,
+      "DESCRIPCION": "Carbonato de Lantano (Fosrenol)",
+      "PRESENTACIONES": [
+        "Carbonato de Lantano",
+        "FOSRENOL 1 g. polvo oral",
+        "FOSRENOL 500",
+        "FOSRENOL 750 mg "
+      ],
+      "CODIGOS": [
+        "FOSR100",
+        "FOSR500",
+        "FOSR750",
+        "LAN"
+      ]
+    },
+    {
+      "CODGRUPO": 68,
+      "DESCRIPCION": "Carbonato de Sevel�mero (Renvela)",
+      "PRESENTACIONES": [
+        "RENVELA"
+      ],
+      "CODIGOS": [
+        "RENV"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,191 @@
+{
+  "CENTRO": "DB10",
+  "EPO": [
+    {
+      "CODGRUPO": 1,
+      "DESCRIPCION": "EPO",
+      "PRESENTACIONES": [
+        "BINOCRIT",
+        "BINOCRIT 3000",
+        "BINOCRIT 5000",
+        "BINOCRIT 8000",
+        "EPO",
+        "EPO 10.000",
+        "EPO 1000",
+        "EPO 12000",
+        "EPO 2000",
+        "EPO 3000",
+        "EPO 4000",
+        "EPO 5000",
+        "EPO 6000",
+        "EPO 7000",
+        "EPO 8000",
+        "EPO 9000",
+        "EPO bios",
+        "EPOPEN 2000"
+      ],
+      "CODIGOS": [
+        "BIN",
+        "BIN3",
+        "EPO",
+        "EPO1",
+        "EPO10",
+        "EPO12",
+        "EPO2",
+        "EPO3",
+        "EPO4",
+        "EPO5",
+        "EPO6",
+        "EPO7",
+        "EPO8",
+        "EPO9",
+        "EPOs",
+        "Z_EPO",
+        "bin 8",
+        "binocr"
+      ]
+    },
+    {
+      "CODGRUPO": 36,
+      "DESCRIPCION": "Darbepoetina",
+      "PRESENTACIONES": [
+        "DARBEPOETINA 10",
+        "DARBEPOETINA 100",
+        "DARBEPOETINA 15",
+        "DARBEPOETINA 150",
+        "DARBEPOETINA 20",
+        "DARBEPOETINA 30",
+        "DARBEPOETINA 40",
+        "DARBEPOETINA 50",
+        "DARBEPOETINA 60",
+        "DARBEPOETINA 80"
+      ],
+      "CODIGOS": [
+        "NESP",
+        "NESP 30",
+        "NESP 40",
+        "NESP 50",
+        "NESP 60",
+        "NESP 80",
+        "NESP100",
+        "NESP150",
+        "Z- NESP",
+        "Z-NESP"
+      ]
+    }
+  ],
+  "VITAMINA_D": [
+    {
+      "CODGRUPO": 3,
+      "DESCRIPCION": "Calcitriol IV",
+      "PRESENTACIONES": [
+        "CALCIJEX"
+      ],
+      "CODIGOS": [
+        "Z_CAL"
+      ]
+    },
+    {
+      "CODGRUPO": 13,
+      "DESCRIPCION": "Vitamina D Oral",
+      "PRESENTACIONES": [
+        "ROCALTROL 0,25",
+        "ROCALTROL 0,5"
+      ],
+      "CODIGOS": [
+        "Z-ROC",
+        "Z_ROC"
+      ]
+    },
+    {
+      "CODGRUPO": 22,
+      "DESCRIPCION": "Vitaminas",
+      "PRESENTACIONES": [
+        "ZEMPLAR"
+      ],
+      "CODIGOS": [
+        "ZEMPLAR"
+      ]
+    }
+  ],
+  "CALCIMIMETICOS": [
+    {
+      "CODGRUPO": 47,
+      "DESCRIPCION": "Calcimim�ticos",
+      "PRESENTACIONES": [
+        "MIMPARA",
+        "PARSABIV"
+      ],
+      "CODIGOS": [
+        "CINEC",
+        "PSB"
+      ]
+    }
+  ],
+  "CAPTORES_CALCICOS": [
+    {
+      "CODGRUPO": 6,
+      "DESCRIPCION": "Antihipertensivos Antag Ca",
+      "PRESENTACIONES": [
+        "CALCIO ANTAGONISTAS"
+      ],
+      "CODIGOS": [
+        "CAantag"
+      ]
+    },
+    {
+      "CODGRUPO": 12,
+      "DESCRIPCION": "Quelantes del F�sforo-Aportes Ca",
+      "PRESENTACIONES": [
+        "CALCIO ACETATO",
+        "CAOSINA",
+        "CARBONATO CALCICO",
+        "NATECAL"
+      ],
+      "CODIGOS": [
+        "C",
+        "CALCIO",
+        "CARBCA",
+        "nate"
+      ]
+    },
+    {
+      "CODGRUPO": 24,
+      "DESCRIPCION": "Resincalcio",
+      "PRESENTACIONES": [
+        "RESIN CALCIO /SORBISTERIT"
+      ],
+      "CODIGOS": [
+        "RESINCA"
+      ]
+    }
+  ],
+  "CAPTORES_NO_CALCICOS": [
+    {
+      "CODGRUPO": 46,
+      "DESCRIPCION": "Quelantes del Fosforo NO calcicos",
+      "PRESENTACIONES": [
+        "ALMAX",
+        "FOSRENOL",
+        "OSVAREN",
+        "PEPSAMAR",
+        "RENAGEL",
+        "RENVELA",
+        "SEVELAMER",
+        "SEVELAMER CARBONATO",
+        "VELPHORO"
+      ],
+      "CODIGOS": [
+        "OSVAREN",
+        "PEPSAMA",
+        "RE",
+        "RENAGEL",
+        "RENVELA",
+        "alm",
+        "fosr",
+        "renv",
+        "vph"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,287 @@
+{
+  "CENTRO": "DB6",
+  "EPO": [
+    {
+      "CODGRUPO": 35,
+      "DESCRIPCION": "NESP",
+      "PRESENTACIONES": [
+        "ARANESP 10",
+        "ARANESP 100",
+        "ARANESP 15",
+        "ARANESP 150",
+        "ARANESP 20",
+        "ARANESP 30",
+        "ARANESP 40",
+        "ARANESP 50",
+        "ARANESP 60",
+        "ARANESP 80"
+      ],
+      "CODIGOS": [
+        "ARA",
+        "ARA 60",
+        "ARA10",
+        "ARA100",
+        "ARA15",
+        "ARA150",
+        "ARA20",
+        "ARA30",
+        "ARA40",
+        "ARA50"
+      ]
+    },
+    {
+      "CODGRUPO": 49,
+      "DESCRIPCION": "EPREX",
+      "PRESENTACIONES": [
+        "EPREX 1000",
+        "EPREX 2000",
+        "EPREX 3000",
+        "EPREX 4000",
+        "EPREX 5000",
+        "EPREX 6000",
+        "EPREX 8000"
+      ],
+      "CODIGOS": [
+        "EP6",
+        "EP8",
+        "ERI1000",
+        "ERI2000",
+        "ERI3000",
+        "ERI4000",
+        "ERI5000"
+      ]
+    },
+    {
+      "CODGRUPO": 59,
+      "DESCRIPCION": "eritropoyetina",
+      "PRESENTACIONES": [
+        "BINOCRIT",
+        "BINOCRIT 10000",
+        "BINOCRIT 12000",
+        "BINOCRIT 2000",
+        "BINOCRIT 3000",
+        "BINOCRIT 4000",
+        "BINOCRIT 5000",
+        "BINOCRIT 6000",
+        "BINOCRIT 8000",
+        "EPO",
+        "RETACRIT"
+      ],
+      "CODIGOS": [
+        "BINOC1",
+        "BINOC10",
+        "BINOC12",
+        "BINOC2",
+        "BINOC3",
+        "BINOC4",
+        "BINOC5",
+        "BINOC6",
+        "BINOC8",
+        "EPO",
+        "RET"
+      ]
+    }
+  ],
+  "VITAMINA_D": [
+    {
+      "CODGRUPO": 13,
+      "DESCRIPCION": "Vitamina D Oral",
+      "PRESENTACIONES": [
+        "ROCALTROL",
+        "calcitriol 0.25 mg"
+      ],
+      "CODIGOS": [
+        "ROCA",
+        "ctc"
+      ]
+    },
+    {
+      "CODGRUPO": 22,
+      "DESCRIPCION": "Vitaminas",
+      "PRESENTACIONES": [
+        "ETALPHA",
+        "paricalcitol",
+        "paricalcitol 2mcg"
+      ],
+      "CODIGOS": [
+        "etalpha",
+        "pari",
+        "paric"
+      ]
+    },
+    {
+      "CODGRUPO": 51,
+      "DESCRIPCION": "PARICALCITOL",
+      "PRESENTACIONES": [
+        "ZEMPLAR",
+        "ZEMPLAR 2mcg",
+        "ZEMPLAR 5mcg"
+      ],
+      "CODIGOS": [
+        "ZEM",
+        "ZEMP2",
+        "ZEMP5"
+      ]
+    }
+  ],
+  "CALCIMIMETICOS": [
+    {
+      "CODGRUPO": 34,
+      "DESCRIPCION": "Otros",
+      "PRESENTACIONES": [
+        "parsabiv"
+      ],
+      "CODIGOS": [
+        "parsa"
+      ]
+    },
+    {
+      "CODGRUPO": 54,
+      "DESCRIPCION": "Cinacalcet",
+      "PRESENTACIONES": [
+        "MIMPARA ",
+        "cinacalcet"
+      ],
+      "CODIGOS": [
+        "MIM",
+        "cin"
+      ]
+    }
+  ],
+  "CAPTORES_CALCICOS": [
+    {
+      "CODGRUPO": 12,
+      "DESCRIPCION": "Quelantes del F�sforo-Aportes Ca",
+      "PRESENTACIONES": [
+        "CALCIUM SANDOZ",
+        "CAOSINA",
+        "MASTICAL",
+        "RENVELA 2,4 sobres",
+        "ROYEN",
+        "adiaval",
+        "carbonato calcico 500mg",
+        "natecal"
+      ],
+      "CODIGOS": [
+        "996110",
+        "CAL",
+        "RE",
+        "SUG",
+        "adi",
+        "caca",
+        "nat",
+        "r"
+      ]
+    },
+    {
+      "CODGRUPO": 24,
+      "DESCRIPCION": "Resincalcio",
+      "PRESENTACIONES": [
+        "resincalcio polvos",
+        "resincalcio sobres"
+      ],
+      "CODIGOS": [
+        "res",
+        "resi"
+      ]
+    },
+    {
+      "CODGRUPO": 34,
+      "DESCRIPCION": "Otros",
+      "PRESENTACIONES": [
+        "Cabonato calcio/Colecalciferol",
+        "DEMILOS 600/1000(carbonato calcico/vit D3)",
+        "MASTICAL D",
+        "caosina"
+      ],
+      "CODIGOS": [
+        "DEM",
+        "ca",
+        "ccc",
+        "mstd"
+      ]
+    },
+    {
+      "CODGRUPO": 52,
+      "DESCRIPCION": "CALCIJEX",
+      "PRESENTACIONES": [
+        "Acetato calcio 475 mg"
+      ],
+      "CODIGOS": [
+        "Ace"
+      ]
+    },
+    {
+      "CODGRUPO": 58,
+      "DESCRIPCION": "Acetato calcico-magnesio carbonato",
+      "PRESENTACIONES": [
+        "OSVAREN 435/234"
+      ],
+      "CODIGOS": [
+        "OSV"
+      ]
+    }
+  ],
+  "CAPTORES_NO_CALCICOS": [
+    {
+      "CODGRUPO": 12,
+      "DESCRIPCION": "Quelantes del F�sforo-Aportes Ca",
+      "PRESENTACIONES": [
+        "RENVELA 2,4 sobres"
+      ],
+      "CODIGOS": [
+        "RE"
+      ]
+    },
+    {
+      "CODGRUPO": 21,
+      "DESCRIPCION": "Protectores g�stricos",
+      "PRESENTACIONES": [
+        "almax"
+      ],
+      "CODIGOS": [
+        "almax"
+      ]
+    },
+    {
+      "CODGRUPO": 47,
+      "DESCRIPCION": "Sevelamer",
+      "PRESENTACIONES": [
+        "renagel",
+        "renvela 800",
+        "sevelamer 800"
+      ],
+      "CODIGOS": [
+        "re",
+        "ren",
+        "sev"
+      ]
+    },
+    {
+      "CODGRUPO": 48,
+      "DESCRIPCION": "Carbonato de lantano",
+      "PRESENTACIONES": [
+        "FOSRENOL 750",
+        "fosrenol 1000 sobres"
+      ],
+      "CODIGOS": [
+        "fos750",
+        "fosr"
+      ]
+    },
+    {
+      "CODGRUPO": 112,
+      "DESCRIPCION": "quelantes del fosforo",
+      "PRESENTACIONES": [
+        "FOSRENOL 1000 (cp masticable)",
+        "FOSRENOL comp masticables 1000mg",
+        "velphoro 500"
+      ],
+      "CODIGOS": [
+        "FOSR",
+        "fosrmc",
+        "vel"
+      ]
+    }
+  ]
+}

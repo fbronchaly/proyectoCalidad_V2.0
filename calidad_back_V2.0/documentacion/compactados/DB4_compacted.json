@@ -1,0 +1,250 @@
+{
+  "CENTRO": "DB4",
+  "EPO": [
+    {
+      "CODGRUPO": 1,
+      "DESCRIPCION": "Darboepoetina alfa",
+      "PRESENTACIONES": [
+        "ARANEPS 120",
+        "ARANESP",
+        "ARANESP 10",
+        "ARANESP 100",
+        "ARANESP 150",
+        "ARANESP 20",
+        "ARANESP 30",
+        "ARANESP 40",
+        "ARANESP 50",
+        "ARANESP 60",
+        "ARANESP 80"
+      ],
+      "CODIGOS": [
+        "ARAN10",
+        "ARAN15",
+        "ARAN2",
+        "ARAN3",
+        "ARAN6",
+        "ARAN8",
+        "aran0",
+        "aran1",
+        "aran12",
+        "aran4",
+        "aran5"
+      ]
+    },
+    {
+      "CODGRUPO": 47,
+      "DESCRIPCION": "Epoetina Alfa",
+      "PRESENTACIONES": [
+        "Binocrit ",
+        "EPO",
+        "EPO 10.000",
+        "EPO 1000",
+        "EPO 2000",
+        "EPO 3000",
+        "EPO 4000",
+        "EPO 5000",
+        "EPO 6000",
+        "EPO 7000",
+        "EPO 8000",
+        "EPO 9000",
+        "EPREX",
+        "Epopen 2000",
+        "Neorecormon",
+        "retacrit 2000",
+        "retacrit 8000"
+      ],
+      "CODIGOS": [
+        "000000",
+        "434333",
+        "B_in",
+        "EPO1",
+        "EPO10",
+        "EPO2",
+        "EPO3",
+        "EPO4",
+        "EPO5",
+        "EPO6",
+        "EPO7",
+        "EPO8",
+        "EPO9",
+        "E_PO",
+        "Z_EPO",
+        "ret2000",
+        "ret8000"
+      ]
+    }
+  ],
+  "VITAMINA_D": [
+    {
+      "CODGRUPO": 3,
+      "DESCRIPCION": "Calcitriol IV",
+      "PRESENTACIONES": [
+        "Calcijex",
+        "Etalpha"
+      ],
+      "CODIGOS": [
+        "Eta",
+        "Z_CAL"
+      ]
+    },
+    {
+      "CODGRUPO": 13,
+      "DESCRIPCION": "Vitamina D Oral",
+      "PRESENTACIONES": [
+        "Rocaltrol 0.25",
+        "Rocaltrol 0.5 mcg"
+      ],
+      "CODIGOS": [
+        "R_ocal",
+        "Z_ROC"
+      ]
+    },
+    {
+      "CODGRUPO": 34,
+      "DESCRIPCION": "Otros",
+      "PRESENTACIONES": [
+        "Zemplar"
+      ],
+      "CODIGOS": [
+        "Z_Ze"
+      ]
+    },
+    {
+      "CODGRUPO": 42,
+      "DESCRIPCION": "Paricalcitol",
+      "PRESENTACIONES": [
+        "Paricalcitol",
+        "Zemplar 1 �g"
+      ],
+      "CODIGOS": [
+        "P_ar",
+        "Z_ZEM"
+      ]
+    }
+  ],
+  "CALCIMIMETICOS": [
+    {
+      "CODGRUPO": 34,
+      "DESCRIPCION": "Otros",
+      "PRESENTACIONES": [
+        "Parsabiv (etelcalcetida)"
+      ],
+      "CODIGOS": [
+        "P_arsa"
+      ]
+    },
+    {
+      "CODGRUPO": 38,
+      "DESCRIPCION": "Cinacalcet",
+      "PRESENTACIONES": [
+        "Mimpara",
+        "Mimpara 30",
+        "Mimpara 60"
+      ],
+      "CODIGOS": [
+        "C_CIN",
+        "C_cin 6",
+        "M_im3",
+        "M_impa"
+      ]
+    }
+  ],
+  "CAPTORES_CALCICOS": [
+    {
+      "CODGRUPO": 12,
+      "DESCRIPCION": "Quelantes del F�sforo-Aportes Ca",
+      "PRESENTACIONES": [
+        "Acetato calcico Renacare ",
+        "Caosina",
+        "Mastical ",
+        "Osvaren",
+        "Royen"
+      ],
+      "CODIGOS": [
+        "A_ ce",
+        "Cao",
+        "M_as",
+        "O_sv",
+        "R_oye"
+      ]
+    },
+    {
+      "CODGRUPO": 34,
+      "DESCRIPCION": "Otros",
+      "PRESENTACIONES": [
+        "Calcio Sandoz (Renacare 950 mg)",
+        "Orocal 500 mg (carbonato de calcio)"
+      ],
+      "CODIGOS": [
+        "C_alc",
+        "O_ro"
+      ]
+    },
+    {
+      "CODGRUPO": 45,
+      "DESCRIPCION": "Quelantes del K",
+      "PRESENTACIONES": [
+        "Resincalcio"
+      ],
+      "CODIGOS": [
+        "R_es"
+      ]
+    }
+  ],
+  "CAPTORES_NO_CALCICOS": [
+    {
+      "CODGRUPO": 34,
+      "DESCRIPCION": "Otros",
+      "PRESENTACIONES": [
+        "Fosquel ( Sevelamer)",
+        "Velphoro"
+      ],
+      "CODIGOS": [
+        "F_osq",
+        "V_el"
+      ]
+    },
+    {
+      "CODGRUPO": 35,
+      "DESCRIPCION": "Quelantes aluminicos",
+      "PRESENTACIONES": [
+        "Pepsamar (Hidr�xido de aluminio)"
+      ],
+      "CODIGOS": [
+        "P_EP"
+      ]
+    },
+    {
+      "CODGRUPO": 36,
+      "DESCRIPCION": "Sevelamer",
+      "PRESENTACIONES": [
+        "Renagel 800 mg",
+        "Renvela  800 mg",
+        "Renvela 2.4 gr",
+        "Sevelamer 800"
+      ],
+      "CODIGOS": [
+        "R_en",
+        "R_ena",
+        "R_env",
+        "S_ev"
+      ]
+    },
+    {
+      "CODGRUPO": 37,
+      "DESCRIPCION": "Lantano",
+      "PRESENTACIONES": [
+        "Fosrenol 1000 mg  (Comprimidos masticables)",
+        "Fosrenol 1000 polvo oral",
+        "Fosrenol 500",
+        "Fosrenol 750"
+      ],
+      "CODIGOS": [
+        "F_os500",
+        "F_os750",
+        "F_osr",
+        "f_ FOSR"
+      ]
+    }
+  ]
+}
