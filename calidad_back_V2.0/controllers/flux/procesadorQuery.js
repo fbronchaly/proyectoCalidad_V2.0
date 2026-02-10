@@ -9,6 +9,7 @@ const catalogosMedicamentosCALCIVITD = require('../../documentacion/CatalogosMed
 const RUTA_ACCESOS_VASCULARES = path.resolve(__dirname, '../../documentacion/accesos_vasculares.json');
 const RUTA_COMPACTADOS = path.resolve(__dirname, '../../documentacion/compactados'); // Nueva ruta
 const groupedTests = require('../../comorbilidad/transformed_grouped_tests.json'); 
+const basesDeDatosMap = require('../../documentacion/basesDeDatosJSON.json');
 
 // Cache en memoria
 let mapaAccesosVascularesPorDatabase = null;
@@ -74,8 +75,25 @@ function obtenerCodigosDeCompactado(nombreCentro, categorias) {
   let baseData = path.basename(String(nombreCentro));          
   baseData = baseData.replace(/^NF6_/i, '').replace(/\.gdb$/i, '').replace(/\.json$/i, ''); 
 
-  const nombreFichero = `${baseData}_compacted.json`;
-  const rutaCompleta = path.join(RUTA_COMPACTADOS, nombreFichero);
+  // INTENTO DE RESOLUCIÓN A DB CODE (ej: Teixedal -> DB16)
+  let targetName = baseData;
+  const entry = Object.entries(basesDeDatosMap).find(([cod, nombre]) => 
+      String(nombre).trim().toLowerCase() === String(baseData).trim().toLowerCase()
+  );
+  if (entry) {
+      targetName = entry[0];
+  }
+
+  // Priorizamos buscar por el código DB (DB16_compacted.json)
+  let nombreFichero = `${targetName}_compacted.json`;
+  let rutaCompleta = path.join(RUTA_COMPACTADOS, nombreFichero);
+  
+  // Si no existe, hacemos fallback al nombre original (Teixedal_compacted.json)
+  if (!fs.existsSync(rutaCompleta) && targetName !== baseData) {
+      nombreFichero = `${baseData}_compacted.json`;
+      rutaCompleta = path.join(RUTA_COMPACTADOS, nombreFichero);
+  }
+
   let codigos = [];
 
   if (fs.existsSync(rutaCompleta)) {
@@ -90,6 +108,10 @@ function obtenerCodigosDeCompactado(nombreCentro, categorias) {
                  data[cat].forEach(grupo => {
                      if (grupo.CODIGOS && Array.isArray(grupo.CODIGOS)) {
                          codigos = codigos.concat(grupo.CODIGOS);
+                     }
+                     // AÑADIR TAMBIÉN PRESENTACIONES PARA MAYOR ROBUSTEZ (por si el campo TRATAMIENTO usa nombre comercial)
+                     if (grupo.PRESENTACIONES && Array.isArray(grupo.PRESENTACIONES)) {
+                         codigos = codigos.concat(grupo.PRESENTACIONES);
                      }
                  });
             }
@@ -154,6 +176,27 @@ function obtenerCodigosCalcimimeticosPorCentro(nombreCentro) {
  */
 function obtenerCodigosEpoPorCentro(nombreCentro) {
   return obtenerCodigosDeCompactado(nombreCentro, 'EPO');
+}
+
+/**
+ * Lógica para obtener códigos de HIERRO (USANDO COMPACTADOS)
+ */
+function obtenerCodigosHierroPorCentro(nombreCentro) {
+  return obtenerCodigosDeCompactado(nombreCentro, 'HIERRO_IV'); // Redirigir HIERRO genérico a HIERRO_IV por seguridad
+}
+
+/**
+ * Lógica para obtener códigos de HIERRO IV (USANDO COMPACTADOS)
+ */
+function obtenerCodigosHierroIVPorCentro(nombreCentro) {
+  return obtenerCodigosDeCompactado(nombreCentro, 'HIERRO_IV');
+}
+
+/**
+ * Lógica para obtener códigos de HIERRO ORAL (USANDO COMPACTADOS)
+ */
+function obtenerCodigosHierroOralPorCentro(nombreCentro) {
+  return obtenerCodigosDeCompactado(nombreCentro, 'HIERRO_ORAL');
 }
 
 function aplicarCodigosCaptoresPorBase(query, config) {
@@ -321,6 +364,81 @@ function aplicarCodigosEpoPorCentro(query, config) {
   return query.replace(/:CODIGOS_EPO/g, listaSQL || "''");
 }
 
+function aplicarCodigosHierroPorBase(query, config) {
+  if (!query || !query.includes('<LISTA_HIERRO_IV>')) return query;
+
+  let baseData = config.nombre || config.database || '';
+  baseData = path.basename(String(baseData));          
+  baseData = baseData.replace(/^NF6_/i, '').replace(/\.gdb$/i, ''); 
+
+  const codigosRaw = obtenerCodigosHierroPorCentro(baseData);
+
+  // Normalización
+  const codigosNorm = [...new Set(
+    codigosRaw
+      .map(c => String(c).trim().toUpperCase())
+      .filter(Boolean)
+  )];
+  
+  const listaSQL = codigosNorm.map(c => `'${c}'`).join(',');
+  
+  if (!listaSQL) {
+    console.warn(`⚠️ CÓDIGOS HIERRO VACÍO para ${baseData}.`);
+  }
+  
+  return query.replace(/<LISTA_HIERRO_IV>/g, listaSQL || "''");
+}
+
+function aplicarCodigosHierroIVPorBase(query, config) {
+  if (!query || !query.includes('<LISTA_HIERRO_IV>')) return query;
+
+  let baseData = config.nombre || config.database || '';
+  baseData = path.basename(String(baseData));          
+  baseData = baseData.replace(/^NF6_/i, '').replace(/\.gdb$/i, ''); 
+
+  const codigosRaw = obtenerCodigosHierroIVPorCentro(baseData);
+
+  // Normalización
+  const codigosNorm = [...new Set(
+    codigosRaw
+      .map(c => String(c).trim().toUpperCase())
+      .filter(Boolean)
+  )];
+  
+  const listaSQL = codigosNorm.map(c => `'${c}'`).join(',');
+  
+  if (!listaSQL) {
+    console.warn(`⚠️ CÓDIGOS HIERRO IV VACÍO para ${baseData}.`);
+  }
+  
+  return query.replace(/<LISTA_HIERRO_IV>/g, listaSQL || "''");
+}
+
+function aplicarCodigosHierroOralPorBase(query, config) {
+  if (!query || !query.includes('<LISTA_HIERRO_ORAL>')) return query;
+
+  let baseData = config.nombre || config.database || '';
+  baseData = path.basename(String(baseData));          
+  baseData = baseData.replace(/^NF6_/i, '').replace(/\.gdb$/i, ''); 
+
+  const codigosRaw = obtenerCodigosHierroOralPorCentro(baseData);
+
+  // Normalización
+  const codigosNorm = [...new Set(
+    codigosRaw
+      .map(c => String(c).trim().toUpperCase())
+      .filter(Boolean)
+  )];
+  
+  const listaSQL = codigosNorm.map(c => `'${c}'`).join(',');
+  
+  if (!listaSQL) {
+    console.warn(`⚠️ CÓDIGOS HIERRO ORAL VACÍO para ${baseData}.`);
+  }
+  
+  return query.replace(/<LISTA_HIERRO_ORAL>/g, listaSQL || "''");
+}
+
 /**
  * Helpers de reemplazo específicos
  */
@@ -472,6 +590,8 @@ function procesarQuery(queryOriginal, config) {
   query = aplicarCodigosVitaminaDPorBase(query, config); // SÓLO Vitamina D
   query = aplicarCodigosCalcimimeticosPorBase(query, config); // SÓLO Calcimiméticos
   query = aplicarCodigosEpoPorCentro(query, config); // Códigos de Eritropoyetina (EPO)
+  query = aplicarCodigosHierroIVPorBase(query, config); // Códigos de Hierro IV
+  query = aplicarCodigosHierroOralPorBase(query, config); // Códigos de Hierro Oral
   query = aplicarCodTestPorBase(query, config);
   query = aplicarCodigosCateterTunelizadoPorBase(query, config); 
   query = aplicarCodigosCateterPorBase(query, config);

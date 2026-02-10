@@ -195,16 +195,6 @@
       ]
     },
     {
-      "CODGRUPO": 34,
-      "DESCRIPCION": "Otros",
-      "PRESENTACIONES": [
-        "VELPHORO 500 mg"
-      ],
-      "CODIGOS": [
-        "velp"
-      ]
-    },
-    {
       "CODGRUPO": 38,
       "DESCRIPCION": "Carbonato de Lantano",
       "PRESENTACIONES": [
@@ -242,6 +232,36 @@
       ],
       "CODIGOS": [
         "seve"
+      ]
+    }
+  ],
+  "HIERRO_IV": [
+    {
+      "CODGRUPO": 4,
+      "DESCRIPCION": "Hierro IV",
+      "PRESENTACIONES": [
+        "FERIV",
+        "FERRLECIT",
+        "HIERRO SACAROSA",
+        "VENOFER"
+      ],
+      "CODIGOS": [
+        "FERIV",
+        "HIERROS",
+        "VENOF",
+        "Z_HIE"
+      ]
+    }
+  ],
+  "HIERRO_ORAL": [
+    {
+      "CODGRUPO": 18,
+      "DESCRIPCION": "Hierro Oral",
+      "PRESENTACIONES": [
+        "FISIOGEN FERRO FORTE"
+      ],
+      "CODIGOS": [
+        "fisioge"
       ]
     }
   ]

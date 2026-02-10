@@ -158,24 +158,6 @@
   ],
   "CAPTORES_NO_CALCICOS": [
     {
-      "CODGRUPO": 36,
-      "DESCRIPCION": "Quelantes aluminicos",
-      "PRESENTACIONES": [
-        "ALMAX (500 mgrs.)",
-        "ALMAX (pastillas masticables 1 gr.)",
-        "ALMAX (sobres de 1.5 grs.)",
-        "ALMAX (suspensi�n)",
-        "PEPSAMAR (233 mgrs.)"
-      ],
-      "CODIGOS": [
-        "ALM-C",
-        "ALM-M",
-        "ALM-S",
-        "ALM-SU",
-        "PEP"
-      ]
-    },
-    {
       "CODGRUPO": 37,
       "DESCRIPCION": "Quelantes Carb. de lantano",
       "PRESENTACIONES": [
@@ -224,15 +206,39 @@
         "SEVEL",
         "res"
       ]
-    },
+    }
+  ],
+  "HIERRO_IV": [
     {
-      "CODGRUPO": 85,
-      "DESCRIPCION": "Quelantes f�sforo base de hierro",
+      "CODGRUPO": 4,
+      "DESCRIPCION": "Hierro IV",
       "PRESENTACIONES": [
-        "VELPHORO"
+        "FERIV",
+        "VENOFER",
+        "hierro (III) hidroxido sacarosa"
       ],
       "CODIGOS": [
-        "velph"
+        "HIE",
+        "feriv",
+        "hierro"
+      ]
+    }
+  ],
+  "HIERRO_ORAL": [
+    {
+      "CODGRUPO": 18,
+      "DESCRIPCION": "Hierro Oral",
+      "PRESENTACIONES": [
+        "FERBISOL(comps. de 50 mg)",
+        "FERPLEX (viales de 40 mg)",
+        "FERROSANOL comp.",
+        "FERROSOL FLASH"
+      ],
+      "CODIGOS": [
+        "FERBI50",
+        "FERP",
+        "FERR",
+        "Fe-Flas"
       ]
     }
   ]

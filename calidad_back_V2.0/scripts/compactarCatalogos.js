@@ -23,8 +23,24 @@ const CRITERIOS = {
         keywordsPres: ['CARBONATO CALCICO', 'ACETATO CALCICO', 'CALCIO', 'CAOSINA', 'ROYEN', 'MASTICAL', 'OSVAREN', 'NATECAL', 'CITRATO CALCICO']
     },
     CAPTORES_NO_CALCICOS: {
-        keywordsDesc: ['NO CALCICO', 'NO CÁLCICO', 'ALUMINICO', 'LANTANO', 'SEVELAME', 'QUELANTES NO CALCICOS'],
-        keywordsPres: ['RENAGEL', 'RENVELA', 'FOSRENOL', 'VELPHORO', 'SEVELAMER', 'LANTANO', 'ALMAX', 'PEPSAMAR', 'ALUMINIO']
+        keywordsDesc: ['SEVELAMER', 'RENVELA', 'RENAGEL', 'FOSRENOL', 'LANTANO', 'VELPHORO', 'SUCHROFERRICO', 'SUCROFERRICO', 'CITRATO FERRICO', 'BIXALOMER'],
+        keywordsPres: ['SEVELAMER', 'RENVELA', 'FOSRENOL']
+    },
+    HIERRO_IV: {
+        keywordsDesc: [
+            'HIERRO IV', 'HIERRO I.V.', 'HIERRO PARENTERAL', 'INTRAVENOSO', 
+            'VENOFER', 'FERINJECT', 'FERRLECIT', 'MONOVER', 'DIAFER', 'COSMOFER',
+            'HIERRO SACAROSA', 'HIERRO CARBOXIMALTOSA', 'HIERRO DEXTRANO', 'ISOMALTOSIDO', 'HIERRO SUCROSA'
+        ],
+        keywordsPres: ['VENOFER', 'FERINJECT', 'MONOVER', 'DIAFER']
+    },
+    HIERRO_ORAL: {
+        keywordsDesc: [
+            'HIERRO ORAL', 'FEROGRADUMET', 'FISIOGEN', 'MALTOFER', 'TARDYFERON', 
+            'FERROCUR', 'PODERFER', 'SULFATO FERROSO', 'GLUCONATO FERROSO', 'FERROSO', 'FERRIMANITOL',
+            'PROFER', 'KILOR', 'FERPLEX'
+        ],
+        keywordsPres: ['FEROGRADUMET', 'TARDYFERON', 'FISIOGEN']
     }
 };
 
@@ -83,7 +99,9 @@ function procesarCentro(archivo) {
             VITAMINA_D: false,
             CALCIMIMETICOS: false,
             CAPTORES_CALCICOS: false,
-            CAPTORES_NO_CALCICOS: false
+            CAPTORES_NO_CALCICOS: false,
+            HIERRO_IV: false,
+            HIERRO_ORAL: false
         };
 
         // Check EPO
@@ -122,6 +140,27 @@ function procesarCentro(archivo) {
             CRITERIOS.CAPTORES_NO_CALCICOS.keywordsPres.some(k => pres.includes(k))) {
             matches.CAPTORES_NO_CALCICOS = true;
         }
+
+        // Check HIERRO IV
+        // Prioridad: Si dice explícitamente ORAL, no es IV.
+        if (!desc.includes('ORAL') && !desc.includes('COMPRIMIDO') && !pres.includes('ORAL')) {
+            if (CRITERIOS.HIERRO_IV.keywordsDesc.some(k => desc.includes(k)) || 
+                CRITERIOS.HIERRO_IV.keywordsPres.some(k => pres.includes(k))) {
+                matches.HIERRO_IV = true;
+            }
+        }
+
+        // Check HIERRO ORAL
+        // Exclusión fuerte de Calcio para evitar "Gluconato Calcico" si se busca "Gluconato" o "Ferroso" mal puesto
+        if (!desc.includes('CALCICO') && !desc.includes('CÁLCICO') && !pres.includes('CALCI')) {
+            if (CRITERIOS.HIERRO_ORAL.keywordsDesc.some(k => desc.includes(k)) || 
+                CRITERIOS.HIERRO_ORAL.keywordsPres.some(k => pres.includes(k))) {
+                // Si ya detectamos que es IV, no es Oral (asumiendo exclusividad para simplificar, aunque un paciente podria tener ambos, aqui clasificamos el fármaco)
+                if (!matches.HIERRO_IV) {
+                    matches.HIERRO_ORAL = true;
+                }
+            }
+        }
         
         // Refuerzo: Si es grupo genérico "QUELANTES DEL FOSFORO" sin apellido, intentamos clasificar por nombre comercial si no cayó en ninguno
         if (esGrupoQuelante && !matches.CAPTORES_CALCICOS && !matches.CAPTORES_NO_CALCICOS) {
@@ -132,8 +171,29 @@ function procesarCentro(archivo) {
         }
         // --- FIN NUEVA LÓGICA CAPTORES ---
 
+        // --- FILTROS DE EXCLUSIÓN PREVIOS ---
+        // Evitar falsos positivos comunes
+        if (desc.includes('CALCICO') && desc.includes('GLUCONATO') && !desc.includes('FERROSO')) {
+            // Es Gluconato Calcico, NO es hierro
+        } else {
+             // Logic HIERRO IV
+            if (CRITERIOS.HIERRO_IV.keywordsDesc.some(k => desc.includes(k)) || 
+                CRITERIOS.HIERRO_IV.keywordsPres.some(k => pres.includes(k))) {
+                matches.HIERRO_IV = true;
+            }
+
+            // Logic HIERRO ORAL
+            // Solo si no es IV, buscamos oral. O permitimos ambos si hay productos raros, pero mejor priorizar.
+            if (!matches.HIERRO_IV) {
+                if (CRITERIOS.HIERRO_ORAL.keywordsDesc.some(k => desc.includes(k)) || 
+                    CRITERIOS.HIERRO_ORAL.keywordsPres.some(k => pres.includes(k))) {
+                    matches.HIERRO_ORAL = true;
+                }
+            }
+        }
+
         // Si machea algo, guardamos la fila con sus categorias
-        if (matches.EPO || matches.VITAMINA_D || matches.CALCIMIMETICOS || matches.CAPTORES_CALCICOS || matches.CAPTORES_NO_CALCICOS) {
+        if (matches.EPO || matches.VITAMINA_D || matches.CALCIMIMETICOS || matches.CAPTORES_CALCICOS || matches.CAPTORES_NO_CALCICOS || matches.HIERRO_IV || matches.HIERRO_ORAL) {
             filasFiltradas.push({
                 row: row,
                 categories: matches
@@ -147,7 +207,9 @@ function procesarCentro(archivo) {
         VITAMINA_D: [],
         CALCIMIMETICOS: [],
         CAPTORES_CALCICOS: [],
-        CAPTORES_NO_CALCICOS: []
+        CAPTORES_NO_CALCICOS: [],
+        HIERRO_IV: [],
+        HIERRO_ORAL: []
     };
 
     // Helper para agrupar
@@ -190,6 +252,8 @@ function procesarCentro(archivo) {
     processCategory('CALCIMIMETICOS');
     processCategory('CAPTORES_CALCICOS');
     processCategory('CAPTORES_NO_CALCICOS');
+    processCategory('HIERRO_IV');
+    processCategory('HIERRO_ORAL');
 
     // Escribir archivo resultado
     const outPath = path.join(OUTPUT_DIR, `${nombreCentro}_compacted.json`);

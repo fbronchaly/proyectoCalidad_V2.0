@@ -196,22 +196,10 @@
       "CODGRUPO": 34,
       "DESCRIPCION": "Otros",
       "PRESENTACIONES": [
-        "Fosquel ( Sevelamer)",
-        "Velphoro"
+        "Fosquel ( Sevelamer)"
       ],
       "CODIGOS": [
-        "F_osq",
-        "V_el"
-      ]
-    },
-    {
-      "CODGRUPO": 35,
-      "DESCRIPCION": "Quelantes aluminicos",
-      "PRESENTACIONES": [
-        "Pepsamar (Hidr�xido de aluminio)"
-      ],
-      "CODIGOS": [
-        "P_EP"
+        "F_osq"
       ]
     },
     {
@@ -244,6 +232,36 @@
         "F_os750",
         "F_osr",
         "f_ FOSR"
+      ]
+    }
+  ],
+  "HIERRO_IV": [
+    {
+      "CODGRUPO": 4,
+      "DESCRIPCION": "Hierro IV",
+      "PRESENTACIONES": [
+        "Ferinjet",
+        "Hierro Sacarosa",
+        "Hierro Sacarosa 100",
+        "Venofer"
+      ],
+      "CODIGOS": [
+        "H_ie",
+        "H_ier",
+        "J_Fe",
+        "Z_HIE"
+      ]
+    }
+  ],
+  "HIERRO_ORAL": [
+    {
+      "CODGRUPO": 18,
+      "DESCRIPCION": "Hierro Oral",
+      "PRESENTACIONES": [
+        "ferogradumet "
+      ],
+      "CODIGOS": [
+        "fero"
       ]
     }
   ]

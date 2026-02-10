@@ -234,16 +234,6 @@
       ]
     },
     {
-      "CODGRUPO": 21,
-      "DESCRIPCION": "Protectores g�stricos",
-      "PRESENTACIONES": [
-        "almax"
-      ],
-      "CODIGOS": [
-        "almax"
-      ]
-    },
-    {
       "CODGRUPO": 47,
       "DESCRIPCION": "Sevelamer",
       "PRESENTACIONES": [
@@ -274,14 +264,29 @@
       "DESCRIPCION": "quelantes del fosforo",
       "PRESENTACIONES": [
         "FOSRENOL 1000 (cp masticable)",
-        "FOSRENOL comp masticables 1000mg",
-        "velphoro 500"
+        "FOSRENOL comp masticables 1000mg"
       ],
       "CODIGOS": [
         "FOSR",
-        "fosrmc",
-        "vel"
+        "fosrmc"
       ]
     }
-  ]
+  ],
+  "HIERRO_IV": [
+    {
+      "CODGRUPO": 50,
+      "DESCRIPCION": "HIERRO",
+      "PRESENTACIONES": [
+        "VENOFER",
+        "ferinject"
+      ],
+      "CODIGOS": [
+        "VENOF",
+        "VENOF50",
+        "VENOFER",
+        "fer"
+      ]
+    }
+  ],
+  "HIERRO_ORAL": []
 }

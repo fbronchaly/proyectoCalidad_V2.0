@@ -258,26 +258,6 @@
   ],
   "CAPTORES_NO_CALCICOS": [
     {
-      "CODGRUPO": 34,
-      "DESCRIPCION": "Otros",
-      "PRESENTACIONES": [
-        "VELPHORO"
-      ],
-      "CODIGOS": [
-        "VEL"
-      ]
-    },
-    {
-      "CODGRUPO": 54,
-      "DESCRIPCION": "Quelantes Alum�nicos(Pepsamar)",
-      "PRESENTACIONES": [
-        "PEPSAMAR"
-      ],
-      "CODIGOS": [
-        "PEP"
-      ]
-    },
-    {
       "CODGRUPO": 55,
       "DESCRIPCION": "Sevelamer(Renagel)",
       "PRESENTACIONES": [
@@ -317,6 +297,36 @@
       ],
       "CODIGOS": [
         "RENV"
+      ]
+    }
+  ],
+  "HIERRO_IV": [
+    {
+      "CODGRUPO": 4,
+      "DESCRIPCION": "Hierro  Intravenoso.",
+      "PRESENTACIONES": [
+        "FERIV",
+        "FERRLECIT",
+        "Hierro sacarosa",
+        "VENOFER"
+      ],
+      "CODIGOS": [
+        "FER",
+        "HIE",
+        "H_ierr",
+        "VEN"
+      ]
+    }
+  ],
+  "HIERRO_ORAL": [
+    {
+      "CODGRUPO": 18,
+      "DESCRIPCION": "Hierro Oral",
+      "PRESENTACIONES": [
+        "FERBISOL"
+      ],
+      "CODIGOS": [
+        "FERB"
       ]
     }
   ]

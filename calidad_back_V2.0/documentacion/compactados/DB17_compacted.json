@@ -198,22 +198,10 @@
       "CODGRUPO": 12,
       "DESCRIPCION": "Quelantes del F�sforo-Aportes Ca",
       "PRESENTACIONES": [
-        "RENVELA 2,4 sobres",
-        "Velphoro"
+        "RENVELA 2,4 sobres"
       ],
       "CODIGOS": [
-        "RE",
-        "VEL"
-      ]
-    },
-    {
-      "CODGRUPO": 21,
-      "DESCRIPCION": "Protectores g�stricos",
-      "PRESENTACIONES": [
-        "almax"
-      ],
-      "CODIGOS": [
-        "almax"
+        "RE"
       ]
     },
     {
@@ -242,5 +230,22 @@
         "fosr"
       ]
     }
-  ]
+  ],
+  "HIERRO_IV": [
+    {
+      "CODGRUPO": 50,
+      "DESCRIPCION": "HIERRO",
+      "PRESENTACIONES": [
+        "Ferinject",
+        "VENOFER"
+      ],
+      "CODIGOS": [
+        "VENOF",
+        "VENOF50",
+        "VENOFER",
+        "fj"
+      ]
+    }
+  ],
+  "HIERRO_ORAL": []
 }

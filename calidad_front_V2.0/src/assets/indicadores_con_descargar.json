@@ -577,8 +577,8 @@
     "id_code": "2V68XWI0",
     "categoria": "Medicacion ",
     "indicador": "Porcentaje de pacientes prevalentes ultimo dia de periodo en tratamiento con hierro",
-    "template": "/* Porcentaje de pacientes activos a FECHAFIN con tratamiento de HIERRO (habitual IV). Ajuste la lista a las denominaciones de su centro. */ WITH denom AS ( /* Denominador común: pacientes activos prevalentes a FECHAFIN */ SELECT COUNT(*) AS total_activos FROM PACIENTES p WHERE p.ESTADO = 'A' /* Si procede acotar a hemodiálisis (descomentar si el campo lo permite) AND p.MODAL_TRAT = 'H' */ ), num AS ( SELECT COUNT(DISTINCT ta.NREGGEN) AS n FROM TRATAMIENT_ACTUAL ta JOIN PACIENTES p ON p.NREGGEN = ta.NREGGEN WHERE p.ESTADO = 'A' /* AND p.MODAL_TRAT = 'H' */ AND ( UPPER(ta.TRATAMIENTO) IN (<LISTA_HIERRO_IV>) OR UPPER(ta.TRATAMIENTO) LIKE '%HIERRO%' ) ) SELECT num.n AS numerador, denom.total_activos AS denominador, CASE WHEN denom.total_activos = 0 THEN 0 ELSE (num.n * 100.0) / denom.total_activos END AS porcentaje FROM num, denom; /* Ejemplos de lista: 'VENOFER','FERIV','FERINJECT','MALTOFER','VITAFER','NORATIO HIERRO' */;",
-    "descargar": true
+    "unidad":"%",
+    "template": "/* Porcentaje de pacientes activos a FECHAFIN con tratamiento de HIERRO IV. */ WITH denom AS ( /* Denominador común: pacientes activos prevalentes a FECHAFIN */ SELECT COUNT(*) AS total_activos FROM PACIENTES p WHERE p.ESTADO = 'A' /* Si procede acotar a hemodiálisis (descomentar si el campo lo permite) AND p.MODAL_TRAT = 'H' */ ), num AS ( SELECT COUNT(DISTINCT ta.NREGGEN) AS n FROM TRATAMIENT_ACTUAL ta JOIN PACIENTES p ON p.NREGGEN = ta.NREGGEN WHERE p.ESTADO = 'A' /* AND p.MODAL_TRAT = 'H' */ AND UPPER(ta.TRATAMIENTO) IN (<LISTA_HIERRO_IV>) ) SELECT num.n AS numerador, denom.total_activos AS denominador, CASE WHEN denom.total_activos = 0 THEN 0 ELSE (num.n * 100.0) / denom.total_activos END AS porcentaje FROM num, denom;"
   },
   {
     "id_code": "6GPLJL8D",

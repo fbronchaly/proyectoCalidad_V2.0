@@ -158,6 +158,16 @@
       "CODIGOS": [
         "RESINCA"
       ]
+    },
+    {
+      "CODGRUPO": 46,
+      "DESCRIPCION": "Quelantes del Fosforo NO calcicos",
+      "PRESENTACIONES": [
+        "OSVAREN"
+      ],
+      "CODIGOS": [
+        "OSVAREN"
+      ]
     }
   ],
   "CAPTORES_NO_CALCICOS": [
@@ -165,26 +175,42 @@
       "CODGRUPO": 46,
       "DESCRIPCION": "Quelantes del Fosforo NO calcicos",
       "PRESENTACIONES": [
-        "ALMAX",
         "FOSRENOL",
-        "OSVAREN",
-        "PEPSAMAR",
-        "RENAGEL",
         "RENVELA",
         "SEVELAMER",
-        "SEVELAMER CARBONATO",
-        "VELPHORO"
+        "SEVELAMER CARBONATO"
       ],
       "CODIGOS": [
-        "OSVAREN",
-        "PEPSAMA",
         "RE",
         "RENAGEL",
         "RENVELA",
-        "alm",
-        "fosr",
-        "renv",
-        "vph"
+        "fosr"
+      ]
+    }
+  ],
+  "HIERRO_IV": [
+    {
+      "CODGRUPO": 4,
+      "DESCRIPCION": "Hierro IV",
+      "PRESENTACIONES": [
+        "FERRLECIT",
+        "VENOFER"
+      ],
+      "CODIGOS": [
+        "HIERRO",
+        "Z_HIE"
+      ]
+    }
+  ],
+  "HIERRO_ORAL": [
+    {
+      "CODGRUPO": 18,
+      "DESCRIPCION": "Hierro Oral",
+      "PRESENTACIONES": [
+        "HIERRO ORAL"
+      ],
+      "CODIGOS": [
+        "FE"
       ]
     }
   ]

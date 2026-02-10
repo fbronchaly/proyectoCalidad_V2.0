@@ -158,38 +158,6 @@
   ],
   "CAPTORES_NO_CALCICOS": [
     {
-      "CODGRUPO": 12,
-      "DESCRIPCION": "Quelantes del F�sforo calcicos",
-      "PRESENTACIONES": [
-        "VELPHORO"
-      ],
-      "CODIGOS": [
-        "VELP"
-      ]
-    },
-    {
-      "CODGRUPO": 21,
-      "DESCRIPCION": "Protectores g�stricos",
-      "PRESENTACIONES": [
-        "ALMAX"
-      ],
-      "CODIGOS": [
-        "ALM"
-      ]
-    },
-    {
-      "CODGRUPO": 35,
-      "DESCRIPCION": "Quelantes del fosforo aluminicos",
-      "PRESENTACIONES": [
-        "HIDROXIDO DE ALUMINIO",
-        "PEPSAMAR"
-      ],
-      "CODIGOS": [
-        "HDRO",
-        "PEPS"
-      ]
-    },
-    {
       "CODGRUPO": 40,
       "DESCRIPCION": "Sevelamer",
       "PRESENTACIONES": [
@@ -221,6 +189,34 @@
       ],
       "CODIGOS": [
         "43"
+      ]
+    }
+  ],
+  "HIERRO_IV": [
+    {
+      "CODGRUPO": 4,
+      "DESCRIPCION": "Hierro IV",
+      "PRESENTACIONES": [
+        "FERINJECT",
+        "FERIV",
+        "VENOFER"
+      ],
+      "CODIGOS": [
+        "Z_HIE",
+        "ferinje",
+        "feriv"
+      ]
+    }
+  ],
+  "HIERRO_ORAL": [
+    {
+      "CODGRUPO": 18,
+      "DESCRIPCION": "Hierro Oral",
+      "PRESENTACIONES": [
+        "profer "
+      ],
+      "CODIGOS": [
+        "prof"
       ]
     }
   ]

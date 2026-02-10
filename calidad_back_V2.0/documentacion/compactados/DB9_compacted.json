@@ -129,16 +129,6 @@
   ],
   "CAPTORES_NO_CALCICOS": [
     {
-      "CODGRUPO": 35,
-      "DESCRIPCION": "Quelantes del fosforo aluminicos",
-      "PRESENTACIONES": [
-        "PEPSAMAR"
-      ],
-      "CODIGOS": [
-        "PEPS"
-      ]
-    },
-    {
       "CODGRUPO": 40,
       "DESCRIPCION": "Sevelamer",
       "PRESENTACIONES": [
@@ -172,16 +162,39 @@
       "CODGRUPO": 150,
       "DESCRIPCION": "Quelante del fosforo NO calcico",
       "PRESENTACIONES": [
-        "FOSQUEL",
-        "Lokelma ",
-        "Sevelamero",
-        "Velphoro"
+        "Sevelamero"
       ],
       "CODIGOS": [
-        "Fosq",
-        "LOK",
-        "Sev",
-        "VEL"
+        "Sev"
+      ]
+    }
+  ],
+  "HIERRO_IV": [
+    {
+      "CODGRUPO": 4,
+      "DESCRIPCION": "Hierro IV",
+      "PRESENTACIONES": [
+        "Ferinject",
+        "VENOFER"
+      ],
+      "CODIGOS": [
+        "FER",
+        "Z_HIE",
+        "fr"
+      ]
+    }
+  ],
+  "HIERRO_ORAL": [
+    {
+      "CODGRUPO": 18,
+      "DESCRIPCION": "Hierro Oral",
+      "PRESENTACIONES": [
+        "Fero-gradumet",
+        "Ferrosanol"
+      ],
+      "CODIGOS": [
+        "Fero",
+        "fer"
       ]
     }
   ]

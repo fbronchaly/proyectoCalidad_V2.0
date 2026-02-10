@@ -210,16 +210,6 @@
   ],
   "CAPTORES_NO_CALCICOS": [
     {
-      "CODGRUPO": 21,
-      "DESCRIPCION": "Protectores g�stricos",
-      "PRESENTACIONES": [
-        "Almax "
-      ],
-      "CODIGOS": [
-        "A_lm"
-      ]
-    },
-    {
       "CODGRUPO": 36,
       "DESCRIPCION": "Sevelamer",
       "PRESENTACIONES": [
@@ -249,18 +239,42 @@
       "CODGRUPO": 39,
       "DESCRIPCION": "Quelantes del F�rforo",
       "PRESENTACIONES": [
-        "Carbonato de lantano",
         "Fosquel (Sevelamer)  2.4 gr",
         "Fosrenol 750 MG ",
-        "Sevelamero",
-        "Velphoro"
+        "Sevelamero"
       ],
       "CODIGOS": [
-        "C_arbl",
         "F_osq",
         "F_osr",
-        "S_evela",
-        "V_elp"
+        "S_evela"
+      ]
+    }
+  ],
+  "HIERRO_IV": [
+    {
+      "CODGRUPO": 4,
+      "DESCRIPCION": "Hierro IV",
+      "PRESENTACIONES": [
+        "Hierro III, Dextrano (Cosmofer)",
+        "Hierro sacarosa ",
+        "Venofer"
+      ],
+      "CODIGOS": [
+        "H-ierro",
+        "H_ierro",
+        "Z_HIE"
+      ]
+    }
+  ],
+  "HIERRO_ORAL": [
+    {
+      "CODGRUPO": 18,
+      "DESCRIPCION": "Hierro Oral",
+      "PRESENTACIONES": [
+        "Ferogradumet (Sulfato ferroso) 105 mg "
+      ],
+      "CODIGOS": [
+        "F_ero"
       ]
     }
   ]

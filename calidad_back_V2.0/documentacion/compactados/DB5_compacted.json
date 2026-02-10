@@ -220,16 +220,6 @@
   ],
   "CAPTORES_NO_CALCICOS": [
     {
-      "CODGRUPO": 21,
-      "DESCRIPCION": "Protectores g�stricos",
-      "PRESENTACIONES": [
-        "almax"
-      ],
-      "CODIGOS": [
-        "almax"
-      ]
-    },
-    {
       "CODGRUPO": 48,
       "DESCRIPCION": "Carbonato de lantano",
       "PRESENTACIONES": [
@@ -265,25 +255,28 @@
       "CODGRUPO": 110,
       "DESCRIPCION": "Quelante de fosforo no Calcico",
       "PRESENTACIONES": [
-        "FOSQUEL",
         "FOSRENOL"
       ],
       "CODIGOS": [
-        "FOSR",
-        "Fosq"
-      ]
-    },
-    {
-      "CODGRUPO": 112,
-      "DESCRIPCION": "QUELANTE FERRICO",
-      "PRESENTACIONES": [
-        "VELPHORO",
-        "Velphoro 500"
-      ],
-      "CODIGOS": [
-        "vel",
-        "vlp"
+        "FOSR"
       ]
     }
-  ]
+  ],
+  "HIERRO_IV": [
+    {
+      "CODGRUPO": 50,
+      "DESCRIPCION": "HIERRO",
+      "PRESENTACIONES": [
+        "FERINJECT",
+        "VENOFER"
+      ],
+      "CODIGOS": [
+        "Ferin",
+        "VENOF",
+        "VENOF50",
+        "VENOFER"
+      ]
+    }
+  ],
+  "HIERRO_ORAL": []
 }

@@ -165,12 +165,10 @@
       "CODGRUPO": 34,
       "DESCRIPCION": "Otros",
       "PRESENTACIONES": [
-        "SEVELAMER",
-        "VELPHORO"
+        "SEVELAMER"
       ],
       "CODIGOS": [
-        "SVLMR",
-        "velpho"
+        "SVLMR"
       ]
     },
     {
@@ -190,16 +188,6 @@
       ]
     },
     {
-      "CODGRUPO": 43,
-      "DESCRIPCION": "Quelantes del f�sforo: quelantes alum�nicos",
-      "PRESENTACIONES": [
-        "ALMAX"
-      ],
-      "CODIGOS": [
-        "ALM"
-      ]
-    },
-    {
       "CODGRUPO": 46,
       "DESCRIPCION": "Quelantes del f�sforo: carbonato de lantano",
       "PRESENTACIONES": [
@@ -213,6 +201,36 @@
         "FOS750",
         "FOSPOLV",
         "FOSR"
+      ]
+    }
+  ],
+  "HIERRO_IV": [
+    {
+      "CODGRUPO": 4,
+      "DESCRIPCION": "Hierro IV",
+      "PRESENTACIONES": [
+        "FERIV",
+        "FERRLECIT",
+        "VENOFER"
+      ],
+      "CODIGOS": [
+        "Z-HIERR",
+        "Z_HIE",
+        "Z_HIERR"
+      ]
+    }
+  ],
+  "HIERRO_ORAL": [
+    {
+      "CODGRUPO": 18,
+      "DESCRIPCION": "Hierro Oral",
+      "PRESENTACIONES": [
+        "FEROGRADUMET",
+        "FISIOGEN"
+      ],
+      "CODIGOS": [
+        "ferog",
+        "fisgen"
       ]
     }
   ]
