@@ -573,11 +573,11 @@ app.post('/api/upload', (req, res) => {
             }, 3000); // 3 segundos adicionales después de confirmación
           });
           
-          // Timeout de seguridad AUMENTADO a 60 segundos
+          // Timeout de seguridad AUMENTADO a 180 segundos para dar tiempo al PDF con IA
           setTimeout(() => {
             if (!datosRecibidosPorCliente) {
               console.log('⚠️ ========================================');
-              console.log('ℹ️ AVISO: Cliente no confirmó recepción en 60 segundos (Posible cierre de pestaña o desconexión).');
+              console.log('ℹ️ AVISO: Cliente no confirmó recepción en 180 segundos (proceso largo completado).');
               console.log('ℹ️ Procediendo con el reset automático habitual para liberar recursos.');
               console.log('⚠️ ========================================');
               console.log('📊 Estado al timeout:', {
@@ -585,11 +585,11 @@ app.post('/api/upload', (req, res) => {
                 enProceso: enProceso,
                 workerActivo: !!currentChild
               });
-              resetearServidorCompleto('trabajo completado - limpieza automática (60s)');
+              resetearServidorCompleto('trabajo completado - limpieza automática (180s)');
             } else {
               console.log('✅ Cliente confirmó antes del timeout - No es necesario resetear');
             }
-          }, 60000); // 🎯 AUMENTADO a 60 segundos
+          }, 180000); // 🎯 CRÍTICO: 180 segundos (3 minutos) para PDF con IA
           
           // ELIMINADO: La respuesta HTTP ya se envió al inicio. 
           // No intentamos responder de nuevo aquí para evitar error "Headers already sent".
