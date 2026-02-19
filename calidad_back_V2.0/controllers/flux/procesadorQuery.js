@@ -10,6 +10,8 @@ const RUTA_ACCESOS_VASCULARES = path.resolve(__dirname, '../../documentacion/acc
 const RUTA_COMPACTADOS = path.resolve(__dirname, '../../documentacion/compactados'); // Nueva ruta
 const groupedTests = require('../../comorbilidad/transformed_grouped_tests.json'); 
 const basesDeDatosMap = require('../../documentacion/basesDeDatosJSON.json');
+const codigosHD = require('../../documentacion/codigosHD.json');
+
 
 // Cache en memoria
 let mapaAccesosVascularesPorDatabase = null;
@@ -23,6 +25,48 @@ const MAPA_TIPOHEMO_GLOBAL = {
   5: 'PERIT',          
   6: 'HD UCI',         
 };
+
+
+/**
+ * Devuelve el entry del centro en codigosHD.json según config.database
+ * (compara por ruta completa o por basename del .gdb)
+ */
+function obtenerEntryCodigosHDPorBase(config) {
+  const dbPath = String(config?.database || '').trim().toLowerCase();
+  const dbBase = path.basename(dbPath);
+
+  const arr = Array.isArray(codigosHD) ? codigosHD : [];
+
+  return arr.find(e => {
+    const eDb = String(e?.database || '').trim().toLowerCase();
+    const eBase = path.basename(eDb);
+    return eDb === dbPath || eBase === dbBase;
+  });
+}
+/**
+ * Devuelve lista de CODIGO (sin comillas) para las DESCRIPCION indicadas.
+ * Ej: ['HD OL'] o ['HD','HD OL','HD EXTENDIDA']
+ */
+function obtenerCodigosHDPorBaseYDescripciones(config, descripciones) {
+  const entry = obtenerEntryCodigosHDPorBase(config);
+
+  const wanted = new Set(
+    (Array.isArray(descripciones) ? descripciones : [descripciones])
+      .map(d => String(d).trim().toUpperCase())
+      .filter(Boolean)
+  );
+
+  const lista = (entry?.resultado || [])
+    .filter(x => {
+      const desc = String(x?.DESCRIPCION || '').trim().toUpperCase();
+      return wanted.has(desc) && x?.CODIGO != null;
+    })
+    .map(x => String(x.CODIGO).trim())
+    .filter(Boolean);
+
+  // únicos
+  return [...new Set(lista)];
+}
 
 /**
  * Carga accesos_vasculares.json y construye mapa.
@@ -199,6 +243,50 @@ function obtenerCodigosHierroOralPorCentro(nombreCentro) {
   return obtenerCodigosDeCompactado(nombreCentro, 'HIERRO_ORAL');
 }
 
+
+
+/**
+ * Busca el entry en codigosHD.json que corresponde a la BD actual (config.database),
+ * comparando por ruta completa o por basename del .gdb
+ */
+function obtenerEntryCodigosHDPorBase(config) {
+  const dbPath = String(config?.database || '').trim().toLowerCase();
+  const dbBase = path.basename(dbPath);
+
+  const arr = Array.isArray(codigosHD) ? codigosHD : [];
+
+  return arr.find(e => {
+    const eDb = String(e?.database || '').trim().toLowerCase();
+    const eBase = path.basename(eDb);
+    return eDb === dbPath || eBase === dbBase;
+  });
+}
+
+/**
+ * Devuelve lista única de CODIGO (numéricos en texto, sin comillas) filtrando por DESCRIPCION
+ * Ej: ['HD OL'] o ['HD','HD OL','HD EXTENDIDA']
+ */
+function obtenerCodigosHDPorBaseYDescripciones(config, descripciones) {
+  const entry = obtenerEntryCodigosHDPorBase(config);
+
+  const wanted = new Set(
+    (Array.isArray(descripciones) ? descripciones : [descripciones])
+      .map(d => String(d).trim().toUpperCase())
+      .filter(Boolean)
+  );
+
+  const lista = (entry?.resultado || [])
+    .filter(x => {
+      const desc = String(x?.DESCRIPCION || '').trim().toUpperCase();
+      return wanted.has(desc) && x?.CODIGO != null;
+    })
+    .map(x => String(x.CODIGO).trim())
+    .filter(Boolean);
+
+  return [...new Set(lista)];
+}
+
+
 function aplicarCodigosCaptoresPorBase(query, config) {
   // Soporte para etiqueta antigua (:CODIGOS_CAPTORES) y nueva (<LISTA_CAPTORES_FOSFORO>)
   if (!query || (!query.includes(':CODIGOS_CAPTORES') && !query.includes('<LISTA_CAPTORES_FOSFORO>'))) return query;
@@ -364,30 +452,6 @@ function aplicarCodigosEpoPorCentro(query, config) {
   return query.replace(/:CODIGOS_EPO/g, listaSQL || "''");
 }
 
-function aplicarCodigosHierroPorBase(query, config) {
-  if (!query || !query.includes('<LISTA_HIERRO_IV>')) return query;
-
-  let baseData = config.nombre || config.database || '';
-  baseData = path.basename(String(baseData));          
-  baseData = baseData.replace(/^NF6_/i, '').replace(/\.gdb$/i, ''); 
-
-  const codigosRaw = obtenerCodigosHierroPorCentro(baseData);
-
-  // Normalización
-  const codigosNorm = [...new Set(
-    codigosRaw
-      .map(c => String(c).trim().toUpperCase())
-      .filter(Boolean)
-  )];
-  
-  const listaSQL = codigosNorm.map(c => `'${c}'`).join(',');
-  
-  if (!listaSQL) {
-    console.warn(`⚠️ CÓDIGOS HIERRO VACÍO para ${baseData}.`);
-  }
-  
-  return query.replace(/<LISTA_HIERRO_IV>/g, listaSQL || "''");
-}
 
 function aplicarCodigosHierroIVPorBase(query, config) {
   if (!query || !query.includes('<LISTA_HIERRO_IV>')) return query;
@@ -575,6 +639,109 @@ function aplicarCodigosCateterTunelizadoPorBase(query, config) {
 
   return query.replace(/<CODIGOS_CATETER_TUNELIZADO>/gi, valorFinal);
 }
+
+/**
+ * Reemplaza un placeholder por los códigos obtenidos por DESCRIPCION
+ */
+function reemplazarPlaceholderCodigosHD(query, placeholderRegex, codigos, etiquetaLog, config) {
+  if (!query || !placeholderRegex.test(query)) return query;
+
+  const replacement = codigos.length ? codigos.join(',') : '-99999';
+
+  if (!codigos.length) {
+    console.warn(`⚠️ ${etiquetaLog} vacío para ${config?.database || config?.nombre || '??'} -> usando ${replacement}`);
+  }
+
+  return query.replace(placeholderRegex, replacement);
+}
+
+/** <CODIGOS_HD_CONV> -> DESCRIPCION 'HD' */
+function aplicarCodigosHDCONVPorBase(query, config) {
+  const codigos = obtenerCodigosHDPorBaseYDescripciones(config, ['HD']);
+  return reemplazarPlaceholderCodigosHD(
+    query,
+    /<CODIGOS_HD_CONV>/gi,
+    codigos,
+    '<CODIGOS_HD_CONV>',
+    config
+  );
+}
+
+/** <CODIGOS_HD_OL> -> DESCRIPCION 'HD OL' */
+function aplicarCodigosHDOLPorBase(query, config) {
+  const codigos = obtenerCodigosHDPorBaseYDescripciones(config, ['HD OL']);
+  return reemplazarPlaceholderCodigosHD(
+    query,
+    /<CODIGOS_HD_OL>/gi,
+    codigos,
+    '<CODIGOS_HD_OL>',
+    config
+  );
+}
+
+/** <CODIGOS_HD_EXT> -> DESCRIPCION 'HD EXTENDIDA' */
+function aplicarCodigosHDEXTPorBase(query, config) {
+  const codigos = obtenerCodigosHDPorBaseYDescripciones(config, ['HD EXTENDIDA']);
+  return reemplazarPlaceholderCodigosHD(
+    query,
+    /<CODIGOS_HD_EXT>/gi,
+    codigos,
+    '<CODIGOS_HD_EXT>',
+    config
+  );
+}
+
+/** <CODIGOS_HD_DOM> -> DESCRIPCION 'HD DOM' */
+function aplicarCodigosHDDOMPorBase(query, config) {
+  const codigos = obtenerCodigosHDPorBaseYDescripciones(config, ['HD DOM']);
+  return reemplazarPlaceholderCodigosHD(
+    query,
+    /<CODIGOS_HD_DOM>/gi,
+    codigos,
+    '<CODIGOS_HD_DOM>',
+    config
+  );
+}
+
+/** <CODIGOS_HD_UCI> -> DESCRIPCION 'HD UCI' */
+function aplicarCodigosHDUCIPorBase(query, config) {
+  const codigos = obtenerCodigosHDPorBaseYDescripciones(config, ['HD UCI']);
+  return reemplazarPlaceholderCodigosHD(
+    query,
+    /<CODIGOS_HD_UCI>/gi,
+    codigos,
+    '<CODIGOS_HD_UCI>',
+    config
+  );
+}
+
+/** <CODIGOS_HD_PERIT> -> DESCRIPCION 'PERIT' */
+function aplicarCodigosHDPERITPorBase(query, config) {
+  const codigos = obtenerCodigosHDPorBaseYDescripciones(config, ['PERIT']);
+  return reemplazarPlaceholderCodigosHD(
+    query,
+    /<CODIGOS_HD_PERIT>/gi,
+    codigos,
+    '<CODIGOS_HD_PERIT>',
+    config
+  );
+}
+
+/**
+ * <CODIGOS_HD_TOTAL> -> unión de HD + HD OL + HD EXTENDIDA
+ * (lo que estabas usando como "total HD crónicos" de modalidades habituales)
+ */
+function aplicarCodigosHDTOTALPorBase(query, config) {
+  const codigos = obtenerCodigosHDPorBaseYDescripciones(config, ['HD', 'HD OL', 'HD EXTENDIDA']);
+  return reemplazarPlaceholderCodigosHD(
+    query,
+    /<CODIGOS_HD_TOTAL>/gi,
+    codigos,
+    '<CODIGOS_HD_TOTAL>',
+    config
+  );
+}
+
   
 
 /**
@@ -598,6 +765,15 @@ function procesarQuery(queryOriginal, config) {
   query = aplicarCodigosFavProtesisPorBase(query, config);
   query = aplicarCodigosFavAutologaPorBase(query, config);
   query = aplicarCodigosProtesisPorBase(query, config);
+  // Códigos de modalidades HD (TIPOHEMO) por centro
+  query = aplicarCodigosHDCONVPorBase(query, config);
+  query = aplicarCodigosHDOLPorBase(query, config);
+  query = aplicarCodigosHDEXTPorBase(query, config);
+  query = aplicarCodigosHDDOMPorBase(query, config);
+  query = aplicarCodigosHDUCIPorBase(query, config);
+  query = aplicarCodigosHDPERITPorBase(query, config);
+  query = aplicarCodigosHDTOTALPorBase(query, config);
+ 
   
   return query;
 }
