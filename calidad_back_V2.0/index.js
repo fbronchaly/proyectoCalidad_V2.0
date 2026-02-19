@@ -506,12 +506,15 @@ app.post('/api/upload', (req, res) => {
 
         if (msg.terminado) {
           const numResultados = msg.resultados?.length || 0;
-          console.log('✅ Proceso completado. Preparando envío INMEDIATO de datos.');
+          console.log('✅ ========================================');
+          console.log('✅ Worker COMPLETÓ TODO el trabajo (incluyendo Python)');
+          console.log('✅ ========================================');
           console.log('📊 Cantidad de resultados a enviar:', numResultados);
+          console.log('📄 Excel generado:', msg.excelFilename || 'N/A');
+          console.log('📄 PDF generado:', msg.pdfFilename || 'N/A');
           
           // Debug tamaño aproximado del payload
           try {
-             // Calculamos tamaño aproximado en MB para loguear advertencias
              const sizeBytes = JSON.stringify(msg.resultados).length;
              const sizeMB = (sizeBytes / (1024 * 1024)).toFixed(2);
              console.log(`📦 Tamaño APROXIMADO del payload de resultados: ${sizeMB} MB`);
@@ -520,7 +523,7 @@ app.post('/api/upload', (req, res) => {
                  console.warn('⚠️ ADVERTENCIA: El payload está cerca del límite de 100MB del WebSocket');
              }
           } catch(e) {
-             console.log('Error calculando tamaño de payload json');
+             console.log('⚠️ Error calculando tamaño de payload json');
           }
 
           // 🎯 OPTIMIZADO: Enviar TODOS los datos en UN SOLO evento
@@ -528,8 +531,8 @@ app.post('/api/upload', (req, res) => {
             porcentaje: 100, 
             mensaje: 'Análisis completado - Datos disponibles',
             resultados: msg.resultados || [],
-            excelFilename: msg.excelFilename, // 👈 NUEVO: Nombre del archivo Excel
-            pdfFilename: msg.pdfFilename,     // 👈 NUEVO: Nombre del archivo PDF
+            excelFilename: msg.excelFilename,
+            pdfFilename: msg.pdfFilename,
             timestamp: new Date().toISOString(),
             completed: true,
             success: true
@@ -549,14 +552,17 @@ app.post('/api/upload', (req, res) => {
             io.emit('analisis-completado', {
               success: true,
               resultados: msg.resultados || [],
-              excelFilename: msg.excelFilename, // 👈 También en el evento de backup
-              pdfFilename: msg.pdfFilename,     // 👈 También en el evento de backup
+              excelFilename: msg.excelFilename,
+              pdfFilename: msg.pdfFilename,
               mensaje: 'Datos confirmados',
               timestamp: new Date().toISOString()
             });
           }, 200);
           
-          // Verificar recepción del cliente con timeout MÁS LARGO
+          // 🎯 CRÍTICO: Timeout AHORA sí puede comenzar porque el worker YA TERMINÓ TODO
+          console.log('⏰ Iniciando timeout de 180s para confirmación del cliente...');
+          console.log('ℹ️ El worker ya completó TODO (incluido PDF con IA)');
+          
           let datosRecibidosPorCliente = false;
           
           io.once('datos-recibidos', (confirmacion) => {
@@ -573,26 +579,23 @@ app.post('/api/upload', (req, res) => {
             }, 3000); // 3 segundos adicionales después de confirmación
           });
           
-          // Timeout de seguridad AUMENTADO a 180 segundos para dar tiempo al PDF con IA
+          // Timeout de seguridad: 180 segundos para que el cliente procese y confirme
           setTimeout(() => {
             if (!datosRecibidosPorCliente) {
               console.log('⚠️ ========================================');
-              console.log('ℹ️ AVISO: Cliente no confirmó recepción en 180 segundos (proceso largo completado).');
-              console.log('ℹ️ Procediendo con el reset automático habitual para liberar recursos.');
+              console.log('ℹ️ AVISO: Cliente no confirmó recepción en 180 segundos.');
+              console.log('ℹ️ El worker YA terminó hace 180s, procediendo con limpieza.');
               console.log('⚠️ ========================================');
               console.log('📊 Estado al timeout:', {
                 clientesConectados: io.engine.clientsCount,
                 enProceso: enProceso,
                 workerActivo: !!currentChild
               });
-              resetearServidorCompleto('trabajo completado - limpieza automática (180s)');
+              resetearServidorCompleto('trabajo completado - limpieza automática (180s post-worker)');
             } else {
               console.log('✅ Cliente confirmó antes del timeout - No es necesario resetear');
             }
-          }, 180000); // 🎯 CRÍTICO: 180 segundos (3 minutos) para PDF con IA
-          
-          // ELIMINADO: La respuesta HTTP ya se envió al inicio. 
-          // No intentamos responder de nuevo aquí para evitar error "Headers already sent".
+          }, 180000); // 180 segundos DESPUÉS de que el worker termine
         }
       });
 
