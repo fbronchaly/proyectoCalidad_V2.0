@@ -257,54 +257,165 @@
     "template": "SELECT CASE WHEN COUNT(DISTINCT p.NREGGEN) = 0 THEN NULL ELSE (COUNT(DISTINCT CASE WHEN p.ETIOLOGIA IN (80, 81) THEN p.NREGGEN END) * 100.0 / COUNT(DISTINCT p.NREGGEN)) END AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM PACIENTES p JOIN SESION s ON s.NREGGEN = p.NREGGEN WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN;;"
   },
   {
-    "id_code": "MFUG6OXZ",
-    "categoria": "Descripcion población ( fragilidad)",
-    "indicador": "Porcentaje de pacientes prevalentes en periodo con Fragilidad ( suma de todos los pacientes   con Fragilidad  desde el inicio del periodo hasta el final del periodo / nº total de pacientes en periodo) ",
-    "unidad":"%",
-    "template": "WITH PacientesPrevalentes AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p JOIN SESION s ON s.NREGGEN = p.NREGGEN WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN ), UltimoFRAIL AS ( SELECT t.NREGGEN, MAX(t.FECHA) AS FECHA_MAX FROM TEST_PAC t WHERE t.CODTEST = <CODTEST_FRAIL> AND t.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND t.NREGGEN IN (SELECT NREGGEN FROM PacientesPrevalentes) GROUP BY t.NREGGEN ), FRAIL_Punt AS ( SELECT tp.NREGGEN, tp.PUNTOS_TOT FROM TEST_PAC tp JOIN UltimoFRAIL u ON tp.NREGGEN = u.NREGGEN AND tp.FECHA = u.FECHA_MAX ) SELECT (COUNT(DISTINCT CASE WHEN fp.PUNTOS_TOT >= 3 THEN fp.NREGGEN END) * 100.0 / NULLIF(COUNT(DISTINCT pp.NREGGEN),0)) AS resultado, COUNT(DISTINCT pp.NREGGEN) AS numero_pacientes FROM PacientesPrevalentes pp LEFT JOIN FRAIL_Punt fp ON fp.NREGGEN = pp.NREGGEN;"
+    "id_code": "COMORB_FRAIL_INC",
+    "categoria": "Comorbilidad - Fragilidad",
+    "indicador": "Porcentaje de pacientes incidentes en periodo con fragilidad (suma de todos los pacientes nuevos con fragilidad desde el inicio del periodo hasta el final del periodo / nº total de pacientes nuevos en periodo)",
+    "unidad": "%",
+    "template": "WITH PacientesIncidentes AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND p.FECH_INICIO_CENTRO BETWEEN :FECHAINI AND :FECHAFIN ), UltimoFRAIL AS ( SELECT t.NREGGEN, MAX(t.FECHA) AS FECHA_MAX FROM TEST_PAC t WHERE t.CODTEST = <CODTEST_FRAIL> AND t.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND t.NREGGEN IN (SELECT NREGGEN FROM PacientesIncidentes) GROUP BY t.NREGGEN ), FRAIL_Punt AS ( SELECT tp.NREGGEN, tp.PUNTOS_TOT FROM TEST_PAC tp JOIN UltimoFRAIL u ON tp.NREGGEN = u.NREGGEN AND tp.FECHA = u.FECHA_MAX ) SELECT CAST(COUNT(DISTINCT CASE WHEN fp.PUNTOS_TOT >= 3 THEN fp.NREGGEN END) * 100.0 / NULLIF(COUNT(DISTINCT pi.NREGGEN), 0) AS NUMERIC(10,2)) AS resultado, COUNT(DISTINCT pi.NREGGEN) AS numero_pacientes, COUNT(DISTINCT CASE WHEN fp.PUNTOS_TOT >= 3 THEN fp.NREGGEN END) AS numerador FROM PacientesIncidentes pi LEFT JOIN FRAIL_Punt fp ON fp.NREGGEN = pi.NREGGEN;"
   },
   {
-    "id_code": "N0CY12QJ",
-    "categoria": "Descripcion población (sarcopenia)",
-    "indicador": "Porcentaje de pacientes incidentes en periodo con sarcopenia ( suma de todos los pacientes  nuevos con sarcopenia desde el inicio del periodo hasta el final del periodo / nº total de pacienets nuevos en periodo) ",
-    "unidad":"%",
-    "template": "WITH PacientesIncidentes AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND p.FECH_INICIO_CENTRO BETWEEN :FECHAINI AND :FECHAFIN ), UltimoSARCF AS ( SELECT t.NREGGEN, MAX(t.FECHA) AS FECHA_MAX FROM TEST_PAC t WHERE t.CODTEST = <CODTEST_SARCF> AND t.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND t.NREGGEN IN (SELECT NREGGEN FROM PacientesIncidentes) GROUP BY t.NREGGEN ), SARCF_Punt AS ( SELECT tp.NREGGEN, tp.PUNTOS_TOT FROM TEST_PAC tp JOIN UltimoSARCF u ON tp.NREGGEN = u.NREGGEN AND tp.FECHA = u.FECHA_MAX ) SELECT (COUNT(DISTINCT CASE WHEN sp.PUNTOS_TOT > 3 THEN sp.NREGGEN END) * 100.0 / NULLIF(COUNT(DISTINCT pi.NREGGEN),0)) AS resultado, COUNT(DISTINCT pi.NREGGEN) AS numero_pacientes FROM PacientesIncidentes pi LEFT JOIN SARCF_Punt sp ON sp.NREGGEN = pi.NREGGEN;"
-     },
-  {
-    "id_code": "3YFYIFGC",
-    "categoria": "Descripcion población ( sarcopenia)",
-    "indicador": "Porcentaje de pacientes prevalentes en periodo con sarcopenia ( suma de todos los pacientes   con sarcopenia desde el inicio del periodo hasta el final del periodo / nº total de pacientes en periodo) ",
-    "unidad":"%",
-    "template": "WITH PacientesPrevalentes AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p JOIN SESION s ON s.NREGGEN = p.NREGGEN WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN ), UltimoSARCF AS ( SELECT t.NREGGEN, MAX(t.FECHA) AS FECHA_MAX FROM TEST_PAC t WHERE t.CODTEST = <CODTEST_SARCF> AND t.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND t.NREGGEN IN (SELECT NREGGEN FROM PacientesPrevalentes) GROUP BY t.NREGGEN ), SARCF_Punt AS ( SELECT tp.NREGGEN, tp.PUNTOS_TOT FROM TEST_PAC tp JOIN UltimoSARCF u ON tp.NREGGEN = u.NREGGEN AND tp.FECHA = u.FECHA_MAX ) SELECT (COUNT(DISTINCT CASE WHEN sp.PUNTOS_TOT > 3 THEN sp.NREGGEN END) * 100.0 / NULLIF(COUNT(DISTINCT pp.NREGGEN),0)) AS resultado, COUNT(DISTINCT pp.NREGGEN) AS numero_pacientes FROM PacientesPrevalentes pp LEFT JOIN SARCF_Punt sp ON sp.NREGGEN = pp.NREGGEN;"
+    "id_code": "COMORB_FRAIL_PREV",
+    "categoria": "Comorbilidad - Fragilidad",
+    "indicador": "Porcentaje de pacientes prevalentes en periodo con fragilidad (suma de todos los pacientes con fragilidad desde el inicio del periodo hasta el final del periodo / nº total de pacientes en periodo)",
+    "unidad": "%",
+    "template": "WITH PacientesPrevalentes AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p JOIN SESION s ON p.NREGGEN = s.NREGGEN WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN ), UltimoFRAIL AS ( SELECT t.NREGGEN, MAX(t.FECHA) AS FECHA_MAX FROM TEST_PAC t WHERE t.CODTEST = <CODTEST_FRAIL> AND t.FECHA <= :FECHAFIN GROUP BY t.NREGGEN ), FRAIL_Punt AS ( SELECT tp.NREGGEN, tp.PUNTOS_TOT FROM TEST_PAC tp JOIN UltimoFRAIL u ON tp.NREGGEN = u.NREGGEN AND tp.FECHA = u.FECHA_MAX ) SELECT CAST(COUNT(DISTINCT CASE WHEN fp.PUNTOS_TOT >= 3 THEN pp.NREGGEN END) * 100.0 / NULLIF(COUNT(DISTINCT pp.NREGGEN), 0) AS NUMERIC(10,2)) AS resultado, COUNT(DISTINCT pp.NREGGEN) AS numero_pacientes, COUNT(DISTINCT CASE WHEN fp.PUNTOS_TOT >= 3 THEN pp.NREGGEN END) AS numerador FROM PacientesPrevalentes pp LEFT JOIN FRAIL_Punt fp ON fp.NREGGEN = pp.NREGGEN;"
   },
   {
-    "id_code": "IGI2PEOC",
-    "categoria": "Nutrición",
-    "indicador": "% pacientes incidentes con desnutrición / riesgo (MNA)",
-    "unidad":"%",
-    "template": "WITH PacientesIncidentes AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND p.FECH_INICIO_CENTRO BETWEEN :FECHAINI AND :FECHAFIN ), UltimoMNA AS ( SELECT t.NREGGEN, MAX(t.FECHA) AS FECHA_MAX FROM TEST_PAC t WHERE t.CODTEST = <CODTEST_MNA> AND t.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND t.NREGGEN IN (SELECT NREGGEN FROM PacientesIncidentes) GROUP BY t.NREGGEN ), MNA_Punt AS ( SELECT tp.NREGGEN, tp.PUNTOS_TOT FROM TEST_PAC tp JOIN UltimoMNA u ON tp.NREGGEN = u.NREGGEN AND tp.FECHA = u.FECHA_MAX ) SELECT (COUNT(DISTINCT CASE WHEN mp.PUNTOS_TOT <= 11 THEN mp.NREGGEN END) * 100.0 / NULLIF(COUNT(DISTINCT pi.NREGGEN),0)) AS resultado, COUNT(DISTINCT pi.NREGGEN) AS numero_pacientes FROM PacientesIncidentes pi LEFT JOIN MNA_Punt mp ON mp.NREGGEN = pi.NREGGEN;"
-    
+    "id_code": "COMORB_SARC_INC",
+    "categoria": "Comorbilidad - Sarcopenia",
+    "indicador": "Porcentaje de pacientes incidentes en periodo con sarcopenia (suma de todos los pacientes nuevos con sarcopenia desde el inicio del periodo hasta el final del periodo / nº total de pacientes nuevos en periodo)",
+    "unidad": "%",
+    "template": "WITH PacientesIncidentes AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND p.FECH_INICIO_CENTRO BETWEEN :FECHAINI AND :FECHAFIN ), UltimoSARCF AS ( SELECT t.NREGGEN, MAX(t.FECHA) AS FECHA_MAX FROM TEST_PAC t WHERE t.CODTEST = <CODTEST_SARCF> AND t.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND t.NREGGEN IN (SELECT NREGGEN FROM PacientesIncidentes) GROUP BY t.NREGGEN ), SARCF_Punt AS ( SELECT tp.NREGGEN, tp.PUNTOS_TOT FROM TEST_PAC tp JOIN UltimoSARCF u ON tp.NREGGEN = u.NREGGEN AND tp.FECHA = u.FECHA_MAX ) SELECT CAST(COUNT(DISTINCT CASE WHEN sp.PUNTOS_TOT > 3 THEN sp.NREGGEN END) * 100.0 / NULLIF(COUNT(DISTINCT pi.NREGGEN), 0) AS NUMERIC(10,2)) AS resultado, COUNT(DISTINCT pi.NREGGEN) AS numero_pacientes, COUNT(DISTINCT CASE WHEN sp.PUNTOS_TOT > 3 THEN sp.NREGGEN END) AS numerador FROM PacientesIncidentes pi LEFT JOIN SARCF_Punt sp ON sp.NREGGEN = pi.NREGGEN;"
   },
   {
-    "id_code": "NLI8S7SE",
-    "categoria": "Nutrición",
-    "indicador": "% pacientes prevalentes con desnutrición / riesgo (MNA)",
-    "unidad":"%",
-    "template": "WITH PacientesPrevalentes AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p JOIN SESION s ON s.NREGGEN = p.NREGGEN WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN ), UltimoMNA AS ( SELECT t.NREGGEN, MAX(t.FECHA) AS FECHA_MAX FROM TEST_PAC t WHERE t.CODTEST = <CODTEST_MNA> AND t.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND t.NREGGEN IN (SELECT NREGGEN FROM PacientesPrevalentes) GROUP BY t.NREGGEN ), MNA_Punt AS ( SELECT tp.NREGGEN, tp.PUNTOS_TOT FROM TEST_PAC tp JOIN UltimoMNA u ON tp.NREGGEN = u.NREGGEN AND tp.FECHA = u.FECHA_MAX ) SELECT (COUNT(DISTINCT CASE WHEN mp.PUNTOS_TOT <= 11 THEN mp.NREGGEN END) * 100.0 / NULLIF(COUNT(DISTINCT pp.NREGGEN),0)) AS resultado, COUNT(DISTINCT pp.NREGGEN) AS numero_pacientes FROM PacientesPrevalentes pp LEFT JOIN MNA_Punt mp ON mp.NREGGEN = pp.NREGGEN;"
+    "id_code": "COMORB_SARC_PREV",
+    "categoria": "Comorbilidad - Sarcopenia",
+    "indicador": "Porcentaje de pacientes prevalentes en periodo con sarcopenia (suma de todos los pacientes con sarcopenia desde el inicio del periodo hasta el final del periodo / nº total de pacientes en periodo)",
+    "unidad": "%",
+    "template": "WITH PacientesPrevalentes AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p JOIN SESION s ON s.NREGGEN = p.NREGGEN WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN ), UltimoSARCF AS ( SELECT t.NREGGEN, MAX(t.FECHA) AS FECHA_MAX FROM TEST_PAC t WHERE t.CODTEST = <CODTEST_SARCF> AND t.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND t.NREGGEN IN (SELECT NREGGEN FROM PacientesPrevalentes) GROUP BY t.NREGGEN ), SARCF_Punt AS ( SELECT tp.NREGGEN, tp.PUNTOS_TOT FROM TEST_PAC tp JOIN UltimoSARCF u ON tp.NREGGEN = u.NREGGEN AND tp.FECHA = u.FECHA_MAX ) SELECT CAST(COUNT(DISTINCT CASE WHEN sp.PUNTOS_TOT > 3 THEN sp.NREGGEN END) * 100.0 / NULLIF(COUNT(DISTINCT pp.NREGGEN), 0) AS NUMERIC(10,2)) AS resultado, COUNT(DISTINCT pp.NREGGEN) AS numero_pacientes, COUNT(DISTINCT CASE WHEN sp.PUNTOS_TOT > 3 THEN sp.NREGGEN END) AS numerador FROM PacientesPrevalentes pp LEFT JOIN SARCF_Punt sp ON sp.NREGGEN = pp.NREGGEN;"
   },
   {
-    "id_code": "37WCHEIO",
-    "categoria": "Descripcion población ( dependencia)",
-    "indicador": "Porcentaje de pacientes prevalentes en periodo con dependencia moderada-severa a ABVD( suma de todos los pacientes  nuevos con desnutrido o en riesgo de desnutricion desde el inicio del periodo hasta el final del periodo / nº total de pacienets nuevos en periodo) ",
-    "unidad":"%", 
-    "template": "WITH PacientesPrevalentes AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p JOIN SESION s ON s.NREGGEN = p.NREGGEN WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN ), UltimoBARTHEL AS ( SELECT t.NREGGEN, MAX(t.FECHA) AS FECHA_MAX FROM TEST_PAC t WHERE t.CODTEST = <CODTEST_BARTHEL> AND t.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND t.NREGGEN IN (SELECT NREGGEN FROM PacientesPrevalentes) GROUP BY t.NREGGEN ), BARTHEL_Punt AS ( SELECT tp.NREGGEN, tp.PUNTOS_TOT FROM TEST_PAC tp JOIN UltimoBARTHEL u ON tp.NREGGEN = u.NREGGEN AND tp.FECHA = u.FECHA_MAX ) SELECT (COUNT(DISTINCT CASE WHEN bp.PUNTOS_TOT <= 75 THEN bp.NREGGEN END) * 100.0 / NULLIF(COUNT(DISTINCT pp.NREGGEN),0)) AS resultado, COUNT(DISTINCT pp.NREGGEN) AS numero_pacientes FROM PacientesPrevalentes pp LEFT JOIN BARTHEL_Punt bp ON bp.NREGGEN = pp.NREGGEN;"
+    "id_code": "COMORB_MNA_INC",
+    "categoria": "Comorbilidad - Nutrición",
+    "indicador": "Porcentaje de pacientes incidentes en periodo con desnutrición / riesgo (suma de todos los pacientes nuevos con desnutrición o en riesgo de desnutrición desde el inicio del periodo hasta el final del periodo / nº total de pacientes nuevos en periodo)",
+    "unidad": "%",
+    "template": "WITH PacientesIncidentes AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND p.FECH_INICIO_CENTRO BETWEEN :FECHAINI AND :FECHAFIN ), UltimoMNA AS ( SELECT t.NREGGEN, MAX(t.FECHA) AS FECHA_MAX FROM TEST_PAC t WHERE t.CODTEST = <CODTEST_MNA> AND t.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND t.NREGGEN IN (SELECT NREGGEN FROM PacientesIncidentes) GROUP BY t.NREGGEN ), MNA_Punt AS ( SELECT tp.NREGGEN, tp.PUNTOS_TOT FROM TEST_PAC tp JOIN UltimoMNA u ON tp.NREGGEN = u.NREGGEN AND tp.FECHA = u.FECHA_MAX ) SELECT CAST(COUNT(DISTINCT CASE WHEN mp.PUNTOS_TOT <= 11 THEN mp.NREGGEN END) * 100.0 / NULLIF(COUNT(DISTINCT pi.NREGGEN), 0) AS NUMERIC(10,2)) AS resultado, COUNT(DISTINCT pi.NREGGEN) AS numero_pacientes, COUNT(DISTINCT CASE WHEN mp.PUNTOS_TOT <= 11 THEN mp.NREGGEN END) AS numerador FROM PacientesIncidentes pi LEFT JOIN MNA_Punt mp ON mp.NREGGEN = pi.NREGGEN;"
   },
   {
-    "id_code": "D0Z3TAKD",
-    "categoria": "Calidad de vida / experiencia paciente",
-    "indicador": "Media de puntuación de calidad de vida (COOP-WONCA)",
-    "unidad":"Puntuacion",
-    "template": "SELECT AVG(t.PUNTOS_TOT) AS resultado, COUNT(DISTINCT p.NREGGEN) AS numero_pacientes FROM TEST_PAC t JOIN PACIENTES p ON p.NREGGEN = t.NREGGEN WHERE t.CODTEST = :CODTEST_COOP_WONCA AND t.FECHA BETWEEN :FECHAINI AND :FECHAFIN;"
+    "id_code": "COMORB_MNA_PREV",
+    "categoria": "Comorbilidad - Nutrición",
+    "indicador": "Porcentaje de pacientes prevalentes en periodo con desnutrición / riesgo (suma de todos los pacientes con desnutrición o en riesgo de desnutrición desde el inicio del periodo hasta el final del periodo / nº total de pacientes en periodo)",
+    "unidad": "%",
+    "template": "WITH PacientesPrevalentes AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p JOIN SESION s ON s.NREGGEN = p.NREGGEN WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN ), UltimoMNA AS ( SELECT t.NREGGEN, MAX(t.FECHA) AS FECHA_MAX FROM TEST_PAC t WHERE t.CODTEST = <CODTEST_MNA> AND t.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND t.NREGGEN IN (SELECT NREGGEN FROM PacientesPrevalentes) GROUP BY t.NREGGEN ), MNA_Punt AS ( SELECT tp.NREGGEN, tp.PUNTOS_TOT FROM TEST_PAC tp JOIN UltimoMNA u ON tp.NREGGEN = u.NREGGEN AND tp.FECHA = u.FECHA_MAX ) SELECT CAST(COUNT(DISTINCT CASE WHEN mp.PUNTOS_TOT <= 11 THEN mp.NREGGEN END) * 100.0 / NULLIF(COUNT(DISTINCT pp.NREGGEN), 0) AS NUMERIC(10,2)) AS resultado, COUNT(DISTINCT pp.NREGGEN) AS numero_pacientes, COUNT(DISTINCT CASE WHEN mp.PUNTOS_TOT <= 11 THEN mp.NREGGEN END) AS numerador FROM PacientesPrevalentes pp LEFT JOIN MNA_Punt mp ON mp.NREGGEN = pp.NREGGEN;"
+  },
+  {
+    "id_code": "COMORB_BARTHEL_INC",
+    "categoria": "Comorbilidad - Dependencia",
+    "indicador": "Porcentaje de pacientes incidentes en periodo con dependencia moderada-severa a ABVD (suma de todos los pacientes nuevos con dependencia moderada-severa desde el inicio del periodo hasta el final del periodo / nº total de pacientes nuevos en periodo)",
+    "unidad": "%",
+    "template": "WITH PacientesIncidentes AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND p.FECH_INICIO_CENTRO BETWEEN :FECHAINI AND :FECHAFIN ), UltimoBARTHEL AS ( SELECT t.NREGGEN, MAX(t.FECHA) AS FECHA_MAX FROM TEST_PAC t WHERE t.CODTEST = <CODTEST_BARTHEL> AND t.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND t.NREGGEN IN (SELECT NREGGEN FROM PacientesIncidentes) GROUP BY t.NREGGEN ), BARTHEL_Punt AS ( SELECT tp.NREGGEN, tp.PUNTOS_TOT FROM TEST_PAC tp JOIN UltimoBARTHEL u ON tp.NREGGEN = u.NREGGEN AND tp.FECHA = u.FECHA_MAX ) SELECT CAST(COUNT(DISTINCT CASE WHEN bp.PUNTOS_TOT <= 75 THEN bp.NREGGEN END) * 100.0 / NULLIF(COUNT(DISTINCT pi.NREGGEN), 0) AS NUMERIC(10,2)) AS resultado, COUNT(DISTINCT pi.NREGGEN) AS numero_pacientes, COUNT(DISTINCT CASE WHEN bp.PUNTOS_TOT <= 75 THEN bp.NREGGEN END) AS numerador FROM PacientesIncidentes pi LEFT JOIN BARTHEL_Punt bp ON bp.NREGGEN = pi.NREGGEN;"
+  },
+  {
+    "id_code": "COMORB_BARTHEL_PREV",
+    "categoria": "Comorbilidad - Dependencia",
+    "indicador": "Porcentaje de pacientes prevalentes en periodo con dependencia moderada-severa a ABVD (suma de todos los pacientes con dependencia moderada-severa desde el inicio del periodo hasta el final del periodo / nº total de pacientes en periodo)",
+    "unidad": "%",
+    "template": "WITH PacientesPrevalentes AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p JOIN SESION s ON s.NREGGEN = p.NREGGEN WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN ), UltimoBARTHEL AS ( SELECT t.NREGGEN, MAX(t.FECHA) AS FECHA_MAX FROM TEST_PAC t WHERE t.CODTEST = <CODTEST_BARTHEL> AND t.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND t.NREGGEN IN (SELECT NREGGEN FROM PacientesPrevalentes) GROUP BY t.NREGGEN ), BARTHEL_Punt AS ( SELECT tp.NREGGEN, tp.PUNTOS_TOT FROM TEST_PAC tp JOIN UltimoBARTHEL u ON tp.NREGGEN = u.NREGGEN AND tp.FECHA = u.FECHA_MAX ) SELECT CAST(COUNT(DISTINCT CASE WHEN bp.PUNTOS_TOT <= 75 THEN bp.NREGGEN END) * 100.0 / NULLIF(COUNT(DISTINCT pp.NREGGEN), 0) AS NUMERIC(10,2)) AS resultado, COUNT(DISTINCT pp.NREGGEN) AS numero_pacientes, COUNT(DISTINCT CASE WHEN bp.PUNTOS_TOT <= 75 THEN bp.NREGGEN END) AS numerador FROM PacientesPrevalentes pp LEFT JOIN BARTHEL_Punt bp ON bp.NREGGEN = pp.NREGGEN;"
+  },
+  {
+    "id_code": "COMORB_LAWTON_INC",
+    "categoria": "Comorbilidad - Dependencia AIVD",
+    "indicador": "Porcentaje de pacientes incidentes en periodo con dependencia en AIVD (suma de todos los pacientes nuevos con dependencia en AIVD desde el inicio del periodo hasta el final del periodo / nº total de pacientes nuevos en periodo)",
+    "unidad": "%",
+    "template": "WITH PacientesIncidentes AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND p.FECH_INICIO_CENTRO BETWEEN :FECHAINI AND :FECHAFIN ), UltimoLAWTON AS ( SELECT t.NREGGEN, MAX(t.FECHA) AS FECHA_MAX FROM TEST_PAC t WHERE t.CODTEST = <CODTEST_LAWTON> AND t.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND t.NREGGEN IN (SELECT NREGGEN FROM PacientesIncidentes) GROUP BY t.NREGGEN ), LAWTON_Punt AS ( SELECT tp.NREGGEN, tp.PUNTOS_TOT FROM TEST_PAC tp JOIN UltimoLAWTON u ON tp.NREGGEN = u.NREGGEN AND tp.FECHA = u.FECHA_MAX ) SELECT CAST(COUNT(DISTINCT CASE WHEN lp.PUNTOS_TOT < 8 THEN lp.NREGGEN END) * 100.0 / NULLIF(COUNT(DISTINCT pi.NREGGEN), 0) AS NUMERIC(10,2)) AS resultado, COUNT(DISTINCT pi.NREGGEN) AS numero_pacientes, COUNT(DISTINCT CASE WHEN lp.PUNTOS_TOT < 8 THEN lp.NREGGEN END) AS numerador FROM PacientesIncidentes pi LEFT JOIN LAWTON_Punt lp ON lp.NREGGEN = pi.NREGGEN;"
+  },
+  {
+    "id_code": "COMORB_LAWTON_PREV",
+    "categoria": "Comorbilidad - Dependencia AIVD",
+    "indicador": "Porcentaje de pacientes prevalentes en periodo con dependencia en AIVD (suma de todos los pacientes con dependencia en AIVD desde el inicio del periodo hasta el final del periodo / nº total de pacientes en periodo)",
+    "unidad": "%",
+    "template": "WITH PacientesPrevalentes AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p JOIN SESION s ON s.NREGGEN = p.NREGGEN WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN ), UltimoLAWTON AS ( SELECT t.NREGGEN, MAX(t.FECHA) AS FECHA_MAX FROM TEST_PAC t WHERE t.CODTEST = <CODTEST_LAWTON> AND t.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND t.NREGGEN IN (SELECT NREGGEN FROM PacientesPrevalentes) GROUP BY t.NREGGEN ), LAWTON_Punt AS ( SELECT tp.NREGGEN, tp.PUNTOS_TOT FROM TEST_PAC tp JOIN UltimoLAWTON u ON tp.NREGGEN = u.NREGGEN AND tp.FECHA = u.FECHA_MAX ) SELECT CAST(COUNT(DISTINCT CASE WHEN lp.PUNTOS_TOT < 8 THEN lp.NREGGEN END) * 100.0 / NULLIF(COUNT(DISTINCT pp.NREGGEN), 0) AS NUMERIC(10,2)) AS resultado, COUNT(DISTINCT pp.NREGGEN) AS numero_pacientes, COUNT(DISTINCT CASE WHEN lp.PUNTOS_TOT < 8 THEN lp.NREGGEN END) AS numerador FROM PacientesPrevalentes pp LEFT JOIN LAWTON_Punt lp ON lp.NREGGEN = pp.NREGGEN;"
+  },
+  {
+    "id_code": "COMORB_CHARLSON_INC",
+    "categoria": "Comorbilidad - Comorbilidad",
+    "indicador": "Puntuación media de índice de Charlson en pacientes incidentes en periodo",
+    "unidad": "Puntos",
+    "template": "WITH PacientesIncidentes AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND p.FECH_INICIO_CENTRO BETWEEN :FECHAINI AND :FECHAFIN ), UltimoCHARLSON AS ( SELECT t.NREGGEN, MAX(t.FECHA) AS FECHA_MAX FROM TEST_PAC t WHERE t.CODTEST = <CODTEST_CHARLSON> AND t.FECHA BETWEEN DATEADD(-365 DAY TO :FECHAINI) AND :FECHAFIN AND t.NREGGEN IN (SELECT NREGGEN FROM PacientesIncidentes) GROUP BY t.NREGGEN ), CHARLSON_Punt AS ( SELECT tp.NREGGEN, tp.PUNTOS_TOT FROM TEST_PAC tp JOIN UltimoCHARLSON u ON tp.NREGGEN = u.NREGGEN AND tp.FECHA = u.FECHA_MAX ) SELECT CAST(AVG(CAST(cp.PUNTOS_TOT AS NUMERIC(10,2))) AS NUMERIC(10,2)) AS resultado, COUNT(DISTINCT cp.NREGGEN) AS numero_pacientes FROM CHARLSON_Punt cp;"
+  },
+  {
+    "id_code": "COMORB_CHARLSON_PREV",
+    "categoria": "Comorbilidad - Comorbilidad",
+    "indicador": "Puntuación media de índice de Charlson en pacientes prevalentes en periodo",
+    "unidad": "Puntos",
+    "template": "WITH PacientesPrevalentes AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p JOIN SESION s ON s.NREGGEN = p.NREGGEN WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN ), UltimoCHARLSON AS ( SELECT t.NREGGEN, MAX(t.FECHA) AS FECHA_MAX FROM TEST_PAC t WHERE t.CODTEST = <CODTEST_CHARLSON> AND t.FECHA BETWEEN DATEADD(-365 DAY TO :FECHAINI) AND :FECHAFIN AND t.NREGGEN IN (SELECT NREGGEN FROM PacientesPrevalentes) GROUP BY t.NREGGEN ), CHARLSON_Punt AS ( SELECT tp.NREGGEN, tp.PUNTOS_TOT FROM TEST_PAC tp JOIN UltimoCHARLSON u ON tp.NREGGEN = u.NREGGEN AND tp.FECHA = u.FECHA_MAX ) SELECT CAST(AVG(CAST(cp.PUNTOS_TOT AS NUMERIC(10,2))) AS NUMERIC(10,2)) AS resultado, COUNT(DISTINCT cp.NREGGEN) AS numero_pacientes FROM CHARLSON_Punt cp;"
+  },
+  {
+    "id_code": "COMORB_CHARLSON_ALTO_PREV",
+    "categoria": "Comorbilidad - Comorbilidad",
+    "indicador": "Porcentaje de pacientes prevalentes en periodo con alta comorbilidad (suma de todos los pacientes con Charlson >= 5 desde el inicio del periodo hasta el final del periodo / nº total de pacientes en periodo)",
+    "unidad": "%",
+    "template": "WITH PacientesPrevalentes AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p JOIN SESION s ON s.NREGGEN = p.NREGGEN WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN ), UltimoCHARLSON AS ( SELECT t.NREGGEN, MAX(t.FECHA) AS FECHA_MAX FROM TEST_PAC t WHERE t.CODTEST = <CODTEST_CHARLSON> AND t.FECHA BETWEEN DATEADD(-365 DAY TO :FECHAINI) AND :FECHAFIN AND t.NREGGEN IN (SELECT NREGGEN FROM PacientesPrevalentes) GROUP BY t.NREGGEN ), CHARLSON_Punt AS ( SELECT tp.NREGGEN, tp.PUNTOS_TOT FROM TEST_PAC tp JOIN UltimoCHARLSON u ON tp.NREGGEN = u.NREGGEN AND tp.FECHA = u.FECHA_MAX ) SELECT CAST(COUNT(DISTINCT CASE WHEN cp.PUNTOS_TOT >= 5 THEN cp.NREGGEN END) * 100.0 / NULLIF(COUNT(DISTINCT pp.NREGGEN), 0) AS NUMERIC(10,2)) AS resultado, COUNT(DISTINCT pp.NREGGEN) AS numero_pacientes, COUNT(DISTINCT CASE WHEN cp.PUNTOS_TOT >= 5 THEN cp.NREGGEN END) AS numerador FROM PacientesPrevalentes pp LEFT JOIN CHARLSON_Punt cp ON cp.NREGGEN = pp.NREGGEN;"
+  },
+  {
+    "id_code": "COMORB_DOWNTON_INC",
+    "categoria": "Comorbilidad - Riesgo de Caídas",
+    "indicador": "Porcentaje de pacientes incidentes en periodo con riesgo de caídas (suma de todos los pacientes nuevos con riesgo de caídas desde el inicio del periodo hasta el final del periodo / nº total de pacientes nuevos en periodo)",
+    "unidad": "%",
+    "template": "WITH PacientesIncidentes AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND p.FECH_INICIO_CENTRO BETWEEN :FECHAINI AND :FECHAFIN ), UltimoDOWNTON AS ( SELECT t.NREGGEN, MAX(t.FECHA) AS FECHA_MAX FROM TEST_PAC t WHERE t.CODTEST = <CODTEST_DOWNTON> AND t.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND t.NREGGEN IN (SELECT NREGGEN FROM PacientesIncidentes) GROUP BY t.NREGGEN ), DOWNTON_Punt AS ( SELECT tp.NREGGEN, tp.PUNTOS_TOT FROM TEST_PAC tp JOIN UltimoDOWNTON u ON tp.NREGGEN = u.NREGGEN AND tp.FECHA = u.FECHA_MAX ) SELECT CAST(COUNT(DISTINCT CASE WHEN dp.PUNTOS_TOT >= 3 THEN dp.NREGGEN END) * 100.0 / NULLIF(COUNT(DISTINCT pi.NREGGEN), 0) AS NUMERIC(10,2)) AS resultado, COUNT(DISTINCT pi.NREGGEN) AS numero_pacientes, COUNT(DISTINCT CASE WHEN dp.PUNTOS_TOT >= 3 THEN dp.NREGGEN END) AS numerador FROM PacientesIncidentes pi LEFT JOIN DOWNTON_Punt dp ON dp.NREGGEN = pi.NREGGEN;"
+  },
+  {
+    "id_code": "COMORB_DOWNTON_PREV",
+    "categoria": "Comorbilidad - Riesgo de Caídas",
+    "indicador": "Porcentaje de pacientes prevalentes en periodo con riesgo de caídas (suma de todos los pacientes con riesgo de caídas desde el inicio del periodo hasta el final del periodo / nº total de pacientes en periodo)",
+    "unidad": "%",
+    "template": "WITH PacientesPrevalentes AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p JOIN SESION s ON s.NREGGEN = p.NREGGEN WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN ), UltimoDOWNTON AS ( SELECT t.NREGGEN, MAX(t.FECHA) AS FECHA_MAX FROM TEST_PAC t WHERE t.CODTEST = <CODTEST_DOWNTON> AND t.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND t.NREGGEN IN (SELECT NREGGEN FROM PacientesPrevalentes) GROUP BY t.NREGGEN ), DOWNTON_Punt AS ( SELECT tp.NREGGEN, tp.PUNTOS_TOT FROM TEST_PAC tp JOIN UltimoDOWNTON u ON tp.NREGGEN = u.NREGGEN AND tp.FECHA = u.FECHA_MAX ) SELECT CAST(COUNT(DISTINCT CASE WHEN dp.PUNTOS_TOT >= 3 THEN dp.NREGGEN END) * 100.0 / NULLIF(COUNT(DISTINCT pp.NREGGEN), 0) AS NUMERIC(10,2)) AS resultado, COUNT(DISTINCT pp.NREGGEN) AS numero_pacientes, COUNT(DISTINCT CASE WHEN dp.PUNTOS_TOT >= 3 THEN dp.NREGGEN END) AS numerador FROM PacientesPrevalentes pp LEFT JOIN DOWNTON_Punt dp ON dp.NREGGEN = pp.NREGGEN;"
+  },
+  {
+    "id_code": "COMORB_PHQ4_INC",
+    "categoria": "Comorbilidad - Salud Mental",
+    "indicador": "Porcentaje de pacientes incidentes en periodo con síntomas de ansiedad/depresión (suma de todos los pacientes nuevos con síntomas de ansiedad/depresión desde el inicio del periodo hasta el final del periodo / nº total de pacientes nuevos en periodo)",
+    "unidad": "%",
+    "template": "WITH PacientesIncidentes AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND p.FECH_INICIO_CENTRO BETWEEN :FECHAINI AND :FECHAFIN ), UltimoPHQ4 AS ( SELECT t.NREGGEN, MAX(t.FECHA) AS FECHA_MAX FROM TEST_PAC t WHERE t.CODTEST = <CODTEST_PHQ4> AND t.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND t.NREGGEN IN (SELECT NREGGEN FROM PacientesIncidentes) GROUP BY t.NREGGEN ), PHQ4_Punt AS ( SELECT tp.NREGGEN, tp.PUNTOS_TOT FROM TEST_PAC tp JOIN UltimoPHQ4 u ON tp.NREGGEN = u.NREGGEN AND tp.FECHA = u.FECHA_MAX ) SELECT CAST(COUNT(DISTINCT CASE WHEN pp.PUNTOS_TOT >= 6 THEN pp.NREGGEN END) * 100.0 / NULLIF(COUNT(DISTINCT pi.NREGGEN), 0) AS NUMERIC(10,2)) AS resultado, COUNT(DISTINCT pi.NREGGEN) AS numero_pacientes, COUNT(DISTINCT CASE WHEN pp.PUNTOS_TOT >= 6 THEN pp.NREGGEN END) AS numerador FROM PacientesIncidentes pi LEFT JOIN PHQ4_Punt pp ON pp.NREGGEN = pi.NREGGEN;"
+  },
+  {
+    "id_code": "COMORB_PHQ4_PREV",
+    "categoria": "Comorbilidad - Salud Mental",
+    "indicador": "Porcentaje de pacientes prevalentes en periodo con síntomas de ansiedad/depresión (suma de todos los pacientes con síntomas de ansiedad/depresión desde el inicio del periodo hasta el final del periodo / nº total de pacientes en periodo)",
+    "unidad": "%",
+    "template": "WITH PacientesPrevalentes AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p JOIN SESION s ON s.NREGGEN = p.NREGGEN WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN ), UltimoPHQ4 AS ( SELECT t.NREGGEN, MAX(t.FECHA) AS FECHA_MAX FROM TEST_PAC t WHERE t.CODTEST = <CODTEST_PHQ4> AND t.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND t.NREGGEN IN (SELECT NREGGEN FROM PacientesPrevalentes) GROUP BY t.NREGGEN ), PHQ4_Punt AS ( SELECT tp.NREGGEN, tp.PUNTOS_TOT FROM TEST_PAC tp JOIN UltimoPHQ4 u ON tp.NREGGEN = u.NREGGEN AND tp.FECHA = u.FECHA_MAX ) SELECT CAST(COUNT(DISTINCT CASE WHEN phq.PUNTOS_TOT >= 6 THEN phq.NREGGEN END) * 100.0 / NULLIF(COUNT(DISTINCT pp.NREGGEN), 0) AS NUMERIC(10,2)) AS resultado, COUNT(DISTINCT pp.NREGGEN) AS numero_pacientes, COUNT(DISTINCT CASE WHEN phq.PUNTOS_TOT >= 6 THEN phq.NREGGEN END) AS numerador FROM PacientesPrevalentes pp LEFT JOIN PHQ4_Punt phq ON phq.NREGGEN = pp.NREGGEN;"
+  },
+  {
+    "id_code": "COMORB_GIJON_INC",
+    "categoria": "Comorbilidad - Riesgo Social",
+    "indicador": "Porcentaje de pacientes incidentes en periodo con riesgo social (suma de todos los pacientes nuevos con riesgo social desde el inicio del periodo hasta el final del periodo / nº total de pacientes nuevos en periodo)",
+    "unidad": "%",
+    "template": "WITH PacientesIncidentes AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND p.FECH_INICIO_CENTRO BETWEEN :FECHAINI AND :FECHAFIN ), UltimoGIJON AS ( SELECT t.NREGGEN, MAX(t.FECHA) AS FECHA_MAX FROM TEST_PAC t WHERE t.CODTEST = <CODTEST_GIJON> AND t.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND t.NREGGEN IN (SELECT NREGGEN FROM PacientesIncidentes) GROUP BY t.NREGGEN ), GIJON_Punt AS ( SELECT tp.NREGGEN, tp.PUNTOS_TOT FROM TEST_PAC tp JOIN UltimoGIJON u ON tp.NREGGEN = u.NREGGEN AND tp.FECHA = u.FECHA_MAX ) SELECT CAST(COUNT(DISTINCT CASE WHEN gp.PUNTOS_TOT > 10 THEN gp.NREGGEN END) * 100.0 / NULLIF(COUNT(DISTINCT pi.NREGGEN), 0) AS NUMERIC(10,2)) AS resultado, COUNT(DISTINCT pi.NREGGEN) AS numero_pacientes, COUNT(DISTINCT CASE WHEN gp.PUNTOS_TOT > 10 THEN gp.NREGGEN END) AS numerador FROM PacientesIncidentes pi LEFT JOIN GIJON_Punt gp ON gp.NREGGEN = pi.NREGGEN;"
+  },
+  {
+    "id_code": "COMORB_GIJON_PREV",
+    "categoria": "Comorbilidad - Riesgo Social",
+    "indicador": "Porcentaje de pacientes prevalentes en periodo con riesgo social (suma de todos los pacientes con riesgo social desde el inicio del periodo hasta el final del periodo / nº total de pacientes en periodo)",
+    "unidad": "%",
+    "template": "WITH PacientesPrevalentes AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p JOIN SESION s ON s.NREGGEN = p.NREGGEN WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN ), UltimoGIJON AS ( SELECT t.NREGGEN, MAX(t.FECHA) AS FECHA_MAX FROM TEST_PAC t WHERE t.CODTEST = <CODTEST_GIJON> AND t.FECHA BETWEEN :FECHAINI AND :FECHAFIN AND t.NREGGEN IN (SELECT NREGGEN FROM PacientesPrevalentes) GROUP BY t.NREGGEN ), GIJON_Punt AS ( SELECT tp.NREGGEN, tp.PUNTOS_TOT FROM TEST_PAC tp JOIN UltimoGIJON u ON tp.NREGGEN = u.NREGGEN AND tp.FECHA = u.FECHA_MAX ) SELECT CAST(COUNT(DISTINCT CASE WHEN gp.PUNTOS_TOT > 10 THEN gp.NREGGEN END) * 100.0 / NULLIF(COUNT(DISTINCT pp.NREGGEN), 0) AS NUMERIC(10,2)) AS resultado, COUNT(DISTINCT pp.NREGGEN) AS numero_pacientes, COUNT(DISTINCT CASE WHEN gp.PUNTOS_TOT > 10 THEN gp.NREGGEN END) AS numerador FROM PacientesPrevalentes pp LEFT JOIN GIJON_Punt gp ON gp.NREGGEN = pp.NREGGEN;"
+  },
+  {
+    "id_code": "COMORB_MULTI_FRAIL_SARC",
+    "categoria": "Comorbilidad - Síndromes Múltiples",
+    "indicador": "Porcentaje de pacientes prevalentes en periodo con fragilidad Y sarcopenia (suma de todos los pacientes con ambas condiciones desde el inicio del periodo hasta el final del periodo / nº total de pacientes en periodo)",
+    "unidad": "%",
+    "template": "WITH PacientesPrevalentes AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p JOIN SESION s ON s.NREGGEN = p.NREGGEN WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN ), UltimoFRAIL AS ( SELECT t.NREGGEN, MAX(t.FECHA) AS FECHA_MAX FROM TEST_PAC t WHERE t.CODTEST = <CODTEST_FRAIL> AND t.FECHA <= :FECHAFIN GROUP BY t.NREGGEN ), FRAIL_Punt AS ( SELECT tp.NREGGEN, tp.PUNTOS_TOT FROM TEST_PAC tp JOIN UltimoFRAIL u ON tp.NREGGEN = u.NREGGEN AND tp.FECHA = u.FECHA_MAX ), UltimoSARCF AS ( SELECT t.NREGGEN, MAX(t.FECHA) AS FECHA_MAX FROM TEST_PAC t WHERE t.CODTEST = <CODTEST_SARCF> AND t.FECHA <= :FECHAFIN GROUP BY t.NREGGEN ), SARCF_Punt AS ( SELECT tp.NREGGEN, tp.PUNTOS_TOT FROM TEST_PAC tp JOIN UltimoSARCF u ON tp.NREGGEN = u.NREGGEN AND tp.FECHA = u.FECHA_MAX ) SELECT CAST(COUNT(DISTINCT CASE WHEN fp.PUNTOS_TOT >= 3 AND sp.PUNTOS_TOT > 3 THEN pp.NREGGEN END) * 100.0 / NULLIF(COUNT(DISTINCT pp.NREGGEN), 0) AS NUMERIC(10,2)) AS resultado, COUNT(DISTINCT pp.NREGGEN) AS numero_pacientes, COUNT(DISTINCT CASE WHEN fp.PUNTOS_TOT >= 3 AND sp.PUNTOS_TOT > 3 THEN pp.NREGGEN END) AS numerador FROM PacientesPrevalentes pp LEFT JOIN FRAIL_Punt fp ON fp.NREGGEN = pp.NREGGEN LEFT JOIN SARCF_Punt sp ON sp.NREGGEN = pp.NREGGEN;"
+  },
+  {
+    "id_code": "COMORB_COBERTURA_FRAIL",
+    "categoria": "Comorbilidad - Cobertura Screening",
+    "indicador": "Porcentaje de cobertura de screening de fragilidad en periodo (suma de todos los pacientes con test FRAIL registrado desde el inicio del periodo hasta el final del periodo / nº total de pacientes en periodo)",
+    "unidad": "%",
+    "template": "WITH PacientesPrevalentes AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p JOIN SESION s ON s.NREGGEN = p.NREGGEN WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN ), ConFRAIL AS ( SELECT DISTINCT t.NREGGEN FROM TEST_PAC t WHERE t.CODTEST = <CODTEST_FRAIL> AND t.FECHA BETWEEN :FECHAINI AND :FECHAFIN ) SELECT CAST(COUNT(DISTINCT cf.NREGGEN) * 100.0 / NULLIF(COUNT(DISTINCT pp.NREGGEN), 0) AS NUMERIC(10,2)) AS resultado, COUNT(DISTINCT pp.NREGGEN) AS numero_pacientes, COUNT(DISTINCT cf.NREGGEN) AS numerador FROM PacientesPrevalentes pp LEFT JOIN ConFRAIL cf ON cf.NREGGEN = pp.NREGGEN;"
+  },
+  {
+    "id_code": "COMORB_COBERTURA_MNA",
+    "categoria": "Comorbilidad - Cobertura Screening",
+    "indicador": "Porcentaje de cobertura de screening nutricional en periodo (suma de todos los pacientes con test MNA registrado desde el inicio del periodo hasta el final del periodo / nº total de pacientes en periodo)",
+    "unidad": "%",
+    "template": "WITH PacientesPrevalentes AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p JOIN SESION s ON s.NREGGEN = p.NREGGEN WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN ), ConMNA AS ( SELECT DISTINCT t.NREGGEN FROM TEST_PAC t WHERE t.CODTEST = <CODTEST_MNA> AND t.FECHA BETWEEN :FECHAINI AND :FECHAFIN ) SELECT CAST(COUNT(DISTINCT cm.NREGGEN) * 100.0 / NULLIF(COUNT(DISTINCT pp.NREGGEN), 0) AS NUMERIC(10,2)) AS resultado, COUNT(DISTINCT pp.NREGGEN) AS numero_pacientes, COUNT(DISTINCT cm.NREGGEN) AS numerador FROM PacientesPrevalentes pp LEFT JOIN ConMNA cm ON cm.NREGGEN = pp.NREGGEN;"
+  },
+  {
+    "id_code": "COMORB_COBERTURA_BARTHEL",
+    "categoria": "Comorbilidad - Cobertura Screening",
+    "indicador": "Porcentaje de cobertura de screening de dependencia ABVD en periodo (suma de todos los pacientes con test Barthel registrado desde el inicio del periodo hasta el final del periodo / nº total de pacientes en periodo)",
+    "unidad": "%",
+    "template": "WITH PacientesPrevalentes AS ( SELECT DISTINCT p.NREGGEN FROM PACIENTES p JOIN SESION s ON s.NREGGEN = p.NREGGEN WHERE p.MODAL_TRAT = 'H' AND COALESCE(p.DESPLAZADO, 0) = 0 AND s.FECHA BETWEEN :FECHAINI AND :FECHAFIN ), ConBARTHEL AS ( SELECT DISTINCT t.NREGGEN FROM TEST_PAC t WHERE t.CODTEST = <CODTEST_BARTHEL> AND t.FECHA BETWEEN :FECHAINI AND :FECHAFIN ) SELECT CAST(COUNT(DISTINCT cb.NREGGEN) * 100.0 / NULLIF(COUNT(DISTINCT pp.NREGGEN), 0) AS NUMERIC(10,2)) AS resultado, COUNT(DISTINCT pp.NREGGEN) AS numero_pacientes, COUNT(DISTINCT cb.NREGGEN) AS numerador FROM PacientesPrevalentes pp LEFT JOIN ConBARTHEL cb ON cb.NREGGEN = pp.NREGGEN;"
   },
   {
     "id_code": "M5T2UZS3",

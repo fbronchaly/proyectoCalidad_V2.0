@@ -580,6 +580,7 @@ function aplicarCodTestPorBase(query, config) {
   
   // Extraer nombre limpio de la base
   let baseName = config.nombre || config.database || '';
+  const baseNameCompleto = String(baseName); // Guardamos la ruta completa
   baseName = path.basename(String(baseName));          
   baseName = baseName.replace(/^NF6_/i, '').replace(/\.gdb$/i, ''); 
 
@@ -594,13 +595,60 @@ function aplicarCodTestPorBase(query, config) {
   for (const m of matches) {
       const testKey = m.key;
       const mapaTest = groupedTests[testKey];
-      if (mapaTest && mapaTest[baseName]) {
-          // Reemplazar todas las ocurrencias
-          queryModificada = queryModificada.split(m.full).join(String(mapaTest[baseName]));
+      
+      if (mapaTest) {
+          // Estrategia de búsqueda múltiple (orden de prioridad):
+          // 1. Por ruta completa exacta
+          // 2. Por basename con extensión (NF6_DB16.gdb)
+          // 3. Por basename sin prefijo (DB16)
+          // 4. Por nombre limpio del centro (Teixedal)
+          
+          let codTest = null;
+          
+          // 1. Ruta completa
+          if (mapaTest[baseNameCompleto]) {
+              codTest = mapaTest[baseNameCompleto];
+          }
+          // 2. Basename completo
+          else if (mapaTest[path.basename(baseNameCompleto)]) {
+              codTest = mapaTest[path.basename(baseNameCompleto)];
+          }
+          // 3. Basename limpio sin NF6_
+          else if (mapaTest[baseName]) {
+              codTest = mapaTest[baseName];
+          }
+          // 4. Intentar resolver por código DB (ej: si baseName es "Teixedal", buscar "DB16")
+          else {
+              const dbCode = Object.entries(basesDeDatosMap).find(([cod, nombre]) => 
+                  String(nombre).trim().toLowerCase() === baseName.trim().toLowerCase()
+              );
+              if (dbCode && mapaTest[dbCode[0]]) {
+                  codTest = mapaTest[dbCode[0]];
+              }
+              // 5. Último intento: buscar en el mapa por valores que contengan el nombre
+              else {
+                  const matchingKey = Object.keys(mapaTest).find(k => 
+                      k.toLowerCase().includes(baseName.toLowerCase())
+                  );
+                  if (matchingKey) {
+                      codTest = mapaTest[matchingKey];
+                  }
+              }
+          }
+          
+          if (codTest !== null) {
+              console.log(`✅ [PROCESADOR] Resuelto ${m.full} para centro '${baseName}' -> CODTEST = ${codTest}`);
+              queryModificada = queryModificada.split(m.full).join(String(codTest));
+          } else {
+              console.error(`❌ [ERROR CONFIG] No se encontró ${m.full} para centro '${baseName}' en transformed_grouped_tests.json`);
+              console.error(`   Claves disponibles en mapa '${testKey}':`, Object.keys(mapaTest).slice(0, 5).join(', '));
+              // Aplicar valor centinela para evitar SQL roto
+              queryModificada = queryModificada.split(m.full).join('-99999');
+          }
       } else {
-         // Si no encuentro mapeo, dejo un valor imposible o NULL según convenga, o el tag original.
-         // Dejar el tag suele romper el SQL. Ponemos -99999.
-         // queryModificada = queryModificada.split(m.full).join('-99999');
+          console.error(`❌ [ERROR CONFIG] Test '${testKey}' no existe en transformed_grouped_tests.json`);
+          console.error(`   Tests disponibles:`, Object.keys(groupedTests).join(', '));
+          queryModificada = queryModificada.split(m.full).join('-99999');
       }
   }
   return queryModificada;
