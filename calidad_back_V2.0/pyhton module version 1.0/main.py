@@ -516,130 +516,13 @@ def _plot_modern_percentage(items: List[Dict[str, Any]], titulo: str, palette: d
     return buf
 
 
-def _plot_donut_styled(items: List[Dict[str, Any]], titulo: str, palette: dict) -> Optional[BytesIO]:
-    """
-    Gráfico de Donut con radio variable (tipo 'Nightingale Rose' o 'Radial Bar').
-    """
-    data = []
-    for it in items:
-        c = (it.get("centro") or "").strip()
-        v = it.get("valor_num")
-        if not c or v is None: continue
-        data.append((c, max(0.0, float(v))))
-
-    if not data:
-        return None
-    
-    if all(d[1] == 0 for d in data):
-        return None
-
-    # Ordenar por valor descendente para efecto escalera visual
-    data.sort(key=lambda x: x[1], reverse=True)
-
-    labels = [x[0] for x in data]
-    valores = np.array([x[1] for x in data])
-    total = valores.sum()
-    if total == 0: total = 1 # Evitar div by zero
-
-    # --- DATOS GEOMÉTRICOS ---
-    # Ángulos (ancho de cada slice)
-    angles = 2 * np.pi * valores / total
-    
-    # Posiciones de inicio (acumulativo)
-    starts = np.zeros_like(angles)
-    starts[1:] = np.cumsum(angles)[:-1]
-
-    # Radios (altura de cada slice)
-    max_val = valores.max() or 1
-    
-    hole_radius = 1.0       # Reducimos radio interior un poco para dar espacio fuera
-    base_height = 0.5   
-    var_height = 1.8        # Reducimos un poco el crecimiento máximo
-    
-    # height[i] = base + (v / max)*var
-    heights = base_height + (valores / max_val) * var_height
-
-    # --- COLORES ---
-    # Usamos la paleta consistente por centro
-    colors_list = [palette.get(label, "#cccccc") for label in labels]
-
-    # --- FIGURA POLAR ---
-    # Tamaño ajustado
-    fig, ax = plt.subplots(figsize=(6, 6), subplot_kw=dict(projection="polar"))
-    
-    # Configuración sentido horario empezando a las 12
-    ax.set_theta_offset(np.pi / 2)
-    ax.set_theta_direction(-1)
-
-    # Dibujar barras (Slices)
-    bars = ax.bar(
-        starts, 
-        heights, 
-        width=angles, 
-        bottom=hole_radius, 
-        color=colors_list, 
-        edgecolor='white', 
-        linewidth=2,
-        align='edge' 
-    )
-
-    # --- ETIQUETAS ---
-    for i, (angle, height, label, val) in enumerate(zip(angles, heights, labels, valores)):
-        # if angle < 0.02: continue # Omitir etiquetas en slices muy finos
-
-        # Ángulo central del slice
-        mid_angle = starts[i] + angle / 2
-        
-        # Posición radial: MÁS AFUERA para separar del gráfico.
-        # Max height posible es base(0.5) + var(1.8) = 2.3. Hole(1.0). Total radio grafico ~ 3.3.
-        # Ponemos etiquetas en radio 3.6 o más, dinámico.
-        label_r = hole_radius + height + 0.6  # Separación generosa
-        
-        # MODIFICADO: Usar el valor real del dato (val), no el porcentaje relativo (val/total)
-        # El usuario quiere ver el valor porcentual del indicador, aunque la suma de slices no sea 100%.
-        txt = f"{label}\n{val:.1f}%"
-        
-        # Color más oscuro y letra más grande
-        ax.text(
-            mid_angle, 
-            label_r, 
-            txt, 
-            ha='center', 
-            va='center', 
-            fontsize=11,     # AUMENTADO
-            fontweight='bold',
-            color='#222222'
-        )
-
-    # Texto central (Total)
-    ax.text(
-        0, 0, 
-        f"TOTAL\n{total:.1f}", 
-        ha='center', 
-        va='center', 
-        fontsize=10, 
-        fontweight='bold',
-        color='#444444'
-    )
-
-    # Limpiar ejes
-    ax.set_axis_off()
-    
-    plt.tight_layout()
-    buf = BytesIO()
-    fig.savefig(buf, format="png", dpi=200, bbox_inches='tight')
-    plt.close(fig)
-    buf.seek(0)
-    return buf
-
-
 def _is_percent_indicator(unidad: str) -> bool:
     u = (unidad or "").lower()
     return ("%" in u) or ("porcentaje" in u)
 
 
 def _select_chart(items: List[Dict[str, Any]], titulo: str, unidad: str, palette: dict) -> Optional[BytesIO]:
-    """Elige la mejor gráfica según unidad y número de centros."""
+    """Elige la mejor gráfica según unidad y número de centros - SOLO BARRAS HORIZONTALES."""
     # Filtramos nulos, pero mantenemos ceros para evaluar si "todo es cero" después
     validos = [it for it in items if it.get("valor_num") is not None]
     
@@ -649,9 +532,11 @@ def _select_chart(items: List[Dict[str, Any]], titulo: str, unidad: str, palette
     
     # Comprobación de "todo ceros" se hace dentro de las funciones de plot para devolver None
     
+    # MODIFICADO: Usar siempre barras horizontales modernas para porcentajes
     if _is_percent_indicator(unidad):
-        return _plot_donut_styled(validos, titulo, palette)
+        return _plot_modern_percentage(validos, titulo, palette)
 
+    # Para todo lo demás, barras horizontales estándar
     return _plot_barras_coloreadas(validos, titulo, unidad, palette)
 
 
