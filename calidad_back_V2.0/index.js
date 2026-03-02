@@ -688,6 +688,29 @@ app.post('/api/consulta', (req, res) => {
 });
 
 // ------------------------
+// RUTAS PARA INDICADORES MONGODB
+// ------------------------
+const mongoIndicadoresController = require('./controllers/indicadores/mongoIndicadoresController');
+
+// Obtener lista de indicadores MongoDB
+app.get('/api/indicadores/mongodb', mongoIndicadoresController.getIndicadoresMongoDB);
+
+// Ejecutar múltiples consultas MongoDB
+app.post('/api/indicadores/mongodb/execute', mongoIndicadoresController.executeMongoQueries);
+
+// Ejecutar una consulta MongoDB individual
+app.post('/api/indicadores/mongodb/execute-single', mongoIndicadoresController.executeMongoQuerySingle);
+
+// Obtener centros disponibles en MongoDB
+app.get('/api/mongodb/centros', mongoIndicadoresController.getCentrosDisponibles);
+
+// Verificar si un centro tiene datos
+app.get('/api/mongodb/centro/:centro/check', mongoIndicadoresController.checkCentroData);
+
+// NUEVO: Diagnóstico MongoDB
+app.get('/api/mongodb/diagnostico', mongoIndicadoresController.diagnosticoMongoDB);
+
+// ------------------------
 // Envío de código por Telegram
 // ------------------------
 const codeStore = {};

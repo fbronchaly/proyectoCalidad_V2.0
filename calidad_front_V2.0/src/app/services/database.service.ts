@@ -33,6 +33,8 @@ export class DatabaseService {
     { id: 'DB16', label: 'Teixedal',         path: '/NFS/restores/NF6_Teixedal.gdb',      selected: false, region: 'Galicia' },
     { id: 'DB17', label: 'Villalba',         path: '/NFS/restores/NF6_VILLALBA.gdb',      selected: false, region: 'Madrid' },
     { id: 'DB18', label: 'Los Pinos',        path: '/NFS/restores/NF6_LosPinos.gdb',      selected: false, region: 'Castilla y León' },
+    { id: 'DB19', label: 'Barco de Valdeorras', path: '/NFS/restores/NF6_BarcoValdeorras.gdb', selected: false, region: 'Galicia' },
+    { id: 'DB20', label: 'Santa María',      path: '/NFS/restores/NF6_SantaMaria.gdb',    selected: false, region: 'Galicia' },
   ];
 
   // Mover la inicialización aquí

@@ -1,0 +1,334 @@
+[
+  {
+    "id_code": "COMORB_FRAIL_PREV_MONGO",
+    "categoria": "Comorbilidad - Fragilidad",
+    "indicador": "Porcentaje de pacientes prevalentes en periodo con fragilidad (FRAIL >= 3)",
+    "unidad": "%",
+    "engine": "mongo",
+    "collection": "test_responses",
+    "aggregation": [
+      {
+        "$match": {
+          "metadata.form_id": "frail",
+          "metadata.centro": "{{centro}}"
+        }
+      },
+      {
+        "$addFields": {
+          "fechaDate": {
+            "$dateFromString": {
+              "dateString": "$metadata.fecha_insercion",
+              "format": "%d-%m-%Y"
+            }
+          }
+        }
+      },
+      {
+        "$match": {
+          "fechaDate": {
+            "$gte": "{{fechaInicio}}",
+            "$lte": "{{fechaFin}}"
+          }
+        }
+      },
+      {
+        "$sort": {
+          "metadata.NREGGEN": 1,
+          "fechaDate": -1
+        }
+      },
+      {
+        "$group": {
+          "_id": "$metadata.NREGGEN",
+          "ultimoTest": { "$first": "$$ROOT" }
+        }
+      },
+      {
+        "$replaceRoot": { "newRoot": "$ultimoTest" }
+      },
+      {
+        "$facet": {
+          "total": [
+            { "$count": "count" }
+          ],
+          "conFragilidad": [
+            { "$match": { "puntuacion": { "$gte": 3 } } },
+            { "$count": "count" }
+          ]
+        }
+      },
+      {
+        "$project": {
+          "numero_pacientes": { "$arrayElemAt": ["$total.count", 0] },
+          "numerador": { "$arrayElemAt": ["$conFragilidad.count", 0] },
+          "resultado": {
+            "$cond": {
+              "if": { "$gt": [{ "$arrayElemAt": ["$total.count", 0] }, 0] },
+              "then": {
+                "$multiply": [
+                  {
+                    "$divide": [
+                      { "$arrayElemAt": ["$conFragilidad.count", 0] },
+                      { "$arrayElemAt": ["$total.count", 0] }
+                    ]
+                  },
+                  100
+                ]
+              },
+              "else": 0
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id_code": "COMORB_BARTHEL_PREV_MONGO",
+    "categoria": "Comorbilidad - Dependencia",
+    "indicador": "Porcentaje de pacientes prevalentes con dependencia moderada-severa (Barthel <= 75)",
+    "unidad": "%",
+    "engine": "mongo",
+    "collection": "test_responses",
+    "aggregation": [
+      {
+        "$match": {
+          "metadata.form_id": "indice_barthel",
+          "metadata.centro": "{{centro}}"
+        }
+      },
+      {
+        "$addFields": {
+          "fechaDate": {
+            "$dateFromString": {
+              "dateString": "$metadata.fecha_insercion",
+              "format": "%d-%m-%Y"
+            }
+          }
+        }
+      },
+      {
+        "$match": {
+          "fechaDate": {
+            "$gte": "{{fechaInicio}}",
+            "$lte": "{{fechaFin}}"
+          }
+        }
+      },
+      {
+        "$sort": {
+          "metadata.NREGGEN": 1,
+          "fechaDate": -1
+        }
+      },
+      {
+        "$group": {
+          "_id": "$metadata.NREGGEN",
+          "ultimoTest": { "$first": "$$ROOT" }
+        }
+      },
+      {
+        "$replaceRoot": { "newRoot": "$ultimoTest" }
+      },
+      {
+        "$facet": {
+          "total": [
+            { "$count": "count" }
+          ],
+          "conDependencia": [
+            { "$match": { "puntuacion": { "$ne": null, "$lte": 75 } } },
+            { "$count": "count" }
+          ]
+        }
+      },
+      {
+        "$project": {
+          "numero_pacientes": { "$arrayElemAt": ["$total.count", 0] },
+          "numerador": { "$arrayElemAt": ["$conDependencia.count", 0] },
+          "resultado": {
+            "$cond": {
+              "if": { "$gt": [{ "$arrayElemAt": ["$total.count", 0] }, 0] },
+              "then": {
+                "$multiply": [
+                  {
+                    "$divide": [
+                      { "$arrayElemAt": ["$conDependencia.count", 0] },
+                      { "$arrayElemAt": ["$total.count", 0] }
+                    ]
+                  },
+                  100
+                ]
+              },
+              "else": 0
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id_code": "COMORB_MNA_PREV_MONGO",
+    "categoria": "Comorbilidad - Nutrición",
+    "indicador": "Porcentaje de pacientes con desnutrición/riesgo (MNA <= 11)",
+    "unidad": "%",
+    "engine": "mongo",
+    "collection": "test_responses",
+    "aggregation": [
+      {
+        "$match": {
+          "metadata.form_id": "MNA_SF",
+          "metadata.centro": "{{centro}}"
+        }
+      },
+      {
+        "$addFields": {
+          "fechaDate": {
+            "$dateFromString": {
+              "dateString": "$metadata.fecha_insercion",
+              "format": "%d-%m-%Y"
+            }
+          }
+        }
+      },
+      {
+        "$match": {
+          "fechaDate": {
+            "$gte": "{{fechaInicio}}",
+            "$lte": "{{fechaFin}}"
+          }
+        }
+      },
+      {
+        "$sort": {
+          "metadata.NREGGEN": 1,
+          "fechaDate": -1
+        }
+      },
+      {
+        "$group": {
+          "_id": "$metadata.NREGGEN",
+          "ultimoTest": { "$first": "$$ROOT" }
+        }
+      },
+      {
+        "$replaceRoot": { "newRoot": "$ultimoTest" }
+      },
+      {
+        "$facet": {
+          "total": [
+            { "$count": "count" }
+          ],
+          "conDesnutricion": [
+            { "$match": { "puntuacion": { "$ne": null, "$lte": 11 } } },
+            { "$count": "count" }
+          ]
+        }
+      },
+      {
+        "$project": {
+          "numero_pacientes": { "$arrayElemAt": ["$total.count", 0] },
+          "numerador": { "$arrayElemAt": ["$conDesnutricion.count", 0] },
+          "resultado": {
+            "$cond": {
+              "if": { "$gt": [{ "$arrayElemAt": ["$total.count", 0] }, 0] },
+              "then": {
+                "$multiply": [
+                  {
+                    "$divide": [
+                      { "$arrayElemAt": ["$conDesnutricion.count", 0] },
+                      { "$arrayElemAt": ["$total.count", 0] }
+                    ]
+                  },
+                  100
+                ]
+              },
+              "else": 0
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id_code": "COMORB_LAWTON_PREV_MONGO",
+    "categoria": "Comorbilidad - Dependencia AIVD",
+    "indicador": "Porcentaje de pacientes con dependencia en AIVD (Lawton < 8)",
+    "unidad": "%",
+    "engine": "mongo",
+    "collection": "test_responses",
+    "aggregation": [
+      {
+        "$match": {
+          "metadata.form_id": "lawton_brody",
+          "metadata.centro": "{{centro}}"
+        }
+      },
+      {
+        "$addFields": {
+          "fechaDate": {
+            "$dateFromString": {
+              "dateString": "$metadata.fecha_insercion",
+              "format": "%d-%m-%Y"
+            }
+          }
+        }
+      },
+      {
+        "$match": {
+          "fechaDate": {
+            "$gte": "{{fechaInicio}}",
+            "$lte": "{{fechaFin}}"
+          }
+        }
+      },
+      {
+        "$sort": {
+          "metadata.NREGGEN": 1,
+          "fechaDate": -1
+        }
+      },
+      {
+        "$group": {
+          "_id": "$metadata.NREGGEN",
+          "ultimoTest": { "$first": "$$ROOT" }
+        }
+      },
+      {
+        "$replaceRoot": { "newRoot": "$ultimoTest" }
+      },
+      {
+        "$facet": {
+          "total": [
+            { "$count": "count" }
+          ],
+          "conDependenciaAIVD": [
+            { "$match": { "puntuacion": { "$ne": null, "$lt": 8 } } },
+            { "$count": "count" }
+          ]
+        }
+      },
+      {
+        "$project": {
+          "numero_pacientes": { "$arrayElemAt": ["$total.count", 0] },
+          "numerador": { "$arrayElemAt": ["$conDependenciaAIVD.count", 0] },
+          "resultado": {
+            "$cond": {
+              "if": { "$gt": [{ "$arrayElemAt": ["$total.count", 0] }, 0] },
+              "then": {
+                "$multiply": [
+                  {
+                    "$divide": [
+                      { "$arrayElemAt": ["$conDependenciaAIVD.count", 0] },
+                      { "$arrayElemAt": ["$total.count", 0] }
+                    ]
+                  },
+                  100
+                ]
+              },
+              "else": 0
+            }
+          }
+        }
+      }
+    ]
+  }
+]

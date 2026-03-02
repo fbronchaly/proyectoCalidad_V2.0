@@ -4,7 +4,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from '../../services/api.service';
 import { SelectionService } from '../../services/selection.service';
-import { Subscription } from 'rxjs';
+import { MongodbService } from '../../services/mongodb.service'; // NUEVO
+import { Subscription, forkJoin } from 'rxjs';
 
 interface ResultadoBase {
   baseData: string;
@@ -81,11 +82,15 @@ export class DashboardComponent implements OnInit, OnDestroy {
   // NUEVO: Nombre del archivo PDF para descargar
   pdfFilename: string | null = null;
 
+  // NUEVO: Variable temporal para resultados MongoDB en modo híbrido
+  private resultadosMongoTemp: any[] = [];
+
   constructor(
     private router: Router,
     private snack: MatSnackBar,
     public sel: SelectionService,
     private api: ApiService,
+    private mongoService: MongodbService, // NUEVO
     private cdr: ChangeDetectorRef
   ) {}
 
@@ -128,6 +133,103 @@ export class DashboardComponent implements OnInit, OnDestroy {
       
       this.cdr.detectChanges();
     });
+  }
+
+  // OPTIMIZADO: WebSocket SIN notificaciones en snackbar para evitar confundir al cliente
+  private setupProgressWebSocket(): void {
+    console.log('🔧 Configurando listeners WebSocket optimizado...');
+    
+    this.progressSubscription = this.api.getProgressUpdates().subscribe({
+      next: (progress: any) => {
+        console.log('📊 Progreso recibido:', progress);
+        
+        // 🔍 DIAGNÓSTICO: Log del progreso recibido
+        console.log('🔍 [DIAGNÓSTICO DASHBOARD] === PROGRESO RECIBIDO ===');
+        console.log('🔍 [DIAGNÓSTICO DASHBOARD] Timestamp:', new Date().toISOString());
+        
+        if (!progress) {
+          console.log('🔍 [DIAGNÓSTICO DASHBOARD] ⚠️ progress es null/undefined, saliendo');
+          return;
+        }
+        
+        console.log('🔍 [DIAGNÓSTICO DASHBOARD] progress.porcentaje:', progress.porcentaje);
+        console.log('🔍 [DIAGNÓSTICO DASHBOARD] progress.resultados existe:', !!progress.resultados);
+        console.log('🔍 [DIAGNÓSTICO DASHBOARD] progress.resultados es Array:', Array.isArray(progress.resultados));
+        console.log('🔍 [DIAGNÓSTICO DASHBOARD] progress.resultados.length:', progress.resultados?.length || 0);
+        
+        // Actualizar siempre el progreso visual
+        this.progressPercentage = progress.porcentaje || 0;
+        this.progressMessage = progress.mensaje || 'Procesando...';
+        this.lastProgressUpdate = new Date().toLocaleTimeString();
+        this.updateTimeEstimate(progress.porcentaje || 0);
+        
+        // 🎯 OPTIMIZADO: Detectar datos completos y procesar INMEDIATAMENTE
+        const tieneResultados = progress.resultados && 
+                               Array.isArray(progress.resultados) && 
+                               progress.resultados.length > 0;
+        
+        if (tieneResultados) {
+          console.log('🚀 ========================================');
+          console.log('🚀 DATOS COMPLETOS DETECTADOS');
+          console.log('🚀 ========================================');
+          console.log('📊 Cantidad de resultados:', progress.resultados.length);
+          console.log('💬 Mensaje:', progress.mensaje);
+          console.log('📂 Excel:', progress.excelFilename);
+          console.log('📄 PDF:', progress.pdfFilename);
+          
+          // 🎯 CRÍTICO: Confirmar recepción INMEDIATAMENTE (antes de procesar)
+          console.log('📤 Confirmando recepción al backend INMEDIATAMENTE...');
+          this.api.confirmDataReceived();
+          
+          // Luego procesar los datos
+          this.procesarResultadosFinales(progress.resultados, progress.mensaje || 'Análisis completado', progress.excelFilename, progress.pdfFilename);
+        }
+        
+        this.cdr.detectChanges();
+      },
+      error: (error) => {
+        console.error('❌ Error en WebSocket:', error);
+        console.log('🔍 [DIAGNÓSTICO DASHBOARD] ❌ ERROR en subscription de progreso:', error);
+        this.loading = false;
+        this.resetProgressIndicator();
+        this.snack.open('Error de conexión - Revise la consola', 'OK', { 
+          duration: 5000,
+          panelClass: ['error-snackbar'] 
+        });
+      }
+    });
+
+    // BACKUP: Listener específico para evento de finalización directo
+    this.api.getAnalysisCompletedUpdates().subscribe({
+      next: (data: any) => {
+        console.log('🎯 EVENTO DIRECTO: análisis-completado recibido:', data);
+        
+        if (data.resultados && Array.isArray(data.resultados) && data.resultados.length > 0) {
+          console.log('📊 Procesando datos del evento directo (BACKUP)');
+          
+          // Confirmar recepción también en el backup
+          this.api.confirmDataReceived();
+          
+          this.procesarResultadosFinales(data.resultados, data.mensaje || 'Análisis completado', data.excelFilename, data.pdfFilename);
+        }
+      },
+      error: (error) => {
+        console.error('❌ Error en evento análisis-completado:', error);
+      }
+    });
+
+    // Reset subscription SIN notificaciones
+    this.resetSubscription = this.api.getServerResetUpdates().subscribe({
+      next: (data: any) => {
+        console.log('🔄 Reset del servidor recibido');
+        if (!this.loading) {
+          this.resetProgressIndicator();
+        }
+        this.cdr.detectChanges();
+      }
+    });
+    
+    console.log('✅ WebSocket optimizado configurado');
   }
 
   // Método que se ejecuta cuando cambia la fecha de inicio
@@ -424,11 +526,18 @@ export class DashboardComponent implements OnInit, OnDestroy {
       return;
     }
 
+    // NUEVO: Separar indicadores por fuente
+    const indicadoresSeleccionados = this.sel.getIndicators();
+    const indicadoresMongo = this.detectarIndicadoresMongoDB(indicadoresSeleccionados);
+    const indicadoresFirebird = indicadoresSeleccionados.filter(id => !indicadoresMongo.includes(id));
+    
+    console.log('📊 Indicadores MongoDB:', indicadoresMongo.length);
+    console.log('🗄️ Indicadores Firebird:', indicadoresFirebird.length);
+
     // CORREGIDO: No bloquear si WebSocket no está conectado, intentar reconectar en paralelo
     if (!this.isWebSocketConnected) {
       console.log('⚠️ WebSocket no conectado - Intentando reconectar en paralelo...');
       this.api.reconnect();
-      // NO return aquí - continuar con el proceso
     }
     
     // OPTIMIZADO: Inicializar estado y limpiar datos anteriores
@@ -437,22 +546,69 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.progressPercentage = 0;
     this.progressMessage = 'Iniciando análisis...';
     this.timeRemaining = 0;
-    this.apiResponse = null; // Limpiar datos anteriores
-    this.tableData = []; // Limpiar tabla anterior
+    this.apiResponse = null;
+    this.tableData = [];
     this.lastProgressUpdate = new Date().toLocaleTimeString();
     
-    console.log('🚀 Iniciando proceso - WebSocket reconectará automáticamente si es necesario');
+    console.log('🚀 Iniciando proceso híbrido Firebird + MongoDB');
     
-    // SIMPLIFICADO: Enviar la petición, WebSocket maneja todo
+    // NUEVO: Ejecutar consultas según las fuentes disponibles
+    if (indicadoresMongo.length > 0 && indicadoresFirebird.length === 0) {
+      // Solo MongoDB
+      this.ejecutarSoloMongoDB(indicadoresMongo, payload);
+    } else if (indicadoresMongo.length === 0 && indicadoresFirebird.length > 0) {
+      // Solo Firebird (comportamiento original)
+      this.ejecutarSoloFirebird(payload);
+    } else if (indicadoresMongo.length > 0 && indicadoresFirebird.length > 0) {
+      // Híbrido: ambas fuentes
+      this.ejecutarHibrido(indicadoresMongo, indicadoresFirebird, payload);
+    } else {
+      this.loading = false;
+      this.snack.open('No hay indicadores seleccionados', 'OK', { duration: 2500 });
+    }
+  }
+
+  // NUEVO: Detectar si un indicador es de MongoDB (comienza con MONGO_)
+  private detectarIndicadoresMongoDB(indicadores: string[]): string[] {
+    return indicadores.filter(id => id.startsWith('MONGO_'));
+  }
+
+  // NUEVO: Ejecutar solo consultas MongoDB
+  private ejecutarSoloMongoDB(indicadoresMongo: string[], payload: any): void {
+    console.log('📊 Ejecutando SOLO MongoDB');
+    
+    const mongoPayload = {
+      dbIds: payload.baseDatos,
+      fechaIni: this.formatDateForMongo(payload.intervalo[0]),
+      fechaFin: this.formatDateForMongo(payload.intervalo[1]),
+      indicadores: indicadoresMongo
+    };
+
+    this.progressMessage = 'Consultando MongoDB...';
+    this.progressPercentage = 10;
+    
+    this.mongoService.executeMongoQueries(mongoPayload).subscribe({
+      next: (resultadosMongo) => {
+        console.log('✅ Resultados MongoDB recibidos:', resultadosMongo);
+        this.procesarResultadosMongoDB(resultadosMongo, payload.intervalo);
+      },
+      error: (err) => {
+        console.error('❌ Error en consultas MongoDB:', err);
+        this.loading = false;
+        this.resetProgressIndicator();
+        this.snack.open('Error consultando MongoDB: ' + (err?.error?.message || 'desconocido'), 'OK', { duration: 3500 });
+      }
+    });
+  }
+
+  // NUEVO: Ejecutar solo consultas Firebird (comportamiento original)
+  private ejecutarSoloFirebird(payload: any): void {
+    console.log('🗄️ Ejecutando SOLO Firebird');
+    
     this.api.upload(payload).subscribe({
       next: (resp: any) => {
-
-          console.log(resp);
-          
-
-        console.log('✅ Petición HTTP enviada exitosamente');
+        console.log('✅ Petición HTTP Firebird enviada exitosamente');
         console.log('📡 WebSocket manejará las actualizaciones de progreso');
-        // Ya no procesamos aquí - WebSocket maneja todo
       },
       error: (err) => {
         console.error('❌ Error enviando petición HTTP:', err);
@@ -465,109 +621,120 @@ export class DashboardComponent implements OnInit, OnDestroy {
     });
   }
 
-  // OPTIMIZADO: WebSocket SIN notificaciones en snackbar para evitar confundir al cliente
-  private setupProgressWebSocket(): void {
-    console.log('🔧 Configurando listeners WebSocket optimizado...');
-    
-    this.progressSubscription = this.api.getProgressUpdates().subscribe({
-      next: (progress: any) => {
-        console.log('📊 Progreso recibido:', progress);
+  // NUEVO: Ejecutar consultas híbridas (Firebird + MongoDB)
+  private ejecutarHibrido(indicadoresMongo: string[], indicadoresFirebird: string[], payload: any): void {
+    console.log('🔀 Ejecutando modo HÍBRIDO');
+    console.log('  📊 MongoDB:', indicadoresMongo.length, 'indicadores');
+    console.log('  🗄️ Firebird:', indicadoresFirebird.length, 'indicadores');
+
+    this.progressMessage = 'Consultando ambas fuentes de datos...';
+    this.progressPercentage = 10;
+
+    // Preparar payload MongoDB
+    const mongoPayload = {
+      dbIds: payload.baseDatos,
+      fechaIni: this.formatDateForMongo(payload.intervalo[0]),
+      fechaFin: this.formatDateForMongo(payload.intervalo[1]),
+      indicadores: indicadoresMongo
+    };
+
+    // Preparar payload Firebird (solo con indicadores Firebird)
+    const firebirdPayload = {
+      ...payload,
+      indices: indicadoresFirebird
+    };
+
+    // Ejecutar ambas consultas en paralelo
+    forkJoin({
+      mongo: this.mongoService.executeMongoQueries(mongoPayload),
+      firebird: this.api.upload(firebirdPayload)
+    }).subscribe({
+      next: (resultados) => {
+        console.log('✅ Ambas consultas completadas');
+        console.log('  📊 MongoDB:', resultados.mongo.length, 'resultados');
+        console.log('  🗄️ Firebird: procesando vía WebSocket');
         
-        // 🔍 DIAGNÓSTICO: Log del progreso recibido
-        console.log('🔍 [DIAGNÓSTICO DASHBOARD] === PROGRESO RECIBIDO ===');
-        console.log('🔍 [DIAGNÓSTICO DASHBOARD] Timestamp:', new Date().toISOString());
+        // Guardar resultados MongoDB temporalmente
+        this.resultadosMongoTemp = resultados.mongo;
         
-        if (!progress) {
-          console.log('🔍 [DIAGNÓSTICO DASHBOARD] ⚠️ progress es null/undefined, saliendo');
-          return;
-        }
-        
-        console.log('🔍 [DIAGNÓSTICO DASHBOARD] progress.porcentaje:', progress.porcentaje);
-        console.log('🔍 [DIAGNÓSTICO DASHBOARD] progress.resultados existe:', !!progress.resultados);
-        console.log('🔍 [DIAGNÓSTICO DASHBOARD] progress.resultados es Array:', Array.isArray(progress.resultados));
-        console.log('🔍 [DIAGNÓSTICO DASHBOARD] progress.resultados.length:', progress.resultados?.length || 0);
-        
-        // Actualizar siempre el progreso visual
-        this.progressPercentage = progress.porcentaje || 0;
-        this.progressMessage = progress.mensaje || 'Procesando...';
-        this.lastProgressUpdate = new Date().toLocaleTimeString();
-        this.updateTimeEstimate(progress.porcentaje || 0);
-        
-        // 🎯 OPTIMIZADO: Detectar datos completos y procesar INMEDIATAMENTE
-        const tieneResultados = progress.resultados && 
-                               Array.isArray(progress.resultados) && 
-                               progress.resultados.length > 0;
-        
-        if (tieneResultados) {
-          console.log('🚀 ========================================');
-          console.log('🚀 DATOS COMPLETOS DETECTADOS');
-          console.log('🚀 ========================================');
-          console.log('📊 Cantidad de resultados:', progress.resultados.length);
-          console.log('💬 Mensaje:', progress.mensaje);
-          console.log('📂 Excel:', progress.excelFilename);
-          console.log('📄 PDF:', progress.pdfFilename);
-          
-          // 🎯 CRÍTICO: Confirmar recepción INMEDIATAMENTE (antes de procesar)
-          console.log('📤 Confirmando recepción al backend INMEDIATAMENTE...');
-          this.api.confirmDataReceived();
-          
-          // Luego procesar los datos
-          this.procesarResultadosFinales(progress.resultados, progress.mensaje || 'Análisis completado', progress.excelFilename, progress.pdfFilename);
-        }
-        
-        this.cdr.detectChanges();
+        // Los resultados de Firebird llegarán vía WebSocket
+        this.progressMessage = 'Procesando resultados Firebird...';
+        this.progressPercentage = 50;
       },
-      error: (error) => {
-        console.error('❌ Error en WebSocket:', error);
-        console.log('🔍 [DIAGNÓSTICO DASHBOARD] ❌ ERROR en subscription de progreso:', error);
+      error: (err) => {
+        console.error('❌ Error en consultas híbridas:', err);
         this.loading = false;
         this.resetProgressIndicator();
-        this.snack.open('Error de conexión - Revise la consola', 'OK', { 
-          duration: 5000,
-          panelClass: ['error-snackbar'] 
-        });
+        this.snack.open('Error en consultas híbridas: ' + (err?.message || 'desconocido'), 'OK', { duration: 3500 });
       }
     });
-
-    // BACKUP: Listener específico para evento de finalización directo
-    this.api.getAnalysisCompletedUpdates().subscribe({
-      next: (data: any) => {
-        console.log('🎯 EVENTO DIRECTO: análisis-completado recibido:', data);
-        
-        if (data.resultados && Array.isArray(data.resultados) && data.resultados.length > 0) {
-          console.log('📊 Procesando datos del evento directo (BACKUP)');
-          
-          // Confirmar recepción también en el backup
-          this.api.confirmDataReceived();
-          
-          this.procesarResultadosFinales(data.resultados, data.mensaje || 'Análisis completado', data.excelFilename, data.pdfFilename);
-        }
-      },
-      error: (error) => {
-        console.error('❌ Error en evento análisis-completado:', error);
-      }
-    });
-
-    // Reset subscription SIN notificaciones
-    this.resetSubscription = this.api.getServerResetUpdates().subscribe({
-      next: (data: any) => {
-        console.log('🔄 Reset del servidor recibido');
-        if (!this.loading) {
-          this.resetProgressIndicator();
-        }
-        this.cdr.detectChanges();
-      }
-    });
-    
-    console.log('✅ WebSocket optimizado configurado');
   }
 
-  // OPTIMIZADO: Método centralizado para procesar resultados finales
+  // NUEVO: Procesar resultados MongoDB
+  private procesarResultadosMongoDB(resultadosMongo: any[], intervalo: any): void {
+    console.log('🔄 Procesando resultados MongoDB');
+    
+    // Convertir resultados MongoDB al formato esperado
+    const resultadosFormateados = resultadosMongo.map(res => ({
+      id_code: res.id_code,
+      categoria: res.categoria,
+      indicador: res.indicador,
+      intervalo: {
+        fechaInicio: intervalo[0],
+        fechaFin: intervalo[1]
+      },
+      consulta_sql: 'MongoDB Aggregation Pipeline',
+      bases_datos: [res.centro],
+      resultados: [{
+        baseData: res.centro,
+        resultado: res.resultado,
+        numeroDePacientes: res.numero_pacientes
+      }],
+      totales: {
+        resultado: res.resultado,
+        numero_pacientes: res.numero_pacientes
+      }
+    }));
+
+    this.apiResponse = {
+      success: true,
+      message: 'Consultas MongoDB completadas',
+      resultados: resultadosFormateados,
+      timestamp: new Date().toISOString()
+    };
+
+    this.loading = false;
+    this.progressPercentage = 100;
+    this.progressMessage = 'Análisis MongoDB completado';
+    
+    this.updateTableData();
+    this.cdr.detectChanges();
+    
+    this.snack.open('¡Consultas MongoDB completadas!', 'OK', { 
+      duration: 4000,
+      panelClass: ['success-snackbar']
+    });
+  }
+
+  // NUEVO: Formatear fecha para MongoDB (dd-MM-yyyy)
+  private formatDateForMongo(dateStr: string): string {
+    try {
+      const date = new Date(dateStr);
+      const day = String(date.getDate()).padStart(2, '0');
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const year = date.getFullYear();
+      return `${day}-${month}-${year}`;
+    } catch (error) {
+      console.error('Error formateando fecha para MongoDB:', error);
+      return dateStr;
+    }
+  }
+
+  // MEJORADO: Procesar resultados finales (ahora combina MongoDB si existe)
   private procesarResultadosFinales(resultados: any[], mensaje: string, excelFilename?: string, pdfFilename?: string): void {
     console.log('🎯 === PROCESANDO RESULTADOS FINALES ===');
-    console.log('📊 Cantidad de resultados:', resultados.length);
-    console.log('📂 Archivo Excel:', excelFilename);
-    console.log('📄 Archivo PDF:', pdfFilename);
+    console.log('📊 Cantidad de resultados Firebird:', resultados.length);
+    console.log('📊 Resultados MongoDB temporales:', this.resultadosMongoTemp.length);
     
     // Evitar duplicados
     if (this.apiResponse) {
@@ -585,11 +752,47 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.pdfFilename = pdfFilename;
     }
 
+    // NUEVO: Combinar resultados de MongoDB si existen
+    let resultadosFinales = [...resultados];
+    
+    if (this.resultadosMongoTemp.length > 0) {
+      console.log('🔀 Combinando resultados de MongoDB con Firebird');
+      
+      const intervalo = {
+        fechaInicio: this.startDate?.toISOString() || '',
+        fechaFin: this.endDate?.toISOString() || ''
+      };
+      
+      const mongoFormateados = this.resultadosMongoTemp.map(res => ({
+        id_code: res.id_code,
+        categoria: res.categoria,
+        indicador: res.indicador,
+        intervalo: intervalo,
+        consulta_sql: 'MongoDB Aggregation Pipeline',
+        bases_datos: [res.centro],
+        resultados: [{
+          baseData: res.centro,
+          resultado: res.resultado,
+          numeroDePacientes: res.numero_pacientes
+        }],
+        totales: {
+          resultado: res.resultado,
+          numero_pacientes: res.numero_pacientes
+        }
+      }));
+      
+      resultadosFinales = [...resultadosFinales, ...mongoFormateados];
+      console.log('✅ Resultados combinados:', resultadosFinales.length);
+      
+      // Limpiar temporal
+      this.resultadosMongoTemp = [];
+    }
+
     // Crear apiResponse INMEDIATAMENTE
     this.apiResponse = {
       success: true,
       message: mensaje,
-      resultados: resultados,
+      resultados: resultadosFinales,
       timestamp: new Date().toISOString()
     };
     

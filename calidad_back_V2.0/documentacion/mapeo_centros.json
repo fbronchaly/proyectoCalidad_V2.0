@@ -1,0 +1,42 @@
+{
+  "mapeo": {
+    "DB1": "SANTA ENGRACIA",
+    "DB2": "LOS OLMOS",
+    "DB3": "LOS LLANOS 1",
+    "DB4": "EL CASTAÑAR",
+    "DB5": "GETAFE",
+    "DB6": "LOS LAUROS",
+    "DB8": "FJD",
+    "DB9": "HRJC",
+    "DB10": "INFANTA ELENA",
+    "DB11": "LAS ENCINAS",
+    "DB13": "LOS LLANOS 2",
+    "DB14": "OS CARBALLOS",
+    "DB15": "OS CARBALLOS II",
+    "DB16": "TEIXEDAL",
+    "DB17": "VILLALBA",
+    "DB18": "LOS PINOS",
+    "DB19": "BARCO DE VALDEORRAS",
+    "DB20": "SANTA MARIA"
+  },
+  "mapeo_inverso": {
+    "SANTA ENGRACIA": "DB1",
+    "LOS OLMOS": "DB2",
+    "LOS LLANOS 1": "DB3",
+    "EL CASTAÑAR": "DB4",
+    "GETAFE": "DB5",
+    "LOS LAUROS": "DB6",
+    "FJD": "DB8",
+    "HRJC": "DB9",
+    "INFANTA ELENA": "DB10",
+    "LAS ENCINAS": "DB11",
+    "LOS LLANOS 2": "DB13",
+    "OS CARBALLOS": "DB14",
+    "OS CARBALLOS II": "DB15",
+    "TEIXEDAL": "DB16",
+    "VILLALBA": "DB17",
+    "LOS PINOS": "DB18",
+    "BARCO DE VALDEORRAS": "DB19",
+    "SANTA MARIA": "DB20"
+  }
+}

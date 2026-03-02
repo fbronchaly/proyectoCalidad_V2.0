@@ -1,0 +1,326 @@
+[
+  {
+    "id_code": "MONGO_FRAIL_POSITIVO",
+    "categoria": "Valoración Geriátrica - Fragilidad",
+    "indicador": "Porcentaje de tests FRAIL con resultado positivo (≥3 puntos) en el periodo",
+    "unidad": "%",
+    "fuente": "mongodb",
+    "template": {
+      "collection": "test_responses",
+      "pipeline": [
+        { "$match": { "metadata.form_id": "frail", "metadata.centro": ":CENTRO", "_isTest": { "$ne": true } } },
+        { "$addFields": { "fechaDate": { "$dateFromString": { "dateString": "$metadata.fecha_insercion", "format": "%d-%m-%Y", "onError": null, "onNull": null } } } },
+        { "$match": { "fechaDate": { "$gte": { "$toDate": ":FECHAINI" }, "$lte": { "$toDate": ":FECHAFIN" } } } },
+        { "$group": { "_id": null, "total_tests": { "$sum": 1 }, "tests_positivos": { "$sum": { "$cond": [{ "$gte": ["$puntuacion", 3] }, 1, 0] } } } },
+        { "$project": { "_id": 0, "resultado": { "$multiply": [{ "$divide": ["$tests_positivos", { "$ifNull": ["$total_tests", 1] }] }, 100] }, "numero_pacientes": "$total_tests", "numerador": "$tests_positivos" } }
+      ]
+    }
+  },
+  {
+    "id_code": "MONGO_FRAIL_MEDIA",
+    "categoria": "Valoración Geriátrica - Fragilidad",
+    "indicador": "Puntuación media del test FRAIL en el periodo",
+    "unidad": "Puntos",
+    "fuente": "mongodb",
+    "template": {
+      "collection": "test_responses",
+      "pipeline": [
+        { "$match": { "metadata.form_id": "frail", "metadata.centro": ":CENTRO", "_isTest": { "$ne": true } } },
+        { "$addFields": { "fechaDate": { "$dateFromString": { "dateString": "$metadata.fecha_insercion", "format": "%d-%m-%Y", "onError": null, "onNull": null } } } },
+        { "$match": { "fechaDate": { "$gte": { "$toDate": ":FECHAINI" }, "$lte": { "$toDate": ":FECHAFIN" } } } },
+        { "$group": { "_id": null, "promedio": { "$avg": "$puntuacion" }, "total_tests": { "$sum": 1 } } },
+        { "$project": { "_id": 0, "resultado": { "$round": ["$promedio", 2] }, "numero_pacientes": "$total_tests" } }
+      ]
+    }
+  },
+  {
+    "id_code": "MONGO_SARCF_POSITIVO",
+    "categoria": "Valoración Geriátrica - Sarcopenia",
+    "indicador": "Porcentaje de tests SARC-F con resultado positivo (>3 puntos) en el periodo",
+    "unidad": "%",
+    "fuente": "mongodb",
+    "template": {
+      "collection": "test_responses",
+      "pipeline": [
+        { "$match": { "metadata.form_id": "sarc_f", "metadata.centro": ":CENTRO", "_isTest": { "$ne": true } } },
+        { "$addFields": { "fechaDate": { "$dateFromString": { "dateString": "$metadata.fecha_insercion", "format": "%d-%m-%Y", "onError": null, "onNull": null } } } },
+        { "$match": { "fechaDate": { "$gte": { "$toDate": ":FECHAINI" }, "$lte": { "$toDate": ":FECHAFIN" } } } },
+        { "$group": { "_id": null, "total_tests": { "$sum": 1 }, "tests_positivos": { "$sum": { "$cond": [{ "$gt": ["$puntuacion", 3] }, 1, 0] } } } },
+        { "$project": { "_id": 0, "resultado": { "$multiply": [{ "$divide": ["$tests_positivos", { "$ifNull": ["$total_tests", 1] }] }, 100] }, "numero_pacientes": "$total_tests", "numerador": "$tests_positivos" } }
+      ]
+    }
+  },
+  {
+    "id_code": "MONGO_SARCF_MEDIA",
+    "categoria": "Valoración Geriátrica - Sarcopenia",
+    "indicador": "Puntuación media del test SARC-F en el periodo",
+    "unidad": "Puntos",
+    "fuente": "mongodb",
+    "template": {
+      "collection": "test_responses",
+      "pipeline": [
+        { "$match": { "metadata.form_id": "sarc_f", "metadata.centro": ":CENTRO", "_isTest": { "$ne": true } } },
+        { "$addFields": { "fechaDate": { "$dateFromString": { "dateString": "$metadata.fecha_insercion", "format": "%d-%m-%Y", "onError": null, "onNull": null } } } },
+        { "$match": { "fechaDate": { "$gte": { "$toDate": ":FECHAINI" }, "$lte": { "$toDate": ":FECHAFIN" } } } },
+        { "$group": { "_id": null, "promedio": { "$avg": "$puntuacion" }, "total_tests": { "$sum": 1 } } },
+        { "$project": { "_id": 0, "resultado": { "$round": ["$promedio", 2] }, "numero_pacientes": "$total_tests" } }
+      ]
+    }
+  },
+  {
+    "id_code": "MONGO_MNA_DESNUTRICION",
+    "categoria": "Valoración Geriátrica - Estado Nutricional",
+    "indicador": "Porcentaje de tests MNA con desnutrición o riesgo (≤11 puntos) en el periodo",
+    "unidad": "%",
+    "fuente": "mongodb",
+    "template": {
+      "collection": "test_responses",
+      "pipeline": [
+        { "$match": { "metadata.form_id": "MNA_SF", "metadata.centro": ":CENTRO", "_isTest": { "$ne": true } } },
+        { "$addFields": { "fechaDate": { "$dateFromString": { "dateString": "$metadata.fecha_insercion", "format": "%d-%m-%Y", "onError": null, "onNull": null } } } },
+        { "$match": { "fechaDate": { "$gte": { "$toDate": ":FECHAINI" }, "$lte": { "$toDate": ":FECHAFIN" } } } },
+        { "$group": { "_id": null, "total_tests": { "$sum": 1 }, "con_desnutricion": { "$sum": { "$cond": [{ "$and": [{ "$ne": ["$puntuacion", null] }, { "$lte": ["$puntuacion", 11] }] }, 1, 0] } } } },
+        { "$project": { "_id": 0, "resultado": { "$multiply": [{ "$divide": ["$con_desnutricion", { "$ifNull": ["$total_tests", 1] }] }, 100] }, "numero_pacientes": "$total_tests", "numerador": "$con_desnutricion" } }
+      ]
+    }
+  },
+  {
+    "id_code": "MONGO_MNA_MEDIA",
+    "categoria": "Valoración Geriátrica - Estado Nutricional",
+    "indicador": "Puntuación media del MNA en el periodo",
+    "unidad": "Puntos",
+    "fuente": "mongodb",
+    "template": {
+      "collection": "test_responses",
+      "pipeline": [
+        { "$match": { "metadata.form_id": "MNA_SF", "metadata.centro": ":CENTRO", "_isTest": { "$ne": true } } },
+        { "$addFields": { "fechaDate": { "$dateFromString": { "dateString": "$metadata.fecha_insercion", "format": "%d-%m-%Y", "onError": null, "onNull": null } } } },
+        { "$match": { "fechaDate": { "$gte": { "$toDate": ":FECHAINI" }, "$lte": { "$toDate": ":FECHAFIN" } } } },
+        { "$group": { "_id": null, "promedio": { "$avg": "$puntuacion" }, "total_tests": { "$sum": 1 } } },
+        { "$project": { "_id": 0, "resultado": { "$round": ["$promedio", 2] }, "numero_pacientes": "$total_tests" } }
+      ]
+    }
+  },
+  {
+    "id_code": "MONGO_BARTHEL_DEPENDENCIA",
+    "categoria": "Valoración Geriátrica - Dependencia ABVD",
+    "indicador": "Porcentaje de tests Barthel con dependencia moderada-severa (≤75 puntos) en el periodo",
+    "unidad": "%",
+    "fuente": "mongodb",
+    "template": {
+      "collection": "test_responses",
+      "pipeline": [
+        { "$match": { "metadata.form_id": "indice_barthel", "metadata.centro": ":CENTRO", "_isTest": { "$ne": true } } },
+        { "$addFields": { "fechaDate": { "$dateFromString": { "dateString": "$metadata.fecha_insercion", "format": "%d-%m-%Y", "onError": null, "onNull": null } } } },
+        { "$match": { "fechaDate": { "$gte": { "$toDate": ":FECHAINI" }, "$lte": { "$toDate": ":FECHAFIN" } } } },
+        { "$group": { "_id": null, "total_tests": { "$sum": 1 }, "con_dependencia": { "$sum": { "$cond": [{ "$and": [{ "$ne": ["$puntuacion", null] }, { "$lte": ["$puntuacion", 75] }] }, 1, 0] } } } },
+        { "$project": { "_id": 0, "resultado": { "$multiply": [{ "$divide": ["$con_dependencia", { "$ifNull": ["$total_tests", 1] }] }, 100] }, "numero_pacientes": "$total_tests", "numerador": "$con_dependencia" } }
+      ]
+    }
+  },
+  {
+    "id_code": "MONGO_BARTHEL_MEDIA",
+    "categoria": "Valoración Geriátrica - Dependencia ABVD",
+    "indicador": "Puntuación media del Índice de Barthel en el periodo",
+    "unidad": "Puntos",
+    "fuente": "mongodb",
+    "template": {
+      "collection": "test_responses",
+      "pipeline": [
+        { "$match": { "metadata.form_id": "indice_barthel", "metadata.centro": ":CENTRO", "_isTest": { "$ne": true } } },
+        { "$addFields": { "fechaDate": { "$dateFromString": { "dateString": "$metadata.fecha_insercion", "format": "%d-%m-%Y", "onError": null, "onNull": null } } } },
+        { "$match": { "fechaDate": { "$gte": { "$toDate": ":FECHAINI" }, "$lte": { "$toDate": ":FECHAFIN" } } } },
+        { "$group": { "_id": null, "promedio": { "$avg": "$puntuacion" }, "total_tests": { "$sum": 1 } } },
+        { "$project": { "_id": 0, "resultado": { "$round": ["$promedio", 2] }, "numero_pacientes": "$total_tests" } }
+      ]
+    }
+  },
+  {
+    "id_code": "MONGO_LAWTON_DEPENDENCIA",
+    "categoria": "Valoración Geriátrica - Dependencia AIVD",
+    "indicador": "Porcentaje de tests Lawton-Brody con dependencia (<8 puntos) en el periodo",
+    "unidad": "%",
+    "fuente": "mongodb",
+    "template": {
+      "collection": "test_responses",
+      "pipeline": [
+        { "$match": { "metadata.form_id": "lawton_brody", "metadata.centro": ":CENTRO", "_isTest": { "$ne": true } } },
+        { "$addFields": { "fechaDate": { "$dateFromString": { "dateString": "$metadata.fecha_insercion", "format": "%d-%m-%Y", "onError": null, "onNull": null } } } },
+        { "$match": { "fechaDate": { "$gte": { "$toDate": ":FECHAINI" }, "$lte": { "$toDate": ":FECHAFIN" } } } },
+        { "$group": { "_id": null, "total_tests": { "$sum": 1 }, "con_dependencia": { "$sum": { "$cond": [{ "$and": [{ "$ne": ["$puntuacion", null] }, { "$lt": ["$puntuacion", 8] }] }, 1, 0] } } } },
+        { "$project": { "_id": 0, "resultado": { "$multiply": [{ "$divide": ["$con_dependencia", { "$ifNull": ["$total_tests", 1] }] }, 100] }, "numero_pacientes": "$total_tests", "numerador": "$con_dependencia" } }
+      ]
+    }
+  },
+  {
+    "id_code": "MONGO_LAWTON_MEDIA",
+    "categoria": "Valoración Geriátrica - Dependencia AIVD",
+    "indicador": "Puntuación media del Índice de Lawton-Brody en el periodo",
+    "unidad": "Puntos",
+    "fuente": "mongodb",
+    "template": {
+      "collection": "test_responses",
+      "pipeline": [
+        { "$match": { "metadata.form_id": "lawton_brody", "metadata.centro": ":CENTRO", "_isTest": { "$ne": true } } },
+        { "$addFields": { "fechaDate": { "$dateFromString": { "dateString": "$metadata.fecha_insercion", "format": "%d-%m-%Y", "onError": null, "onNull": null } } } },
+        { "$match": { "fechaDate": { "$gte": { "$toDate": ":FECHAINI" }, "$lte": { "$toDate": ":FECHAFIN" } } } },
+        { "$group": { "_id": null, "promedio": { "$avg": "$puntuacion" }, "total_tests": { "$sum": 1 } } },
+        { "$project": { "_id": 0, "resultado": { "$round": ["$promedio", 2] }, "numero_pacientes": "$total_tests" } }
+      ]
+    }
+  },
+  {
+    "id_code": "MONGO_CHARLSON_ALTO",
+    "categoria": "Valoración Geriátrica - Comorbilidad",
+    "indicador": "Porcentaje de tests Charlson con alta comorbilidad (≥5 puntos) en el periodo",
+    "unidad": "%",
+    "fuente": "mongodb",
+    "template": {
+      "collection": "test_responses",
+      "pipeline": [
+        { "$match": { "metadata.form_id": "charlson_comorbidity_index", "metadata.centro": ":CENTRO", "_isTest": { "$ne": true } } },
+        { "$addFields": { "fechaDate": { "$dateFromString": { "dateString": "$metadata.fecha_insercion", "format": "%d-%m-%Y", "onError": null, "onNull": null } } } },
+        { "$match": { "fechaDate": { "$gte": { "$toDate": ":FECHAINI" }, "$lte": { "$toDate": ":FECHAFIN" } } } },
+        { "$group": { "_id": null, "total_tests": { "$sum": 1 }, "con_alta_comorbilidad": { "$sum": { "$cond": [{ "$gte": ["$puntuacion", 5] }, 1, 0] } } } },
+        { "$project": { "_id": 0, "resultado": { "$multiply": [{ "$divide": ["$con_alta_comorbilidad", { "$ifNull": ["$total_tests", 1] }] }, 100] }, "numero_pacientes": "$total_tests", "numerador": "$con_alta_comorbilidad" } }
+      ]
+    }
+  },
+  {
+    "id_code": "MONGO_CHARLSON_MEDIA",
+    "categoria": "Valoración Geriátrica - Comorbilidad",
+    "indicador": "Puntuación media del Índice de Charlson en el periodo",
+    "unidad": "Puntos",
+    "fuente": "mongodb",
+    "template": {
+      "collection": "test_responses",
+      "pipeline": [
+        { "$match": { "metadata.form_id": "charlson_comorbidity_index", "metadata.centro": ":CENTRO", "_isTest": { "$ne": true } } },
+        { "$addFields": { "fechaDate": { "$dateFromString": { "dateString": "$metadata.fecha_insercion", "format": "%d-%m-%Y", "onError": null, "onNull": null } } } },
+        { "$match": { "fechaDate": { "$gte": { "$toDate": ":FECHAINI" }, "$lte": { "$toDate": ":FECHAFIN" } } } },
+        { "$group": { "_id": null, "promedio": { "$avg": "$puntuacion" }, "total_tests": { "$sum": 1 } } },
+        { "$project": { "_id": 0, "resultado": { "$round": ["$promedio", 2] }, "numero_pacientes": "$total_tests" } }
+      ]
+    }
+  },
+  {
+    "id_code": "MONGO_DOWNTON_MEDIA",
+    "categoria": "Valoración Geriátrica - Riesgo de Caídas",
+    "indicador": "Puntuación media del test Downton en el periodo",
+    "unidad": "Puntos",
+    "fuente": "mongodb",
+    "template": {
+      "collection": "test_responses",
+      "pipeline": [
+        { "$match": { "metadata.form_id": "dowton", "metadata.centro": ":CENTRO", "_isTest": { "$ne": true } } },
+        { "$addFields": { "fechaDate": { "$dateFromString": { "dateString": "$metadata.fecha_insercion", "format": "%d-%m-%Y", "onError": null, "onNull": null } } } },
+        { "$match": { "fechaDate": { "$gte": { "$toDate": ":FECHAINI" }, "$lte": { "$toDate": ":FECHAFIN" } } } },
+        { "$group": { "_id": null, "promedio": { "$avg": "$puntuacion" }, "total_tests": { "$sum": 1 } } },
+        { "$project": { "_id": 0, "resultado": { "$round": ["$promedio", 2] }, "numero_pacientes": "$total_tests" } }
+      ]
+    }
+  },
+  {
+    "id_code": "MONGO_PHQ4_SINTOMAS",
+    "categoria": "Valoración Geriátrica - Salud Mental",
+    "indicador": "Porcentaje de tests PHQ-4 con síntomas de ansiedad/depresión (≥6 puntos) en el periodo",
+    "unidad": "%",
+    "fuente": "mongodb",
+    "template": {
+      "collection": "test_responses",
+      "pipeline": [
+        { "$match": { "metadata.form_id": "phq_4", "metadata.centro": ":CENTRO", "_isTest": { "$ne": true } } },
+        { "$addFields": { "fechaDate": { "$dateFromString": { "dateString": "$metadata.fecha_insercion", "format": "%d-%m-%Y", "onError": null, "onNull": null } } } },
+        { "$match": { "fechaDate": { "$gte": { "$toDate": ":FECHAINI" }, "$lte": { "$toDate": ":FECHAFIN" } } } },
+        { "$group": { "_id": null, "total_tests": { "$sum": 1 }, "con_sintomas": { "$sum": { "$cond": [{ "$gte": ["$puntuacion", 6] }, 1, 0] } } } },
+        { "$project": { "_id": 0, "resultado": { "$multiply": [{ "$divide": ["$con_sintomas", { "$ifNull": ["$total_tests", 1] }] }, 100] }, "numero_pacientes": "$total_tests", "numerador": "$con_sintomas" } }
+      ]
+    }
+  },
+  {
+    "id_code": "MONGO_PHQ4_MEDIA",
+    "categoria": "Valoración Geriátrica - Salud Mental",
+    "indicador": "Puntuación media del PHQ-4 en el periodo",
+    "unidad": "Puntos",
+    "fuente": "mongodb",
+    "template": {
+      "collection": "test_responses",
+      "pipeline": [
+        { "$match": { "metadata.form_id": "phq_4", "metadata.centro": ":CENTRO", "_isTest": { "$ne": true } } },
+        { "$addFields": { "fechaDate": { "$dateFromString": { "dateString": "$metadata.fecha_insercion", "format": "%d-%m-%Y", "onError": null, "onNull": null } } } },
+        { "$match": { "fechaDate": { "$gte": { "$toDate": ":FECHAINI" }, "$lte": { "$toDate": ":FECHAFIN" } } } },
+        { "$group": { "_id": null, "promedio": { "$avg": "$puntuacion" }, "total_tests": { "$sum": 1 } } },
+        { "$project": { "_id": 0, "resultado": { "$round": ["$promedio", 2] }, "numero_pacientes": "$total_tests" } }
+      ]
+    }
+  },
+  {
+    "id_code": "MONGO_GIJON_RIESGO",
+    "categoria": "Valoración Geriátrica - Riesgo Social",
+    "indicador": "Porcentaje de tests Gijón con riesgo social (>10 puntos) en el periodo",
+    "unidad": "%",
+    "fuente": "mongodb",
+    "template": {
+      "collection": "test_responses",
+      "pipeline": [
+        { "$match": { "metadata.form_id": "escala_sociofamiliar_gijon", "metadata.centro": ":CENTRO", "_isTest": { "$ne": true } } },
+        { "$addFields": { "fechaDate": { "$dateFromString": { "dateString": "$metadata.fecha_insercion", "format": "%d-%m-%Y", "onError": null, "onNull": null } } } },
+        { "$match": { "fechaDate": { "$gte": { "$toDate": ":FECHAINI" }, "$lte": { "$toDate": ":FECHAFIN" } } } },
+        { "$group": { "_id": null, "total_tests": { "$sum": 1 }, "con_riesgo": { "$sum": { "$cond": [{ "$gt": ["$puntuacion", 10] }, 1, 0] } } } },
+        { "$project": { "_id": 0, "resultado": { "$multiply": [{ "$divide": ["$con_riesgo", { "$ifNull": ["$total_tests", 1] }] }, 100] }, "numero_pacientes": "$total_tests", "numerador": "$con_riesgo" } }
+      ]
+    }
+  },
+  {
+    "id_code": "MONGO_GIJON_MEDIA",
+    "categoria": "Valoración Geriátrica - Riesgo Social",
+    "indicador": "Puntuación media de la escala de Gijón en el periodo",
+    "unidad": "Puntos",
+    "fuente": "mongodb",
+    "template": {
+      "collection": "test_responses",
+      "pipeline": [
+        { "$match": { "metadata.form_id": "escala_sociofamiliar_gijon", "metadata.centro": ":CENTRO", "_isTest": { "$ne": true } } },
+        { "$addFields": { "fechaDate": { "$dateFromString": { "dateString": "$metadata.fecha_insercion", "format": "%d-%m-%Y", "onError": null, "onNull": null } } } },
+        { "$match": { "fechaDate": { "$gte": { "$toDate": ":FECHAINI" }, "$lte": { "$toDate": ":FECHAFIN" } } } },
+        { "$group": { "_id": null, "promedio": { "$avg": "$puntuacion" }, "total_tests": { "$sum": 1 } } },
+        { "$project": { "_id": 0, "resultado": { "$round": ["$promedio", 2] }, "numero_pacientes": "$total_tests" } }
+      ]
+    }
+  },
+  {
+    "id_code": "MONGO_TOTAL_EVALUACIONES",
+    "categoria": "Valoración Geriátrica - Cobertura",
+    "indicador": "Total de evaluaciones geriátricas realizadas en el periodo",
+    "unidad": "Número",
+    "fuente": "mongodb",
+    "template": {
+      "collection": "test_responses",
+      "pipeline": [
+        { "$match": { "metadata.centro": ":CENTRO", "_isTest": { "$ne": true } } },
+        { "$addFields": { "fechaDate": { "$dateFromString": { "dateString": "$metadata.fecha_insercion", "format": "%d-%m-%Y", "onError": null, "onNull": null } } } },
+        { "$match": { "fechaDate": { "$gte": { "$toDate": ":FECHAINI" }, "$lte": { "$toDate": ":FECHAFIN" } } } },
+        { "$group": { "_id": null, "total_evaluaciones": { "$sum": 1 } } },
+        { "$project": { "_id": 0, "resultado": "$total_evaluaciones", "numero_pacientes": "$total_evaluaciones" } }
+      ]
+    }
+  },
+  {
+    "id_code": "MONGO_PACIENTES_EVALUADOS",
+    "categoria": "Valoración Geriátrica - Cobertura",
+    "indicador": "Número de pacientes únicos evaluados en el periodo",
+    "unidad": "Número",
+    "fuente": "mongodb",
+    "template": {
+      "collection": "test_responses",
+      "pipeline": [
+        { "$match": { "metadata.centro": ":CENTRO", "_isTest": { "$ne": true } } },
+        { "$addFields": { "fechaDate": { "$dateFromString": { "dateString": "$metadata.fecha_insercion", "format": "%d-%m-%Y", "onError": null, "onNull": null } } } },
+        { "$match": { "fechaDate": { "$gte": { "$toDate": ":FECHAINI" }, "$lte": { "$toDate": ":FECHAFIN" } } } },
+        { "$group": { "_id": "$metadata.NREGGEN" } },
+        { "$group": { "_id": null, "pacientes_unicos": { "$sum": 1 } } },
+        { "$project": { "_id": 0, "resultado": "$pacientes_unicos", "numero_pacientes": "$pacientes_unicos" } }
+      ]
+    }
+  }
+]

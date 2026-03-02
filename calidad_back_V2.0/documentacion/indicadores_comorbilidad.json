@@ -1,0 +1,250 @@
+[
+  {
+    "id_code": "COMORB_FRAIL_INC",
+    "categoria": "Comorbilidad - Fragilidad",
+    "indicador": "Porcentaje de pacientes incidentes en periodo con fragilidad (FRAIL ≥ 3)",
+    "titulo": "Fragilidad en pacientes incidentes",
+    "objetivo": "Identificar pacientes con fragilidad al inicio del tratamiento para intervención temprana",
+    "unidad": "%",
+    "test_asociado": "FRAIL",
+    "umbral_positivo": 3,
+    "criterio": "PUNTOS_TOT >= 3"
+  },
+  {
+    "id_code": "COMORB_FRAIL_PREV",
+    "categoria": "Comorbilidad - Fragilidad",
+    "indicador": "Porcentaje de pacientes prevalentes en periodo con fragilidad (FRAIL ≥ 3)",
+    "titulo": "Fragilidad en pacientes prevalentes",
+    "objetivo": "Monitorizar la evolución de la fragilidad en pacientes en tratamiento",
+    "unidad": "%",
+    "test_asociado": "FRAIL",
+    "umbral_positivo": 3,
+    "criterio": "PUNTOS_TOT >= 3"
+  },
+  {
+    "id_code": "COMORB_SARC_INC",
+    "categoria": "Comorbilidad - Sarcopenia",
+    "indicador": "Porcentaje de pacientes incidentes en periodo con sarcopenia (SARC-F > 3)",
+    "titulo": "Sarcopenia en pacientes incidentes",
+    "objetivo": "Detectar sarcopenia precozmente para implementar programas de ejercicio",
+    "unidad": "%",
+    "test_asociado": "SARCF",
+    "umbral_positivo": 3,
+    "criterio": "PUNTOS_TOT > 3"
+  },
+  {
+    "id_code": "COMORB_SARC_PREV",
+    "categoria": "Comorbilidad - Sarcopenia",
+    "indicador": "Porcentaje de pacientes prevalentes en periodo con sarcopenia (SARC-F > 3)",
+    "titulo": "Sarcopenia en pacientes prevalentes",
+    "objetivo": "Seguimiento de sarcopenia para ajustar intervenciones nutricionales y de ejercicio",
+    "unidad": "%",
+    "test_asociado": "SARCF",
+    "umbral_positivo": 3,
+    "criterio": "PUNTOS_TOT > 3"
+  },
+  {
+    "id_code": "COMORB_MNA_INC",
+    "categoria": "Comorbilidad - Nutrición",
+    "indicador": "Porcentaje de pacientes incidentes con desnutrición/riesgo (MNA ≤ 11)",
+    "titulo": "Desnutrición en pacientes incidentes",
+    "objetivo": "Identificar pacientes con riesgo nutricional para valoración por dietista",
+    "unidad": "%",
+    "test_asociado": "MNA",
+    "umbral_positivo": 11,
+    "criterio": "PUNTOS_TOT <= 11"
+  },
+  {
+    "id_code": "COMORB_MNA_PREV",
+    "categoria": "Comorbilidad - Nutrición",
+    "indicador": "Porcentaje de pacientes prevalentes con desnutrición/riesgo (MNA ≤ 11)",
+    "titulo": "Desnutrición en pacientes prevalentes",
+    "objetivo": "Monitorizar estado nutricional y ajustar soporte nutricional",
+    "unidad": "%",
+    "test_asociado": "MNA",
+    "umbral_positivo": 11,
+    "criterio": "PUNTOS_TOT <= 11"
+  },
+  {
+    "id_code": "COMORB_BARTHEL_INC",
+    "categoria": "Comorbilidad - Dependencia",
+    "indicador": "Porcentaje de pacientes incidentes con dependencia moderada-severa (Barthel ≤ 75)",
+    "titulo": "Dependencia funcional en pacientes incidentes",
+    "objetivo": "Identificar necesidades de soporte asistencial al inicio del tratamiento",
+    "unidad": "%",
+    "test_asociado": "BARTHEL",
+    "umbral_positivo": 75,
+    "criterio": "PUNTOS_TOT <= 75"
+  },
+  {
+    "id_code": "COMORB_BARTHEL_PREV",
+    "categoria": "Comorbilidad - Dependencia",
+    "indicador": "Porcentaje de pacientes prevalentes con dependencia moderada-severa (Barthel ≤ 75)",
+    "titulo": "Dependencia funcional en pacientes prevalentes",
+    "objetivo": "Seguimiento de autonomía funcional para planificar recursos asistenciales",
+    "unidad": "%",
+    "test_asociado": "BARTHEL",
+    "umbral_positivo": 75,
+    "criterio": "PUNTOS_TOT <= 75"
+  },
+  {
+    "id_code": "COMORB_LAWTON_INC",
+    "categoria": "Comorbilidad - Dependencia AIVD",
+    "indicador": "Porcentaje de pacientes incidentes con dependencia en AIVD (Lawton < 8)",
+    "titulo": "Dependencia en actividades instrumentales - incidentes",
+    "objetivo": "Evaluar capacidad para actividades instrumentales de la vida diaria",
+    "unidad": "%",
+    "test_asociado": "LAWTON",
+    "umbral_positivo": 8,
+    "criterio": "PUNTOS_TOT < 8"
+  },
+  {
+    "id_code": "COMORB_LAWTON_PREV",
+    "categoria": "Comorbilidad - Dependencia AIVD",
+    "indicador": "Porcentaje de pacientes prevalentes con dependencia en AIVD (Lawton < 8)",
+    "titulo": "Dependencia en actividades instrumentales - prevalentes",
+    "objetivo": "Monitorizar evolución de independencia para actividades complejas",
+    "unidad": "%",
+    "test_asociado": "LAWTON",
+    "umbral_positivo": 8,
+    "criterio": "PUNTOS_TOT < 8"
+  },
+  {
+    "id_code": "COMORB_CHARLSON_INC",
+    "categoria": "Comorbilidad - Comorbilidad",
+    "indicador": "Puntuación media de índice de Charlson en pacientes incidentes",
+    "titulo": "Carga de comorbilidad - incidentes",
+    "objetivo": "Cuantificar carga de comorbilidad al inicio del tratamiento",
+    "unidad": "Puntos",
+    "test_asociado": "CHARLSON",
+    "tipo_calculo": "media"
+  },
+  {
+    "id_code": "COMORB_CHARLSON_PREV",
+    "categoria": "Comorbilidad - Comorbilidad",
+    "indicador": "Puntuación media de índice de Charlson en pacientes prevalentes",
+    "titulo": "Carga de comorbilidad - prevalentes",
+    "objetivo": "Evaluar impacto de comorbilidades en pacientes en seguimiento",
+    "unidad": "Puntos",
+    "test_asociado": "CHARLSON",
+    "tipo_calculo": "media"
+  },
+  {
+    "id_code": "COMORB_CHARLSON_ALTO_PREV",
+    "categoria": "Comorbilidad - Comorbilidad",
+    "indicador": "Porcentaje de pacientes prevalentes con alta comorbilidad (Charlson ≥ 5)",
+    "titulo": "Alta comorbilidad en pacientes prevalentes",
+    "objetivo": "Identificar pacientes de alto riesgo por múltiples comorbilidades",
+    "unidad": "%",
+    "test_asociado": "CHARLSON",
+    "umbral_positivo": 5,
+    "criterio": "PUNTOS_TOT >= 5"
+  },
+  {
+    "id_code": "COMORB_DOWNTON_INC",
+    "categoria": "Comorbilidad - Riesgo de Caídas",
+    "indicador": "Porcentaje de pacientes incidentes con riesgo de caídas (Downton ≥ 3)",
+    "titulo": "Riesgo de caídas - incidentes",
+    "objetivo": "Prevenir caídas mediante identificación temprana de factores de riesgo",
+    "unidad": "%",
+    "test_asociado": "DOWNTON",
+    "umbral_positivo": 3,
+    "criterio": "PUNTOS_TOT >= 3"
+  },
+  {
+    "id_code": "COMORB_DOWNTON_PREV",
+    "categoria": "Comorbilidad - Riesgo de Caídas",
+    "indicador": "Porcentaje de pacientes prevalentes con riesgo de caídas (Downton ≥ 3)",
+    "titulo": "Riesgo de caídas - prevalentes",
+    "objetivo": "Mantener vigilancia sobre factores de riesgo de caídas",
+    "unidad": "%",
+    "test_asociado": "DOWNTON",
+    "umbral_positivo": 3,
+    "criterio": "PUNTOS_TOT >= 3"
+  },
+  {
+    "id_code": "COMORB_PHQ4_INC",
+    "categoria": "Comorbilidad - Salud Mental",
+    "indicador": "Porcentaje de pacientes incidentes con síntomas ansiedad/depresión (PHQ-4 ≥ 6)",
+    "titulo": "Síntomas de ansiedad/depresión - incidentes",
+    "objetivo": "Detectar necesidad de soporte psicológico al inicio del tratamiento",
+    "unidad": "%",
+    "test_asociado": "PHQ4",
+    "umbral_positivo": 6,
+    "criterio": "PUNTOS_TOT >= 6"
+  },
+  {
+    "id_code": "COMORB_PHQ4_PREV",
+    "categoria": "Comorbilidad - Salud Mental",
+    "indicador": "Porcentaje de pacientes prevalentes con síntomas ansiedad/depresión (PHQ-4 ≥ 6)",
+    "titulo": "Síntomas de ansiedad/depresión - prevalentes",
+    "objetivo": "Monitorizar salud mental y derivar a apoyo psicológico si necesario",
+    "unidad": "%",
+    "test_asociado": "PHQ4",
+    "umbral_positivo": 6,
+    "criterio": "PUNTOS_TOT >= 6"
+  },
+  {
+    "id_code": "COMORB_GIJON_INC",
+    "categoria": "Comorbilidad - Riesgo Social",
+    "indicador": "Porcentaje de pacientes incidentes con riesgo social (Gijón > 10)",
+    "titulo": "Riesgo social - incidentes",
+    "objetivo": "Identificar necesidades de intervención social temprana",
+    "unidad": "%",
+    "test_asociado": "GIJON",
+    "umbral_positivo": 10,
+    "criterio": "PUNTOS_TOT > 10"
+  },
+  {
+    "id_code": "COMORB_GIJON_PREV",
+    "categoria": "Comorbilidad - Riesgo Social",
+    "indicador": "Porcentaje de pacientes prevalentes con riesgo social (Gijón > 10)",
+    "titulo": "Riesgo social - prevalentes",
+    "objetivo": "Seguimiento de situación social para intervención de trabajo social",
+    "unidad": "%",
+    "test_asociado": "GIJON",
+    "umbral_positivo": 10,
+    "criterio": "PUNTOS_TOT > 10"
+  },
+  {
+    "id_code": "COMORB_COBERTURA_FRAIL",
+    "categoria": "Comorbilidad - Cobertura Screening",
+    "indicador": "Porcentaje de cobertura de screening de fragilidad en periodo",
+    "titulo": "Cobertura screening fragilidad",
+    "objetivo": "Asegurar que todos los pacientes tienen evaluación de fragilidad",
+    "unidad": "%",
+    "test_asociado": "FRAIL",
+    "tipo_calculo": "cobertura"
+  },
+  {
+    "id_code": "COMORB_COBERTURA_MNA",
+    "categoria": "Comorbilidad - Cobertura Screening",
+    "indicador": "Porcentaje de cobertura de screening nutricional en periodo",
+    "titulo": "Cobertura screening nutricional",
+    "objetivo": "Garantizar valoración nutricional de todos los pacientes",
+    "unidad": "%",
+    "test_asociado": "MNA",
+    "tipo_calculo": "cobertura"
+  },
+  {
+    "id_code": "COMORB_COBERTURA_BARTHEL",
+    "categoria": "Comorbilidad - Cobertura Screening",
+    "indicador": "Porcentaje de cobertura de screening de dependencia ABVD en periodo",
+    "titulo": "Cobertura screening dependencia",
+    "objetivo": "Asegurar valoración funcional de todos los pacientes",
+    "unidad": "%",
+    "test_asociado": "BARTHEL",
+    "tipo_calculo": "cobertura"
+  },
+  {
+    "id_code": "COMORB_MULTI_FRAIL_SARC",
+    "categoria": "Comorbilidad - Síndromes Múltiples",
+    "indicador": "Porcentaje de pacientes prevalentes con fragilidad Y sarcopenia",
+    "titulo": "Síndrome de fragilidad + sarcopenia",
+    "objetivo": "Identificar pacientes con doble síndrome geriátrico para intervención intensiva",
+    "unidad": "%",
+    "tests_asociados": ["FRAIL", "SARCF"],
+    "tipo_calculo": "multiple",
+    "criterio": "FRAIL.PUNTOS_TOT >= 3 AND SARCF.PUNTOS_TOT > 3"
+  }
+]

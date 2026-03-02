@@ -5,6 +5,12 @@
       <div class="title">
         Selección de indicadores
         <span class="count-badge" *ngIf="getSelectedCount() > 0">{{ getSelectedCount() }} seleccionados</span>
+        <span class="loading-badge" *ngIf="loadingMongo">
+          <mat-icon>sync</mat-icon> Cargando MongoDB...
+        </span>
+        <span class="success-badge" *ngIf="mongoIndicadoresDisponibles && !loadingMongo">
+          <mat-icon>cloud_done</mat-icon> MongoDB conectado
+        </span>
       </div>
     </div>
     
@@ -63,6 +69,12 @@
               (change)="toggleOne(indicador.id_code, indicador.categoria, $event.checked)">
               <div class="indicator-info">
                 <span class="indicator-label">{{ indicador.indicador }}</span>
+                <!-- CAMBIADO: Solo mostrar badge para indicadores externos (MongoDB) -->
+                <span class="source-badge badge-external" 
+                      *ngIf="indicador.fuente === 'mongodb'"
+                      matTooltip="Datos externos a Nefrosoft (MongoDB)">
+                  🔗 Externo
+                </span>
               </div>
             </mat-slide-toggle>
           </div>

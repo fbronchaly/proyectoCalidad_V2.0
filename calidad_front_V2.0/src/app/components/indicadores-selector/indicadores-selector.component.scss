@@ -244,3 +244,79 @@
 .shadow-soft {
   box-shadow: 0 2px 12px rgba(0,0,0,0.08);
 }
+
+// NUEVO: Estilos para badges de fuente de datos
+.source-badge {
+  display: inline-block;
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-weight: 500;
+  margin-left: 8px;
+  white-space: nowrap;
+  
+  // NUEVO: Badge para indicadores externos
+  &.badge-external {
+    background: linear-gradient(135deg, #9c27b0 0%, #7b1fa2 100%);
+    color: white;
+    box-shadow: 0 2px 6px rgba(156, 39, 176, 0.3);
+  }
+}
+
+// NUEVO: Badges de estado MongoDB
+.loading-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff3e0;
+  color: #f57c00;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  margin-left: 12px;
+  
+  mat-icon {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    animation: spin 1s linear infinite;
+  }
+}
+
+.success-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #e8f5e9;
+  color: #4caf50;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  margin-left: 12px;
+  
+  mat-icon {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+// Mejorar la disposición de la información del indicador
+.indicator-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 12px;
+  
+  .indicator-label {
+    flex: 1;
+  }
+}

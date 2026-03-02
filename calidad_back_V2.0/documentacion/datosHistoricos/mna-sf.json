@@ -1,0 +1,762 @@
+[
+  {
+    "metadata": {
+      "fecha_insercion": "14-02-2025",
+      "form_id": "MNA_SF",
+      "NREGGEN": "112106",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "26-03-1957",
+      "centro": "LAS ENCINAS"
+    },
+    "preguntas": {
+      "DISMINUCION_INGESTA": 2,
+      "PERDIDA_PESO": 3,
+      "MOVILIDAD": 2,
+      "ESTRES_O_ENFERMEDAD": 0,
+      "PROBLEMAS_NEUROPSICOLOGICOS": 2,
+      "IMC_O_PANTORRILLA": 3
+    },
+    "puntuacion": 12,
+    "interpretacion": "ESTADO NUTRICIONAL NORMAL"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-02-2025",
+      "form_id": "MNA_SF",
+      "NREGGEN": "103850",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "27-07-1987",
+      "centro": "LAS ENCINAS"
+    },
+    "preguntas": {
+      "DISMINUCION_INGESTA": 2,
+      "PERDIDA_PESO": 3,
+      "MOVILIDAD": 2,
+      "ESTRES_O_ENFERMEDAD": 2,
+      "PROBLEMAS_NEUROPSICOLOGICOS": 2,
+      "IMC_O_PANTORRILLA": 0
+    },
+    "puntuacion": 11,
+    "interpretacion": "RIESGO DE MALNUTRICION"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-02-2025",
+      "form_id": "MNA_SF",
+      "NREGGEN": "337857",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "26-11-1944",
+      "centro": "LAS ENCINAS"
+    },
+    "preguntas": {
+      "DISMINUCION_INGESTA": 2,
+      "PERDIDA_PESO": 2,
+      "MOVILIDAD": 2,
+      "ESTRES_O_ENFERMEDAD": 2,
+      "PROBLEMAS_NEUROPSICOLOGICOS": 2,
+      "IMC_O_PANTORRILLA": 3
+    },
+    "puntuacion": 13,
+    "interpretacion": "ESTADO NUTRICIONAL NORMAL"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-02-2025",
+      "form_id": "MNA_SF",
+      "NREGGEN": "4116947",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "23-08-1941",
+      "centro": "LAS ENCINAS"
+    },
+    "preguntas": {
+      "DISMINUCION_INGESTA": 2,
+      "PERDIDA_PESO": 3,
+      "MOVILIDAD": 2,
+      "ESTRES_O_ENFERMEDAD": 2,
+      "PROBLEMAS_NEUROPSICOLOGICOS": 1,
+      "IMC_O_PANTORRILLA": 3
+    },
+    "puntuacion": 13,
+    "interpretacion": "ESTADO NUTRICIONAL NORMAL"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-02-2025",
+      "form_id": "MNA_SF",
+      "NREGGEN": "130099",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "28-09-1950",
+      "centro": "LAS ENCINAS"
+    },
+    "preguntas": {
+      "DISMINUCION_INGESTA": 2,
+      "PERDIDA_PESO": 3,
+      "MOVILIDAD": 2,
+      "ESTRES_O_ENFERMEDAD": 2,
+      "PROBLEMAS_NEUROPSICOLOGICOS": 2,
+      "IMC_O_PANTORRILLA": 3
+    },
+    "puntuacion": 14,
+    "interpretacion": "ESTADO NUTRICIONAL NORMAL"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-02-2025",
+      "form_id": "MNA_SF",
+      "NREGGEN": "32224",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "30-09-1945",
+      "centro": "LAS ENCINAS"
+    },
+    "preguntas": {
+      "DISMINUCION_INGESTA": 2,
+      "PERDIDA_PESO": 3,
+      "MOVILIDAD": 2,
+      "ESTRES_O_ENFERMEDAD": 2,
+      "PROBLEMAS_NEUROPSICOLOGICOS": 2,
+      "IMC_O_PANTORRILLA": 3
+    },
+    "puntuacion": 14,
+    "interpretacion": "ESTADO NUTRICIONAL NORMAL"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-02-2025",
+      "form_id": "MNA_SF",
+      "NREGGEN": "77680",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "09-02-1938",
+      "centro": "LAS ENCINAS"
+    },
+    "preguntas": {
+      "DISMINUCION_INGESTA": 2,
+      "PERDIDA_PESO": 3,
+      "MOVILIDAD": 2,
+      "ESTRES_O_ENFERMEDAD": 2,
+      "PROBLEMAS_NEUROPSICOLOGICOS": 2,
+      "IMC_O_PANTORRILLA": 3
+    },
+    "puntuacion": 14,
+    "interpretacion": "ESTADO NUTRICIONAL NORMAL"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-02-2025",
+      "form_id": "MNA_SF",
+      "NREGGEN": "167777",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "08-06-1951",
+      "centro": "LAS ENCINAS"
+    },
+    "preguntas": {
+      "DISMINUCION_INGESTA": 2,
+      "PERDIDA_PESO": 2,
+      "MOVILIDAD": 2,
+      "ESTRES_O_ENFERMEDAD": 0,
+      "PROBLEMAS_NEUROPSICOLOGICOS": 2,
+      "IMC_O_PANTORRILLA": 3
+    },
+    "puntuacion": 11,
+    "interpretacion": "RIESGO DE MALNUTRICION"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-02-2025",
+      "form_id": "MNA_SF",
+      "NREGGEN": "2137649",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "11-01-1959",
+      "centro": "LAS ENCINAS"
+    },
+    "preguntas": {
+      "DISMINUCION_INGESTA": 2,
+      "PERDIDA_PESO": 3,
+      "MOVILIDAD": 2,
+      "ESTRES_O_ENFERMEDAD": 2,
+      "PROBLEMAS_NEUROPSICOLOGICOS": 2,
+      "IMC_O_PANTORRILLA": 3
+    },
+    "puntuacion": 14,
+    "interpretacion": "ESTADO NUTRICIONAL NORMAL"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-02-2025",
+      "form_id": "MNA_SF",
+      "NREGGEN": "37059",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "25-03-1946",
+      "centro": "LAS ENCINAS"
+    },
+    "preguntas": {
+      "DISMINUCION_INGESTA": 2,
+      "PERDIDA_PESO": 3,
+      "MOVILIDAD": 2,
+      "ESTRES_O_ENFERMEDAD": 2,
+      "PROBLEMAS_NEUROPSICOLOGICOS": 2,
+      "IMC_O_PANTORRILLA": 3
+    },
+    "puntuacion": 14,
+    "interpretacion": "ESTADO NUTRICIONAL NORMAL"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-02-2025",
+      "form_id": "MNA_SF",
+      "NREGGEN": "214192",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "02-07-1949",
+      "centro": "LAS ENCINAS"
+    },
+    "preguntas": {
+      "DISMINUCION_INGESTA": 2,
+      "PERDIDA_PESO": 3,
+      "MOVILIDAD": 0,
+      "ESTRES_O_ENFERMEDAD": 2,
+      "PROBLEMAS_NEUROPSICOLOGICOS": 2,
+      "IMC_O_PANTORRILLA": 3
+    },
+    "puntuacion": 12,
+    "interpretacion": "ESTADO NUTRICIONAL NORMAL"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-02-2025",
+      "form_id": "MNA_SF",
+      "NREGGEN": "148310",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "18-10-1936",
+      "centro": "LAS ENCINAS"
+    },
+    "preguntas": {
+      "DISMINUCION_INGESTA": 2,
+      "PERDIDA_PESO": 3,
+      "MOVILIDAD": 2,
+      "ESTRES_O_ENFERMEDAD": 2,
+      "PROBLEMAS_NEUROPSICOLOGICOS": 2,
+      "IMC_O_PANTORRILLA": 2
+    },
+    "puntuacion": 13,
+    "interpretacion": "ESTADO NUTRICIONAL NORMAL"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-02-2025",
+      "form_id": "MNA_SF",
+      "NREGGEN": "4044566",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "19-10-1943",
+      "centro": "LAS ENCINAS"
+    },
+    "preguntas": {
+      "DISMINUCION_INGESTA": 2,
+      "PERDIDA_PESO": 3,
+      "MOVILIDAD": 2,
+      "ESTRES_O_ENFERMEDAD": 2,
+      "PROBLEMAS_NEUROPSICOLOGICOS": 2,
+      "IMC_O_PANTORRILLA": 3
+    },
+    "puntuacion": 14,
+    "interpretacion": "ESTADO NUTRICIONAL NORMAL"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-02-2025",
+      "form_id": "MNA_SF",
+      "NREGGEN": "43301",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "05-11-1951",
+      "centro": "LAS ENCINAS"
+    },
+    "preguntas": {
+      "DISMINUCION_INGESTA": 2,
+      "PERDIDA_PESO": 0,
+      "MOVILIDAD": 2,
+      "ESTRES_O_ENFERMEDAD": 2,
+      "PROBLEMAS_NEUROPSICOLOGICOS": 2,
+      "IMC_O_PANTORRILLA": 3
+    },
+    "puntuacion": 11,
+    "interpretacion": "RIESGO DE MALNUTRICION"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-02-2025",
+      "form_id": "MNA_SF",
+      "NREGGEN": "258417",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "25-05-1940",
+      "centro": "LAS ENCINAS"
+    },
+    "preguntas": {
+      "DISMINUCION_INGESTA": 2,
+      "PERDIDA_PESO": 3,
+      "MOVILIDAD": 2,
+      "ESTRES_O_ENFERMEDAD": 2,
+      "PROBLEMAS_NEUROPSICOLOGICOS": 2,
+      "IMC_O_PANTORRILLA": 3
+    },
+    "puntuacion": 14,
+    "interpretacion": "ESTADO NUTRICIONAL NORMAL"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-02-2025",
+      "form_id": "MNA_SF",
+      "NREGGEN": "800",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "20-04-1941",
+      "centro": "LAS ENCINAS"
+    },
+    "preguntas": {
+      "DISMINUCION_INGESTA": 2,
+      "PERDIDA_PESO": 3,
+      "MOVILIDAD": 0,
+      "ESTRES_O_ENFERMEDAD": 0,
+      "PROBLEMAS_NEUROPSICOLOGICOS": 2,
+      "IMC_O_PANTORRILLA": 3
+    },
+    "puntuacion": 10,
+    "interpretacion": "RIESGO DE MALNUTRICION"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-02-2025",
+      "form_id": "MNA_SF",
+      "NREGGEN": "43752",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "09-12-1943",
+      "centro": "LAS ENCINAS"
+    },
+    "preguntas": {
+      "DISMINUCION_INGESTA": 2,
+      "PERDIDA_PESO": 3,
+      "MOVILIDAD": 2,
+      "ESTRES_O_ENFERMEDAD": 2,
+      "PROBLEMAS_NEUROPSICOLOGICOS": 2,
+      "IMC_O_PANTORRILLA": 3
+    },
+    "puntuacion": 14,
+    "interpretacion": "ESTADO NUTRICIONAL NORMAL"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-02-2025",
+      "form_id": "MNA_SF",
+      "NREGGEN": "152104",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "10-09-1958",
+      "centro": "LAS ENCINAS"
+    },
+    "preguntas": {
+      "DISMINUCION_INGESTA": 2,
+      "PERDIDA_PESO": 3,
+      "MOVILIDAD": 2,
+      "ESTRES_O_ENFERMEDAD": 2,
+      "PROBLEMAS_NEUROPSICOLOGICOS": 2,
+      "IMC_O_PANTORRILLA": 3
+    },
+    "puntuacion": 14,
+    "interpretacion": "ESTADO NUTRICIONAL NORMAL"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-02-2025",
+      "form_id": "MNA_SF",
+      "NREGGEN": "34025",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "27-01-1979",
+      "centro": "LAS ENCINAS"
+    },
+    "preguntas": {
+      "DISMINUCION_INGESTA": 2,
+      "PERDIDA_PESO": 3,
+      "MOVILIDAD": 2,
+      "ESTRES_O_ENFERMEDAD": 2,
+      "PROBLEMAS_NEUROPSICOLOGICOS": 2,
+      "IMC_O_PANTORRILLA": 3
+    },
+    "puntuacion": 14,
+    "interpretacion": "ESTADO NUTRICIONAL NORMAL"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-02-2025",
+      "form_id": "MNA_SF",
+      "NREGGEN": "283361",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "15-09-1947",
+      "centro": "LAS ENCINAS"
+    },
+    "preguntas": {
+      "DISMINUCION_INGESTA": 2,
+      "PERDIDA_PESO": 0,
+      "MOVILIDAD": 2,
+      "ESTRES_O_ENFERMEDAD": 2,
+      "PROBLEMAS_NEUROPSICOLOGICOS": 2,
+      "IMC_O_PANTORRILLA": 3
+    },
+    "puntuacion": 11,
+    "interpretacion": "RIESGO DE MALNUTRICION"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-02-2025",
+      "form_id": "MNA_SF",
+      "NREGGEN": "1125969",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "14-06-1986",
+      "centro": "EL CASTAÑAR"
+    },
+    "preguntas": {
+      "DISMINUCION_INGESTA": 2,
+      "PERDIDA_PESO": 3,
+      "MOVILIDAD": 2,
+      "ESTRES_O_ENFERMEDAD": 2,
+      "PROBLEMAS_NEUROPSICOLOGICOS": 2,
+      "IMC_O_PANTORRILLA": 1
+    },
+    "puntuacion": 12,
+    "interpretacion": "ESTADO NUTRICIONAL NORMAL"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-02-2025",
+      "form_id": "MNA_SF",
+      "NREGGEN": "147349",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "21-02-1943",
+      "centro": "EL CASTAÑAR"
+    },
+    "preguntas": {
+      "DISMINUCION_INGESTA": 2,
+      "PERDIDA_PESO": 0,
+      "MOVILIDAD": 0,
+      "ESTRES_O_ENFERMEDAD": 0,
+      "PROBLEMAS_NEUROPSICOLOGICOS": 2,
+      "IMC_O_PANTORRILLA": 1
+    },
+    "puntuacion": 5,
+    "interpretacion": "MALNUTRICION"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-02-2025",
+      "form_id": "MNA_SF",
+      "NREGGEN": "290237",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "03-09-1942",
+      "centro": "EL CASTAÑAR"
+    },
+    "preguntas": {
+      "DISMINUCION_INGESTA": 2,
+      "PERDIDA_PESO": 3,
+      "MOVILIDAD": 0,
+      "ESTRES_O_ENFERMEDAD": 0,
+      "PROBLEMAS_NEUROPSICOLOGICOS": 2,
+      "IMC_O_PANTORRILLA": 3
+    },
+    "puntuacion": 10,
+    "interpretacion": "RIESGO DE MALNUTRICION"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-02-2025",
+      "form_id": "MNA_SF",
+      "NREGGEN": "1119998",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "21-11-1944",
+      "centro": "EL CASTAÑAR"
+    },
+    "preguntas": {
+      "DISMINUCION_INGESTA": 2,
+      "PERDIDA_PESO": 3,
+      "MOVILIDAD": 0,
+      "ESTRES_O_ENFERMEDAD": 2,
+      "PROBLEMAS_NEUROPSICOLOGICOS": 1,
+      "IMC_O_PANTORRILLA": 3
+    },
+    "puntuacion": 11,
+    "interpretacion": "RIESGO DE MALNUTRICION"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-02-2025",
+      "form_id": "MNA_SF",
+      "NREGGEN": "102013",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "06-04-1952",
+      "centro": "EL CASTAÑAR"
+    },
+    "preguntas": {
+      "DISMINUCION_INGESTA": 2,
+      "PERDIDA_PESO": 3,
+      "MOVILIDAD": 2,
+      "ESTRES_O_ENFERMEDAD": 2,
+      "PROBLEMAS_NEUROPSICOLOGICOS": 2,
+      "IMC_O_PANTORRILLA": 3
+    },
+    "puntuacion": 14,
+    "interpretacion": "ESTADO NUTRICIONAL NORMAL"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-02-2025",
+      "form_id": "MNA_SF",
+      "NREGGEN": "45277",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "05-08-1936",
+      "centro": "EL CASTAÑAR"
+    },
+    "preguntas": {
+      "DISMINUCION_INGESTA": 2,
+      "PERDIDA_PESO": 3,
+      "MOVILIDAD": 2,
+      "ESTRES_O_ENFERMEDAD": 2,
+      "PROBLEMAS_NEUROPSICOLOGICOS": 2,
+      "IMC_O_PANTORRILLA": 3
+    },
+    "puntuacion": 14,
+    "interpretacion": "ESTADO NUTRICIONAL NORMAL"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-02-2025",
+      "form_id": "MNA_SF",
+      "NREGGEN": "213846",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "09-08-1941",
+      "centro": "EL CASTAÑAR"
+    },
+    "preguntas": {
+      "DISMINUCION_INGESTA": 2,
+      "PERDIDA_PESO": 3,
+      "MOVILIDAD": 2,
+      "ESTRES_O_ENFERMEDAD": 0,
+      "PROBLEMAS_NEUROPSICOLOGICOS": 2,
+      "IMC_O_PANTORRILLA": 3
+    },
+    "puntuacion": 12,
+    "interpretacion": "ESTADO NUTRICIONAL NORMAL"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-02-2025",
+      "form_id": "MNA_SF",
+      "NREGGEN": "279274",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "03-06-1952",
+      "centro": "EL CASTAÑAR"
+    },
+    "preguntas": {
+      "DISMINUCION_INGESTA": 2,
+      "PERDIDA_PESO": 2,
+      "MOVILIDAD": 2,
+      "ESTRES_O_ENFERMEDAD": 2,
+      "PROBLEMAS_NEUROPSICOLOGICOS": 2,
+      "IMC_O_PANTORRILLA": 3
+    },
+    "puntuacion": 13,
+    "interpretacion": "ESTADO NUTRICIONAL NORMAL"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-02-2025",
+      "form_id": "MNA_SF",
+      "NREGGEN": "4127715",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "09-08-1941",
+      "centro": "EL CASTAÑAR"
+    },
+    "preguntas": {
+      "DISMINUCION_INGESTA": 2,
+      "PERDIDA_PESO": 3,
+      "MOVILIDAD": 2,
+      "ESTRES_O_ENFERMEDAD": 2,
+      "PROBLEMAS_NEUROPSICOLOGICOS": 2,
+      "IMC_O_PANTORRILLA": 3
+    },
+    "puntuacion": 14,
+    "interpretacion": "ESTADO NUTRICIONAL NORMAL"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-02-2025",
+      "form_id": "MNA_SF",
+      "NREGGEN": "1656042",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "21-02-1992",
+      "centro": "EL CASTAÑAR"
+    },
+    "preguntas": {
+      "DISMINUCION_INGESTA": 2,
+      "PERDIDA_PESO": 3,
+      "MOVILIDAD": 0,
+      "ESTRES_O_ENFERMEDAD": 2,
+      "PROBLEMAS_NEUROPSICOLOGICOS": 2,
+      "IMC_O_PANTORRILLA": 3
+    },
+    "puntuacion": 12,
+    "interpretacion": "ESTADO NUTRICIONAL NORMAL"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-02-2025",
+      "form_id": "MNA_SF",
+      "NREGGEN": "1648977",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "20-01-1955",
+      "centro": "EL CASTAÑAR"
+    },
+    "preguntas": {
+      "DISMINUCION_INGESTA": 2,
+      "PERDIDA_PESO": 2,
+      "MOVILIDAD": 0,
+      "ESTRES_O_ENFERMEDAD": 2,
+      "PROBLEMAS_NEUROPSICOLOGICOS": 2,
+      "IMC_O_PANTORRILLA": 1
+    },
+    "puntuacion": 9,
+    "interpretacion": "RIESGO DE MALNUTRICION"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-02-2025",
+      "form_id": "MNA_SF",
+      "NREGGEN": "2231633",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "02-11-1946",
+      "centro": "EL CASTAÑAR"
+    },
+    "preguntas": {
+      "DISMINUCION_INGESTA": 2,
+      "PERDIDA_PESO": 3,
+      "MOVILIDAD": 2,
+      "ESTRES_O_ENFERMEDAD": 2,
+      "PROBLEMAS_NEUROPSICOLOGICOS": 2,
+      "IMC_O_PANTORRILLA": 3
+    },
+    "puntuacion": 14,
+    "interpretacion": "ESTADO NUTRICIONAL NORMAL"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-02-2025",
+      "form_id": "MNA_SF",
+      "NREGGEN": "1662513",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "20-07-1950",
+      "centro": "EL CASTAÑAR"
+    },
+    "preguntas": {
+      "DISMINUCION_INGESTA": 2,
+      "PERDIDA_PESO": 3,
+      "MOVILIDAD": 1,
+      "ESTRES_O_ENFERMEDAD": 0,
+      "PROBLEMAS_NEUROPSICOLOGICOS": 2,
+      "IMC_O_PANTORRILLA": 3
+    },
+    "puntuacion": 11,
+    "interpretacion": "RIESGO DE MALNUTRICION"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-02-2025",
+      "form_id": "MNA_SF",
+      "NREGGEN": "4093592",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "12-06-1956",
+      "centro": "EL CASTAÑAR"
+    },
+    "preguntas": {
+      "DISMINUCION_INGESTA": 2,
+      "PERDIDA_PESO": 3,
+      "MOVILIDAD": 2,
+      "ESTRES_O_ENFERMEDAD": 2,
+      "PROBLEMAS_NEUROPSICOLOGICOS": 2,
+      "IMC_O_PANTORRILLA": 3
+    },
+    "puntuacion": 14,
+    "interpretacion": "ESTADO NUTRICIONAL NORMAL"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-02-2025",
+      "form_id": "MNA_SF",
+      "NREGGEN": "4128885",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "10-11-1950",
+      "centro": "EL CASTAÑAR"
+    },
+    "preguntas": {
+      "DISMINUCION_INGESTA": 2,
+      "PERDIDA_PESO": 3,
+      "MOVILIDAD": 2,
+      "ESTRES_O_ENFERMEDAD": 0,
+      "PROBLEMAS_NEUROPSICOLOGICOS": 2,
+      "IMC_O_PANTORRILLA": 1
+    },
+    "puntuacion": 10,
+    "interpretacion": "RIESGO DE MALNUTRICION"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-02-2025",
+      "form_id": "MNA_SF",
+      "NREGGEN": "177002",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "27-08-1937",
+      "centro": "EL CASTAÑAR"
+    },
+    "preguntas": {
+      "DISMINUCION_INGESTA": 1,
+      "PERDIDA_PESO": 3,
+      "MOVILIDAD": 1,
+      "ESTRES_O_ENFERMEDAD": 2,
+      "PROBLEMAS_NEUROPSICOLOGICOS": 2,
+      "IMC_O_PANTORRILLA": 3
+    },
+    "puntuacion": 12,
+    "interpretacion": "ESTADO NUTRICIONAL NORMAL"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-02-2025",
+      "form_id": "MNA_SF",
+      "NREGGEN": "103871",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "28-02-1982",
+      "centro": "EL CASTAÑAR"
+    },
+    "preguntas": {
+      "DISMINUCION_INGESTA": 2,
+      "PERDIDA_PESO": 2,
+      "MOVILIDAD": 2,
+      "ESTRES_O_ENFERMEDAD": 0,
+      "PROBLEMAS_NEUROPSICOLOGICOS": 2,
+      "IMC_O_PANTORRILLA": 1
+    },
+    "puntuacion": 9,
+    "interpretacion": "RIESGO DE MALNUTRICION"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-02-2025",
+      "form_id": "MNA_SF",
+      "NREGGEN": "152700",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "09-10-1940",
+      "centro": "LAS ENCINAS"
+    },
+    "preguntas": {
+      "DISMINUCION_INGESTA": 2,
+      "PERDIDA_PESO": 3,
+      "MOVILIDAD": 2,
+      "ESTRES_O_ENFERMEDAD": 2,
+      "PROBLEMAS_NEUROPSICOLOGICOS": 2,
+      "IMC_O_PANTORRILLA": 3
+    },
+    "puntuacion": 14,
+    "interpretacion": "ESTADO NUTRICIONAL NORMAL"
+  }
+]

@@ -3,11 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { SelectionService } from '../../services/selection.service';
+import { MongodbService, MongoIndicador } from '../../services/mongodb.service';
 
 interface Indicador {
   id_code: string;
   categoria: string;
   indicador: string;
+  fuente?: 'firebird' | 'mongodb'; // NUEVO: Identificar la fuente
 }
 
 @Component({
@@ -20,34 +22,95 @@ export class IndicadoresSelectorComponent implements OnInit {
   selected = new Set<string>();
   allToggle = false;
   categoryToggles: Record<string, boolean> = {};
+  // NUEVO: Variables para MongoDB
+  loadingMongo = false;
+  mongoIndicadoresDisponibles = false;
 
   constructor(
     private http: HttpClient,
     private snack: MatSnackBar,
     private router: Router,
-    private sel: SelectionService
+    private sel: SelectionService,
+    private mongoService: MongodbService // NUEVO: Inyectar servicio MongoDB
   ) {}
 
   ngOnInit(): void {
     this.selected = new Set(this.sel.getIndicators());
+    
+    // Cargar indicadores Firebird
+    this.cargarIndicadoresFirebird();
+    
+    // Cargar indicadores MongoDB
+    this.cargarIndicadoresMongoDB();
+  }
+
+  // NUEVO: Método para cargar indicadores Firebird
+  private cargarIndicadoresFirebird(): void {
     this.http.get<Indicador[]>('assets/indicesJSON.json').subscribe({
       next: (arr) => {
-        const cat: Record<string, Indicador[]> = {};
         arr.forEach((i: any) => {
           const k = i.categoria || 'Sin categoría';
-          if (!cat[k]) cat[k] = [];
-          cat[k].push({ id_code: i.id_code, categoria: k, indicador: i.indicador });
+          if (!this.categorias[k]) this.categorias[k] = [];
+          this.categorias[k].push({ 
+            id_code: i.id_code, 
+            categoria: k, 
+            indicador: i.indicador,
+            fuente: 'firebird'
+          });
         });
-        this.categorias = cat;
-        Object.keys(this.categorias).forEach(k => {
-          const allIds = this.categorias[k].map(x => x.id_code);
-          this.categoryToggles[k] = allIds.every(id => this.selected.has(id));
-        });
-        const allIds = Object.values(this.categorias).flat().map(x => x.id_code);
-        this.allToggle = allIds.length>0 && allIds.every(id => this.selected.has(id));
+        this.actualizarToggles();
       },
-      error: () => this.snack.open('No se pudo cargar indicesJSON.json', 'OK', { duration: 3000 })
+      error: () => this.snack.open('No se pudo cargar indicadores Firebird', 'OK', { duration: 3000 })
     });
+  }
+
+  // NUEVO: Método para cargar indicadores MongoDB
+  private cargarIndicadoresMongoDB(): void {
+    this.loadingMongo = true;
+    
+    this.mongoService.getMongoIndicadores().subscribe({
+      next: (mongoIndicadores: MongoIndicador[]) => {
+        console.log('📊 Indicadores MongoDB cargados:', mongoIndicadores.length);
+        
+        // CAMBIADO: Crear categoría especial al final para indicadores externos
+        const categoriaExterna = '🔗 Indicadores Externos (no Nefrosoft)';
+        if (!this.categorias[categoriaExterna]) {
+          this.categorias[categoriaExterna] = [];
+        }
+        
+        mongoIndicadores.forEach((ind) => {
+          this.categorias[categoriaExterna].push({
+            id_code: ind.id_code,
+            categoria: categoriaExterna,
+            indicador: ind.indicador,
+            fuente: 'mongodb'
+          });
+        });
+        
+        this.mongoIndicadoresDisponibles = mongoIndicadores.length > 0;
+        this.actualizarToggles();
+        this.loadingMongo = false;
+        
+        if (mongoIndicadores.length > 0) {
+          console.log('✅ Indicadores externos MongoDB integrados en categoría especial');
+        }
+      },
+      error: (err) => {
+        console.error('❌ Error cargando indicadores MongoDB:', err);
+        this.loadingMongo = false;
+        this.snack.open('No se pudieron cargar indicadores externos', 'OK', { duration: 3000 });
+      }
+    });
+  }
+
+  // NUEVO: Método para actualizar los toggles de categorías
+  private actualizarToggles(): void {
+    Object.keys(this.categorias).forEach(k => {
+      const allIds = this.categorias[k].map(x => x.id_code);
+      this.categoryToggles[k] = allIds.every(id => this.selected.has(id));
+    });
+    const allIds = Object.values(this.categorias).flat().map(x => x.id_code);
+    this.allToggle = allIds.length > 0 && allIds.every(id => this.selected.has(id));
   }
 
   toggleCategory(cat: string, checked: boolean) {
@@ -77,7 +140,11 @@ export class IndicadoresSelectorComponent implements OnInit {
 
   // Métodos helper para el template
   getCategorias(): string[] {
-    return Object.keys(this.categorias);
+    const CATEGORIA_MONGO = '🔗 Indicadores Externos (no Nefrosoft)';
+    const todas = Object.keys(this.categorias);
+    const firebird = todas.filter(k => k !== CATEGORIA_MONGO);
+    const mongo    = todas.filter(k => k === CATEGORIA_MONGO);
+    return [...firebird, ...mongo];
   }
 
   getSelectedCount(): number {
@@ -130,5 +197,15 @@ export class IndicadoresSelectorComponent implements OnInit {
 
   goBack(): void {
     this.router.navigate(['/dashboard']);
+  }
+
+  // NUEVO: Método para obtener el badge de fuente
+  getFuenteBadge(indicador: Indicador): string {
+    return indicador.fuente === 'mongodb' ? '📊 MongoDB' : '🗄️ Firebird';
+  }
+
+  // NUEVO: Método para obtener color del badge
+  getFuenteColor(indicador: Indicador): string {
+    return indicador.fuente === 'mongodb' ? 'primary' : 'accent';
   }
 }

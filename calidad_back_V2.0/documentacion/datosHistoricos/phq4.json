@@ -1,0 +1,4880 @@
+[
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "XH949558",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "01-01-1900",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "26-03-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "793711",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "09-02-1952",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 4,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "25-02-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "525096",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "11-10-1949",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 3,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "15-01-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "552752",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "16-12-1943",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "21-01-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "578938",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "14-11-1953",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "KT890583",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "23-05-1944",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "IH832023",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "03-03-1960",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 3,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "25-02-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "643896",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "03-02-1980",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "25-02-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "582998",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "06-09-1951",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "03-10-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "756854",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "27-06-1949",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "12-11-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "8057891",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "22-01-1948",
+      "centro": "BARCO DE VALDEORRAS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": null,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "26-02-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "615582",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "13-10-1953",
+      "centro": "BARCO DE VALDEORRAS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 4,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "26-02-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "8002629",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "22-11-1950",
+      "centro": "BARCO DE VALDEORRAS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 3,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "12-11-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "517724",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "31-10-1964",
+      "centro": "BARCO DE VALDEORRAS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "25-11-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "76998",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "01-12-1958",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "09-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "304586",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "24-11-1979",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 3,
+      "incapaz_controlar_preocupacion": 2,
+      "poco_interes_placer": 2,
+      "decaido_deprimido": 3
+    },
+    "puntuacion": 10,
+    "interpretacion": "Síntomas graves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "25-11-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "52775",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "25-06-1960",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 2
+    },
+    "puntuacion": 3,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "28-11-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "228589",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "01-01-1900",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 3,
+      "poco_interes_placer": 2,
+      "decaido_deprimido": 3
+    },
+    "puntuacion": 9,
+    "interpretacion": "Síntomas graves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "28-11-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "128989",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "01-01-1900",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "09-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "683435",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "09-04-1955",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 2,
+      "decaido_deprimido": 2
+    },
+    "puntuacion": 5,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "30-11-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "110575",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "02-01-1966",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": null,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "03-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "167479",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "01-01-1900",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "04-03-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "377992",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "28-04-1979",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 2,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 2,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 6,
+    "interpretacion": "Síntomas moderados"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "09-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "683435",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "09-04-1955",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 3,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "04-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "497728",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "01-01-1900",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 2,
+      "incapaz_controlar_preocupacion": 2,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 2
+    },
+    "puntuacion": 7,
+    "interpretacion": "Síntomas moderados"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "04-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "113411",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "01-01-1900",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": null,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "04-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "140999",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "24-05-1951",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 2,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 3,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "04-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "18078",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "05-12-1937",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 2,
+      "incapaz_controlar_preocupacion": 2,
+      "poco_interes_placer": 2,
+      "decaido_deprimido": 3
+    },
+    "puntuacion": 9,
+    "interpretacion": "Síntomas graves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "04-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "397151",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "11-10-1976",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "05-09-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "723624",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "12-11-1955",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "04-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "463602",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "08-12-1956",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 2,
+      "incapaz_controlar_preocupacion": 2,
+      "poco_interes_placer": 2,
+      "decaido_deprimido": 2
+    },
+    "puntuacion": 8,
+    "interpretacion": "Síntomas moderados"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "KS675542",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "02-07-1982",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 2,
+      "poco_interes_placer": 3,
+      "decaido_deprimido": 2
+    },
+    "puntuacion": 8,
+    "interpretacion": "Síntomas moderados"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "05-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "107061",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "24-10-1941",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "09-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "683435",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "09-04-1955",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 3,
+      "incapaz_controlar_preocupacion": 2,
+      "poco_interes_placer": 3,
+      "decaido_deprimido": 3
+    },
+    "puntuacion": 11,
+    "interpretacion": "Síntomas graves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "27-02-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "756977",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "01-01-1900",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 2,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 4,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "09-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "348458",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "11-03-1973",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 2,
+      "incapaz_controlar_preocupacion": 2,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 2
+    },
+    "puntuacion": 7,
+    "interpretacion": "Síntomas moderados"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "09-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "304586",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "24-11-1979",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 3,
+      "incapaz_controlar_preocupacion": 3,
+      "poco_interes_placer": 3,
+      "decaido_deprimido": 3
+    },
+    "puntuacion": 12,
+    "interpretacion": "Síntomas graves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "09-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "16863",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "25-01-1951",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 2,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "05-03-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "115877",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "28-08-1949",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 3,
+      "poco_interes_placer": 2,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 6,
+    "interpretacion": "Síntomas moderados"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "09-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "345820",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "25-05-1943",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 2,
+      "poco_interes_placer": 2,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 6,
+    "interpretacion": "Síntomas moderados"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "09-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "13817",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "01-01-1900",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 2,
+      "incapaz_controlar_preocupacion": 2,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 2
+    },
+    "puntuacion": 7,
+    "interpretacion": "Síntomas moderados"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "09-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "94877",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "23-11-1954",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 3,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "09-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "48472",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "01-08-1954",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 2,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 5,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "04-03-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "327407",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "12-12-1950",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "04-03-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "327407",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "12-12-1950",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "07-03-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "190739",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "08-06-1978",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 3,
+      "incapaz_controlar_preocupacion": 2,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 3
+    },
+    "puntuacion": 9,
+    "interpretacion": "Síntomas graves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "09-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "304586",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "24-11-1979",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 3,
+      "incapaz_controlar_preocupacion": 3,
+      "poco_interes_placer": 3,
+      "decaido_deprimido": 3
+    },
+    "puntuacion": 12,
+    "interpretacion": "Síntomas graves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "09-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "423563",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "27-03-1974",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 2,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 2
+    },
+    "puntuacion": 6,
+    "interpretacion": "Síntomas moderados"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "04-03-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "327407",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "12-12-1950",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 2
+    },
+    "puntuacion": 5,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "10-07-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "430964",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "20-12-1974",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 4,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "10-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "444065",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "26-05-1950",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": null,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "PW431199",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "24-05-1949",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 3,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "10-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "369300",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "24-08-1964",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "11-07-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "159325",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "27-10-1960",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 2,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 5,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "07-01-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "68951",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "22-11-1949",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 2
+    },
+    "puntuacion": 5,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "11-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "188971",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "01-01-1900",
+      "centro": "HUIE"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 4,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "WF892712",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "11-04-1942",
+      "centro": "HUIE"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 2,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 3,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "11-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "197703",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "01-08-1952",
+      "centro": "HUIE"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 3
+    },
+    "puntuacion": 3,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "11-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "171639",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "24-07-1989",
+      "centro": "HUIE"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 2,
+      "incapaz_controlar_preocupacion": 3,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 5,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "11-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "1568",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "20-09-1963",
+      "centro": "HUIE"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "11-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "62002",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "28-01-1944",
+      "centro": "HUIE"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "11-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "270536",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "14-02-1955",
+      "centro": "HUIE"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "11-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "196113",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "05-05-1940",
+      "centro": "HUIE"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 2,
+      "poco_interes_placer": 2,
+      "decaido_deprimido": 2
+    },
+    "puntuacion": 7,
+    "interpretacion": "Síntomas moderados"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "PZ702656",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "01-12-1940",
+      "centro": "HUIE"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 3,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 3
+    },
+    "puntuacion": 7,
+    "interpretacion": "Síntomas moderados"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "12-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "49613",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "07-04-1969",
+      "centro": "HUIE"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 4,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "04-10-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "329988",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "24-07-1980",
+      "centro": "HUIE"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 3,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 5,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "12-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "194134",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "30-04-1947",
+      "centro": "HUIE"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 2,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 4,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "12-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "8884",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "22-08-1953",
+      "centro": "HUIE"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 3
+    },
+    "puntuacion": 4,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "12-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "60772",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "14-02-1948",
+      "centro": "HUIE"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 2,
+      "incapaz_controlar_preocupacion": 3,
+      "poco_interes_placer": 2,
+      "decaido_deprimido": 2
+    },
+    "puntuacion": 9,
+    "interpretacion": "Síntomas graves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "12-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "28014",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "02-11-1944",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 3,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 5,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "23872",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "22-10-1964",
+      "centro": "HUIE"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 3,
+      "incapaz_controlar_preocupacion": 3,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 7,
+    "interpretacion": "Síntomas moderados"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "85863",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "02-10-1937",
+      "centro": "HUIE"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "10-06-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "635957",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "08-12-1953",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "17-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "11399",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "26-07-1963",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "17-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "201836",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "29-04-1978",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "27-02-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "763723",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "17-04-1959",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "19-12-2024",
+      "form_id": "phq_4",
+      "NREGGEN": "52924",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "06-04-1939",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 4,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "27-02-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "170460",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "01-01-1900",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "08-01-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "365170",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "15-02-1962",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "13-01-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "663157",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "14-11-1956",
+      "centro": "BARCO DE VALDEORRAS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 2,
+      "decaido_deprimido": 2
+    },
+    "puntuacion": 6,
+    "interpretacion": "Síntomas moderados"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "15-01-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "1348764",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "26-01-1949",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "15-01-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "316738",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "26-11-1957",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "15-01-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "113274",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "19-05-1949",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "17-01-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "352964",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "06-06-1958",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "17-01-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "585971",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "01-07-1944",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 2
+    },
+    "puntuacion": 4,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "17-01-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "318402",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "05-09-1940",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 2,
+      "decaido_deprimido": 2
+    },
+    "puntuacion": 6,
+    "interpretacion": "Síntomas moderados"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "07-01-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "602847",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "18-10-1952",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "10-09-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "656353",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "17-11-1942",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 2,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 4,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "07-01-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "144410",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "21-06-1941",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": null,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "17-01-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "597605",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "04-01-1941",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 2
+    },
+    "puntuacion": 5,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "17-01-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "205851",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "29-04-1968",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "07-01-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "404409",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "06-08-1947",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "17-01-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "630487",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "24-12-1956",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "21-01-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "578938",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "14-11-1953",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "21-01-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "187457",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "18-07-1960",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "21-01-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "378766",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "15-07-1936",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": null,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "21-01-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "679279",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "03-05-1947",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "21-01-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "308149",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "01-10-1949",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "21-01-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "469484",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "28-10-1939",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "27-01-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "651197",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "13-12-1959",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 3,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "27-01-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "257643",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "28-09-1974",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "29-01-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "19247",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "13-09-1947",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 3,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "WB178945",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "07-06-1949",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "10-02-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "201782",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "01-12-1983",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "10-02-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "338901",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "13-11-1936",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "10-02-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "44410",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "08-02-1942",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 2,
+      "incapaz_controlar_preocupacion": 2,
+      "poco_interes_placer": 2,
+      "decaido_deprimido": 3
+    },
+    "puntuacion": 9,
+    "interpretacion": "Síntomas graves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "06-02-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "701704",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "19-07-1952",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "10-02-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "142746",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "22-11-1940",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "11-02-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "763845",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "27-08-1955",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "11-02-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "787792",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "01-04-1963",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": null,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "11-02-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "228388",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "17-09-1942",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 2,
+      "incapaz_controlar_preocupacion": 2,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 6,
+    "interpretacion": "Síntomas moderados"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "12-02-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "613653",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "20-07-1965",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "NX531970",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "03-08-1955",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "XO955507",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "20-05-1942",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "12-02-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "567668",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "18-06-1947",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "17-02-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "433680",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "04-11-1942",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "18-02-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "132550",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "14-10-1957",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 4,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "18-02-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "252089",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "15-10-1962",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "18-02-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "547944",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "25-10-1943",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "18-02-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "45074",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "13-06-1943",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "18-02-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "344968",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "08-07-1945",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 4,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "18-02-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "744813",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "04-02-1955",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": null,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "25-02-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "643896",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "03-02-1980",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "25-02-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "525096",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "11-10-1949",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "25-02-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "582998",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "06-09-1951",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "25-02-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "588133",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "08-11-1955",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "EW788978",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "13-11-1939",
+      "centro": "BARCO DE VALDEORRAS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "16-01-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "232494",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "13-08-1978",
+      "centro": "BARCO DE VALDEORRAS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 2,
+      "incapaz_controlar_preocupacion": 2,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 6,
+    "interpretacion": "Síntomas moderados"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "06-02-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "307734",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "05-12-1956",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "04-03-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "377992",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "28-04-1979",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": null,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "04-03-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "327407",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "12-12-1950",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 2,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 3,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "05-03-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "11914",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "01-01-1900",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": null,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "05-03-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "115877",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "01-01-1900",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": null,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "07-03-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "400573",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "15-10-1985",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 2,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 4,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "07-03-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "190739",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "08-06-1978",
+      "centro": "HRJC"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "11-03-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "719228",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "12-07-1951",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "12-03-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "174169",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "01-08-1961",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 3,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "12-03-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "166242",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "08-07-1938",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "12-03-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "191627",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "24-03-1947",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "22-01-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "786605",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "11-05-1963",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "12-02-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "492867",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "05-04-1949",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 3,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "18-03-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "392455",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "07-10-1980",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 2
+    },
+    "puntuacion": 5,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "DK481678",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "07-07-1966",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 2,
+      "decaido_deprimido": 2
+    },
+    "puntuacion": 6,
+    "interpretacion": "Síntomas moderados"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "26-03-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "793711",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "09-02-1952",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 2,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 5,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "KL492502",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "23-05-1944",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "YI233051",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "21-03-1953",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "MM787697",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "05-04-1960",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "09-04-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "1349564",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "02-07-1957",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "09-04-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "9938992",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "01-01-1900",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "06-02-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "294247",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "24-04-1972",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 2,
+      "incapaz_controlar_preocupacion": 2,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 6,
+    "interpretacion": "Síntomas moderados"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "EI773957",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "02-02-1953",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "HZ799400",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "01-01-1900",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "WQ523128",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "31-10-1964",
+      "centro": "BARCO DE VALDEORRAS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "HH304892",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "16-08-1984",
+      "centro": "BARCO DE VALDEORRAS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 2,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 5,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "21-04-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "800887",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "19-04-1946",
+      "centro": "BARCO DE VALDEORRAS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "FR935063",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "25-07-1962",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 2,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 5,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "UE204795",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "03-03-1960",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 3,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "FU643040",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "16-12-1943",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "ND790562",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "13-04-1940",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "WA715809",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "20-11-1945",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 4,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "ZO375755",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "12-01-1949",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "19-05-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "446288",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "08-07-1976",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "19-05-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "300405",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "16-09-1943",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "28-05-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "294104",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "06-08-1950",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 3,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "VR147537",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "24-06-1949",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 3,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "02-06-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "394132",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "09-05-1964",
+      "centro": "BARCO DE VALDEORRAS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 3,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "02-06-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "606085",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "23-11-1954",
+      "centro": "BARCO DE VALDEORRAS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "EP325441",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "22-01-1948",
+      "centro": "BARCO DE VALDEORRAS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "02-06-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "545514",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "03-08-1953",
+      "centro": "BARCO DE VALDEORRAS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "05-06-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "422549",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "25-01-1953",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "05-06-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "477172",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "18-05-1952",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 3,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "08-01-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "380161",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "27-02-1952",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "05-06-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "528574",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "08-01-1944",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "05-06-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "618230",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "10-02-1957",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "22-01-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "337394",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "03-01-1942",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "10-06-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "635957",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "08-12-1953",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "10-06-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "786350",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "07-04-1953",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 4,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "27-02-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "763723",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "17-04-1959",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "06-02-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "360450",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "09-05-1958",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 2
+    },
+    "puntuacion": 4,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "18-06-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "301897",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "12-02-1954",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "PW139874",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "25-07-1962",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "26-02-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "615582",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "13-10-1953",
+      "centro": "BARCO DE VALDEORRAS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 4,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "27-06-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "273558",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "17-08-1947",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "27-06-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "191914",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "27-06-1951",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "07-01-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "466685",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "18-07-1971",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 2,
+      "incapaz_controlar_preocupacion": 2,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 6,
+    "interpretacion": "Síntomas moderados"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "GP261119",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "01-01-1948",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "10-07-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "430964",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "20-12-1974",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 3,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "10-07-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "401107",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "12-03-1976",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "10-07-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "610962",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "01-01-1900",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "11-07-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "483159",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "03-07-1941",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "11-07-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "159325",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "27-10-1960",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 3,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "14-07-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "662409",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "21-01-1956",
+      "centro": "BARCO DE VALDEORRAS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "18-07-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "1348904",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "12-09-1945",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "21-07-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "9972263",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "01-05-1959",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "IE623833",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "01-01-1900",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "ZU359741",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "18-07-1949",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "QS826904",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "24-08-1964",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 2,
+      "decaido_deprimido": 2
+    },
+    "puntuacion": 6,
+    "interpretacion": "Síntomas moderados"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "OV642424",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "27-07-1951",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "27-08-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "1350351",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "18-09-1949",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": null,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "27-08-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "534851",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "13-05-1959",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "27-08-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "620260",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "02-06-1978",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "19-01-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "556046",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "03-08-1965",
+      "centro": "BARCO DE VALDEORRAS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "GY281680",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "01-01-1900",
+      "centro": "BARCO DE VALDEORRAS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 3,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "ON795519",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "12-04-1948",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "02-09-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "115045",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "03-10-1945",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "JM861096",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "01-01-1900",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": null,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "XJ485136",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "24-11-1976",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 3,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "IM257730",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "07-07-1942",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": null,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "HP227989",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "01-01-1947",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "05-09-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "582712",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "25-10-1959",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 4,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "05-09-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "414671",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "05-04-1960",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "05-09-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "723624",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "12-11-1955",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "10-09-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "252245",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "27-03-1973",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "10-09-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "656353",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "17-11-1942",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "10-09-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "183562",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "09-01-1970",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 4,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "11-09-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "652356",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "25-10-1962",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "XJ994182",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "01-01-1900",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 3,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "19-01-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "807775",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "13-02-1949",
+      "centro": "BARCO DE VALDEORRAS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 4,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "22-09-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "1349641",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "31-05-1943",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "CC813218",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "23-11-1944",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": null,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "UD580746",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "21-10-1945",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "ET526392",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "24-05-1949",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 3,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "LS277281",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "18-07-1937",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "02-10-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "232133",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "24-11-1947",
+      "centro": "HUIE"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 2,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 3,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 6,
+    "interpretacion": "Síntomas moderados"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "04-10-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "329988",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "24-07-1980",
+      "centro": "HUIE"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 3,
+      "incapaz_controlar_preocupacion": 2,
+      "poco_interes_placer": 2,
+      "decaido_deprimido": 3
+    },
+    "puntuacion": 10,
+    "interpretacion": "Síntomas graves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "QM422313",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "01-01-1900",
+      "centro": "HUIE"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "LC978280",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "01-01-1900",
+      "centro": "HUIE"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "TL627873",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "01-01-1900",
+      "centro": "HUIE"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 2,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 3,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "ST950411",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "01-01-1900",
+      "centro": "HUIE"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 2,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 4,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "KA998052",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "01-01-1900",
+      "centro": "HUIE"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "EV632863",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "01-01-1900",
+      "centro": "HUIE"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "ZY885325",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "01-01-1900",
+      "centro": "HUIE"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 2,
+      "decaido_deprimido": 2
+    },
+    "puntuacion": 5,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "XX312205",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "01-01-1900",
+      "centro": "HUIE"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 2,
+      "incapaz_controlar_preocupacion": 2,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 5,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "MX900934",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "01-01-1900",
+      "centro": "HUIE"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 3,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 5,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "HG296787",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "01-01-1900",
+      "centro": "HUIE"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 2,
+      "incapaz_controlar_preocupacion": 3,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 2
+    },
+    "puntuacion": 8,
+    "interpretacion": "Síntomas moderados"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "HR825795",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "01-01-1900",
+      "centro": "HUIE"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "RB378536",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "01-01-1900",
+      "centro": "HUIE"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 3,
+      "incapaz_controlar_preocupacion": 2,
+      "poco_interes_placer": 3,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 9,
+    "interpretacion": "Síntomas graves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "EF616503",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "01-01-1900",
+      "centro": "HUIE"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 3,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 2
+    },
+    "puntuacion": 7,
+    "interpretacion": "Síntomas moderados"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "CY738386",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "01-01-1900",
+      "centro": "HUIE"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 2,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 2,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 4,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "TU542830",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "01-01-1900",
+      "centro": "HUIE"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 3,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 3,
+      "decaido_deprimido": 3
+    },
+    "puntuacion": 10,
+    "interpretacion": "Síntomas graves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "09-10-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "392449",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "16-08-1946",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "09-10-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "392449",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "27-11-1970",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": null,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "10-10-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "326843",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "21-07-1948",
+      "centro": "HUIE"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 2,
+      "incapaz_controlar_preocupacion": 2,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 2
+    },
+    "puntuacion": 7,
+    "interpretacion": "Síntomas moderados"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "OK660052",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "09-05-1937",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": null,
+      "form_id": "phq_4",
+      "NREGGEN": "KX634813",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "01-01-1900",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": null,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "29-12-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "194177",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "06-02-1939",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "29-12-2025",
+      "form_id": "phq_4",
+      "NREGGEN": "143117",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "19-02-1942",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "07-01-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "602847",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "18-10-1952",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "07-01-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "404409",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "06-08-1946",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "07-01-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "144410",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "21-06-1941",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": null,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "07-01-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "68951",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "22-11-1949",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 2,
+      "poco_interes_placer": 2,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 5,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "07-01-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "466685",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "18-07-1971",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 3,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "08-01-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "380161",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "27-02-1952",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 3,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "15-01-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "1349647",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "23-05-1944",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "15-01-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "552752",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "16-12-1943",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "15-01-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "129885",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "25-05-1972",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 4,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "15-01-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "666387",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "12-04-1948",
+      "centro": "SALGUEIROS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "16-01-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "232494",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "13-08-1978",
+      "centro": "BARCO DE VALDEORRAS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 2,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 5,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "19-01-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "807775",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "13-02-1949",
+      "centro": "BARCO DE VALDEORRAS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 4,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "19-01-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "556046",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "03-08-1965",
+      "centro": "BARCO DE VALDEORRAS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 3,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "19-01-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "445267",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "28-08-1951",
+      "centro": "BARCO DE VALDEORRAS"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 2,
+      "decaido_deprimido": 2
+    },
+    "puntuacion": 5,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "22-01-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "264459",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "18-07-1949",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 4,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "22-01-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "337394",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "03-01-1942",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "06-02-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "701704",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "19-07-1952",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 1
+    },
+    "puntuacion": 4,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "06-02-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "294247",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "24-04-1972",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "06-02-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "307734",
+      "sexo": "MUJER",
+      "fecha_nacimiento": "05-12-1956",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "06-02-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "360450",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "09-05-1958",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "12-02-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "490049",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "02-02-1953",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 1,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "12-02-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "492867",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "05-04-1959",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 1,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 3,
+    "interpretacion": "Síntomas leves"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "22-01-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "786605",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "11-05-1963",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 1,
+      "poco_interes_placer": 1,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": 2,
+    "interpretacion": "Sin síntomas o mínimos"
+  },
+  {
+    "metadata": {
+      "fecha_insercion": "12-02-2026",
+      "form_id": "phq_4",
+      "NREGGEN": "792922",
+      "sexo": "HOMBRE",
+      "fecha_nacimiento": "20-04-1969",
+      "centro": "SANTA MARIA"
+    },
+    "preguntas": {
+      "ansioso_o_al_limite": 0,
+      "incapaz_controlar_preocupacion": 0,
+      "poco_interes_placer": 0,
+      "decaido_deprimido": 0
+    },
+    "puntuacion": null,
+    "interpretacion": "Sin síntomas o mínimos"
+  }
+]
